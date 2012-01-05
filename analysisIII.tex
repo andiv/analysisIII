@@ -1,0 +1,3441 @@
+%% LyX 2.0.1 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[11pt,english,ngerman]{report}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=2.6cm,bmargin=3.5cm,lmargin=2.6cm,rmargin=2.6cm}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{color}
+\usepackage{babel}
+\usepackage{verbatim}
+\usepackage{textcomp}
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{esint}
+\usepackage[unicode=true,
+ bookmarks=true,bookmarksnumbered=true,bookmarksopen=false,
+ breaklinks=true,pdfborder={0 0 0},backref=page,colorlinks=false]
+ {hyperref}
+\hypersetup{pdftitle={Analysis III},
+ pdfauthor={Andreas Völklein},
+ pdfkeywords={Analysis III, Mathematik}}
+\usepackage{breakurl}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\providecommand{\LyX}{\texorpdfstring%
+  {L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
+\newcommand{\noun}[1]{\textsc{#1}}
+
+\@ifundefined{date}{}{\date{}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{tikz}
+\usepackage{latexsym,stmaryrd,stackrel,array,tabularx,multirow}
+\usepackage[explicit]{titlesec}
+\usepackage{makeidx}
+%\usepackage{polynom} % momentan nicht benötigt
+
+%Inhaltsverzeichnis
+\usepackage{tocloft}
+\tocloftpagestyle{fancy}
+
+\renewcommand{\cftchapindent}{1 em}
+\renewcommand{\cftchapnumwidth}{1.5 em}
+
+\renewcommand{\cftsecindent}{2.7 em}
+\renewcommand{\cftsecnumwidth}{2.5em}
+
+\renewcommand{\cftsubsecindent}{5.2 em}
+\renewcommand{\cftsubsecnumwidth}{3.8 em}
+
+\renewcommand{\cftsubsubsecindent}{9 em}
+\renewcommand{\cftsubsubsecnumwidth}{4.5 em}
+
+
+%Kommandos mit optionalem Argument (für Lyx)
+\newcommand{\sr}[3]{\stackrel[#3]{#2}{#1}}
+
+%Mathe-Operatoren
+\DeclareMathOperator*{\exs}{\exists}
+\DeclareMathOperator*{\exsg}{\exists!}
+\DeclareMathOperator*{\fall}{\forall}
+\DeclareMathOperator*{\bcupd}{\dot{\bigcup}}
+\DeclareMathOperator*{\bcapd}{\dot{\bigcap}}
+
+%Eigene Abkürzungen
+\newcommand{\dd}{\textnormal{d}}
+\newcommand{\im}{\textnormal{im}}
+\newcommand{\id}{\textnormal{id}}
+\newcommand{\ii}{\textbf{i}}
+
+%QED-Zeichen (Box)
+\newcommand{\qed}{\ensuremath{\Box}}
+\newcommand{\qqed}[1][\arabic{chapter}.\arabic{section}]{\begin{flushright}\qed\ensuremath{_{\text{#1}}}\end{flushright}}
+
+%Definitons-Zeichen
+\newcommand{\dfn}{\mathrel{\mathop:}=}
+%Menge: TODO: auch die Höhe der zweiten Hälfte für den Strich berücksichtigen!
+\newcommand{\mng}[2]{\ensuremath{\left\{#1\,\left.\vphantom{#1#2}\right|\,#2\right\}}}
+%Abbildung:
+\newcommand{\abb}[5]{#1:#2\to #3:#4\mapsto #5}
+
+% Mengen Modulo
+\newcommand{\modulo}[2]{%
+\mbox{\raisebox{0.6ex}{\ensuremath{\displaystyle #1}}%
+{\Large /}%
+\raisebox{-0.6ex}{\ensuremath{\displaystyle #2}}%
+}%
+}
+
+% Für Z/2Z, um nicht soviel schreiben zu müssen
+\newcommand{\modlo}[2]{%
+\mbox{\raisebox{0.6ex}{\ensuremath{\displaystyle \mathbb{#1}}}%
+{\Large /}%
+\raisebox{-0.6ex}{\ensuremath{\displaystyle #2\mathbb{#1}}}%
+}%
+}
+
+%Die Modulo-Kommandos in klein, für die Darstellungen unter Quantoren.
+\newcommand{\moduloScript}[2]{%
+\mbox{\raisebox{0.4ex}{\scriptsize\ensuremath{\displaystyle #1}}%
+{\footnotesize /}%
+\raisebox{-0.4ex}{\scriptsize\ensuremath{\displaystyle #2}}%
+}%
+}
+
+\newcommand{\modloScript}[2]{%
+\mbox{\raisebox{0.4ex}{\scriptsize\ensuremath{\displaystyle \mathbb{#1}}}%
+{\footnotesize /}%
+\raisebox{-0.4ex}{\scriptsize\ensuremath{\displaystyle #2\mathbb{#1}}}%
+}%
+}
+
+%Wurzel mit Häkchen
+\newcommand{\hsqrt}[2][{}]{\setbox0=\hbox{$\sqrt[#1]{\phantom{|}\!\! #2\hspace*{1pt}}$}\dimen0=\ht0
+  \advance\dimen0-0.2\ht0
+  \setbox2=\hbox{\vrule height\ht0 depth -\dimen0}
+  {\box0\lower0.4pt\box2}}
+
+%alphabetische Aufzählung
+\newcounter{ale}
+\newcommand{\abc}{\stepcounter{ale}\item[\alph{ale})]}
+\newenvironment{abclist}{\begin{itemize} \setcounter{ale}{0}}{\end{itemize}}
+
+%klein-römische Aufzählung
+\newcounter{ale2}
+\newcommand{\iii}{\stepcounter{ale2}\item[\textnormal{\roman{ale2})}]}
+\newenvironment{iiilist}{\begin{itemize} \setcounter{ale2}{0}}{\end{itemize}}
+
+
+% Damit nicht immer "Kapitel 1" etc. über der Kapitelüberschrift steht
+\titleformat{\chapter}
+  {\huge\bfseries}
+  {\textrm{\thechapter} }{0pt}
+  {\textrm{#1} \thispagestyle{fancy}
+  }
+
+% Neudefinition der Abschnittsmarker für die Kopfzeile
+\renewcommand\partmark[1]{\markboth{#1}{}}
+\renewcommand\chaptermark[1]{\markboth{\leftmark}{\arabic{chapter} #1}}
+\renewcommand\sectionmark[1]{}
+\renewcommand\subsectionmark[1]{}
+
+% Kopf- und Fußzeile
+% Höhe der Kopfzeile
+\setlength{\headheight}{14pt}
+\fancyhf{} %alle Kopf- und Fußzeilenfelder bereinigen
+\fancyhead[L]{\textbf{Analysis III}} %Kopfzeile links
+\fancyhead[C]{\leftmark} %zentrierte Kopfzeile
+\fancyhead[R]{\rightmark} %Kopfzeile rechts
+%\renewcommand{\headrulewidth}{0.4pt} %obere Trennlinie
+\fancyfoot[C]{\thepage\quad\!\!\!\slash\quad\!\!\!\pageref{END-front}} %Seitenzahl der Front-Matter
+
+% Datum
+%\date{Stand: \today}
+
+\AtBeginDocument{
+  \def\labelitemiii{\(\succ\)}
+}
+
+\makeatother
+
+\begin{document}
+
+
+\pagenumbering{roman}
+
+
+\title{\textbf{\huge \vspace*{-30mm}}\\
+\textbf{\huge Analysis III}}
+
+
+\author{\textit{\small Vorlesung von}\\
+\textit{\noun{\small Prof. Dr. Felix Finster}}\textit{\small }\\
+\textit{\small im Wintersemester 2011/2012}\\
+\textit{\small Überarbeitung und Textsatz in \LyX{} von}\\
+\textit{\noun{\small Andreas Völklein}}\\
+{\small \vspace*{10mm}}\\
+{\small \includegraphics[clip,width=15cm]{unir}}\textit{\noun{\small }}\\
+{\small \vspace*{3mm}}\\
+Stand: \today}
+
+\maketitle
+\fancyhead[R]{Lizenz}
+\setcounter{page}{2} % sonst gibt es aus irgendeinem Grund zweimal die Seite 1!?!?!?
+
+
+\subsubsection*{ACHTUNG}
+
+Diese Mitschrift ersetzt \emph{nicht} die Vorlesung.
+
+Es wird daher \emph{dringend} empfohlen, die Vorlesung zu besuchen.
+
+\vfill{}
+
+
+\selectlanguage{english}%
+
+\subsubsection*{Copyright Notice}
+
+Copyright © 2011-2012 \noun{Andreas Völklein}
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3
+or any later version published by the Free Software Foundation;
+
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover
+Texts.
+
+A copy of the license is included in the section entitled \textquotedblleft{}GNU
+Free Documentation License\textquotedblright{}.
+
+
+\subsubsection*{Disclaimer of Warranty}
+
+\noun{Unless otherwise mutually agreed to by the parties in writing
+and to the extent not prohibited by applicable law, }\textbf{\noun{the
+copyright holders  provide the document \textquotedblleft{}as is}}\textbf{\textquotedblright{}}\textbf{\noun{
+without warranties of any kind}}\noun{, expressed, implied, statutory
+or otherwise, including, but not limited to, the implied warranties
+of merchantability, fitness for a particular purpose, non-infringement,
+the absence of latent or other defects, accuracy, or the absence of
+errors, whether or not discoverable.}
+
+
+\subsubsection*{Limitation of Liability}
+
+\textbf{\noun{In no event}}\noun{ unless required by applicable law
+or agreed to in writing }\textbf{\noun{will the copyright holders
+be liable to you for any loss}}\noun{ of revenue, profit or anything
+else, }\textbf{\noun{or for any damages}}\noun{, including, but not
+limited to, any general, special, incidental, consequential, punitive
+or exemplary damages, however caused, regardless of the theory of
+liability, arising out of or related to this license or the use of
+or inability to use the document, even if the copyright holders have
+been advised of the possibility of such damages.}
+
+\textbf{\noun{In no event will the copyright holders' liability to
+you}}\noun{, whether in contract, tort (including negligence), or
+otherwise, }\textbf{\noun{exceed the amount you paid the copyright
+holders}}\noun{ for the document under this agreement.}
+
+\selectlanguage{ngerman}%
+
+\subsubsection*{Links}
+
+Der Text der \quotedblbase{}\foreignlanguage{english}{GNU Free Documentation
+License}\textquotedblleft{} kann auch auf der Seite
+\begin{quote}
+\url{https://www.gnu.org/licenses/fdl-1.3.de.html}
+\end{quote}
+nachgelesen werden.
+
+Eine transparente Kopie der aktuellen Version dieses Dokuments kann
+von
+\begin{quote}
+\url{https://github.com/andiv/analysisIII}
+\end{quote}
+heruntergeladen werden.
+
+\newpage{}
+
+\fancyhead[R]{Literatur}
+
+
+\subsection*{Literatur}
+
+
+\subsubsection*{Maßtheorie}
+\begin{itemize}
+\item \noun{Theodor Bröcker}: \emph{Analysis II}, Spektrum Akad. Verl.,
+1995, ISBN 3-86025-418-9;\\
+Kap. I-III (recht knapp)
+\item \noun{Walter Rudin}: \emph{Real and complex analysis}, McGraw-Hill,
+2009, ISBN 978-0-07-054234-1;\\
+Kap.~I-III
+\end{itemize}
+
+\subsubsection*{Funktionentheorie}
+\begin{itemize}
+\item \noun{Klaus Jänich}: \emph{Funktionentheorie}, Springer, 2011, ISBN
+978-3-540-20392-6
+\item \noun{Lars V. Ahlfors}: \emph{Complex Analysis}, McGraw-Hill, 1979,
+ISBN 0-07-000657-1;\\
+(ausführlich)
+\end{itemize}
+{\small \newpage{}}\fancyhead[R]{Inhaltsverzeichnis}
+\fancyhead[C]{}
+
+\tableofcontents{}\label{END-front}\newpage{}\pagenumbering{arabic}
+\fancyfoot[C]{\thepage\quad\!\!\!\slash\quad\!\!\!\pageref{END}} % Seitenzahl des Hauptteils
+\fancyhead[R]{\rightmark}
+\fancyhead[C]{\leftmark}%DATE: Di 18.10.2011
+
+
+\chapter{Integrationstheorie}
+
+\textcolor{green}{TODO: Vorspann}
+
+
+\section{Maßräume, Maße}
+
+
+\subsection{Definition\textmd{ ($\sigma$-Algebra, Maßraum, messbare Menge)}}
+
+Sei $X\not=\emptyset$ eine Menge (zum Beispiel $X\subseteq\mathbb{R}^{n}$).
+
+Eine $\sigma$-Algebra $\mathcal{M}$ ist eine Menge von Teilmengen
+von $X$, so dass gilt:
+
+\begin{iiilist}
+
+\iii $\emptyset\in\mathcal{M}$
+
+\iii $A\in\mathcal{M}\Rightarrow\complement A:=X\setminus A\in\mathcal{M}$
+
+\iii Ist $\left(A_{j}\right)_{j\in\mathbb{N}}$ eine abzählbare Familie
+von Mengen in $\mathcal{M}$, so iat auch ihre Vereinigung ${\displaystyle \bigcup_{j=1}^{^{\infty}}A_{j}\in\mathcal{M}}$.
+
+\end{iiilist}
+
+\quotedblbase{}$\sigma$\textquotedblleft{} steht für abzählbar.
+
+$\left(X,\mu\right)$ heißt \emph{Maßraum} (Messraum, measurable space).
+
+Die Elemente von $\mathcal{M}$ heißen \emph{messbare Mengen}.
+
+\medskip{}
+
+
+TODO: Rest einfügen
+
+
+\section{Konstruktion des 1-dimensionalen Lebesgue-Maßes}
+
+\noun{Henri Leon Lebesgue:} Doktorarbeit\noun{ (1902)}
+
+\noun{Borel}, $\ldots$
+
+\noun{Caratheodory:} Maßerweiterungen; \quotedblbase{}unser Zugang\textquotedblleft{}
+(1918):
+
+Beginne mit \quotedblbase{}einfachen\textquotedblleft{} Mengensystemen
+$\mathcal{A}$: endliche Vereinigung beschränkter Intervalle, also
+$A\in\mathcal{A}$ ist darstellbar als eine disjunkte Vereinigung
+beschränkter Intervalle:
+\begin{align*}
+A & =I_{1}\dot{\cup}\ldots\dot{\cup}I_{n}
+\end{align*}
+Führe ein:
+\begin{align*}
+\mu\left(A\right) & =\left|I_{1}\right|+\ldots+\left|I_{n}\right|
+\end{align*}
+Beachte: $\left(X,\mathcal{A},\mu\right)$ ist \emph{kein} Maßraum,
+da $\mathcal{A}$ keine $\sigma$-Algebra ist.
+
+TODO: Rest einfügen
+
+
+\section{Konstruktion des Integrals}
+
+TODO: Rest einfügen
+
+
+\subsection{Definition}
+
+TODO: Rest einfügen
+
+
+\subsection{Lemma}
+
+Sei $\left(\varphi_{n}\right)$ eine $L^{1}$-Cauchy-Folge in $\mathcal{T}\left(X\right)$.
+
+Dann gibt es eine Teilfolge $\left(\varphi_{n_{j}}\right)$, die fast
+überall punktweise konvergent ist, also:
+\begin{align*}
+\varphi_{n_{j}}\left(x\right) & \mapsto\varphi\left(x\right) & \text{für fast alle } & x\in X
+\end{align*}
+
+
+Zusätzlich
+\begin{align*}
+\exs_{\varepsilon>0}\exs_{Z\subseteq X} & \text{ mit }\mu\left(Z\right)<\varepsilon
+\end{align*}
+
+
+sodass
+\begin{align*}
+\varphi_{n_{j}}\bigg|_{X\setminus Z} & \stackrel{\rightarrow}{\rightarrow}\varphi\bigg|_{X\setminus Z}
+\end{align*}
+
+
+TODO: Beweis einfügen....
+
+Beachte: Für eine $L^{1}$-C.F. $\left(\varphi_{n}\right)$, $\varphi_{n}\in\mathcal{T}\left(X\right)$
+ist
+\begin{align*}
+Z_{N} & :=\int_{X}\varphi_{n}\dd\mu
+\end{align*}
+eine Folge reeller Zahlen.
+
+Diese Folge $\left(z_{n}\right)$ ist auch eine Cauchy-Folge in $\mathbb{R}$,
+weil:
+\begin{align*}
+\left|z_{n}-z_{m}\right| & =\left|\int_{X}\varphi_{n}\dd\mu-\int_{X}\varphi_{m}\dd\mu\right|=\left|\int_{X}\left(\varphi_{n}-\varphi_{m}\right)\dd\mu\right|\le\int_{X}\left|\varphi_{n}-\varphi_{m}\right|\dd\mu
+\end{align*}
+
+
+Wir können also bilden:
+\begin{align*}
+\lim_{n\rightarrow\infty} & \int_{X}\varphi_{n}\dd\mu
+\end{align*}
+
+
+
+\subsection{Definition}
+
+Eine Funktion $f:X\rightarrow\mathbb{R}$ heißt (lebesgue-)integrabel,
+wenn es eine $L^{1}$-Cauchy-Folge $\left(\varphi_{n}\right)$ von
+Treppenfunktionen gibt, die fast überall punktweise gegen $f$ konvergiert.
+Die Zahl
+\begin{align*}
+\int_{X}f\dd\mu & :=\lim_{n\rightarrow\infty}\int_{X}\varphi_{n}\dd\mu
+\end{align*}
+
+
+heißt das \emph{Integral} von $f$ über $X$. Für $Y\subseteq X$
+messbar setzt man
+\begin{align*}
+\int_{Y}f\dd\mu & =\int\chi_{Y}\cdot f\dd\mu
+\end{align*}
+wobei 
+\begin{align*}
+\chi_{Y}\left(x\right) & :=\begin{cases}
+1 & \text{falls }x\in Y\\
+0 & \text{falls }x\not\in Y
+\end{cases}
+\end{align*}
+die charakteristische Funkiton von $Y$ ist.
+
+Beachte, dass $\chi_{Y}\cdot\varphi_{n}\rightarrow\chi_{Y}\cdot\varphi$
+fast überall.
+
+
+\subsection{Lemma}
+
+Seien $\left(\varphi_{n}\right)$ und $\left(\psi_{n}\right)$ zwei
+$L^{1}$-Cauchy-Folgen von Treppenfunktinen, die beide fast überall
+punktweise gegen eine FUnktion $f:X\rightarrow\mathbb{R}$ konvergieren.
+
+Dann gilt:
+\begin{align*}
+\lim_{n\rightarrow\infty} & \left|\left|\varphi_{n}-\psi_{m}\right|\right|=0
+\end{align*}
+Also ist:
+\begin{align*}
+\lim_{n\rightarrow\infty}\int_{X}\varphi_{n}\dd\mu & =\lim_{n\rightarrow\infty}\int_{X}\psi_{n}\dd\mu
+\end{align*}
+
+
+
+\subsubsection*{Beweis}
+
+Setze $\tau_{n}:=\varphi_{n}-\psi_{n}$. Dann ist $\tau_{n}\in\mathcal{T}\left(X\right)$,
+$\left(\tau_{n}\right)$ ist $L^{1}$-Cauchy-Folge und $\tau_{n}\rightarrow0$
+fast überall punktweise konvergent.
+
+Zu zeigen ist: $\tau_{n}\rightarrow0$ in $L^{1}$, also $\left|\left|\tau_{n}\right|\right|_{1}\rightarrow0$
+\begin{itemize}
+\item Es genügt, dies für eine Teilfolge zu zeigen, denn nehme an, dass
+$\left|\left|\tau_{n_{j}}\right|\right|\rightarrow0$.\\
+Sei $\varepsilon>0$. Da $\left(\tau_{n}\right)$ eine $L^{1}$-Cauchy-Folge
+sind, gibt es ein $N$ mit $\left|\left|\tau_{n}-\tau_{m}\right|\right|\le\frac{\varepsilon}{2}$
+für alle $n,m\in\mathbb{N}$.\\
+Da $\left|\left|\tau_{n_{j}}\right|\right|\rightarrow0$ gibt es ein
+$K>N$ mit $\left|\left|\tau_{K}\right|\right|\le\frac{\varepsilon}{2}$.
+\begin{align*}
+\Rightarrow\quad\left|\left|\tau_{n}\right|\right| & \le\left|\left|\tau_{n}-\tau_{K}\right|\right|+\left|\left|\tau_{K}\right|\right|\le\varepsilon\qquad\fall_{n\ge N}
+\end{align*}
+
+\item Sei $\varepsilon>0$ und $k$ fest gewählt. Wähle die Teilfolge (die
+wir zur Einfachheit wieder mit $\left(\tau_{n}\right)$ bezeichnen)
+so, dass:
+\begin{align*}
+\left|\left|\tau_{n}-\tau_{k}\right|\right| & \le\varepsilon\qquad\fall_{n\ge k}
+\end{align*}
+$\tau_{n}$ konvergiert gleichmäsig auf $X\setminus Z$ und ${\displaystyle \mu\left(Z\right)<\frac{\varepsilon}{\left|\left|\tau_{k}\right|\right|_{\infty}}}$.\\
+(genau wie in Lemma \ref{1.3.2})
+\begin{align*}
+\left|\left|\tau_{k}\right|\right|_{\infty} & =\sup\left(\tau_{k}\right)<\infty
+\end{align*}
+da $\tau_{k}$ als Treppenfunktion nur endlich viele Funktionswerte
+annimmt. Setze:
+\begin{align*}
+M & =\left\{ x|\tau_{k}\left(x\right)\not=0\right\} \qquad\text{(wieder für unser festes \ensuremath{k})}
+\end{align*}
+\begin{align*}
+\left|\left|\tau_{n}\right|\right|_{1} & =\int_{X}\left|\tau_{n}\dd\mu\right|\le\int_{Z}\left|\tau_{n}\right|\dd\mu+\int_{M\setminus Z}\left|\tau_{n}\right|\dd\mu+\int_{X\setminus M}\left|\tau_{n}\right|\dd\mu
+\end{align*}
+\begin{align*}
+\int_{Z}\left|\tau_{n}\right|\dd\mu & \le\int_{Z}\left|\tau_{n}-\tau_{k}\right|+\int_{Z}\left|\tau_{k}\right|\le\left|\left|\tau_{n}-\tau_{k}\right|\right|_{1}+\underbrace{\sup\left|\tau_{k}\right|\cdot\mu\left(Z\right)}_{<\varepsilon\text{ nach Konstruktion von }Z\text{ auf }M\setminus Z}\le\\
+ & \le\left|\left|\tau_{n}-\tau_{k}\right|\right|_{1}+\varepsilon\\
+\int_{M\setminus Z}\left|\tau_{n}\right|\dd\mu & \le\sup_{M\setminus Z}\left|\tau_{n}\right|\cdot\underbrace{\mu\left(M\right)}_{<\infty\text{, da \ensuremath{\tau_{k}}keine TF}}\stackrel{n\rightarrow\infty}{\rightarrow}0\qquad\text{da }\tau_{n}\stackrel{\rightarrow}{\rightarrow}0
+\end{align*}
+\begin{align*}
+\int_{X\setminus M}\left|\tau_{n}\right|\dd\mu & =\int_{X\setminus M}\left|\left|\tau_{n}-\tau_{k}\right|\right|\dd\mu\le\left|\left|\tau_{n}-\tau_{k}\right|\right|
+\end{align*}
+(Da $\tau_{k}=0$ auf $X\setminus M$)\\
+Also insgesamt:
+\begin{align*}
+\left|\left|\tau_{n}\right|\right|_{1} & \le2\left|\left|\tau_{n}-\tau_{k}\right|\right|_{1}+\varepsilon+\varepsilon\qquad\text{falls }n>N\left(\varepsilon\right)
+\end{align*}
+Indem wir $k$ genügend groß wählen können wir erreichen, dass $\left|\left|\tau_{n}-\tau_{k}\right|\right|_{1}<\varepsilon$.
+\begin{align*}
+\Rightarrow\quad\left|\left|\tau_{n}\right|\right|_{1} & \le4\varepsilon\qquad\fall_{n>N\left(k\right)}
+\end{align*}
+\qqed
+\end{itemize}
+
+\subsection{Satz\textmd{ (Regeln für Integral)}}
+
+\begin{iiilist}
+
+\iii Die integrablen Funktionen bilden einen Vektorraum $\mathcal{L}^{1}\left(\mu\right)$.
+Das Integral ist darauf eine lineare Abbildung:
+\begin{align*}
+\int: & \mathcal{L}^{1}\left(\mu\right)\rightarrow\mathbb{R}
+\end{align*}
+
+
+\iii $f,g\in\mathcal{L}^{1}$ und $f\ge g$ fast überall. $\Rightarrow$
+${\displaystyle \int_{X}f\dd\mu}\ge\int_{X}g\dd\mu\qquad$ (Monotonie)
+
+\iii Sei $Y\in X$ messbar und von endlichem Maß.
+\begin{align*}
+\Rightarrow\qquad\int_{X}\chi_{Y}\dd\mu & =\int_{Y}\dd\mu=\mu\left(Y\right)
+\end{align*}
+
+
+\iii Sind $Y,Z$ messbar und disjunkt. Ist außerdem $f:Y\cup Z\rightarrow\mathbb{R}$
+integrable, dann sind $f\bigg|_{Y}$ und $f\bigg|_{Z}$ integrabel
+und es gilt:
+\begin{align*}
+\int_{Y\cup Z}f\dd\mu & =\int_{Y}f\dd\mu+\int_{Z}f\dd\mu
+\end{align*}
+
+
+\iii Ist $f$ integrabel, so auch $\left|f\right|$ und es gilt:
+\begin{align*}
+\left|\int_{X}f\dd\mu\right| & \le\int_{X}\left|f\right|\dd\mu
+\end{align*}
+
+
+\iii Die $L^{1}$-Norm ist eine Seminorm auf $\mathcal{L}^{1}\left(\mu\right)$.
+Das Integral ist stetig.
+
+\iii Ändert man eine integrable FUnktion auf einer Nullmenge ab,
+so ist die neue Funktion wieder integrabel und das Integral ändert
+sich nicht.
+
+\end{iiilist}
+
+
+\subsubsection*{Beweis}
+
+Sei $f,g\in\mathcal{L}^{1}\left(X\right)$. Wähle $L^{1}$-Cauchy-Folge.
+$\left(\varphi_{n}\right)$,$\left(\gamma_{n}\right)$ von Treppenfunktionen,
+so dass:
+\begin{align*}
+\varphi_{n} & \rightarrow f\qquad\text{fast überall}\\
+\gamma_{n} & \rightarrow f\qquad\text{fast überall}
+\end{align*}
+Wir wissen dann, dass ${\displaystyle \int_{X}\varphi_{n}\dd\mu\rightarrow\int_{X}f\dd\mu}$,
+${\displaystyle \int_{X}\gamma_{n}\dd\mu\rightarrow\int_{X}f\dd\mu}$.
+
+Es genügt deshalb, die Rechenregeln für Treppenfunktionen zu überprüfen,
+gehe dann zum Limes über. z. B.: $\varphi_{n}+\gamma_{n}$ ist $L^{1}$-Cauchy-Folge
+\begin{align*}
+\int_{X}\left(f+g\right)\dd\mu & =\lim_{n\rightarrow\infty}\int_{X}\left(\varphi_{n}+\gamma_{n}\right)\dd\mu=\lim_{n\rightarrow\infty}\left(\int_{X}\varphi_{n}\dd\mu+\int_{X}\gamma_{n}\dd\mu\right)\stackrel{\text{Konvergenzsätze für Folgen}}{=}\int_{X}f\dd\mu+\int_{X}g\dd\mu
+\end{align*}
+
+
+TODO: Rest einfügen
+
+
+\subsection{Satz}
+
+TODO: Rest einfügen
+
+
+
+
+\subsection{Satz\textmd{ (Normkonvergenzsatz)}}
+
+Sei $\left(f_{n}\right)$ eine $L^{1}$-Cauchy-Folge integrabler Funktionen
+(nicht notwendigerweise Treppenfunktionen!).
+
+TODO: Rest einfügen
+
+Dann konvergiert eine Teilfolge fast überall punktweise,
+\begin{align*}
+f_{n_{j}} & \rightarrow f\quad\text{fast überall}
+\end{align*}
+
+
+$f:X\rightarrow\mathbb{R}$ ist wieder integrabel und 
+\begin{align*}
+\left|\left|f_{n_{j}}-f\right|\right| & \stackrel{n\rightarrow\infty}{\rightarrow}0
+\end{align*}
+
+
+\marginpar{$\mathcal{L}=\mathcal{L}\left(X\right)=\mathcal{L}\left(X,\mu\right)$
+alle integrablen Funktionen.
+
+$\mathcal{N}=\left\{ f\in\mathbb{L}\text{ mit }\left|\left|f\right|\right|_{1}=0\right\} \subset\mathcal{L}$
+Untervektorraum
+
+$f\sim\tilde{f}$ falls $f-\tilde{f}\in\mathcal{N}\Leftrightarrow\left|\left|f-\tilde{f}\right|\right|_{1}=\int_{X}\left|f-\tilde{f}\right|\dd\mu=0\Leftrightarrow f-\tilde{f}=0$
+fast überall
+
+$L^{1}=\modulo{\mathcal{L}}{\mathcal{N}}$ Äquivalenzklassen, $\left(L^{1},\left|\left|.\right|\right|_{1}\right)$
+ist ein Banachraum.}
+
+
+\subsection{Korollar}
+
+TODO: Rest einfügen
+
+
+\section{Die Konvergenzsätze}
+
+TODO: Rest einfügen
+
+
+\subsection{Beispiel}
+
+TODO: Rest einfügen
+
+
+\subsection{Theorem\textmd{ (monotone Konvergenz; Beppo-Levi)}}
+
+$\left(f_{n}\right)$, $f_{n}\in L^{1}\left(X\right)$ und $f$ ist
+fast überall aufsteigend (also $f_{n+1}\left(x\right)\ge f_{n}\left(x\right)$
+für fast alle $x$ und alle $n$) und $\int_{X}f_{n}\dd\mu\le C<\infty\quad\fall_{n}$.
+
+$\Rightarrow f_{n}\rightarrow f$ fast überall und $\int_{X}f\dd\mu=\lim_{n\rightarrow\infty}\int_{X}f_{n}\dd\mu$
+
+
+\subsection{Theorem\textmd{ (dominierte Konvergenz)}}
+
+$\left(f_{n}\right),f_{n}\in L^{1}$, $\left|f_{n}\right|\le g\in L^{1}$
+und $f_{n}\rightarrow f$ fast überall $\Rightarrow f\in L^{1}$ und
+$\int_{X}f\dd\mu=\lim_{n\rightarrow\infty}\int_{X}f_{n}\dd\mu$
+
+\marginpar{Gegenbeispiel: TODO Abb 1, $f_{n}\left(x\right)\rightarrow0$ punktweise,
+$\int f_{n}\dd\mu=A\not=\int\lim_{n\rightarrow\infty}\varphi_{n}\left(x\right)$,
+$g\not\in L^{1}$ (denn $\int g\dd\mu=+\infty$)}
+
+TODO: Rest einfügen
+
+
+\section{Integration nicht-negativer Funktionen}
+
+Sei $f:X\rightarrow\left[0,\infty\right]\subseteq\overline{\mathbb{R}}$
+messbar (muss nicht in $L^{1}$ sein!). Setze:
+\begin{align}
+\int_{X}f\dd\mu & :=\sup\left\{ \int_{X}\varphi\dd\mu\text{ mit }\varphi\text{ Stufenfunktion und }0\le\varphi\le f\right\} \qquad\left(*\right)
+\end{align}
+
+
+
+\subsubsection*{Definition}
+
+$\varphi$ ist eine Stufenfunktion, falls $\varphi:X\rightarrow\overline{\mathbb{R}}$
+messbar und $\#\varphi\left(X\right)<\infty$.
+
+$\varphi$ ist eine Treppenfunktion, falls $\varphi$ Stufenfunktion
+und $\mu\left(\varphi^{-1}\left(c\right)\right)<\infty$ für alle
+$c\not=0$.
+
+z. B. $\varphi\left(x\right)=\begin{cases}
+0 & \text{falls }0\le x\le1\\
+1 & \text{sonst}
+\end{cases}$ ist eine Stufenfunktion, aber keine Treppenfunktion.
+\begin{align*}
+\int_{X}\varphi\dd\mu & :=\sum_{y\in\varphi\left(x\right)}y\cdot\mu\left(\varphi^{-1}\left(y\right)\right)
+\end{align*}
+
+
+Treppenfunktion $\varphi:X\rightarrow\mathbb{R}$: $y\in\mathbb{R}$,
+$\mu\left(\varphi^{-1}\left(y\right)\right)<\infty$ $\Rightarrow\int_{X}\varphi\dd\mu<\infty$.
+
+Stufenfunktion: $\varphi:X\rightarrow\left[0,\infty\right]$: $y\in\left[0,\infty\right]$,
+$\mu\left(\varphi^{-1}\left(y\right)\right)\le\infty$ $\Rightarrow\int_{X}\varphi\dd\mu\le\infty$
+ist wohldefiniert.
+
+
+\subsection{Satz}
+
+Ist $f\in L^{1}$, so stimmt $\left(*\right)$ tatsächlich mit der
+früheren Integral-Definition (von Definition $\ref{}1.3.3$) überein.
+
+
+\subsubsection*{Beweis}
+
+Sei $f\in L^{1}$. Wegen der Monotonie gilt:
+\begin{align*}
+\int_{X}\varphi\dd\mu & \le\int_{X}f\dd\mu\qquad\fall_{\varphi}\text{ mit }0\le\varphi\le f
+\end{align*}
+
+
+Gehe zum Supremum über
+\begin{align*}
+\int_{X}f\dd\mu & \ge\sup\left\{ \int_{X}\varphi\dd\mu|\varphi\text{ ist Stufenfunktion und }0\le\varphi\le f\right\} 
+\end{align*}
+
+
+Umgekehrt gibt es nach Satz $\ref{}1.1.8$ eine aufsteigende Folge
+$\left(\varphi_{n}\right)$ von Treppenfunktionen (also auch Stufenfunktionen),
+die fast überall gegen $f$ konvergieren. Nach dem Theorem von der
+monotonen Konvergenz ist dann:
+\begin{align*}
+\int_{X}f\dd\mu & \le\sup\left\{ \int_{X}\varphi\dd\mu|\varphi\text{ ist Stufenfunktion und }0\le\varphi\le f\right\} 
+\end{align*}
+
+
+\qqed
+
+$f:X\rightarrow\left[0,\infty\right]$ messbar.
+
+\begin{align*}
+\int_{X}f\dd\mu & :=\sup\left\{ \int_{X}\varphi\dd\mu|\varphi\text{ ist Stufenfunktion und }0\le\varphi\le f\right\} 
+\end{align*}
+
+
+
+\subsubsection*{Beispiel}
+
+\begin{align*}
+f\left(x\right) & =\begin{cases}
+\frac{1}{x^{\text{\texttwosuperior}}} & \text{falls }x\not=0\\
+\infty & \text{falls }x=0
+\end{cases}
+\end{align*}
+
+
+\begin{align*}
+\int_{-\infty}^{\infty}f\left(x\right)\dd\mu & =+\infty
+\end{align*}
+Denn:
+
+TODO Abb 2
+
+\begin{align*}
+\int_{\mathbb{R}}\varphi_{n}\dd\mu & =n^{2}\cdot\frac{2}{n}=2n\stackrel{n\rightarrow\infty}{\rightarrow}\infty
+\end{align*}
+
+
+Die Rechenregeln für Integrale übertragen sich alle, wenn man (konsequent)
+$0\cdot\infty=0$ als Regel verwendet.
+
+z. B. 
+\begin{align*}
+f\left(x\right) & =\begin{cases}
++\infty & \text{falls }x\in\mathbb{Q}\\
+0 & \text{sonst}
+\end{cases}
+\end{align*}
+\begin{align*}
+f:\left[0,1\right]\rightarrow\left[0,\infty\right]
+\end{align*}
+
+
+$\int_{X}f\dd\mu=0$, da jede Stufenfunktion $\varphi$ mit $0\le\varphi\le f$
+identische verschwindet.
+\begin{align*}
+\int_{X}f\dd\mu & =\sum_{y\in f\left(x\right)}y\cdot\mu\left(f^{-1}\left(y\right)\right)=\infty\cdot\mu\left(\mathbb{Q}\cap\left[0,1\right]\right)+0\cdot\mu\left(\left(\mathbb{R}\setminus\mathbb{Q}\right)\cap\left[0,1\right]\right)=\infty\cdot0+0\cdot\infty=0
+\end{align*}
+
+
+
+\subsection{Theorem\textmd{ (monotone Konvergenz)}}
+
+Sei $f_{n}:X\rightarrow\left[0,\infty\right]$ eine monoton aufsteigende
+Folge messbarer Funktionen mit:
+\begin{align*}
+f\left(x\right) & =\sup_{n}f_{n}\left(x\right)
+\end{align*}
+
+
+Dann ist:
+\begin{align*}
+\int_{X}f\left(x\right)\dd\mu & =\lim_{n\rightarrow\infty}\int_{X}f_{n}\left(x\right)\dd\mu
+\end{align*}
+
+
+
+\subsubsection*{Beweis}
+
+Ist die linke Seite endlich, so sind alle $f_{n}$ fast überall endlich,
+wende Theorem $\ref{}1.4.2$ an.
+
+Ist die linke Seite unendlich, so wegen der Monotonie auch die rechte
+Seite.
+
+\qqed
+
+
+\section{Zusammenhang zum Riemann-Integral}
+
+Sei $I=\left[a,b\right]\subset\mathbb{R}$ kompaktes Intervall und
+$f:I\rightarrow\mathbb{R}$ beschränkt.
+
+Zerlegung $Z=\left\{ x_{0},\ldots,x_{k+1}\right\} $ mit $x_{0}=a<x_{1}<\ldots<x_{k}<x_{k+1}=b$
+
+Feinheit $\Delta\left(Z\right)=\max_{j=0,\ldots,k}\left(x_{j+1}-x_{j}\right)$
+\begin{align*}
+\overline{S}_{Z} & =\sum_{j=0}^{k}\sup_{\left[x_{j},x_{j+1}\right]}f\cdot\left|x_{j+1}-x_{j}\right|\\
+\underline{S}_{Z} & =\sum_{j=0}^{k}\inf_{\left[x_{j},x_{j+1}\right]}f\cdot\left|x_{j+1}-x_{j}\right|
+\end{align*}
+
+
+
+\subsubsection*{Definition:}
+
+$f$ ist $R$-integrierbar, falls es für jedes $\varepsilon>0$ eine
+Zerlegung $Z$ gibt, mit:
+\begin{align*}
+\overline{S}_{Z}\left(f\right)-\underline{S}_{Z} & \le\varepsilon
+\end{align*}
+
+
+
+\subsubsection*{Satz:}
+
+$f$ ist $R$-integrierbar $\Leftrightarrow$ ${\displaystyle \fall_{\varepsilon>0}\exs_{\delta>0}\text{ mit }\overline{S}_{Z}\left(f\right)-\underline{S}_{Z}\le\varepsilon\fall_{Z}\text{ mit }\Delta\left(Z\right)<\delta}$
+
+$R-\int_{y}f\left(x\right)\dd x:=\sup_{Z}\underline{S}_{Z}\left(f\right)$
+
+
+\subsection{Satz}
+
+Jede $R$-integrierbar Funktion ist Lebesgue-integrabel und:
+\begin{align*}
+R-\int_{Y}f\left(x\right)\dd x & =\int_{Y}f\dd\mu
+\end{align*}
+
+
+(Insbesondere: Jede stetige Funktion auf $\left[a,b\right]$ ist integrabel)
+
+
+\subsubsection*{Beweis}
+
+Sei $f$ $R$-integrierbar. Es gibt dann eine absteigende Familie
+von Treppenfunktionen $\psi_{n}$ und eine aufsteigende Folge von
+Treppenfunktionen $\varphi_{n}$ mit:
+\begin{align*}
+\varphi_{n}\le & f\le\psi_{n}
+\end{align*}
+und:
+\begin{align*}
+\left|\left|\psi_{n}-\varphi_{n}\right|\right| & \rightarrow0
+\end{align*}
+
+
+\emph{Genauer}: Betrachte $Z_{n}$ mit $\Delta\left(Z_{n}\right)<\frac{1}{n}$
+und $Z_{n+1}\supset Z_{n}$ (also $Z_{n+1}$ ist eine Verfeinerung
+von $Z_{n}$)
+\begin{align*}
+\psi_{n}|_{[x_{j},x_{j+1})} & =\sup_{[x_{j},x_{j+1})}f\\
+\varphi_{n}|_{[x_{j},x_{j+1})} & =\inf_{[x_{j},x_{j+1})}f
+\end{align*}
+
+
+TODO: Abb 4
+
+\begin{align*}
+\left|\left|\psi_{n}-\varphi_{n}\right|\right|_{1} & =\int_{X}\left|\psi_{n}-\varphi_{n}\right|\dd\mu=\sum_{j=0}^{k}\left(\sup_{[x_{j},x_{j+1})}f-\inf_{[x_{j},x_{j+1})}f\right)\cdot\left|x_{j+1}-x_{j}\right|\stackrel{\Delta\left(Z\right)\rightarrow0}{\rightarrow}0
+\end{align*}
+
+
+Da $\left|\varphi_{n}\right|\le\left|\psi_{1}\right|+\left|\varphi_{1}\right|$
+und $\left|\psi_{1}\right|+\left|\varphi_{1}\right|\in L^{1}$, kann
+man den Satz der dominierten Konvergenz anwenden und erhält:
+\begin{align*}
+\lim_{n\rightarrow\infty}\int_{X}\varphi_{n}\dd\mu & =\int_{X}\varphi\dd\mu\quad\text{und }\varphi_{n}\rightarrow\varphi\text{ fast überall}
+\end{align*}
+Genauso ist $ $$\left|\psi_{n}\right|\le\left|\psi_{1}\right|+\left|\varphi_{1}\right|$
+und $\left|\psi_{1}\right|+\left|\varphi_{1}\right|\in L^{1}$, also
+nach der dominierten Konvergenz:
+\begin{align*}
+\lim_{n\rightarrow\infty}\int_{X}\psi_{n}\dd\mu & =\int_{X}\psi\dd\mu\quad\text{und }\psi_{n}\rightarrow\psi\text{ fast überall}
+\end{align*}
+
+
+Da
+\begin{align*}
+\int\psi_{n}\dd\mu & =R-\int\psi_{n}\dd\mu\rightarrow R-\int_{Y}f\dd x\\
+\int\varphi_{n}\dd\mu & =R-\int\varphi_{n}\dd\mu\rightarrow R-\int_{Y}f\dd x
+\end{align*}
+
+
+folgt:
+\begin{align*}
+\int\left|\varphi-\psi\right|\dd\mu & =0=\left|\left|\varphi-\psi\right|\right|_{1}
+\end{align*}
+
+
+Also gilt $\varphi=\psi$ fast überall. Da $\varphi\le f\le\psi$
+folgt $f$ ist Lebesgue-integrabel und $\int_{Y}f\dd\mu=R-\int_{Y}-f\dd x$.
+
+\qqed
+
+
+\subsection{Beispiele}
+
+\begin{iiilist}
+
+\iii $f=\chi_{\mathbb{Q}\cap\left[0,1\right]}$ ist fast überall
+0, also ist $f$ Lebesgue-integrabel und $\int_{\left[0,1\right]}f\dd\mu=0$
+aber $\overline{S}_{f}-\underline{S}_{f}\ge1$ für beliebige Zerlegungen,
+also ist $f$ \emph{nicht} $R$-integrabel.
+
+\iii Konstruiere Funktion $f$, die Lebesgue-integrabel ist, die
+aber nicht $R$-integrabel ist, selbst wenn man sie auf einer Nullmenge
+beliebig abändert $\mathbb{Q}\cap\left[0,1\right]=\left\{ q_{n}|n\in\mathbb{N}\right\} $
+ist abzählbar.\\
+Setze $U_{n}=B_{\frac{\varepsilon}{2^{n}}}\left(q_{n}\right)$ mit
+$0<\varepsilon<1$. $U:=\bigcup_{n\in\mathbb{N}}U_{n}\le\sum_{n}\mu\left(U_{n}\right)=\sum_{n=1}^{\infty}\frac{2\varepsilon}{2^{n}}=2\varepsilon$
+
+Setze $f=\chi_{U}$, dann ist $f|_{\mathbb{Q}\cap\left[0,1\right]}=1$.
+
+\begin{align*}
+\int f\dd\mu & =\mu\left(U\right)<\varepsilon
+\end{align*}
+
+
+\end{iiilist}
+
+TODO: Rest einfügen
+
+
+\section{Die Räume $L^{p}$}
+
+TODO: Rest einfügen
+
+%22.11.2011
+
+
+\subsubsection*{Einschub}
+
+Sei $f:X\rightarrow\mathbb{R}$ messbar.
+
+Frage: Wann ist die Funktion integrierbar?
+
+
+\subsubsection*{Definition}
+
+$f$ ist integrierbar, falls es eine Folge $\left(\varphi_{n}\right)$
+von Treppenfunktionen gibt, die
+\begin{itemize}
+\item $L^{1}$-Cauchy-Folge ist und
+\item $\varphi_{n}\to f$ fast überall punktweise gilt.
+\begin{align*}
+\int_{X}\dd\mu & :=\lim_{n\to\infty}\int_{X}\varphi_{n}\dd\mu
+\end{align*}
+
+\end{itemize}
+Einfacher ist folgende Methode:
+
+$\left|f\right|:X\to[0,\infty)$ ist wieder messbar und 
+\begin{align*}
+\int_{X}\left|f\right|\dd\mu & :=\sup\left\{ \int_{X}\varphi\dd\mu\text{ mit }0\le\varphi\le f\text{ und }\varphi\text{ Stufenfunktion}\right\} \in\left[0,\infty\right]
+\end{align*}
+ist wohldefiniert.
+
+Falls $\left(X,\mu\right)$ schon $\sigma$-endlich ist, kann man
+hier \quotedblbase{}Stufenfunktion\textquotedblleft{} durch \quotedblbase{}Treppenfunktion\textquotedblleft{}
+ersetzen.\\
+Stufenfunktion: $\#\varphi\left(X\right)<\infty$ und $\varphi$ messbar:
+\begin{align*}
+\varphi\left(x\right) & =\sum_{y\in\varphi\left(X\right)}y\cdot\chi_{\varphi^{-1}\left(y\right)}\left(x\right)\ge0
+\end{align*}
+Betrachte $A_{1}\subseteq A_{2}\subseteq\ldots$ mit ${\displaystyle \bigcup A_{n}=X}$
+und $\mu\left(A_{n}\right)<\infty$.
+\begin{align*}
+\varphi_{n}\left(x\right) & =\sum_{y\in\varphi\left(X\right)}y\cdot\chi_{A_{n}\cap\varphi^{-1}\left(y\right)}\left(x\right)
+\end{align*}
+$\varphi_{n}\stackrel{n\to\infty}{\to}\varphi$ punktweise und $\varphi_{n}$
+aufsteigend.\\
+Die $\varphi_{n}$ sind dann Treppenfunktionen und nach monotoner
+Konvergenz ist:
+\begin{align*}
+\int_{X}\varphi\dd\mu & =\lim_{n\to\infty}\int_{X}\varphi_{n}\dd\mu
+\end{align*}
+Also ist
+\begin{align*}
+ & \sup\left\{ \int_{X}\varphi\dd\mu\text{ mit }0\le\varphi\le f\text{ Stufenfunktion}\right\} \\
+ & \sup\left\{ \int_{X}\varphi\dd\mu\text{ mit }0\le\varphi\le f\text{ Treppenfunktion}\right\} 
+\end{align*}
+
+\begin{enumerate}
+\item Fall: $\int_{X}\left|f\right|\dd\mu=+\infty$. Dann ist $f$ nicht
+integrierbar$\left(\not\in L^{1}\right)$, weil die $L^{1}$-Norm
+$\int_{X}\left|f\right|\dd\mu$ nicht endlich ist.
+\item Fall: $\int_{X}\left|f\right|\dd\mu<\infty$\\
+Dann ist $f$ tatsächlich integrierbar, wie man folgendermaßen sieht:\\
+Zerlege $f=f_{+}-f_{-}$ mit $f_{+}=\max\left\{ f,0\right\} $ und
+$f_{-}=\max\left\{ -f,0\right\} $.\\
+Die Funktionen $f_{\pm}$ sind messbar und nicht-negativ, außerdem
+$f_{\pm}\le\left|f\right|$. Damit folgt:
+\begin{align*}
+\int_{X}f_{+}\dd\mu & ,\,\,\int_{X}f_{-}\dd\mu<\infty
+\end{align*}
+Nach Satz $\ref{}1.1.8$ gibt es Treppenfunktionen $\left(\varphi_{n}^{+}\right),\left(\varphi_{n}^{-}\right)$
+mit $\varphi_{n}^{+}\stackrel{\text{steigender Pfeil}}{\to}f_{+}$
+und $\varphi_{n}^{-}\stackrel{\text{steigender Pfeil}}{\to}f_{-}$.\\
+Setze $f_{n};=\varphi_{n}^{+}-\varphi_{n}^{-}$. Dann ist $f_{n}\to f$
+und $\left|f_{n}\right|\le\left|f\right|$.\\
+Nach dominierter Konvergenz ist dann $f$ integrierbar und:
+\begin{align*}
+\int_{X}f\dd\mu & =\lim_{n\to\infty}\int_{X}f_{n}\dd\mu
+\end{align*}
+
+\end{enumerate}
+
+\subsection{Theorem}
+
+$L^{p}\left(X\right)$ ist ein normierter Raum.
+
+
+\subsubsection*{Beweis}
+
+$\left|\left|.\right|\right|_{p}$ ist eine Norm:
+\begin{itemize}
+\item Homogenität:
+\begin{align*}
+\left|\left|\lambda f\right|\right|_{p} & =\left(\int_{X}\left|\lambda f\right|^{p}\dd\mu\right)^{\frac{1}{p}}=\left|\lambda\right|\left|\left|f\right|\right|_{p}\\
+\left|\left|\lambda f\right|\right|_{\infty} & =\text{supess}\left|\lambda f\right|=\text{supess}\left|\lambda\right|\left|f\right|=\left|\lambda\right|\left|\left|f\right|\right|_{p}
+\end{align*}
+
+\item Dreiecksungleichung:
+\begin{align*}
+\left|\left|f+g\right|\right|_{p} & \stackrel{\text{Monotonie}}{\le}\left|\left|\left|f\right|+\left|g\right|\right|\right|_{p}\\
+ & \stackrel{\text{Minkowski}}{\le}\left|\left|\left|f\right|\right|\right|_{p}+\left|\left|\left|g\right|\right|\right|_{p}=\left|\left|f\right|\right|_{p}+\left|\left|g\right|\right|_{p}
+\end{align*}
+
+\item Definitheit: $\left|\left|f\right|\right|_{p}=0\Rightarrow f=0$\\
+Sei $0=\left(\int\left|f\right|^{p}\dd\mu\right)^{\frac{1}{p}}$,
+also folgt:
+\begin{align*}
+\int\left|f\right|^{p}\dd\mu & =0\\
+\Rightarrow\quad\left|f\right|^{p} & =0\text{ fast überall}\\
+\Rightarrow\quad f & =0\text{ fast überall}\\
+\Rightarrow\quad f & =0\text{ in }L^{p}\left(X\right)
+\end{align*}
+Sei $\left|\left|f\right|\right|_{\infty}=0$, dann folgt: $\text{supess}\left|f\right|=0$,
+also $\left|f\right|=0$ fast überall, also $\left|f\right|\le\varepsilon$
+fast überall für alle $\varepsilon>0$. Damit folgt $\left|f\right|=0$
+fast überall, also $f=0$ in $L^{\infty}$.\\
+\qqed
+\end{itemize}
+
+\subsection{Theorem}
+
+$L^{p}\left(X\right)$ ist vollständig. ($1\le p\le\infty$)
+
+
+\paragraph*{Beweis}
+\begin{enumerate}
+\item Zunächst der Fall $p=\infty$:\\
+Sei $\left(f_{n}\right)$ eine Cauchy-Folge in $L^{\infty}$, also
+$\fall_{\varepsilon>0}\exs_{N\in\mathbb{N}}$ mit $\left|\left|f_{n}-f_{m}\right|\right|_{\infty}<\varepsilon\fall_{n,m\in\mathbb{N}_{>N}}$.
+\begin{align*}
+f_{k}\left(x\right) & \le\left|\left|f_{k}\right|\right|_{\infty}\text{ fast überall, also mit Ausnahme einer Nullmenge }A_{k}
+\end{align*}
+Entsprechend:
+\begin{align*}
+\left|f_{n}\left(x\right)-f_{m}\left(x\right)\right| & \le\left|\left|f_{n}-f_{m}\right|\right|_{\infty}\text{ fast überall, also mit Ausnahme einer Nullmenge }B_{nm}
+\end{align*}
+Die Menge
+\begin{align*}
+E & :=\bigcup_{k}A_{k}\cup\bigcup_{m,n}B_{mn}
+\end{align*}
+ist als Vereinigung abzählbar vieler Nullmengen wieder eine Nullmenge.\\
+Wir wissen $\fall_{k,m,n\in\mathbb{N}}$ und für $\varepsilon\in\mathbb{R}_{>0}$:
+\begin{align*}
+\left|f_{k}\left(x\right)\right| & \le\left|\left|f_{k}\right|\right|_{\infty}\quad\fall_{x\in X\setminus E}\\
+\left|f_{n}\left(x\right)-f_{m}\left(x\right)\right| & \le\left|\left|f_{n}-f_{m}\right|\right|_{\infty}<\varepsilon\quad\fall_{x\in X\setminus E}
+\end{align*}
+Also $f_{n}\rightrightarrows f$ auf $X\setminus E$.\\
+(Wobei ${\displaystyle f\left(x\right):=\lim_{n\to\infty}f_{n}\left(x\right)}$
+durch diesen Grenzwert definiert)\\
+Setze $f=0$ auf $E$.\\
+Dann ist $f\in L^{\infty}\left(x\right)$ und ${\displaystyle \left|\left|f_{n}-f\right|\right|=\text{supess}_{x\in X}\left|f_{n}\left(x\right)-f\left(x\right)\right|=\text{supess}_{x\in X\setminus E}\left|f_{n}\left(x\right)-f\left(x\right)\right|\stackrel{n\to\infty}{\to}0}$.
+\item Fall $p<\infty$:\\
+Sei $\left(f_{n}\right)$ eine Cauchy-Folge in $L^{p}$. wähle eine
+Teilfolge (zur Einfachheit wieder mit $\left(f_{n}\right)$ bezeichnet),
+so dass $\left|\left|f_{n+1}-f_{n}\right|\right|<2^{-n}$.\\
+Setze:
+\begin{align*}
+g_{n} & =\sum_{i=1}^{n}\left|f_{i+1}-f_{i}\right| & g & =\sum_{i=1}^{\infty}\left|f_{i+1}-f_{i}\right|
+\end{align*}
+
+
+\begin{enumerate}
+\item Fall a): Reihe konvergiert: ${\displaystyle f\left(x\right)=\lim_{n\to\infty}g_{n}\left(x\right)=\sup_{n}g_{n}\left(x\right)}$.
+\item Fall b): Reihe divergiert: $g\left(x\right)=\infty$ und $g_{n}\left(x\right)$
+ist unbeschränkt, also ${\displaystyle g\left(x\right)=\sup_{n}g_{n}\left(x\right)}$.
+\end{enumerate}
+
+\begin{align*}
+\left|\left|g_{n}\right|\right| & =\left|\left|\left|f_{2}-f_{1}\right|+\left|f_{3}-f_{2}\right|+\ldots+\left|f_{n+1}-f_{n}\right|\right|\right|_{p}\le\\
+ & \le\left|\left|f_{2}-f_{1}\right|\right|_{p}+\left|\left|f_{3}-f_{2}\right|\right|_{p}+\ldots+\left|\left|f_{n+1}-f_{n}\right|\right|_{p}\le\sum_{i=1}^{n}2^{-i}<1
+\end{align*}
+Also gilt $\int_{X}\left|g_{n}\right|^{p}\dd\mu=\left|\left|g_{k}\right|\right|^{p}\le1$.\\
+Also $g_{n}\diagup(TODO:arrow)$ und ${\displaystyle g\left(x\right)=\sup_{n}g_{n}\left(x\right)}$.\\
+Nach monotoner Konvergenz (Theorem $\ref{}1.5.2$) folgt:
+\begin{align*}
+\int_{X}g^{p}\dd\mu & =\lim_{n\to\infty}\int_{X}g_{n}^{p}\dd\mu\le1
+\end{align*}
+Also ist $g\in L^{p}$ und $\left|\left|g\right|\right|_{p}\le1$.
+Insbesondere ist $g$ fast überall endlich.\\
+Das heißt, dass die Reihe ${\displaystyle \sum_{i=1}^{\infty}\left|f_{i+1}\left(x\right)-f_{i}\left(x\right)\right|}$
+für fast alle $x$ konvergiert.
+\begin{align*}
+f_{n+1} & =f_{1}+\sum_{i=1}^{n}\left(f_{i+1}-f_{i}\right)\\
+f\left(x\right) & :=f_{1}\left(x\right)+\sum_{i=1}^{\infty}\left(f_{i+1}\left(x\right)-f_{i}\left(x\right)\right)
+\end{align*}
+$f\left(x\right)$ ist fast überall wohldefiniert, weil die Reihe
+fast überall absolut konvergiert.\\
+Für alle $x$, für welche die Reihe \emph{nicht} absolut konvergiert,
+setzen wir $f\left(x\right):=0$.\\
+$f_{n}\to f$ fast überall. Also auch $\left|f_{n}-f\right|^{p}\to0$
+fast überall.
+\begin{align*}
+\left|f_{n}-f\right|^{p} & \le\bigg|\underbrace{f_{1}}_{\in L^{p}}+\underbrace{g}_{\in L^{p}}\bigg|\in L^{1}
+\end{align*}
+Nach dem Satz von der dominierten Konvergenz folgt: $\int_{X}\left|f-f_{n}\right|^{p}\dd\mu\stackrel{n\to\infty}{\to}$,
+also $f_{n}\to f$ in $L^{p}$.
+
+\end{enumerate}
+\qqed
+
+
+\subsubsection*{Beispiel}
+
+\begin{align*}
+f\left(x\right) & =\begin{cases}
+1, & x\in\mathbb{Q}\\
+0, & x\in\mathbb{R}\setminus\mathbb{Q}
+\end{cases}
+\end{align*}
+\begin{align*}
+\sup_{\mathbb{R}}f & =\inf\left\{ \alpha\in\mathbb{R}|f\left(x\right)\le\alpha\fall_{x\in\mathbb{R}}\right\} =1\\
+\text{supess}_{\mathbb{R}}f & =\inf\left\{ \alpha\in\mathbb{R}|f\left(x\right)\le\alpha\text{ für fast alle }x\in\mathbb{R}\right\} =0
+\end{align*}
+
+
+
+\section{Das Lebesgue-Maß auf $\mathbb{R}^{n}$}
+
+Ziel: Konstruiere das $n$-dimensionale Lebesgue-Maß induktiv aus
+dem eindimensionalen.\\
+Gebe vor: $\left(X,\mathcal{A},\mu\right)$ und $\left(Y,\mathcal{B},\nu\right)$
+$\sigma$-endliche Maße.
+
+Zum Beispiel: $X=Y=\mathbb{R}$, $\mathcal{A}=\mathcal{B}=\mathcal{M}\left(\mathbb{R}\right)$
+und $\mu=\nu$ Lebesgue-Maß.
+
+$X\times Y=\left\{ \left(x;y\right)|x\in X,y\in Y\right\} $
+
+Wir wollen auf $X\times Y$ ein Maß konstruieren, das sogenannte \emph{Produktmaß}.
+
+
+\subsubsection*{Definition}
+
+$A\times B$ mit $A\in\mathcal{A},B\in\mathcal{B}$ nenne \quotedblbase{}Rechteck\textquotedblleft{}.
+
+TODO: Abb1
+
+$\mu\left(A\right)\cdot\mu\left(B\right)$ liefert darauf einen sinnvollen
+\quotedblbase{}Volumenbegriff\textquotedblleft{}.
+
+$A\times B\in\mathcal{P}\left(X\times Y\right)$
+
+${\displaystyle \mathcal{A}\times\mathcal{B}:=\left\{ \dot{\bigcup}_{k=1}^{n}A_{k}\times B_{k}|A_{k}\in\mathcal{A},B_{k}\in\mathcal{B},n\in\mathbb{N}\right\} \subseteq\mathcal{P}\left(X\times Y\right)}$
+
+$\mathcal{A}\otimes\mathcal{B}$ bezeichnet die von $\mathcal{A}\times\mathcal{B}$
+erzeugte $\sigma$-Algebra.
+
+
+\subsection{Satz}
+
+$\mathcal{A}\times\mathcal{B}$ ist eine Mengenalgebra.
+
+
+\subsubsection*{Beweis}
+
+Zeige, dass Schnitte und Komplemente von Elementen aus $\mathcal{A}\times\mathcal{B}$
+wieder in $\mathcal{A}\times\mathcal{B}$ liegen.
+
+TODO: Abb2
+
+\begin{align*}
+\left(A_{1}\times B_{1}\right)\cap\left(A_{2}\times B_{2}\right) & =\left(A_{1}\cap B_{1}\right)\times\left(A_{2}\cap B_{2}\right)\\
+\complement\left(A\times B\right) & =R_{1}\dot{\cup}\ldots\dot{\cup}R_{2}=\left(\complement A\right)\times B\dot{\cup}A\times\left(\complement B\right)\dot{\cup}\left(\complement A\right)\times\left(\complement B\right)\\
+R_{1}\dot{\cup}R_{5} & =\left(\complement A\right)\times B\\
+R_{3}\dot{\cup}R_{7} & =A\times\left(\complement B\right)
+\end{align*}
+
+
+\qqed
+
+TODO: Rest einfügen
+
+
+\subsection{Satz}
+
+TODO: Rest einfügen
+
+
+\subsection{Definition}
+
+TODO: Rest einfügen
+
+
+\subsection{Lemma}
+
+TODO: Rest einfügen
+
+
+\subsection{Lemma}
+
+TODO: Rest einfügen
+
+
+\subsection{Satz \textmd{(Cavalierisches Prinzip)}}
+
+TODO: Rest einfügen
+
+\begin{comment}
+29.11.2011
+\end{comment}
+
+
+Bonaventura Cavalieri 1598-1647
+
+TODO: Abb1
+
+(gleiche Schnittflächen, gleiche Volumina)
+
+
+\subsection{Satz}
+
+Seien $\left(X,\mathcal{A},\mu\right)$, $\left(Y,\mathcal{B},\nu\right)$
+$\sigma$-endliche Maßräume. Dann existiert genau ein Maß $\mu\otimes\nu:\mathcal{A}\otimes\mathcal{B}\to\mathbb{R}_{\ge0}$
+mit $\left(\mu\otimes\nu\right)\left(A\times B\right)=\mu\left(A\right)\cdot\nu\left(B\right)$,
+das sogenannte \emph{Produktmaß}.
+
+\begin{align*}
+\left(\mu\otimes\nu\right)\left(M\right) & =\int_{X}\left(\int_{Y}\chi_{M}\left(x,y\right)\dd y\right)\dd x=\\
+ & =\int_{Y}\underbrace{\left(\int_{X}\chi_{M}\left(x,y\right)\dd x\right)}_{=\mu\left(M\right)}\dd y
+\end{align*}
+
+
+
+\subsection{Definition\textmd{ (monotones Mengensystem)}}
+
+Sei $A_{i}\in\mathcal{M}$ .
+\begin{align*}
+A_{1} & \subseteq A_{2}\subseteq\ldots\Rightarrow\bigcup_{i}A_{i}\in\mathcal{M}\\
+A_{1} & \supseteq A_{2}\supseteq\ldots\Rightarrow\bigcap_{i}A_{i}\in\mathcal{M}
+\end{align*}
+
+
+
+\subsection{Satz}
+
+Ist $\mathcal{M}$ das kleinste monotone Mengensystem, das $\mathcal{A}\times\mathcal{B}$
+enthält, so ist $\mathcal{M}=\mathcal{A}\times\mathcal{B}$.
+
+
+\subsection{Lemma}
+
+Sei $M\in\mathcal{A}\times\mathcal{B}$. Dann gilt:
+
+\begin{iiilist}
+
+\iii $\chi_{M}\left(X,.\right)$ ist $\mathcal{B}$-messbar.
+
+\iii $x\mapsto\int\chi_{M}\left(x,y\right)\dd y$ ist $\mathcal{A}$-messbar.
+
+\end{iiilist}
+
+
+\subsubsection*{Beweis}
+
+Sei $\mathcal{M}\subseteq\mathcal{A}\times\mathcal{B}$ das Mengensystem,
+das (i) und (ii) erfüllt.
+\begin{itemize}
+\item $\mathcal{A}\times\mathcal{B}\subseteq\mathcal{M}$
+\item $\mathcal{M}$ ist ein monotones Mengensystem.\\
+Sei $\chi_{M_{n}}$ messbar $\Rightarrow$ $\sup\chi_{M_{n}}$, $\inf\chi_{M_{n}}$,
+punktweiser Limes wieder messbar
+\item monotone Konvergenz
+\item dominierte Konvergenz $\Rightarrow\mathcal{M=A}\otimes\mathcal{B}$
+\end{itemize}
+
+\subsubsection*{Beweis von Satz $\ref{}I\:8.6$}
+
+Definiere $\left(\mu\otimes\nu\right)\left(M\right):=\int_{X}\left(\int_{Y}\chi_{M}\left(x,y\right)\dd y\right)\dd x:\mathcal{A}\otimes\mathcal{B}\to\left[0,\infty\right]$
+wohldefiniert und $\sigma$-additiv.
+
+Seien $\left(M_{n}\right)_{n\in\mathbb{N}}$ mit $M_{n}\subseteq\mathcal{A}\otimes\mathcal{B}$
+paarweise disjunkt, $M:=\bigcup_{n=1}^{\infty}M_{n}$.
+
+$\sum_{n=1}^{\infty}\chi_{M_{n}}=\chi_{M_{1}\cap\ldots\cap M_{n}}\nearrow\chi_{n}$
+ist eine aufsteigende Folge messbarer Funktionen, die punktweise konvergiert.
+
+Nach monotoner Konvergenz folgt
+\begin{align*}
+g_{N}\left(x\right) & :=\int_{Y}\chi_{M_{1}\cap\ldots\cap M_{N}}\left(x,y\right)\dd y\stackrel{N\to\infty}{\longrightarrow}\int_{Y}\chi_{M}\left(x,y\right)\dd y=g\left(x\right)
+\end{align*}
+und $g_{N}\left(x\right)$ ist aufsteigend (also $g_{N+1}\left(x\right)\ge g_{N}\left(x\right)$).
+
+Nochmals monotone Konvergenz liefert:
+\begin{align*}
+\int_{X}g_{N}\left(x\right)\dd x & \stackrel{N\to\infty}{\longrightarrow}\int_{X}g\left(x\right)\dd x=\int_{X}\left(\int_{Y}\chi_{M}\left(x,y\right)\dd y\right)\dd x=\left(\mu\otimes\nu\right)\left(M\right)
+\end{align*}
+\begin{align*}
+\left(\mu\otimes\nu\right)\left(M_{1}\cup\ldots\cup M_{N}\right) & =\int_{X}\underbrace{\left(\int_{Y}\chi_{M_{1}\cup\ldots\cup M_{N}}\left(x,y\right)\dd y\right)}_{=g_{N}\left(x\right)}\dd x
+\end{align*}
+Also ${\displaystyle \sum_{n=1}^{\infty}\left(\mu\otimes\nu\right)\left(M_{n}\right)=\left(\mu\otimes\nu\right)\left(M\right)}$.
+Also ist $\mu\otimes\nu$ ein Maß auf $\mathcal{A}\otimes\mathcal{B}$.
+
+\emph{Eindeutigkeit:}
+
+$\mu\otimes\nu|_{\mathcal{A}\times\mathcal{B}}$ ist ein Prämaß auf
+der Mengenalgebra $\mathcal{A}\times\mathcal{B}$, weil die $\sigma$-Additivität
+bei Einschränkung auf $\mathcal{A}\times\mathcal{B}$ erhalten bleibt.
+
+Nach dem Satz von Hahn ist die Erweiterung von $\mu\otimes\nu|_{\mathcal{A}\times\mathcal{B}}$
+zu einem Maß auf $\mathcal{A}\times\mathcal{B}$ eindeutig.
+
+\qqed
+
+
+\subsection{Korollar}
+
+Sei $f:X\to\left[0,\infty\right]$ messbar.
+
+Betrachte das Produktmaß $\mu\otimes\lambda$ auf $X\otimes\mathbb{R}$,
+wobei $\lambda$ das 1-dimensionale Lebesguemaß ist.
+
+Dann ist die Menge
+\begin{align*}
+M^{f} & :=\left\{ \left(x,t\right)|0\le t<f\left(x\right)\right\} \subseteq X\times\mathbb{R}
+\end{align*}
+messbar und:
+\begin{align*}
+\left(\mu\otimes\lambda\right)\left(M^{f}\right) & =\int_{X}f\dd y
+\end{align*}
+
+
+TODO: Abb2
+
+
+\subsubsection*{Beweis}
+
+Die Funktion $\varphi:\left(x,t\right)\mapsto f\left(x\right)-t$
+ist messbar, also ist auch $M^{f}=\varphi^{-1}\left((0,\infty]\right)\cap X\times\mathbb{R}_{\ge0}$.
+Nach dem Cavalierischen Prinzip ist ($\chi_{M^{f}}\left(x,t\right)=\chi_{[0,f\left(x\right))}$):
+\begin{align*}
+\left(\mu\otimes\lambda\right)\left(M^{f}\right) & =\int_{X}\underbrace{\left(\int_{\mathbb{R}}\chi_{M^{f}}\left(x,t\right)\dd t\right)}_{=\int_{0}^{f\left(x\right)}\dd t=f\left(x\right)}\dd x=\\
+ & =\int_{X}f\left(x\right)\dd x
+\end{align*}
+
+
+\qqed
+
+Seien nun $X,Y$ zwei $\sigma$-endliche Maßräume und $f:X\times Y\to\mathbb{R}$
+$\mathcal{A}\otimes\mathcal{B}$ messbar.
+\begin{align*}
+\int_{X\times Y}f\left(x,y\right)\dd\left(\mu\otimes\nu\right) & \stackrel{?}{=}\int_{Y}\left(\int_{X}f\left(x,y\right)\dd x\right)\dd y
+\end{align*}
+
+
+
+\subsection{Theorem \textmd{(Fubini)}}
+
+\begin{abclist}
+
+\abc Ist $f\ge0$, so gilt:
+\begin{align}
+\int_{X\times Y}f\dd\left(\mu\otimes\nu\right) & =\int_{Y}\left(\int_{X}f\left(x,y\right)\dd x\right)\dd y\in\left[0,\infty\right]\qquad\left(X\right)
+\end{align}
+
+
+\abc Ist $f$ integrierbar(, das heißt $\int_{X\times Y}\left|f\left(x,y\right)\right|\dd\left(\mu\otimes\nu\right)<\infty$),
+so ist
+\begin{align*}
+\int_{X}f\left(x,y\right)\dd x
+\end{align*}
+für fast alle $y\in Y$ definiert, ist eine integrierbare Funktion
+und $\left(X\right)$ gilt (mit Werten in $\mathbb{R}$).
+
+\end{abclist}
+
+
+\subsubsection*{Beweis}
+
+\begin{abclist}
+
+\abc $\int_{X}f\left(x,y\right)\dd x=\left(\mu\otimes\lambda\right)\left(M_{y}^{f}\right)$
+und $M_{y}^{f}=\left\{ \left(x,t\right)|0\le t<f\left(x,y\right)\right\} \subseteq X\times\mathbb{R}$.
+\begin{align*}
+\int_{X\times Y}f\dd\left(\mu\otimes\nu\right) & =\underbrace{\left(\nu\otimes\left(\mu\otimes\lambda\right)\right)}_{=\nu\otimes\mu\otimes\lambda}\left(M^{f}\right)=\nu\otimes\mu\otimes\lambda\left(M^{f}\right)=\\
+ & =\int_{Y}\mu\otimes\lambda\left(M^{f}\right)\dd y=\int_{Y}\left(\int_{X}f\left(x,y\right)\dd x\right)\dd y
+\end{align*}
+nach letztem Korrolar. (Man kann beliebig assoziativ Klammern, weil
+das Produktmaß eindeutig ist.)
+
+\abc Sei $f:X\times Y\to\mathbb{R}$ messbar.
+
+Schreibe $f=f^{+}-f^{-}$ mit $f_{+}=\max\left(f,0\right)$ und $f_{-}=\max\left(-f,0\right)$.
+$f_{\pm}$ sind nicht-negativ und messbar.
+
+Ist $f$ außerdem integrierbar, so ist:
+\begin{align*}
+\int_{X\times Y}\left|f\left(x,y\right)\right|\dd\left(\mu\otimes\nu\right) & <\infty\\
+\ge\int_{X\times Y}f_{\pm}\left(x,y\right)\dd\left(\mu\otimes\nu\right)
+\end{align*}
+Nach a) gilt:
+\begin{align*}
+\int_{X\times Y}f_{+}\left(x,y\right)\dd\left(\mu\otimes\nu\right) & =\int_{Y}\left(\int_{X}f_{+}\left(x,y\right)\dd x\right)\dd y<\infty\\
+\int_{X\times Y}f_{-}\left(x,y\right)\dd\left(\mu\otimes\nu\right) & =\int_{Y}\left(\int_{X}f_{-}\left(x,y\right)\dd x\right)\dd y<\infty
+\end{align*}
+
+
+\begin{align*}
+\int_{X\times Y}f\left(x,y\right)\dd\left(\mu\otimes\nu\right) & =\int_{Y}\left(\int_{X}f\left(x,y\right)\dd x\right)\dd y<\infty
+\end{align*}
+\end{abclist}
+
+Guido Fubini (1879-1943)
+
+Beppo Levi (1875-1961)
+
+Die Bedingung $f$ integrierbar ist notwendig, wie folgendes Beispiel
+zeigt:
+
+
+\subsection{Beispiel}
+
+\begin{align*}
+g_{n}\left(t\right) & :=\begin{cases}
+\left(\frac{1}{n}-\frac{1}{n+1}\right)^{-1}, & \text{falls }\frac{1}{n+1}\le t<\frac{1}{n}\\
+0 & \text{sonst}
+\end{cases}
+\end{align*}
+
+
+TODO: Abb 3
+
+$\int_{0}^{1}g_{n}\left(t\right)\dd t=1$
+
+\begin{align*}
+f\left(x,y\right) & =\sum_{n=1}^{\infty}n\cdot\left(g_{n}\left(x\right)-g_{n+1}\left(x\right)\right)g_{n}\left(y\right)\\
+f & :\left[0,1\right]\times\left[0,1\right]\to\mathbb{R}\quad\text{messbar}
+\end{align*}
+
+
+{[}{[}mit $a_{n}-a_{n-1}=2^{-n}${]}{]}
+
+TODO: Abb4
+\begin{itemize}
+\item 
+\begin{align*}
+\int_{0}^{1}f\left(x,y\right)\dd x & =\int n\cdot\left(g_{n}\left(x\right)-g_{n+1}\left(x\right)\right)g_{n}\left(y\right)
+\end{align*}
+Dabei ist $n$ so gewählt, dass ${\displaystyle \frac{1}{n+1}\le y<\frac{1}{n}}$.
+\begin{align*}
+\int f\left(x,y\right)\dd x & =n\cdot g_{n}\left(y\right)\bigg(\underbrace{\int_{\mathbb{R}}g_{n}\left(x\right)}_{=1}-\underbrace{\int_{\mathbb{R}}g_{n+1}\left(x\right)}_{=1}\bigg)=0
+\end{align*}
+\begin{align*}
+\Rightarrow\quad\int_{0}^{1}\left(\int_{0}^{1}f\left(x,y\right)\dd x\right)\dd y & =0
+\end{align*}
+
+\item Mit $\frac{1}{n+1}\le x<\frac{1}{n}$:
+\begin{align*}
+\int_{0}^{1}f\left(x,y\right)\dd y & =g_{n}\left(x\right)\int\left(n\cdot g_{n}\left(y\right)-\left(n-1\right)g_{n-1}\left(y\right)\right)\dd y=\\
+ & =g_{n}\left(x\right)\bigg(n\cdot\underbrace{\int_{0}^{1}g_{n}\left(y\right)\dd y}_{=1}-\left(n-1\right)\underbrace{\int_{0}^{1}g_{n-1}\left(y\right)\dd y}_{=1}\bigg)=g_{n}\left(x\right)[[\cdot2^{-n}]]
+\end{align*}
+\begin{align*}
+\int_{0}^{1}\left(\int_{0}^{1}f\left(x,y\right)\dd y\right)\dd x & =\sum_{n}\int_{0}^{1}g_{n}\left(x\right)\dd x=+\infty[[=\sum_{n=1}^{\infty}2^{-n}=1]]
+\end{align*}
+Also $0=\int_{0}^{1}\left(\int_{0}^{1}f\left(x,y\right)\dd x\right)\dd y\not=\int_{0}^{1}\left(\int_{0}^{1}f\left(x,y\right)\dd y\right)\dd x=+\infty$.\\
+Grund: $\int_{\left[0,1\right]\times\left[0,1\right]}\left|f\left(x,y\right)\right|\dd x\otimes\dd y=+\infty$,
+also nicht integrierbar.
+\item \textcolor{blue}{{[}{[}Man kann erreichen, dass $0=\int\left(\int f\left(x,y\right)\dd x\right)\dd y\not=\int\left(\int f\left(x,y\right)\dd y\right)\dd x=1$.
+Auch hier gilt:
+\begin{align*}
+\int_{\left[0,1\right]\times\left[0,1\right]}\left|f\left(x,y\right)\right|\dd x\otimes\dd y & =+\infty\\
+=\int_{0}^{1}\left(\int_{0}^{1}\left|f\left(x,y\right)\right|\dd x\right)\dd y & =\int\left(\int\left|f\left(x,y\right)\right|\dd y\right)\dd x
+\end{align*}
+{]}{]}}
+\end{itemize}
+Wichtigster Fall:
+
+$\dd\mu$, $\dd\nu$ ist jeweils das 1-dimensionale Lebesguemaß.
+
+$\underbrace{\dd\mu\otimes\ldots\otimes\dd\mu}_{n\text{ Faktoren}}$
+ist das Lebesguemaß auf $\mathbb{R}^{n}$.
+
+Was ist eine Lebesguesche Nullmenge?
+
+\begin{align*}
+\left\{ 0\right\} \times\mathbb{R} & \subseteq\mathbb{R}^{2}\\
+\left(\mu\otimes\mu\right)\left(\left\{ 0\right\} \times\mathbb{R}\right) & =\mu\left(\left\{ 0\right\} \right)\cdot\mu\left(\mathbb{R}\right)=\text{\quotedblbase}0\cdot\infty\text{\textquotedblleft}=0
+\end{align*}
+
+
+
+\subsubsection*{Beweis}
+
+$A:=\left\{ 0\right\} \times\mathbb{R}=\bigcup_{n=-\infty}^{\infty}\underbrace{\left\{ 0\right\} \times[n,n+1)}_{=:A_{n}}=\dot{\bigcup}_{n=-\infty}^{\infty}A_{n}$
+
+Wegen $\sigma$-Additivität folgt:
+\begin{align*}
+\mu\left(A\right) & =\sum_{n=-\infty}^{\infty}\mu\left(A_{n}\right)=\sum_{n=-\infty}^{\infty}\left(0\cdot1\right)=0
+\end{align*}
+
+
+
+\subsection{Beispiel}
+
+\begin{align*}
+\int_{0}^{\infty}\left(\int_{0}^{\infty}e^{-\frac{x}{y}-y^{2}}\dd y\right)\dd x
+\end{align*}
+Der Integrand ist nicht-negativ. Darum können wir die Integrale nach
+Fubini vertauschen. Wir können $x,y>0$ annehmen.
+\begin{align*}
+\int_{0}^{\infty}\left(\int_{0}^{\infty}e^{-\frac{x}{y}-y^{2}}\dd x\right)\dd y & =e^{-y^{2}}\int_{0}^{\infty}e^{-\frac{x}{y}}\dd x=e^{-y^{2}}\left(-ye^{-\frac{x}{y}}\right)\big|_{0}^{\infty}=e^{-y^{2}}\cdot y
+\end{align*}
+\begin{align*}
+\int_{0}^{\infty}e^{-y^{2}}\cdot y\dd y & =-\frac{1}{2}\int_{0}^{\infty}\frac{\dd}{\dd y}\left(e^{-y^{2}}\right)\dd y=-\frac{1}{2}e^{-y^{2}}\big|_{0}^{\infty}=-\frac{1}{2}
+\end{align*}
+
+
+
+\section{Die Transformationsformel}
+
+1-dimensionale Variablentransformation
+\begin{align*}
+\varphi:\left[a,b\right] & \to\left[\varphi\left(a\right),\varphi\left(b\right)\right]\in C^{1}
+\end{align*}
+und (streng) monoton steigend.
+\begin{align*}
+\int_{\varphi\left(a\right)}^{\varphi\left(b\right)}f\left(u\right)\dd u & =\left\{ \begin{array}{c}
+u=\varphi\left(t\right)\\
+\dd u=\varphi'\left(t\right)\dd t
+\end{array}\right\} =\int_{a}^{b}f\left(\varphi\left(t\right)\right)\cdot\left|\varphi'\left(t\right)\right|\dd t
+\end{align*}
+
+
+In höherer Dimension: $V=\varphi\left(U\right)$ und $\varphi:U\subseteq\mathbb{R}^{n}\to V\subseteq\mathbb{R}^{n}$
+ein $C^{1}$-Diffeomorphismus. 
+\begin{align*}
+\int_{V\subseteq\mathbb{R}^{n}}f\left(y\right)\dd y & =\int_{U}f\left(\varphi\left(x\right)\right)\cdot\bigg|\det\underbrace{D\varphi}_{\text{Jacobi-Matrix}}\bigg|\dd x
+\end{align*}
+
+
+
+\chapter{Komplexe Analysis}
+
+\setcounter{section}{0}
+
+
+\section{Grundlagen, die Riemannsche Zahlenkugel}
+
+
+\subsection{Definition}
+
+Sei $X\not=\emptyset$ eine Menge.
+
+TODO: Rest
+
+TODO: Abb1
+
+Riemannsche Zahlenkugel
+\begin{align*}
+\varphi: & S^{2}\setminus\left\{ N\right\} \to\mathbb{C}
+\end{align*}
+bijektiv, stetig, $\varphi^{-1}$ stetig
+\begin{align*}
+\varphi: & S^{2}\to\overline{\mathbb{C}}:=\mathbb{C}\cup\left\{ \infty\right\} ,N\mapsto\infty
+\end{align*}
+bijektiv.
+
+Wähle auf $\overline{\mathbb{C}}$ die Topologie $\mathcal{O}:=\left\{ \varphi\left(\Omega\right)|\Omega\subseteq S^{2}\text{ offen}\right\} $.
+
+$S^{2}\subseteq S^{3}$ ist ein kompakter topologischer Raum. Also
+auch $\overline{\mathbb{C}}$.
+
+$\overline{\mathbb{C}}$ ist eine Kompaktifizierung von $\mathbb{C}$.
+
+1-Punkt-Kompaktifizierung (denn nur ein Punkt $\infty$ wurde hinzugenommen)
+
+Andere Beispiele von Kompaktifizierungen:
+\begin{align*}
+\overline{\mathbb{R}} & =\mathbb{R}\cup\left\{ -\infty,+\infty\right\} 
+\end{align*}
+2-Punkt-Kompaktifizierung
+
+$\varphi:\left(-1,1\right)\to\mathbb{R}$ (zum Beispiel $\tan\left(\frac{\pi}{2}x\right)$)
+Homomorphismus.
+
+Erweitere nun:
+\begin{align*}
+\varphi:\mathbb{R} & \to\overline{\mathbb{R}}=\mathbb{R}\cup\left\{ \pm\infty\right\} \\
+1 & \mapsto+\infty\\
+-1 & \mapsto-\infty
+\end{align*}
+Wähle auf $\mathbb{R}$ die Topologie:
+\begin{align*}
+\mathcal{O} & :=\left\{ \varphi\left(\Omega\right)|\Omega\text{ offen in }\left[-1,1\right]\text{ bezüglich der Relativtopologie}\right\} 
+\end{align*}
+
+
+Beispiel für eine andere Kompaktifizierung von $\mathbb{C}$.
+
+TODO: Abb2
+
+$\tilde{\mathbb{C}}:=\mathbb{C}\cup S^{1}$
+
+erweitere $\varphi$:
+\begin{align*}
+\varphi:\overline{\mathcal{H}}=\mathcal{H}\dot{\cup}S^{1} & \to\tilde{\mathbb{C}}\\
+x\in S^{1} & \to x\in S^{1}
+\end{align*}
+Sei $\left(z_{n}\right)$, $z_{n}\in\mathbb{C}$ eine Folge. Betrachte
+$x_{n}\in\mathcal{H}$ mit $\varphi\left(x_{n}\right)=z_{n}$. $\left(x_{n}\right)$
+besitzt Häufungspunkt $x\in\overline{\mathcal{H}}$.
+
+Falls $x\in\mathcal{H}$, dann folgt $\varphi\left(x\right)$ ist
+Häufungspunkt von $\left(z_{n}\right)$.
+
+Falls $x\in S^{1}$, dann folgt $\varphi\left(x\right)\in\overline{\mathbb{C}}\setminus\mathbb{C}$
+ist ein Häufungspunkt in $\overline{\mathbb{C}}$.
+
+
+\section{Analytische Funktionen, die Cauchy-Riemanschen Differentialgleichungen}
+
+Sei $\Omega\subseteq\mathbb{C}$ offen.
+
+
+\subsection{Definition}
+
+Eine Funktion $f:\Omega\to\mathbb{C}$ heißt in $z\in\Omega$ \emph{(komplex)
+differenzierbar} mit \emph{komplexer Ableitung} $f'$, falls der Limes
+\begin{align*}
+\lim_{z\to z',z'\not=z}\frac{\overbrace{f\left(z'\right)-f\left(z\right)}^{\in\mathbb{C}}}{\underbrace{z'-z}_{\in}} & =f'\left(z\right)\in\mathbb{C}
+\end{align*}
+existiert. Ist $f$ für jedes $z\in\Omega$ differenzierbar, so heißt
+$f$ in $\Omega$ \emph{holomorph}.
+
+
+\subsection{Beispiele}
+
+\begin{abclist}
+
+\abc $f\left(z\right)=a_{n}z^{n}+a_{n-1}z^{n-1}+\ldots+a_{0}$ komplexes
+Polynom, das heißt $a_{k}\in\mathbb{C}$.
+\begin{align*}
+f\left(z'\right)-f\left(z\right) & =a_{n}\left(z'^{n}-z^{n}\right)+a_{n-1}\left(z'^{n-1}-z^{n-1}\right)+\ldots+a_{1}\left(z'-z\right)=\\
+ & =\left(z'-z\right)\left(a_{n}\left(\left(z'\right)^{n-1}+\left(z'\right)^{n-2}\cdot z+\left(z'\right)^{n-3}z^{2}+\ldots+z^{n-1}\right)+\ldots+a_{1}\right)
+\end{align*}
+Dividiere durch $z'-z$ und bilden den Limes $z'\to z$:
+\begin{align*}
+f'\left(z\right) & =na_{n}z^{n-1}+\left(n-1\right)a_{n-1}z^{n-1}+\ldots+a_{1}
+\end{align*}
+Dies ist dasselbe wie die Ableitung eines reellen Polynoms.
+
+\abc Nehme an, $f\left(z\right)$ ist reellwertig (zum Beispiel $f\left(z\right)=\left|z\right|^{2}$)
+und komplex differenzierbar.
+
+Das heißt
+\begin{align*}
+f'\left(z\right) & =\lim_{z'\to z,z'\not=z}\frac{f\left(z'\right)-f\left(z\right)}{z'-z}
+\end{align*}
+existiert. Betrachte speziell $z'=z+h$ mit $h\in\mathbb{R}\subseteq\mathbb{C}$.
+
+Dann ist
+\begin{align*}
+f'\left(z\right) & =\lim_{h\to0,h\not=0}\frac{\overbrace{f\left(z+h\right)}^{\in\mathbb{R}}-\overbrace{f\left(z\right)}^{\in\mathbb{R}}}{\underbrace{h}_{\in\mathbb{R}}}\in\mathbb{R}
+\end{align*}
+reell.
+
+Betrachte nun $z'=z+\ii h$ mit $h\in\mathbb{R}\subseteq\mathbb{C}$.
+Dann ist
+\begin{align*}
+f'\left(x\right) & =\sr{\lim_{h\to0}}{}{h\not=0}\frac{\overbrace{f\left(z+h\right)}^{\in\mathbb{R}}-\overbrace{f\left(z\right)}^{\in\mathbb{R}}}{\ii\underbrace{h}_{\in\ii\mathbb{R}}}\in\ii\mathbb{R}
+\end{align*}
+rein imaginär.
+
+Insgesamt folgt $f'\left(z\right)=0$.
+
+\end{abclist}
+
+Was heißt komplex differenzierbar?
+
+Sei $f:\Omega\subseteq\mathbb{C}\to\mathbb{C}$ mit $z=x+\ii y\in\Omega$,
+$x,y\in\mathbb{R}$ und $f=u+\ii v$, $u=\text{Re}\left(f\right)$,
+$v=\text{Im}\left(f\right)$.
+\begin{align*}
+f: & \Omega\to\mathbb{C}:\left(x,y\right)\mapsto\left(\begin{array}{c}
+u\left(x,y\right)\\
+v\left(x,y\right)
+\end{array}\right)
+\end{align*}
+Wir wissen, was \emph{reell} differenzierbar bedeutet, nämlich:
+\begin{align*}
+f\left(x+h_{1},y+h_{2}\right) & =f\left(x,y\right)+A\left(\begin{array}{c}
+h_{1}\\
+h_{2}
+\end{array}\right)+o\left(h\right)
+\end{align*}
+
+
+$g\in o\left(h\right)$ heißt:
+\begin{align*}
+\sr{\lim_{h\to0}}{}{h\not=0}\frac{g\left(h\right)}{\left|\left|h\right|\right|} & =0
+\end{align*}
+Dabei ist $h=\left(\begin{array}{c}
+h_{1}\\
+h_{2}
+\end{array}\right)$ und $\left|\left|h\right|\right|=\sqrt{h_{1}^{2}+h_{2}^{2}}$.
+
+Außerdem ist $A\in L\left(\mathbb{R}^{2}\right)$ die Jacobi-Matrix.
+\begin{align*}
+A & =\left(\begin{array}{cc}
+\frac{\partial u}{\partial x} & \frac{\partial u}{\partial y}\\
+\frac{\partial v}{\partial x} & \frac{\partial v}{\partial y}
+\end{array}\right)
+\end{align*}
+
+
+
+\subsection{Satz}
+
+$f$ ist genau dann in $z\in\mathbb{C}$ komplex differenzierbar,
+wenn $f$ in $\left(x,y\right)$ reell differenzierbar ist und die
+sogennante \emph{Cauchy-Riemannschen Differentialgleichungen} erfüllt:
+\begin{align*}
+\frac{\partial u}{\partial x} & =\frac{\partial v}{\partial y} & \frac{\partial u}{\partial y} & =-\frac{\partial v}{\partial x}
+\end{align*}
+Günstige Notation:
+\begin{align*}
+\frac{\partial f}{\partial x} & :=\frac{\partial u}{\partial x}+\ii\frac{\partial v}{\partial x}\\
+\frac{\partial f}{\partial y} & :=\frac{\partial v}{\partial x}+\ii\frac{\partial v}{\partial y}
+\end{align*}
+Dann kann man die Cauchy-Riemannschen Differentialgleichungen in folgender
+Form schreiben:
+\begin{align*}
+\frac{\partial f}{\partial x} & =-\ii\frac{\partial f}{\partial y}
+\end{align*}
+Realteil:
+\begin{align*}
+\frac{\partial u}{\partial x} & =\frac{\partial v}{\partial y}
+\end{align*}
+Imaginärteil:
+\begin{align*}
+\frac{\partial v}{\partial x} & =-\frac{\partial u}{\partial y}
+\end{align*}
+
+
+
+\subsubsection*{Beweis}
+
+Die Bedingung von komplexer Differenzierbarkeit kann man auch mit
+einer \quotedblbase{}Approximationsformel\textquotedblleft{} schreiben:
+\begin{align*}
+f\left(z+h\right) & =f\left(z\right)+f'\left(z\right)h+o\left(h\right)
+\end{align*}
+$h=h_{1}+\ii h_{2}$ mit:
+\begin{align*}
+\sr{\lim_{h\to0}}{}{h\not=0}\frac{o\left(h\right)}{\left|h\right|} & =0
+\end{align*}
+Dies ist äquivalent zu:
+\begin{align*}
+\frac{f\left(z+h\right)-f\left(z\right)}{h} & -f'\left(z\right)=\frac{o\left(h\right)}{h}\stackrel{h\to0}{\longrightarrow}0
+\end{align*}
+Diese Approximationsformel ist also tatsächlich äquivalent zur Existenz
+des Limes des Differenzenquotienten.
+
+Schreibe nun den Real- und Imaginärteil aus.
+\begin{align*}
+\left(\begin{array}{c}
+u\\
+v
+\end{array}\right)\Bigg|_{\left(x+h_{1},y+h_{2}\right)} & =\left(\begin{array}{c}
+u\\
+v
+\end{array}\right)\Bigg|_{\left(x,y\right)}+\left(\begin{array}{cc}
+\text{Re}\left(f'\left(z\right)\right) & -\text{Im}\left(f'\left(z\right)\right)\\
+\text{Im}\left(f'\left(z\right)\right) & \text{Re}\left(f'\left(z\right)\right)
+\end{array}\right)\left(\begin{array}{c}
+h_{1}\\
+h_{2}
+\end{array}\right)+o\left(h\right)
+\end{align*}
+\begin{align*}
+\text{Re}\left(f'\left(z\right)\cdot h\right) & =\text{Re}\left(f'\left(z\right)\right)\cdot\text{Re}\left(h\right)-\text{Im}\left(f'\right)\cdot\text{Im}\left(h\right)\\
+\text{Im}\left(f'\left(z\right)\cdot h\right) & =\text{Re}\left(f'\left(z\right)\right)\cdot\text{Im}\left(h\right)+\text{Im}\left(f'\right)\cdot\text{Re}\left(h\right)
+\end{align*}
+$h_{1}=\text{Re}\left(h\right),h_{2}=\text{Im}\left(h\right)$
+
+Hierin sieht man folgendes:
+\begin{enumerate}
+\item Ist $f$komplex differenzierbar, so auch reell differenzierbar und:
+\begin{align*}
+\text{Re}\left(f'\left(z\right)\right) & =\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y}\\
+\text{Im}\left(f'\left(z\right)\right) & =-\frac{\partial u}{\partial y}=\frac{\partial v}{\partial x}
+\end{align*}
+Also sind die Cauchy-Riemannschen Differentialgleichungen erfüllt.
+\item Ist $f$ reell differenzierbar und die Cauchy-Riemannschen Differentialgleichungen
+sind erfüllt.\\
+Dann erfüllt ${\displaystyle \alpha:=\frac{\partial u}{\partial x}+\ii\frac{\partial v}{\partial x}\in\mathbb{C}}$
+die Approximationsformel:
+\begin{align*}
+f\left(z+h\right) & =f\left(z\right)+\alpha h+o\left(h\right)
+\end{align*}
+Denn:
+\begin{align*}
+\left(\begin{array}{c}
+\text{Re}\left(\alpha h\right)\\
+\text{Im}\left(\alpha h\right)
+\end{array}\right) & =\left(\begin{array}{cc}
+\text{Re}\left(\alpha\right) & -\text{Im}\left(\alpha\right)\\
+\text{Im}\left(\alpha\right) & \text{Re}\left(\alpha\right)
+\end{array}\right)\left(\begin{array}{c}
+\text{Re}\left(h\right)\\
+\text{Im}\left(h\right)
+\end{array}\right)
+\end{align*}
+
+\end{enumerate}
+\qqed
+
+
+\subsection*{Beispiel und Definition}
+
+Cauchy-Riemannsche Differentialgleichungen:
+\begin{align*}
+\frac{\partial u}{\partial x} & =\frac{\partial v}{\partial y}\quad\left(1\right) & \frac{\partial u}{\partial y} & =\frac{\partial v}{\partial x}\quad\left(2\right)
+\end{align*}
+Nehme an, dass $u$ und $v$ zweimal stetig reell differenzierbar
+sind. Dann folgt:
+\begin{align*}
+\frac{\partial^{2}u}{\partial x^{2}} & \stackrel{\left(1\right)}{=}\frac{\partial^{2}v}{\partial x\partial y}=\frac{\partial^{2}v}{\partial y\partial x}\stackrel{\left(2\right)}{=}-\frac{\partial}{\partial y}\left(\frac{\partial u}{\partial y}\right)=-\frac{\partial^{2}u}{\partial y^{2}}
+\end{align*}
+Laplace-Operator:
+\begin{align*}
+\Delta & :=\frac{\partial^{2}}{\partial x^{2}}+\frac{\partial^{2}}{\partial y^{2}}
+\end{align*}
+Laplace-Gleichung:
+\begin{align*}
+\Delta u & =\frac{\partial^{2}u}{\partial x^{2}}+\frac{\partial^{2}u}{\partial y^{2}}\stackrel{!}{=}0
+\end{align*}
+
+
+Lösungen der Laplace-Gleichung nennt man auch \emph{harmonisch}.
+
+\begin{align*}
+\frac{\partial^{2}v}{\partial x^{2}} & \stackrel{\left(2\right)}{=}\frac{\partial^{2}u}{\partial x\partial y}=-\frac{\partial^{2}u}{\partial y\partial x}\stackrel{\left(1\right)}{=}-\frac{\partial^{2}v}{\partial y^{2}}
+\end{align*}
+$u$ und $v$ sind durch die Cauchy-Riemannsche Differentialgleichungen
+miteinander verknüpft.
+
+Man sagt dazu auch: $u$ und $v$ sind zueinander \emph{konjugierte
+harmonische Funktionen}.
+
+Hilfreich: $z=x+\ii y$ und $\overline{z}=x-\ii y$. Fasse $x$ und
+$y$ als komplexe Zahlen auf. Dann sind $z$ und $\overline{z}$ zwei
+unabhängige komplexe Variablen.
+\begin{align*}
+f:\Omega\subseteq\mathbb{C} & \to\mathbb{C},f\left(x,y\right)=f\left(z,\overline{z}\right)
+\end{align*}
+$z=x+\ii y$ also:
+\begin{align*}
+\frac{\partial}{\partial z} & =\frac{\partial x}{\partial z}\frac{\partial}{\partial x}+\frac{\partial y}{\partial z}\frac{\partial}{\partial y}
+\end{align*}
+\begin{align*}
+x & =\frac{1}{2}\left(z+\overline{z}\right) & y & =\frac{1}{2\ii}\left(z-\overline{z}\right)
+\end{align*}
+
+
+TODO: Rest
+
+%DATE: Di 13.12.2011
+
+Wiederholung:
+\begin{itemize}
+\item Rationale Funktionen für Polynome $P,Q$:
+\begin{align*}
+R\left(z\right) & :=\frac{P\left(z\right)}{Q\left(z\right)}
+\end{align*}
+
+\item \textbf{Satz 2.4.1} (Partialbruchzerlegung)\\
+Sei $Q\left(z\right)=\left(z-\zeta_{1}\right)\cdot\ldots\cdot\left(z-\zeta_{n}\right)$,
+dann $\exs_{G,G_{j}}$ so dass 
+\begin{align*}
+R\left(z\right) & =G\left(z\right)+\sum_{j=1}^{^{n}}G_{j}\left(\frac{1}{z-\zeta_{j}}\right)
+\end{align*}
+$\leadsto$ in Argumenten $z$, $\frac{1}{z-\zeta_{j}}$
+\end{itemize}
+ENDE: Wiederholung
+
+Dies führt einen dazu, die Transformationen ${\displaystyle z\mapsto\frac{1}{z-\zeta}}$
+zu betrachten. Etwas allgemeiner:
+
+
+\subsection{Definition}
+
+Eine rationale Funktion
+\begin{align*}
+\zeta\left(z\right) & =\frac{az+b}{cz+d}
+\end{align*}
+mit $a,b,c,d\in\mathbb{C}$ und $ad-cb\not=0$ heißt \emph{Möbiustransformation}.
+
+
+\subsubsection*{Bemerkung}
+
+Die Bedingung $ad-bc\not=0$ bedeutet gerade, dass die Nullstellen
+von Zähler und Nenner verschieden sind, denn:
+\begin{align*}
+z_{\text{Nenner}} & =-\frac{d}{c}\not=-\frac{b}{a}=z_{\text{Zähler}}
+\end{align*}
+Somit:
+\begin{align*}
+s & \not\equiv0
+\end{align*}
+
+
+$S$ ist eine Abbildung:
+\begin{align*}
+S:\mathbb{C}\setminus\left\{ -\frac{d}{c}\right\}  & \to\mathbb{C}
+\end{align*}
+Erweitere durch die Vorschrift:
+\begin{align*}
+S\left(\infty\right) & :=\frac{a}{c} & S\left(-\frac{d}{c}\right) & :=\infty
+\end{align*}
+zu
+\begin{align*}
+S:\overline{\mathbb{C}} & \to\overline{\mathbb{C}}
+\end{align*}
+bijektiv, stetig und hat stetige Inverse, dies nennt man \emph{Homöomorphismus
+der Riemannschen Zahlenkugel}.
+
+Betrachte nun \emph{homogene Koordinaten}:
+\begin{align*}
+z & =:\frac{z_{1}}{z_{2}} & w & =:\frac{w_{1}}{w_{2}}
+\end{align*}
+(Beachte: $w_{j},z_{j}\in\mathbb{C}$ sind nicht eindeutig bestimmt,
+da nur der Quotient von Bedeutung ist.)
+
+Die Möbiustransformation lässt sich dann schreiben als
+\begin{align*}
+\frac{w_{1}}{w_{2}} & =\frac{az_{1}+bz_{2}}{cz_{1}+dz_{2}}
+\end{align*}
+oder in Matrixform:
+\begin{align*}
+\left(\begin{array}{c}
+w_{1}\\
+w_{2}
+\end{array}\right) & =\underbrace{\left(\begin{array}{cc}
+a & b\\
+c & d
+\end{array}\right)}_{=:S}\left(\begin{array}{c}
+z_{1}\\
+z_{2}
+\end{array}\right)
+\end{align*}
+
+
+Die Möbiustransformationen bilden also eine Gruppe unter der Matrixmultiplikation,
+da $S^{-1}$ existiert, weil die Determinante $\det\left(S\right)=ad-cb\not=0$
+nicht verschwindet).
+
+Dies ist die sogenannte \emph{Projektive Gruppe}:
+\begin{align*}
+P\left(1,\mathbb{C}\right) & \subseteq\text{Gl}\left(2,\mathbb{C}\right)
+\end{align*}
+
+
+Jede Matrix $\left(\begin{array}{cc}
+a & b\\
+c & d
+\end{array}\right)$ kann als Produkt folgender Faktoren mit $\alpha,h\in\mathbb{C}$
+und $h\not=0$ geschrieben werden:
+\begin{align*}
+\left(\begin{array}{cc}
+1 & \alpha\\
+0 & 1
+\end{array}\right)_{1.}, & \left(\begin{array}{cc}
+h & 0\\
+0 & 1
+\end{array}\right)_{2.},\left(\begin{array}{cc}
+0 & 1\\
+1 & 0
+\end{array}\right)_{3.}
+\end{align*}
+
+
+Bedeutung:
+\begin{enumerate}
+\item $S\left(z\right)=z+\alpha$ (Parallelverschiebung)
+\item $S\left(z\right)=k\cdot\alpha$ (Rotation falls $\left|k\right|=1$,
+zentrische Streckung falls $k>1$)
+\item $S\left(z\right)=\frac{1}{z}$ (Inversion am Einheitskreis)
+\end{enumerate}
+Beachte: Diese Abbildungen sind winkeltreu.
+
+
+\section[Potenzreihen]{Potenzreihen, der Konvergenzsatz von Abel}
+
+
+\subsubsection*{Erinnerung}
+
+Potenzreihe: ${\displaystyle \sum_{n=0}^{\infty}a_{n}z^{n}}$ mit
+$a_{n},z\in\mathbb{C}$
+
+Konvergenzradius:
+\begin{align*}
+R & =\frac{1}{\lim\sup_{n\to\infty}\sqrt[n]{\left|a_{n}\right|}}
+\end{align*}
+
+
+
+\subsubsection*{Satz \textmd{(aus der Analysis I)}}
+
+\begin{iiilist}
+
+\iii Für alle $z\in\mathbb{C}$ mit $\left|z\right|<R$ konvergiert
+die Potenzreihe absolut.
+
+Für jedes $0<\varrho<R$ ist die Konvergenz auf $B_{\varrho}\left(0\right)$
+gleichmäßig.\marginpar{Gleichmäßige Konvergenz:
+
+Sei ${\displaystyle \left(f_{n}\right)_{n\in\mathbb{N}}}$ eine Folge
+von auf $\Omega\subseteq\mathbb{C}$ definierten Funktionen mit $f_{n}\rightrightarrows f$
+(das heißt $f_{n}$ konvergiert gleichmäßig gegen $f$), wenn:
+\begin{align*}
+\fall_{\varepsilon>0}\exs_{N\in\mathbb{N}} & \left|f_{n}\left(z\right)-f\left(z\right)\right|<\varepsilon\quad\fall_{n\in\mathbb{N}_{\ge N}}\fall_{z\in\mathbb{Z}}
+\end{align*}
+}
+
+\iii Falls $\left|z\right|>R$ ist, divergiert die Potenzreihe.
+
+\end{iiilist}
+
+Wegen der gleichmäßigen Konvergenz kann man im Innern des Konvergenzradius
+gliedweise differenzieren.
+
+
+\subsection{Satz}
+
+Auf $\Omega=\left\{ \left|z\right|<R\right\} $ ist die Funktion ${\displaystyle f\left(z\right)=\sum_{n=0}^{\infty}a_{n}z^{n}}$
+holomorph und $f'\left(z\right)=\sum_{n=1}^{\infty}na_{n}z^{n-1}$.
+
+
+\subsubsection*{Beweis}
+
+Definiere die Polynome:
+\begin{align*}
+f_{n} & :=\sum_{k=0}^{n}a_{k}z^{k}\\
+g_{n} & :=f_{n}'
+\end{align*}
+Sei nun $z\in\Omega$, so wähle ein $\varepsilon>0$ mit $B_{2\varepsilon}\left(z\right)\subseteq\Omega$.
+
+TODO: Abb1
+
+Auf $B_{\varepsilon}\left(z\right)$ gilt dann:
+\begin{align*}
+f_{n} & \rightrightarrows f & g_{n} & \rightrightarrows g
+\end{align*}
+$g$ existiert, da der Konvergenzradius von $g$ gegeben ist durch:
+\begin{align*}
+\frac{1}{{\displaystyle \lim\sup_{k\to\infty}\sqrt[k]{k\left|a_{k}\right|}}} & =\frac{1}{{\displaystyle \lim\sup_{k\to\infty}\sqrt[k]{k}\cdot\sqrt[k]{\left|a_{k}\right|}}}=R
+\end{align*}
+Denn:
+\begin{align*}
+\lim_{n\to\infty}\sqrt[k]{k} & =\lim_{k\to\infty}e^{\frac{\log k}{k}}=1
+\end{align*}
+
+
+Aus der gleichmäßigen Konvergenz und der Konvergenz der Ableitung
+folgt allgemein, dass man Differentiation und Summation vertauschen
+kann. Zur Deutlichkeit im Detail:
+
+Schreibe: $f=f_{n}+R_{n}$ mit ${\displaystyle R_{n}=\sum_{k=n+1}^{\infty}a_{k}z^{k}}$
+
+Dann ist:
+\begin{align*}
+\frac{f\left(z'\right)-f\left(z\right)}{z'-z}-g\left(z\right) & =\left(\frac{f_{n}\left(z'\right)-f_{n}\left(z\right)}{z'-z}-g_{n}\left(z\right)\right)^{1.}-\left(g\left(z\right)-g_{n}\left(z\right)\right)^{2.}+\left(\frac{R_{n}\left(z'\right)-R_{n}\left(z\right)}{z'-z}\right)^{3.}
+\end{align*}
+Zeige nun, dass alle Terme im Limes $z'\to z$ verschwinden (für hinreichend
+großes $n$).
+\begin{enumerate}
+\item Term verschwindet, da Polynome differenzierbar sind und wegen der
+Definition von $g_{n}$.
+\item Term verschwindet, da die Potenzreihe $g_{n}$ in $z$ konvergiert,
+denn:
+\begin{align*}
+g\left(z\right)-g_{n}\left(z\right) & =\sum_{k=n+1}^{\infty}ka_{k}z^{k-1}\stackrel{n\to\infty}{\longrightarrow}0
+\end{align*}
+
+\item \hspace*{1mm}
+\begin{align*}
+\frac{R_{n}\left(z'\right)-R_{n}\left(z\right)}{z'-z} & =\sum_{k=n+1}^{\infty}a_{k}\frac{z'^{k}-z^{k}}{z'-z}=\sum_{k=n+1}^{\infty}a_{k}\left(z'^{k-1}+z'^{k-2}z+\ldots+z^{k-1}\right)
+\end{align*}
+Sei $0<\varrho<R$ so gewählt, dass $z\in B_{\varrho}\left(0\right)$,
+dann folgt:
+\begin{align*}
+\left|\frac{R_{n}\left(z'\right)-R_{n}\left(z\right)}{z'-z}\right| & \le\sum_{k=n+1}^{\infty}ka_{k}\varrho^{k+1}\stackrel{n\to\infty}{\longrightarrow}0
+\end{align*}
+
+\end{enumerate}
+Induktiv folgt sofort, dass ${\displaystyle f=\sum_{n}a_{n}z^{n}}$
+innerhalb des Konvergenzradius beliebig oft differenzierbar ist und:
+\begin{align*}
+f\left(z\right) & =a_{0}+a_{1}z+a_{2}z^{2}+a_{3}z^{3}+\ldots\\
+f'\left(z\right) & =a_{1}+2a_{2}z+3a_{3}z^{2}+\ldots\\
+ & \,\,\,\vdots\\
+f^{\left(k\right)}\left(z\right) & =k!a_{k}+\frac{\left(k+1\right)!}{1!}a_{k+1}z+\ldots
+\end{align*}
+
+
+Damit ergibt sich:
+\begin{align*}
+a_{k} & =\frac{f^{\left(k\right)}\left(0\right)}{k!}
+\end{align*}
+Einsetzen liefert dann sofort die Taylorreihe:
+\begin{align*}
+f\left(z\right) & =\sum_{n=0}^{\infty}\frac{f^{\left(m\right)}\left(0\right)}{n!}z^{n}
+\end{align*}
+
+
+
+\subsection{Beispiel}
+
+Die Funktion
+
+\begin{align*}
+f\left(z\right) & :=\frac{1}{1+z^{2}}
+\end{align*}
+lässt sich für $\left|z\right|<1$ als geometrische Reihe umschreiben\marginpar{geometrische Reihe:
+\begin{align*}
+\frac{1}{1-z} & =\sum_{n=0}^{\infty}z^{n}
+\end{align*}
+für $\left|z\right|<1$.}
+\begin{align*}
+f\left(z\right) & =\sum_{n=0}^{\infty}\left(-z^{2}\right)^{n}
+\end{align*}
+Konvergenzradius $R=1$
+
+Pole von $f$: $z=\pm i$
+
+TODO: Abb2
+
+Dieses Beispiel haben wir schon früher als reelle Funktion betrachtet.
+
+Wir verstehen jetzt, warum den Konvergenzradius 1 ist, denn $f$ hat
+Pole in der komplexen Ebene, deren Betrag $1$ ist.
+
+Wir überlegen nun, was auf dem Rand des Konvergenzgebiets passiert:
+
+
+\subsection{Theorem \textmd{(Satz von Abel)}}
+
+Sei ${\displaystyle f\left(z\right)=\sum_{n=0}^{\infty}a_{n}z^{n}}$
+mit Konvergenzradius 1.
+
+Falls ${\displaystyle \sum_{n=0}^{\infty}a_{n}}$ konvergiert, dann
+ist für jedes $k>0$:
+\begin{align*}
+f\left(1\right) & =\lim_{z\to1}f\left(z\right)
+\end{align*}
+mit ${\displaystyle \frac{\left|1-z\right|}{1-\left|z\right|}\le k}$.
+
+TODO: Abb3
+
+Geometrische Bedeutung: $z$ muss im \quotedblbase{}Kegel\textquotedblleft{}
+liegen.
+
+%DATE: Fr 16.12.2011
+
+Beachte:
+\begin{itemize}
+\item Konvergenzradius 1 ist keine Einschränkung (reskaliere sonst).
+\item $\sum a_{n}$ braucht \emph{nicht} absolut zu konvergieren.
+\item Es gilt auch $f\left(z_{0}\right)=\lim_{z\to z_{0}}f\left(z\right)$,
+für $\left|z_{0}\right|=1$ mit $\frac{\left|z-z_{0}\right|}{1-\left|z\right|}\le K$.
+(von Vertretung)
+\end{itemize}
+
+\subsubsection*{Beweis}
+
+Ohne Einschränkung gilt:
+\begin{align*}
+\sum_{n=0}^{\infty}a_{n} & =0
+\end{align*}
+(Ansonsten addiere eine Konstante zu $a_{0}$.)
+
+Setze:
+\begin{align*}
+S_{n} & :=a_{0}+\ldots+a_{n}\\
+S_{n}\left(z\right) & :=a_{0}+a_{1}z\ldots+a_{n}z^{n}=\\
+ & =S_{0}+\left(S_{1}-S_{0}\right)z+\ldots+\left(S_{n}-S_{n-1}\right)z^{n}=\\
+ & =S_{0}\left(1-z\right)+S_{1}\left(z-z^{2}\right)+\ldots+S_{n-1}\left(z^{n-1}-z^{n}\right)+S_{n}z^{n}=\\
+ & =\left(1-z\right)\left(S_{0}+S_{1}z+\ldots+S_{n-1}z^{n-1}\right)+S_{n}z^{n}
+\end{align*}
+Es gilt $S_{n}z^{n}\stackrel{n\to\infty}{\longrightarrow}0$, da $S_{n}\to0$
+und $z^{n}$ beschränkt ist.
+
+Somit ist $f\left(z\right)=\left(1-z\right)\sum_{n=0}^{\infty}S_{n}z^{n}$
+
+Wir nehmen an, dass $\left|1-z\right|\le K\left(1-\left|z\right|\right)$,
+und zudem gilt $S_{n}\to0$.
+
+Wähle $N$ so groß, dass $S_{n}<\varepsilon$ für alle $n\ge N$.
+Dann folgt:
+\begin{align*}
+\sum_{n=N}^{\infty}\left|S_{n}z^{n}\right| & \le\varepsilon\frac{\left|z\right|^{N}}{1-\left|z\right|}<\frac{\varepsilon}{1-\left|z\right|}\le\frac{K\varepsilon}{\left|1-z\right|}
+\end{align*}
+Und es ergibt sich:
+\begin{align*}
+\left|f\left(z\right)\right| & \le\left|1-z\right|\left|\sum_{k=0}^{N-1}S_{k}z^{k}\right|+K\varepsilon\stackrel{z\to1}{\longrightarrow}K\varepsilon
+\end{align*}
+Also gilt:
+\begin{align*}
+f\left(z\right) & \stackrel{z\to1}{\longrightarrow}0
+\end{align*}
+\qqed
+
+
+\section[Exp- und Log-Funktion]{Exponential- und Logarithmusfunktionen}
+
+
+\subsection{Eigenschaften der Exponentialfunktion}
+
+${\displaystyle \exp\left(z\right):=\sum_{n=0}^{\infty}\frac{z^{n}}{n!}}$
+hat Konvergenzradius $\infty$, ist also holomorph auf ganz $\mathbb{C}$.
+\begin{align*}
+\frac{\dd}{\dd z}e^{z} & =e^{z}
+\end{align*}
+Mit der Cauchy-Produktformel folgt:
+\begin{align*}
+e^{z_{1}}\cdot e^{z_{2}} & =e^{\left(z_{1}+z_{2}\right)}
+\end{align*}
+
+
+Bereits in Analysis I wurde gezeigt:
+\begin{align*}
+e^{z} & =re^{i\varphi} &  & \text{Polardarstellung mit }r=e^{\text{Re}\left(z\right)},\,\varphi=\text{Im}\left(z\right)\\
+e^{\ii\varphi} & =\cos\left(\varphi\right)+\ii\sin\left(\varphi\right)
+\end{align*}
+Dies erlaubt es, die trigonometrischen Funktionen für komplexe Argumente
+zu erweitern.
+\begin{align*}
+\cos\left(z\right) & :=\frac{1}{2}\left(e^{\ii z}+e^{-\ii z}\right)\\
+\sin\left(z\right) & :=\frac{1}{2}\left(e^{\ii z}-e^{-\ii z}\right)
+\end{align*}
+Diese sind als Linearkombination holomorpher Funktionen holomorph
+auf ganz $\mathbb{C}$ und können als Potenzreihe Dargestellt werden.
+
+Periodizität:
+\begin{align*}
+\cos\left(2\pi\right) & =1 & \sin\left(2\pi\right) & =0
+\end{align*}
+Oder:
+\begin{align*}
+e^{2\pi\ii} & =1
+\end{align*}
+Allgemeiner für ein $a\in\mathbb{Z}$:
+\begin{align}
+e^{z+2\pi a\ii} & =e^{z}\label{eq:period}
+\end{align}
+
+
+
+\subsection{Eigenschaften der Logarithmusfunktion}
+
+Bestimmungsgleichung:
+\begin{align*}
+e^{\text{log}\left(z\right)} & =z
+\end{align*}
+Man sieht sofort:
+\begin{itemize}
+\item Diese Gleichung ist nur für $z\not=0$ lösbar und
+\item nur bis auf ein Vielfaches von $2\pi\ii$ bestimmt. (Wegen \eqref{eq:period})
+\end{itemize}
+Betrachte Absolutbetrag $\left|e^{\text{log}\left(x\right)}\right|=e^{\text{Re}\left(\log\left(z\right)\right)}=\left|z\right|$.
+
+Daher ist $\text{Re}\left(\log\left(z\right)\right)$ eindeutig bestimmt.
+
+Für $n\in\mathbb{Z}$ und $\theta\in\mathbb{R}$ folgt mit der Argumentfunktion
+$\text{arg}\left(z\right):=\varphi=2\cdot\text{arctan}\left(\frac{y}{1+x}\right)\in[\theta,\theta+2\pi)$,
+für $z=\left|z\right|e^{\ii\varphi}=x+\ii y$:
+\begin{align*}
+\text{Im}\left(\log\left(z\right)\right) & =\text{arg}\left(z\right)+2\pi n
+\end{align*}
+\begin{align}
+\log\left(z\right) & =\text{log}\left(\left|z\right|\right)+\ii\text{arg}\left(z\right)\label{eq:logHaupt}
+\end{align}
+
+
+Also ist die Bestimmungsgleichung für $\log$ mehrdeutig lösbar.
+
+Die Gleichung \eqref{eq:logHaupt} definierte einen eindeutigen Logarithmus.
+
+Problem: $\text{log}$ ist unste tig an $L_{\theta}:=\left\{ te^{\ii\theta}|t\ge0\right\} $.
+
+Lösung: \quotedblbase{}Schneide die komplexe Ebene auf.\textquotedblleft{},
+zum Beispiel so:
+
+TODO: Abb1
+
+$L_{\theta}:=\left\{ te^{\ii\theta}|t\ge0\right\} $
+
+Dann ist $\text{log}:\mathbb{C}|_{L_{\varphi}}\to\mathbb{C}$ stetig.
+
+
+\section{Kurven, Konformität}
+
+
+\subsection{Definition \textmd{(Kurve)}}
+
+Seien $I:=\left[a,b\right]$ für $a,b\in\mathbb{R}$ mit $a\not=b$.
+
+Eine \emph{Kurve} $\gamma$ ist eine stetige Abbildung $\gamma:I\to\mathbb{C}$.
+\begin{itemize}
+\item $\gamma\left(a\right)$ heißt der \emph{Anfangspunkt}.
+\item $\gamma\left(b\right)$ heißt der \emph{Endpunkt}.
+\item Falls $\gamma\left(a\right)=\gamma\left(b\right)$ heißt $\gamma$
+\emph{geschlossene Kurve}.
+\item $\tau\in I$ heißt \emph{Parameter der Kurve} ($\tau\mapsto\gamma\left(\tau\right)$)
+\item Falls die (reelle) Ableitung ${\displaystyle \gamma'\left(\tau\right)=\lim_{h\to0}\frac{\gamma\left(\tau+h\right)-\gamma\left(\tau\right)}{h}}$
+existiert und stetig ist, heißt $\gamma$ \emph{stetig differenzierbar}.
+\item $\gamma$ heißt \emph{regulär}, falls $\gamma$ stetig differenzierbar
+ist und für alle $\tau\in I$ schon $\gamma'\left(\tau\right)\not=0$
+gilt.
+\item $\gamma$ heißt \emph{stückweise (stetig) differenzierbar}, falls
+$\gamma$ stetig auf $I$ ist und es Intervalle $I_{j}$ gibt, so
+dass $\gamma|_{I_{j}^{\circ}}$ stetig differenzierbar ist, und $I=I_{1}\dot{\cup}\ldots\dot{\cup}I_{n}$
+gilt.
+\end{itemize}
+
+\subsection*{Beispiel und Definition}
+
+Betrachte die holomorphe Abbildung $f:\Omega\to\mathbb{C}$ und die
+reguläre Kurve $x:I\to\Omega$.
+
+Ziel: Gewinne geometrische Informationen über $f$, indem man das
+Bild der Kurve betrachtet.
+
+TODO: Abb2
+
+$f\circ\gamma$ ist eine Kurve in $f\left(\Omega\right)$.
+
+TODO: Abb3 ändere $u$ in $v$, $\tilde{u}$ in $\tilde{v}$
+
+$v:=\gamma'\left(\tau\right)$ ist die Tangente an $\gamma$ in $z_{0}$.
+\begin{align*}
+\tilde{v}:=\frac{\dd}{\dd\tau}\left(f\circ\gamma\right)\left(\tau_{0}\right) & =f'\left(\gamma\left(\tau_{0}\right)\right)\cdot\gamma'\left(\tau_{0}\right)=\underbrace{f'\left(z_{0}\right)}_{\in\mathbb{C}}\cdot v
+\end{align*}
+
+
+%DATE Di 20.12.2011
+
+Schreibe nun Real- und Imaginärteil aus:
+\begin{align*}
+v & =v_{1}+\ii v_{2} & \tilde{v} & =\tilde{v}_{1}+\ii\tilde{v}_{2}
+\end{align*}
+\begin{align*}
+\left(\begin{array}{c}
+\tilde{v}_{1}\\
+\tilde{v}_{2}
+\end{array}\right) & =\left(\begin{array}{cc}
+a & -b\\
+b & a
+\end{array}\right)\left(\begin{array}{c}
+v_{1}\\
+v_{2}
+\end{array}\right)
+\end{align*}
+
+\begin{itemize}
+\item Determinante:
+\begin{align*}
+\det\left(A\right) & =a^{2}-b\cdot\left(-b\right)=a^{2}+b^{2}\ge0
+\end{align*}
+Also erhält $A$ die Orientierung (\quotedblbase{}Drehstreckung\textquotedblleft{}
+einschließlich Achsenstreckung).
+\item Es gilt:
+\begin{align*}
+\underbrace{A^{*}}_{=A^{T}}A & =\left(\begin{array}{cc}
+a & b\\
+-b & a
+\end{array}\right)\left(\begin{array}{cc}
+a & -b\\
+b & a
+\end{array}\right)=\left(\begin{array}{cc}
+a^{2}+b^{2} & 0\\
+0 & a^{2}+b^{2}
+\end{array}\right)=\left(a^{2}+b^{2}\right)\cdot E_{2}
+\end{align*}
+Eine unitäre Matrix $U$ erfüllt:
+\begin{align*}
+U^{*}U & =E
+\end{align*}
+Dies ist eine Drehung.\\
+Also ist $A$ eine Drehung verkettet mit einer zentrischen Streckung.
+Hierbei bleiben die \emph{Winkel erhalten}.
+\end{itemize}
+Statt winkelerhaltend sagt man auch \emph{konform}.
+
+Also beschreibt die Multiplikation mit $f'\left(z_{0}\right)$ eine
+orientierungs- und winkelerhaltende Transformation der komplexen Ebene.
+
+Genauer: $u,v\in\mathbb{C}\stackrel{\sim}{=}\mathbb{R}^{2}$
+\begin{align*}
+\cos\varphi & =\frac{\left\langle u,v\right\rangle _{\mathbb{R}^{2}}}{\left|\left|u\right|\right|\cdot\left|\left|v\right|\right|}=\frac{\left\langle \tilde{u},\tilde{v}\right\rangle _{\mathbb{R}^{2}}}{\left|\left|\tilde{u}\right|\right|\cdot\left|\left|\tilde{v}\right|\right|}=\cos\tilde{\varphi}
+\end{align*}
+Nebenrechnung:
+\begin{align*}
+\tilde{v} & =Av & \tilde{u} & =Au
+\end{align*}
+\begin{align*}
+\left\langle \tilde{u},\tilde{v}\right\rangle  & =\left\langle Au,Av\right\rangle =\left\langle u,A^{*}Av\right\rangle =\left(a^{2}+b^{2}\right)\cdot\left\langle u,v\right\rangle 
+\end{align*}
+\begin{align*}
+\left|\left|\tilde{u}\right|\right|^{2} & =\left\langle \tilde{u},\tilde{u}\right\rangle =\left\langle Au,Au\right\rangle =\left\langle u,A^{*}Au\right\rangle =\left(a^{2}+b^{2}\right)\cdot\left\langle u,u\right\rangle \\
+\left|\left|\tilde{v}\right|\right|^{2} & =\left\langle \tilde{v},\tilde{v}\right\rangle =\left\langle Av,Av\right\rangle =\left\langle v,A^{*}Av\right\rangle =\left(a^{2}+b^{2}\right)\cdot\left\langle v,v\right\rangle 
+\end{align*}
+Analog kann man den Winkel zwischen zwei Kurven betrachten:
+
+TODO: Abb1
+
+Polarzerlegung: $u=\left|u\right|e^{\ii\varphi}$
+
+$\arg u:=\varphi\text{(mod)}2\pi\in[0,2\pi)$ nach der üblichen Konvention.
+\begin{align*}
+\alpha=\arg u-\arg v & =\arg\frac{u}{v}
+\end{align*}
+\begin{align*}
+\hat{\alpha} & =\arg\frac{\left(f\circ\gamma\right)'\left(\tau_{0}\right)}{\left(f\circ\tilde{\gamma}\right)'\left(\tau_{0}\right)}=\arg\frac{f\left(z_{0}\right)\cdot\gamma'\left(\tau_{0}\right)}{f\left(z_{0}\right)\cdot\tilde{\gamma}'\left(\tau_{0}\right)}=\arg\frac{\gamma'\left(\tau_{0}\right)}{\tilde{\gamma}'\left(\tau_{0}\right)}=\arg\frac{u}{v}=\alpha
+\end{align*}
+
+
+
+\subsection{Beispiel}
+
+Betrachte Kurvenscharen $\gamma_{x}\left(t\right),\delta_{y}\left(t\right)$.
+\begin{align*}
+\gamma_{x}:\mathbb{R} & \to\mathbb{C}:t\mapsto x+\ii t\\
+\delta_{y}:\mathbb{R} & \to\mathbb{C}:t\mapsto t+\ii y
+\end{align*}
+
+
+TODO: Abb2
+
+Betrachte nun die Kurven $\exp\circ\gamma_{x}$ und $\exp\circ\delta_{y}$:
+\begin{align*}
+\left(\exp\circ\gamma_{x}\right)\left(t\right) & =e^{\gamma_{x}\left(t\right)}=e^{x+\ii t}=e^{x}\cdot e^{\ii t}\\
+\left(\exp\circ\delta_{y}\right)\left(t\right) & =e^{\delta_{y}\left(t\right)}=e^{t+\ii y}=e^{t}\cdot e^{\ii y}
+\end{align*}
+
+
+TODO: Abb3, Abb4
+
+Die Winkel bleiben erhalten, aber Längen und Flächeninhalte bleiben
+aber im Allgemeinen \emph{nicht} erhalten.
+
+
+\section[Komplexe Integration]{Kurvenintegrale, Komplexe Integration}
+
+Betrachte wieder Kurve $\gamma:I=\left[a,b\right]\to\Omega\subseteq\mathbb{C}$
+($\Omega$ offen) sei stetig und stückweise differenzierbar.
+
+TODO: Abb4
+
+Identifiziere zunächst $\mathbb{C}$ mit $\mathbb{R}^{2}$.
+
+Dann kann man die \emph{Bogenlänge} $L\left(\gamma\right)$ folgendermaßen
+einführen:
+\begin{align*}
+L\left(\gamma\right) & =\int_{a}^{b}\left|\gamma'\left(\tau\right)\right|\dd\tau
+\end{align*}
+(Nehme hier zur Einfachheit an, dass $\gamma$ differenzierbar ist,
+sonst stückweise integrieren und Integrale addieren.)
+
+$L\left(\gamma\right)$ soll unabhängig von der Parametrisierung sein.
+Rechne dies nach:
+\begin{align*}
+\tilde{\gamma}\left(t\right) & =\left(\gamma\circ\tau\right)\left(t\right) & \tau:\left[\alpha,\beta\right] & \to\left[a,b\right]
+\end{align*}
+$\tau$ sei streng monoton steigend und $\tau'\left(t\right)\not=0$
+für alle $t\in\left[\alpha,\beta\right]$.
+\begin{align*}
+\int_{\alpha}^{\beta}\left|\tilde{\gamma}'\left(t\right)\right|\dd t & \stackrel{\text{Kettenregel}}{=}\int_{\alpha}^{\beta}\bigg|\gamma'\left(t\right)\cdot\underbrace{\frac{\dd\tau}{\dd t}}_{>0}\bigg|\dd t=\int_{\alpha}^{\beta}\left|\gamma'\left(t\right)\right|\frac{\dd\tau}{\dd t}\dd t=\\
+ & \sr{=}{\text{Substitution}}{t=t\left(\tau\right),\dd t=\frac{\dd t}{\dd\tau}\dd t}\int_{\alpha}^{\beta}\left|\gamma'\left(\tau\right)\right|\dd\tau=L\left(\gamma\right)
+\end{align*}
+\begin{align*}
+\int_{\alpha}^{\beta}\gamma'\left(\tau\right)\frac{\dd\tau}{\dd t}\dd t & =\int_{a}^{b}\gamma'\left(\tau\right)\dd\tau
+\end{align*}
+Sei nun außerdem $f:\Omega\to\mathbb{C}$ stetig (wichtigstes Beispiel:
+$f$ holomorph).
+
+Wir wollen \quotedblbase{}$f$ längs $\gamma$ integrieren\textquotedblleft{}:
+\begin{align*}
+\gamma:\left[a,b\right] & \to\mathbb{C}
+\end{align*}
+\begin{align*}
+\int_{a}^{b}f\left(\gamma\left(\tau\right)\right)\left|\gamma'\left(\tau\right)\right|\dd\tau
+\end{align*}
+Dies wäre eine Möglichkeit, denn dies ist unabhängig von der Parametrisierung.
+
+In der komplexen Analysis ist das Integral
+\begin{align*}
+\int_{a}^{b}f\left(\gamma\left(\tau\right)\right)\gamma'\left(\tau\right)\dd\tau
+\end{align*}
+interessanter, weil keine komplexe Konjugation eingeht.
+
+
+\subsection{Definition \textmd{(komplexes Integral)}}
+
+Sei $\gamma:\left[a,b\right]\to\Omega\subseteq\mathbb{C}$ stetig
+und stückweise differenzierbar und $f:\Omega\to\mathbb{C}$ stetig.
+
+Dann heißt
+\begin{align*}
+\int_{\gamma}f\left(z\right)\dd z & :=\int_{a}^{b}f\left(\gamma\left(\tau\right)\right)\gamma'\left(\tau\right)\dd\tau
+\end{align*}
+das \emph{komplexe Integral} oder \emph{Konturintegral} von $f$ über
+$\gamma$.
+
+
+\subsubsection*{Beachte}
+
+Wir integrieren über eine \emph{reelle Variable} $t\in\left[a,b\right]$,
+aber der Integrand ist komplexwertig.
+
+Man kann das auf reellwertige Integrale zurückführen.
+\begin{align*}
+\int_{\gamma}f\left(z\right)\dd z & :=\int_{a}^{b}\text{Re}\left(f\left(\gamma\left(\tau\right)\right)\gamma'\left(\tau\right)\right)\dd\tau+\ii\int_{a}^{b}\text{Im}\left(f\left(\gamma\left(\tau\right)\right)\gamma'\left(\tau\right)\right)\dd\tau
+\end{align*}
+Riemann- beziehungsweise Lebesgue-Integral im Reellen.
+
+Insbesondere sieht man:
+\begin{align*}
+\text{Re}\left(\int_{\gamma}f\left(z\right)\dd z\right) & =\int_{a}^{b}\text{Re}\big(f\left(\gamma\left(\tau\right)\right)\gamma'\left(\tau\right)\big)\dd\tau\\
+ & \not=\int_{\gamma}\text{Re}\left(f\left(z\right)\right)\dd z=\int_{a}^{b}\text{Re}\big(f\left(\gamma\left(\tau\right)\right)\big)\gamma'\left(\tau\right)\dd\tau
+\end{align*}
+
+
+
+\subsection{Satz}
+
+${\displaystyle \int_{\gamma}f\left(z\right)\dd z}$ ist unabhängig
+von der Parametrisierung.
+
+
+\subsubsection*{Beweis}
+
+Sei $t:\left[\alpha,\beta\right]\to\left[a,b\right]$ streng monoton
+steigend, stetig, stückweise differenzierbar.
+
+Dann folgt mit $\tilde{\gamma}\left(\tau\right)=\left(\gamma\circ t\right)\left(\tau\right)$:
+\begin{align*}
+\int_{\alpha}^{\beta}\left(f\circ\gamma\circ t\right)\left(\tau\right)\cdot\left(\gamma\circ t\right)'\left(\tau\right)\dd\tau & =\int_{\alpha}^{\beta}\left(f\circ\gamma\right)\left(t\left(\tau\right)\right)\cdot\gamma'\left(t\left(\tau\right)\right)\frac{\dd t}{\dd\tau}\dd\tau=\\
+ & \stackrel{\text{Transformationsformel}}{=}\int_{\alpha}^{\beta}\left(f\circ\gamma\right)\left(t\right)\cdot\gamma'\left(t\right)\dd t
+\end{align*}
+\qqed
+
+
+\subsection{Beispiel}
+
+\begin{iiilist}
+
+\iii ${\displaystyle f\left(z\right)=\frac{1}{z^{2}}}$, $\gamma:\left[1,2\right]\to\mathbb{C}:t\mapsto t$
+\begin{align*}
+\int_{\gamma}f\left(z\right)\dd z & =\int_{1}^{2}f\left(\gamma\left(t\right)\right)\gamma'\left(t\right)\dd t=\int_{1}^{2}\frac{1}{t^{2}}\cdot1\dd t=\frac{-1}{t}\bigg|_{1}^{2}=\frac{-1}{2}+1=\frac{1}{2}
+\end{align*}
+
+
+%DATE Fr 23.12.2011
+
+\iii $f\left(z\right)=z^{n},\: n\ge0$\\
+Wähle eine Parametrisierung zum Beispiel
+
+\begin{align*}
+\gamma_{1}:\left[0,1\right] & \to\mathbb{C}\\
+\gamma_{1}\left(\tau\right) & =\tau\left(1+\ii\right)\\
+\gamma_{1}'\left(\tau\right) & =\left(1+\ii\right)
+\end{align*}
+\begin{align*}
+\int_{\gamma_{1}}f\left(z\right)\dd z & =\int_{0}^{1}f\left(\gamma\left(\tau\right)\right)\cdot\gamma'\left(\tau\right)\dd\tau=\int_{0}^{1}\left(\left(1+\ii\right)\cdot\tau\right)^{n}\cdot\left(1+\ii\right)\dd\tau=\\
+ & =\left(1+\ii\right)^{n+1}\cdot\int_{0}^{1}\tau^{n}\dd\tau=\frac{1}{n+1}\cdot\left(1+\ii\right)^{n+1}
+\end{align*}
+$\gamma_{2}$: Parametrisiere so:
+\begin{align*}
+\gamma_{2}:\left[0,2\right] & \to\mathbb{C}\\
+\gamma\left(\tau\right) & =\begin{cases}
+\tau & 0\le\tau\le1\\
+\left(1+\left(\tau-1\right)\ii\right) & 1\le\tau\le2
+\end{cases}\\
+\gamma'\left(\tau\right) & =\begin{cases}
+1 & 0<\tau<1\\
+\ii & 1<\tau<2
+\end{cases}
+\end{align*}
+\begin{align*}
+\int_{\gamma_{2}}f\left(z\right)\dd z & =\int_{0}^{1}\tau^{n}\cdot1\dd\tau+\int_{1}^{2}\left(1+\left(\tau-1\right)\cdot\ii\right)^{n}\cdot\ii\dd\tau=\frac{1}{n+1}+\ii\cdot\frac{1}{\left(n+1\right)\ii}\left(1+\left(\tau-1\right)\ii\right)^{n+1}\bigg|_{1}^{2}=\\
+ & =\frac{1}{n+1}+\frac{1}{n+1}\left(\left(1+\ii\right)^{n+1}-1\right)=\frac{1}{n+1}\cdot\left(1+\ii\right)^{n+1}
+\end{align*}
+
+
+\end{iiilist}
+
+Der Wert des Integrals ist also für beide Integrationswege gleich.
+
+
+\subsection{Definition}
+
+Sei $\gamma:\left[0,1\right]\to\mathbb{C}$.
+
+Setze
+\begin{align*}
+-\gamma & :=\tilde{\gamma}:\left[0,1\right]\to\mathbb{C},\:\tilde{\gamma}\left(\tau\right)=\gamma\left(1-\tau\right)
+\end{align*}
+also \quotedblbase{}durchlaufe die Kurve rückwärts\textquotedblleft{}.
+
+Sei $\gamma_{1}:\left[a,b\right]\to\mathbb{C}$ und $\gamma_{2}:\left[b,c\right]\to\mathbb{C}$
+mit $\gamma_{1}\left(b\right)=\gamma_{2}\left(b\right)$.\\
+Setze dann $\gamma_{1}+\gamma_{2}:\left[a,c\right]\to\mathbb{C}$
+definiert durch: 
+\begin{align*}
+\left(\gamma_{1}+\gamma_{2}\right)\left(\tau\right) & =\begin{cases}
+\gamma_{1}\left(\tau\right) & \tau\in\left[a,b\right]\\
+\gamma_{2}\left(\tau\right) & \tau\in\left[b,c\right]
+\end{cases}
+\end{align*}
+
+
+
+\subsection{Lemma}
+
+\begin{align*}
+\int_{-\gamma}f\left(z\right)\dd z & =-\int_{\gamma}f\left(z\right)\dd z
+\end{align*}
+\begin{align*}
+\int_{\gamma_{1}+\ldots+\gamma_{n}}f\left(z\right)\dd z & =\int_{\gamma_{1}}f\left(z\right)\dd z+\ldots+\int_{\gamma_{n}}f\left(z\right)\dd z
+\end{align*}
+
+
+
+\subsubsection*{Beweis}
+
+TODO: Fehlt???
+
+
+\subsection{Definition}
+
+Setze:
+\begin{align*}
+\int_{\gamma}f\left(z\right)\dd\overline{z} & =\overline{\int_{\gamma}\overline{f\left(z\right)}\dd z}\\
+\int_{\gamma}f\left(z\right)\dd x & =\frac{1}{2}\left(\int_{\gamma}f\left(z\right)\dd z+\int_{\gamma}f\left(z\right)\dd\overline{z}\right)\\
+\int_{\gamma}f\left(z\right)\dd y & =\frac{1}{2\ii}\left(\int_{\gamma}f\left(z\right)\dd z-\int_{\gamma}f\left(z\right)\dd\overline{z}\right)
+\end{align*}
+Dann gilt:
+\begin{align*}
+\int_{\gamma}f\left(z\right)\dd z & =\int_{\gamma}f\left(z\right)\dd x+\ii\int_{\gamma}f\left(z\right)\dd y
+\end{align*}
+Also: \quotedblbase{}$\dd z=\dd x+\ii\dd y$\textquotedblleft{}
+
+Etwas ausführlicher:
+\begin{align*}
+x+\ii y & =z=\gamma\left(\tau\right)\\
+x\left(\tau\right) & :=\text{Re}\left(\gamma\left(\tau\right)\right) & \Rightarrow\quad\text{Re}\left(\gamma'\left(\tau\right)\right) & =x'\left(\tau\right)\\
+y\left(\tau\right) & :=\text{Im}\left(\gamma\left(\tau\right)\right) & \Rightarrow\quad\text{Im}\left(\gamma'\left(\tau\right)\right) & =y'\left(\tau\right)\\
+\dd x & =x'\left(\tau\right)\dd\tau\\
+\dd y & =y'\left(\tau\right)\dd\tau
+\end{align*}
+\begin{align*}
+\int_{\gamma}f\left(z\right)\dd z & =\int_{a}^{b}f\left(\gamma\left(\tau\right)\right)\gamma'\left(\tau\right)\dd\tau\\
+\int_{\gamma}f\left(z\right)\dd\overline{z} & =\overline{\int_{\gamma}\overline{f\left(z\right)}\dd z}=\int_{a}^{b}\overline{f\left(\gamma\left(\tau\right)\right)}\gamma'\left(\tau\right)\dd\tau=\int_{a}^{b}f\left(\gamma\left(\tau\right)\right)\overline{\gamma'\left(\tau\right)}\dd\tau\\
+\int_{\gamma}f\left(z\right)\dd x & =\int_{a}^{b}f\left(\gamma\left(\tau\right)\right)\cdot\underbrace{\text{Re}\left(\gamma'\left(\tau\right)\right)}_{=x'\left(\tau\right)}\dd\tau\\
+\int_{\gamma}f\left(z\right)\dd y & =\int_{a}^{b}f\left(\gamma\left(\tau\right)\right)\cdot\underbrace{\text{Im}\left(\gamma'\left(\tau\right)\right)}_{=y'\left(\tau\right)}\dd\tau\\
+\int_{\gamma}f\left(z\right)\dd y & =\int_{\gamma}p\dd x+\int_{y}q\dd y
+\end{align*}
+Später: Setze $p=f$ und $q=\ii f$.
+
+
+\section[Weg(un)abhängigkeit]{Abhängigkeit vom Integrationsgebiet}
+
+Sei $\Omega\subseteq\mathbb{C}$ offen, $z_{0},z\in\Omega$, $p,q:\Omega\to\mathbb{C}$
+stetig und wegzusammenhängend.
+
+
+\subsubsection*{Frage}
+
+Wann gilt folgende Gleichheit?
+\begin{align*}
+\int_{\gamma_{1}}\left(p\dd x+q\dd y\right) & =\int_{\gamma_{2}}\left(p\dd x+q\dd y\right)
+\end{align*}
+Seien $\gamma_{1},\gamma_{2}$ zwei differenzierbare Kurven, die $z_{0}$
+mit $z$ verbinden.
+
+TODO: Abb2
+
+
+\subsubsection*{Allgemeine Frage}
+
+Wann ist das Integral unabhängig vom Weg?
+
+
+\subsection{Theorem\label{sub:Theo-wegunabh=0000E4ngig}}
+
+Das Linienintegral
+\begin{align*}
+\int_{\gamma}\left(p\dd x+q\dd y\right)
+\end{align*}
+ist genau dann wegunabhängig, wenn es eine Funktion $U:\Omega\to\mathbb{C}$
+gibt, so dass:
+\begin{align}
+p & =\frac{\partial U}{\partial x} & q & =\frac{\partial U}{\partial y}\label{eq:pUxqUy}
+\end{align}
+(Frobenius, Poincaré, $\ldots$)
+
+
+\subsubsection*{Beweis}
+
+\quotedblbase{}$\Leftarrow$\textquotedblleft{}: Nehme an, dass \eqref{eq:pUxqUy}
+gilt, womit folgt:
+\begin{align*}
+\int_{\gamma}\left(p\dd x+q\dd y\right) & =\int_{a}^{b}\left(\frac{\partial U}{\partial x}x'\left(\tau\right)\dd x+\frac{\partial U}{\partial y}y'\left(\tau\right)\dd y\right)=\int_{a}^{b}\frac{\dd}{\dd\tau}\left(U\left(x\left(\tau\right),y\left(\tau\right)\right)\right)=\\
+ & =U\left(x\left(b\right),y\left(b\right)\right)-U\left(x\left(a\right),y\left(a\right)\right)=U\left(z\right)-U\left(z_{0}\right)
+\end{align*}
+Also hängt das Integral tatsächlich nur von Anfangs- und Endpunkt
+ab.
+
+\quotedblbase{}$\Rightarrow$\textquotedblleft{}: Nehmen an, dass
+das Integral wegunabhängig ist.
+
+$z_{0}=\left(x_{0},y_{0}\right)$ sei fest, während $z=\left(x,y\right)$
+variabel.
+
+Wähle als Kurve speziell ein Polygonzug, der parallel zur $x$- oder
+$y$-Achse verläuft.
+
+TODO: Abb3
+
+$\gamma$ kann durch einen solchen Polygonzug approximiert werden.
+
+Verwende hierbei, dass $\Omega$ offen und bogenzusammenhängend ist.
+
+Definiere:
+\begin{align*}
+U\left(x,y\right) & :=\int_{\gamma}\left(p\dd x+q\dd y\right)
+\end{align*}
+Dies ist wohldefiniert, weil das Integral nach Voraussetzung wegunabhängig
+ist.
+
+Berechne ${\displaystyle \frac{\partial U}{\partial x}}$:
+
+Wähle den Polygonzug so, dass er in einer Umgebung von $\left(x,y\right)$
+horizontal verläuft.
+
+Dann gilt:
+\begin{align*}
+U\left(x,y\right) & =\int^{x}p\left(\tilde{x},y\right)\dd\tilde{x}+\text{Konstante}\\
+\frac{\partial U}{\partial x} & =p\left(x,y\right)
+\end{align*}
+Berechne ${\displaystyle \frac{\partial U}{\partial x}}$:
+
+Wähle den Polygonzug so, dass er in einer Umgebung von $\left(x,y\right)$
+vertikal verläuft.
+
+Dann gilt:
+\begin{align*}
+U\left(x,y\right) & =\int^{y}q\left(x,\tilde{y}\right)\dd\tilde{y}+\text{Konstante}\\
+\frac{\partial U}{\partial y} & =q\left(x,y\right)
+\end{align*}
+
+
+Also sind die Differentialgleichungen \eqref{eq:pUxqUy} erfüllt.\\
+\qqed
+
+Schreibe auch:
+\begin{align*}
+\int p\dd x+q\dd y & =U\\
+p\dd x+q\dd y & =\frac{\partial U}{\partial x}\dd x+\frac{\partial U}{\partial y}\dd y\left(=:\dd U\right)
+\end{align*}
+Und man nennt $\dd U$ das \emph{totale Differential}.
+
+Das totale Differential ist \emph{exakt}, das heißt es kann in obiger
+Form geschrieben werden.
+
+Zurück zum Konturintegral:
+\begin{align*}
+\int_{\gamma}f\left(z\right)\dd z & =\int\bigg(\underbrace{f}_{=p}\dd x+\underbrace{\ii f}_{=q}\dd y\bigg)
+\end{align*}
+Nach Theorem \ref{sub:Theo-wegunabh=0000E4ngig} ist das Konturintegral
+genau dann wegunabhängig, wenn ein $F\left(z\right)$ in $\Omega$
+existiert, so dass gilt:
+\begin{align*}
+\frac{\partial F}{\partial x} & =f\left(z\right) & \frac{\partial F}{\partial y} & =\ii f\left(z\right)
+\end{align*}
+\begin{align*}
+\Rightarrow\quad\frac{\partial F}{\partial x} & =-\ii\frac{\partial F}{\partial y}
+\end{align*}
+Also erfüllt $F$ die Cauchy-Riemannschen Differentialgleichungen
+und $f\left(z\right)=F'\left(z\right)$.
+
+
+\subsection{Korollar}
+
+$\int_{\gamma}f\left(z\right)\dd z$ ist genau dann wegunabhängig,
+wenn es eine holomorphe Funktion $F:\Omega\to\mathbb{C}$ gibt mit
+$f\left(z\right)=F'\left(z\right)$.
+
+
+\subsubsection*{Beweis}
+
+TODO: ???
+
+
+\subsection{Satz\label{sub:Satz-PolyOint0}}
+
+Für jedes Polynom $P\left(z\right)$ und jede geschlossene Kurve gilt:
+\begin{align*}
+\int_{\gamma}P\left(z\right)\dd z & =0
+\end{align*}
+
+
+
+\subsubsection*{Beweis}
+
+\begin{align*}
+P\left(z\right) & =a_{n}z^{n}+a_{n-1}z^{n-1}+\ldots+a_{0}\\
+Q\left(z\right) & =\frac{a_{n}}{n+1}z^{n+1}+\frac{a_{n-1}}{n}z^{n}+\ldots+a_{0}z
+\end{align*}
+$Q\left(z\right)$ ist eine holomorphe Stammfunktion, also $Q'\left(z\right)=P\left(z\right)$.\\
+\qqed
+
+
+\section{Das Cauchysche Theorem}
+
+Betrachte das Rechteck $R:a\le x\le b,\, c\le y\le d$. $R\subseteq\Omega\subseteq\mathbb{C}$
+
+TODO: Abb4
+
+
+\subsubsection*{Fragen}
+
+Falls $f:\Omega\to\mathbb{C}$ holomorph ist,
+\begin{enumerate}
+\item gibt es eine holomorphe Stammfunktion, also $F:\Omega\to\mathbb{C}$
+mit $F'\left(z\right)=f\left(z\right)$?
+\item ist $\int_{\gamma}f\left(z\right)\dd z$ wegunabhängig?
+\end{enumerate}
+Beginne mit einfachen Integrationswegen und zwar dem Integral längs
+des Randes von $R$.
+
+
+\subsection{Theorem}
+
+
+\subsubsection*{Ist $f:\Omega\to\mathbb{C}$ holomorph, so gilt:
+\begin{align*}
+\int_{\partial R}f\left(z\right)\dd z & =0
+\end{align*}
+Beweis \textmd{(nach Goursat)}}
+
+Zerlege $R$ in vier kongruente Rechtecke $R^{\left(1\right)},\ldots,R^{\left(4\right)}$.
+
+TODO: Abb5
+
+\begin{align*}
+\int_{\partial R}f\left(z\right)\dd z & =\int_{\partial R^{\left(1\right)}}f\left(z\right)\dd z+\ldots+\int_{\partial R^{\left(4\right)}}f\left(z\right)\dd z
+\end{align*}
+Dies gilt, da sich die Integrale längs der \quotedblbase{}inneren
+Kanten\textquotedblleft{} wegheben.
+
+Für eines der Rechtecke $R^{\left(k\right)}$ gilt und nenne es $R_{1}$:
+\begin{align*}
+\left|\int_{\partial R_{1}}f\left(z\right)\dd z\right| & \ge\frac{1}{4}\left|\int_{\partial R}f\left(z\right)\right|
+\end{align*}
+Wähle induktiv Rechtecke $R\supseteq R_{1}\supseteq R_{2}\supseteq\ldots$,
+so dass gilt:
+\begin{align*}
+\left|\eta\left(R_{n}\right)\right| & \ge\frac{1}{4^{n}}\left|\eta\left(R\right)\right|
+\end{align*}
+Zudem sind die Kantenlängen von $R_{n}$ schon $2^{-n}$ mal die Kantenlängen
+von $R$.
+
+Seien $Z_{n}$ die Mittelpunkte dieser Rechtecke.
+
+Die Folge $\left(z_{n}\right)$ konvergiert gegen $z^{*}\in R$.
+
+TODO: Abb6
+
+Da $f$ in $z^{*}$ holomorph ist, gibt es zu jedem $\varepsilon>0$
+ein $\delta>0$, so dass gilt für alle $z\in B_{\delta}\left(z^{*}\right)\setminus\left\{ z^{*}\right\} $:
+\begin{align*}
+\left|\frac{f\left(z\right)-f\left(z^{*}\right)}{z-z^{*}}-f'\left(z^{*}\right)\right| & <\varepsilon
+\end{align*}
+Wähle nun $n$ so groß, dass $R_{n}\subseteq B_{\delta}\left(z^{*}\right)$
+ist.
+
+Dann gilt:
+\begin{align*}
+\int_{\partial R_{n}}\left[f\left(z^{*}\right)+f'\left(z^{*}\right)\left(z-z^{*}\right)\right] & \stackrel{\ref{sub:Satz-PolyOint0}}{=}0
+\end{align*}
+Beachte dabei, das wir ein Polynom integrieren.
+\begin{align*}
+\left|\eta\left(R_{n}\right)\right| & =\left|\int_{\partial R_{n}}f\left(z\right)\dd z\right|=\Bigg|\int_{\partial R_{n}}\bigg(\underbrace{f\left(z\right)-f\left(z^{*}\right)-f'\left(z^{*}\right)\left(z-z^{*}\right)}_{\left|\ldots\right|\le\varepsilon\left|z-z^{*}\right|}\bigg)\dd z\Bigg|\le\varepsilon\Bigg|\int_{\partial R_{n}}\underbrace{\left|z-z^{*}\right|}_{\le2^{-n}\cdot\max\left\{ b-a,d-c\right\} }\dd z\Bigg|\le\\
+ & \le\varepsilon\cdot4^{-n}\cdot\underbrace{d}_{\text{Durchmesser von }R}\cdot\underbrace{L}_{\text{Umfang von }R}
+\end{align*}
+Damit folgt:
+\begin{align*}
+\eta\left(R\right) & \le\varepsilon\cdot d\cdot L
+\end{align*}
+Da $\varepsilon$ beliebig ist, folgt $\eta\left(R\right)=0$.\\
+\qqed
+
+
+\part*{Anhang\thispagestyle{empty}}
+
+\addcontentsline{toc}{part}{Anhang}
+
+\fancyhead[R]{Index}
+\fancyhead[C]{Anhang}
+
+\selectlanguage{english}%
+
+\chapter*{GNU Free Documentation License}
+
+\addcontentsline{toc}{section}{\hspace*{1.9em}GNU Free Documentation License}
+
+\fancyhead[R]{GNU Free Documentation License}
+
+\noindent \begin{center}
+Version 1.3, 3 November 2008\\
+Copyright © 2000, 2001, 2002, 2007, 2008 Free Software Foundation,
+Inc. 
+\par\end{center}
+
+\noindent \begin{center}
+\texttt{<}\url{https://fsf.org/}\texttt{>}
+\par\end{center}
+
+\noindent \begin{center}
+Everyone is permitted to copy and distribute verbatim copies of this
+license document,\\
+but changing it is not allowed.
+\par\end{center}
+
+
+\section*{\noun{0. Preamble}}
+
+\noindent The purpose of this License is to make a manual, textbook,
+or other functional and useful document \textquotedblleft{}free\textquotedblright{}
+in the sense of freedom: to assure everyone the effective freedom
+to copy and redistribute it, with or without modifying it, either
+commercially or noncommercially. Secondarily, this License preserves
+for the author and publisher a way to get credit for their work, while
+not being considered responsible for modifications made by others.
+
+\noindent This License is a kind of \textquotedblleft{}copyleft\textquotedblright{},
+which means that derivative works of the document must themselves
+be free in the same sense. It complements the GNU General Public License,
+which is a copyleft license designed for free software.
+
+\noindent We have designed this License in order to use it for manuals
+for free software, because free software needs free documentation:
+a free program should come with manuals providing the same freedoms
+that the software does. But this License is not limited to software
+manuals; it can be used for any textual work, regardless of subject
+matter or whether it is published as a printed book. We recommend
+this License principally for works whose purpose is instruction or
+reference.
+
+
+\section*{\noun{1. Applicability and definitions}}
+
+This License applies to any manual or other work, in any medium, that
+contains a notice placed by the copyright holder saying it can be
+distributed under the terms of this License. Such a notice grants
+a world-wide, royalty-free license, unlimited in duration, to use
+that work under the conditions stated herein. The \textquotedblleft{}\textbf{Document}\textquotedblright{},
+below, refers to any such manual or work. Any member of the public
+is a licensee, and is addressed as \textquotedblleft{}\textbf{you}\textquotedblright{}.
+You accept the license if you copy, modify or distribute the work
+in a way requiring permission under copyright law.
+
+A \textquotedblleft{}\textbf{Modified Version}\textquotedblright{}
+of the Document means any work containing the Document or a portion
+of it, either copied verbatim, or with modifications and/or translated
+into another language.
+
+A \textquotedblleft{}\textbf{Secondary Section}\textquotedblright{}
+is a named appendix or a front-matter section of the Document that
+deals exclusively with the relationship of the publishers or authors
+of the Document to the Document's overall subject (or to related matters)
+and contains nothing that could fall directly within that overall
+subject. (Thus, if the Document is in part a textbook of mathematics,
+a Secondary Section may not explain any mathematics.) The relationship
+could be a matter of historical connection with the subject or with
+related matters, or of legal, commercial, philosophical, ethical or
+political position regarding them.
+
+The \textquotedblleft{}\textbf{Invariant Sections}\textquotedblright{}
+are certain Secondary Sections whose titles are designated, as being
+those of Invariant Sections, in the notice that says that the Document
+is released under this License. If a section does not fit the above
+definition of Secondary then it is not allowed to be designated as
+Invariant. The Document may contain zero Invariant Sections. If the
+Document does not identify any Invariant Sections then there are none.
+
+The \textquotedblleft{}\textbf{Cover Texts}\textquotedblright{} are
+certain short passages of text that are listed, as Front-Cover Texts
+or Back-Cover Texts, in the notice that says that the Document is
+released under this License. A Front-Cover Text may be at most 5 words,
+and a Back-Cover Text may be at most 25 words.
+
+A \textquotedblleft{}\textbf{Transparent}\textquotedblright{} copy
+of the Document means a machine-readable copy, represented in a format
+whose specification is available to the general public, that is suitable
+for revising the document straightforwardly with generic text editors
+or (for images composed of pixels) generic paint programs or (for
+drawings) some widely available drawing editor, and that is suitable
+for input to text formatters or for automatic translation to a variety
+of formats suitable for input to text formatters. A copy made in an
+otherwise Transparent file format whose markup, or absence of markup,
+has been arranged to thwart or discourage subsequent modification
+by readers is not Transparent. An image format is not Transparent
+if used for any substantial amount of text. A copy that is not \textquotedblleft{}Transparent\textquotedblright{}
+is called \textquotedblleft{}\textbf{Opaque}\textquotedblright{}.
+
+Examples of suitable formats for Transparent copies include plain
+ASCII without markup, Texinfo input format, \LaTeX{} input format,
+SGML or XML using a publicly available DTD, and standard-conforming
+simple HTML, PostScript or PDF designed for human modification. Examples
+of transparent image formats include PNG, XCF and JPG. Opaque formats
+include proprietary formats that can be read and edited only by proprietary
+word processors, SGML or XML for which the DTD and/or processing tools
+are not generally available, and the machine-generated HTML, PostScript
+or PDF produced by some word processors for output purposes only.
+
+The \textquotedblleft{}\textbf{Title Page}\textquotedblright{} means,
+for a printed book, the title page itself, plus such following pages
+as are needed to hold, legibly, the material this License requires
+to appear in the title page. For works in formats which do not have
+any title page as such, \textquotedblleft{}Title Page\textquotedblright{}
+means the text near the most prominent appearance of the work's title,
+preceding the beginning of the body of the text.
+
+The \textquotedblleft{}\textbf{publisher}\textquotedblright{} means
+any person or entity that distributes copies of the Document to the
+public.
+
+A section \textquotedblleft{}\textbf{Entitled XYZ}\textquotedblright{}
+means a named subunit of the Document whose title either is precisely
+XYZ or contains XYZ in parentheses following text that translates
+XYZ in another language. (Here XYZ stands for a specific section name
+mentioned below, such as \textquotedblleft{}\textbf{Acknowledgements}\textquotedblright{},
+\textquotedblleft{}\textbf{Dedications}\textquotedblright{}, \textquotedblleft{}\textbf{Endorsements}\textquotedblright{},
+or \textquotedblleft{}\textbf{History}\textquotedblright{}.) To \textquotedblleft{}\textbf{Preserve
+the Title}\textquotedblright{} of such a section when you modify the
+Document means that it remains a section \textquotedblleft{}Entitled
+XYZ\textquotedblright{} according to this definition.
+
+The Document may include Warranty Disclaimers next to the notice which
+states that this License applies to the Document. These Warranty Disclaimers
+are considered to be included by reference in this License, but only
+as regards disclaiming warranties: any other implication that these
+Warranty Disclaimers may have is void and has no effect on the meaning
+of this License.
+
+
+\section*{\noun{2. Verbatim copying}}
+
+You may copy and distribute the Document in any medium, either commercially
+or noncommercially, provided that this License, the copyright notices,
+and the license notice saying this License applies to the Document
+are reproduced in all copies, and that you add no other conditions
+whatsoever to those of this License. You may not use technical measures
+to obstruct or control the reading or further copying of the copies
+you make or distribute. However, you may accept compensation in exchange
+for copies. If you distribute a large enough number of copies you
+must also follow the conditions in section 3.
+
+You may also lend copies, under the same conditions stated above,
+and you may publicly display copies.
+
+
+\section*{\noun{3. Copying in quantity}}
+
+If you publish printed copies (or copies in media that commonly have
+printed covers) of the Document, numbering more than 100, and the
+Document's license notice requires Cover Texts, you must enclose the
+copies in covers that carry, clearly and legibly, all these Cover
+Texts: Front-Cover Texts on the front cover, and Back-Cover Texts
+on the back cover. Both covers must also clearly and legibly identify
+you as the publisher of these copies. The front cover must present
+the full title with all words of the title equally prominent and visible.
+You may add other material on the covers in addition. Copying with
+changes limited to the covers, as long as they preserve the title
+of the Document and satisfy these conditions, can be treated as verbatim
+copying in other respects.
+
+If the required texts for either cover are too voluminous to fit legibly,
+you should put the first ones listed (as many as fit reasonably) on
+the actual cover, and continue the rest onto adjacent pages.
+
+If you publish or distribute Opaque copies of the Document numbering
+more than 100, you must either include a machine-readable Transparent
+copy along with each Opaque copy, or state in or with each Opaque
+copy a computer-network location from which the general network-using
+public has access to download using public-standard network protocols
+a complete Transparent copy of the Document, free of added material.
+If you use the latter option, you must take reasonably prudent steps,
+when you begin distribution of Opaque copies in quantity, to ensure
+that this Transparent copy will remain thus accessible at the stated
+location until at least one year after the last time you distribute
+an Opaque copy (directly or through your agents or retailers) of that
+edition to the public.
+
+It is requested, but not required, that you contact the authors of
+the Document well before redistributing any large number of copies,
+to give them a chance to provide you with an updated version of the
+Document.
+
+
+\section*{\noun{4. Modifications}}
+
+You may copy and distribute a Modified Version of the Document under
+the conditions of sections 2 and 3 above, provided that you release
+the Modified Version under precisely this License, with the Modified
+Version filling the role of the Document, thus licensing distribution
+and modification of the Modified Version to whoever possesses a copy
+of it. In addition, you must do these things in the Modified Version:
+\begin{description}
+\item [{A.\hspace*{3.2mm}}] Use in the Title Page (and on the covers,
+if any) a title distinct from that of the Document, and from those
+of previous versions (which should, if there were any, be listed in
+the History section of the Document). You may use the same title as
+a previous version if the original publisher of that version gives
+permission.
+\item [{B.\hspace*{3.4mm}}] List on the Title Page, as authors, one or
+more persons or entities responsible for authorship of the modifications
+in the Modified Version, together with at least five of the principal
+authors of the Document (all of its principal authors, if it has fewer
+than five), unless they release you from this requirement.
+\item [{C.\hspace*{3.4mm}}] State on the Title page the name of the publisher
+of the Modified Version, as the publisher.
+\item [{D.\hspace*{3.4mm}}] Preserve all the copyright notices of the
+Document.
+\item [{E.\hspace*{3.4mm}}] Add an appropriate copyright notice for your
+modifications adjacent to the other copyright notices.
+\item [{F.\hspace*{3.8mm}}] Include, immediately after the copyright notices,
+a license notice giving the public permission to use the Modified
+Version under the terms of this License, in the form shown in the
+Addendum below.
+\item [{G.\hspace*{3.1mm}}] Preserve in that license notice the full lists
+of Invariant Sections and required Cover Texts given in the Document's
+license notice.
+\item [{H.\hspace*{3.2mm}}] Include an unaltered copy of this License.
+\item [{I.\hspace*{5.0mm}}] Preserve the section Entitled \textquotedblleft{}History\textquotedblright{},
+Preserve its Title, and add to it an item stating at least the title,
+year, new authors, and publisher of the Modified Version as given
+on the Title Page. If there is no section Entitled \textquotedblleft{}History\textquotedblright{}
+in the Document, create one stating the title, year, authors, and
+publisher of the Document as given on its Title Page, then add an
+item describing the Modified Version as stated in the previous sentence.
+\item [{J.\hspace*{4.3mm}}] Preserve the network location, if any, given
+in the Document for public access to a Transparent copy of the Document,
+and likewise the network locations given in the Document for previous
+versions it was based on. These may be placed in the \textquotedblleft{}History\textquotedblright{}
+section. You may omit a network location for a work that was published
+at least four years before the Document itself, or if the original
+publisher of the version it refers to gives permission.
+\item [{K.\hspace*{3.3mm}}] For any section Entitled \textquotedblleft{}Acknowledgements\textquotedblright{}
+or \textquotedblleft{}Dedications\textquotedblright{}, Preserve the
+Title of the section, and preserve in the section all the substance
+and tone of each of the contributor acknowledgements and/or dedications
+given therein.
+\item [{L.\hspace*{4.1mm}}] Preserve all the Invariant Sections of the
+Document, unaltered in their text and in their titles. Section numbers
+or the equivalent are not considered part of the section titles.
+\item [{M.\hspace*{3mm}}] Delete any section Entitled \textquotedblleft{}Endorsements\textquotedblright{}.
+Such a section may not be included in the Modified Version.
+\item [{N.\hspace*{3.4mm}}] Do not retitle any existing section to be
+Entitled \textquotedblleft{}Endorsements\textquotedblright{} or to
+conflict in title with any Invariant Section.
+\item [{O.\hspace*{3.4mm}}] Preserve any Warranty Disclaimers.
+\end{description}
+If the Modified Version includes new front-matter sections or appendices
+that qualify as Secondary Sections and contain no material copied
+from the Document, you may at your option designate some or all of
+these sections as invariant. To do this, add their titles to the list
+of Invariant Sections in the Modified Version's license notice. These
+titles must be distinct from any other section titles.
+
+You may add a section Entitled \textquotedblleft{}Endorsements\textquotedblright{},
+provided it contains nothing but endorsements of your Modified Version
+by various parties\textemdash{}for example, statements of peer review
+or that the text has been approved by an organization as the authoritative
+definition of a standard.
+
+You may add a passage of up to five words as a Front-Cover Text, and
+a passage of up to 25 words as a Back-Cover Text, to the end of the
+list of Cover Texts in the Modified Version. Only one passage of Front-Cover
+Text and one of Back-Cover Text may be added by (or through arrangements
+made by) any one entity. If the Document already includes a cover
+text for the same cover, previously added by you or by arrangement
+made by the same entity you are acting on behalf of, you may not add
+another; but you may replace the old one, on explicit permission from
+the previous publisher that added the old one.
+
+The author(s) and publisher(s) of the Document do not by this License
+give permission to use their names for publicity for or to assert
+or imply endorsement of any Modified Version.
+
+
+\section*{\noun{5. Combining documents}}
+
+You may combine the Document with other documents released under this
+License, under the terms defined in section 4 above for modified versions,
+provided that you include in the combination all of the Invariant
+Sections of all of the original documents, unmodified, and list them
+all as Invariant Sections of your combined work in its license notice,
+and that you preserve all their Warranty Disclaimers.
+
+The combined work need only contain one copy of this License, and
+multiple identical Invariant Sections may be replaced with a single
+copy. If there are multiple Invariant Sections with the same name
+but different contents, make the title of each such section unique
+by adding at the end of it, in parentheses, the name of the original
+author or publisher of that section if known, or else a unique number.
+Make the same adjustment to the section titles in the list of Invariant
+Sections in the license notice of the combined work.
+
+In the combination, you must combine any sections Entitled \textquotedblleft{}History\textquotedblright{}
+in the various original documents, forming one section Entitled \textquotedblleft{}History\textquotedblright{};
+likewise combine any sections Entitled \textquotedblleft{}Acknowledgements\textquotedblright{},
+and any sections Entitled \textquotedblleft{}Dedications\textquotedblright{}.
+You must delete all sections Entitled \textquotedblleft{}Endorsements\textquotedblright{}.
+
+
+\section*{\noun{6. Collections of documents}}
+
+You may make a collection consisting of the Document and other documents
+released under this License, and replace the individual copies of
+this License in the various documents with a single copy that is included
+in the collection, provided that you follow the rules of this License
+for verbatim copying of each of the documents in all other respects.
+
+You may extract a single document from such a collection, and distribute
+it individually under this License, provided you insert a copy of
+this License into the extracted document, and follow this License
+in all other respects regarding verbatim copying of that document.
+
+
+\section*{\noun{7. Aggregation with independent works}}
+
+A compilation of the Document or its derivatives with other separate
+and independent documents or works, in or on a volume of a storage
+or distribution medium, is called an \textquotedblleft{}aggregate\textquotedblright{}
+if the copyright resulting from the compilation is not used to limit
+the legal rights of the compilation's users beyond what the individual
+works permit. When the Document is included in an aggregate, this
+License does not apply to the other works in the aggregate which are
+not themselves derivative works of the Document.
+
+If the Cover Text requirement of section 3 is applicable to these
+copies of the Document, then if the Document is less than one half
+of the entire aggregate, the Document's Cover Texts may be placed
+on covers that bracket the Document within the aggregate, or the electronic
+equivalent of covers if the Document is in electronic form. Otherwise
+they must appear on printed covers that bracket the whole aggregate.
+
+
+\section*{\noun{8. Translation}}
+
+Translation is considered a kind of modification, so you may distribute
+translations of the Document under the terms of section 4. Replacing
+Invariant Sections with translations requires special permission from
+their copyright holders, but you may include translations of some
+or all Invariant Sections in addition to the original versions of
+these Invariant Sections. You may include a translation of this License,
+and all the license notices in the Document, and any Warranty Disclaimers,
+provided that you also include the original English version of this
+License and the original versions of those notices and disclaimers.
+In case of a disagreement between the translation and the original
+version of this License or a notice or disclaimer, the original version
+will prevail.
+
+If a section in the Document is Entitled \textquotedblleft{}Acknowledgements\textquotedblright{},
+\textquotedblleft{}Dedications\textquotedblright{}, or \textquotedblleft{}History\textquotedblright{},
+the requirement (section 4) to Preserve its Title (section 1) will
+typically require changing the actual title.
+
+
+\section*{\noun{9. Termination}}
+
+You may not copy, modify, sublicense, or distribute the Document except
+as expressly provided under this License. Any attempt otherwise to
+copy, modify, sublicense, or distribute it is void, and will automatically
+terminate your rights under this License.
+
+However, if you cease all violation of this License, then your license
+from a particular copyright holder is reinstated (a) provisionally,
+unless and until the copyright holder explicitly and finally terminates
+your license, and (b) permanently, if the copyright holder fails to
+notify you of the violation by some reasonable means prior to 60 days
+after the cessation.
+
+Moreover, your license from a particular copyright holder is reinstated
+permanently if the copyright holder notifies you of the violation
+by some reasonable means, this is the first time you have received
+notice of violation of this License (for any work) from that copyright
+holder, and you cure the violation prior to 30 days after your receipt
+of the notice.
+
+Termination of your rights under this section does not terminate the
+licenses of parties who have received copies or rights from you under
+this License. If your rights have been terminated and not permanently
+reinstated, receipt of a copy of some or all of the same material
+does not give you any rights to use it.
+
+
+\section*{\noun{10. Future revisions of this license}}
+
+The Free Software Foundation may publish new, revised versions of
+the GNU Free Documentation License from time to time. Such new versions
+will be similar in spirit to the present version, but may differ in
+detail to address new problems or concerns. See \url{https://www.gnu.org/copyleft/}.
+
+Each version of the License is given a distinguishing version number.
+If the Document specifies that a particular numbered version of this
+License \textquotedbl{}or any later version\textquotedbl{} applies
+to it, you have the option of following the terms and conditions either
+of that specified version or of any later version that has been published
+(not as a draft) by the Free Software Foundation. If the Document
+does not specify a version number of this License, you may choose
+any version ever published (not as a draft) by the Free Software Foundation.
+If the Document specifies that a proxy can decide which future versions
+of this License can be used, that proxy's public statement of acceptance
+of a version permanently authorizes you to choose that version for
+the Document.
+
+
+\section*{\noun{11. Relicensing}}
+
+\textquotedblleft{}Massive Multiauthor Collaboration Site\textquotedblright{}
+(or \textquotedblleft{}MMC Site\textquotedblright{}) means any World
+Wide Web server that publishes copyrightable works and also provides
+prominent facilities for anybody to edit those works. A public wiki
+that anybody can edit is an example of such a server. A \textquotedblleft{}Massive
+Multiauthor Collaboration\textquotedblright{} (or \textquotedblleft{}MMC\textquotedblright{})
+contained in the site means any set of copyrightable works thus published
+on the MMC site.
+
+\textquotedblleft{}CC-BY-SA\textquotedblright{} means the Creative
+Commons Attribution-Share Alike 3.0 license published by Creative
+Commons Corporation, a not-for-profit corporation with a principal
+place of business in San Francisco, California, as well as future
+copyleft versions of that license published by that same organization.
+
+\textquotedblleft{}Incorporate\textquotedblright{} means to publish
+or republish a Document, in whole or in part, as part of another Document.
+
+An MMC is \textquotedblleft{}eligible for relicensing\textquotedblright{}
+if it is licensed under this License, and if all works that were first
+published under this License somewhere other than this MMC, and subsequently
+incorporated in whole or in part into the MMC, (1) had no cover texts
+or invariant sections, and (2) were thus incorporated prior to November
+1, 2008.
+
+The operator of an MMC Site may republish an MMC contained in the
+site under CC-BY-SA on the same site at any time before August 1,
+2009, provided the MMC is eligible for relicensing.
+
+
+\section*{\noun{Addendum}: How to use this License for your documents}
+
+To use this License in a document you have written, include a copy
+of the License in the document and put the following copyright and
+license notices just after the title page:
+\begin{quote}
+Copyright © YEAR YOUR NAME.\\
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3
+or any later version published by the Free Software Foundation;
+
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover
+Texts.
+
+A copy of the license is included in the section entitled \textquotedbl{}GNU
+Free Documentation License\textquotedbl{}.
+\end{quote}
+If you have Invariant Sections, Front-Cover Texts and Back-Cover Texts,
+replace the \textquotedbl{}with $\ldots$ Texts.\textquotedbl{} line
+with this:
+\begin{quote}
+with the Invariant Sections being LIST THEIR TITLES, with the Front-Cover
+Texts being LIST, and with the Back-Cover Texts being LIST.
+\end{quote}
+If you have Invariant Sections without Cover Texts, or some other
+combination of the three, merge those two alternatives to suit the
+situation.
+
+If your document contains nontrivial examples of program code, we
+recommend releasing these examples in parallel under your choice of
+free software license, such as the GNU General Public License, to
+permit their use in free software.
+
+\selectlanguage{ngerman}%
+\label{END}
+\end{document}
