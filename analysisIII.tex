@@ -1,4 +1,4 @@
-%% LyX 2.0.1 created this file.  For more info, see http://www.lyx.org/.
+%% LyX 2.0.2 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
 \documentclass[11pt,english,ngerman]{report}
 \usepackage[T1]{fontenc}
@@ -11,6 +11,7 @@
 \setlength{\parindent}{0pt}
 \usepackage{color}
 \usepackage{babel}
+\usepackage{array}
 \usepackage{verbatim}
 \usepackage{textcomp}
 \usepackage{url}
@@ -19,7 +20,7 @@
 \usepackage{graphicx}
 \usepackage{esint}
 \usepackage[unicode=true,
- bookmarks=true,bookmarksnumbered=true,bookmarksopen=false,
+ bookmarks=true,bookmarksnumbered=true,bookmarksopen=true,bookmarksopenlevel=1,
  breaklinks=true,pdfborder={0 0 0},backref=page,colorlinks=false]
  {hyperref}
 \hypersetup{pdftitle={Analysis III},
@@ -34,6 +35,8 @@
   {L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
   {LyX}}
 \newcommand{\noun}[1]{\textsc{#1}}
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
 
 \@ifundefined{date}{}{\date{}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
@@ -78,7 +81,7 @@
 
 %QED-Zeichen (Box)
 \newcommand{\qed}{\ensuremath{\Box}}
-\newcommand{\qqed}[1][\arabic{chapter}.\arabic{section}]{\begin{flushright}\qed\ensuremath{_{\text{#1}}}\end{flushright}}
+\newcommand{\qqed}[1][\arabic{chapter}.\arabic{section}.\arabic{subsection}]{\begin{flushright}\qed\ensuremath{_{\text{#1}}}\end{flushright}}
 
 %Definitons-Zeichen
 \newcommand{\dfn}{\mathrel{\mathop:}=}
@@ -143,9 +146,9 @@
   }
 
 % Neudefinition der Abschnittsmarker für die Kopfzeile
-\renewcommand\partmark[1]{\markboth{#1}{}}
-\renewcommand\chaptermark[1]{\markboth{\leftmark}{\arabic{chapter} #1}}
-\renewcommand\sectionmark[1]{}
+\renewcommand\partmark[1]{\markboth{#1}{}} 
+\renewcommand\chaptermark[1]{\markboth{\arabic{chapter} #1}{}}
+\renewcommand\sectionmark[1]{\markright{\arabic{chapter}.\arabic{section} #1}}
 \renewcommand\subsectionmark[1]{}
 
 % Kopf- und Fußzeile
@@ -278,8 +281,8 @@ heruntergeladen werden.
 \item \noun{Theodor Bröcker}: \emph{Analysis II}, Spektrum Akad. Verl.,
 1995, ISBN 3-86025-418-9;\\
 Kap. I-III (recht knapp)
-\item \noun{Walter Rudin}: \emph{Real and complex analysis}, McGraw-Hill,
-2009, ISBN 978-0-07-054234-1;\\
+\item \noun{Walter Rudin}: \foreignlanguage{english}{\emph{Real and complex
+analysis}}, McGraw-Hill, 2009, ISBN 978-0-07-054234-1;\\
 Kap.~I-III
 \end{itemize}
 
@@ -287,14 +290,16 @@ Kap.~I-III
 \begin{itemize}
 \item \noun{Klaus Jänich}: \emph{Funktionentheorie}, Springer, 2011, ISBN
 978-3-540-20392-6
-\item \noun{Lars V. Ahlfors}: \emph{Complex Analysis}, McGraw-Hill, 1979,
-ISBN 0-07-000657-1;\\
+\item \noun{Lars V. Ahlfors}: \foreignlanguage{english}{\emph{Complex Analysis}},
+McGraw-Hill, 1979, ISBN 0-07-000657-1;\\
 (ausführlich)
 \end{itemize}
 {\small \newpage{}}\fancyhead[R]{Inhaltsverzeichnis}
 \fancyhead[C]{}
 
-\tableofcontents{}\label{END-front}\newpage{}\pagenumbering{arabic}
+\tableofcontents{}
+
+\label{END-front}\newpage{}\pagenumbering{arabic}
 \fancyfoot[C]{\thepage\quad\!\!\!\slash\quad\!\!\!\pageref{END}} % Seitenzahl des Hauptteils
 \fancyhead[R]{\rightmark}
 \fancyhead[C]{\leftmark}%DATE: Di 18.10.2011
@@ -302,18 +307,228 @@ ISBN 0-07-000657-1;\\
 
 \chapter{Integrationstheorie}
 
-\textcolor{green}{TODO: Vorspann}
+
+\section*{Motivation und Überblick}
+
+
+\subsection*{Riemann-Integral}
+
+Das \emph{Riemann-Integral} haben wir schon kennen gelernt.
+
+Sei $I=\left[a,b\right]$ mit $a<b\in\mathbb{R}$ und $f:I\to\mathbb{R}$
+eine Funktion.
+
+\textcolor{green}{TODO: Funktionsplot einfügen}
+
+Bilde eine Zerlegung $Z=\left(x_{0},\ldots,x_{n}\right)$ mit $n\in\mathbb{N}_{\ge1}$,
+$ $$x_{0}=a,x_{n}=b$ und $x_{k-1}<x_{k}\in\mathbb{R}$ in die Teilintervalle
+$I_{k}:=\left[x_{k-1},x_{k}\right]$ für $k\in\left\{ 1,\ldots,n\right\} $.
+
+Mit $\left|I_{k}\right|:=x_{k}-x_{k-1}$ ist die Feinheit:
+\begin{align*}
+\Delta Z & :=\max_{1\le k\le n}\left|I_{k}\right|
+\end{align*}
+Wähle Zwischenpunkte $\zeta_{k}\in I_{k}$ und definiere die Riemannsche
+Summe:
+\begin{align*}
+\sum_{k=1}^{n}f\left(\zeta_{k}\right)\cdot\left|I_{k}\right|
+\end{align*}
+$f$ heißt Riemann-integrierbar (Abkürzung: R-integrierbar), falls
+der Limes
+\begin{align*}
+\lim_{\Delta Z\to0}\sum_{k=1}^{n}f\left(\zeta_{k}\right)\cdot\left|I_{k}\right| & =:\int_{a}^{b}f\left(x\right)\dd x
+\end{align*}
+unabhängig von der Wahl der Zerlegung und der Zwischenpunkte existiert.
+
+Bezeichne die Menge der auf dem Intervall $I$ Riemann-integrierbaren
+Funktionen mit $\mathcal{R}\left(I\right)$.
+
+Jede stetige Funktion ist Riemann-integrierbar, das heißt $C^{0}\left(I\right)\subseteq\mathcal{R}\left(I\right)$.
+
+\noindent \begin{center}
+\begin{tabular}{>{\centering}p{7.3cm}|>{\centering}p{7.3cm}}
+Nachteile des Riemann-Integrals & Vorteile des Lebesgue-Integrals\tabularnewline
+\hline 
+\hline 
+Es ist nicht einfach zu entscheiden, welche Funktionen Riemann-integrierbar
+sind. & Die Lebesgue-integrierbaren Funktionen sind \quotedblbase{}schön\textquotedblleft{}
+charakterisiert.\tabularnewline
+\hline 
+Viele nicht-stetige Funktionen sind nicht Riemann-integrierbar, zum
+Beispiel:
+
+$\begin{aligned}f:\left[0,1\right] & \to\mathbb{R}\\
+x & \mapsto\begin{cases}
+1 & \text{falls }x\in\mathbb{Q}\\
+0 & \text{sonst}
+\end{cases}
+\end{aligned}
+$
+
+\vspace*{2mm} & Man kann allgemeine Funktionen integrieren:
+
+$\begin{aligned}\int_{0}^{1}f\left(x\right)\dd x & =0\end{aligned}
+$
+
+\vspace*{2mm}\tabularnewline
+\hline 
+Uneigentliche Integrale müssen gesondert betrachtet werden:
+
+$\begin{aligned}\int_{0}^{\infty}f\left(x\right)\dd x & :=\lim_{l\to\infty}\int_{0}^{l}f\left(x\right)\dd x\end{aligned}
+$
+
+\vspace*{2mm} & Uneigentliche Integrale sind einfach handhabbar.\tabularnewline
+\hline 
+Konvergiere $f_{n}\to f$, gegen was konvergiert das Integral?
+
+$\begin{aligned}\int_{a}^{b}f_{n}\left(x\right)\dd x & \to\ ?\end{aligned}
+$
+
+\vspace*{2mm} & Diese Frage ist mit den Lebesgueschen Integrationssätzen einfach zu
+entscheiden.\tabularnewline
+\hline 
+Funktionenräume $\mathcal{R}\left(I\right)$
+
+Führe \emph{Norm} ein:
+
+$\begin{aligned}\left|\left|f\left(I\right)\right|\right| & =\int_{a}^{b}\left|f\left(x\right)\right|\dd x\end{aligned}
+$
+
+Aber $\left(\mathcal{R}\left(I\right),\left|\left|.\right|\right|\right)$
+ist nicht vollständig. & $L^{p}$-Räume sind vollständig, also Banachräume.
+
+Zum Beispiel:
+
+$\begin{aligned} & L^{1}\left(\left[0,1\right]\right)=\\
+ & =\left\{ f\text{ ist L.-intbar. }\wedge\int_{0}^{1}\left|f\left(x\right)\right|\dd x<\infty\right\} 
+\end{aligned}
+$
+
+Für die $L^{1}$-Norm gilt:
+
+$\begin{aligned}\left|\left|f\right|\right| & \ge0\\
+\left|\left|f\right|\right|=0 & \Rightarrow\ f=0\\
+\left|\left|f+g\right|\right| & \le\left|\left|f\right|\right|+\left|\left|g\right|\right|
+\end{aligned}
+$
+
+Aber: $\begin{aligned}f\left(x\right) & =\begin{cases}
+1 & x=0\\
+0 & \text{sonst}
+\end{cases}\end{aligned}
+$
+
+$\begin{aligned}\int_{-1}^{1}f\left(x\right)\dd x & =?\end{aligned}
+$\tabularnewline
+\end{tabular}
+\par\end{center}
+
+
+\subsection*{Historischer Ursprung}
+
+Das Riemann-Integral geht auf \noun{Newton} zurück, der sich mit folgender
+Thematik beschäftigte:
+
+\textcolor{green}{TODO: Bild: Sonne-Erde-Potential einfügen}
+
+Berechnung des Gravitationspotential der Sonne als Summe infinitesimal
+kleiner Punktquellen:
+\begin{align*}
+\Phi & =\lim_{i\to\infty}\sum_{i}\frac{\Delta Q_{i}}{r_{i}}
+\end{align*}
+Dieses Vorgehen wurde von \noun{Riemann} mathematisch präzise gefasst
+und lieferte in der Mitte des 19. Jahrhunderts das Riemannsche Integral.
+
+\noun{Borel} und \noun{Lebesgue} wählten am Anfang des 20. Jahrhunderts
+einen anderen Ansatz:
+
+Sei $f:I\to\mathbb{R}$ beschränkt, also $f\left(I\right)\subseteq\left[\alpha,\beta\right]$
+für $\alpha,\beta\in\mathbb{R}$.
+
+Zerlege den Bildbereich in Streifen, also $y_{0},\ldots,y_{n}$ mit
+$y_{0}=\alpha,y_{n}=\beta$ und $y_{k-1}<y_{k}$ sowie $J_{k}:=\left[y_{k-1},y_{k}\right]$
+für $1\le k\le n$.
+
+\textcolor{green}{TODO: Abbildung: Funktion mit Streifen}
+
+Es ist $f^{-1}\left(J_{k}\right)\in\mathbb{R}$ und man definiert
+ein \quotedblbase{}Maß\textquotedblleft{} $\mu\left(f^{-1}\left(J_{k}\right)\right)$
+dieser Menge. (\quotedblbase{}Volumen\textquotedblleft{} oder \quotedblbase{}Länge\textquotedblleft{}
+des Intervalls)
+
+Für stetige Funktionen liefert dies das Gleiche wie das Riemann-Integral,
+ist aber allgemeiner und hat viele Vorteile.
+
+Sei $M\subseteq\mathbb{R}$ eine Teilmenge so ist
+\begin{align*}
+\mu:M & \to\mathbb{R}_{0}^{+}
+\end{align*}
+eine Abbildung, für die
+\begin{align*}
+\sum_{k=1}^{n}y_{k}\cdot\mu\left(f^{-1}\left(J_{k}\right)\right) & \stackrel{n\to\infty}{\longrightarrow}\int_{a}^{b}f\left(x\right)\dd x
+\end{align*}
+gegen das Lebesgue-Integral konvergiert.
+
+Sie werden sich fragen: Für welche Mengen kann man sinnvoll ein Maß
+definieren? Wie geht das?
+
+Für ein Intervall $K=\left[x_{0},x_{1}\right]$ sollte gelten:
+\begin{align*}
+\mu\left(K\right) & =\left|K\right|=x_{1}-x_{0}
+\end{align*}
+Für paarweise disjunkte Intervalle $I_{1},\ldots,I_{l}$ mit $l\in\mathbb{N}_{\ge1}$
+und
+\begin{align*}
+J & =\bcupd_{k=1}^{l}I_{k}
+\end{align*}
+sollte gelten:
+\begin{align*}
+\mu\left(J\right) & =\sum_{k=1}^{l}\mu\left(I_{k}\right)
+\end{align*}
+Geht das auch für beliebige, also unendliche Vereinigungen?
+
+Sei $I$ eine beliebige Indexmenge.
+\begin{align*}
+A & :=\bcupd_{\alpha\in I}I_{\alpha}
+\end{align*}
+Vermutung:
+\begin{align*}
+\mu\left(A\right) & =\sum_{\alpha\in J}\mu\left(I_{\alpha}\right)
+\end{align*}
+Beispiel: $A=\left[0,1\right]$
+
+Dann soll $\mu\left(A\right)=1$ gelten.
+
+Sei $I=A$. Für $x\in I$ wähle $I_{x}:=\left\{ x\right\} =\left[x,x\right]$
+und es gilt:
+\begin{align*}
+\mu\left(I_{x}\right) & =\left|I_{x}\right|=0
+\end{align*}
+Aber:
+\begin{align*}
+A & =\bcupd_{x\in I}I_{x}
+\end{align*}
+\begin{align*}
+1=\mu\left(A\right) & \stackrel{?}{=}\sum_{x\in I}\mu\left(I_{x}\right)=\sum_{x\in I}0=0
+\end{align*}
+Dies geht also nicht. Das Problem liegt bei der überabzählbaren Summe.
+
+Um solche grundsätzlichen Probleme zu vermeiden, arbeitet man in der
+Maßtheorie immer nur mit \emph{abzählbaren} oder endlichen Mengenoperationen.
+
+Mit diesen Dingen im Hinterkopf führen wir nun einige abstrakte Begriffe
+ein.
 
 
 \section{Maßräume, Maße}
 
 
-\subsection{Definition\textmd{ ($\sigma$-Algebra, Maßraum, messbare Menge)}}
+\subsection{Definition\textmd{ ($\sigma$-Algebra, Maßraum, messbare Menge)\label{sub:Def-sigAlgebra}}}
 
 Sei $X\not=\emptyset$ eine Menge (zum Beispiel $X\subseteq\mathbb{R}^{n}$).
 
-Eine $\sigma$-Algebra $\mathcal{M}$ ist eine Menge von Teilmengen
-von $X$, so dass gilt:
+Eine \emph{$\sigma$-Algebra $\mathcal{M}$ über $X$} ist eine Menge
+von Teilmengen von $X$, so dass gilt:
 
 \begin{iiilist}
 
@@ -322,23 +537,724 @@ von $X$, so dass gilt:
 \iii $A\in\mathcal{M}\Rightarrow\complement A:=X\setminus A\in\mathcal{M}$
 
 \iii Ist $\left(A_{j}\right)_{j\in\mathbb{N}}$ eine abzählbare Familie
-von Mengen in $\mathcal{M}$, so iat auch ihre Vereinigung ${\displaystyle \bigcup_{j=1}^{^{\infty}}A_{j}\in\mathcal{M}}$.
+von Mengen in $\mathcal{M}$, so ist auch ihre Vereinigung
+\begin{align*}
+\bigcup_{j=1}^{^{\infty}}A_{j} & \in\mathcal{M}
+\end{align*}
+ein Element von $\mathcal{M}$.
 
 \end{iiilist}
 
 \quotedblbase{}$\sigma$\textquotedblleft{} steht für abzählbar.
 
-$\left(X,\mu\right)$ heißt \emph{Maßraum} (Messraum, measurable space).
+$\left(X,\mu\right)$ heißt \emph{Maßraum} (Messraum, \foreignlanguage{english}{measurable
+space}).
 
 Die Elemente von $\mathcal{M}$ heißen \emph{messbare Mengen}.
 
-\medskip{}
+
+\subsection{Bemerkung}
+\begin{itemize}
+\item Seien $A_{1},\ldots,A_{n}\in\mathcal{M}$ gegeben, so bilde:
+\begin{align*}
+\left(B_{k}\right)_{k\in\mathbb{N}} & :=\left(A_{1},\ldots,A_{n},A_{n},\ldots\right)
+\end{align*}
+Nach iii) gilt:
+\begin{align*}
+\bigcup_{k=1}^{n}A_{k}=\bigcup_{k\in\mathbb{N}}B_{k} & \in\mathcal{M}
+\end{align*}
+Damit sind \emph{endliche} Vereinigungen von Elementen aus $\mathcal{M}$
+wieder messbar.
+\item Seien $A_{k}\in\mathcal{M}$ messbar für $k\in\mathbb{N}_{\ge1}$.
+Dann folgt:
+\begin{align*}
+\complement\bigcap_{k=1}^{\infty}A_{k} & =\underbrace{\bigcup_{k=1}^{\infty}\bigg(\underbrace{\complement A_{k}}_{\in\mathcal{M}\text{ (wg. ii))}}\bigg)}_{\in\mathcal{M}\text{ (wg. iii))}}
+\end{align*}
+Also gilt:
+\begin{align*}
+\bigcap_{k=1}^{\infty}A_{k} & =\complement\left(\complement\bigcap_{k=1}^{\infty}A_{k}\right)=\complement\left(\bigcup_{k=1}^{\infty}\left(\complement A_{k}\right)\right)\in\mathcal{M}
+\end{align*}
+Damit sind \emph{abzählbare} Schnitte messbarer Mengen wieder messbar.
+\end{itemize}
+
+\subsection{Beispiele \textmd{(Erzeugnis, offene Menge, Topologie, Borelalgebra)}}
+
+\begin{abclist}
+
+\abc $\mathcal{M}=\left\{ \emptyset,X\right\} $ ist die kleinste
+$\sigma$-Algebra über $X$.
+
+Die Potenzmenge $\mathcal{M}=\mathcal{P}\left(X\right)$ ist als \quotedblbase{}Menge
+aller Teilmengen\textquotedblleft{} die größte $\sigma$-Algebra über~$X$.
+
+Beide sind im Folgenden nicht interessant.
+
+\abc Sei $\mathcal{A}\subseteq\mathcal{P}\left(X\right)$ ein beliebiges
+System von Teilmengen.
+
+$\mathcal{M}\left(\mathcal{A}\right)$ ist definiert als die kleinste
+$\sigma$-Algebra, die $\mathcal{A}$ als Teilmenge enthält, und heißt
+\emph{das Erzeugnis von $\mathcal{A}$}.
+\begin{align*}
+\mathcal{M}\left(\mathcal{A}\right) & =\bigcap\left\{ \mathcal{M}\supseteq\mathcal{A}\text{ ist eine }\sigma\text{-Algebra}\right\} 
+\end{align*}
 
 
-TODO: Rest einfügen
+\abc Sei $X=\mathbb{R}^{n}$. Definiere:
+
+$\Omega\subseteq\mathbb{R}$ heißt \emph{offen}, falls für alle $x\in\Omega$
+ein $\varepsilon>0$ mit $B_{\varepsilon}\left(x\right)\subseteq\Omega$
+gibt.
+\begin{align*}
+\mathcal{O} & =\left\{ \Omega\subseteq\mathbb{R}^{n}\text{ ist offen}\right\} 
+\end{align*}
+heißt \emph{Topologie}.
+
+Führe jetzt \emph{die von der Topologie erzeugte $\sigma$-Algebra
+$\mathcal{B}:=\mathcal{M}\left(\mathcal{O}\right)$, die Borelalgebra}
+ein. Man kann also auf jedem topologischen Raum eine kanonische $\sigma$-Algebra
+einführen.
+
+Ein $A\in\mathcal{B}$ heißt \emph{Borelmenge}.
+
+Wegen $\mathcal{O}\subseteq\mathcal{B}$ ist jede offene Menge eine
+Borelmenge.
+
+Jede abgeschlossene Menge $A$ ist eine Borelmenge, denn $\complement A$
+ist offen, also ist $\complement A$ eine Borelmenge und damit nach
+\ref{sub:Def-sigAlgebra} ii) auch $A=\complement\left(\complement A\right)$.
+
+Es gibt Borelmengen, die weder offen noch abgeschlossen sind, zum
+Beispiel ist die abgeschlossene Menge $\left[0,1\right]\in\mathcal{B}$
+und auch die offene Menge $\left(2,3\right)\in\mathcal{B}$ und daher
+auch deren Vereinigung $\left[0,1\right]\cup\left(2,3\right)\in\mathcal{B}$,
+die aber weder offen noch abgeschlossen ist.
+
+Anderes Beispiel: $\left[0,1\right]\cup\left(1,2\right)=[0,2)\in\mathcal{B}$
+
+\abc Betrachte für $z\in\mathbb{Z}$ und $k\in\mathbb{N}$ die offenen
+Würfel:
+\begin{align*}
+W_{z,k} & \left\{ x\in\mathbb{R}^{n}\bigg|\frac{z_{j}-1}{2^{k+1}}<x_{j}<\frac{z_{j}+1}{2^{k+1}}\right\} 
+\end{align*}
+\begin{align*}
+\mathcal{A} & :=\left\{ W_{z,k}|z\in\mathbb{Z}\wedge k\in\mathbb{N}\right\} 
+\end{align*}
 
 
-\section{Konstruktion des 1-dimensionalen Lebesgue-Maßes}
+\textcolor{green}{TODO: Abbildung Würfel}
+
+$\mathcal{M}\left(\mathcal{A}\right)$ ist die von den Würfeln erzeugte
+$\sigma$-Algebra und wieder die Borelalgebra, denn sei $\Omega\subseteq\mathbb{R}^{n}$
+eine offene Teilmenge.
+
+Schöpfe $\Omega$ durch abzählbar viele Würfel aus, also
+\begin{align*}
+\Omega & =\bigcup_{n=1}^{\infty}W_{n}\in\mathcal{A}
+\end{align*}
+mit $W_{n}\in\mathcal{A}$.
+
+\textcolor{green}{TODO: Abbildung Ausschöpfung}
+
+Da eine $\sigma$-Algebra unter abzählbaren Mengenoperationen abgeschlossen
+ist, folgt $\Omega\in\mathcal{M}\left(\mathcal{A}\right)$. Es liegen
+also alle offenen Mengen in $\mathcal{M}\left(\mathcal{A}\right)$.
+
+Da $\mathcal{B}$ die \emph{kleinste} $\sigma$-Algebra ist, die alle
+offenen Mengen enthält, folgt $\mathcal{B}=\mathcal{M}\left(\mathcal{A}\right)$.
+
+%DATE: Fr 21.10.11
+
+Genauer in einer Dimension:
+
+Sei $X=\mathbb{R}$. Ist $k\in\mathbb{N}$ gegeben, so bilde das Gitter:
+\begin{align*}
+2^{-k+1}\cdot\mathbb{Z} & =\left\{ \frac{l}{2^{k+1}}\bigg|l\in\mathbb{Z}\right\} 
+\end{align*}
+Für $l\in\mathbb{Z}$ definiere:
+\begin{align*}
+W_{l,k} & =\left(\left(l-1\right)\cdot2^{-k+1},\left(l+1\right)\cdot2^{-k+1}\right)
+\end{align*}
+
+
+\textcolor{green}{TODO: Abbildung eindimensionales Gitter}
+
+Dann ist
+\begin{align*}
+W_{k} & =\left\{ W_{l,k}|l\in\mathbb{Z}\right\} \subseteq\mathcal{P}\left(\mathbb{R}\right)
+\end{align*}
+abzählbar und auch
+\begin{align*}
+W & :=\bigcup_{k=1}^{\infty}W_{k}
+\end{align*}
+ein abzählbares Mengensystem.
+
+
+\subsubsection*{Behauptung}
+
+Die Würfel erzeugen bereits die gesamte Borelalgebra:
+\begin{align*}
+\mathcal{M}\left(W\right) & =\mathcal{B}
+\end{align*}
+
+
+
+\subsubsection*{Beweis}
+
+Offensichtlich ist $\mathcal{M}\left(W\right)\subseteq\mathcal{M}\left(\mathcal{O}\right)=\mathcal{B}$.
+
+Zu zeigen ist, dass $\mathcal{M}\left(W\right)$ alle offenen Mengen
+enthält.
+
+Sei also $\Omega\subseteq\mathbb{R}$ offen. Dann ist
+\begin{align*}
+A & =\bigcup\left\{ U\subseteq\Omega|U\in W\right\} 
+\end{align*}
+ist eine abzählbare Vereinigung von Würfeln, also ist $A\in\mathcal{M}\left(W\right)$.
+
+Es gilt:
+
+\begin{align*}
+A & =\Omega
+\end{align*}
+
+
+$A\subseteq\Omega$ ist klar, da $U\subseteq\Omega$ ist.
+
+Umgekehrt ist $A\supseteq\Omega$, denn für $x\in\Omega$ gibt es
+ein $\varepsilon>0$ mit $\left(x-\varepsilon,x+\varepsilon\right)\in\Omega$.
+
+Wähle $k$ so groß, dass ${\displaystyle 2^{-k}<\frac{\varepsilon}{4}}$
+ist.
+
+\textcolor{green}{TODO: Abbildung Zahlenstrahl}
+
+Dann gibt es ein $l\in\mathbb{Z}$ mit $x\in W_{l,k}$, also ist $A=\Omega$.
+
+Daher ist $A=\Omega\in\mathcal{M}\left(W\right)$ und somit folgt
+\begin{align*}
+\mathcal{M}\left(\mathcal{O}\right) & \subseteq\mathcal{M}\left(W\right)\subseteq\mathcal{M}\left(\mathcal{O}\right)
+\end{align*}
+Also ist $\mathcal{M}\left(W\right)=\mathcal{M}\left(\mathcal{O}\right)$.
+
+\qqed[Behauptung]
+
+\end{abclist}
+
+Alle Borelmengen sollten also messbar sein.
+
+Betrachte auf topologischen Räumen, sofern nichts anderes gesagt wird,
+stets die Borelalgebra als $\sigma$-Algebra.
+
+
+\subsection{Definition \textmd{(Erzeugendensystem, messbare Abbildung)}}
+
+Eine Teilmenge $\mathcal{A}\subseteq\mathcal{M}$ heißt \emph{Erzeugendensystem}
+von $\mathcal{M}$, falls $\mathcal{M}\left(\mathcal{A}\right)=\mathcal{M}$
+ist.
+
+Eine Abbildung $f:X\to Y$ zwischen Maßräumen $\left(X,M\right)$
+und $\left(Y,M'\right)$ heißt \emph{messbar}, falls das Urbild messbarer
+Mengen messbar ist.
+
+
+\subsubsection*{Bemerkung}
+
+Die Definition der Messbarkeit hat Ähnlichkeit mit der Definition
+der Stetigkeit:
+
+Eine Abbildung $f:X\to Y$ heißt \emph{stetig}, falls das Urbild \emph{offener}
+Mengen \emph{offen} ist.
+
+
+\subsection{Beispiel}
+\begin{itemize}
+\item $W$ ist ein Erzeugendensystem der Borelalgebra von $\mathbb{R}$.
+\item Nach Definition ist jede stetige Funktion automatisch messbar, denn
+es gilt:\\
+Sei $f:X\to Y$ stetig, dann ist für jede offene Menge $\Omega$ nach
+Definition auch $f^{-1}\left(\Omega\right)$ offen.\\
+Beachte für Mengen $V,V_{j}\subseteq Y$ mit $j\in\mathbb{N}$:
+\begin{align*}
+f^{-1}\left(\bigcup_{j=1}^{\infty}V_{j}\right) & =\bigcup_{j=1}^{\infty}f^{-1}\left(V_{j}\right)\\
+f^{-1}\left(\complement V\right) & =\complement f^{-1}\left(V\right)
+\end{align*}
+Die Mengenoperatoren sind also mit dem Bilden des Urbilds verträglich.\\
+Sei $\mathcal{A}\subseteq Y$ messbar, also in $\mathcal{B}\left(Y\right)$.
+Dann ist $f^{-1}\left(\mathcal{A}\right)\in\mathcal{B}\left(X\right)$,
+also ist $f$ tatsächlich messbar.
+\end{itemize}
+
+\subsection{Satz\label{sub:Satz-messCircMessIstMess}}
+
+Seien $X$ ein Maßraum und $Y,Z$ topologische Räume mit zugehöriger
+Borelalgebra.
+
+Ist $f:X\to Y$ messbar und $g:Y\to Z$ messbar, so ist $g\circ f:X\to Z$
+messbar.
+
+
+\subsubsection*{Beweis}
+
+Zu zeigen ist, dass für alle messbaren $A\subseteq Z$ schon $\left(g\circ f\right)^{-1}\left(A\right)$
+messbar ist.
+
+Es genügt wieder $A$ in einem Erzeugendensystem zu betrachten. Wähle
+als solches die offenen Mengen.
+
+Sei also $A\in\mathcal{O}$, dann ist $g^{-1}\left(A\right)$ messbar,
+weil $g$ messbar ist und daher auch
+\begin{align*}
+f^{-1}\left(g^{-1}\left(A\right)\right) & =\left(f^{-1}\circ g^{-1}\right)\left(A\right)=\left(g\circ f\right)^{-1}\left(A\right)
+\end{align*}
+messbar, weil $f$ messbar ist.
+
+Insgesamt ist also $g\circ f$ messbar.
+
+\qqed
+
+
+\subsection{Bemerkung}
+
+Betrachte im Folgenden $\mathbb{R}$, $\mathbb{R}^{n}$ mit $n\in\mathbb{N}_{\ge1}$
+oder \emph{die Kompaktifizierung der reellen Zahlen} $\overline{\mathbb{R}}=\mathbb{R}\cup\left\{ -\infty,\infty\right\} $.
+\begin{align*}
+\mathcal{O} & =\left\langle \left\{ \text{offene Teilmengen von }\mathbb{R}\right\} \cup\left\{ (a,\infty]|a\in\mathbb{R}\right\} \cup\left\{ [-\infty,a)|a\in\mathbb{R}\right\} \right\rangle 
+\end{align*}
+Dies ist die von diesen Mengen erzeugte Topologie.
+
+Konkreter: Bilde die Bijektion
+\begin{align*}
+\phi:\overline{\mathbb{R}} & \to\left[-1,1\right]\\
+x & \mapsto\begin{cases}
+\hfill\tanh\left(x\right) & x\in\mathbb{R}\\
+\hfill+1 & x=+\infty\\
+\hfill-1 & x=-\infty
+\end{cases}
+\end{align*}
+
+
+\textcolor{green}{TODO: Abbildung Kompaktifizierung}
+
+Betrachte auf $\overline{\mathbb{R}}$ die Topologie, die von $\phi$
+induziert wird, also ist $\Omega\subseteq\overline{\mathbb{R}}$ genau
+dann offen, wenn $\phi\left(\Omega\right)\subseteq\left[-1,1\right]$
+offen ist.
+
+
+\subsection{Satz\label{sub:Satz-Messbarkeit}}
+
+Sei $X$ ein Maßraum.
+
+\begin{iiilist}
+
+\iii $f:X\to\overline{\mathbb{R}}$ ist genau dann messbar, wenn
+für jedes $a\in\mathbb{Q}$ die Mengen mit $\left\{ x|f\left(x\right)>a\right\} $
+messbar sind.
+
+\iii $f:X\to\mathbb{R}^{n}$ ist genau dann messbar, wenn ihre Komponenten
+messbar sind.
+
+\iii Die messbaren Abbildungen $X\to\mathbb{R}^{n}$ bilden einen
+Vektorraum.
+
+\iii Ist $f:X\to\mathbb{R}^{n}$ messbar, so ist auch $\left|f\right|:X\to\mathbb{R}_{0}^{+}$.
+
+Sind $g,h:X\to\mathbb{R}$ messbar, so auch ihr Produkt $g\cdot h:X\to\mathbb{R}$.
+
+\end{iiilist}
+
+
+\subsubsection*{Beweis}
+
+\begin{iiilist}
+
+\iii \quotedblbase{}$\Rightarrow$\textquotedblleft{}: Ist klar,
+da $\left\{ x|f\left(x\right)>a\right\} =f^{-1}\left((a,\infty]\right)$
+als Urbild einer messbaren Menge messbar ist.
+
+\quotedblbase{}$\Leftarrow$\textquotedblleft{}: Seien $a<b\in\mathbb{R}$.
+Auf $\overline{\mathbb{R}}$ betrachten wir die Borelalgebra, die
+von den offenen Intervallen und $(a,\infty],[-\infty,a)$ erzeugt
+wird.
+
+Wir betrachten ein möglichst einfaches Erzeugendensystem:
+\begin{align*}
+\mathcal{E} & =\left\{ (a,\infty]|a\in\mathbb{R}\right\} 
+\end{align*}
+Es ist $\left[-\infty,a\right]\in\mathcal{M}\left(\mathcal{E}\right)$,
+da Komplemente gebildet werden können.
+
+Es ist $[-\infty,a)=\left[-\infty,a-1\right]\cup\left(a-2,a\right)\in\mathcal{M}\left(\mathcal{E}\right)$,
+da Vereinigungen gebildet werden können.
+
+Es ist $(a,b]=\left[-\infty,b\right]\cap\left(a,\infty\right)\in\mathcal{M}\left(\mathcal{E}\right)$
+und $\left(a,b\right)=[-\infty,b)\cap\left(a,\infty\right)\in\mathcal{M}\left(\mathcal{E}\right)$,
+da Schnitte gebildet werden können.
+
+Also ist $\mathcal{M}\left(\mathcal{E}\right)=\mathcal{B}$.
+
+Betrachte nun $\mathcal{E}_{\mathbb{Q}}=\left\{ (a,\infty]|a\in\mathbb{Q}\right\} $.
+\begin{description}
+\item [{Behauptung}] \hspace*{1mm}
+\begin{align*}
+\mathcal{M}\left(\mathcal{E}_{\mathbb{Q}}\right) & =\mathcal{M}\left(\mathcal{E}\right)=\mathcal{B}
+\end{align*}
+
+\item [{Beweis}] \hspace*{1mm}\\
+Man muss zeigen, dass $\mathcal{M}\left(\mathcal{E}_{\mathbb{Q}}\right)\supseteq\mathcal{M}\left(\mathcal{E}\right)$
+ist.\\
+Sei also $(a,\infty]$ und $a\in\mathbb{R}\setminus\mathbb{Q}$, so
+wähle eine Folge $a_{n}\in\mathbb{Q}$ mit $a_{n}\searrow a$.
+\begin{align*}
+(a,\infty] & =\bigcup_{n=1}^{\infty}\underbrace{(a_{n},\infty]}_{\in\mathcal{E}_{\mathbb{Q}}}\in\mathcal{M}\left(\mathcal{E}_{\mathbb{Q}}\right)
+\end{align*}
+\qqed[Behauptung]
+\end{description}
+Weil für $V,V_{j}\in\overline{\mathbb{R}}$ für $j\in\mathbb{N}$
+schon
+\begin{align*}
+f^{-1}\left(\bigcup_{j}V_{j}\right) & =\bigcup_{j}f^{-1}\left(V_{j}\right)\\
+f^{-1}\left(\complement V\right) & =\complement f^{-1}\left(V\right)
+\end{align*}
+gilt, brauchen wir die Messbarkeit von $f^{-1}\left(\Omega\right)$
+nur für alle $\Omega$ eines Erzeugendensystems zeigen.
+\begin{align*}
+f^{-1}\left((a,\infty]\right) & =\left\{ x|f\left(x\right)>a\right\} 
+\end{align*}
+ist aber nach Voraussetzung messbar, also $f$ messbar.
+
+\qqed[\roman{ale2})]
+
+\iii \quotedblbase{}$\Leftarrow$\textquotedblleft{}: Es genügt wieder
+ein Erzeugendensystem von $\mathcal{B}\left(\mathbb{R}^{n}\right)$
+beziehungsweise $\mathcal{B}\left(\overline{\mathbb{R}}\right)$ zu
+betrachten.
+
+Sei $z\in\mathbb{Z}^{n}$, dann ist
+\begin{align*}
+W_{z,k} & =\left\{ x\in\mathbb{R}^{n}\bigg|\frac{z_{l}-1}{2^{k+1}}<x_{l}<\frac{z_{l}+1}{2^{k+1}},l\in\left\{ 1,\ldots,n\right\} \right\} 
+\end{align*}
+ein Würfel mit der Kantenlänge $2^{-k}$.
+\begin{align*}
+f^{-1}\left(W_{z,k}\right) & =\left\{ x\in X|f\left(x\right)\in W_{z,k}\right\} =\left\{ x\in X\bigg|\frac{z_{l}-1}{2^{k+1}}<f_{l}\left(x\right)<\frac{z_{l}+1}{2^{k+1}},l\in\left\{ 1,\ldots,n\right\} \right\} =\\
+ & =\bigcap_{l=1}^{n}\left\{ x\in X\bigg|f_{l}\left(x\right)\in\left(\frac{z_{l}-1}{2^{k+1}},\frac{z_{l}+1}{2^{k+1}}\right)\right\} =\bigcap_{l=1}^{n}f_{l}^{-1}\left(\left(\frac{z_{l}-1}{2^{k+1}},\frac{z_{l}+1}{2^{k+1}}\right)\right)
+\end{align*}
+Nehme an, die $f_{l}:X\to\mathbb{R}$ sind messbar. Dann ist
+\begin{align*}
+f_{l}^{-1}\left(\left(\frac{z_{l}-1}{2^{k+1}},\frac{z_{l}+1}{2^{k+1}}\right)\right)
+\end{align*}
+messbar und somit auch:
+\begin{align*}
+\bigcap_{l=1}^{n}f_{l}^{-1}\left(\left(\frac{z_{l}-1}{2^{k+1}},\frac{z_{l}+1}{2^{k+1}}\right)\right) & =f^{-1}\left(W_{z,k}\right)
+\end{align*}
+Daher ist $f:X\to\mathbb{R}^{n}$ messbar.
+
+\quotedblbase{}$\Rightarrow$\textquotedblleft{}: Sei $f$ messbar.
+Dann ist
+\begin{align*}
+f_{l}^{-1}\left(\left(a,b\right)\right) & =f^{-1}\big(\overbrace{\mathbb{R}\times\ldots\times\mathbb{R}\times\underbrace{\left(a,b\right)}_{l\text{-tes Argument}}\times\mathbb{R}\times\ldots\times\mathbb{R}}^{\text{ist offen in }\mathbb{R}^{n}}\big)
+\end{align*}
+messbar, da $f$ messbar ist.
+
+\qqed[\roman{ale2})]
+
+\iii Für messbare Abbildungen $f,g:X\to\mathbb{R}^{n}$ ist auch
+\begin{align*}
+\left(f,g\right):X & \to\mathbb{R}^{n}\times\mathbb{R}^{n}\\
+x & \mapsto\left(f\left(x\right),g\left(x\right)\right)
+\end{align*}
+messbar und für $\alpha,\beta\in\mathbb{R}$ ist die Abbildung
+\begin{align*}
+\left\langle +\right\rangle :\mathbb{R}^{n}\times\mathbb{R}^{n} & \to\mathbb{R}^{n}\\
+\left(x,y\right) & \mapsto\alpha x+\beta y
+\end{align*}
+stetig, also insbesondere messbar. Nach \ref{sub:Satz-messCircMessIstMess}
+ist dann auch die Verkettung
+\begin{align*}
+\left\langle +\right\rangle \circ\left(f,g\right):X & \to\mathbb{R}^{n}\\
+x & \mapsto\alpha f\left(x\right)+\beta g\left(x\right)
+\end{align*}
+messbar.
+
+\qqed[\roman{ale2})]
+
+\iii Es folgt mit \ref{sub:Satz-messCircMessIstMess} analog zu iii)
+für messbare Abbildungen $f:X\to\mathbb{R}^{n}$ und $g,h:X\to\mathbb{R}$:
+\begin{align*}
+\left|f\right|:X & \stackrel{\text{messbar}}{\to}\mathbb{R}^{n}\stackrel{\text{stetig}}{\to}\mathbb{R}\\
+x & \stackrel{\text{messbar}}{\mapsto}f\left(x\right)\stackrel{\text{stetig}}{\mapsto}\left|f\left(x\right)\right|\\
+g\cdot h:X & \stackrel{\text{messbar}}{\to}\mathbb{R}\times\mathbb{R}\stackrel{\text{stetig}}{\to}\mathbb{R}\\
+x & \stackrel{\text{messbar}}{\mapsto}\left(g\left(x\right),h\left(x\right)\right)\stackrel{\text{stetig}}{\mapsto}g\left(x\right)\cdot h\left(x\right)
+\end{align*}
+
+
+\end{iiilist}
+
+\qqed
+
+
+\subsubsection*{Bemerkung}
+
+ii) ist sehr nützlich, weil wir uns daher im Folgenden oft auf reelle
+Funktionen beschränken können.
+
+Schön ist, dass Messbarkeit sich auf Grenzwerte überträgt.
+
+
+\subsection{Satz\label{sub:Satz-MessbarLimesMessbar}}
+
+\begin{iiilist}
+
+\iii Sei $f_{n}:X\to\overline{\mathbb{R}}$ eine Folge messbarer
+Funktionen, so sind auch die punktweise definierten Funktionen
+\begin{align*}
+\sup_{n}f_{n} & ,\ \inf_{n}f_{n},\ \limsup_{n}f_{n},\ \liminf_{n}f_{n}
+\end{align*}
+messbar.
+
+\iii Konvergiert $\left(f_{n}\right)_{n\in\mathbb{N}}$ punktweise
+gegen $f$, so ist $f$ auch messbar.
+
+\end{iiilist}
+
+
+\subsubsection*{Beweis}
+
+\begin{iiilist}
+
+\iii Zu zeigen ist nach \ref{sub:Satz-Messbarkeit} i), dass für
+jedes $a\in\mathbb{Q}$ schon $\left\{ x|\left(\sup_{n}f_{n}\right)\left(x\right)>a\right\} $
+messbar ist. Die Menge
+\begin{align*}
+\left\{ x\bigg|\left(\sup_{n}f_{n}\right)\left(x\right)>a\right\}  & =\left\{ x\bigg|\sup_{n}\left(f_{n}\left(x\right)\right)>a\right\} =\bigcup_{n=1}^{\infty}\underbrace{\left\{ x|f_{n}\left(x\right)>a\right\} }_{\text{messbar, da }f\text{ messbar ist}}
+\end{align*}
+ist als Vereinigung messbarer Mengen wieder messbar.
+
+Für $\inf_{n}f_{n}$ folgt analog:
+\begin{align*}
+\left\{ x\bigg|\left(\inf_{n}f_{n}\right)\left(x\right)>a\right\}  & =\left\{ x\bigg|\inf_{n}\left(f_{n}\left(x\right)\right)>a\right\} =\bigcap_{n=1}^{\infty}\underbrace{\left\{ x|f_{n}\left(x\right)>a\right\} }_{\text{messbar, da }f\text{ messbar ist}}
+\end{align*}
+Dieser Schnitt messbarer Mengen ist wieder messbar.
+
+Außerdem ist
+\begin{align*}
+\limsup_{n}f_{n} & =\inf_{j\in\mathbb{N}}\sup_{n\ge j}f_{n}
+\end{align*}
+als Verkettung von messbaren Funktionen messbar.
+
+Für den Limes inferior folgt die Behauptung analog.
+
+\qqed[\roman{ale2})]
+
+\iii Sei $f_{n}$ punktweise konvergent. Dann ist
+\begin{align*}
+f & =\lim_{n\to\infty}f_{n}\left(x\right)=\limsup_{n\to\infty}f_{n}\left(x\right)
+\end{align*}
+nach i) messbar.
+
+\end{iiilist}
+
+\qqed
+
+
+\subsection{Definition \textmd{(Stufenfunktion)}}
+
+Eine messbare Funktion $\varphi:X\to\mathbb{R}$, die nur endlich
+viele Werte annimmt, heißt \emph{Stufenfunktion}.
+
+\textcolor{green}{TODO: Abbildung Stufenfunktion einfügen}
+
+
+\subsection{Satz\label{sub:Satz-messFolgeStufenfkt}}
+
+Ist $f:X\to\mathbb{R}_{0}^{+}$ messbar, so gibt es eine aufsteigende
+Folge von Stufenfunktionen $\varphi_{n}$, die punktweise gegen $f$
+konvergiert.
+
+
+\subsubsection*{Beweis}
+
+\begin{align*}
+\varphi_{j}\left(x\right) & :=\begin{cases}
+\left(k-1\right)\cdot2^{-j} & \text{falls }\exs_{k\in\mathbb{N}_{<j\cdot2^{j}}}:\left(k-1\right)\le f\left(x\right)\cdot2^{j}\le k\\
+j & f\left(x\right)>j
+\end{cases}
+\end{align*}
+hat offensichtlich die gewünschten Eigenschaften.
+
+Die punktweise Konvergenz $\varphi_{j}\to f$ ist klar.
+
+\textcolor{green}{TODO: Skizze erstellen}
+
+
+\subsubsection*{Bemerkung}
+
+Der Limes ist sogar gleichmäßig.
+
+\qqed
+
+
+\subsection{Korollar}
+
+$f:X\to\mathbb{R}^{n}$ ist genau dann messbar, wenn $f$ punktweiser
+Limes von Stufenfunktionen ist.
+
+
+\subsubsection*{Beweis}
+
+\quotedblbase{}$\Leftarrow$\textquotedblleft{}: Diese Aussage folgt
+direkt aus Satz \ref{sub:Satz-MessbarLimesMessbar} ii).
+
+\quotedblbase{}$\Rightarrow$\textquotedblleft{}: Nach Satz \ref{sub:Satz-Messbarkeit}
+ii) genügt es den Fall $n=1$ zu betrachten. Setze:
+\begin{align*}
+f_{+} & :=\max\left(f,0\right) & f_{-} & :=\max\left(-f,0\right)
+\end{align*}
+Dann ist $f=f_{+}-f_{-}$.
+
+$f_{+}$ und $f_{-}$ sind analog zu \ref{sub:Satz-Messbarkeit} iv)
+messbar, da gilt:
+\begin{align*}
+f_{+} & =\frac{1}{2}\left(f+\left|f\right|\right)\\
+f_{-} & =\frac{1}{2}\left(\left|f\right|-f\right)
+\end{align*}
+Approximiere sie nun gemäß Satz \ref{sub:Satz-messFolgeStufenfkt}
+durch Stufenfunktionen.
+
+\qqed
+
+
+\subsection{Definition \textmd{(Maß)}}
+
+Ein \emph{Maß} auf einem Maßraum $\left(X,\mathcal{M}\right)$ ist
+eine Funktion
+\begin{align*}
+\mu: & \mathcal{M}\to\left[0,\infty\right]
+\end{align*}
+mit den folgenden Eigenschaften:
+
+\begin{iiilist}
+
+\iii $\mu\left(\emptyset\right)=0$
+
+\iii Ist $\left(M_{j}\right)_{j\in\mathbb{N}}$ eine Folge paarweise
+disjunkter messbarer Mengen, so gilt:
+\begin{align*}
+\mu\bigg(\underbrace{\bigcup_{j=1}^{\infty}M_{j}}_{\in\mathcal{M}}\bigg) & =\sum_{j=1}^{\infty}\mu\left(M_{j}\right)
+\end{align*}
+Diese Eigenschaft nennt man $\sigma$-Additivität.
+
+\end{iiilist}
+
+$\left(X,\mathcal{M},\mu\right)$ heißt auch Messraum mit Maß.
+
+
+\subsection{Beispiele}
+
+\begin{iiilist}
+
+\iii $\mathcal{M}=\left\{ \emptyset,X\right\} $, $\mu\left(\emptyset\right)=0$,
+$\mu\left(X\right)\in\left[0,\infty\right]$ kann beliebig gewählt
+werden, zum Beispiel $\mu\left(X\right)=1$. 
+
+\iii $\mathcal{M}=\mathcal{P}\left(X\right)$; Sei $p\in X$.
+\begin{align*}
+\mu_{p}\left(A\right) & :=\begin{cases}
+1 & \text{falls }p\in A\\
+0 & \text{sonst}
+\end{cases}
+\end{align*}
+Dies ist das sogenannte Dirac-Maß $\delta\left(x-p\right)\dd x$.
+
+\iii Sei $X=\left\{ 1,\ldots,n\right\} $ eine endliche Menge und
+$\mathcal{M}=\mathcal{P}\left(X\right)$. Verwende das Zählmaß:
+\begin{align*}
+\mu\left(A\right) & :=\#A
+\end{align*}
+
+
+\end{iiilist}
+
+
+\subsection{Satz}
+
+Es gilt für alle $n\in\mathbb{N}$ für alle $A_{n}\in\mathcal{M}$.
+
+\begin{abclist}
+
+\abc Ist $A_{1}\cap A_{2}=\emptyset$, so folgt die Additivität:
+\begin{align*}
+\mu\left(A_{1}\dot{\cup}A_{2}\right) & =\mu\left(A_{1}\right)+\mu\left(A_{2}\right)
+\end{align*}
+
+
+\abc Monotonie:
+\begin{align*}
+\mu\left(\bigcup_{n=1}^{\infty}A_{n}\right) & \le\sum_{n=1}^{\infty}\mu\left(A_{n}\right)
+\end{align*}
+
+
+\abc Für eine aufsteigende Folge $A_{1}\subseteq A_{2}\subseteq\ldots$
+messbarer Mengen gilt:
+\begin{align*}
+\mu\left(\bigcup_{n=1}^{\infty}A_{n}\right) & =\lim_{n\to\infty}\mu\left(A_{n}\right)
+\end{align*}
+
+
+\end{abclist}
+
+
+\subsubsection*{Beweis}
+
+\begin{abclist}
+
+\abc Setze $A_{3}=A_{4}=\ldots=\emptyset$. Aus der $\sigma$-Additivität
+folgt:
+\begin{align*}
+\mu\left(A_{1}\dot{\cup}A_{2}\right) & =\mu\left(\bcupd_{n=1}^{\infty}A_{n}\right)=\sum_{n=1}^{\infty}\mu\left(A_{n}\right)=\mu\left(A_{1}\right)+\mu\left(A_{2}\right)
+\end{align*}
+\qqed[\alph{ale})]
+
+\abc Setze $B_{1}=A_{1}$ und für $n\in\mathbb{N}_{\ge2}$:
+\begin{align*}
+B_{n} & :=A_{n}\setminus\left\{ A_{1}\cup\ldots\cup A_{n-1}\right\} 
+\end{align*}
+\textcolor{green}{TODO: Abbildung von $B_{n}$ einfügen}
+
+Die $B_{n}$ sind nach Konstruktion paarweise disjunkt und es gilt:
+\begin{align*}
+\bigcup_{n=1}^{\infty}B_{n} & =\bigcup_{n=1}^{\infty}A_{n}\\
+\mu\left(\bigcup_{n=1}^{\infty}A_{n}\right) & =\mu\left(\bigcup_{n=1}^{\infty}B_{n}\right)\stackrel{\sigma\text{-Additivität}}{=}\sum_{n=1}^{\infty}\mu\left(B_{n}\right)\le\sum_{n=1}^{\infty}\mu\left(A_{n}\right)
+\end{align*}
+Letzteres folgt, da gilt:
+\begin{align*}
+\mu\left(A_{n}\right) & =\mu\left(B_{n}\dot{\cup}A_{n}\setminus B_{n}\right)\stackrel{\text{a)}}{=}\mu\left(B_{n}\right)+\underbrace{\mu\left(A_{n}\setminus B_{n}\right)}_{\ge0}\ge\mu\left(B_{n}\right)
+\end{align*}
+\qqed[\alph{ale})]
+
+\abc Setze $B_{n}$ wie in b), so folgt wegen $A_{1}\subseteq A_{2}\subseteq\ldots$
+schon $B_{n}=A_{n}\setminus A_{n-1}$. Es folgt:
+\begin{align*}
+\mu\left(A_{n}\right) & =\mu\left(B_{1}\dot{\cup}\ldots\dot{\cup}B_{n}\right)=\sum_{j=1}^{n}\mu\left(B_{j}\right)
+\end{align*}
+$\left(\mu\left(A_{n}\right)\right)_{n\in\mathbb{N}}$ ist eine monoton
+steigende Folge, womit folgt:
+\begin{align*}
+\lim_{n\to\infty}\mu\left(A_{n}\right) & =\sum_{j=1}^{\infty}\mu\left(B_{j}\right)=\mu\left(\bcupd_{j=1}^{\infty}B_{j}\right)=\mu\left(\bigcup_{j=1}^{\infty}A_{j}\right)
+\end{align*}
+
+
+\end{abclist}
+
+\qqed
+
+%DATE Di 25.10.11
+
+
+\section[eindimensionales Lebesgue-Maß]{Konstruktion des eindimensionalen Lebesgue-Maßes}
+
+\textcolor{green}{TODO: Rest überarbeiten}
 
 \noun{Henri Leon Lebesgue:} Doktorarbeit\noun{ (1902)}
 
@@ -666,7 +1582,7 @@ $g\not\in L^{1}$ (denn $\int g\dd\mu=+\infty$)}
 TODO: Rest einfügen
 
 
-\section{Integration nicht-negativer Funktionen}
+\section[Integration nicht-neg. Fkt.]{Integration nicht-negativer Funktionen}
 
 Sei $f:X\rightarrow\left[0,\infty\right]\subseteq\overline{\mathbb{R}}$
 messbar (muss nicht in $L^{1}$ sein!). Setze:
@@ -813,7 +1729,7 @@ Seite.
 \qqed
 
 
-\section{Zusammenhang zum Riemann-Integral}
+\section[Zsh. zum Riemann-Integral]{Zusammenhang zum Riemann-Integral}
 
 Sei $I=\left[a,b\right]\subset\mathbb{R}$ kompaktes Intervall und
 $f:I\rightarrow\mathbb{R}$ beschränkt.
@@ -1657,7 +2573,7 @@ Falls $x\in S^{1}$, dann folgt $\varphi\left(x\right)\in\overline{\mathbb{C}}\se
 ist ein Häufungspunkt in $\overline{\mathbb{C}}$.
 
 
-\section{Analytische Funktionen, die Cauchy-Riemanschen Differentialgleichungen}
+\section[Cauchy-Riemann DGLn]{Analytische Funktionen, die Cauchy-Riemannschen Differentialgleichungen}
 
 Sei $\Omega\subseteq\mathbb{C}$ offen.
 

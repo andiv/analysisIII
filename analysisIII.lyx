@@ -45,7 +45,7 @@
 
 %QED-Zeichen (Box)
 \newcommand{\qed}{\ensuremath{\Box}}
-\newcommand{\qqed}[1][\arabic{chapter}.\arabic{section}]{\begin{flushright}\qed\ensuremath{_{\text{#1}}}\end{flushright}}
+\newcommand{\qqed}[1][\arabic{chapter}.\arabic{section}.\arabic{subsection}]{\begin{flushright}\qed\ensuremath{_{\text{#1}}}\end{flushright}}
 
 %Definitons-Zeichen
 \newcommand{\dfn}{\mathrel{\mathop:}=}
@@ -110,9 +110,9 @@
   }
 
 % Neudefinition der Abschnittsmarker für die Kopfzeile
-\renewcommand\partmark[1]{\markboth{#1}{}}
-\renewcommand\chaptermark[1]{\markboth{\leftmark}{\arabic{chapter} #1}}
-\renewcommand\sectionmark[1]{}
+\renewcommand\partmark[1]{\markboth{#1}{}} 
+\renewcommand\chaptermark[1]{\markboth{\arabic{chapter} #1}{}}
+\renewcommand\sectionmark[1]{\markright{\arabic{chapter}.\arabic{section} #1}}
 \renewcommand\subsectionmark[1]{}
 
 % Kopf- und Fußzeile
@@ -157,7 +157,7 @@
 \pdf_keywords "Analysis III, Mathematik"
 \pdf_bookmarks true
 \pdf_bookmarksnumbered true
-\pdf_bookmarksopen false
+\pdf_bookmarksopen true
 \pdf_bookmarksopenlevel 1
 \pdf_breaklinks true
 \pdf_pdfborder true
@@ -748,8 +748,10 @@ Walter Rudin
 \noun default
 : 
 \emph on
+\lang english
 Real and complex analysis
 \emph default
+\lang ngerman
 , McGraw-Hill, 2009, ISBN 978-0-07-054234-1;
 \begin_inset Newline newline
 \end_inset
@@ -785,8 +787,10 @@ Lars V.
 \noun default
 : 
 \emph on
+\lang english
 Complex Analysis
 \emph default
+\lang ngerman
 , McGraw-Hill, 1979, ISBN 0-07-000657-1;
 \begin_inset Newline newline
 \end_inset
@@ -832,6 +836,9 @@ LatexCommand tableofcontents
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -926,10 +933,733 @@ status open
 Integrationstheorie
 \end_layout
 
+\begin_layout Section*
+Motivation und Überblick
+\end_layout
+
+\begin_layout Subsection*
+Riemann-Integral
+\end_layout
+
+\begin_layout Standard
+Das 
+\emph on
+Riemann-Integral
+\emph default
+ haben wir schon kennen gelernt.
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $I=\left[a,b\right]$
+\end_inset
+
+ mit 
+\begin_inset Formula $a<b\in\mathbb{R}$
+\end_inset
+
+ und 
+\begin_inset Formula $f:I\to\mathbb{R}$
+\end_inset
+
+ eine Funktion.
+\end_layout
+
 \begin_layout Standard
 
 \color green
-TODO: Vorspann
+TODO: Funktionsplot einfügen
+\end_layout
+
+\begin_layout Standard
+Bilde eine Zerlegung 
+\begin_inset Formula $Z=\left(x_{0},\ldots,x_{n}\right)$
+\end_inset
+
+ mit 
+\begin_inset Formula $n\in\mathbb{N}_{\ge1}$
+\end_inset
+
+, 
+\begin_inset Formula $ $
+\end_inset
+
+
+\begin_inset Formula $x_{0}=a,x_{n}=b$
+\end_inset
+
+ und 
+\begin_inset Formula $x_{k-1}<x_{k}\in\mathbb{R}$
+\end_inset
+
+ in die Teilintervalle 
+\begin_inset Formula $I_{k}:=\left[x_{k-1},x_{k}\right]$
+\end_inset
+
+ für 
+\begin_inset Formula $k\in\left\{ 1,\ldots,n\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Mit 
+\begin_inset Formula $\left|I_{k}\right|:=x_{k}-x_{k-1}$
+\end_inset
+
+ ist die Feinheit:
+\begin_inset Formula 
+\begin{align*}
+\Delta Z & :=\max_{1\le k\le n}\left|I_{k}\right|
+\end{align*}
+
+\end_inset
+
+Wähle Zwischenpunkte 
+\begin_inset Formula $\zeta_{k}\in I_{k}$
+\end_inset
+
+ und definiere die Riemannsche Summe:
+\begin_inset Formula 
+\begin{align*}
+\sum_{k=1}^{n}f\left(\zeta_{k}\right)\cdot\left|I_{k}\right|
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $f$
+\end_inset
+
+ heißt Riemann-integrierbar (Abkürzung: R-integrierbar), falls der Limes
+\begin_inset Formula 
+\begin{align*}
+\lim_{\Delta Z\to0}\sum_{k=1}^{n}f\left(\zeta_{k}\right)\cdot\left|I_{k}\right| & =:\int_{a}^{b}f\left(x\right)\dd x
+\end{align*}
+
+\end_inset
+
+unabhängig von der Wahl der Zerlegung und der Zwischenpunkte existiert.
+\end_layout
+
+\begin_layout Standard
+Bezeichne die Menge der auf dem Intervall 
+\begin_inset Formula $I$
+\end_inset
+
+ Riemann-integrierbaren Funktionen mit 
+\begin_inset Formula $\mathcal{R}\left(I\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Jede stetige Funktion ist Riemann-integrierbar, das heißt 
+\begin_inset Formula $C^{0}\left(I\right)\subseteq\mathcal{R}\left(I\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="7.3cm">
+<column alignment="center" valignment="top" width="7.3cm">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachteile des Riemann-Integrals
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorteile des Lebesgue-Integrals
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Es ist nicht einfach zu entscheiden, welche Funktionen Riemann-integrierbar
+ sind.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die Lebesgue-integrierbaren Funktionen sind „schön“ charakterisiert.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Viele nicht-stetige Funktionen sind nicht Riemann-integrierbar, zum Beispiel:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{aligned}f:\left[0,1\right] & \to\mathbb{R}\\
+x & \mapsto\begin{cases}
+1 & \text{falls }x\in\mathbb{Q}\\
+0 & \text{sonst}
+\end{cases}
+\end{aligned}
+$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace*{2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Man kann allgemeine Funktionen integrieren:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{aligned}\int_{0}^{1}f\left(x\right)\dd x & =0\end{aligned}
+$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace*{2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Uneigentliche Integrale müssen gesondert betrachtet werden:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{aligned}\int_{0}^{\infty}f\left(x\right)\dd x & :=\lim_{l\to\infty}\int_{0}^{l}f\left(x\right)\dd x\end{aligned}
+$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace*{2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Uneigentliche Integrale sind einfach handhabbar.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Konvergiere 
+\begin_inset Formula $f_{n}\to f$
+\end_inset
+
+, gegen was konvergiert das Integral?
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{aligned}\int_{a}^{b}f_{n}\left(x\right)\dd x & \to\ ?\end{aligned}
+$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace*{2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Diese Frage ist mit den Lebesgueschen Integrationssätzen einfach zu entscheiden.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Funktionenräume 
+\begin_inset Formula $\mathcal{R}\left(I\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Führe 
+\emph on
+Norm
+\emph default
+ ein:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{aligned}\left|\left|f\left(I\right)\right|\right| & =\int_{a}^{b}\left|f\left(x\right)\right|\dd x\end{aligned}
+$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Aber 
+\begin_inset Formula $\left(\mathcal{R}\left(I\right),\left|\left|.\right|\right|\right)$
+\end_inset
+
+ ist nicht vollständig.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $L^{p}$
+\end_inset
+
+-Räume sind vollständig, also Banachräume.
+\end_layout
+
+\begin_layout Plain Layout
+Zum Beispiel:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{aligned} & L^{1}\left(\left[0,1\right]\right)=\\
+ & =\left\{ f\text{ ist L.-intbar. }\wedge\int_{0}^{1}\left|f\left(x\right)\right|\dd x<\infty\right\} 
+\end{aligned}
+$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Für die 
+\begin_inset Formula $L^{1}$
+\end_inset
+
+-Norm gilt:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{aligned}\left|\left|f\right|\right| & \ge0\\
+\left|\left|f\right|\right|=0 & \Rightarrow\ f=0\\
+\left|\left|f+g\right|\right| & \le\left|\left|f\right|\right|+\left|\left|g\right|\right|
+\end{aligned}
+$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Aber: 
+\begin_inset Formula $\begin{aligned}f\left(x\right) & =\begin{cases}
+1 & x=0\\
+0 & \text{sonst}
+\end{cases}\end{aligned}
+$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{aligned}\int_{-1}^{1}f\left(x\right)\dd x & =?\end{aligned}
+$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Historischer Ursprung
+\end_layout
+
+\begin_layout Standard
+Das Riemann-Integral geht auf 
+\noun on
+Newton
+\noun default
+ zurück, der sich mit folgender Thematik beschäftigte:
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Bild: Sonne-Erde-Potential einfügen
+\end_layout
+
+\begin_layout Standard
+Berechnung des Gravitationspotential der Sonne als Summe infinitesimal kleiner
+ Punktquellen:
+\begin_inset Formula 
+\begin{align*}
+\Phi & =\lim_{i\to\infty}\sum_{i}\frac{\Delta Q_{i}}{r_{i}}
+\end{align*}
+
+\end_inset
+
+Dieses Vorgehen wurde von 
+\noun on
+Riemann
+\noun default
+ mathematisch präzise gefasst und lieferte in der Mitte des 19.
+ Jahrhunderts das Riemannsche Integral.
+\end_layout
+
+\begin_layout Standard
+
+\noun on
+Borel
+\noun default
+ und 
+\noun on
+Lebesgue
+\noun default
+ wählten am Anfang des 20.
+ Jahrhunderts einen anderen Ansatz:
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $f:I\to\mathbb{R}$
+\end_inset
+
+ beschränkt, also 
+\begin_inset Formula $f\left(I\right)\subseteq\left[\alpha,\beta\right]$
+\end_inset
+
+ für 
+\begin_inset Formula $\alpha,\beta\in\mathbb{R}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Zerlege den Bildbereich in Streifen, also 
+\begin_inset Formula $y_{0},\ldots,y_{n}$
+\end_inset
+
+ mit 
+\begin_inset Formula $y_{0}=\alpha,y_{n}=\beta$
+\end_inset
+
+ und 
+\begin_inset Formula $y_{k-1}<y_{k}$
+\end_inset
+
+ sowie 
+\begin_inset Formula $J_{k}:=\left[y_{k-1},y_{k}\right]$
+\end_inset
+
+ für 
+\begin_inset Formula $1\le k\le n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Abbildung: Funktion mit Streifen
+\end_layout
+
+\begin_layout Standard
+Es ist 
+\begin_inset Formula $f^{-1}\left(J_{k}\right)\in\mathbb{R}$
+\end_inset
+
+ und man definiert ein „Maß“ 
+\begin_inset Formula $\mu\left(f^{-1}\left(J_{k}\right)\right)$
+\end_inset
+
+ dieser Menge.
+ („Volumen“ oder „Länge“ des Intervalls)
+\end_layout
+
+\begin_layout Standard
+Für stetige Funktionen liefert dies das Gleiche wie das Riemann-Integral,
+ ist aber allgemeiner und hat viele Vorteile.
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $M\subseteq\mathbb{R}$
+\end_inset
+
+ eine Teilmenge so ist
+\begin_inset Formula 
+\begin{align*}
+\mu:M & \to\mathbb{R}_{0}^{+}
+\end{align*}
+
+\end_inset
+
+eine Abbildung, für die
+\begin_inset Formula 
+\begin{align*}
+\sum_{k=1}^{n}y_{k}\cdot\mu\left(f^{-1}\left(J_{k}\right)\right) & \stackrel{n\to\infty}{\longrightarrow}\int_{a}^{b}f\left(x\right)\dd x
+\end{align*}
+
+\end_inset
+
+gegen das Lebesgue-Integral konvergiert.
+\end_layout
+
+\begin_layout Standard
+Sie werden sich fragen: Für welche Mengen kann man sinnvoll ein Maß definieren?
+ Wie geht das?
+\end_layout
+
+\begin_layout Standard
+Für ein Intervall 
+\begin_inset Formula $K=\left[x_{0},x_{1}\right]$
+\end_inset
+
+ sollte gelten:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(K\right) & =\left|K\right|=x_{1}-x_{0}
+\end{align*}
+
+\end_inset
+
+Für paarweise disjunkte Intervalle 
+\begin_inset Formula $I_{1},\ldots,I_{l}$
+\end_inset
+
+ mit 
+\begin_inset Formula $l\in\mathbb{N}_{\ge1}$
+\end_inset
+
+ und
+\begin_inset Formula 
+\begin{align*}
+J & =\bcupd_{k=1}^{l}I_{k}
+\end{align*}
+
+\end_inset
+
+sollte gelten:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(J\right) & =\sum_{k=1}^{l}\mu\left(I_{k}\right)
+\end{align*}
+
+\end_inset
+
+Geht das auch für beliebige, also unendliche Vereinigungen?
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $I$
+\end_inset
+
+ eine beliebige Indexmenge.
+\begin_inset Formula 
+\begin{align*}
+A & :=\bcupd_{\alpha\in I}I_{\alpha}
+\end{align*}
+
+\end_inset
+
+Vermutung:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(A\right) & =\sum_{\alpha\in J}\mu\left(I_{\alpha}\right)
+\end{align*}
+
+\end_inset
+
+Beispiel: 
+\begin_inset Formula $A=\left[0,1\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dann soll 
+\begin_inset Formula $\mu\left(A\right)=1$
+\end_inset
+
+ gelten.
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $I=A$
+\end_inset
+
+.
+ Für 
+\begin_inset Formula $x\in I$
+\end_inset
+
+ wähle 
+\begin_inset Formula $I_{x}:=\left\{ x\right\} =\left[x,x\right]$
+\end_inset
+
+ und es gilt:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(I_{x}\right) & =\left|I_{x}\right|=0
+\end{align*}
+
+\end_inset
+
+Aber:
+\begin_inset Formula 
+\begin{align*}
+A & =\bcupd_{x\in I}I_{x}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+1=\mu\left(A\right) & \stackrel{?}{=}\sum_{x\in I}\mu\left(I_{x}\right)=\sum_{x\in I}0=0
+\end{align*}
+
+\end_inset
+
+Dies geht also nicht.
+ Das Problem liegt bei der überabzählbaren Summe.
+\end_layout
+
+\begin_layout Standard
+Um solche grundsätzlichen Probleme zu vermeiden, arbeitet man in der Maßtheorie
+ immer nur mit 
+\emph on
+abzählbaren
+\emph default
+ oder endlichen Mengenoperationen.
+\end_layout
+
+\begin_layout Standard
+Mit diesen Dingen im Hinterkopf führen wir nun einige abstrakte Begriffe
+ ein.
 \end_layout
 
 \begin_layout Section
@@ -944,6 +1674,13 @@ Definition
 \end_inset
 
 -Algebra, Maßraum, messbare Menge)
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Def-sigAlgebra"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -960,6 +1697,8 @@ Sei
 
 \begin_layout Standard
 Eine 
+\emph on
+
 \begin_inset Formula $\sigma$
 \end_inset
 
@@ -967,6 +1706,12 @@ Eine
 \begin_inset Formula $\mathcal{M}$
 \end_inset
 
+ über 
+\begin_inset Formula $X$
+\end_inset
+
+
+\emph default
  ist eine Menge von Teilmengen von 
 \begin_inset Formula $X$
 \end_inset
@@ -1051,8 +1796,16 @@ iii
 \begin_inset Formula $\mathcal{M}$
 \end_inset
 
-, so iat auch ihre Vereinigung 
-\begin_inset Formula ${\displaystyle \bigcup_{j=1}^{^{\infty}}A_{j}\in\mathcal{M}}$
+, so ist auch ihre Vereinigung
+\begin_inset Formula 
+\begin{align*}
+\bigcup_{j=1}^{^{\infty}}A_{j} & \in\mathcal{M}
+\end{align*}
+
+\end_inset
+
+ein Element von 
+\begin_inset Formula $\mathcal{M}$
 \end_inset
 
 .
@@ -1090,7 +1843,11 @@ end{iiilist}
 \emph on
 Maßraum
 \emph default
- (Messraum, measurable space).
+ (Messraum, 
+\lang english
+measurable space
+\lang ngerman
+).
 \end_layout
 
 \begin_layout Standard
@@ -1105,19 +1862,2956 @@ messbare Mengen
 .
 \end_layout
 
+\begin_layout Subsection
+Bemerkung
+\end_layout
+
+\begin_layout Itemize
+Seien 
+\begin_inset Formula $A_{1},\ldots,A_{n}\in\mathcal{M}$
+\end_inset
+
+ gegeben, so bilde:
+\begin_inset Formula 
+\begin{align*}
+\left(B_{k}\right)_{k\in\mathbb{N}} & :=\left(A_{1},\ldots,A_{n},A_{n},\ldots\right)
+\end{align*}
+
+\end_inset
+
+Nach iii) gilt:
+\begin_inset Formula 
+\begin{align*}
+\bigcup_{k=1}^{n}A_{k}=\bigcup_{k\in\mathbb{N}}B_{k} & \in\mathcal{M}
+\end{align*}
+
+\end_inset
+
+Damit sind 
+\emph on
+endliche
+\emph default
+ Vereinigungen von Elementen aus 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ wieder messbar.
+\end_layout
+
+\begin_layout Itemize
+Seien 
+\begin_inset Formula $A_{k}\in\mathcal{M}$
+\end_inset
+
+ messbar für 
+\begin_inset Formula $k\in\mathbb{N}_{\ge1}$
+\end_inset
+
+.
+ Dann folgt:
+\begin_inset Formula 
+\begin{align*}
+\complement\bigcap_{k=1}^{\infty}A_{k} & =\underbrace{\bigcup_{k=1}^{\infty}\bigg(\underbrace{\complement A_{k}}_{\in\mathcal{M}\text{ (wg. ii))}}\bigg)}_{\in\mathcal{M}\text{ (wg. iii))}}
+\end{align*}
+
+\end_inset
+
+Also gilt:
+\begin_inset Formula 
+\begin{align*}
+\bigcap_{k=1}^{\infty}A_{k} & =\complement\left(\complement\bigcap_{k=1}^{\infty}A_{k}\right)=\complement\left(\bigcup_{k=1}^{\infty}\left(\complement A_{k}\right)\right)\in\mathcal{M}
+\end{align*}
+
+\end_inset
+
+Damit sind 
+\emph on
+abzählbare
+\emph default
+ Schnitte messbarer Mengen wieder messbar.
+\end_layout
+
+\begin_layout Subsection
+Beispiele 
+\series medium
+(Erzeugnis, offene Menge, Topologie, Borelalgebra)
+\end_layout
+
 \begin_layout Standard
-\begin_inset VSpace medskip
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{abclist}
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-TODO: Rest einfügen
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+abc
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\mathcal{M}=\left\{ \emptyset,X\right\} $
+\end_inset
+
+ ist die kleinste 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-Algebra über 
+\begin_inset Formula $X$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Die Potenzmenge 
+\begin_inset Formula $\mathcal{M}=\mathcal{P}\left(X\right)$
+\end_inset
+
+ ist als „Menge aller Teilmengen“ die größte 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-Algebra über
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $X$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Beide sind im Folgenden nicht interessant.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+abc
+\end_layout
+
+\end_inset
+
+ Sei 
+\begin_inset Formula $\mathcal{A}\subseteq\mathcal{P}\left(X\right)$
+\end_inset
+
+ ein beliebiges System von Teilmengen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\mathcal{M}\left(\mathcal{A}\right)$
+\end_inset
+
+ ist definiert als die kleinste 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-Algebra, die 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ als Teilmenge enthält, und heißt 
+\emph on
+das Erzeugnis von 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+
+\emph default
+.
+\begin_inset Formula 
+\begin{align*}
+\mathcal{M}\left(\mathcal{A}\right) & =\bigcap\left\{ \mathcal{M}\supseteq\mathcal{A}\text{ ist eine }\sigma\text{-Algebra}\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+abc
+\end_layout
+
+\end_inset
+
+ Sei 
+\begin_inset Formula $X=\mathbb{R}^{n}$
+\end_inset
+
+.
+ Definiere:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\Omega\subseteq\mathbb{R}$
+\end_inset
+
+ heißt 
+\emph on
+offen
+\emph default
+, falls für alle 
+\begin_inset Formula $x\in\Omega$
+\end_inset
+
+ ein 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+ mit 
+\begin_inset Formula $B_{\varepsilon}\left(x\right)\subseteq\Omega$
+\end_inset
+
+ gibt.
+\begin_inset Formula 
+\begin{align*}
+\mathcal{O} & =\left\{ \Omega\subseteq\mathbb{R}^{n}\text{ ist offen}\right\} 
+\end{align*}
+
+\end_inset
+
+heißt 
+\emph on
+Topologie
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Führe jetzt 
+\emph on
+die von der Topologie erzeugte 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-Algebra 
+\begin_inset Formula $\mathcal{B}:=\mathcal{M}\left(\mathcal{O}\right)$
+\end_inset
+
+, die Borelalgebra
+\emph default
+ ein.
+ Man kann also auf jedem topologischen Raum eine kanonische 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-Algebra einführen.
+\end_layout
+
+\begin_layout Standard
+Ein 
+\begin_inset Formula $A\in\mathcal{B}$
+\end_inset
+
+ heißt 
+\emph on
+Borelmenge
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Wegen 
+\begin_inset Formula $\mathcal{O}\subseteq\mathcal{B}$
+\end_inset
+
+ ist jede offene Menge eine Borelmenge.
+\end_layout
+
+\begin_layout Standard
+Jede abgeschlossene Menge 
+\begin_inset Formula $A$
+\end_inset
+
+ ist eine Borelmenge, denn 
+\begin_inset Formula $\complement A$
+\end_inset
+
+ ist offen, also ist 
+\begin_inset Formula $\complement A$
+\end_inset
+
+ eine Borelmenge und damit nach 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Def-sigAlgebra"
+
+\end_inset
+
+ ii) auch 
+\begin_inset Formula $A=\complement\left(\complement A\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Es gibt Borelmengen, die weder offen noch abgeschlossen sind, zum Beispiel
+ ist die abgeschlossene Menge 
+\begin_inset Formula $\left[0,1\right]\in\mathcal{B}$
+\end_inset
+
+ und auch die offene Menge 
+\begin_inset Formula $\left(2,3\right)\in\mathcal{B}$
+\end_inset
+
+ und daher auch deren Vereinigung 
+\begin_inset Formula $\left[0,1\right]\cup\left(2,3\right)\in\mathcal{B}$
+\end_inset
+
+, die aber weder offen noch abgeschlossen ist.
+\end_layout
+
+\begin_layout Standard
+Anderes Beispiel: 
+\begin_inset Formula $\left[0,1\right]\cup\left(1,2\right)=[0,2)\in\mathcal{B}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+abc
+\end_layout
+
+\end_inset
+
+ Betrachte für 
+\begin_inset Formula $z\in\mathbb{Z}$
+\end_inset
+
+ und 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+ die offenen Würfel:
+\begin_inset Formula 
+\begin{align*}
+W_{z,k} & \left\{ x\in\mathbb{R}^{n}\bigg|\frac{z_{j}-1}{2^{k+1}}<x_{j}<\frac{z_{j}+1}{2^{k+1}}\right\} 
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\mathcal{A} & :=\left\{ W_{z,k}|z\in\mathbb{Z}\wedge k\in\mathbb{N}\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Abbildung Würfel
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\mathcal{M}\left(\mathcal{A}\right)$
+\end_inset
+
+ ist die von den Würfeln erzeugte 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-Algebra und wieder die Borelalgebra, denn sei 
+\begin_inset Formula $\Omega\subseteq\mathbb{R}^{n}$
+\end_inset
+
+ eine offene Teilmenge.
+\end_layout
+
+\begin_layout Standard
+Schöpfe 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ durch abzählbar viele Würfel aus, also
+\begin_inset Formula 
+\begin{align*}
+\Omega & =\bigcup_{n=1}^{\infty}W_{n}\in\mathcal{A}
+\end{align*}
+
+\end_inset
+
+mit 
+\begin_inset Formula $W_{n}\in\mathcal{A}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Abbildung Ausschöpfung
+\end_layout
+
+\begin_layout Standard
+Da eine 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-Algebra unter abzählbaren Mengenoperationen abgeschlossen ist, folgt 
+\begin_inset Formula $\Omega\in\mathcal{M}\left(\mathcal{A}\right)$
+\end_inset
+
+.
+ Es liegen also alle offenen Mengen in 
+\begin_inset Formula $\mathcal{M}\left(\mathcal{A}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Da 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+ die 
+\emph on
+kleinste
+\emph default
+ 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-Algebra ist, die alle offenen Mengen enthält, folgt 
+\begin_inset Formula $\mathcal{B}=\mathcal{M}\left(\mathcal{A}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Fr 21.10.11
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Genauer in einer Dimension:
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $X=\mathbb{R}$
+\end_inset
+
+.
+ Ist 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+ gegeben, so bilde das Gitter:
+\begin_inset Formula 
+\begin{align*}
+2^{-k+1}\cdot\mathbb{Z} & =\left\{ \frac{l}{2^{k+1}}\bigg|l\in\mathbb{Z}\right\} 
+\end{align*}
+
+\end_inset
+
+Für 
+\begin_inset Formula $l\in\mathbb{Z}$
+\end_inset
+
+ definiere:
+\begin_inset Formula 
+\begin{align*}
+W_{l,k} & =\left(\left(l-1\right)\cdot2^{-k+1},\left(l+1\right)\cdot2^{-k+1}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Abbildung eindimensionales Gitter
+\end_layout
+
+\begin_layout Standard
+Dann ist
+\begin_inset Formula 
+\begin{align*}
+W_{k} & =\left\{ W_{l,k}|l\in\mathbb{Z}\right\} \subseteq\mathcal{P}\left(\mathbb{R}\right)
+\end{align*}
+
+\end_inset
+
+abzählbar und auch
+\begin_inset Formula 
+\begin{align*}
+W & :=\bigcup_{k=1}^{\infty}W_{k}
+\end{align*}
+
+\end_inset
+
+ein abzählbares Mengensystem.
+\end_layout
+
+\begin_layout Subsubsection*
+Behauptung
+\end_layout
+
+\begin_layout Standard
+Die Würfel erzeugen bereits die gesamte Borelalgebra:
+\begin_inset Formula 
+\begin{align*}
+\mathcal{M}\left(W\right) & =\mathcal{B}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Offensichtlich ist 
+\begin_inset Formula $\mathcal{M}\left(W\right)\subseteq\mathcal{M}\left(\mathcal{O}\right)=\mathcal{B}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Zu zeigen ist, dass 
+\begin_inset Formula $\mathcal{M}\left(W\right)$
+\end_inset
+
+ alle offenen Mengen enthält.
+\end_layout
+
+\begin_layout Standard
+Sei also 
+\begin_inset Formula $\Omega\subseteq\mathbb{R}$
+\end_inset
+
+ offen.
+ Dann ist
+\begin_inset Formula 
+\begin{align*}
+A & =\bigcup\left\{ U\subseteq\Omega|U\in W\right\} 
+\end{align*}
+
+\end_inset
+
+ist eine abzählbare Vereinigung von Würfeln, also ist 
+\begin_inset Formula $A\in\mathcal{M}\left(W\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Es gilt:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+A & =\Omega
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A\subseteq\Omega$
+\end_inset
+
+ ist klar, da 
+\begin_inset Formula $U\subseteq\Omega$
+\end_inset
+
+ ist.
+\end_layout
+
+\begin_layout Standard
+Umgekehrt ist 
+\begin_inset Formula $A\supseteq\Omega$
+\end_inset
+
+, denn für 
+\begin_inset Formula $x\in\Omega$
+\end_inset
+
+ gibt es ein 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+ mit 
+\begin_inset Formula $\left(x-\varepsilon,x+\varepsilon\right)\in\Omega$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Wähle 
+\begin_inset Formula $k$
+\end_inset
+
+ so groß, dass 
+\begin_inset Formula ${\displaystyle 2^{-k}<\frac{\varepsilon}{4}}$
+\end_inset
+
+ ist.
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Abbildung Zahlenstrahl
+\end_layout
+
+\begin_layout Standard
+Dann gibt es ein 
+\begin_inset Formula $l\in\mathbb{Z}$
+\end_inset
+
+ mit 
+\begin_inset Formula $x\in W_{l,k}$
+\end_inset
+
+, also ist 
+\begin_inset Formula $A=\Omega$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Daher ist 
+\begin_inset Formula $A=\Omega\in\mathcal{M}\left(W\right)$
+\end_inset
+
+ und somit folgt
+\begin_inset Formula 
+\begin{align*}
+\mathcal{M}\left(\mathcal{O}\right) & \subseteq\mathcal{M}\left(W\right)\subseteq\mathcal{M}\left(\mathcal{O}\right)
+\end{align*}
+
+\end_inset
+
+Also ist 
+\begin_inset Formula $\mathcal{M}\left(W\right)=\mathcal{M}\left(\mathcal{O}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[Behauptung]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{abclist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Alle Borelmengen sollten also messbar sein.
+\end_layout
+
+\begin_layout Standard
+Betrachte auf topologischen Räumen, sofern nichts anderes gesagt wird, stets
+ die Borelalgebra als 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-Algebra.
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(Erzeugendensystem, messbare Abbildung)
+\end_layout
+
+\begin_layout Standard
+Eine Teilmenge 
+\begin_inset Formula $\mathcal{A}\subseteq\mathcal{M}$
+\end_inset
+
+ heißt 
+\emph on
+Erzeugendensystem
+\emph default
+ von 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+, falls 
+\begin_inset Formula $\mathcal{M}\left(\mathcal{A}\right)=\mathcal{M}$
+\end_inset
+
+ ist.
+\end_layout
+
+\begin_layout Standard
+Eine Abbildung 
+\begin_inset Formula $f:X\to Y$
+\end_inset
+
+ zwischen Maßräumen 
+\begin_inset Formula $\left(X,M\right)$
+\end_inset
+
+ und 
+\begin_inset Formula $\left(Y,M'\right)$
+\end_inset
+
+ heißt 
+\emph on
+messbar
+\emph default
+, falls das Urbild messbarer Mengen messbar ist.
+\end_layout
+
+\begin_layout Subsubsection*
+Bemerkung
+\end_layout
+
+\begin_layout Standard
+Die Definition der Messbarkeit hat Ähnlichkeit mit der Definition der Stetigkeit
+:
+\end_layout
+
+\begin_layout Standard
+Eine Abbildung 
+\begin_inset Formula $f:X\to Y$
+\end_inset
+
+ heißt 
+\emph on
+stetig
+\emph default
+, falls das Urbild 
+\emph on
+offener
+\emph default
+ Mengen 
+\emph on
+offen
+\emph default
+ ist.
+\end_layout
+
+\begin_layout Subsection
+Beispiel
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $W$
+\end_inset
+
+ ist ein Erzeugendensystem der Borelalgebra von 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Nach Definition ist jede stetige Funktion automatisch messbar, denn es gilt:
+\begin_inset Newline newline
+\end_inset
+
+Sei 
+\begin_inset Formula $f:X\to Y$
+\end_inset
+
+ stetig, dann ist für jede offene Menge 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ nach Definition auch 
+\begin_inset Formula $f^{-1}\left(\Omega\right)$
+\end_inset
+
+ offen.
+\begin_inset Newline newline
+\end_inset
+
+Beachte für Mengen 
+\begin_inset Formula $V,V_{j}\subseteq Y$
+\end_inset
+
+ mit 
+\begin_inset Formula $j\in\mathbb{N}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+f^{-1}\left(\bigcup_{j=1}^{\infty}V_{j}\right) & =\bigcup_{j=1}^{\infty}f^{-1}\left(V_{j}\right)\\
+f^{-1}\left(\complement V\right) & =\complement f^{-1}\left(V\right)
+\end{align*}
+
+\end_inset
+
+Die Mengenoperatoren sind also mit dem Bilden des Urbilds verträglich.
+\begin_inset Newline newline
+\end_inset
+
+Sei 
+\begin_inset Formula $\mathcal{A}\subseteq Y$
+\end_inset
+
+ messbar, also in 
+\begin_inset Formula $\mathcal{B}\left(Y\right)$
+\end_inset
+
+.
+ Dann ist 
+\begin_inset Formula $f^{-1}\left(\mathcal{A}\right)\in\mathcal{B}\left(X\right)$
+\end_inset
+
+, also ist 
+\begin_inset Formula $f$
+\end_inset
+
+ tatsächlich messbar.
+\end_layout
+
+\begin_layout Subsection
+Satz
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Satz-messCircMessIstMess"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Seien 
+\begin_inset Formula $X$
+\end_inset
+
+ ein Maßraum und 
+\begin_inset Formula $Y,Z$
+\end_inset
+
+ topologische Räume mit zugehöriger Borelalgebra.
+\end_layout
+
+\begin_layout Standard
+Ist 
+\begin_inset Formula $f:X\to Y$
+\end_inset
+
+ messbar und 
+\begin_inset Formula $g:Y\to Z$
+\end_inset
+
+ messbar, so ist 
+\begin_inset Formula $g\circ f:X\to Z$
+\end_inset
+
+ messbar.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Zu zeigen ist, dass für alle messbaren 
+\begin_inset Formula $A\subseteq Z$
+\end_inset
+
+ schon 
+\begin_inset Formula $\left(g\circ f\right)^{-1}\left(A\right)$
+\end_inset
+
+ messbar ist.
+\end_layout
+
+\begin_layout Standard
+Es genügt wieder 
+\begin_inset Formula $A$
+\end_inset
+
+ in einem Erzeugendensystem zu betrachten.
+ Wähle als solches die offenen Mengen.
+\end_layout
+
+\begin_layout Standard
+Sei also 
+\begin_inset Formula $A\in\mathcal{O}$
+\end_inset
+
+, dann ist 
+\begin_inset Formula $g^{-1}\left(A\right)$
+\end_inset
+
+ messbar, weil 
+\begin_inset Formula $g$
+\end_inset
+
+ messbar ist und daher auch
+\begin_inset Formula 
+\begin{align*}
+f^{-1}\left(g^{-1}\left(A\right)\right) & =\left(f^{-1}\circ g^{-1}\right)\left(A\right)=\left(g\circ f\right)^{-1}\left(A\right)
+\end{align*}
+
+\end_inset
+
+messbar, weil 
+\begin_inset Formula $f$
+\end_inset
+
+ messbar ist.
+\end_layout
+
+\begin_layout Standard
+Insgesamt ist also 
+\begin_inset Formula $g\circ f$
+\end_inset
+
+ messbar.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Bemerkung
+\end_layout
+
+\begin_layout Standard
+Betrachte im Folgenden 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbb{R}^{n}$
+\end_inset
+
+ mit 
+\begin_inset Formula $n\in\mathbb{N}_{\ge1}$
+\end_inset
+
+ oder 
+\emph on
+die Kompaktifizierung der reellen Zahlen
+\emph default
+ 
+\begin_inset Formula $\overline{\mathbb{R}}=\mathbb{R}\cup\left\{ -\infty,\infty\right\} $
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\mathcal{O} & =\left\langle \left\{ \text{offene Teilmengen von }\mathbb{R}\right\} \cup\left\{ (a,\infty]|a\in\mathbb{R}\right\} \cup\left\{ [-\infty,a)|a\in\mathbb{R}\right\} \right\rangle 
+\end{align*}
+
+\end_inset
+
+Dies ist die von diesen Mengen erzeugte Topologie.
+\end_layout
+
+\begin_layout Standard
+Konkreter: Bilde die Bijektion
+\begin_inset Formula 
+\begin{align*}
+\phi:\overline{\mathbb{R}} & \to\left[-1,1\right]\\
+x & \mapsto\begin{cases}
+\hfill\tanh\left(x\right) & x\in\mathbb{R}\\
+\hfill+1 & x=+\infty\\
+\hfill-1 & x=-\infty
+\end{cases}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Abbildung Kompaktifizierung
+\end_layout
+
+\begin_layout Standard
+Betrachte auf 
+\begin_inset Formula $\overline{\mathbb{R}}$
+\end_inset
+
+ die Topologie, die von 
+\begin_inset Formula $\phi$
+\end_inset
+
+ induziert wird, also ist 
+\begin_inset Formula $\Omega\subseteq\overline{\mathbb{R}}$
+\end_inset
+
+ genau dann offen, wenn 
+\begin_inset Formula $\phi\left(\Omega\right)\subseteq\left[-1,1\right]$
+\end_inset
+
+ offen ist.
+\end_layout
+
+\begin_layout Subsection
+Satz
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Satz-Messbarkeit"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $X$
+\end_inset
+
+ ein Maßraum.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $f:X\to\overline{\mathbb{R}}$
+\end_inset
+
+ ist genau dann messbar, wenn für jedes 
+\begin_inset Formula $a\in\mathbb{Q}$
+\end_inset
+
+ die Mengen mit 
+\begin_inset Formula $\left\{ x|f\left(x\right)>a\right\} $
+\end_inset
+
+ messbar sind.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $f:X\to\mathbb{R}^{n}$
+\end_inset
+
+ ist genau dann messbar, wenn ihre Komponenten messbar sind.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ Die messbaren Abbildungen 
+\begin_inset Formula $X\to\mathbb{R}^{n}$
+\end_inset
+
+ bilden einen Vektorraum.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ Ist 
+\begin_inset Formula $f:X\to\mathbb{R}^{n}$
+\end_inset
+
+ messbar, so ist auch 
+\begin_inset Formula $\left|f\right|:X\to\mathbb{R}_{0}^{+}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Sind 
+\begin_inset Formula $g,h:X\to\mathbb{R}$
+\end_inset
+
+ messbar, so auch ihr Produkt 
+\begin_inset Formula $g\cdot h:X\to\mathbb{R}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ „
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+“: Ist klar, da 
+\begin_inset Formula $\left\{ x|f\left(x\right)>a\right\} =f^{-1}\left((a,\infty]\right)$
+\end_inset
+
+ als Urbild einer messbaren Menge messbar ist.
+\end_layout
+
+\begin_layout Standard
+„
+\begin_inset Formula $\Leftarrow$
+\end_inset
+
+“: Seien 
+\begin_inset Formula $a<b\in\mathbb{R}$
+\end_inset
+
+.
+ Auf 
+\begin_inset Formula $\overline{\mathbb{R}}$
+\end_inset
+
+ betrachten wir die Borelalgebra, die von den offenen Intervallen und 
+\begin_inset Formula $(a,\infty],[-\infty,a)$
+\end_inset
+
+ erzeugt wird.
+\end_layout
+
+\begin_layout Standard
+Wir betrachten ein möglichst einfaches Erzeugendensystem:
+\begin_inset Formula 
+\begin{align*}
+\mathcal{E} & =\left\{ (a,\infty]|a\in\mathbb{R}\right\} 
+\end{align*}
+
+\end_inset
+
+Es ist 
+\begin_inset Formula $\left[-\infty,a\right]\in\mathcal{M}\left(\mathcal{E}\right)$
+\end_inset
+
+, da Komplemente gebildet werden können.
+\end_layout
+
+\begin_layout Standard
+Es ist 
+\begin_inset Formula $[-\infty,a)=\left[-\infty,a-1\right]\cup\left(a-2,a\right)\in\mathcal{M}\left(\mathcal{E}\right)$
+\end_inset
+
+, da Vereinigungen gebildet werden können.
+\end_layout
+
+\begin_layout Standard
+Es ist 
+\begin_inset Formula $(a,b]=\left[-\infty,b\right]\cap\left(a,\infty\right)\in\mathcal{M}\left(\mathcal{E}\right)$
+\end_inset
+
+ und 
+\begin_inset Formula $\left(a,b\right)=[-\infty,b)\cap\left(a,\infty\right)\in\mathcal{M}\left(\mathcal{E}\right)$
+\end_inset
+
+, da Schnitte gebildet werden können.
+\end_layout
+
+\begin_layout Standard
+Also ist 
+\begin_inset Formula $\mathcal{M}\left(\mathcal{E}\right)=\mathcal{B}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Betrachte nun 
+\begin_inset Formula $\mathcal{E}_{\mathbb{Q}}=\left\{ (a,\infty]|a\in\mathbb{Q}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Behauptung 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\mathcal{M}\left(\mathcal{E}_{\mathbb{Q}}\right) & =\mathcal{M}\left(\mathcal{E}\right)=\mathcal{B}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Beweis 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Man muss zeigen, dass 
+\begin_inset Formula $\mathcal{M}\left(\mathcal{E}_{\mathbb{Q}}\right)\supseteq\mathcal{M}\left(\mathcal{E}\right)$
+\end_inset
+
+ ist.
+\begin_inset Newline newline
+\end_inset
+
+Sei also 
+\begin_inset Formula $(a,\infty]$
+\end_inset
+
+ und 
+\begin_inset Formula $a\in\mathbb{R}\setminus\mathbb{Q}$
+\end_inset
+
+, so wähle eine Folge 
+\begin_inset Formula $a_{n}\in\mathbb{Q}$
+\end_inset
+
+ mit 
+\begin_inset Formula $a_{n}\searrow a$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+(a,\infty] & =\bigcup_{n=1}^{\infty}\underbrace{(a_{n},\infty]}_{\in\mathcal{E}_{\mathbb{Q}}}\in\mathcal{M}\left(\mathcal{E}_{\mathbb{Q}}\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[Behauptung]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Weil für 
+\begin_inset Formula $V,V_{j}\in\overline{\mathbb{R}}$
+\end_inset
+
+ für 
+\begin_inset Formula $j\in\mathbb{N}$
+\end_inset
+
+ schon
+\begin_inset Formula 
+\begin{align*}
+f^{-1}\left(\bigcup_{j}V_{j}\right) & =\bigcup_{j}f^{-1}\left(V_{j}\right)\\
+f^{-1}\left(\complement V\right) & =\complement f^{-1}\left(V\right)
+\end{align*}
+
+\end_inset
+
+gilt, brauchen wir die Messbarkeit von 
+\begin_inset Formula $f^{-1}\left(\Omega\right)$
+\end_inset
+
+ nur für alle 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ eines Erzeugendensystems zeigen.
+\begin_inset Formula 
+\begin{align*}
+f^{-1}\left((a,\infty]\right) & =\left\{ x|f\left(x\right)>a\right\} 
+\end{align*}
+
+\end_inset
+
+ist aber nach Voraussetzung messbar, also 
+\begin_inset Formula $f$
+\end_inset
+
+ messbar.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[
+\backslash
+roman{ale2})]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ „
+\begin_inset Formula $\Leftarrow$
+\end_inset
+
+“: Es genügt wieder ein Erzeugendensystem von 
+\begin_inset Formula $\mathcal{B}\left(\mathbb{R}^{n}\right)$
+\end_inset
+
+ beziehungsweise 
+\begin_inset Formula $\mathcal{B}\left(\overline{\mathbb{R}}\right)$
+\end_inset
+
+ zu betrachten.
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $z\in\mathbb{Z}^{n}$
+\end_inset
+
+, dann ist
+\begin_inset Formula 
+\begin{align*}
+W_{z,k} & =\left\{ x\in\mathbb{R}^{n}\bigg|\frac{z_{l}-1}{2^{k+1}}<x_{l}<\frac{z_{l}+1}{2^{k+1}},l\in\left\{ 1,\ldots,n\right\} \right\} 
+\end{align*}
+
+\end_inset
+
+ein Würfel mit der Kantenlänge 
+\begin_inset Formula $2^{-k}$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+f^{-1}\left(W_{z,k}\right) & =\left\{ x\in X|f\left(x\right)\in W_{z,k}\right\} =\left\{ x\in X\bigg|\frac{z_{l}-1}{2^{k+1}}<f_{l}\left(x\right)<\frac{z_{l}+1}{2^{k+1}},l\in\left\{ 1,\ldots,n\right\} \right\} =\\
+ & =\bigcap_{l=1}^{n}\left\{ x\in X\bigg|f_{l}\left(x\right)\in\left(\frac{z_{l}-1}{2^{k+1}},\frac{z_{l}+1}{2^{k+1}}\right)\right\} =\bigcap_{l=1}^{n}f_{l}^{-1}\left(\left(\frac{z_{l}-1}{2^{k+1}},\frac{z_{l}+1}{2^{k+1}}\right)\right)
+\end{align*}
+
+\end_inset
+
+Nehme an, die 
+\begin_inset Formula $f_{l}:X\to\mathbb{R}$
+\end_inset
+
+ sind messbar.
+ Dann ist
+\begin_inset Formula 
+\begin{align*}
+f_{l}^{-1}\left(\left(\frac{z_{l}-1}{2^{k+1}},\frac{z_{l}+1}{2^{k+1}}\right)\right)
+\end{align*}
+
+\end_inset
+
+messbar und somit auch:
+\begin_inset Formula 
+\begin{align*}
+\bigcap_{l=1}^{n}f_{l}^{-1}\left(\left(\frac{z_{l}-1}{2^{k+1}},\frac{z_{l}+1}{2^{k+1}}\right)\right) & =f^{-1}\left(W_{z,k}\right)
+\end{align*}
+
+\end_inset
+
+Daher ist 
+\begin_inset Formula $f:X\to\mathbb{R}^{n}$
+\end_inset
+
+ messbar.
+\end_layout
+
+\begin_layout Standard
+„
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+“: Sei 
+\begin_inset Formula $f$
+\end_inset
+
+ messbar.
+ Dann ist
+\begin_inset Formula 
+\begin{align*}
+f_{l}^{-1}\left(\left(a,b\right)\right) & =f^{-1}\big(\overbrace{\mathbb{R}\times\ldots\times\mathbb{R}\times\underbrace{\left(a,b\right)}_{l\text{-tes Argument}}\times\mathbb{R}\times\ldots\times\mathbb{R}}^{\text{ist offen in }\mathbb{R}^{n}}\big)
+\end{align*}
+
+\end_inset
+
+messbar, da 
+\begin_inset Formula $f$
+\end_inset
+
+ messbar ist.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[
+\backslash
+roman{ale2})]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ Für messbare Abbildungen 
+\begin_inset Formula $f,g:X\to\mathbb{R}^{n}$
+\end_inset
+
+ ist auch
+\begin_inset Formula 
+\begin{align*}
+\left(f,g\right):X & \to\mathbb{R}^{n}\times\mathbb{R}^{n}\\
+x & \mapsto\left(f\left(x\right),g\left(x\right)\right)
+\end{align*}
+
+\end_inset
+
+messbar und für 
+\begin_inset Formula $\alpha,\beta\in\mathbb{R}$
+\end_inset
+
+ ist die Abbildung
+\begin_inset Formula 
+\begin{align*}
+\left\langle +\right\rangle :\mathbb{R}^{n}\times\mathbb{R}^{n} & \to\mathbb{R}^{n}\\
+\left(x,y\right) & \mapsto\alpha x+\beta y
+\end{align*}
+
+\end_inset
+
+stetig, also insbesondere messbar.
+ Nach 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Satz-messCircMessIstMess"
+
+\end_inset
+
+ ist dann auch die Verkettung
+\begin_inset Formula 
+\begin{align*}
+\left\langle +\right\rangle \circ\left(f,g\right):X & \to\mathbb{R}^{n}\\
+x & \mapsto\alpha f\left(x\right)+\beta g\left(x\right)
+\end{align*}
+
+\end_inset
+
+messbar.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[
+\backslash
+roman{ale2})]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ Es folgt mit 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Satz-messCircMessIstMess"
+
+\end_inset
+
+ analog zu iii) für messbare Abbildungen 
+\begin_inset Formula $f:X\to\mathbb{R}^{n}$
+\end_inset
+
+ und 
+\begin_inset Formula $g,h:X\to\mathbb{R}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\left|f\right|:X & \stackrel{\text{messbar}}{\to}\mathbb{R}^{n}\stackrel{\text{stetig}}{\to}\mathbb{R}\\
+x & \stackrel{\text{messbar}}{\mapsto}f\left(x\right)\stackrel{\text{stetig}}{\mapsto}\left|f\left(x\right)\right|\\
+g\cdot h:X & \stackrel{\text{messbar}}{\to}\mathbb{R}\times\mathbb{R}\stackrel{\text{stetig}}{\to}\mathbb{R}\\
+x & \stackrel{\text{messbar}}{\mapsto}\left(g\left(x\right),h\left(x\right)\right)\stackrel{\text{stetig}}{\mapsto}g\left(x\right)\cdot h\left(x\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Bemerkung
+\end_layout
+
+\begin_layout Standard
+ii) ist sehr nützlich, weil wir uns daher im Folgenden oft auf reelle Funktionen
+ beschränken können.
+\end_layout
+
+\begin_layout Standard
+Schön ist, dass Messbarkeit sich auf Grenzwerte überträgt.
+\end_layout
+
+\begin_layout Subsection
+Satz
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Satz-MessbarLimesMessbar"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ Sei 
+\begin_inset Formula $f_{n}:X\to\overline{\mathbb{R}}$
+\end_inset
+
+ eine Folge messbarer Funktionen, so sind auch die punktweise definierten
+ Funktionen
+\begin_inset Formula 
+\begin{align*}
+\sup_{n}f_{n} & ,\ \inf_{n}f_{n},\ \limsup_{n}f_{n},\ \liminf_{n}f_{n}
+\end{align*}
+
+\end_inset
+
+messbar.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ Konvergiert 
+\begin_inset Formula $\left(f_{n}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+ punktweise gegen 
+\begin_inset Formula $f$
+\end_inset
+
+, so ist 
+\begin_inset Formula $f$
+\end_inset
+
+ auch messbar.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ Zu zeigen ist nach 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Satz-Messbarkeit"
+
+\end_inset
+
+ i), dass für jedes 
+\begin_inset Formula $a\in\mathbb{Q}$
+\end_inset
+
+ schon 
+\begin_inset Formula $\left\{ x|\left(\sup_{n}f_{n}\right)\left(x\right)>a\right\} $
+\end_inset
+
+ messbar ist.
+ Die Menge
+\begin_inset Formula 
+\begin{align*}
+\left\{ x\bigg|\left(\sup_{n}f_{n}\right)\left(x\right)>a\right\}  & =\left\{ x\bigg|\sup_{n}\left(f_{n}\left(x\right)\right)>a\right\} =\bigcup_{n=1}^{\infty}\underbrace{\left\{ x|f_{n}\left(x\right)>a\right\} }_{\text{messbar, da }f\text{ messbar ist}}
+\end{align*}
+
+\end_inset
+
+ist als Vereinigung messbarer Mengen wieder messbar.
+\end_layout
+
+\begin_layout Standard
+Für 
+\begin_inset Formula $\inf_{n}f_{n}$
+\end_inset
+
+ folgt analog:
+\begin_inset Formula 
+\begin{align*}
+\left\{ x\bigg|\left(\inf_{n}f_{n}\right)\left(x\right)>a\right\}  & =\left\{ x\bigg|\inf_{n}\left(f_{n}\left(x\right)\right)>a\right\} =\bigcap_{n=1}^{\infty}\underbrace{\left\{ x|f_{n}\left(x\right)>a\right\} }_{\text{messbar, da }f\text{ messbar ist}}
+\end{align*}
+
+\end_inset
+
+Dieser Schnitt messbarer Mengen ist wieder messbar.
+\end_layout
+
+\begin_layout Standard
+Außerdem ist
+\begin_inset Formula 
+\begin{align*}
+\limsup_{n}f_{n} & =\inf_{j\in\mathbb{N}}\sup_{n\ge j}f_{n}
+\end{align*}
+
+\end_inset
+
+als Verkettung von messbaren Funktionen messbar.
+\end_layout
+
+\begin_layout Standard
+Für den Limes inferior folgt die Behauptung analog.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[
+\backslash
+roman{ale2})]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ Sei 
+\begin_inset Formula $f_{n}$
+\end_inset
+
+ punktweise konvergent.
+ Dann ist
+\begin_inset Formula 
+\begin{align*}
+f & =\lim_{n\to\infty}f_{n}\left(x\right)=\limsup_{n\to\infty}f_{n}\left(x\right)
+\end{align*}
+
+\end_inset
+
+nach i) messbar.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(Stufenfunktion)
+\end_layout
+
+\begin_layout Standard
+Eine messbare Funktion 
+\begin_inset Formula $\varphi:X\to\mathbb{R}$
+\end_inset
+
+, die nur endlich viele Werte annimmt, heißt 
+\emph on
+Stufenfunktion
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Abbildung Stufenfunktion einfügen
+\end_layout
+
+\begin_layout Subsection
+Satz
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Satz-messFolgeStufenfkt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ist 
+\begin_inset Formula $f:X\to\mathbb{R}_{0}^{+}$
+\end_inset
+
+ messbar, so gibt es eine aufsteigende Folge von Stufenfunktionen 
+\begin_inset Formula $\varphi_{n}$
+\end_inset
+
+, die punktweise gegen 
+\begin_inset Formula $f$
+\end_inset
+
+ konvergiert.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\varphi_{j}\left(x\right) & :=\begin{cases}
+\left(k-1\right)\cdot2^{-j} & \text{falls }\exs_{k\in\mathbb{N}_{<j\cdot2^{j}}}:\left(k-1\right)\le f\left(x\right)\cdot2^{j}\le k\\
+j & f\left(x\right)>j
+\end{cases}
+\end{align*}
+
+\end_inset
+
+hat offensichtlich die gewünschten Eigenschaften.
+\end_layout
+
+\begin_layout Standard
+Die punktweise Konvergenz 
+\begin_inset Formula $\varphi_{j}\to f$
+\end_inset
+
+ ist klar.
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Skizze erstellen
+\end_layout
+
+\begin_layout Subsubsection*
+Bemerkung
+\end_layout
+
+\begin_layout Standard
+Der Limes ist sogar gleichmäßig.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Korollar
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f:X\to\mathbb{R}^{n}$
+\end_inset
+
+ ist genau dann messbar, wenn 
+\begin_inset Formula $f$
+\end_inset
+
+ punktweiser Limes von Stufenfunktionen ist.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+„
+\begin_inset Formula $\Leftarrow$
+\end_inset
+
+“: Diese Aussage folgt direkt aus Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Satz-MessbarLimesMessbar"
+
+\end_inset
+
+ ii).
+\end_layout
+
+\begin_layout Standard
+„
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+“: Nach Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Satz-Messbarkeit"
+
+\end_inset
+
+ ii) genügt es den Fall 
+\begin_inset Formula $n=1$
+\end_inset
+
+ zu betrachten.
+ Setze:
+\begin_inset Formula 
+\begin{align*}
+f_{+} & :=\max\left(f,0\right) & f_{-} & :=\max\left(-f,0\right)
+\end{align*}
+
+\end_inset
+
+Dann ist 
+\begin_inset Formula $f=f_{+}-f_{-}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f_{+}$
+\end_inset
+
+ und 
+\begin_inset Formula $f_{-}$
+\end_inset
+
+ sind analog zu 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Satz-Messbarkeit"
+
+\end_inset
+
+ iv) messbar, da gilt:
+\begin_inset Formula 
+\begin{align*}
+f_{+} & =\frac{1}{2}\left(f+\left|f\right|\right)\\
+f_{-} & =\frac{1}{2}\left(\left|f\right|-f\right)
+\end{align*}
+
+\end_inset
+
+Approximiere sie nun gemäß Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Satz-messFolgeStufenfkt"
+
+\end_inset
+
+ durch Stufenfunktionen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(Maß)
+\end_layout
+
+\begin_layout Standard
+Ein 
+\emph on
+Maß
+\emph default
+ auf einem Maßraum 
+\begin_inset Formula $\left(X,\mathcal{M}\right)$
+\end_inset
+
+ ist eine Funktion
+\begin_inset Formula 
+\begin{align*}
+\mu: & \mathcal{M}\to\left[0,\infty\right]
+\end{align*}
+
+\end_inset
+
+mit den folgenden Eigenschaften:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\mu\left(\emptyset\right)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ Ist 
+\begin_inset Formula $\left(M_{j}\right)_{j\in\mathbb{N}}$
+\end_inset
+
+ eine Folge paarweise disjunkter messbarer Mengen, so gilt:
+\begin_inset Formula 
+\begin{align*}
+\mu\bigg(\underbrace{\bigcup_{j=1}^{\infty}M_{j}}_{\in\mathcal{M}}\bigg) & =\sum_{j=1}^{\infty}\mu\left(M_{j}\right)
+\end{align*}
+
+\end_inset
+
+Diese Eigenschaft nennt man 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-Additivität.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left(X,\mathcal{M},\mu\right)$
+\end_inset
+
+ heißt auch Messraum mit Maß.
+\end_layout
+
+\begin_layout Subsection
+Beispiele
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\mathcal{M}=\left\{ \emptyset,X\right\} $
+\end_inset
+
+, 
+\begin_inset Formula $\mu\left(\emptyset\right)=0$
+\end_inset
+
+, 
+\begin_inset Formula $\mu\left(X\right)\in\left[0,\infty\right]$
+\end_inset
+
+ kann beliebig gewählt werden, zum Beispiel 
+\begin_inset Formula $\mu\left(X\right)=1$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\mathcal{M}=\mathcal{P}\left(X\right)$
+\end_inset
+
+; Sei 
+\begin_inset Formula $p\in X$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\mu_{p}\left(A\right) & :=\begin{cases}
+1 & \text{falls }p\in A\\
+0 & \text{sonst}
+\end{cases}
+\end{align*}
+
+\end_inset
+
+Dies ist das sogenannte Dirac-Maß 
+\begin_inset Formula $\delta\left(x-p\right)\dd x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ Sei 
+\begin_inset Formula $X=\left\{ 1,\ldots,n\right\} $
+\end_inset
+
+ eine endliche Menge und 
+\begin_inset Formula $\mathcal{M}=\mathcal{P}\left(X\right)$
+\end_inset
+
+.
+ Verwende das Zählmaß:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(A\right) & :=\#A
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Satz
+\end_layout
+
+\begin_layout Standard
+Es gilt für alle 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ für alle 
+\begin_inset Formula $A_{n}\in\mathcal{M}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{abclist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+abc
+\end_layout
+
+\end_inset
+
+ Ist 
+\begin_inset Formula $A_{1}\cap A_{2}=\emptyset$
+\end_inset
+
+, so folgt die Additivität:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(A_{1}\dot{\cup}A_{2}\right) & =\mu\left(A_{1}\right)+\mu\left(A_{2}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+abc
+\end_layout
+
+\end_inset
+
+ Monotonie:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(\bigcup_{n=1}^{\infty}A_{n}\right) & \le\sum_{n=1}^{\infty}\mu\left(A_{n}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+abc
+\end_layout
+
+\end_inset
+
+ Für eine aufsteigende Folge 
+\begin_inset Formula $A_{1}\subseteq A_{2}\subseteq\ldots$
+\end_inset
+
+ messbarer Mengen gilt:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(\bigcup_{n=1}^{\infty}A_{n}\right) & =\lim_{n\to\infty}\mu\left(A_{n}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{abclist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{abclist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+abc
+\end_layout
+
+\end_inset
+
+ Setze 
+\begin_inset Formula $A_{3}=A_{4}=\ldots=\emptyset$
+\end_inset
+
+.
+ Aus der 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-Additivität folgt:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(A_{1}\dot{\cup}A_{2}\right) & =\mu\left(\bcupd_{n=1}^{\infty}A_{n}\right)=\sum_{n=1}^{\infty}\mu\left(A_{n}\right)=\mu\left(A_{1}\right)+\mu\left(A_{2}\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[
+\backslash
+alph{ale})]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+abc
+\end_layout
+
+\end_inset
+
+ Setze 
+\begin_inset Formula $B_{1}=A_{1}$
+\end_inset
+
+ und für 
+\begin_inset Formula $n\in\mathbb{N}_{\ge2}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+B_{n} & :=A_{n}\setminus\left\{ A_{1}\cup\ldots\cup A_{n-1}\right\} 
+\end{align*}
+
+\end_inset
+
+
+\color green
+TODO: Abbildung von 
+\begin_inset Formula $B_{n}$
+\end_inset
+
+ einfügen
+\end_layout
+
+\begin_layout Standard
+Die 
+\begin_inset Formula $B_{n}$
+\end_inset
+
+ sind nach Konstruktion paarweise disjunkt und es gilt:
+\begin_inset Formula 
+\begin{align*}
+\bigcup_{n=1}^{\infty}B_{n} & =\bigcup_{n=1}^{\infty}A_{n}\\
+\mu\left(\bigcup_{n=1}^{\infty}A_{n}\right) & =\mu\left(\bigcup_{n=1}^{\infty}B_{n}\right)\stackrel{\sigma\text{-Additivität}}{=}\sum_{n=1}^{\infty}\mu\left(B_{n}\right)\le\sum_{n=1}^{\infty}\mu\left(A_{n}\right)
+\end{align*}
+
+\end_inset
+
+Letzteres folgt, da gilt:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(A_{n}\right) & =\mu\left(B_{n}\dot{\cup}A_{n}\setminus B_{n}\right)\stackrel{\text{a)}}{=}\mu\left(B_{n}\right)+\underbrace{\mu\left(A_{n}\setminus B_{n}\right)}_{\ge0}\ge\mu\left(B_{n}\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[
+\backslash
+alph{ale})]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+abc
+\end_layout
+
+\end_inset
+
+ Setze 
+\begin_inset Formula $B_{n}$
+\end_inset
+
+ wie in b), so folgt wegen 
+\begin_inset Formula $A_{1}\subseteq A_{2}\subseteq\ldots$
+\end_inset
+
+ schon 
+\begin_inset Formula $B_{n}=A_{n}\setminus A_{n-1}$
+\end_inset
+
+.
+ Es folgt:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(A_{n}\right) & =\mu\left(B_{1}\dot{\cup}\ldots\dot{\cup}B_{n}\right)=\sum_{j=1}^{n}\mu\left(B_{j}\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $\left(\mu\left(A_{n}\right)\right)_{n\in\mathbb{N}}$
+\end_inset
+
+ ist eine monoton steigende Folge, womit folgt:
+\begin_inset Formula 
+\begin{align*}
+\lim_{n\to\infty}\mu\left(A_{n}\right) & =\sum_{j=1}^{\infty}\mu\left(B_{j}\right)=\mu\left(\bcupd_{j=1}^{\infty}B_{j}\right)=\mu\left(\bigcup_{j=1}^{\infty}A_{j}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{abclist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE Di 25.10.11
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
-Konstruktion des 1-dimensionalen Lebesgue-Maßes
+Konstruktion des eindimensionalen Lebesgue-Maßes
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+eindimensionales Lebesgue-Maß
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Rest überarbeiten
 \end_layout
 
 \begin_layout Standard
@@ -2374,6 +6068,17 @@ TODO: Rest einfügen
 
 \begin_layout Section
 Integration nicht-negativer Funktionen
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+Integration nicht-neg.
+ Fkt.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2782,6 +6487,17 @@ qqed
 
 \begin_layout Section
 Zusammenhang zum Riemann-Integral
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+Zsh.
+ zum Riemann-Integral
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5680,7 +9396,17 @@ Falls
 \end_layout
 
 \begin_layout Section
-Analytische Funktionen, die Cauchy-Riemanschen Differentialgleichungen
+Analytische Funktionen, die Cauchy-Riemannschen Differentialgleichungen
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+Cauchy-Riemann DGLn
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
