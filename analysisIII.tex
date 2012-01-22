@@ -1,4 +1,4 @@
-%% LyX 2.0.2 created this file.  For more info, see http://www.lyx.org/.
+%% LyX 2.0.1 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
 \documentclass[11pt,english,ngerman]{report}
 \usepackage[T1]{fontenc}
@@ -41,12 +41,12 @@
 \@ifundefined{date}{}{\date{}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 \usepackage{tikz}
+\usetikzlibrary{matrix,arrows,calc}
 \usepackage{latexsym,stmaryrd,stackrel,array,tabularx,multirow}
 \usepackage[explicit]{titlesec}
-\usepackage{makeidx}
 %\usepackage{polynom} % momentan nicht benötigt
 
-%Inhaltsverzeichnis
+% Inhaltsverzeichnis
 \usepackage{tocloft}
 \tocloftpagestyle{fancy}
 
@@ -62,32 +62,36 @@
 \renewcommand{\cftsubsubsecindent}{9 em}
 \renewcommand{\cftsubsubsecnumwidth}{4.5 em}
 
-
-%Kommandos mit optionalem Argument (für Lyx)
+% Kommandos mit optionalem Argument (für Lyx)
 \newcommand{\sr}[3]{\stackrel[#3]{#2}{#1}}
 
-%Mathe-Operatoren
+% Mathe-Operatoren
 \DeclareMathOperator*{\exs}{\exists}
 \DeclareMathOperator*{\exsg}{\exists!}
 \DeclareMathOperator*{\fall}{\forall}
 \DeclareMathOperator*{\bcupd}{\dot{\bigcup}}
 \DeclareMathOperator*{\bcapd}{\dot{\bigcap}}
 
-%Eigene Abkürzungen
+% Eigene Abkürzungen
 \newcommand{\dd}{\textnormal{d}}
-\newcommand{\im}{\textnormal{im}}
-\newcommand{\id}{\textnormal{id}}
 \newcommand{\ii}{\textbf{i}}
+
+% Rotieren
+\newcommand{\Rotate}[1]{
+\begin{tikzpicture}
+\node[rotate=90] {\ensuremath{#1}};
+\end{tikzpicture}
+}
 
 %QED-Zeichen (Box)
 \newcommand{\qed}{\ensuremath{\Box}}
-\newcommand{\qqed}[1][\arabic{chapter}.\arabic{section}.\arabic{subsection}]{\begin{flushright}\qed\ensuremath{_{\text{#1}}}\end{flushright}}
+\newcommand{\qqed}[1][\arabic{chapter}.\arabic{section}\ifnum\arabic{subsection}>0{.\arabic{subsection}}\fi]{\begin{flushright}\qed\ensuremath{_{\text{#1}}}\end{flushright}}
 
-%Definitons-Zeichen
+% Definitons-Zeichen
 \newcommand{\dfn}{\mathrel{\mathop:}=}
-%Menge: TODO: auch die Höhe der zweiten Hälfte für den Strich berücksichtigen!
+% Menge: TODO: auch die Höhe der zweiten Hälfte für den Strich berücksichtigen!
 \newcommand{\mng}[2]{\ensuremath{\left\{#1\,\left.\vphantom{#1#2}\right|\,#2\right\}}}
-%Abbildung:
+% Abbildung
 \newcommand{\abb}[5]{#1:#2\to #3:#4\mapsto #5}
 
 % Mengen Modulo
@@ -95,6 +99,14 @@
 \mbox{\raisebox{0.6ex}{\ensuremath{\displaystyle #1}}%
 {\Large /}%
 \raisebox{-0.6ex}{\ensuremath{\displaystyle #2}}%
+}%
+}
+
+% Links Modulo
+\newcommand{\lmodulo}[2]{%
+\mbox{\raisebox{-0.6ex}{\ensuremath{\displaystyle #1}}%
+{\Large \ensuremath{\backslash}}%
+\raisebox{0.6ex}{\normalsize\ensuremath{\displaystyle #2}}%
 }%
 }
 
@@ -114,6 +126,14 @@
 }%
 }
 
+% Links Modulo Script
+\newcommand{\lmoduloScript}[2]{%
+\mbox{\raisebox{-0.4ex}{\scriptsize\ensuremath{\displaystyle #1}}%
+{\footnotesize \ensuremath{\backslash}}%
+\raisebox{0.4ex}{\scriptsize\ensuremath{\displaystyle #2}}%
+}%
+}
+
 \newcommand{\modloScript}[2]{%
 \mbox{\raisebox{0.4ex}{\scriptsize\ensuremath{\displaystyle \mathbb{#1}}}%
 {\footnotesize /}%
@@ -121,13 +141,13 @@
 }%
 }
 
-%Wurzel mit Häkchen
+% Wurzel mit Häkchen
 \newcommand{\hsqrt}[2][{}]{\setbox0=\hbox{$\sqrt[#1]{\phantom{|}\!\! #2\hspace*{1pt}}$}\dimen0=\ht0
   \advance\dimen0-0.2\ht0
   \setbox2=\hbox{\vrule height\ht0 depth -\dimen0}
   {\box0\lower0.4pt\box2}}
 
-%alphabetische Aufzählung
+% alphabetische Aufzählung
 \newcounter{ale}
 \newcommand{\abc}{\stepcounter{ale}\item[\alph{ale})]}
 \newenvironment{abclist}{\begin{itemize} \setcounter{ale}{0}}{\end{itemize}}
@@ -136,7 +156,6 @@
 \newcounter{ale2}
 \newcommand{\iii}{\stepcounter{ale2}\item[\textnormal{\roman{ale2})}]}
 \newenvironment{iiilist}{\begin{itemize} \setcounter{ale2}{0}}{\end{itemize}}
-
 
 % Damit nicht immer "Kapitel 1" etc. über der Kapitelüberschrift steht
 \titleformat{\chapter}
@@ -154,15 +173,12 @@
 % Kopf- und Fußzeile
 % Höhe der Kopfzeile
 \setlength{\headheight}{14pt}
+%\renewcommand{\headrulewidth}{0.4pt} %obere Trennlinie
 \fancyhf{} %alle Kopf- und Fußzeilenfelder bereinigen
 \fancyhead[L]{\textbf{Analysis III}} %Kopfzeile links
 \fancyhead[C]{\leftmark} %zentrierte Kopfzeile
 \fancyhead[R]{\rightmark} %Kopfzeile rechts
-%\renewcommand{\headrulewidth}{0.4pt} %obere Trennlinie
 \fancyfoot[C]{\thepage\quad\!\!\!\slash\quad\!\!\!\pageref{END-front}} %Seitenzahl der Front-Matter
-
-% Datum
-%\date{Stand: \today}
 
 \AtBeginDocument{
   \def\labelitemiii{\(\succ\)}
@@ -176,8 +192,8 @@
 \pagenumbering{roman}
 
 
-\title{\textbf{\huge \vspace*{-30mm}}\\
-\textbf{\huge Analysis III}}
+\title{\textbf{\Huge \vspace*{-30mm}}\\
+\textbf{\Huge Analysis III}}
 
 
 \author{\textit{\small Vorlesung von}\\
@@ -193,6 +209,8 @@ Stand: \today}
 \maketitle
 \fancyhead[R]{Lizenz}
 \setcounter{page}{2} % sonst gibt es aus irgendeinem Grund zweimal die Seite 1!?!?!?
+
+\vspace*{-15mm}
 
 
 \subsubsection*{ACHTUNG}
@@ -225,8 +243,9 @@ Free Documentation License\textquotedblright{}.
 
 \noun{Unless otherwise mutually agreed to by the parties in writing
 and to the extent not prohibited by applicable law, }\textbf{\noun{the
-copyright holders  provide the document \textquotedblleft{}as is}}\textbf{\textquotedblright{}}\textbf{\noun{
-without warranties of any kind}}\noun{, expressed, implied, statutory
+Copyright Holders and any other party, who may distribute the Document
+as permitted above,   provide the Document \textquotedblleft{}as is}}\textbf{\textquotedblright{},}\textbf{\noun{
+without warranty of any kind}}\noun{, expressed, implied, statutory
 or otherwise, including, but not limited to, the implied warranties
 of merchantability, fitness for a particular purpose, non-infringement,
 the absence of latent or other defects, accuracy, or the absence of
@@ -236,19 +255,19 @@ errors, whether or not discoverable.}
 \subsubsection*{Limitation of Liability}
 
 \textbf{\noun{In no event}}\noun{ unless required by applicable law
-or agreed to in writing }\textbf{\noun{will the copyright holders
-be liable to you for any loss}}\noun{ of revenue, profit or anything
-else, }\textbf{\noun{or for any damages}}\noun{, including, but not
-limited to, any general, special, incidental, consequential, punitive
-or exemplary damages, however caused, regardless of the theory of
-liability, arising out of or related to this license or the use of
-or inability to use the document, even if the copyright holders have
-been advised of the possibility of such damages.}
+or agreed to in writing }\textbf{\noun{will the Copyright Holders,
+or any other party, who may distribute the Document as permitted above,
+be liable to you for any damages}}\noun{, including, but not limited
+to, any general, special, incidental, consequential, punitive or exemplary
+damages, however caused, regardless of the theory of liability, arising
+out of or related to this license or any use of or inability to use
+the Document, even if they have been advised of the possibility of
+such damages.}
 
-\textbf{\noun{In no event will the copyright holders' liability to
-you}}\noun{, whether in contract, tort (including negligence), or
-otherwise, }\textbf{\noun{exceed the amount you paid the copyright
-holders}}\noun{ for the document under this agreement.}
+\textbf{\noun{In no event will the Copyright Holders'/Distributor's
+liability to you}}\noun{, whether in contract, tort (including negligence),
+or otherwise, }\textbf{\noun{exceed the amount you paid the Copyright
+Holders/Distributor}}\noun{ for the document under this agreement.}
 
 \selectlanguage{ngerman}%
 
@@ -785,7 +804,7 @@ Dann ist $f^{-1}\left(\mathcal{A}\right)\in\mathcal{B}\left(X\right)$,
 also ist $f$ tatsächlich messbar.
 \end{itemize}
 
-\subsection{Satz\label{sub:Satz-messCircMessIstMess}}
+\subsection{Satz \textmd{(Messbarkeit ist transitiv)}\label{sub:Satz-messCircMessIstMess}}
 
 Seien $X$ ein Maßraum und $Y,Z$ topologische Räume mit zugehöriger
 Borelalgebra.
@@ -814,7 +833,7 @@ Insgesamt ist also $g\circ f$ messbar.
 \qqed
 
 
-\subsection{Bemerkung}
+\subsection{Bemerkung und Definition \textmd{(Kompaktifizierung)}}
 
 Betrachte im Folgenden $\mathbb{R}$, $\mathbb{R}^{n}$ mit $n\in\mathbb{N}_{\ge1}$
 oder \emph{die Kompaktifizierung der reellen Zahlen} $\overline{\mathbb{R}}=\mathbb{R}\cup\left\{ -\infty,\infty\right\} $.
@@ -842,7 +861,7 @@ dann offen, wenn $\phi\left(\Omega\right)\subseteq\left[-1,1\right]$
 offen ist.
 
 
-\subsection{Satz\label{sub:Satz-Messbarkeit}}
+\subsection{Satz \textmd{(Messbarkeit)}\label{sub:Satz-Messbarkeit}}
 
 Sei $X$ ein Maßraum.
 
@@ -1002,7 +1021,7 @@ Funktionen beschränken können.
 Schön ist, dass Messbarkeit sich auf Grenzwerte überträgt.
 
 
-\subsection{Satz\label{sub:Satz-MessbarLimesMessbar}}
+\subsection{Satz \textmd{(Limes ist messbar)}\label{sub:Satz-MessbarLimesMessbar}}
 
 \begin{iiilist}
 
@@ -1095,7 +1114,7 @@ Der Limes ist sogar gleichmäßig.
 \qqed
 
 
-\subsection{Korollar}
+\subsection{Korollar \textmd{(Approximation durch Stufenfunktionen)}}
 
 $f:X\to\mathbb{R}^{n}$ ist genau dann messbar, wenn $f$ punktweiser
 Limes von Stufenfunktionen ist.
@@ -1236,7 +1255,7 @@ Letzteres folgt, da gilt:
 \abc Setze $B_{n}$ wie in b), so folgt wegen $A_{1}\subseteq A_{2}\subseteq\ldots$
 schon $B_{n}=A_{n}\setminus A_{n-1}$. Es folgt:
 \begin{align*}
-\mu\left(A_{n}\right) & =\mu\left(B_{1}\dot{\cup}\ldots\dot{\cup}B_{n}\right)=\sum_{j=1}^{n}\mu\left(B_{j}\right)
+\mu\left(A_{n}\right) & =\mu\left(B_{1}\dot{\cup}\ldots\dot{\cup}B_{n}\right)=\sum_{j=1}^{n}\underbrace{\mu\left(B_{j}\right)}_{\ge0}
 \end{align*}
 $\left(\mu\left(A_{n}\right)\right)_{n\in\mathbb{N}}$ ist eine monoton
 steigende Folge, womit folgt:
@@ -1249,40 +1268,757 @@ steigende Folge, womit folgt:
 
 \qqed
 
-%DATE Di 25.10.11
+%DATE: Di 25.10.11
 
 
 \section[eindimensionales Lebesgue-Maß]{Konstruktion des eindimensionalen Lebesgue-Maßes}
 
-\textcolor{green}{TODO: Rest überarbeiten}
 
-\noun{Henri Leon Lebesgue:} Doktorarbeit\noun{ (1902)}
+\subsubsection*{Ziel}
 
-\noun{Borel}, $\ldots$
+Konstruiere ein Maß auf der Borelmenge von $\mathbb{R}$.
 
-\noun{Caratheodory:} Maßerweiterungen; \quotedblbase{}unser Zugang\textquotedblleft{}
-(1918):
+Höhere Dimensionen werden später auf das eindimensionale Maß zurückgeführt.
+
+Das Maß soll die \quotedblbase{}Länge eines Intervalls\textquotedblleft{}
+verallgemeinern.
+
+
+\subsubsection*{Ursprünge}
+
+\noun{Henri Leon Lebesgue (1875-1941):} Doktorarbeit\noun{ (1902)}
+
+\noun{Borel}: Konstruktion \quotedblbase{}zu Fuß\textquotedblleft{}
+
+\noun{Caratheodory:} Maßerweiterungen (1918); \quotedblbase{}unser
+Zugang\textquotedblleft{}:
+
+
+\subsubsection*{Idee}
 
 Beginne mit \quotedblbase{}einfachen\textquotedblleft{} Mengensystemen
-$\mathcal{A}$: endliche Vereinigung beschränkter Intervalle, also
-$A\in\mathcal{A}$ ist darstellbar als eine disjunkte Vereinigung
-beschränkter Intervalle:
+$\mathcal{A}$:
+
+Endliche Vereinigung beschränkter Intervalle, also ist $A\in\mathcal{A}$
+darstellbar als eine disjunkte Vereinigung beschränkter Intervalle
+$I_{k}\subseteq\mathbb{R}$ mit $\left|I_{k}\right|<\infty$ für $1\le k\le n$:
 \begin{align*}
 A & =I_{1}\dot{\cup}\ldots\dot{\cup}I_{n}
 \end{align*}
-Führe ein:
+Führe das Maß ein:
 \begin{align*}
 \mu\left(A\right) & =\left|I_{1}\right|+\ldots+\left|I_{n}\right|
 \end{align*}
-Beachte: $\left(X,\mathcal{A},\mu\right)$ ist \emph{kein} Maßraum,
-da $\mathcal{A}$ keine $\sigma$-Algebra ist.
 
-TODO: Rest einfügen
+
+
+\subsubsection*{Bemerkung}
+
+Beachte, dass $\left(X,\mathcal{A},\mu\right)$ \emph{kein} Maßraum
+ist, da $\mathcal{A}$ keine $\sigma$-Algebra ist.
+
+
+\subsection{Lemma \textmd{(Maßregeln)} und Definition \textmd{(Mengenalgebra,
+$\sigma$-Additivität, Prämaß)\label{sub:Lem-Massregeln}}}
+
+Sei $\left(X,\mathcal{A},\mu\right)$ wie oben.
+
+\begin{iiilist}
+
+\iii $\mathcal{A}$ ist eine \emph{Mengenalgebra}, das heißt:
+\begin{align*}
+\mbox{\ensuremath{\emptyset}} & \in\mathcal{A}\\
+A,B\in\mathcal{A} & \Rightarrow A\cup B,A\cap B,A\setminus B\in\mathcal{A}
+\end{align*}
+
+
+\iii $\mu$ ist \emph{additiv}, das heißt:
+\begin{align*}
+\mu\left(A\dot{\cup}B\right) & =\mu\left(A\right)+\mu\left(B\right)
+\end{align*}
+
+
+\iii $\mu$ ist \emph{$\sigma$-additiv}, das heißt für $\left(A_{n}\right)_{n\in\mathbb{N}}$
+mit paarweise disjunkten $A_{n}\in\mathcal{A}$ und falls
+\begin{align*}
+\bigcup_{n\in\mathbb{N}}A_{n} & =:A
+\end{align*}
+in $\mathcal{A}$ liegt, gilt:
+\begin{align*}
+\mu\left(\bigcup_{n=1}^{\infty}A_{n}\right) & =\sum_{n=1}^{\infty}\mu\left(A_{n}\right)
+\end{align*}
+
+
+\iii $\mu$ ist \emph{$\sigma$-endlich}, das heißt, es gibt für
+$n\in\mathbb{N}$ schon $S_{n}\in\mathcal{A}$ mit:
+\begin{align*}
+X & =\bigcup_{n=1}^{\infty}S_{n}
+\end{align*}
+
+
+\end{iiilist}
+
+Man nennt $\mu$ mit diesen Eigenschaften auch ein \emph{Prämaß auf
+$\mathcal{A}$} und $\left(X,A,\mu\right)$ ein \emph{Prämaß}.
+
+
+\subsubsection*{Beweis}
+
+\begin{iiilist}
+
+\iii Ist klar.
+
+\iii Ist klar.
+
+\iii Setze $B_{n}:=A\setminus\left(A_{1}\cup\ldots\cup A_{n}\right)$.
+
+Dann ist wegen $A\in\mathcal{A}$ nach Voraussetzung und i) mehrfach
+angewendet $B_{n}\in\mathcal{A}$.
+\begin{align*}
+B_{n} & \supseteq B_{n+1}\supseteq\ldots
+\end{align*}
+ist eine absteigende Folge von Mengen und es gilt:
+\begin{align*}
+\bigcap_{n=1}^{\infty}B_{n} & =\emptyset
+\end{align*}
+Zu zeigen ist:
+\begin{align*}
+\lim_{n\to\infty}\mu\left(B_{n}\right) & =0
+\end{align*}
+Denn es gilt:
+\begin{align*}
+\mu\left(B_{n}\right) & =\mu\left(A\right)-\sum_{k=1}^{n}\mu\left(A_{k}\right)\stackrel{n\to\infty}{\longrightarrow}0 & \Rightarrow\quad\mu\left(A\right) & =\sum_{k=1}^{\infty}\mu\left(A_{k}\right)
+\end{align*}
+Sei $\varepsilon>0$, so wähle kompakte $C_{n}\subseteq B_{n}$ mit
+\begin{align*}
+\mu\left(B_{n}\setminus C_{n}\right) & <\frac{\varepsilon}{2^{n}}
+\end{align*}
+zum Beispiel endlich viele kompakte Intervalle.
+
+\textcolor{green}{TODO: Abbildung $B_{n}$}
+
+Setze $D_{n}=C_{1}\cap\ldots\cap C_{n}$.
+
+Dann ist $D_{n}\subseteq B_{n}$ und es gilt:
+\begin{align*}
+B_{n}\setminus D_{n} & =\bigcup_{k=1}^{n}\left(B_{n}\setminus C_{k}\right)\subseteq\bigcup_{k=1}^{n}\left(B_{k}\setminus C_{k}\right)
+\end{align*}
+Damit folgt wegen der Monotonie bei endlichen Mengenoperationen:
+\begin{align*}
+\mu\left(B_{n}\setminus D_{n}\right) & \le\sum_{k=1}^{n}\frac{\varepsilon}{2^{k}}<\varepsilon\cdot\left(\sum_{k=0}^{\infty}\left(\frac{1}{2}\right)^{k}-1\right)=\varepsilon\left(\frac{1}{1-\frac{1}{2}}-1\right)=\varepsilon
+\end{align*}
+
+
+Also sind die $D_{n}$ kompakt und steigen ab:
+\begin{align*}
+D_{n} & \supseteq D_{n+1}\supseteq\ldots\supseteq\bigcap_{n=1}^{\infty}D_{n}=\emptyset
+\end{align*}
+Letzteres folgt aus:
+\begin{align*}
+\bigcap_{n=1}^{\infty}D_{n} & \subseteq\bigcap_{n=1}^{\infty}B_{n}=\emptyset
+\end{align*}
+
+
+Deswegen gibt es ein $N$ mit $D_{N}=\emptyset$, denn ansonsten wähle
+beliebige $x_{n}\in D_{n}$ und diese besitzen einen Häufungspunkt
+${\displaystyle x\in\bigcap_{n=1}^{\infty}D_{n}}$.
+
+Also folgt
+\begin{align*}
+\mu\left(D_{n}\right) & =0
+\end{align*}
+und damit ergibt sich
+\begin{align*}
+\mu\left(B_{n}\right) & =\underbrace{\mu\left(D_{n}\right)}_{=0}+\underbrace{\mu\left(B_{n}\setminus D_{n}\right)}_{<\varepsilon}<\varepsilon
+\end{align*}
+und es gilt:
+\begin{align*}
+\lim_{n\to\infty}\mu\left(B_{n}\right) & =0
+\end{align*}
+
+
+\iii Wähle $S_{n}=\left(-n,n\right)\in\mathcal{A}$.
+
+\end{iiilist}
+
+\qqed
+
+
+\subsection{Bemerkung}
+
+Beachte, dass im Allgemeinen nicht jede abzählbare Vereinigung von
+Mengen aus $\mathcal{A}$ schon in $\mathcal{A}$ liegt, da $\mathcal{A}$
+keine $\sigma$-Algebra, sondern nur eine Mengenalgebra ist.
+
+Die $\sigma$-Additivität gilt nur unter folgender zusätzlichen Annahme:
+\begin{align*}
+\bigcup_{n\in\mathbb{N}}A_{n} & \in\mathcal{A}
+\end{align*}
+
+
+Im Folgenden ist unser Ziel, das Prämaß zu einem Maß zu erweitern.
+
+
+\subsection{Theorem \textmd{(Satz von Hahn über Maßerweiterungen)\label{sub:Thm-SatzVonHahn}}}
+
+Sei $\left(X,\mathcal{A},\mu\right)$ ein Prämaß.
+
+Dann lässt sich $\mu$\emph{ eindeutig} zu einem Maß auf der von $\mathcal{A}$
+erzeugten $\sigma$-Algebra \emph{erweitern} und es gilt für $M\in\mathcal{M}:=\mathcal{M}\left(\mathcal{A}\right)$:
+\begin{align*}
+\mu\left(M\right) & =\inf\left\{ \sum_{n=1}^{\infty}\mu\left(A_{n}\right)\bigg|\fall_{n\in\mathbb{N}}:A_{n}\in\mathcal{A}\wedge M\subseteq\bigcup_{n=1}^{\infty}A_{n}\right\} 
+\end{align*}
+
+
+\textcolor{green}{TODO: Abbildung: Überdeckung von $M$}
+
+
+\subsubsection*{Bemerkung}
+
+Dieser Satz ist recht tief gehend und hat sich über längere Zeit unter
+Mitwirkung von \noun{Lebesgue, Borel} und \noun{Caratheodory} entwickelt.
+
+Der Beweis geht in mehreren Schritten.
+
+
+\subsection{Definition \textmd{(äußeres Maß)}}
+
+Sei $\mathcal{N}$ eine $\sigma$-Algebra auf $X$.
+
+Ein \emph{äußeres Maß} auf $\mathcal{N}$ ist eine Abbildung
+\begin{align*}
+\mu^{*}:\mathcal{N} & \to\left[0,\infty\right]
+\end{align*}
+mit den folgenden Eigenschaften:
+
+\begin{iiilist}
+
+\iii $\mu^{*}\left(\emptyset\right)=0$
+
+\iii Monotonie: Für $A,B\in\mathcal{N}$ gilt: 
+\begin{align*}
+A\subseteq & B & \Rightarrow\quad & \mu^{*}\left(A\right)\le\mu^{*}\left(B\right)
+\end{align*}
+
+
+\iii Ist $\left(Y_{n}\right)_{n\in\mathbb{N}}$ eine Folge in $\mathcal{N}$,
+so gilt:
+\begin{align*}
+\mu^{*}\left(\bigcup_{n=1}^{\infty}Y_{n}\right) & \le\sum_{n=1}^{\infty}\mu^{*}\left(Y_{n}\right)
+\end{align*}
+
+
+\end{iiilist}
+
+Beachte: Die $\sigma$-Additivität muss hier nicht gelten!
+
+
+\subsection{Lemma}
+
+Unter den Voraussetzungen von Theorem \ref{sub:Thm-SatzVonHahn} definiert
+\begin{align}
+\mu^{*}\left(Y\right) & :=\inf\left\{ \sum_{n=1}^{\infty}\mu\left(A_{n}\right)\bigg|\fall_{n\in\mathbb{N}}:A_{n}\in\mathcal{A}\wedge Y\subseteq\bigcup_{n=1}^{\infty}A_{n}\right\} \label{eq:AeusseresMass}
+\end{align}
+ein äußeres Maß auf $\mathcal{N}:=\mathcal{P}\left(X\right)$.
+
+Es gilt für alle $A\in\mathcal{A}$:
+\begin{align}
+\mu^{*}\left(A\right) & =\mu\left(A\right)\label{eq:aeMassGleichMass}
+\end{align}
+
+
+
+\subsubsection*{Beweis}
+
+Zunächst zum Beweis von \eqref{eq:aeMassGleichMass}:
+
+Sei $A\in\mathcal{A}$ gegeben, dann gilt:
+\begin{align*}
+A & =\underbrace{A}_{=:A_{1}}\cup\underbrace{\emptyset}_{=:A_{2}}\cup\underbrace{\emptyset}_{=:A_{3}}\cup\ldots
+\end{align*}
+Und es folgt, weil in der Definition des äußeren Maßes in \eqref{eq:AeusseresMass}
+ein Infimum gebildet wird:
+\begin{align*}
+\mu^{*}\left(A\right) & \le\sum_{n=1}^{\infty}\mu\left(A_{n}\right)=\mu\left(A\right)
+\end{align*}
+
+
+Umgekehrt wähle für ein beliebiges $\varepsilon>0$ eine Folge $\left(A_{n}\right)_{n\in\mathbb{N}}$
+mit $A_{n}\in\mathcal{A}$,
+\begin{align*}
+\bigcup_{n=1}^{\infty}A_{n} & \supseteq A
+\end{align*}
+und:
+\begin{align}
+\sum_{n=1}^{\infty}\mu\left(A_{n}\right) & \le\mu^{*}\left(A\right)+\varepsilon\label{eq:muAnLEmuStrAplusVarEps}
+\end{align}
+Dies ist möglich, da das Infimum $\mu^{*}\left(A\right)$ beliebig
+genau durch ein Element ${\displaystyle \sum_{n=1}^{\infty}\mu\left(A_{n}\right)}$
+der bestimmenden Menge genähert werden kann.
+
+Wegen ${\displaystyle A=\bigcup_{n=1}^{\infty}}\left(A_{n}\cap A\right)\in\mathcal{A}$
+kann man die $\sigma$-Additivität verwenden und es folgt:
+\begin{align*}
+\mu\left(A\right) & \le\sum_{n=1}^{\infty}\mu\left(A_{n}\cap A\right)\le\sum_{n=1}^{\infty}\mu\left(A_{n}\right)\le\mu^{*}\left(A\right)+\varepsilon
+\end{align*}
+
+
+Weil dies für alle $\varepsilon>0$ gilt, folgt $\mu\left(A\right)\le\mu^{*}\left(A\right)$.
+
+Insgesamt gilt also $\mu\left(A\right)=\mu^{*}\left(A\right)$.
+
+Zeige nun, dass $\mu^{*}$ ein äußeres Maß ist.
+
+\begin{iiilist}
+
+\iii $\mu^{*}\left(\emptyset\right)=0$ ist klar nach der Definition:
+Wähle als Überdeckung $\emptyset\cup\emptyset\cup\ldots$.
+
+\iii Monotonie: Sei $A\subseteq B$. Wegen $A\subseteq B$ gilt
+\begin{align}
+\left\{ \sum_{n=1}^{\infty}\mu\left(B_{n}\right)\bigg|\fall_{n\in\mathbb{N}}:B_{n}\in\mathcal{A}\wedge B\subseteq\bigcup_{n=1}^{\infty}B_{n}\right\}  & \subseteq\left\{ \sum_{n=1}^{\infty}\mu\left(A_{n}\right)\bigg|\fall_{n\in\mathbb{N}}:A_{n}\in\mathcal{A}\wedge A\subseteq\bigcup_{n=1}^{\infty}A_{n}\right\} \label{eq:aSubB}
+\end{align}
+und es folgt:
+\begin{align*}
+\mu^{*}\left(A\right) & \stackrel{\phantom{(1.1)}}{=}\inf\left\{ \sum_{n=1}^{\infty}\mu\left(A_{n}\right)\bigg|\fall_{n\in\mathbb{N}}:A_{n}\in\mathcal{A}\wedge A\subseteq\bigcup_{n=1}^{\infty}A_{n}\right\} \le\\
+ & \stackrel{\eqref{eq:aSubB}}{\le}\inf\left\{ \sum_{n=1}^{\infty}\mu\left(B_{n}\right)\bigg|\fall_{n\in\mathbb{N}}:B_{n}\in\mathcal{A}\wedge B\subseteq\bigcup_{n=1}^{\infty}B_{n}\right\} =\mu^{*}\left(B\right)
+\end{align*}
+
+
+%DATE: Fr 28.10.11
+
+\iii Sei $\left(Y_{j}\right)_{j\in\mathbb{N}}$ eine Folge in $\mathcal{N}=\mathcal{P}\left(X\right)$,
+also nicht in $\mathcal{A}$.
+
+Wähle $A_{jn}\in\mathcal{A}$ für alle $n\in\mathbb{N}$, so dass
+\begin{align*}
+Y_{j} & \subseteq\bigcup_{n=1}^{\infty}A_{jn}
+\end{align*}
+ist und gilt:
+\begin{align*}
+\sum_{n=1}^{\infty}\mu\left(A_{jn}\right) & \le\mu^{*}\left(Y_{j}\right)+\frac{\varepsilon}{2^{j}}
+\end{align*}
+
+
+Dies ist aufgrund der Definition des äußeren Maßes immer möglich.
+
+Dann ist
+\begin{align*}
+Y & :=\bigcup_{j=1}^{\infty}Y_{j}\subseteq\bigcup_{j,n=1}^{\infty}A_{jn}
+\end{align*}
+und es gilt:
+\begin{align*}
+\mu^{*}\left(Y\right) & \sr{\le}{\text{Def. des}}{\text{äußeren Maßes}}\underbrace{\sum_{n,j=1}^{\infty}}_{\text{auch abzählbar}}\mu\left(A_{nj}\right)\le\sum_{j=1}^{\infty}\mu^{*}\left(Y_{j}\right)+\varepsilon
+\end{align*}
+Da $\varepsilon$ beliebig ist, folgt:
+\begin{align*}
+\mu^{*}\left(Y\right) & \le\sum_{n=1}^{\infty}\mu^{*}\left(Y_{n}\right)
+\end{align*}
+
+
+\end{iiilist}
+
+\qqed
+
+
+\subsection{Bemerkung}
+
+Der große Nachteil des äußeren Maßes ist, dass es nicht $\sigma$-additiv
+ist.
+
+
+\subsubsection*{Idee}
+
+Wähle ein System von Teilmengen so aus, dass dieses System eine $\sigma$-Algebra
+bildet und außerdem die Einschränkung des äußeren Maßes $\sigma$-additiv
+wird, also ein Maß definiert.
+
+
+\subsection{Definition \textmd{($\mu^{*}$-messbar)}}
+
+Sei $\mu^{*}$ ein äußeres Maß auf $\mathcal{P}\left(X\right)$.
+
+Eine Teilmenge $A\subseteq X$ heißt \emph{$\mu^{*}$-messbar}, wenn
+für jede Teilmenge $Z\subseteq X$ gilt:
+\begin{align*}
+\mu^{*}\left(Z\right) & =\mu^{*}\left(Z\cap A\right)+\mu^{*}\left(Z\setminus A\right)
+\end{align*}
+
+
+
+\subsubsection*{Bemerkung}
+
+Also \quotedblbase{}zerlegt\textquotedblleft{} man eine beliebige
+Teilmenge $Z$ mit Hilfe von $A$, so gilt die Additivität.
+
+\textcolor{green}{TODO: Abbildung $A,Z\subseteq X$ einfügen}
+
+
+\subsection{Lemma \textmd{(Caratheodory)}}
+
+Seien $\mu^{*}$ ein äußeres Maß auf $\mathcal{P}\left(X\right)$
+und $\mathcal{M}$ das System der $\mu^{*}$-messbaren Mengen von
+$X$.
+
+Dann ist $\mathcal{M}$ eine $\sigma$-Algebra und $\mu^{*}$ ein
+Maß auf $\mathcal{M}$.
+
+
+\subsubsection*{Beweis}
+
+Gehe schrittweise vor.
+\begin{itemize}
+\item $\emptyset\in\mathcal{M}$ ist klar, wegen:
+\begin{align*}
+Z & =\underbrace{\left(Z\cap\emptyset\right)}_{=\emptyset}\dot{\cup}\underbrace{\left(Z\setminus\emptyset\right)}_{=Z}\\
+\mu^{*}\left(Z\right) & =\underbrace{\mu^{*}\left(Z\cap\emptyset\right)}_{=0}+\mu^{*}\left(Z\setminus\emptyset\right)
+\end{align*}
+
+\item Sei $A\in\mathcal{M}$, das heißt es gilt für alle $Z\subseteq X$:
+\begin{align*}
+\mu^{*}\left(Z\right) & =\mu^{*}\left(Z\cap A\right)+\mu^{*}\left(Z\setminus A\right)=\mu^{*}\left(Z\setminus\complement A\right)+\mu^{*}\left(Z\cap\complement A\right)
+\end{align*}
+Also ist auch $\complement A$ $\mu^{*}$-messbar, das heißt $\complement A\in\mathcal{M}$.
+\item Seien $A,B\in\mathcal{M}$ und $Z\subseteq X$ beliebig.\\
+Es genügt $A'=A\cap Z$ und $B'=B\cap Z$ zu betrachten.\\
+\textcolor{green}{TODO: Abbildung $A',B',Z$ einfügen}\\
+Da $B$ bereits $\mu^{*}$-messbar ist, gilt für alle $\tilde{Z}\subseteq X$:
+\begin{align*}
+\mu^{*}\left(Z\right) & =\mu^{*}\left(\tilde{Z}\cap B\right)+\mu^{*}\left(\tilde{Z}\setminus B\right)
+\end{align*}
+Wähle $\tilde{Z}=A'$, dann gilt
+\begin{align*}
+\tilde{Z}\cap B & =A'\cap B=\left(A\cap Z\right)\cap B=A\cap Z\cap B=\left(A\cap Z\right)\cap\left(B\cap Z\right)=A'\cap B'
+\end{align*}
+\begin{align*}
+\tilde{Z}\setminus B & =A'\setminus B=\left(A\cap Z\right)\setminus B=\left(A\cap Z\right)\setminus\left(B\cap Z\right)=A'\setminus B'
+\end{align*}
+und es folgt:
+\begin{align*}
+\mu^{*}\left(A'\cap B'\right)+\mu^{*}\left(A'\setminus B'\right) & =\mu^{*}\left(A'\right)
+\end{align*}
+Wegen der $\mu^{*}$-Messbarkeit von $A$ folgt:
+\begin{align*}
+\mu^{*}\left(A'\right)+\mu^{*}\left(Z\setminus A\right) & =\mu^{*}\left(Z\right)
+\end{align*}
+Addiere jetzt die beiden Gleichungen:
+\begin{align*}
+\mu^{*}\left(A'\cap B'\right)+\mu^{*}\left(A'\setminus B'\right)+\mu^{*}\left(A'\right)+\mu^{*}\left(Z\setminus A\right) & =\mu^{*}\left(A'\right)+\mu^{*}\left(Z\right)\\
+\mu^{*}\left(A'\cap B'\right)+\underbrace{\mu^{*}\left(A'\setminus B'\right)+\mu^{*}\left(Z\setminus A\right)}_{\stackrel{?}{=}\mu^{*}\left(Z\setminus\left(A'\cap B'\right)\right)} & =\mu^{*}\left(Z\right)
+\end{align*}
+Verwende nochmals die $\mu^{*}$-Messbarkeit von $A$ für $\tilde{Z}:=Z\setminus\left(A'\cap B'\right)$:
+\begin{align*}
+\mu^{*}\bigg(\underbrace{A\cap\left(Z\setminus\left(A'\cap B'\right)\right)}_{=A'\setminus B'}\bigg)+\mu^{*}\bigg(\underbrace{\left(Z\setminus\left(A'\cap B'\right)\right)\setminus A}_{=Z\setminus A'}\bigg) & =\mu^{*}\left(Z\setminus\left(A'\cap B'\right)\right)
+\end{align*}
+Daher ist $A\cap B\in\mathcal{M}$.
+\item Für $A,B\in\mathcal{M}$ sind dann auch
+\begin{align*}
+A\setminus B & =A\cap\complement B\\
+A\cup B & =\complement\left(\complement A\cap\complement B\right)
+\end{align*}
+in $\mathcal{M}$.
+\end{itemize}
+Wir wissen also, dass $\mathcal{M}$ eine Mengenalgebra ist.
+\begin{itemize}
+\item Additivität: Seien $A,B\in\mathcal{M}$ disjunkte Mengen, dann folgt
+für $\tilde{Z}:=Z^{*}:=Z\cap\left(A\dot{\cup}B\right)$:
+\begin{align*}
+\mu^{*}\left(Z^{*}\right) & =\mu^{*}\left(Z^{*}\cap A\right)+\mu^{*}\left(Z^{*}\setminus A\right)=\\
+ & =\mu^{*}\left(Z\cap A\right)+\mu^{*}\left(Z\cap B\right)
+\end{align*}
+Verwende dabei, dass $A$ und $B$ disjunkt sind.\\
+Setze $Z=X$, so folgt:
+\begin{align*}
+\mu^{*}\left(A\dot{\cup}B\right) & =\mu^{*}\left(A\right)+\mu^{*}\left(B\right)
+\end{align*}
+Wegen $A\dot{\cup}B\dot{\cup}C=\left(A\dot{\cup}B\right)\dot{\cup}C$
+für $C\in\mathcal{M}$ folgt per Induktion für $A_{1},\ldots,A_{n}\in\mathcal{M}$:
+\begin{align*}
+\mu^{*}\left(Z\cap\left(A_{1}\dot{\cup}\ldots\dot{\cup}A_{n}\right)\right) & =\mu^{*}\left(Z\cap A_{1}\right)+\ldots+\mu^{*}\left(Z\cap A_{n}\right)
+\end{align*}
+
+\item Zeige, dass $\mathcal{M}$ eine $\sigma$-Algebra ist:\\
+Sei $\left(A_{n}\right)_{n\in\mathbb{N}}$ eine Folge paarweiser disjunkter
+Teilmengen in $\mathcal{M}$ mit:
+\begin{align*}
+A & :=\bigcup_{n\in\mathbb{N}}A_{n}\in\mathcal{M}
+\end{align*}
+Das heißt, es gilt für alle $Z\subseteq X$:
+\begin{align*}
+\mu^{*}\left(Z\cap A\right)+\mu^{*}\left(Z\setminus A\right) & =\mu^{*}\left(Z\right)
+\end{align*}
+Sei also $Z\subseteq X$. Dann ist für jedes $n\in\mathbb{N}$ schon
+\begin{align*}
+A_{1}\dot{\cup}\ldots\dot{\cup}A_{n} & \in\mathcal{M}
+\end{align*}
+und deshalb gilt:
+\begin{align*}
+\mu^{*}\left(Z\right) & =\mu^{*}\left(Z\cap\left(A_{1}\dot{\cup}\ldots\dot{\cup}A_{n}\right)\right)+\mu^{*}\left(Z\setminus\left(A_{1}\dot{\cup}\ldots\dot{\cup}A_{n}\right)\right)\ge\\
+ & \ge\sum_{k=1}^{n}\underbrace{\mu^{*}\left(Z\cap A_{k}\right)}_{\ge0}+\mu^{*}\left(Z\setminus A\right)
+\end{align*}
+Verwende dabei:
+\begin{align*}
+A & \supseteq A_{1}\dot{\cup}\ldots\dot{\cup}A_{n}\\
+\mu^{*}\left(Z\setminus A\right) & \le\mu^{*}\left(Z\setminus\left(A_{1}\dot{\cup}\ldots\dot{\cup}A_{n}\right)\right)
+\end{align*}
+Da $n\in\mathbb{N}$ beliebig ist, folgt wegen ${\displaystyle Z\cap A=\bigcup_{k=1}^{\infty}Z\cap A_{k}}$
+und ${\displaystyle \mu^{*}\left(Z\cap A\right)=\inf\sum_{k=1}^{\infty}\mu^{*}\left(Z\setminus B_{k}\right)}$
+mit ${\displaystyle Z\cap A\supseteq\bigcup_{k=1}^{\infty}B_{k}}$:
+\begin{align*}
+\mu^{*}\left(Z\right) & \ge\sum_{k=1}^{\infty}\mu^{*}\left(Z\cap A_{k}\right)+\mu^{*}\left(Z\setminus A\right)\ge\\
+ & \sr{\ge}{\text{Def. äußeres}}{\text{Maß}}\mu^{*}\left(Z\cap A\right)+\mu^{*}\left(Z\setminus A\right)
+\end{align*}
+Umgekehrt gilt für äußere Maße immer:
+\begin{align*}
+\mu^{*}\left(Z\right) & \le\mu^{*}\left(Z\cap A\right)+\mu^{*}\left(Z\setminus A\right)
+\end{align*}
+Für alle $i\in\mathbb{N}$ gibt es $B_{i},C_{i}\in\mathcal{A}$ mit
+$\bigcup_{i\in\mathbb{N}}B_{i}\supseteq Z\cap A$, $\bigcup_{i\in\mathbb{N}}C_{i}\supseteq Z\setminus A$
+und:
+\begin{align*}
+\mu^{*}\left(Z\cap A\right) & \ge\sum_{i\in\mathbb{N}}\mu^{*}\left(B_{i}\right)-\varepsilon\\
+\mu^{*}\left(Z\setminus A\right) & \ge\sum_{i\in\mathbb{N}}\mu^{*}\left(C_{i}\right)-\varepsilon
+\end{align*}
+$\left(B_{i},C_{i}\right)_{i\in\mathbb{N}}:=\left(B_{1},C_{1},B_{2},C_{2},\ldots\right)$
+überdeckt $Z$, womit folgt:
+\begin{align*}
+\mu^{*}\left(Z\right) & \le\sum_{i\in\mathbb{N}}\left(\mu^{*}\left(B_{i}\right)+\mu^{*}\left(C_{i}\right)\right)\le\mu^{*}\left(Z\cap A\right)+\mu^{*}\left(Z\setminus A\right)+2\varepsilon
+\end{align*}
+Da $\varepsilon$ beliebig ist, folgt die Behauptung:
+\begin{align*}
+\mu^{*}\left(Z\cap A\right)+\mu^{*}\left(Z\setminus A\right) & =\mu^{*}\left(Z\right)
+\end{align*}
+Daher ist $A:=\bigcup_{n\in\mathbb{N}}A_{n}$ wieder $\mu^{*}$-messbar,
+das heißt $A\in\mathcal{M}$.\\
+Insgesamt folgt, dass $\mathcal{M}$ eine $\sigma$-Algebra ist.\\
+\qqed[\roman{ale2})]
+\item Das Maß ist $\sigma$-additiv, denn:\\
+Sei wieder $\left(A_{n}\right)_{n\in\mathbb{N}}$ mit $A_{n}\in\mathcal{M}$
+ein System paarweise disjunkter messbarer Mengen. Es folgt:
+\begin{align*}
+\sum_{k=1}^{n}\mu^{*}\left(A_{k}\right) & \stackrel{\text{Additivität}}{=}\mu^{*}\left(\bigcup_{k=1}^{n}A_{k}\right)\stackrel{\text{Monotonie}}{\le}\mu^{*}\left(\bigcup_{k=1}^{\infty}A_{k}\right)\sr{\stackrel{\text{Def. von }\mu^{*}}{\le}}{}{\text{als Infimum}}\sum_{k=1}^{\infty}\mu^{*}\left(A_{k}\right)
+\end{align*}
+Im Limes $n\to\infty$ erhalten wir überall Gleichheit, also:
+\begin{align*}
+\sum_{k=1}^{\infty}\mu^{*}\left(A_{k}\right) & =\mu^{*}\left(\bigcup_{k=1}^{\infty}A_{k}\right)
+\end{align*}
+
+\end{itemize}
+\qqed
+
+
+\subsubsection*{Beweis von \textmd{\ref{sub:Thm-SatzVonHahn}}}
+
+Sei $\mathcal{M}\left(\mathcal{A}\right)$ die $\sigma$-Algebra,
+die aus dem Lemma von Caratheodory kommt, und das Maß $\mu:=\mu^{*}|_{\mathcal{M}\left(\mathcal{A}\right)}$
+auf $\mathcal{M}\left(\mathcal{A}\right)$.
+
+Es bleibt noch zu zeigen:
+\begin{enumerate}
+\item $\mathcal{A}\subseteq\mathcal{M}$ (Nur dann wissen wir, dass auch
+$\mathcal{M}\left(\mathcal{A}\right)\subseteq\mathcal{M}$ gilt.)
+\item Eindeutigkeit
+\end{enumerate}
+%DATE Mi 2.11.11
+
+%TODO: Was ist mit den Daten los?
+
+%DATE Fr 4.11.11
+
+Zu 1.: Sei $A\in\mathcal{A}$. Zeige, dass $A$ schon $\mu^{*}$-messbar
+ist.
+
+Sei $Z\subseteq X$ beliebig. Dann gilt nach der Definition des äußeren
+Maßes als Infimum:
+\begin{align*}
+\mu^{*}\left(Z\right) & \le\mu^{*}\left(Z\cap A\right)+\mu^{*}\left(Z\setminus A\right)
+\end{align*}
+Um die umgekehrte Ungleichung zu beweisen, sei $\varepsilon>0$.
+
+Es gibt eine Folge $\left(A_{n}\right)_{n\in\mathbb{N}}$, mit $A_{n}\in\mathcal{A}$,
+\begin{align*}
+Z & \subseteq\bigcup_{n=1}^{\infty}A_{n}
+\end{align*}
+und:
+\begin{align*}
+\sum_{n=1}^{\infty}\mu\left(A_{n}\right) & \le\mu^{*}\left(Z\right)+\varepsilon
+\end{align*}
+Dann folgt:
+\begin{align*}
+Z\cap A & \subseteq\bigcup_{n=1}^{\infty}\left(A_{n}\cap A\right)\\
+Z\setminus A & \subseteq\bigcup_{n=1}^{\infty}\left(A_{n}\setminus A\right)
+\end{align*}
+Es ergibt sich:
+\begin{align*}
+\mu^{*}\left(Z\cap A\right)+\mu^{*}\left(Z\setminus A\right) & \stackrel{\text{Def. äußeres Maß}}{\le}\sum_{n=1}^{\infty}\mu\left(A_{n}\cap A\right)+\sum_{n=1}^{\infty}\mu\left(A_{n}\setminus A\right)=\\
+ & =\sum_{n=1}^{\infty}\mu\left(A_{n}\right)\le\mu^{*}\left(Z\right)+\varepsilon
+\end{align*}
+Da $\varepsilon$ beliebig ist, ist $A$ tatsächlich $\mu^{*}$-messbar.
+
+Also ist $\mathcal{A}\subseteq\mathcal{M}$.
+
+Zeige schließlich noch die Eindeutigkeit:
+
+Sei $\mu$ wie oben konstruiert, $\nu$ ein weiteres Maß auf $\mathcal{M}\left(\mathcal{A}\right)$
+und $\mu=\nu$ auf $\mathcal{A}$.
+
+Wegen der $\sigma$-Endlichkeit (vergleiche das Lemma \ref{sub:Lem-Massregeln}
+iv) über Maßregeln) gibt es eine Folge $\left(S_{n}\right)_{n\in\mathbb{N}}$
+in $\mathcal{A}$, so dass gilt:
+\begin{align*}
+X & =\bigcup_{n=1}^{\infty}S_{n} & \mu\left(S_{n}\right) & <\infty
+\end{align*}
+Sei $Y\in\mathcal{M}\left(\mathcal{A}\right)$. Zu zeigen ist $\mu\left(Y\right)=\nu\left(Y\right)$.
+
+Wegen der $\sigma$-Additivität genügt es zu zeigen, dass für alle
+$n\in\mathbb{N}$ gilt:
+\begin{align}
+\mu\left(Y\cap S_{n}\right) & =\nu\left(Y\cap S_{n}\right)\label{eq:muYcapSn}
+\end{align}
+(Denn: ${\displaystyle \bigcup_{n=1}^{\infty}Y\cap S_{n}=Y}$)
+
+Um paarweise disjunkte Mengen zu bekommen, wähle
+\begin{align*}
+Z_{1} & =Y\cap S_{1} & Z_{2} & =Y\cap\left(S_{2}\setminus S_{1}\right) & Z_{3} & =Y\cap\left(S_{3}\setminus\left(S_{1}\cup S_{2}\right)\right) & \ldots
+\end{align*}
+und es gilt für alle $n\in\mathbb{N}$:
+\begin{align*}
+\mu\left(Z_{n}\right) & =\nu\left(Z_{n}\right)
+\end{align*}
+Wegen der $\sigma$-Additivität von $\mu$ und $\nu$ folgt:
+\begin{align*}
+\mu\left(Y\right)=\mu\left(\bigcup_{n=1}^{\infty}Z_{n}\right)=\sum_{n=1}^{\infty}\mu\left(Z_{n}\right) & =\sum_{n=1}^{\infty}\nu\left(Z_{n}\right)=\nu\left(\bigcup_{n=1}^{\infty}Z_{n}\right)=\nu\left(Y\right)
+\end{align*}
+Um die Notation zu vereinfachen, zeige anstelle von \ref{eq:muYcapSn}
+allgemein für alle $A\in\mathcal{A}$ mit $\mu\left(A\right)<\infty$:
+\begin{align*}
+\mu\left(Y\cap A\right) & =\nu\left(Y\cap A\right)
+\end{align*}
+Oder zeige noch etwas einfacher:
+
+Hat $A\in\mathcal{A}$ endliches Maß und ist $Y\in\mathcal{M}$ mit
+$Y\subseteq A$, so gilt:
+\begin{align*}
+\mu\left(Y\right) & =\nu\left(Y\right)
+\end{align*}
+Nach Definition von $\mu$ gilt
+\begin{align*}
+\mu\left(Y\right) & =\mu^{*}\left(Y\right)=\inf\sum_{n=1}^{\infty}\mu\left(A_{n}\right)=\inf\sum_{n=1}^{\infty}\nu\left(A_{n}\right)\ge\nu\left(Y\right)
+\end{align*}
+wobei wieder ${\displaystyle Y\subseteq\bigcup_{n\in\mathbb{N}}A_{n}}$
+und $A_{n}\in\mathcal{A}$ ist.
+
+Wegen der $\sigma$-Additivität von $\nu$ wissen wir außerdem, dass
+${\displaystyle \nu\left(Y\right)\le\inf\sum_{n=1}^{\infty}}A_{n}$
+gilt, womit für alle $Y\in\mathcal{M}$ mit $Y\subseteq A$ folgt:
+\begin{align*}
+\nu\left(Y\right) & \le\mu\left(Y\right)
+\end{align*}
+
+
+Diese Ungleichung gilt auch für $\tilde{Y}:=A\setminus Y$:
+\begin{align*}
+\nu\left(A\setminus Y\right) & \le\mu\left(A\setminus Y\right)
+\end{align*}
+Wegen der Additivität folgt:
+\begin{align*}
+\mu\left(A\right) & =\nu\left(A\right)=\nu\left(A\setminus Y\right)+\nu\left(Y\right)\le\mu\left(A\setminus Y\right)+\mu\left(Y\right)=\mu\left(A\right)<\infty
+\end{align*}
+Also muss überall schon Gleichheit gelten. Also ist $\mu\left(Y\right)=\nu\left(Y\right)$.
+
+\qqed
+
+
+\subsubsection*{Bemerkung}
+
+Auf die Bedingung, dass das Prämaß $\sigma$-endlich ist, kann bei
+vielen Konstruktionen verzichtet werden.
+
+Setze $\inf\emptyset=\infty$.
+
+Wir haben also das Maß $\mu$ auf $\mathcal{M}\left(\mathcal{A}\right)$.
+
+Falls $\left(X=\mathbb{R},\mathcal{A},\mu\right)$ das Prämaß von
+Lemma \ref{sub:Lem-Massregeln}, also $\mathcal{A}$ alle offenen
+Intervalle enthält, ist $\mathcal{M}\left(\mathcal{A}\right)=\mathcal{B}$
+die Borelalgebra.
+
+Wir wollen jetzt $\mu$ auf eine etwas größere $\sigma$-Algebra erweitern.
+
+
+\subsection{Definition \textmd{(Lebesguesche Nullmenge)}}
+
+Eine Menge $A\subseteq\mathbb{R}$ heißt \emph{Lebesguesche Nullmenge},
+falls $\mu^{*}\left(A\right)=0$ ist. Es gilt
+\begin{align*}
+0 & =\mu^{*}\left(A\right)=\inf\left(\sum_{n=1}^{\infty}\mu\left(A_{n}\right)\right)
+\end{align*}
+mit $A_{n}\in\mathcal{A}$ und ${\displaystyle \bigcup_{n\in\mathbb{N}}A_{n}\supseteq A}$.
+
+Daher gibt es für alle $\varepsilon\in\mathbb{R}_{>0}$ eine Folge
+$\left(A_{n}\right)_{n\in\mathbb{N}}$ mit ${\displaystyle \sum_{n=1}^{\infty}\mu\left(A_{n}\right)<\varepsilon}$,
+$A_{n}\in\mathcal{A}$ und ${\displaystyle A\subseteq\bigcup_{n=1}^{\infty}A_{n}}$.
+
+Aus $A_{n}\in\mathcal{A}$ folgt, dass ${\displaystyle M:=\bigcup_{n=1}^{\infty}A_{n}}$
+eine Borelmenge ist und
+\begin{align*}
+\mu\left(M\right) & \stackrel{\sigma\text{-Additivität}}{\le}\sum_{n=1}^{\infty}\mu\left(A_{n}\right)<\varepsilon
+\end{align*}
+gilt.
+
+
+\subsubsection*{Lemma}
+
+Ist $A$ eine Lebesguesche Nullmenge, so gibt es zu jedem $n\in\mathbb{N}$
+eine Borelmenge $M_{n}$ mit ${\displaystyle \mu\left(M_{n}\right)<\frac{1}{n}}$.
+\begin{align*}
+M & :=\bigcap_{n=1}^{\infty}M_{n}
+\end{align*}
+ist wieder eine Borelmenge und:
+\begin{align*}
+\mu\left(M\right) & \le\mu\left(M_{n}\right)<\frac{1}{n}
+\end{align*}
+Also ist $\mu\left(M\right)=0$ und daher gilt:
+\begin{itemize}
+\item Jede Lebesguesche Nullmenge ist eine Teilmenge einer Borelmenge vom
+Maß 0.
+\item Aber nicht jede Lebesguesche Nullmenge ist eine Borelmenge.
+\end{itemize}
+
+\subsection{Definition \textmd{($\mu$-messbar)}}
+
+Eine Menge $A\subseteq\mathbb{R}$ heißt $\mu$-messbar, falls $A$
+mit Hilfe einer Borelmenge $B$ und einer Lebesgueschen Nullmenge
+$N$ in folgender Form dargestellt werden kann:
+\begin{align*}
+A & =B\cup N
+\end{align*}
+Die $\mu$-messbaren Mengen bilden wieder eine $\sigma$-Algebra $\mathcal{M}\supsetneq\mathcal{B}$.
+
+
+\subsection{Definition \textmd{(Lebesgue-Komplettierung, fast überall, Lebesgue-Maß)}}
+
+$\mathcal{M}$ heißt die \emph{Lebesgue-Komplettierung}.
+
+Die Mengen $A\in\mathcal{M}$ heißen Lebesgue-messbar.
+
+Eine Aussage gilt Lebesgue-fast überall, falls die Punkte, für die
+sie nicht gilt, eine Lebesguesche Nullmenge bilden.
+
+$\left(\mathbb{R},\mu,\mathcal{M}\right)$ heißt eindimensionales
+Lebesgue-Maß.
+
+
+\subsubsection*{Bemerkung}
+
+Die Konstruktion könnte man analog auch im $\mathbb{R}^{n}$ durchführen.
+
+Wir betrachten stattdessen später das Produktmaß.
 
 
 \section{Konstruktion des Integrals}
 
-TODO: Rest einfügen
+\textcolor{green}{TODO: Rest überarbeiten}
 
 
 \subsection{Definition}
@@ -3786,26 +4522,41 @@ Betrachte das Rechteck $R:a\le x\le b,\, c\le y\le d$. $R\subseteq\Omega\subsete
 TODO: Abb4
 
 
-\subsubsection*{Fragen}
+\subsubsection*{Frage}
 
-Falls $f:\Omega\to\mathbb{C}$ holomorph ist,
+Äquivalente Fragestellungen:
 \begin{enumerate}
-\item gibt es eine holomorphe Stammfunktion, also $F:\Omega\to\mathbb{C}$
-mit $F'\left(z\right)=f\left(z\right)$?
-\item ist $\int_{\gamma}f\left(z\right)\dd z$ wegunabhängig?
+\item Für welche $f$ ist $\int_{\gamma}f\left(z\right)\dd z$ unabhängig
+vom Integrationsweg.
+\item Für welche $f$ gibt es eine holomorphe Stammfunktion.
 \end{enumerate}
+Notwendiges Kriterium:
+
+Falls $f\in C^{1}$ ist, sehen wir, dass für alle geschlossenen Wege
+$\gamma$ schon $\oint_{\gamma}f\left(z\right)\dd z=0$ nur dann,
+wenn $f$ holomorph ist.
+
+TODO: Rest überprüfen $f\in C^{1}$ = holomorph?
+
+$f:\Omega\to\mathbb{C}$ ist holomorph, denn wenn es eine holomorphe
+Stammfunktion $F$ gibt, so ist $f=F'$ auch holomorph.
+
 Beginne mit einfachen Integrationswegen und zwar dem Integral längs
 des Randes von $R$.
 
+%DATE: Di 10.1.12
 
-\subsection{Theorem}
 
+\subsection{Theorem\label{sub:Thm-Goursat}}
 
-\subsubsection*{Ist $f:\Omega\to\mathbb{C}$ holomorph, so gilt:
+Ist $f:\Omega\to\mathbb{C}$ holomorph, so gilt:
 \begin{align*}
 \int_{\partial R}f\left(z\right)\dd z & =0
 \end{align*}
-Beweis \textmd{(nach Goursat)}}
+
+
+
+\subsubsection*{Beweis \textmd{(nach Goursat)}}
 
 Zerlege $R$ in vier kongruente Rechtecke $R^{\left(1\right)},\ldots,R^{\left(4\right)}$.
 
@@ -3815,31 +4566,45 @@ TODO: Abb5
 \int_{\partial R}f\left(z\right)\dd z & =\int_{\partial R^{\left(1\right)}}f\left(z\right)\dd z+\ldots+\int_{\partial R^{\left(4\right)}}f\left(z\right)\dd z
 \end{align*}
 Dies gilt, da sich die Integrale längs der \quotedblbase{}inneren
-Kanten\textquotedblleft{} wegheben.
+Kanten\textquotedblleft{} gegenseitig aufheben.
 
-Für eines der Rechtecke $R^{\left(k\right)}$ gilt und nenne es $R_{1}$:
+Für eines der Rechtecke $R^{\left(k\right)}$ gilt:
 \begin{align*}
 \left|\int_{\partial R_{1}}f\left(z\right)\dd z\right| & \ge\frac{1}{4}\left|\int_{\partial R}f\left(z\right)\right|
 \end{align*}
-Wähle induktiv Rechtecke $R\supseteq R_{1}\supseteq R_{2}\supseteq\ldots$,
-so dass gilt:
+Dieses nennen wir $R_{1}$.
+
+$ $Wähle nun induktiv Rechtecke $R=R_{0}\supseteq R_{1}\supseteq R_{2}\supseteq\ldots$
+so, dass gilt:
 \begin{align*}
 \left|\eta\left(R_{n}\right)\right| & \ge\frac{1}{4^{n}}\left|\eta\left(R\right)\right|
 \end{align*}
-Zudem sind die Kantenlängen von $R_{n}$ schon $2^{-n}$ mal die Kantenlängen
+Zudem gilt
+\begin{align*}
+\text{Vol}\left(R_{n}\right) & =4^{-n}\cdot\text{Vol}\left(R\right)
+\end{align*}
+und die Kantenlängen von $R_{n}$ sind schon $2^{-n}$ mal die Kantenlängen
 von $R$.
 
-Seien $Z_{n}$ die Mittelpunkte dieser Rechtecke.
+Seien $z_{n}$ die Mittelpunkte dieser Rechtecke.
 
-Die Folge $\left(z_{n}\right)$ konvergiert gegen $z^{*}\in R$.
+Die Folge $\left(z_{n}\right)$ besitzt einen Häufungspunkt $z^{*}\in R$.
 
 TODO: Abb6
 
-Da $f$ in $z^{*}$ holomorph ist, gibt es zu jedem $\varepsilon>0$
-ein $\delta>0$, so dass gilt für alle $z\in B_{\delta}\left(z^{*}\right)\setminus\left\{ z^{*}\right\} $:
+Verwende nun ein lokales Argument:
+
+Da $f$ in $z^{*}$ holomorph ist, gilt:
 \begin{align*}
-\left|\frac{f\left(z\right)-f\left(z^{*}\right)}{z-z^{*}}-f'\left(z^{*}\right)\right| & <\varepsilon
+f\left(z\right) & =f\left(z^{*}\right)+f'\left(z^{*}\right)\left(z-z^{*}\right)+o\left(\left|z-z^{*}\right|\right)
 \end{align*}
+Anders ausgedrückt gibt es zu jedem $\varepsilon>0$ ein $\delta>0$,
+so dass gilt für alle $z\in B_{\delta}\left(z^{*}\right)\setminus\left\{ z^{*}\right\} $:
+\begin{align*}
+\left|f\left(z\right)-f\left(z^{*}\right)-f'\left(z^{*}\right)\left(z-z^{*}\right)\right| & <\varepsilon\left|z-z^{*}\right|
+\end{align*}
+Dies ist ein Polynom, es hat also eine holomorphe Stammfunktion.
+
 Wähle nun $n$ so groß, dass $R_{n}\subseteq B_{\delta}\left(z^{*}\right)$
 ist.
 
@@ -3849,14 +4614,846 @@ Dann gilt:
 \end{align*}
 Beachte dabei, das wir ein Polynom integrieren.
 \begin{align*}
-\left|\eta\left(R_{n}\right)\right| & =\left|\int_{\partial R_{n}}f\left(z\right)\dd z\right|=\Bigg|\int_{\partial R_{n}}\bigg(\underbrace{f\left(z\right)-f\left(z^{*}\right)-f'\left(z^{*}\right)\left(z-z^{*}\right)}_{\left|\ldots\right|\le\varepsilon\left|z-z^{*}\right|}\bigg)\dd z\Bigg|\le\varepsilon\Bigg|\int_{\partial R_{n}}\underbrace{\left|z-z^{*}\right|}_{\le2^{-n}\cdot\max\left\{ b-a,d-c\right\} }\dd z\Bigg|\le\\
- & \le\varepsilon\cdot4^{-n}\cdot\underbrace{d}_{\text{Durchmesser von }R}\cdot\underbrace{L}_{\text{Umfang von }R}
+\eta\left(R_{n}\right) & =\int_{\partial R_{n}}f\left(z\right)\dd z=\int_{\partial R_{n}}\left(f\left(z\right)-f\left(z^{*}\right)-f'\left(z^{*}\right)\left(z-z^{*}\right)\right)\dd z
 \end{align*}
+Also gilt:
+\begin{align*}
+\left|\eta\left(R_{n}\right)\right| & =\Bigg|\int_{\partial R_{n}}\bigg(\underbrace{f\left(z\right)-f\left(z^{*}\right)-f'\left(z^{*}\right)\left(z-z^{*}\right)}_{\left|\ldots\right|\le\varepsilon\left|z-z^{*}\right|}\bigg)\dd z\Bigg|\le\\
+ & \le\varepsilon\Bigg|\int_{\partial R_{n}}\underbrace{\left|z-z^{*}\right|}_{\le2^{-n}\cdot\max\left\{ b-a,d-c\right\} }\dd z\Bigg|\le\\
+ & \le\varepsilon\cdot\underbrace{d_{n}}_{\text{Durchmesser von }R_{n}}\cdot\underbrace{L_{n}}_{\text{Umfang von }R}\\
+ & \le\varepsilon\cdot4^{-n}\cdot\underbrace{d}_{\text{Durchmesser von }R}\cdot\underbrace{L}_{\text{Umfang von }R_{n}}
+\end{align*}
+Andererseits gilt:
+\begin{align*}
+\eta\left(R_{n}\right) & \ge4^{-n}\left|\eta\left(R\right)\right|
+\end{align*}
+
+
 Damit folgt:
 \begin{align*}
 \eta\left(R\right) & \le\varepsilon\cdot d\cdot L
 \end{align*}
 Da $\varepsilon$ beliebig ist, folgt $\eta\left(R\right)=0$.\\
+\qqed
+
+
+\subsection{Theorem}
+
+Sei $R'=R\setminus\left\{ \zeta_{1},\ldots,\zeta_{n}\right\} $ ein
+Rechteck ohne endlich viele innere Punkte, also $\zeta_{1}\in R^{\circ}$.
+
+Sei $f$ auf $R'$ holomorph und es gelte:
+\begin{align*}
+\lim_{z\to\zeta_{j}}\left(z-\zeta_{j}\right)f\left(z\right) & =0
+\end{align*}
+Dann gilt:
+\begin{align*}
+\int_{\partial R}f\left(z\right)\dd z & =0
+\end{align*}
+
+
+
+\subsubsection*{Beweis}
+
+Es genügt, einen Ausnahmepunkt zu betrachten, da wir das Rechteck
+ansonsten in endlich viele Rechtecke zerlegen können.
+
+TODO: Abb1-b
+
+Nenne den Ausnahmepunkt $\zeta$.
+
+Wähle ein kleines Rechteck $R_{0}$ um $\zeta$ und nenne die restlichen
+Rechtecke $R_{i}$.
+
+TODO: Abb2
+
+Weil $f$ in $R_{i}$ für $i\ge1$ holomorph ist, folgt:
+\begin{align*}
+\int_{\partial R_{i}}f\left(z\right)\dd z & =0
+\end{align*}
+Damit folgt:
+\begin{align*}
+\int_{\partial R}f\left(z\right)\dd z & =\int_{\partial R_{0}}f\left(z\right)\dd z
+\end{align*}
+Nach Voraussetzung können wir zu einem gegebene $\varepsilon>0$ das
+Rechteck $R_{0}$ so klein wählen, dass für alle $z\in\partial R_{0}$
+gilt:
+\begin{align*}
+\left|f\left(z\right)\cdot\left(z-\zeta\right)\right| & \le\varepsilon\\
+\left|f\left(z\right)\right| & \le\frac{\varepsilon}{\left|z-\zeta\right|}
+\end{align*}
+Also gilt:
+\begin{align*}
+\left|\int_{\partial R_{0}}f\left(z\right)\dd z\right| & \le\varepsilon\int_{\partial R_{o}}\frac{\overbrace{\left|\dd z\right|}^{=\left|\gamma'\left(t\right)\right|\dd t}}{\left|z-\zeta\right|}\le\\
+ & \le\frac{\varepsilon}{\frac{d_{0}}{4}}\cdot L_{0}=\varepsilon\cdot\frac{4L_{0}}{d_{0}}\le16\varepsilon
+\end{align*}
+Da $\varepsilon$ beliebig ist, folgt:
+\begin{align*}
+\int_{\partial R}f\left(z\right)\dd z & =0
+\end{align*}
+\qqed
+
+Verallgemeinere dies nun auf beliebige Kurven in einer Kreisscheibe.
+
+
+\subsection{Theorem}
+
+Sei $f$ in $\Delta:=B_{R}\left(0\right)\in\mathbb{C}$ holomorph.
+
+Dann gilt für jede geschlossene Kurve $\gamma$ in $\Delta$:
+\begin{align*}
+\int_{\gamma}f\left(z\right)\dd z & =0
+\end{align*}
+
+
+
+\subsubsection*{Beweis}
+
+Sei $z=x+\ii y\in\Delta$.
+
+TODO: Abb3
+
+Wähle ein Rechteck $R$ so, dass die linke untere Ecke der Ursprung
+und die rechte obere Ecke $z$ ist.
+
+Nach Theorem \ref{sub:Thm-Goursat} ist
+\begin{align*}
+\int_{\partial R}f\left(z\right)\dd z & =0
+\end{align*}
+und deshalb ist
+\begin{align*}
+\int_{\gamma_{1}}f\left(z\right)\dd z & =\int_{\gamma_{2}}f\left(z\right)\dd z=:F\left(z\right)
+\end{align*}
+wohldefiniert.
+
+Nach Korollar \ref{asdf}2.9.2 genügt es zu zeigen, dass $F\left(z\right)$
+eine holomorphe Stammfunktion von $f$ ist.
+
+Sei $\gamma_{h}$ ein Weg, der $z$ und $z+h$ parallel zur reellen
+Achse verbindet.
+
+Sei $\gamma_{g}$ ein Weg, der $z$ und $z+\ii h$ parallel zur imaginären
+Achse verbindet.
+
+TODO: Abb4
+\begin{align*}
+\frac{\partial F}{\partial x} & =\lim_{0\not=h\to0}\int_{\gamma_{h}}f\left(z\right)\dd z=\lim_{0\not=h\to0}\frac{1}{h}\int_{0}^{h}f\left(z+h\right)\cdot\underbrace{\gamma'\left(h\right)}_{=1}\dd h=f\left(z\right)\\
+\frac{\partial F}{\partial y} & =\lim_{0\not=h\to0}\frac{1}{h}\left(F\left(z+\ii h\right)-F\left(z\right)\right)=\lim_{0\not=h\to0}\frac{1}{h}\int_{0}^{h}f\left(z+\ii h\right)\cdot\ii\dd h=\ii f\left(z\right)
+\end{align*}
+Damit sind die Cauchy-Riemannschen Differentialgleichungen erfüllt,
+also ist $F$ holomorph und es gilt:
+\begin{align*}
+F'\left(z\right) & =f\left(z\right)
+\end{align*}
+\qqed
+
+
+\subsection{Theorem\label{sub:Thm-OintHolomHebPol}}
+
+Sei $f$ holomorph in $\Delta'=\Delta\setminus\left\{ \zeta_{1},\ldots,\zeta_{n}\right\} $
+mit $\zeta_{j}\in\Delta$ für $1\le j\le n$ und es gelte für $1\le j\le n$:
+\begin{align*}
+\lim_{z\to\zeta_{j}}\left(z-\zeta_{j}\right)f\left(z\right) & =0
+\end{align*}
+Dann ist
+\begin{align*}
+\int_{\gamma}f\left(z\right)\dd z & =0
+\end{align*}
+für jede geschlossene Kurve $\gamma$ in $\Delta$'.
+
+
+\subsubsection*{Beweis}
+
+TODO: Abb5
+
+Wähle Kurven $\gamma_{1}$ und $\gamma_{2}$ so, dass
+\begin{itemize}
+\item die Kurven keinen der $\zeta_{j}$ schneiden.
+\item in einer Umgebung von $z$ die Kurve $\gamma_{1}$ parallel zur imaginären
+Achse und $\gamma_{2}$ parallel zur reellen Achse ist.
+\end{itemize}
+Da nach Theorem \ref{asdf}2.10.2
+\begin{align*}
+\int_{\partial R}f\left(z\right)\dd z & =0
+\end{align*}
+ist, folgt wieder:
+\begin{align*}
+\int_{\gamma_{1}}f\left(z\right)\dd z & =\int_{\gamma_{2}}f\left(z\right)\dd z=:F\left(z\right)
+\end{align*}
+Ab jetzt geht der Beweis genau wie der von Theorem \ref{asdf}2.10.3.
+
+\qqed
+
+
+\section{Der Cauchysche Integralsatz}
+
+Sei $\gamma$ wieder eine geschlossene Kurve.
+
+Wir wollen nun Funktionen integrieren, die Pole haben.
+
+Beginne speziell mit der Funktion
+\begin{align*}
+\frac{1}{z-a}
+\end{align*}
+wobei $a\not\in\text{im}\left(\gamma\right)$ ist.
+
+TODO: Abb6
+
+
+\subsection{Lemma}
+
+Es gilt
+\begin{align*}
+\int_{\gamma}\frac{1}{z-a}\dd z & =2\pi\ii\cdot n
+\end{align*}
+für ein $n\in\mathbb{Z}\setminus\left\{ 0\right\} $.
+
+$\log\left(z-a\right)$ ist eine holomorphe Stammfunktion, aber nicht
+auf ganz $\mathbb{C}$.
+
+TODO: Abb7
+
+
+\subsubsection*{Beweis}
+
+Wähle eine Parametrisierung
+\begin{align*}
+\gamma:\left[\alpha,\beta\right] & \to\mathbb{C}
+\end{align*}
+und setze $z\left(t\right)=\gamma\left(t\right)$ und
+\begin{align*}
+h\left(t\right) & :=\int_{\alpha}^{t}\frac{z'\left(t\right)}{z\left(t\right)-a}\dd t
+\end{align*}
+TODO: Abb8
+\begin{align*}
+h'\left(t\right) & =\frac{z'\left(t\right)}{z\left(t\right)-a}
+\end{align*}
+Dann gilt:
+\begin{align*}
+e^{-h\left(t\right)}\left(z\left(t\right)-a\right)
+\end{align*}
+ist stetig und stückweise differenzierbar und hat die Ableitung:
+\begin{align*}
+\left(e^{-h\left(t\right)}\left(z\left(t\right)-a\right)\right)' & =e^{-h\left(t\right)}\left(-h'\left(t\right)\left(z\left(t\right)-a\right)+z'\left(t\right)\right)=0
+\end{align*}
+Also ist es eine Konstante $K\in\mathbb{C}$.
+\begin{align*}
+e^{-h\left(t\right)} & =\frac{K}{z\left(t\right)-a}
+\end{align*}
+Da $h\left(\alpha\right)=0$ ist, folgt:
+\begin{align*}
+e^{-h\left(t\right)} & =\frac{z\left(\alpha\right)-a}{z\left(t\right)-a}
+\end{align*}
+Also gilt:
+\begin{align*}
+e^{-h\left(\beta\right)} & =\frac{z\left(\alpha\right)-a}{z\left(\beta\right)-a}=1
+\end{align*}
+Denn die Kurve ist geschlossen, also $z\left(a\right)=z\left(b\right)$.
+
+Damit ergibt sich:
+\begin{align*}
+h\left(\beta\right) & =\int_{\gamma}\frac{1}{z-a}\dd z=2\pi\ii n
+\end{align*}
+\qqed
+
+%DATE: 13.1.12
+
+
+\subsection{Definition \textmd{(Index)}}
+
+Sei $\gamma$ eine geschlossene Kurve, die $a\in\mathbb{C}$ nicht
+schneidet. Dann heißt
+\begin{align*}
+n\left(\gamma,a\right) & =\frac{1}{2\pi\ii}\oint_{\gamma}\frac{\dd z}{z-a}
+\end{align*}
+der \emph{Index} von $\gamma$ bezüglich $a$ (oder auch \emph{Windungszahl}).
+
+
+\subsection{Theorem \textmd{(Cauchyscher Integralsatz)}}
+
+Sei $f:\Delta=B_{R}\left(0\right)\to\mathbb{C}$ holomorph und $\gamma$
+eine geschlossene Kurve in $\Delta$.
+
+Dann ist für jedes $a\in\Delta$, das nicht auf $\gamma$ liegt
+\begin{align*}
+n\left(\gamma,a\right)\cdot f\left(a\right) & =\frac{1}{2\pi\ii}\oint_{\gamma}\frac{f\left(z\right)}{z-a}\dd z
+\end{align*}
+
+
+
+\subsubsection*{Beweis}
+
+Setze
+\begin{align*}
+F\left(z\right) & =\frac{f\left(z\right)-f\left(a\right)}{z-a}
+\end{align*}
+ist auf $\Delta\setminus\left\{ a\right\} $ holomorph.
+\begin{align*}
+\lim_{z\to a}\left(z-a\right)F\left(z\right) & =\lim_{z\to a}\left(f\left(z\right)-f\left(a\right)\right)\stackrel{f\text{ stetig}}{=}0
+\end{align*}
+Also können wir Theorem \ref{sub:Thm-OintHolomHebPol} anwenden und
+erhalten:
+\begin{align*}
+0 & =\oint_{\gamma}F\left(z\right)\dd z=\oint_{\gamma}\frac{f\left(z\right)}{z-a}\dd z-f\left(a\right)\cdot\oint_{\gamma}\frac{1}{z-a}\dd z=\\
+ & =\oint_{\gamma}\frac{f\left(z\right)}{z-a}\dd z-f\left(a\right)\cdot2\pi\ii\cdot n\left(\gamma,a\right)
+\end{align*}
+Also folgt:
+\begin{align*}
+\frac{1}{2\pi\ii}\oint_{\gamma}\frac{f\left(z\right)}{z-a}\dd z & =f\left(a\right)\cdot n\left(\gamma,a\right)
+\end{align*}
+\qqed
+
+
+\subsection{Korollar}
+
+Sind $f:\Omega\to\mathbb{C}$ holomorph, $a\in\Delta$ und $\gamma=\partial B_{\varepsilon}\left(a\right)\subseteq\Delta$,
+so gilt:
+\begin{align*}
+f\left(a\right) & =\frac{1}{2\pi\ii}\ointctrclockwise_{\gamma}\frac{f\left(z\right)}{z-a}\dd z
+\end{align*}
+
+
+
+\subsubsection*{Beweis}
+
+Der Index ist eins, weil gilt:
+\begin{align*}
+\oint_{\partial B_{\varepsilon}\left(0\right)}\frac{1}{z}\dd z & =2\pi\ii
+\end{align*}
+\qqed
+
+
+\subsubsection*{Bemerkung und Definition \textmd{(Zusammenhangskomponenten)}}
+
+Also ist $f\left(a\right)$ eindeutig bestimmt durch $f|_{\partial B_{\varepsilon}\left(a\right)}$,
+das heißt $f$ kann nicht in einer kleinen Umgebung um $a$ abgeändert
+werden.
+\begin{align*}
+\nabla^{2}\text{Re}\left(f\right) & =0=\nabla^{2}\text{Im}\left(f\right)\\
+\frac{\partial f}{\partial x} & =-\ii\frac{\partial f}{\partial y}
+\end{align*}
+Diese harmonische Differentialgleichung ist im Innern eindeutig durch
+die Randwerte bestimmt.
+
+Eigenschaften des Index:
+\begin{align*}
+n\left(\gamma,a\right) & =\frac{1}{2\pi\ii}\ointctrclockwise_{\gamma}\frac{\dd z}{z-a}=\frac{1}{2\pi\ii}\int_{a}^{b}\frac{\gamma'\left(\tau\right)}{\gamma\left(\tau\right)}\dd\tau
+\end{align*}
+Gehe Kurven rückwärts oder setze geschlossene Kurven aneinander:
+\begin{align*}
+n\left(-\gamma,a\right) & =-n\left(\gamma,a\right)\\
+n\left(\gamma_{1}+\gamma_{2},a\right) & =n\left(\gamma_{1},a\right)+n\left(\gamma_{2},a\right)
+\end{align*}
+
+
+TODO: Abb1
+
+Das Bild (engl. \quotedblbase{}\foreignlanguage{english}{image}\textquotedblleft{})
+$\text{im}\left(\gamma\right)$ (beziehungsweise engl. \quotedblbase{}\foreignlanguage{english}{the
+range}\textquotedblleft{} $\text{Rg}\left(\gamma\right)$$ $)
+\begin{align*}
+\text{im}\left(\gamma\right) & :=\gamma\left(\left[a,b\right]\right)
+\end{align*}
+ist eine kompakte, also abgeschlossene und beschränkte Teilmenge von
+$\mathbb{C}$ und
+\begin{align*}
+\mathbb{C}\setminus\text{im}\left(\gamma\right)
+\end{align*}
+ist eine offene Teilmenge von $\mathbb{C}$.
+\begin{align*}
+n\left(\gamma\right):\mathbb{C}\setminus\text{im}\left(\gamma\right) & \to\mathbb{Z}:a\mapsto n\left(\gamma,a\right)
+\end{align*}
+Für offene Teilmengen von $\mathbb{C}$ ist zusammenhängend $\Leftrightarrow$
+wegzusammenhängend (auch genannt bogenzusammenhängend).
+\begin{align*}
+\mathbb{C}\setminus\text{Rg}\left(\gamma\right) & =\bcupd_{\lambda\in\Lambda}\Omega_{\lambda}
+\end{align*}
+$\Omega_{\lambda}$ heißen \emph{die Zusammenhangskomponenten} und
+für alle $\lambda$ aus der Indexmenge $\Lambda$ ist $\Omega_{\lambda}$
+zusammenhängend.
+
+Es könnte auch unendlich viele Zusammenhangskomponenten geben.
+
+TODO: Abb2
+
+Da $\text{im}\left(\gamma\right)$ beschränkt ist, gibt es einen Radius
+$R$, so dass gilt:
+\begin{align*}
+\text{im}\left(\gamma\right) & \subseteq\Delta=B_{R}\left(0\right)
+\end{align*}
+TODO: Abb3
+
+
+\subsection{Satz}
+
+\begin{iiilist}
+
+\iii Falls $\left|a\right|>R$ ist, so gilt $n\left(\gamma,a\right)=0$.
+
+\iii Auf jeder Zusammenhangskomponente ist $n\left(\gamma,.\right):\Omega_{\lambda}\to\mathbb{N},x\mapsto n\left(\gamma,x\right)$
+konstant.
+
+\end{iiilist}
+
+
+\subsubsection*{Beweis}
+
+\begin{iiilist}
+
+\iii ${\displaystyle \frac{1}{z-a}}$ ist auf ganz $\Delta$ holomorph.
+Nach Theorem \ref{asdf}2.10.3 folgt:
+\begin{align*}
+\oint\frac{\dd z}{z-a} & =0
+\end{align*}
+\qqed[\roman{ale2})]
+
+\iii Seien $a_{1},a_{2}\in\Omega_{\lambda}$. Mann kann dann $a_{1}$
+und $a_{2}$ durch einen Polygonzug miteinander verbinden.
+
+Es genügt zu zeigen, dass gilt:
+\begin{align*}
+n\left(\gamma,a\right) & =n\left(\gamma,b\right)
+\end{align*}
+Dabei ist die Verbindungslinie $v\left(a,b\right):=\left\{ \tau a+\left(1-\tau\right)b|0\le\tau\le1\right\} $
+von $a$ nach $b$ eine Teilmenge von $\Omega_{\lambda}$.
+
+Es folgt
+\begin{align*}
+v\left(a,b\right)\cap\text{im}\left(\gamma\right) & =\emptyset
+\end{align*}
+und damit ist ${\displaystyle \frac{z-a}{z-b}}$ auf $\gamma$ nicht
+Element von $\mathbb{R}_{\le0}$, denn wäre ${\displaystyle \frac{z-a}{z-b}}=-c$
+für ein $c\in\mathbb{R}_{\ge0}$, so wäre $z-a=-c\left(z-b\right)$,
+also würde $z\in v\left(a,b\right)$ folgen.
+
+TODO: Abb4?
+
+Folglich ist ${\displaystyle \log\left(\frac{z-a}{z-b}\right)}$ längs
+$\gamma$ wohldefiniert, wobei bei $\log\left(z\right)$ wieder die
+komplexe Ebene auf der negativen reellen Achse \quotedblbase{}geschlitzt\textquotedblleft{}
+ist.
+\begin{align*}
+\left(\log\left(\frac{z-a}{z-b}\right)\right)' & =\frac{1}{\frac{z-a}{z-b}}\left(\frac{1}{z-b}-\frac{z-a}{\left(z-b\right)^{2}}\right)=\frac{1}{z-a}-\frac{1}{z-b}
+\end{align*}
+\begin{align*}
+\oint_{\gamma}\left(\frac{1}{z-a}-\frac{1}{z-b}\right)\dd z & =\log\left(\frac{z-a}{z-b}\right)\bigg|_{z_{0}}^{z_{0}}=n\left(\gamma,a\right)=n\left(\gamma,b\right)
+\end{align*}
+
+
+\end{iiilist}
+
+\qqed
+
+
+\subsection{Lemma}
+
+Seien $z_{1},z_{2}$ zwei Punkte auf einer geschlossenen Kurve $\gamma$,
+die nicht durch den Ursprung geht.
+
+Es sei $\text{Im}\left(z_{1}\right)<0$ und $\text{Im}\left(z_{2}\right)>0$.
+
+Bezeichne die Teilkurven von $z_{1}$ nach $z_{2}$ mit $\gamma_{1}$
+und die von $z_{2}$ nach $z_{1}$ mit $\gamma_{2}$.
+
+Falls $\gamma_{1}$ die negative reelle Achse nicht schneidet und
+$\gamma_{2}$ die positive reelle Achse nicht schneidet, dann ist
+$n\left(\gamma,0\right)=1$.
+
+TODO: Abb5
+
+
+\subsubsection*{Beweis}
+
+Sei $L_{1}$ der Strahl durch 0 und $z_{1}$ und $L_{2}$ der Strahl
+durch 0 und $z_{2}$.
+
+Sei $C$ ein Kreis um Ursprung, der $\gamma$ nicht schneidet.
+
+Wähle $\sigma_{1}$ und $\sigma_{2}$ wie in der Zeichnung.
+
+TODO: Wie genau werden die $\sigma$ gewählt?
+\begin{align*}
+\oint_{\sigma_{1}}\frac{\dd z}{z-a} & =0=\oint_{\sigma_{2}}\frac{\dd z}{z-a}
+\end{align*}
+Denn 0 ist in derselben Zusammenhangskomponente wie ein beliebiges
+$a\in\mathbb{C}$ mit $\left|a\right|>R$.
+\begin{align*}
+n\left(\sigma_{1},a\right) & =0
+\end{align*}
+Nach Satz \ref{asdf}2.11.5 i).
+
+Die Kurve $\mathcal{C}$ (siehe Zeichnung) schneidet nach Konstruktion
+$\sigma_{1}$ nicht.
+
+Also liegen $a,0$ in der gleichen Zusammenhangskomponente von $\mathbb{C}\setminus\text{im}\left(\sigma_{1}\right)$,
+weswegen $n\left(\sigma_{1},0\right)=0$.
+
+Damit folgt:
+\begin{align*}
+0 & =n\left(\sigma_{1},0\right)+n\left(\sigma_{2},0\right)=\frac{1}{2\pi\ii}\oint_{\sigma_{1}}\frac{\dd z}{z}+\frac{1}{2\pi\ii}\oint_{\sigma_{2}}\frac{\dd z}{z}=\frac{1}{2\pi\ii}\oint_{\gamma}\frac{\dd z}{z}-\frac{1}{2\pi\ii}\underbrace{\oint_{C}\frac{\dd z}{z}}_{=2\pi\ii}=n\left(\gamma,0\right)-1
+\end{align*}
+Damit folgt:
+\begin{align*}
+n\left(\gamma,0\right) & =1
+\end{align*}
+\qqed
+
+
+\section{Einfache Folgerungen aus dem Cauchyschen Integralsatz}
+
+TODO: Abb7
+
+Seien $\Omega\subseteq\mathbb{C}$ offen, $f:\Omega\to\mathbb{C}$
+holomorph und $a\in\Omega$.
+
+Wähle $\varepsilon\in\mathbb{R}_{>0}$ so, dass $B_{2\varepsilon}\left(a\right)\subseteq\Omega$
+gilt und definiere $C:=\partial B_{2\varepsilon}\left(a\right)$.
+
+Für alle $z\in B_{\varepsilon}\left(a\right)$ gilt dann:
+\begin{align*}
+f\left(z\right) & =\frac{1}{2\pi\ii}\oint_{C}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta
+\end{align*}
+Nehme an, dass man unter dem Integral nach $z$ ableiten darf, was
+wir später rechtfertigen werden.
+\begin{align*}
+f'\left(z\right) & =\frac{1}{2\pi\ii}\oint\frac{f\left(\zeta\right)}{\left(\zeta-z\right)^{2}}\dd\zeta\\
+\vdots\quad\\
+f^{\left(n\right)}\left(z\right) & =\frac{n!}{2\pi\ii}\oint\frac{f\left(\zeta\right)}{\left(\zeta-z\right)^{n+1}}\dd\zeta
+\end{align*}
+Also sollte $f$ beliebig oft komplex differenzierbar sein.
+\begin{align*}
+\left|f^{\left(n\right)}\left(z\right)\right| & \le\sup_{C}\frac{\left|f\left(\zeta\right)\right|}{\left|\zeta-z\right|^{n+1}}\cdot\underbrace{2\pi\cdot2\varepsilon}_{\text{Länge von }C}\le\\
+ & \le2\varepsilon\cdot n!\cdot\frac{1}{\varepsilon^{n+1}}\cdot\sup_{C}\left|f\right|\le\\
+ & \le\underbrace{2\sup_{C}\left|f\right|}_{=:\mathcal{C}}\cdot\frac{n!}{\varepsilon^{n}}
+\end{align*}
+TODO: Stimmt diese Definition von $\mathcal{C}$???
+
+\quotedblbase{}Man hat unter Kontrolle wie rasch die Ableitungen in
+$n$ ansteigen.\textquotedblleft{}
+
+Betrachte die Taylorreihe:
+\begin{align*}
+f\left(z\right) & =\sum_{n=0}^{\infty}\frac{f^{\left(n\right)}\left(z_{0}\right)}{n!}\left(z-z_{0}\right)^{n}
+\end{align*}
+\begin{align*}
+\left|\frac{f^{\left(n\right)}\left(z_{0}\right)}{n!}\left(z-z_{0}\right)\right|^{n} & \le\mathcal{C}\cdot\left(\frac{\left|z-z_{0}\right|}{\varepsilon}\right)^{n}
+\end{align*}
+Falls $\left|z-z_{0}\right|<\varepsilon$ ist die geometrische Reihe
+eine konvergente Majorante.
+
+%DATE: Di 17.1.12
+
+
+\subsection{Lemma}
+
+TODO: Abb1
+
+Sei $\Omega\subseteq\mathbb{C}$ offen. 
+
+Sei $\varphi\left(\zeta\right)$ stetig auf der geschlossene Kontur
+$\gamma:=\partial\Delta$, mit $\Delta:=B_{2\varepsilon}\left(a\right)\subseteq\Omega$
+das heißt $\gamma:\left[\alpha,\beta\right]\to\mathbb{C},\left(f\circ\gamma\right):\left[\alpha,\beta\right]\to\mathbb{C}$
+soll stetig sein.
+
+TODO: \quotedblbase{}das Kontur\textquotedblleft{} ??
+
+Dann sind die Funktionen
+\begin{align*}
+F_{n}\left(z\right) & =\oint\frac{\varphi\left(\zeta\right)}{\left(\zeta-z\right)^{n}}\dd\zeta
+\end{align*}
+mit $n\in\mathbb{N}$ auf $B_{\varepsilon}\left(a\right)$ holomorph
+und $F_{n}'\left(z\right)=n\cdot F_{n+1}\left(z\right)$.
+
+
+\subsubsection*{Beweis}
+
+\begin{abclist}
+
+\abc Zeige, dass $F_{1}\left(z\right)$ stetig ist:
+
+Sei $z_{0}\in B_{\varepsilon}\left(a\right)$. Wähle $\delta>0$ so,
+dass $B_{2\delta}\left(z_{0}\right)\subseteq B_{\varepsilon}\left(a\right)$.
+Sei $z\in B_{\delta}\left(z_{0}\right)$.
+\begin{align*}
+F_{1}\left(z\right)-F_{1}\left(z_{0}\right) & =\oint_{\gamma}\varphi\left(\zeta\right)\underbrace{\left(\frac{1}{\zeta-z}-\frac{1}{\zeta-z_{0}}\right)}_{=\frac{z-z_{0}}{\left(\zeta-z\right)\left(\zeta-z_{0}\right)}}\dd\zeta=\left(z-z_{0}\right)\oint_{\gamma}\frac{\varphi\left(\zeta\right)}{\left(\zeta-z\right)\left(\zeta-z_{0}\right)}\dd\zeta
+\end{align*}
+Wir wissen, dass $\left|\zeta-z\right|\ge\varepsilon$ und $\left|\zeta-z_{0}\right|\ge\varepsilon$
+ist.
+
+Damit folgt:
+\begin{align*}
+\left|F\left(z\right)-F\left(z_{0}\right)\right| & \le\left|z-z_{0}\right|\cdot\frac{1}{\varepsilon^{2}}\cdot\oint_{\gamma}\left|\varphi\left(\zeta\right)\right|\underbrace{\left|\dd\zeta\right|}_{=\left|\gamma'\left(\tau\right)\right|\dd\tau}\le\\
+ & \le\left|z-z_{0}\right|\cdot\frac{1}{\varepsilon^{2}}\cdot\sup_{\gamma}\left|\varphi\right|\cdot2\pi\cdot2\varepsilon
+\end{align*}
+Also ist $F$ lipschitz-stetig in $z_{0}$.
+
+\abc $F_{1}$ ist komplex differenzierbar in $z=z_{0}$ und $F_{1}'\left(z_{0}\right)=F_{2}\left(z_{0}\right)$.
+
+Betrachte die Abschätzung aus a) für $\varphi\left(\zeta\right)$
+ersetzt durch ${\displaystyle \frac{\varphi\left(\zeta\right)}{\zeta-z_{0}}}$,
+also ist
+\begin{align*}
+G_{1}\left(z\right) & =\oint\frac{\varphi\left(\zeta\right)}{\left(\zeta-z_{0}\right)\left(\zeta-z\right)}\dd\zeta=\frac{F_{1}\left(z\right)-F_{1}\left(z_{0}\right)}{z-z_{0}}
+\end{align*}
+stetig in $z_{0}$. Also existiert der Limes:
+\begin{align*}
+\lim_{z\to z_{0}}\frac{F_{1}\left(z\right)-F_{1}\left(z_{0}\right)}{z-z_{0}}
+\end{align*}
+Nochmals erklärt:
+\begin{align*}
+F_{1}\left(z\right) & =\oint_{\gamma}\frac{\varphi\left(\zeta\right)}{\zeta-z}\dd\zeta
+\end{align*}
+\begin{align*}
+F_{1}\left(z\right)-F_{1}\left(z_{0}\right) & =\left(z-z_{0}\right)\oint_{\gamma}\frac{\varphi\left(\zeta\right)}{\left(\zeta-z\right)\left(\zeta-z_{0}\right)}\dd\zeta
+\end{align*}
+Daher gilt:
+\begin{align*}
+\frac{F_{1}\left(z\right)-F_{1}\left(z_{0}\right)}{z-z_{0}} & =\oint_{\gamma}\frac{\psi\left(\zeta\right)}{\zeta-z}\dd\zeta
+\end{align*}
+Dabei ist:
+\begin{align*}
+\psi\left(\zeta\right) & :=\frac{\varphi\left(\zeta\right)}{\zeta-z_{0}}
+\end{align*}
+Da $\psi$ stetig ist, ist das Konturintegral stetig und daher konvergiert
+der Differenzenquotient.
+
+\abc Der allgemeine Fall folgt durch Induktion:
+\begin{align*}
+F_{n}\left(z\right)-F_{n}\left(z_{0}\right) & =\oint_{\gamma}\varphi\left(\zeta\right)\left(\frac{1}{\left(\zeta-z\right)^{n}}\cdot1-\frac{1}{\left(\zeta-z_{0}\right)^{n}}\right)\dd\zeta
+\end{align*}
+Für die Stetigkeit verwende folgendes Ergebnis:
+
+TODO: Differenzierbarkeit?
+\begin{description}
+\item [{Behauptung}] \hspace*{1mm}\\
+Für $p,q\in\mathbb{N}$ gilt:
+\begin{align*}
+\lim_{z\to z_{0}}\oint_{\gamma}\varphi\left(\zeta\right)\frac{1}{\left(\zeta-z_{0}\right)^{p}\left(\zeta-z\right)^{q}}\dd\zeta & =\oint\varphi\left(\zeta\right)\frac{1}{\left(\zeta-z\right)^{p+q}}\dd\zeta
+\end{align*}
+
+\item [{Beweis}] \hspace*{1mm}\\
+\begin{align*}
+\oint\varphi\left(\zeta\right)\frac{1}{\left(\zeta-z_{0}\right)^{p}\left(\zeta-z\right)^{q}}\dd\zeta & =\int_{\alpha}^{\beta}\frac{\varphi\left(\gamma\left(\tau\right)\right)}{\underbrace{\left(\gamma\left(\tau\right)-z_{0}\right)^{p}\left(\gamma\left(\tau\right)-z\right)^{q}}_{\to}}\gamma'\left(\tau\right)\dd\tau\stackrel{z\to z_{0}}{\longrightarrow}\int_{\alpha}^{\beta}\frac{\varphi\left(\gamma\left(\tau\right)\right)}{\left(\gamma\left(\tau\right)-z_{0}\right)^{p+q}}\gamma'\left(\tau\right)\dd\tau
+\end{align*}
+Benutze folgende Identität:
+\begin{align*}
+1 & =\frac{\zeta-z_{0}}{\zeta-z_{0}}=\frac{\zeta-z}{\zeta-z_{0}}+\frac{z-z_{0}}{\zeta-z_{0}}
+\end{align*}
+Damit ergibt sich:
+\begin{align*}
+\frac{1}{\left(\zeta-z\right)^{n}} & =\frac{1}{\left(\zeta-z\right)^{n}}\cdot\frac{\zeta-z_{0}}{\zeta-z_{0}}=\frac{1}{\left(\zeta-z\right)^{n}}\cdot\left(\frac{\zeta-z}{\zeta-z_{0}}+\frac{z-z_{0}}{\zeta-z_{0}}\right)=\frac{1}{\left(\zeta-z\right)^{n-1}\left(\zeta-z_{0}\right)}+\frac{z-z_{0}}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}=\\
+ & =\frac{1}{\left(\zeta-z\right)^{n-1}\left(\zeta-z_{0}\right)}\frac{\zeta-z_{0}}{\zeta-z_{0}}+\frac{z-z_{0}}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}=\frac{1}{\left(\zeta-z\right)^{n-1}\left(\zeta-z_{0}\right)}\cdot\left(\frac{\zeta-z}{\zeta-z_{0}}+\frac{z-z_{0}}{\zeta-z_{0}}\right)+\frac{z-z_{0}}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}=\\
+ & =\frac{1}{\left(\zeta-z\right)^{n-2}\left(\zeta-z_{0}\right)^{2}}+\frac{z-z_{0}}{\left(\zeta-z\right)^{n-1}\left(\zeta-z_{0}\right)^{2}}+\frac{z-z_{0}}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}=\\
+ & \quad\vdots\\
+ & =\frac{1}{\left(\zeta-z_{0}\right)^{n}}+\underbrace{\frac{z-z_{0}}{\left(\zeta-z\right)\left(\zeta-z_{0}\right)^{n}}+\frac{z-z_{0}}{\left(\zeta-z\right)^{2}\left(\zeta-z_{0}\right)^{n-1}}+\ldots+\frac{z-z_{0}}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}}_{n\text{ Terme}}
+\end{align*}
+Also gilt:
+\begin{align*}
+\frac{F_{n}\left(z\right)-F_{n}\left(z_{0}\right)}{z-z_{0}} & =\frac{1}{z-z_{0}}\oint_{\gamma}\varphi\left(\zeta\right)\left(\frac{1}{\left(\zeta-z\right)^{n}}-\frac{1}{\left(\zeta-z_{0}\right)^{n}}\right)\dd\zeta=\\
+ & =\oint_{\gamma}\varphi\left(\zeta\right)\left(\frac{1}{\left(\zeta-z\right)\left(\zeta-z_{0}\right)^{n}}+\frac{1}{\left(\zeta-z\right)^{2}\left(\zeta-z_{0}\right)^{n-1}}+\ldots+\frac{1}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}\right)\dd\zeta
+\end{align*}
+Damit folgt:
+\begin{align*}
+F_{n}'\left(z_{0}\right)=\lim_{z\to z_{0}}\frac{F_{n}\left(z\right)-F_{n}\left(z_{0}\right)}{z-z_{0}} & =\int_{\gamma}\varphi\left(\zeta\right)\frac{n}{\left(\zeta-z_{0}\right)^{n+1}}=n\cdot F_{n+1}\left(z_{0}\right)
+\end{align*}
+
+\end{description}
+\qqed[Behauptung]
+
+\end{abclist}
+
+
+\subsection{Theorem}
+
+Jede holomorphe Funktion $f:\Omega\to\mathbb{C}$ ist in $\Omega$
+unendlich oft komplex differenzierbar und es gilt:
+\begin{align*}
+f^{\left(n\right)}\left(z\right) & =\frac{n!}{2\pi\ii}\oint_{\gamma}\frac{f\left(\zeta\right)}{\left(\zeta-z\right)^{n+1}}\dd z
+\end{align*}
+Dabei ist $\gamma$ eine Kurve in $\Omega$, die $z$ mit Index $1$
+umläuft.
+
+
+\subsection{Theorem \textmd{(Moera)}}
+
+TODO: Name???
+
+Falls $f:\Omega\to\mathbb{C}$ stetig und für jede geschlossene Kurve
+in $\Omega$ schon $\oint_{\gamma}f\left(z\right)\dd z=0$ gilt, ist
+$f$ holomorph.
+
+
+\subsubsection*{Beweis}
+
+Nach Theorem \ref{asdf}2.9.1 gibt es eine holomorphe Stammfunktion
+$F:\Omega\to\mathbb{C}$ und $F'\left(z\right)=f\left(z\right)$.
+
+Da $F$ nach Theorem \ref{asdf}2.12.2 zweimal differenzierbar ist,
+folgt, dass $f$ differenzierbar und damit holomorph ist.
+
+\qqed
+
+
+\subsection{Theorem \textmd{(Liouville)}}
+
+Eine beschränkte, auf ganz $\mathbb{C}$ holomorphe Funktion ist konstant.
+
+
+\subsubsection*{Beweis}
+
+TODO: Abb2
+
+Für $R>2\left|z\right|$ gilt:
+
+\begin{align*}
+f\left(z\right) & =\frac{1}{2\pi\ii}\oint_{\partial B_{R}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta
+\end{align*}
+\begin{align*}
+\left|\zeta-z\right| & >\frac{R}{2}
+\end{align*}
+Nach Theorem \ref{asdf}2.12.2 gilt:
+\begin{align*}
+f'\left(z\right) & =\frac{1}{2\pi\ii}\oint_{\partial B_{R}\left(0\right)}\frac{f\left(\zeta\right)}{\left(\zeta-z\right)^{2}}\dd\zeta
+\end{align*}
+\begin{align*}
+\left|f'\left(z\right)\right| & \le\frac{1}{2\pi\ii}
+\end{align*}
+\begin{align*}
+\left|f'\left(z\right)\right| & \le\frac{1}{2\pi}\left(\frac{2}{R}\right)^{2}\cdot\sup_{\partial B_{R}\left(0\right)}\left|f\right|\cdot2\pi R\le\frac{4}{R}\cdot\underbrace{\sup_{\mathbb{C}}\left|f\right|}_{\le C}\stackrel{R\to\infty}{\longrightarrow}0
+\end{align*}
+Da $R$ beliebig groß gewählt werden kann, folgt $f'\left(z\right)=0$.
+
+Wir sehen also, dass gilt:
+
+TODO: Abb3
+\begin{align*}
+f'\left(z\right) & =0
+\end{align*}
+\begin{align*}
+f\left(z_{1}\right)-f\left(z_{0}\right) & =\int_{\gamma}f'\left(z\right)\dd z=0
+\end{align*}
+Damit folgt:
+\begin{align*}
+f\left(z_{1}\right) & =f\left(z_{0}\right)
+\end{align*}
+Also ist $f$ konstant.
+
+\qqed
+
+
+\subsection{Eleganter Beweis des Fundamentalsatzes der Algebra}
+
+Nehme an, $P\left(z\right)$ sei ein Polynom vom Grade $\ge1$ ohne
+Nullstellen.
+
+Damit folgt:
+\begin{align*}
+f\left(z\right) & :=\frac{1}{P\left(z\right)}
+\end{align*}
+ist holomorph auf ganz $\mathbb{C}$, da $f'\left(z\right)=-\frac{P'\left(z\right)}{P\left(z\right)^{2}}$
+ist.
+\begin{align*}
+P\left(z\right) & =a_{n}z^{n}\left(1+\frac{a_{n-1}}{a_{n}}\frac{1}{z}+\ldots\right)
+\end{align*}
+Also ist $\lim_{z\to\infty}\left|P\left(z\right)\right|=\infty$ und
+somit:
+\begin{align*}
+\lim_{z\to\infty}f\left(z\right) & =0
+\end{align*}
+Daher ist $f$ auf ganz $\mathbb{C}$ holomorph und beschränkt und
+damit nach dem Satz von Liouville \ref{asdf}?? konstant.
+
+Also ist $P\left(z\right)$ konstant, was ein Widerspruch ist.
+
+\qqed
+
+Bedingung für \quotedblbase{}Ausnahmepunkte\textquotedblleft{}:
+\begin{align*}
+\lim_{z\to\zeta}\left(z-\zeta\right)f\left(z\right) & =0
+\end{align*}
+
+
+
+\section{Hebbare Singularitäten, Taylorreihen}
+
+
+\subsection{Satz}
+
+Sei $\Omega\subseteq\mathbb{C}$ offen.
+
+Sei $\Omega'=\Omega\setminus\left\{ a\right\} $, $f:\Omega'\to\mathbb{C}$
+holomorph.
+
+Es gelte:
+\begin{align*}
+\sr{\lim_{z\to a}}{}{z\not=a}\left(z-a\right)f\left(z\right) & =0
+\end{align*}
+
+
+Dann gibt es eine holomorphe Funktion
+\begin{align*}
+\tilde{f}:\Omega & \to\mathbb{C}
+\end{align*}
+mit $\tilde{f}|_{\Omega'}=f$.
+
+Die Umkehrung gilt auch.
+
+Die Funktion $\tilde{f}$ ist eindeutig bestimmt.
+
+$\tilde{f}$ heißt \emph{holomorphe Fortsetzung} von $f$.
+
+$a$ heißt \emph{hebbare Singularität}.
+
+
+\subsubsection*{Beweis}
+
+\quotedblbase{}$\Leftarrow$\textquotedblleft{}: Sei $\tilde{f}$
+holomorphe Fortsetzung. Dann gilt
+\begin{align*}
+\sr{\lim_{z\to a}}{}{z\not=a}\left(z-a\right)f\left(z\right) & =\lim_{z\to a}\left(z-a\right)\tilde{f}\left(z\right)=0
+\end{align*}
+weil $\tilde{f}$ stetig ist.
+
+Die Eindeutigkeit ist wegen der Stetigkeit klar:
+\begin{align*}
+\tilde{f}\left(a\right) & =\lim_{z\to a}\tilde{f}\left(z\right)=\sr{\lim_{z\to a}}{}{z\not=a}f\left(z\right)
+\end{align*}
+\quotedblbase{}$\Rightarrow$\textquotedblleft{}: Sei $C=\partial B_{\varepsilon}\left(a\right)\subseteq\Omega$.
+
+Betrachte für $z\in B_{\varepsilon}\left(a\right)\setminus\left\{ a\right\} $
+die Funktion:
+\begin{align*}
+G\left(\xi\right) & =\frac{f\left(\xi\right)-f\left(z\right)}{\xi-z}
+\end{align*}
+Diese Funktion ist holomorph in $\Omega\setminus\left\{ a,z\right\} $
+und erfüllt die Bedingungen von Theorem \ref{asdf}2.10.4, also für
+$\xi\in\left\{ a,z\right\} $:
+\begin{align*}
+\sr{\lim_{z\to\xi}}{}{z\not=\xi}\left(z-\xi\right)G\left(\xi\right) & =0
+\end{align*}
+Also gilt
+\begin{align*}
+\oint_{\gamma}G\left(z\right)\dd z & =0
+\end{align*}
+und folglich:
+\begin{align*}
+f\left(z\right) & =\frac{1}{2\pi\ii}\oint_{C}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta
+\end{align*}
+Dies ist genau wie im Beweis des Cauchyschen-Integralsatzes \ref{asdf}??.
+
+Da das Integral auch für $z=a$ wohldefiniert ist, können wir setzen
+\begin{align*}
+\tilde{f}\left(z\right) & :=\frac{1}{2\pi\ii}\oint_{C}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta
+\end{align*}
+auf $B_{\varepsilon}\left(a\right)$, einschließlich $z=a$.
+
+$\tilde{f}:\Omega\to\mathbb{C}$ und definiert durch
+\begin{align*}
+\tilde{f}\left(z\right) & =\begin{cases}
+\frac{1}{2\pi\ii} & \text{falls }z\in B_{\varepsilon}\left(a\right)\\
+f\left(z\right) & \text{sonst}
+\end{cases}
+\end{align*}
 \qqed
 
 

@@ -5,12 +5,12 @@
 \textclass report
 \begin_preamble
 \usepackage{tikz}
+\usetikzlibrary{matrix,arrows,calc}
 \usepackage{latexsym,stmaryrd,stackrel,array,tabularx,multirow}
 \usepackage[explicit]{titlesec}
-\usepackage{makeidx}
 %\usepackage{polynom} % momentan nicht benötigt
 
-%Inhaltsverzeichnis
+% Inhaltsverzeichnis
 \usepackage{tocloft}
 \tocloftpagestyle{fancy}
 
@@ -26,32 +26,36 @@
 \renewcommand{\cftsubsubsecindent}{9 em}
 \renewcommand{\cftsubsubsecnumwidth}{4.5 em}
 
-
-%Kommandos mit optionalem Argument (für Lyx)
+% Kommandos mit optionalem Argument (für Lyx)
 \newcommand{\sr}[3]{\stackrel[#3]{#2}{#1}}
 
-%Mathe-Operatoren
+% Mathe-Operatoren
 \DeclareMathOperator*{\exs}{\exists}
 \DeclareMathOperator*{\exsg}{\exists!}
 \DeclareMathOperator*{\fall}{\forall}
 \DeclareMathOperator*{\bcupd}{\dot{\bigcup}}
 \DeclareMathOperator*{\bcapd}{\dot{\bigcap}}
 
-%Eigene Abkürzungen
+% Eigene Abkürzungen
 \newcommand{\dd}{\textnormal{d}}
-\newcommand{\im}{\textnormal{im}}
-\newcommand{\id}{\textnormal{id}}
 \newcommand{\ii}{\textbf{i}}
+
+% Rotieren
+\newcommand{\Rotate}[1]{
+\begin{tikzpicture}
+\node[rotate=90] {\ensuremath{#1}};
+\end{tikzpicture}
+}
 
 %QED-Zeichen (Box)
 \newcommand{\qed}{\ensuremath{\Box}}
-\newcommand{\qqed}[1][\arabic{chapter}.\arabic{section}.\arabic{subsection}]{\begin{flushright}\qed\ensuremath{_{\text{#1}}}\end{flushright}}
+\newcommand{\qqed}[1][\arabic{chapter}.\arabic{section}\ifnum\arabic{subsection}>0{.\arabic{subsection}}\fi]{\begin{flushright}\qed\ensuremath{_{\text{#1}}}\end{flushright}}
 
-%Definitons-Zeichen
+% Definitons-Zeichen
 \newcommand{\dfn}{\mathrel{\mathop:}=}
-%Menge: TODO: auch die Höhe der zweiten Hälfte für den Strich berücksichtigen!
+% Menge: TODO: auch die Höhe der zweiten Hälfte für den Strich berücksichtigen!
 \newcommand{\mng}[2]{\ensuremath{\left\{#1\,\left.\vphantom{#1#2}\right|\,#2\right\}}}
-%Abbildung:
+% Abbildung
 \newcommand{\abb}[5]{#1:#2\to #3:#4\mapsto #5}
 
 % Mengen Modulo
@@ -59,6 +63,14 @@
 \mbox{\raisebox{0.6ex}{\ensuremath{\displaystyle #1}}%
 {\Large /}%
 \raisebox{-0.6ex}{\ensuremath{\displaystyle #2}}%
+}%
+}
+
+% Links Modulo
+\newcommand{\lmodulo}[2]{%
+\mbox{\raisebox{-0.6ex}{\ensuremath{\displaystyle #1}}%
+{\Large \ensuremath{\backslash}}%
+\raisebox{0.6ex}{\normalsize\ensuremath{\displaystyle #2}}%
 }%
 }
 
@@ -78,6 +90,14 @@
 }%
 }
 
+% Links Modulo Script
+\newcommand{\lmoduloScript}[2]{%
+\mbox{\raisebox{-0.4ex}{\scriptsize\ensuremath{\displaystyle #1}}%
+{\footnotesize \ensuremath{\backslash}}%
+\raisebox{0.4ex}{\scriptsize\ensuremath{\displaystyle #2}}%
+}%
+}
+
 \newcommand{\modloScript}[2]{%
 \mbox{\raisebox{0.4ex}{\scriptsize\ensuremath{\displaystyle \mathbb{#1}}}%
 {\footnotesize /}%
@@ -85,13 +105,13 @@
 }%
 }
 
-%Wurzel mit Häkchen
+% Wurzel mit Häkchen
 \newcommand{\hsqrt}[2][{}]{\setbox0=\hbox{$\sqrt[#1]{\phantom{|}\!\! #2\hspace*{1pt}}$}\dimen0=\ht0
   \advance\dimen0-0.2\ht0
   \setbox2=\hbox{\vrule height\ht0 depth -\dimen0}
   {\box0\lower0.4pt\box2}}
 
-%alphabetische Aufzählung
+% alphabetische Aufzählung
 \newcounter{ale}
 \newcommand{\abc}{\stepcounter{ale}\item[\alph{ale})]}
 \newenvironment{abclist}{\begin{itemize} \setcounter{ale}{0}}{\end{itemize}}
@@ -100,7 +120,6 @@
 \newcounter{ale2}
 \newcommand{\iii}{\stepcounter{ale2}\item[\textnormal{\roman{ale2})}]}
 \newenvironment{iiilist}{\begin{itemize} \setcounter{ale2}{0}}{\end{itemize}}
-
 
 % Damit nicht immer "Kapitel 1" etc. über der Kapitelüberschrift steht
 \titleformat{\chapter}
@@ -118,15 +137,12 @@
 % Kopf- und Fußzeile
 % Höhe der Kopfzeile
 \setlength{\headheight}{14pt}
+%\renewcommand{\headrulewidth}{0.4pt} %obere Trennlinie
 \fancyhf{} %alle Kopf- und Fußzeilenfelder bereinigen
 \fancyhead[L]{\textbf{Analysis III}} %Kopfzeile links
 \fancyhead[C]{\leftmark} %zentrierte Kopfzeile
 \fancyhead[R]{\rightmark} %Kopfzeile rechts
-%\renewcommand{\headrulewidth}{0.4pt} %obere Trennlinie
 \fancyfoot[C]{\thepage\quad\!\!\!\slash\quad\!\!\!\pageref{END-front}} %Seitenzahl der Front-Matter
-
-% Datum
-%\date{Stand: \today}
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
@@ -362,7 +378,7 @@ pagenumbering{roman}
 \begin_layout Title
 
 \series bold
-\size huge
+\size giant
 \begin_inset ERT
 status open
 
@@ -511,6 +527,22 @@ setcounter{page}{2} % sonst gibt es aus irgendeinem Grund zweimal die Seite
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace*{-15mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection*
 ACHTUNG
 \end_layout
@@ -586,11 +618,12 @@ Disclaimer of Warranty
 Unless otherwise mutually agreed to by the parties in writing and to the
  extent not prohibited by applicable law, 
 \series bold
-the copyright holders  provide the document “as is
+the Copyright Holders and any other party, who may distribute the Document
+ as permitted above,   provide the Document “as is
 \noun default
-”
+”,
 \noun on
- without warranties of any kind
+ without warranty of any kind
 \series default
 , expressed, implied, statutory or otherwise, including, but not limited
  to, the implied warranties of merchantability, fitness for a particular
@@ -613,17 +646,14 @@ In no event
 \series default
  unless required by applicable law or agreed to in writing 
 \series bold
-will the copyright holders be liable to you for any loss
-\series default
- of revenue, profit or anything else, 
-\series bold
-or for any damages
+will the Copyright Holders, or any other party, who may distribute the Document
+ as permitted above, be liable to you for any damages
 \series default
 , including, but not limited to, any general, special, incidental, consequential
 , punitive or exemplary damages, however caused, regardless of the theory
- of liability, arising out of or related to this license or the use of or
- inability to use the document, even if the copyright holders have been
- advised of the possibility of such damages.
+ of liability, arising out of or related to this license or any use of or
+ inability to use the Document, even if they have been advised of the possibilit
+y of such damages.
 \end_layout
 
 \begin_layout Standard
@@ -631,11 +661,11 @@ or for any damages
 \series bold
 \noun on
 \lang english
-In no event will the copyright holders' liability to you
+In no event will the Copyright Holders'/Distributor's liability to you
 \series default
 , whether in contract, tort (including negligence), or otherwise, 
 \series bold
-exceed the amount you paid the copyright holders
+exceed the amount you paid the Copyright Holders/Distributor
 \series default
  for the document under this agreement.
 \end_layout
@@ -2768,7 +2798,11 @@ Sei
 \end_layout
 
 \begin_layout Subsection
-Satz
+Satz 
+\series medium
+(Messbarkeit ist transitiv)
+\series default
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Satz-messCircMessIstMess"
@@ -2884,7 +2918,9 @@ qqed
 \end_layout
 
 \begin_layout Subsection
-Bemerkung
+Bemerkung und Definition 
+\series medium
+(Kompaktifizierung)
 \end_layout
 
 \begin_layout Standard
@@ -2963,7 +2999,11 @@ Betrachte auf
 \end_layout
 
 \begin_layout Subsection
-Satz
+Satz 
+\series medium
+(Messbarkeit)
+\series default
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Satz-Messbarkeit"
@@ -3674,7 +3714,11 @@ Schön ist, dass Messbarkeit sich auf Grenzwerte überträgt.
 \end_layout
 
 \begin_layout Subsection
-Satz
+Satz 
+\series medium
+(Limes ist messbar)
+\series default
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Satz-MessbarLimesMessbar"
@@ -4052,7 +4096,9 @@ qqed
 \end_layout
 
 \begin_layout Subsection
-Korollar
+Korollar 
+\series medium
+(Approximation durch Stufenfunktionen)
 \end_layout
 
 \begin_layout Standard
@@ -4728,7 +4774,7 @@ abc
  Es folgt:
 \begin_inset Formula 
 \begin{align*}
-\mu\left(A_{n}\right) & =\mu\left(B_{1}\dot{\cup}\ldots\dot{\cup}B_{n}\right)=\sum_{j=1}^{n}\mu\left(B_{j}\right)
+\mu\left(A_{n}\right) & =\mu\left(B_{1}\dot{\cup}\ldots\dot{\cup}B_{n}\right)=\sum_{j=1}^{n}\underbrace{\mu\left(B_{j}\right)}_{\ge0}
 \end{align*}
 
 \end_inset
@@ -4786,7 +4832,7 @@ status open
 
 \begin_layout Plain Layout
 
-%DATE Di 25.10.11
+%DATE: Di 25.10.11
 \end_layout
 
 \end_inset
@@ -4808,16 +4854,34 @@ eindimensionales Lebesgue-Maß
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsubsection*
+Ziel
+\end_layout
 
-\color green
-TODO: Rest überarbeiten
+\begin_layout Standard
+Konstruiere ein Maß auf der Borelmenge von 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Höhere Dimensionen werden später auf das eindimensionale Maß zurückgeführt.
+\end_layout
+
+\begin_layout Standard
+Das Maß soll die „Länge eines Intervalls“ verallgemeinern.
+\end_layout
+
+\begin_layout Subsubsection*
+Ursprünge
 \end_layout
 
 \begin_layout Standard
 
 \noun on
-Henri Leon Lebesgue:
+Henri Leon Lebesgue (1875-1941):
 \noun default
  Doktorarbeit
 \noun on
@@ -4829,11 +4893,7 @@ Henri Leon Lebesgue:
 \noun on
 Borel
 \noun default
-, 
-\begin_inset Formula $\ldots$
-\end_inset
-
-
+: Konstruktion „zu Fuß“
 \end_layout
 
 \begin_layout Standard
@@ -4841,7 +4901,11 @@ Borel
 \noun on
 Caratheodory:
 \noun default
- Maßerweiterungen; „unser Zugang“ (1918):
+ Maßerweiterungen (1918); „unser Zugang“:
+\end_layout
+
+\begin_layout Subsubsection*
+Idee
 \end_layout
 
 \begin_layout Standard
@@ -4849,11 +4913,27 @@ Beginne mit „einfachen“ Mengensystemen
 \begin_inset Formula $\mathcal{A}$
 \end_inset
 
-: endliche Vereinigung beschränkter Intervalle, also 
+:
+\end_layout
+
+\begin_layout Standard
+Endliche Vereinigung beschränkter Intervalle, also ist 
 \begin_inset Formula $A\in\mathcal{A}$
 \end_inset
 
- ist darstellbar als eine disjunkte Vereinigung beschränkter Intervalle:
+ darstellbar als eine disjunkte Vereinigung beschränkter Intervalle 
+\begin_inset Formula $I_{k}\subseteq\mathbb{R}$
+\end_inset
+
+ mit 
+\begin_inset Formula $\left|I_{k}\right|<\infty$
+\end_inset
+
+ für 
+\begin_inset Formula $1\le k\le n$
+\end_inset
+
+:
 \begin_inset Formula 
 \begin{align*}
 A & =I_{1}\dot{\cup}\ldots\dot{\cup}I_{n}
@@ -4861,7 +4941,7 @@ A & =I_{1}\dot{\cup}\ldots\dot{\cup}I_{n}
 
 \end_inset
 
-Führe ein:
+Führe das Maß ein:
 \begin_inset Formula 
 \begin{align*}
 \mu\left(A\right) & =\left|I_{1}\right|+\ldots+\left|I_{n}\right|
@@ -4869,15 +4949,23 @@ Führe ein:
 
 \end_inset
 
-Beachte: 
+
+\end_layout
+
+\begin_layout Subsubsection*
+Bemerkung
+\end_layout
+
+\begin_layout Standard
+Beachte, dass 
 \begin_inset Formula $\left(X,\mathcal{A},\mu\right)$
 \end_inset
 
- ist 
+ 
 \emph on
 kein
 \emph default
- Maßraum, da 
+ Maßraum ist, da 
 \begin_inset Formula $\mathcal{A}$
 \end_inset
 
@@ -4888,8 +4976,2738 @@ kein
 -Algebra ist.
 \end_layout
 
+\begin_layout Subsection
+Lemma 
+\series medium
+(Maßregeln)
+\series default
+ und Definition 
+\series medium
+(Mengenalgebra, 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-Additivität, Prämaß)
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Lem-Massregeln"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
-TODO: Rest einfügen
+Sei 
+\begin_inset Formula $\left(X,\mathcal{A},\mu\right)$
+\end_inset
+
+ wie oben.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ ist eine 
+\emph on
+Mengenalgebra
+\emph default
+, das heißt:
+\begin_inset Formula 
+\begin{align*}
+\mbox{\emptyset} & \in\mathcal{A}\\
+A,B\in\mathcal{A} & \Rightarrow A\cup B,A\cap B,A\setminus B\in\mathcal{A}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\mu$
+\end_inset
+
+ ist 
+\emph on
+additiv
+\emph default
+, das heißt:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(A\dot{\cup}B\right) & =\mu\left(A\right)+\mu\left(B\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\mu$
+\end_inset
+
+ ist 
+\emph on
+
+\begin_inset Formula $\sigma$
+\end_inset
+
+-additiv
+\emph default
+, das heißt für 
+\begin_inset Formula $\left(A_{n}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+ mit paarweise disjunkten 
+\begin_inset Formula $A_{n}\in\mathcal{A}$
+\end_inset
+
+ und falls
+\begin_inset Formula 
+\begin{align*}
+\bigcup_{n\in\mathbb{N}}A_{n} & =:A
+\end{align*}
+
+\end_inset
+
+in 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ liegt, gilt:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(\bigcup_{n=1}^{\infty}A_{n}\right) & =\sum_{n=1}^{\infty}\mu\left(A_{n}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\mu$
+\end_inset
+
+ ist 
+\emph on
+
+\begin_inset Formula $\sigma$
+\end_inset
+
+-endlich
+\emph default
+, das heißt, es gibt für 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ schon 
+\begin_inset Formula $S_{n}\in\mathcal{A}$
+\end_inset
+
+ mit:
+\begin_inset Formula 
+\begin{align*}
+X & =\bigcup_{n=1}^{\infty}S_{n}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Man nennt 
+\begin_inset Formula $\mu$
+\end_inset
+
+ mit diesen Eigenschaften auch ein 
+\emph on
+Prämaß auf 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+
+\emph default
+ und 
+\begin_inset Formula $\left(X,A,\mu\right)$
+\end_inset
+
+ ein 
+\emph on
+Prämaß
+\emph default
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ Ist klar.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ Ist klar.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ Setze 
+\begin_inset Formula $B_{n}:=A\setminus\left(A_{1}\cup\ldots\cup A_{n}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Dann ist wegen 
+\begin_inset Formula $A\in\mathcal{A}$
+\end_inset
+
+ nach Voraussetzung und i) mehrfach angewendet 
+\begin_inset Formula $B_{n}\in\mathcal{A}$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+B_{n} & \supseteq B_{n+1}\supseteq\ldots
+\end{align*}
+
+\end_inset
+
+ist eine absteigende Folge von Mengen und es gilt:
+\begin_inset Formula 
+\begin{align*}
+\bigcap_{n=1}^{\infty}B_{n} & =\emptyset
+\end{align*}
+
+\end_inset
+
+Zu zeigen ist:
+\begin_inset Formula 
+\begin{align*}
+\lim_{n\to\infty}\mu\left(B_{n}\right) & =0
+\end{align*}
+
+\end_inset
+
+Denn es gilt:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(B_{n}\right) & =\mu\left(A\right)-\sum_{k=1}^{n}\mu\left(A_{k}\right)\stackrel{n\to\infty}{\longrightarrow}0 & \Rightarrow\quad\mu\left(A\right) & =\sum_{k=1}^{\infty}\mu\left(A_{k}\right)
+\end{align*}
+
+\end_inset
+
+Sei 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+, so wähle kompakte 
+\begin_inset Formula $C_{n}\subseteq B_{n}$
+\end_inset
+
+ mit
+\begin_inset Formula 
+\begin{align*}
+\mu\left(B_{n}\setminus C_{n}\right) & <\frac{\varepsilon}{2^{n}}
+\end{align*}
+
+\end_inset
+
+zum Beispiel endlich viele kompakte Intervalle.
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Abbildung 
+\begin_inset Formula $B_{n}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Setze 
+\begin_inset Formula $D_{n}=C_{1}\cap\ldots\cap C_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Dann ist 
+\begin_inset Formula $D_{n}\subseteq B_{n}$
+\end_inset
+
+ und es gilt:
+\begin_inset Formula 
+\begin{align*}
+B_{n}\setminus D_{n} & =\bigcup_{k=1}^{n}\left(B_{n}\setminus C_{k}\right)\subseteq\bigcup_{k=1}^{n}\left(B_{k}\setminus C_{k}\right)
+\end{align*}
+
+\end_inset
+
+Damit folgt wegen der Monotonie bei endlichen Mengenoperationen:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(B_{n}\setminus D_{n}\right) & \le\sum_{k=1}^{n}\frac{\varepsilon}{2^{k}}<\varepsilon\cdot\left(\sum_{k=0}^{\infty}\left(\frac{1}{2}\right)^{k}-1\right)=\varepsilon\left(\frac{1}{1-\frac{1}{2}}-1\right)=\varepsilon
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Also sind die 
+\begin_inset Formula $D_{n}$
+\end_inset
+
+ kompakt und steigen ab:
+\begin_inset Formula 
+\begin{align*}
+D_{n} & \supseteq D_{n+1}\supseteq\ldots\supseteq\bigcap_{n=1}^{\infty}D_{n}=\emptyset
+\end{align*}
+
+\end_inset
+
+Letzteres folgt aus:
+\begin_inset Formula 
+\begin{align*}
+\bigcap_{n=1}^{\infty}D_{n} & \subseteq\bigcap_{n=1}^{\infty}B_{n}=\emptyset
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Deswegen gibt es ein 
+\begin_inset Formula $N$
+\end_inset
+
+ mit 
+\begin_inset Formula $D_{N}=\emptyset$
+\end_inset
+
+, denn ansonsten wähle beliebige 
+\begin_inset Formula $x_{n}\in D_{n}$
+\end_inset
+
+ und diese besitzen einen Häufungspunkt 
+\begin_inset Formula ${\displaystyle x\in\bigcap_{n=1}^{\infty}D_{n}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Also folgt
+\begin_inset Formula 
+\begin{align*}
+\mu\left(D_{n}\right) & =0
+\end{align*}
+
+\end_inset
+
+und damit ergibt sich
+\begin_inset Formula 
+\begin{align*}
+\mu\left(B_{n}\right) & =\underbrace{\mu\left(D_{n}\right)}_{=0}+\underbrace{\mu\left(B_{n}\setminus D_{n}\right)}_{<\varepsilon}<\varepsilon
+\end{align*}
+
+\end_inset
+
+und es gilt:
+\begin_inset Formula 
+\begin{align*}
+\lim_{n\to\infty}\mu\left(B_{n}\right) & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ Wähle 
+\begin_inset Formula $S_{n}=\left(-n,n\right)\in\mathcal{A}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Bemerkung
+\end_layout
+
+\begin_layout Standard
+Beachte, dass im Allgemeinen nicht jede abzählbare Vereinigung von Mengen
+ aus 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ schon in 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ liegt, da 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ keine 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-Algebra, sondern nur eine Mengenalgebra ist.
+\end_layout
+
+\begin_layout Standard
+Die 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-Additivität gilt nur unter folgender zusätzlichen Annahme:
+\begin_inset Formula 
+\begin{align*}
+\bigcup_{n\in\mathbb{N}}A_{n} & \in\mathcal{A}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Im Folgenden ist unser Ziel, das Prämaß zu einem Maß zu erweitern.
+\end_layout
+
+\begin_layout Subsection
+Theorem 
+\series medium
+(Satz von Hahn über Maßerweiterungen)
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Thm-SatzVonHahn"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $\left(X,\mathcal{A},\mu\right)$
+\end_inset
+
+ ein Prämaß.
+\end_layout
+
+\begin_layout Standard
+Dann lässt sich 
+\begin_inset Formula $\mu$
+\end_inset
+
+
+\emph on
+ eindeutig
+\emph default
+ zu einem Maß auf der von 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ erzeugten 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-Algebra 
+\emph on
+erweitern
+\emph default
+ und es gilt für 
+\begin_inset Formula $M\in\mathcal{M}:=\mathcal{M}\left(\mathcal{A}\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(M\right) & =\inf\left\{ \sum_{n=1}^{\infty}\mu\left(A_{n}\right)\bigg|\fall_{n\in\mathbb{N}}:A_{n}\in\mathcal{A}\wedge M\subseteq\bigcup_{n=1}^{\infty}A_{n}\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Abbildung: Überdeckung von 
+\begin_inset Formula $M$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Bemerkung
+\end_layout
+
+\begin_layout Standard
+Dieser Satz ist recht tief gehend und hat sich über längere Zeit unter Mitwirkun
+g von 
+\noun on
+Lebesgue, Borel
+\noun default
+ und 
+\noun on
+Caratheodory
+\noun default
+ entwickelt.
+\end_layout
+
+\begin_layout Standard
+Der Beweis geht in mehreren Schritten.
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(äußeres Maß)
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $\mathcal{N}$
+\end_inset
+
+ eine 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-Algebra auf 
+\begin_inset Formula $X$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Ein 
+\emph on
+äußeres Maß
+\emph default
+ auf 
+\begin_inset Formula $\mathcal{N}$
+\end_inset
+
+ ist eine Abbildung
+\begin_inset Formula 
+\begin{align*}
+\mu^{*}:\mathcal{N} & \to\left[0,\infty\right]
+\end{align*}
+
+\end_inset
+
+mit den folgenden Eigenschaften:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\mu^{*}\left(\emptyset\right)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ Monotonie: Für 
+\begin_inset Formula $A,B\in\mathcal{N}$
+\end_inset
+
+ gilt: 
+\begin_inset Formula 
+\begin{align*}
+A\subseteq & B & \Rightarrow\quad & \mu^{*}\left(A\right)\le\mu^{*}\left(B\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ Ist 
+\begin_inset Formula $\left(Y_{n}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+ eine Folge in 
+\begin_inset Formula $\mathcal{N}$
+\end_inset
+
+, so gilt:
+\begin_inset Formula 
+\begin{align*}
+\mu^{*}\left(\bigcup_{n=1}^{\infty}Y_{n}\right) & \le\sum_{n=1}^{\infty}\mu^{*}\left(Y_{n}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Beachte: Die 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-Additivität muss hier nicht gelten!
+\end_layout
+
+\begin_layout Subsection
+Lemma
+\end_layout
+
+\begin_layout Standard
+Unter den Voraussetzungen von Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Thm-SatzVonHahn"
+
+\end_inset
+
+ definiert
+\begin_inset Formula 
+\begin{align}
+\mu^{*}\left(Y\right) & :=\inf\left\{ \sum_{n=1}^{\infty}\mu\left(A_{n}\right)\bigg|\fall_{n\in\mathbb{N}}:A_{n}\in\mathcal{A}\wedge Y\subseteq\bigcup_{n=1}^{\infty}A_{n}\right\} \label{eq:AeusseresMass}
+\end{align}
+
+\end_inset
+
+ein äußeres Maß auf 
+\begin_inset Formula $\mathcal{N}:=\mathcal{P}\left(X\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Es gilt für alle 
+\begin_inset Formula $A\in\mathcal{A}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align}
+\mu^{*}\left(A\right) & =\mu\left(A\right)\label{eq:aeMassGleichMass}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Zunächst zum Beweis von 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:aeMassGleichMass"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $A\in\mathcal{A}$
+\end_inset
+
+ gegeben, dann gilt:
+\begin_inset Formula 
+\begin{align*}
+A & =\underbrace{A}_{=:A_{1}}\cup\underbrace{\emptyset}_{=:A_{2}}\cup\underbrace{\emptyset}_{=:A_{3}}\cup\ldots
+\end{align*}
+
+\end_inset
+
+Und es folgt, weil in der Definition des äußeren Maßes in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:AeusseresMass"
+
+\end_inset
+
+ ein Infimum gebildet wird:
+\begin_inset Formula 
+\begin{align*}
+\mu^{*}\left(A\right) & \le\sum_{n=1}^{\infty}\mu\left(A_{n}\right)=\mu\left(A\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Umgekehrt wähle für ein beliebiges 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+ eine Folge 
+\begin_inset Formula $\left(A_{n}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+ mit 
+\begin_inset Formula $A_{n}\in\mathcal{A}$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{align*}
+\bigcup_{n=1}^{\infty}A_{n} & \supseteq A
+\end{align*}
+
+\end_inset
+
+und:
+\begin_inset Formula 
+\begin{align}
+\sum_{n=1}^{\infty}\mu\left(A_{n}\right) & \le\mu^{*}\left(A\right)+\varepsilon\label{eq:muAnLEmuStrAplusVarEps}
+\end{align}
+
+\end_inset
+
+Dies ist möglich, da das Infimum 
+\begin_inset Formula $\mu^{*}\left(A\right)$
+\end_inset
+
+ beliebig genau durch ein Element 
+\begin_inset Formula ${\displaystyle \sum_{n=1}^{\infty}\mu\left(A_{n}\right)}$
+\end_inset
+
+ der bestimmenden Menge genähert werden kann.
+\end_layout
+
+\begin_layout Standard
+Wegen 
+\begin_inset Formula ${\displaystyle A=\bigcup_{n=1}^{\infty}}\left(A_{n}\cap A\right)\in\mathcal{A}$
+\end_inset
+
+ kann man die 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-Additivität verwenden und es folgt:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(A\right) & \le\sum_{n=1}^{\infty}\mu\left(A_{n}\cap A\right)\le\sum_{n=1}^{\infty}\mu\left(A_{n}\right)\le\mu^{*}\left(A\right)+\varepsilon
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Weil dies für alle 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+ gilt, folgt 
+\begin_inset Formula $\mu\left(A\right)\le\mu^{*}\left(A\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Insgesamt gilt also 
+\begin_inset Formula $\mu\left(A\right)=\mu^{*}\left(A\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Zeige nun, dass 
+\begin_inset Formula $\mu^{*}$
+\end_inset
+
+ ein äußeres Maß ist.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\mu^{*}\left(\emptyset\right)=0$
+\end_inset
+
+ ist klar nach der Definition: Wähle als Überdeckung 
+\begin_inset Formula $\emptyset\cup\emptyset\cup\ldots$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ Monotonie: Sei 
+\begin_inset Formula $A\subseteq B$
+\end_inset
+
+.
+ Wegen 
+\begin_inset Formula $A\subseteq B$
+\end_inset
+
+ gilt
+\begin_inset Formula 
+\begin{align}
+\left\{ \sum_{n=1}^{\infty}\mu\left(B_{n}\right)\bigg|\fall_{n\in\mathbb{N}}:B_{n}\in\mathcal{A}\wedge B\subseteq\bigcup_{n=1}^{\infty}B_{n}\right\}  & \subseteq\left\{ \sum_{n=1}^{\infty}\mu\left(A_{n}\right)\bigg|\fall_{n\in\mathbb{N}}:A_{n}\in\mathcal{A}\wedge A\subseteq\bigcup_{n=1}^{\infty}A_{n}\right\} \label{eq:aSubB}
+\end{align}
+
+\end_inset
+
+und es folgt:
+\begin_inset Formula 
+\begin{align*}
+\mu^{*}\left(A\right) & \stackrel{\phantom{(1.1)}}{=}\inf\left\{ \sum_{n=1}^{\infty}\mu\left(A_{n}\right)\bigg|\fall_{n\in\mathbb{N}}:A_{n}\in\mathcal{A}\wedge A\subseteq\bigcup_{n=1}^{\infty}A_{n}\right\} \le\\
+ & \stackrel{\eqref{eq:aSubB}}{\le}\inf\left\{ \sum_{n=1}^{\infty}\mu\left(B_{n}\right)\bigg|\fall_{n\in\mathbb{N}}:B_{n}\in\mathcal{A}\wedge B\subseteq\bigcup_{n=1}^{\infty}B_{n}\right\} =\mu^{*}\left(B\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Fr 28.10.11
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ Sei 
+\begin_inset Formula $\left(Y_{j}\right)_{j\in\mathbb{N}}$
+\end_inset
+
+ eine Folge in 
+\begin_inset Formula $\mathcal{N}=\mathcal{P}\left(X\right)$
+\end_inset
+
+, also nicht in 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Wähle 
+\begin_inset Formula $A_{jn}\in\mathcal{A}$
+\end_inset
+
+ für alle 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+, so dass
+\begin_inset Formula 
+\begin{align*}
+Y_{j} & \subseteq\bigcup_{n=1}^{\infty}A_{jn}
+\end{align*}
+
+\end_inset
+
+ist und gilt:
+\begin_inset Formula 
+\begin{align*}
+\sum_{n=1}^{\infty}\mu\left(A_{jn}\right) & \le\mu^{*}\left(Y_{j}\right)+\frac{\varepsilon}{2^{j}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dies ist aufgrund der Definition des äußeren Maßes immer möglich.
+\end_layout
+
+\begin_layout Standard
+Dann ist
+\begin_inset Formula 
+\begin{align*}
+Y & :=\bigcup_{j=1}^{\infty}Y_{j}\subseteq\bigcup_{j,n=1}^{\infty}A_{jn}
+\end{align*}
+
+\end_inset
+
+und es gilt:
+\begin_inset Formula 
+\begin{align*}
+\mu^{*}\left(Y\right) & \sr{\le}{\text{Def. des}}{\text{äußeren Maßes}}\underbrace{\sum_{n,j=1}^{\infty}}_{\text{auch abzählbar}}\mu\left(A_{nj}\right)\le\sum_{j=1}^{\infty}\mu^{*}\left(Y_{j}\right)+\varepsilon
+\end{align*}
+
+\end_inset
+
+Da 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ beliebig ist, folgt:
+\begin_inset Formula 
+\begin{align*}
+\mu^{*}\left(Y\right) & \le\sum_{n=1}^{\infty}\mu^{*}\left(Y_{n}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Bemerkung
+\end_layout
+
+\begin_layout Standard
+Der große Nachteil des äußeren Maßes ist, dass es nicht 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-additiv ist.
+\end_layout
+
+\begin_layout Subsubsection*
+Idee
+\end_layout
+
+\begin_layout Standard
+Wähle ein System von Teilmengen so aus, dass dieses System eine 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-Algebra bildet und außerdem die Einschränkung des äußeren Maßes 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-additiv wird, also ein Maß definiert.
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(
+\begin_inset Formula $\mu^{*}$
+\end_inset
+
+-messbar)
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $\mu^{*}$
+\end_inset
+
+ ein äußeres Maß auf 
+\begin_inset Formula $\mathcal{P}\left(X\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Eine Teilmenge 
+\begin_inset Formula $A\subseteq X$
+\end_inset
+
+ heißt 
+\emph on
+
+\begin_inset Formula $\mu^{*}$
+\end_inset
+
+-messbar
+\emph default
+, wenn für jede Teilmenge 
+\begin_inset Formula $Z\subseteq X$
+\end_inset
+
+ gilt:
+\begin_inset Formula 
+\begin{align*}
+\mu^{*}\left(Z\right) & =\mu^{*}\left(Z\cap A\right)+\mu^{*}\left(Z\setminus A\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Bemerkung
+\end_layout
+
+\begin_layout Standard
+Also „zerlegt“ man eine beliebige Teilmenge 
+\begin_inset Formula $Z$
+\end_inset
+
+ mit Hilfe von 
+\begin_inset Formula $A$
+\end_inset
+
+, so gilt die Additivität.
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Abbildung 
+\begin_inset Formula $A,Z\subseteq X$
+\end_inset
+
+ einfügen
+\end_layout
+
+\begin_layout Subsection
+Lemma 
+\series medium
+(Caratheodory)
+\end_layout
+
+\begin_layout Standard
+Seien 
+\begin_inset Formula $\mu^{*}$
+\end_inset
+
+ ein äußeres Maß auf 
+\begin_inset Formula $\mathcal{P}\left(X\right)$
+\end_inset
+
+ und 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ das System der 
+\begin_inset Formula $\mu^{*}$
+\end_inset
+
+-messbaren Mengen von 
+\begin_inset Formula $X$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Dann ist 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ eine 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-Algebra und 
+\begin_inset Formula $\mu^{*}$
+\end_inset
+
+ ein Maß auf 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Gehe schrittweise vor.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\emptyset\in\mathcal{M}$
+\end_inset
+
+ ist klar, wegen:
+\begin_inset Formula 
+\begin{align*}
+Z & =\underbrace{\left(Z\cap\emptyset\right)}_{=\emptyset}\dot{\cup}\underbrace{\left(Z\setminus\emptyset\right)}_{=Z}\\
+\mu^{*}\left(Z\right) & =\underbrace{\mu^{*}\left(Z\cap\emptyset\right)}_{=0}+\mu^{*}\left(Z\setminus\emptyset\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Sei 
+\begin_inset Formula $A\in\mathcal{M}$
+\end_inset
+
+, das heißt es gilt für alle 
+\begin_inset Formula $Z\subseteq X$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\mu^{*}\left(Z\right) & =\mu^{*}\left(Z\cap A\right)+\mu^{*}\left(Z\setminus A\right)=\mu^{*}\left(Z\setminus\complement A\right)+\mu^{*}\left(Z\cap\complement A\right)
+\end{align*}
+
+\end_inset
+
+Also ist auch 
+\begin_inset Formula $\complement A$
+\end_inset
+
+ 
+\begin_inset Formula $\mu^{*}$
+\end_inset
+
+-messbar, das heißt 
+\begin_inset Formula $\complement A\in\mathcal{M}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Seien 
+\begin_inset Formula $A,B\in\mathcal{M}$
+\end_inset
+
+ und 
+\begin_inset Formula $Z\subseteq X$
+\end_inset
+
+ beliebig.
+\begin_inset Newline newline
+\end_inset
+
+Es genügt 
+\begin_inset Formula $A'=A\cap Z$
+\end_inset
+
+ und 
+\begin_inset Formula $B'=B\cap Z$
+\end_inset
+
+ zu betrachten.
+\begin_inset Newline newline
+\end_inset
+
+
+\color green
+TODO: Abbildung 
+\begin_inset Formula $A',B',Z$
+\end_inset
+
+ einfügen
+\color inherit
+
+\begin_inset Newline newline
+\end_inset
+
+Da 
+\begin_inset Formula $B$
+\end_inset
+
+ bereits 
+\begin_inset Formula $\mu^{*}$
+\end_inset
+
+-messbar ist, gilt für alle 
+\begin_inset Formula $\tilde{Z}\subseteq X$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\mu^{*}\left(Z\right) & =\mu^{*}\left(\tilde{Z}\cap B\right)+\mu^{*}\left(\tilde{Z}\setminus B\right)
+\end{align*}
+
+\end_inset
+
+Wähle 
+\begin_inset Formula $\tilde{Z}=A'$
+\end_inset
+
+, dann gilt
+\begin_inset Formula 
+\begin{align*}
+\tilde{Z}\cap B & =A'\cap B=\left(A\cap Z\right)\cap B=A\cap Z\cap B=\left(A\cap Z\right)\cap\left(B\cap Z\right)=A'\cap B'
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\tilde{Z}\setminus B & =A'\setminus B=\left(A\cap Z\right)\setminus B=\left(A\cap Z\right)\setminus\left(B\cap Z\right)=A'\setminus B'
+\end{align*}
+
+\end_inset
+
+und es folgt:
+\begin_inset Formula 
+\begin{align*}
+\mu^{*}\left(A'\cap B'\right)+\mu^{*}\left(A'\setminus B'\right) & =\mu^{*}\left(A'\right)
+\end{align*}
+
+\end_inset
+
+Wegen der 
+\begin_inset Formula $\mu^{*}$
+\end_inset
+
+-Messbarkeit von 
+\begin_inset Formula $A$
+\end_inset
+
+ folgt:
+\begin_inset Formula 
+\begin{align*}
+\mu^{*}\left(A'\right)+\mu^{*}\left(Z\setminus A\right) & =\mu^{*}\left(Z\right)
+\end{align*}
+
+\end_inset
+
+Addiere jetzt die beiden Gleichungen:
+\begin_inset Formula 
+\begin{align*}
+\mu^{*}\left(A'\cap B'\right)+\mu^{*}\left(A'\setminus B'\right)+\mu^{*}\left(A'\right)+\mu^{*}\left(Z\setminus A\right) & =\mu^{*}\left(A'\right)+\mu^{*}\left(Z\right)\\
+\mu^{*}\left(A'\cap B'\right)+\underbrace{\mu^{*}\left(A'\setminus B'\right)+\mu^{*}\left(Z\setminus A\right)}_{\stackrel{?}{=}\mu^{*}\left(Z\setminus\left(A'\cap B'\right)\right)} & =\mu^{*}\left(Z\right)
+\end{align*}
+
+\end_inset
+
+Verwende nochmals die 
+\begin_inset Formula $\mu^{*}$
+\end_inset
+
+-Messbarkeit von 
+\begin_inset Formula $A$
+\end_inset
+
+ für 
+\begin_inset Formula $\tilde{Z}:=Z\setminus\left(A'\cap B'\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\mu^{*}\bigg(\underbrace{A\cap\left(Z\setminus\left(A'\cap B'\right)\right)}_{=A'\setminus B'}\bigg)+\mu^{*}\bigg(\underbrace{\left(Z\setminus\left(A'\cap B'\right)\right)\setminus A}_{=Z\setminus A'}\bigg) & =\mu^{*}\left(Z\setminus\left(A'\cap B'\right)\right)
+\end{align*}
+
+\end_inset
+
+Daher ist 
+\begin_inset Formula $A\cap B\in\mathcal{M}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Für 
+\begin_inset Formula $A,B\in\mathcal{M}$
+\end_inset
+
+ sind dann auch
+\begin_inset Formula 
+\begin{align*}
+A\setminus B & =A\cap\complement B\\
+A\cup B & =\complement\left(\complement A\cap\complement B\right)
+\end{align*}
+
+\end_inset
+
+in 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Wir wissen also, dass 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ eine Mengenalgebra ist.
+\end_layout
+
+\begin_layout Itemize
+Additivität: Seien 
+\begin_inset Formula $A,B\in\mathcal{M}$
+\end_inset
+
+ disjunkte Mengen, dann folgt für 
+\begin_inset Formula $\tilde{Z}:=Z^{*}:=Z\cap\left(A\dot{\cup}B\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\mu^{*}\left(Z^{*}\right) & =\mu^{*}\left(Z^{*}\cap A\right)+\mu^{*}\left(Z^{*}\setminus A\right)=\\
+ & =\mu^{*}\left(Z\cap A\right)+\mu^{*}\left(Z\cap B\right)
+\end{align*}
+
+\end_inset
+
+Verwende dabei, dass 
+\begin_inset Formula $A$
+\end_inset
+
+ und 
+\begin_inset Formula $B$
+\end_inset
+
+ disjunkt sind.
+\begin_inset Newline newline
+\end_inset
+
+Setze 
+\begin_inset Formula $Z=X$
+\end_inset
+
+, so folgt:
+\begin_inset Formula 
+\begin{align*}
+\mu^{*}\left(A\dot{\cup}B\right) & =\mu^{*}\left(A\right)+\mu^{*}\left(B\right)
+\end{align*}
+
+\end_inset
+
+Wegen 
+\begin_inset Formula $A\dot{\cup}B\dot{\cup}C=\left(A\dot{\cup}B\right)\dot{\cup}C$
+\end_inset
+
+ für 
+\begin_inset Formula $C\in\mathcal{M}$
+\end_inset
+
+ folgt per Induktion für 
+\begin_inset Formula $A_{1},\ldots,A_{n}\in\mathcal{M}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\mu^{*}\left(Z\cap\left(A_{1}\dot{\cup}\ldots\dot{\cup}A_{n}\right)\right) & =\mu^{*}\left(Z\cap A_{1}\right)+\ldots+\mu^{*}\left(Z\cap A_{n}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Zeige, dass 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ eine 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-Algebra ist:
+\begin_inset Newline newline
+\end_inset
+
+Sei 
+\begin_inset Formula $\left(A_{n}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+ eine Folge paarweiser disjunkter Teilmengen in 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ mit:
+\begin_inset Formula 
+\begin{align*}
+A & :=\bigcup_{n\in\mathbb{N}}A_{n}\in\mathcal{M}
+\end{align*}
+
+\end_inset
+
+Das heißt, es gilt für alle 
+\begin_inset Formula $Z\subseteq X$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\mu^{*}\left(Z\cap A\right)+\mu^{*}\left(Z\setminus A\right) & =\mu^{*}\left(Z\right)
+\end{align*}
+
+\end_inset
+
+Sei also 
+\begin_inset Formula $Z\subseteq X$
+\end_inset
+
+.
+ Dann ist für jedes 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ schon
+\begin_inset Formula 
+\begin{align*}
+A_{1}\dot{\cup}\ldots\dot{\cup}A_{n} & \in\mathcal{M}
+\end{align*}
+
+\end_inset
+
+und deshalb gilt:
+\begin_inset Formula 
+\begin{align*}
+\mu^{*}\left(Z\right) & =\mu^{*}\left(Z\cap\left(A_{1}\dot{\cup}\ldots\dot{\cup}A_{n}\right)\right)+\mu^{*}\left(Z\setminus\left(A_{1}\dot{\cup}\ldots\dot{\cup}A_{n}\right)\right)\ge\\
+ & \ge\sum_{k=1}^{n}\underbrace{\mu^{*}\left(Z\cap A_{k}\right)}_{\ge0}+\mu^{*}\left(Z\setminus A\right)
+\end{align*}
+
+\end_inset
+
+Verwende dabei:
+\begin_inset Formula 
+\begin{align*}
+A & \supseteq A_{1}\dot{\cup}\ldots\dot{\cup}A_{n}\\
+\mu^{*}\left(Z\setminus A\right) & \le\mu^{*}\left(Z\setminus\left(A_{1}\dot{\cup}\ldots\dot{\cup}A_{n}\right)\right)
+\end{align*}
+
+\end_inset
+
+Da 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ beliebig ist, folgt wegen 
+\begin_inset Formula ${\displaystyle Z\cap A=\bigcup_{k=1}^{\infty}Z\cap A_{k}}$
+\end_inset
+
+ und 
+\begin_inset Formula ${\displaystyle \mu^{*}\left(Z\cap A\right)=\inf\sum_{k=1}^{\infty}\mu^{*}\left(Z\setminus B_{k}\right)}$
+\end_inset
+
+ mit 
+\begin_inset Formula ${\displaystyle Z\cap A\supseteq\bigcup_{k=1}^{\infty}B_{k}}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\mu^{*}\left(Z\right) & \ge\sum_{k=1}^{\infty}\mu^{*}\left(Z\cap A_{k}\right)+\mu^{*}\left(Z\setminus A\right)\ge\\
+ & \sr{\ge}{\text{Def. äußeres}}{\text{Maß}}\mu^{*}\left(Z\cap A\right)+\mu^{*}\left(Z\setminus A\right)
+\end{align*}
+
+\end_inset
+
+Umgekehrt gilt für äußere Maße immer:
+\begin_inset Formula 
+\begin{align*}
+\mu^{*}\left(Z\right) & \le\mu^{*}\left(Z\cap A\right)+\mu^{*}\left(Z\setminus A\right)
+\end{align*}
+
+\end_inset
+
+Für alle 
+\begin_inset Formula $i\in\mathbb{N}$
+\end_inset
+
+ gibt es 
+\begin_inset Formula $B_{i},C_{i}\in\mathcal{A}$
+\end_inset
+
+ mit 
+\begin_inset Formula $\bigcup_{i\in\mathbb{N}}B_{i}\supseteq Z\cap A$
+\end_inset
+
+, 
+\begin_inset Formula $\bigcup_{i\in\mathbb{N}}C_{i}\supseteq Z\setminus A$
+\end_inset
+
+ und:
+\begin_inset Formula 
+\begin{align*}
+\mu^{*}\left(Z\cap A\right) & \ge\sum_{i\in\mathbb{N}}\mu^{*}\left(B_{i}\right)-\varepsilon\\
+\mu^{*}\left(Z\setminus A\right) & \ge\sum_{i\in\mathbb{N}}\mu^{*}\left(C_{i}\right)-\varepsilon
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $\left(B_{i},C_{i}\right)_{i\in\mathbb{N}}:=\left(B_{1},C_{1},B_{2},C_{2},\ldots\right)$
+\end_inset
+
+ überdeckt 
+\begin_inset Formula $Z$
+\end_inset
+
+, womit folgt:
+\begin_inset Formula 
+\begin{align*}
+\mu^{*}\left(Z\right) & \le\sum_{i\in\mathbb{N}}\left(\mu^{*}\left(B_{i}\right)+\mu^{*}\left(C_{i}\right)\right)\le\mu^{*}\left(Z\cap A\right)+\mu^{*}\left(Z\setminus A\right)+2\varepsilon
+\end{align*}
+
+\end_inset
+
+Da 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ beliebig ist, folgt die Behauptung:
+\begin_inset Formula 
+\begin{align*}
+\mu^{*}\left(Z\cap A\right)+\mu^{*}\left(Z\setminus A\right) & =\mu^{*}\left(Z\right)
+\end{align*}
+
+\end_inset
+
+Daher ist 
+\begin_inset Formula $A:=\bigcup_{n\in\mathbb{N}}A_{n}$
+\end_inset
+
+ wieder 
+\begin_inset Formula $\mu^{*}$
+\end_inset
+
+-messbar, das heißt 
+\begin_inset Formula $A\in\mathcal{M}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Insgesamt folgt, dass 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ eine 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-Algebra ist.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[
+\backslash
+roman{ale2})]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Das Maß ist 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-additiv, denn:
+\begin_inset Newline newline
+\end_inset
+
+Sei wieder 
+\begin_inset Formula $\left(A_{n}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+ mit 
+\begin_inset Formula $A_{n}\in\mathcal{M}$
+\end_inset
+
+ ein System paarweise disjunkter messbarer Mengen.
+ Es folgt:
+\begin_inset Formula 
+\begin{align*}
+\sum_{k=1}^{n}\mu^{*}\left(A_{k}\right) & \stackrel{\text{Additivität}}{=}\mu^{*}\left(\bigcup_{k=1}^{n}A_{k}\right)\stackrel{\text{Monotonie}}{\le}\mu^{*}\left(\bigcup_{k=1}^{\infty}A_{k}\right)\sr{\stackrel{\text{Def. von }\mu^{*}}{\le}}{}{\text{als Infimum}}\sum_{k=1}^{\infty}\mu^{*}\left(A_{k}\right)
+\end{align*}
+
+\end_inset
+
+Im Limes 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+ erhalten wir überall Gleichheit, also:
+\begin_inset Formula 
+\begin{align*}
+\sum_{k=1}^{\infty}\mu^{*}\left(A_{k}\right) & =\mu^{*}\left(\bigcup_{k=1}^{\infty}A_{k}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis von 
+\series medium
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Thm-SatzVonHahn"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $\mathcal{M}\left(\mathcal{A}\right)$
+\end_inset
+
+ die 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-Algebra, die aus dem Lemma von Caratheodory kommt, und das Maß 
+\begin_inset Formula $\mu:=\mu^{*}|_{\mathcal{M}\left(\mathcal{A}\right)}$
+\end_inset
+
+ auf 
+\begin_inset Formula $\mathcal{M}\left(\mathcal{A}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Es bleibt noch zu zeigen:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\mathcal{A}\subseteq\mathcal{M}$
+\end_inset
+
+ (Nur dann wissen wir, dass auch 
+\begin_inset Formula $\mathcal{M}\left(\mathcal{A}\right)\subseteq\mathcal{M}$
+\end_inset
+
+ gilt.)
+\end_layout
+
+\begin_layout Enumerate
+Eindeutigkeit
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE Mi 2.11.11
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%TODO: Was ist mit den Daten los?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE Fr 4.11.11
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Zu 1.: Sei 
+\begin_inset Formula $A\in\mathcal{A}$
+\end_inset
+
+.
+ Zeige, dass 
+\begin_inset Formula $A$
+\end_inset
+
+ schon 
+\begin_inset Formula $\mu^{*}$
+\end_inset
+
+-messbar ist.
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $Z\subseteq X$
+\end_inset
+
+ beliebig.
+ Dann gilt nach der Definition des äußeren Maßes als Infimum:
+\begin_inset Formula 
+\begin{align*}
+\mu^{*}\left(Z\right) & \le\mu^{*}\left(Z\cap A\right)+\mu^{*}\left(Z\setminus A\right)
+\end{align*}
+
+\end_inset
+
+Um die umgekehrte Ungleichung zu beweisen, sei 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Es gibt eine Folge 
+\begin_inset Formula $\left(A_{n}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+, mit 
+\begin_inset Formula $A_{n}\in\mathcal{A}$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{align*}
+Z & \subseteq\bigcup_{n=1}^{\infty}A_{n}
+\end{align*}
+
+\end_inset
+
+und:
+\begin_inset Formula 
+\begin{align*}
+\sum_{n=1}^{\infty}\mu\left(A_{n}\right) & \le\mu^{*}\left(Z\right)+\varepsilon
+\end{align*}
+
+\end_inset
+
+Dann folgt:
+\begin_inset Formula 
+\begin{align*}
+Z\cap A & \subseteq\bigcup_{n=1}^{\infty}\left(A_{n}\cap A\right)\\
+Z\setminus A & \subseteq\bigcup_{n=1}^{\infty}\left(A_{n}\setminus A\right)
+\end{align*}
+
+\end_inset
+
+Es ergibt sich:
+\begin_inset Formula 
+\begin{align*}
+\mu^{*}\left(Z\cap A\right)+\mu^{*}\left(Z\setminus A\right) & \stackrel{\text{Def. äußeres Maß}}{\le}\sum_{n=1}^{\infty}\mu\left(A_{n}\cap A\right)+\sum_{n=1}^{\infty}\mu\left(A_{n}\setminus A\right)=\\
+ & =\sum_{n=1}^{\infty}\mu\left(A_{n}\right)\le\mu^{*}\left(Z\right)+\varepsilon
+\end{align*}
+
+\end_inset
+
+Da 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ beliebig ist, ist 
+\begin_inset Formula $A$
+\end_inset
+
+ tatsächlich 
+\begin_inset Formula $\mu^{*}$
+\end_inset
+
+-messbar.
+\end_layout
+
+\begin_layout Standard
+Also ist 
+\begin_inset Formula $\mathcal{A}\subseteq\mathcal{M}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Zeige schließlich noch die Eindeutigkeit:
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $\mu$
+\end_inset
+
+ wie oben konstruiert, 
+\begin_inset Formula $\nu$
+\end_inset
+
+ ein weiteres Maß auf 
+\begin_inset Formula $\mathcal{M}\left(\mathcal{A}\right)$
+\end_inset
+
+ und 
+\begin_inset Formula $\mu=\nu$
+\end_inset
+
+ auf 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Wegen der 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-Endlichkeit (vergleiche das Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Lem-Massregeln"
+
+\end_inset
+
+ iv) über Maßregeln) gibt es eine Folge 
+\begin_inset Formula $\left(S_{n}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+ in 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+, so dass gilt:
+\begin_inset Formula 
+\begin{align*}
+X & =\bigcup_{n=1}^{\infty}S_{n} & \mu\left(S_{n}\right) & <\infty
+\end{align*}
+
+\end_inset
+
+Sei 
+\begin_inset Formula $Y\in\mathcal{M}\left(\mathcal{A}\right)$
+\end_inset
+
+.
+ Zu zeigen ist 
+\begin_inset Formula $\mu\left(Y\right)=\nu\left(Y\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Wegen der 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-Additivität genügt es zu zeigen, dass für alle 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ gilt:
+\begin_inset Formula 
+\begin{align}
+\mu\left(Y\cap S_{n}\right) & =\nu\left(Y\cap S_{n}\right)\label{eq:muYcapSn}
+\end{align}
+
+\end_inset
+
+(Denn: 
+\begin_inset Formula ${\displaystyle \bigcup_{n=1}^{\infty}Y\cap S_{n}=Y}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+Um paarweise disjunkte Mengen zu bekommen, wähle
+\begin_inset Formula 
+\begin{align*}
+Z_{1} & =Y\cap S_{1} & Z_{2} & =Y\cap\left(S_{2}\setminus S_{1}\right) & Z_{3} & =Y\cap\left(S_{3}\setminus\left(S_{1}\cup S_{2}\right)\right) & \ldots
+\end{align*}
+
+\end_inset
+
+und es gilt für alle 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(Z_{n}\right) & =\nu\left(Z_{n}\right)
+\end{align*}
+
+\end_inset
+
+Wegen der 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-Additivität von 
+\begin_inset Formula $\mu$
+\end_inset
+
+ und 
+\begin_inset Formula $\nu$
+\end_inset
+
+ folgt:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(Y\right)=\mu\left(\bigcup_{n=1}^{\infty}Z_{n}\right)=\sum_{n=1}^{\infty}\mu\left(Z_{n}\right) & =\sum_{n=1}^{\infty}\nu\left(Z_{n}\right)=\nu\left(\bigcup_{n=1}^{\infty}Z_{n}\right)=\nu\left(Y\right)
+\end{align*}
+
+\end_inset
+
+Um die Notation zu vereinfachen, zeige anstelle von 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:muYcapSn"
+
+\end_inset
+
+ allgemein für alle 
+\begin_inset Formula $A\in\mathcal{A}$
+\end_inset
+
+ mit 
+\begin_inset Formula $\mu\left(A\right)<\infty$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(Y\cap A\right) & =\nu\left(Y\cap A\right)
+\end{align*}
+
+\end_inset
+
+Oder zeige noch etwas einfacher:
+\end_layout
+
+\begin_layout Standard
+Hat 
+\begin_inset Formula $A\in\mathcal{A}$
+\end_inset
+
+ endliches Maß und ist 
+\begin_inset Formula $Y\in\mathcal{M}$
+\end_inset
+
+ mit 
+\begin_inset Formula $Y\subseteq A$
+\end_inset
+
+, so gilt:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(Y\right) & =\nu\left(Y\right)
+\end{align*}
+
+\end_inset
+
+Nach Definition von 
+\begin_inset Formula $\mu$
+\end_inset
+
+ gilt
+\begin_inset Formula 
+\begin{align*}
+\mu\left(Y\right) & =\mu^{*}\left(Y\right)=\inf\sum_{n=1}^{\infty}\mu\left(A_{n}\right)=\inf\sum_{n=1}^{\infty}\nu\left(A_{n}\right)\ge\nu\left(Y\right)
+\end{align*}
+
+\end_inset
+
+wobei wieder 
+\begin_inset Formula ${\displaystyle Y\subseteq\bigcup_{n\in\mathbb{N}}A_{n}}$
+\end_inset
+
+ und 
+\begin_inset Formula $A_{n}\in\mathcal{A}$
+\end_inset
+
+ ist.
+\end_layout
+
+\begin_layout Standard
+Wegen der 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-Additivität von 
+\begin_inset Formula $\nu$
+\end_inset
+
+ wissen wir außerdem, dass 
+\begin_inset Formula ${\displaystyle \nu\left(Y\right)\le\inf\sum_{n=1}^{\infty}}A_{n}$
+\end_inset
+
+ gilt, womit für alle 
+\begin_inset Formula $Y\in\mathcal{M}$
+\end_inset
+
+ mit 
+\begin_inset Formula $Y\subseteq A$
+\end_inset
+
+ folgt:
+\begin_inset Formula 
+\begin{align*}
+\nu\left(Y\right) & \le\mu\left(Y\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Diese Ungleichung gilt auch für 
+\begin_inset Formula $\tilde{Y}:=A\setminus Y$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\nu\left(A\setminus Y\right) & \le\mu\left(A\setminus Y\right)
+\end{align*}
+
+\end_inset
+
+Wegen der Additivität folgt:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(A\right) & =\nu\left(A\right)=\nu\left(A\setminus Y\right)+\nu\left(Y\right)\le\mu\left(A\setminus Y\right)+\mu\left(Y\right)=\mu\left(A\right)<\infty
+\end{align*}
+
+\end_inset
+
+Also muss überall schon Gleichheit gelten.
+ Also ist 
+\begin_inset Formula $\mu\left(Y\right)=\nu\left(Y\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Bemerkung
+\end_layout
+
+\begin_layout Standard
+Auf die Bedingung, dass das Prämaß 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-endlich ist, kann bei vielen Konstruktionen verzichtet werden.
+\end_layout
+
+\begin_layout Standard
+Setze 
+\begin_inset Formula $\inf\emptyset=\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Wir haben also das Maß 
+\begin_inset Formula $\mu$
+\end_inset
+
+ auf 
+\begin_inset Formula $\mathcal{M}\left(\mathcal{A}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Falls 
+\begin_inset Formula $\left(X=\mathbb{R},\mathcal{A},\mu\right)$
+\end_inset
+
+ das Prämaß von Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Lem-Massregeln"
+
+\end_inset
+
+, also 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ alle offenen Intervalle enthält, ist 
+\begin_inset Formula $\mathcal{M}\left(\mathcal{A}\right)=\mathcal{B}$
+\end_inset
+
+ die Borelalgebra.
+\end_layout
+
+\begin_layout Standard
+Wir wollen jetzt 
+\begin_inset Formula $\mu$
+\end_inset
+
+ auf eine etwas größere 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-Algebra erweitern.
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(Lebesguesche Nullmenge)
+\end_layout
+
+\begin_layout Standard
+Eine Menge 
+\begin_inset Formula $A\subseteq\mathbb{R}$
+\end_inset
+
+ heißt 
+\emph on
+Lebesguesche Nullmenge
+\emph default
+, falls 
+\begin_inset Formula $\mu^{*}\left(A\right)=0$
+\end_inset
+
+ ist.
+ Es gilt
+\begin_inset Formula 
+\begin{align*}
+0 & =\mu^{*}\left(A\right)=\inf\left(\sum_{n=1}^{\infty}\mu\left(A_{n}\right)\right)
+\end{align*}
+
+\end_inset
+
+mit 
+\begin_inset Formula $A_{n}\in\mathcal{A}$
+\end_inset
+
+ und 
+\begin_inset Formula ${\displaystyle \bigcup_{n\in\mathbb{N}}A_{n}\supseteq A}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Daher gibt es für alle 
+\begin_inset Formula $\varepsilon\in\mathbb{R}_{>0}$
+\end_inset
+
+ eine Folge 
+\begin_inset Formula $\left(A_{n}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+ mit 
+\begin_inset Formula ${\displaystyle \sum_{n=1}^{\infty}\mu\left(A_{n}\right)<\varepsilon}$
+\end_inset
+
+, 
+\begin_inset Formula $A_{n}\in\mathcal{A}$
+\end_inset
+
+ und 
+\begin_inset Formula ${\displaystyle A\subseteq\bigcup_{n=1}^{\infty}A_{n}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Aus 
+\begin_inset Formula $A_{n}\in\mathcal{A}$
+\end_inset
+
+ folgt, dass 
+\begin_inset Formula ${\displaystyle M:=\bigcup_{n=1}^{\infty}A_{n}}$
+\end_inset
+
+ eine Borelmenge ist und
+\begin_inset Formula 
+\begin{align*}
+\mu\left(M\right) & \stackrel{\sigma\text{-Additivität}}{\le}\sum_{n=1}^{\infty}\mu\left(A_{n}\right)<\varepsilon
+\end{align*}
+
+\end_inset
+
+gilt.
+\end_layout
+
+\begin_layout Subsubsection*
+Lemma
+\end_layout
+
+\begin_layout Standard
+Ist 
+\begin_inset Formula $A$
+\end_inset
+
+ eine Lebesguesche Nullmenge, so gibt es zu jedem 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ eine Borelmenge 
+\begin_inset Formula $M_{n}$
+\end_inset
+
+ mit 
+\begin_inset Formula ${\displaystyle \mu\left(M_{n}\right)<\frac{1}{n}}$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+M & :=\bigcap_{n=1}^{\infty}M_{n}
+\end{align*}
+
+\end_inset
+
+ist wieder eine Borelmenge und:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(M\right) & \le\mu\left(M_{n}\right)<\frac{1}{n}
+\end{align*}
+
+\end_inset
+
+Also ist 
+\begin_inset Formula $\mu\left(M\right)=0$
+\end_inset
+
+ und daher gilt:
+\end_layout
+
+\begin_layout Itemize
+Jede Lebesguesche Nullmenge ist eine Teilmenge einer Borelmenge vom Maß
+ 0.
+\end_layout
+
+\begin_layout Itemize
+Aber nicht jede Lebesguesche Nullmenge ist eine Borelmenge.
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(
+\begin_inset Formula $\mu$
+\end_inset
+
+-messbar)
+\end_layout
+
+\begin_layout Standard
+Eine Menge 
+\begin_inset Formula $A\subseteq\mathbb{R}$
+\end_inset
+
+ heißt 
+\begin_inset Formula $\mu$
+\end_inset
+
+-messbar, falls 
+\begin_inset Formula $A$
+\end_inset
+
+ mit Hilfe einer Borelmenge 
+\begin_inset Formula $B$
+\end_inset
+
+ und einer Lebesgueschen Nullmenge 
+\begin_inset Formula $N$
+\end_inset
+
+ in folgender Form dargestellt werden kann:
+\begin_inset Formula 
+\begin{align*}
+A & =B\cup N
+\end{align*}
+
+\end_inset
+
+Die 
+\begin_inset Formula $\mu$
+\end_inset
+
+-messbaren Mengen bilden wieder eine 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-Algebra 
+\begin_inset Formula $\mathcal{M}\supsetneq\mathcal{B}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(Lebesgue-Komplettierung, fast überall, Lebesgue-Maß)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ heißt die 
+\emph on
+Lebesgue-Komplettierung
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Die Mengen 
+\begin_inset Formula $A\in\mathcal{M}$
+\end_inset
+
+ heißen Lebesgue-messbar.
+\end_layout
+
+\begin_layout Standard
+Eine Aussage gilt Lebesgue-fast überall, falls die Punkte, für die sie nicht
+ gilt, eine Lebesguesche Nullmenge bilden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left(\mathbb{R},\mu,\mathcal{M}\right)$
+\end_inset
+
+ heißt eindimensionales Lebesgue-Maß.
+\end_layout
+
+\begin_layout Subsubsection*
+Bemerkung
+\end_layout
+
+\begin_layout Standard
+Die Konstruktion könnte man analog auch im 
+\begin_inset Formula $\mathbb{R}^{n}$
+\end_inset
+
+ durchführen.
+\end_layout
+
+\begin_layout Standard
+Wir betrachten stattdessen später das Produktmaß.
 \end_layout
 
 \begin_layout Section
@@ -4897,7 +7715,9 @@ Konstruktion des Integrals
 \end_layout
 
 \begin_layout Standard
-TODO: Rest einfügen
+
+\color green
+TODO: Rest überarbeiten
 \end_layout
 
 \begin_layout Subsection
@@ -13045,35 +15865,78 @@ TODO: Abb4
 \end_layout
 
 \begin_layout Subsubsection*
-Fragen
+Frage
+\end_layout
+
+\begin_layout Standard
+Äquivalente Fragestellungen:
+\end_layout
+
+\begin_layout Enumerate
+Für welche 
+\begin_inset Formula $f$
+\end_inset
+
+ ist 
+\begin_inset Formula $\int_{\gamma}f\left(z\right)\dd z$
+\end_inset
+
+ unabhängig vom Integrationsweg.
+\end_layout
+
+\begin_layout Enumerate
+Für welche 
+\begin_inset Formula $f$
+\end_inset
+
+ gibt es eine holomorphe Stammfunktion.
+\end_layout
+
+\begin_layout Standard
+Notwendiges Kriterium:
 \end_layout
 
 \begin_layout Standard
 Falls 
+\begin_inset Formula $f\in C^{1}$
+\end_inset
+
+ ist, sehen wir, dass für alle geschlossenen Wege 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ schon 
+\begin_inset Formula $\oint_{\gamma}f\left(z\right)\dd z=0$
+\end_inset
+
+ nur dann, wenn 
+\begin_inset Formula $f$
+\end_inset
+
+ holomorph ist.
+\end_layout
+
+\begin_layout Standard
+TODO: Rest überprüfen 
+\begin_inset Formula $f\in C^{1}$
+\end_inset
+
+ = holomorph?
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula $f:\Omega\to\mathbb{C}$
 \end_inset
 
- holomorph ist,
-\end_layout
-
-\begin_layout Enumerate
-gibt es eine holomorphe Stammfunktion, also 
-\begin_inset Formula $F:\Omega\to\mathbb{C}$
+ ist holomorph, denn wenn es eine holomorphe Stammfunktion 
+\begin_inset Formula $F$
 \end_inset
 
- mit 
-\begin_inset Formula $F'\left(z\right)=f\left(z\right)$
+ gibt, so ist 
+\begin_inset Formula $f=F'$
 \end_inset
 
-?
-\end_layout
-
-\begin_layout Enumerate
-ist 
-\begin_inset Formula $\int_{\gamma}f\left(z\right)\dd z$
-\end_inset
-
- wegunabhängig?
+ auch holomorph.
 \end_layout
 
 \begin_layout Standard
@@ -13085,11 +15948,32 @@ Beginne mit einfachen Integrationswegen und zwar dem Integral längs des
 .
 \end_layout
 
-\begin_layout Subsection
-Theorem
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Di 10.1.12
 \end_layout
 
-\begin_layout Subsubsection*
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Thm-Goursat"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Ist 
 \begin_inset Formula $f:\Omega\to\mathbb{C}$
 \end_inset
@@ -13102,6 +15986,10 @@ Ist
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Subsubsection*
 Beweis 
 \series medium
 (nach Goursat)
@@ -13131,7 +16019,8 @@ TODO: Abb5
 
 \end_inset
 
-Dies gilt, da sich die Integrale längs der „inneren Kanten“ wegheben.
+Dies gilt, da sich die Integrale längs der „inneren Kanten“ gegenseitig
+ aufheben.
 \end_layout
 
 \begin_layout Standard
@@ -13139,11 +16028,7 @@ Für eines der Rechtecke
 \begin_inset Formula $R^{\left(k\right)}$
 \end_inset
 
- gilt und nenne es 
-\begin_inset Formula $R_{1}$
-\end_inset
-
-:
+ gilt:
 \begin_inset Formula 
 \begin{align*}
 \left|\int_{\partial R_{1}}f\left(z\right)\dd z\right| & \ge\frac{1}{4}\left|\int_{\partial R}f\left(z\right)\right|
@@ -13151,11 +16036,22 @@ Für eines der Rechtecke
 
 \end_inset
 
-Wähle induktiv Rechtecke 
-\begin_inset Formula $R\supseteq R_{1}\supseteq R_{2}\supseteq\ldots$
+Dieses nennen wir 
+\begin_inset Formula $R_{1}$
 \end_inset
 
-, so dass gilt:
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $ $
+\end_inset
+
+Wähle nun induktiv Rechtecke 
+\begin_inset Formula $R=R_{0}\supseteq R_{1}\supseteq R_{2}\supseteq\ldots$
+\end_inset
+
+ so, dass gilt:
 \begin_inset Formula 
 \begin{align*}
 \left|\eta\left(R_{n}\right)\right| & \ge\frac{1}{4^{n}}\left|\eta\left(R\right)\right|
@@ -13163,11 +16059,19 @@ Wähle induktiv Rechtecke
 
 \end_inset
 
-Zudem sind die Kantenlängen von 
+Zudem gilt
+\begin_inset Formula 
+\begin{align*}
+\text{Vol}\left(R_{n}\right) & =4^{-n}\cdot\text{Vol}\left(R\right)
+\end{align*}
+
+\end_inset
+
+und die Kantenlängen von 
 \begin_inset Formula $R_{n}$
 \end_inset
 
- schon 
+ sind schon 
 \begin_inset Formula $2^{-n}$
 \end_inset
 
@@ -13180,7 +16084,7 @@ Zudem sind die Kantenlängen von
 
 \begin_layout Standard
 Seien 
-\begin_inset Formula $Z_{n}$
+\begin_inset Formula $z_{n}$
 \end_inset
 
  die Mittelpunkte dieser Rechtecke.
@@ -13191,7 +16095,7 @@ Die Folge
 \begin_inset Formula $\left(z_{n}\right)$
 \end_inset
 
- konvergiert gegen 
+ besitzt einen Häufungspunkt 
 \begin_inset Formula $z^{*}\in R$
 \end_inset
 
@@ -13203,6 +16107,10 @@ TODO: Abb6
 \end_layout
 
 \begin_layout Standard
+Verwende nun ein lokales Argument:
+\end_layout
+
+\begin_layout Standard
 Da 
 \begin_inset Formula $f$
 \end_inset
@@ -13211,7 +16119,15 @@ Da
 \begin_inset Formula $z^{*}$
 \end_inset
 
- holomorph ist, gibt es zu jedem 
+ holomorph ist, gilt:
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =f\left(z^{*}\right)+f'\left(z^{*}\right)\left(z-z^{*}\right)+o\left(\left|z-z^{*}\right|\right)
+\end{align*}
+
+\end_inset
+
+Anders ausgedrückt gibt es zu jedem 
 \begin_inset Formula $\varepsilon>0$
 \end_inset
 
@@ -13226,11 +16142,15 @@ Da
 :
 \begin_inset Formula 
 \begin{align*}
-\left|\frac{f\left(z\right)-f\left(z^{*}\right)}{z-z^{*}}-f'\left(z^{*}\right)\right| & <\varepsilon
+\left|f\left(z\right)-f\left(z^{*}\right)-f'\left(z^{*}\right)\left(z-z^{*}\right)\right| & <\varepsilon\left|z-z^{*}\right|
 \end{align*}
 
 \end_inset
 
+Dies ist ein Polynom, es hat also eine holomorphe Stammfunktion.
+\end_layout
+
+\begin_layout Standard
 Wähle nun 
 \begin_inset Formula $n$
 \end_inset
@@ -13254,12 +16174,34 @@ Dann gilt:
 Beachte dabei, das wir ein Polynom integrieren.
 \begin_inset Formula 
 \begin{align*}
-\left|\eta\left(R_{n}\right)\right| & =\left|\int_{\partial R_{n}}f\left(z\right)\dd z\right|=\Bigg|\int_{\partial R_{n}}\bigg(\underbrace{f\left(z\right)-f\left(z^{*}\right)-f'\left(z^{*}\right)\left(z-z^{*}\right)}_{\left|\ldots\right|\le\varepsilon\left|z-z^{*}\right|}\bigg)\dd z\Bigg|\le\varepsilon\Bigg|\int_{\partial R_{n}}\underbrace{\left|z-z^{*}\right|}_{\le2^{-n}\cdot\max\left\{ b-a,d-c\right\} }\dd z\Bigg|\le\\
- & \le\varepsilon\cdot4^{-n}\cdot\underbrace{d}_{\text{Durchmesser von }R}\cdot\underbrace{L}_{\text{Umfang von }R}
+\eta\left(R_{n}\right) & =\int_{\partial R_{n}}f\left(z\right)\dd z=\int_{\partial R_{n}}\left(f\left(z\right)-f\left(z^{*}\right)-f'\left(z^{*}\right)\left(z-z^{*}\right)\right)\dd z
 \end{align*}
 
 \end_inset
 
+Also gilt:
+\begin_inset Formula 
+\begin{align*}
+\left|\eta\left(R_{n}\right)\right| & =\Bigg|\int_{\partial R_{n}}\bigg(\underbrace{f\left(z\right)-f\left(z^{*}\right)-f'\left(z^{*}\right)\left(z-z^{*}\right)}_{\left|\ldots\right|\le\varepsilon\left|z-z^{*}\right|}\bigg)\dd z\Bigg|\le\\
+ & \le\varepsilon\Bigg|\int_{\partial R_{n}}\underbrace{\left|z-z^{*}\right|}_{\le2^{-n}\cdot\max\left\{ b-a,d-c\right\} }\dd z\Bigg|\le\\
+ & \le\varepsilon\cdot\underbrace{d_{n}}_{\text{Durchmesser von }R_{n}}\cdot\underbrace{L_{n}}_{\text{Umfang von }R}\\
+ & \le\varepsilon\cdot4^{-n}\cdot\underbrace{d}_{\text{Durchmesser von }R}\cdot\underbrace{L}_{\text{Umfang von }R_{n}}
+\end{align*}
+
+\end_inset
+
+Andererseits gilt:
+\begin_inset Formula 
+\begin{align*}
+\eta\left(R_{n}\right) & \ge4^{-n}\left|\eta\left(R\right)\right|
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Damit folgt:
 \begin_inset Formula 
 \begin{align*}
@@ -13278,6 +16220,2839 @@ Da
 
 .
 \begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $R'=R\setminus\left\{ \zeta_{1},\ldots,\zeta_{n}\right\} $
+\end_inset
+
+ ein Rechteck ohne endlich viele innere Punkte, also 
+\begin_inset Formula $\zeta_{1}\in R^{\circ}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $f$
+\end_inset
+
+ auf 
+\begin_inset Formula $R'$
+\end_inset
+
+ holomorph und es gelte:
+\begin_inset Formula 
+\begin{align*}
+\lim_{z\to\zeta_{j}}\left(z-\zeta_{j}\right)f\left(z\right) & =0
+\end{align*}
+
+\end_inset
+
+Dann gilt:
+\begin_inset Formula 
+\begin{align*}
+\int_{\partial R}f\left(z\right)\dd z & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Es genügt, einen Ausnahmepunkt zu betrachten, da wir das Rechteck ansonsten
+ in endlich viele Rechtecke zerlegen können.
+\end_layout
+
+\begin_layout Standard
+TODO: Abb1-b
+\end_layout
+
+\begin_layout Standard
+Nenne den Ausnahmepunkt 
+\begin_inset Formula $\zeta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Wähle ein kleines Rechteck 
+\begin_inset Formula $R_{0}$
+\end_inset
+
+ um 
+\begin_inset Formula $\zeta$
+\end_inset
+
+ und nenne die restlichen Rechtecke 
+\begin_inset Formula $R_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+TODO: Abb2
+\end_layout
+
+\begin_layout Standard
+Weil 
+\begin_inset Formula $f$
+\end_inset
+
+ in 
+\begin_inset Formula $R_{i}$
+\end_inset
+
+ für 
+\begin_inset Formula $i\ge1$
+\end_inset
+
+ holomorph ist, folgt:
+\begin_inset Formula 
+\begin{align*}
+\int_{\partial R_{i}}f\left(z\right)\dd z & =0
+\end{align*}
+
+\end_inset
+
+Damit folgt:
+\begin_inset Formula 
+\begin{align*}
+\int_{\partial R}f\left(z\right)\dd z & =\int_{\partial R_{0}}f\left(z\right)\dd z
+\end{align*}
+
+\end_inset
+
+Nach Voraussetzung können wir zu einem gegebene 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+ das Rechteck 
+\begin_inset Formula $R_{0}$
+\end_inset
+
+ so klein wählen, dass für alle 
+\begin_inset Formula $z\in\partial R_{0}$
+\end_inset
+
+ gilt:
+\begin_inset Formula 
+\begin{align*}
+\left|f\left(z\right)\cdot\left(z-\zeta\right)\right| & \le\varepsilon\\
+\left|f\left(z\right)\right| & \le\frac{\varepsilon}{\left|z-\zeta\right|}
+\end{align*}
+
+\end_inset
+
+Also gilt:
+\begin_inset Formula 
+\begin{align*}
+\left|\int_{\partial R_{0}}f\left(z\right)\dd z\right| & \le\varepsilon\int_{\partial R_{o}}\frac{\overbrace{\left|\dd z\right|}^{=\left|\gamma'\left(t\right)\right|\dd t}}{\left|z-\zeta\right|}\le\\
+ & \le\frac{\varepsilon}{\frac{d_{0}}{4}}\cdot L_{0}=\varepsilon\cdot\frac{4L_{0}}{d_{0}}\le16\varepsilon
+\end{align*}
+
+\end_inset
+
+Da 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ beliebig ist, folgt:
+\begin_inset Formula 
+\begin{align*}
+\int_{\partial R}f\left(z\right)\dd z & =0
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Verallgemeinere dies nun auf beliebige Kurven in einer Kreisscheibe.
+\end_layout
+
+\begin_layout Subsection
+Theorem
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $f$
+\end_inset
+
+ in 
+\begin_inset Formula $\Delta:=B_{R}\left(0\right)\in\mathbb{C}$
+\end_inset
+
+ holomorph.
+\end_layout
+
+\begin_layout Standard
+Dann gilt für jede geschlossene Kurve 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ in 
+\begin_inset Formula $\Delta$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\int_{\gamma}f\left(z\right)\dd z & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $z=x+\ii y\in\Delta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+TODO: Abb3
+\end_layout
+
+\begin_layout Standard
+Wähle ein Rechteck 
+\begin_inset Formula $R$
+\end_inset
+
+ so, dass die linke untere Ecke der Ursprung und die rechte obere Ecke 
+\begin_inset Formula $z$
+\end_inset
+
+ ist.
+\end_layout
+
+\begin_layout Standard
+Nach Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Thm-Goursat"
+
+\end_inset
+
+ ist
+\begin_inset Formula 
+\begin{align*}
+\int_{\partial R}f\left(z\right)\dd z & =0
+\end{align*}
+
+\end_inset
+
+und deshalb ist
+\begin_inset Formula 
+\begin{align*}
+\int_{\gamma_{1}}f\left(z\right)\dd z & =\int_{\gamma_{2}}f\left(z\right)\dd z=:F\left(z\right)
+\end{align*}
+
+\end_inset
+
+wohldefiniert.
+\end_layout
+
+\begin_layout Standard
+Nach Korollar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "asdf"
+
+\end_inset
+
+2.9.2 genügt es zu zeigen, dass 
+\begin_inset Formula $F\left(z\right)$
+\end_inset
+
+ eine holomorphe Stammfunktion von 
+\begin_inset Formula $f$
+\end_inset
+
+ ist.
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $\gamma_{h}$
+\end_inset
+
+ ein Weg, der 
+\begin_inset Formula $z$
+\end_inset
+
+ und 
+\begin_inset Formula $z+h$
+\end_inset
+
+ parallel zur reellen Achse verbindet.
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $\gamma_{g}$
+\end_inset
+
+ ein Weg, der 
+\begin_inset Formula $z$
+\end_inset
+
+ und 
+\begin_inset Formula $z+\ii h$
+\end_inset
+
+ parallel zur imaginären Achse verbindet.
+\end_layout
+
+\begin_layout Standard
+TODO: Abb4
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial F}{\partial x} & =\lim_{0\not=h\to0}\int_{\gamma_{h}}f\left(z\right)\dd z=\lim_{0\not=h\to0}\frac{1}{h}\int_{0}^{h}f\left(z+h\right)\cdot\underbrace{\gamma'\left(h\right)}_{=1}\dd h=f\left(z\right)\\
+\frac{\partial F}{\partial y} & =\lim_{0\not=h\to0}\frac{1}{h}\left(F\left(z+\ii h\right)-F\left(z\right)\right)=\lim_{0\not=h\to0}\frac{1}{h}\int_{0}^{h}f\left(z+\ii h\right)\cdot\ii\dd h=\ii f\left(z\right)
+\end{align*}
+
+\end_inset
+
+Damit sind die Cauchy-Riemannschen Differentialgleichungen erfüllt, also
+ ist 
+\begin_inset Formula $F$
+\end_inset
+
+ holomorph und es gilt:
+\begin_inset Formula 
+\begin{align*}
+F'\left(z\right) & =f\left(z\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Thm-OintHolomHebPol"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $f$
+\end_inset
+
+ holomorph in 
+\begin_inset Formula $\Delta'=\Delta\setminus\left\{ \zeta_{1},\ldots,\zeta_{n}\right\} $
+\end_inset
+
+ mit 
+\begin_inset Formula $\zeta_{j}\in\Delta$
+\end_inset
+
+ für 
+\begin_inset Formula $1\le j\le n$
+\end_inset
+
+ und es gelte für 
+\begin_inset Formula $1\le j\le n$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\lim_{z\to\zeta_{j}}\left(z-\zeta_{j}\right)f\left(z\right) & =0
+\end{align*}
+
+\end_inset
+
+Dann ist
+\begin_inset Formula 
+\begin{align*}
+\int_{\gamma}f\left(z\right)\dd z & =0
+\end{align*}
+
+\end_inset
+
+für jede geschlossene Kurve 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ in 
+\begin_inset Formula $\Delta$
+\end_inset
+
+'.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+TODO: Abb5
+\end_layout
+
+\begin_layout Standard
+Wähle Kurven 
+\begin_inset Formula $\gamma_{1}$
+\end_inset
+
+ und 
+\begin_inset Formula $\gamma_{2}$
+\end_inset
+
+ so, dass
+\end_layout
+
+\begin_layout Itemize
+die Kurven keinen der 
+\begin_inset Formula $\zeta_{j}$
+\end_inset
+
+ schneiden.
+\end_layout
+
+\begin_layout Itemize
+in einer Umgebung von 
+\begin_inset Formula $z$
+\end_inset
+
+ die Kurve 
+\begin_inset Formula $\gamma_{1}$
+\end_inset
+
+ parallel zur imaginären Achse und 
+\begin_inset Formula $\gamma_{2}$
+\end_inset
+
+ parallel zur reellen Achse ist.
+\end_layout
+
+\begin_layout Standard
+Da nach Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "asdf"
+
+\end_inset
+
+2.10.2
+\begin_inset Formula 
+\begin{align*}
+\int_{\partial R}f\left(z\right)\dd z & =0
+\end{align*}
+
+\end_inset
+
+ist, folgt wieder:
+\begin_inset Formula 
+\begin{align*}
+\int_{\gamma_{1}}f\left(z\right)\dd z & =\int_{\gamma_{2}}f\left(z\right)\dd z=:F\left(z\right)
+\end{align*}
+
+\end_inset
+
+Ab jetzt geht der Beweis genau wie der von Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "asdf"
+
+\end_inset
+
+2.10.3.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Der Cauchysche Integralsatz
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ wieder eine geschlossene Kurve.
+\end_layout
+
+\begin_layout Standard
+Wir wollen nun Funktionen integrieren, die Pole haben.
+\end_layout
+
+\begin_layout Standard
+Beginne speziell mit der Funktion
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{z-a}
+\end{align*}
+
+\end_inset
+
+wobei 
+\begin_inset Formula $a\not\in\text{im}\left(\gamma\right)$
+\end_inset
+
+ ist.
+\end_layout
+
+\begin_layout Standard
+TODO: Abb6
+\end_layout
+
+\begin_layout Subsection
+Lemma
+\end_layout
+
+\begin_layout Standard
+Es gilt
+\begin_inset Formula 
+\begin{align*}
+\int_{\gamma}\frac{1}{z-a}\dd z & =2\pi\ii\cdot n
+\end{align*}
+
+\end_inset
+
+für ein 
+\begin_inset Formula $n\in\mathbb{Z}\setminus\left\{ 0\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\log\left(z-a\right)$
+\end_inset
+
+ ist eine holomorphe Stammfunktion, aber nicht auf ganz 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+TODO: Abb7
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Wähle eine Parametrisierung
+\begin_inset Formula 
+\begin{align*}
+\gamma:\left[\alpha,\beta\right] & \to\mathbb{C}
+\end{align*}
+
+\end_inset
+
+und setze 
+\begin_inset Formula $z\left(t\right)=\gamma\left(t\right)$
+\end_inset
+
+ und
+\begin_inset Formula 
+\begin{align*}
+h\left(t\right) & :=\int_{\alpha}^{t}\frac{z'\left(t\right)}{z\left(t\right)-a}\dd t
+\end{align*}
+
+\end_inset
+
+TODO: Abb8
+\begin_inset Formula 
+\begin{align*}
+h'\left(t\right) & =\frac{z'\left(t\right)}{z\left(t\right)-a}
+\end{align*}
+
+\end_inset
+
+Dann gilt:
+\begin_inset Formula 
+\begin{align*}
+e^{-h\left(t\right)}\left(z\left(t\right)-a\right)
+\end{align*}
+
+\end_inset
+
+ist stetig und stückweise differenzierbar und hat die Ableitung:
+\begin_inset Formula 
+\begin{align*}
+\left(e^{-h\left(t\right)}\left(z\left(t\right)-a\right)\right)' & =e^{-h\left(t\right)}\left(-h'\left(t\right)\left(z\left(t\right)-a\right)+z'\left(t\right)\right)=0
+\end{align*}
+
+\end_inset
+
+Also ist es eine Konstante 
+\begin_inset Formula $K\in\mathbb{C}$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+e^{-h\left(t\right)} & =\frac{K}{z\left(t\right)-a}
+\end{align*}
+
+\end_inset
+
+Da 
+\begin_inset Formula $h\left(\alpha\right)=0$
+\end_inset
+
+ ist, folgt:
+\begin_inset Formula 
+\begin{align*}
+e^{-h\left(t\right)} & =\frac{z\left(\alpha\right)-a}{z\left(t\right)-a}
+\end{align*}
+
+\end_inset
+
+Also gilt:
+\begin_inset Formula 
+\begin{align*}
+e^{-h\left(\beta\right)} & =\frac{z\left(\alpha\right)-a}{z\left(\beta\right)-a}=1
+\end{align*}
+
+\end_inset
+
+Denn die Kurve ist geschlossen, also 
+\begin_inset Formula $z\left(a\right)=z\left(b\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Damit ergibt sich:
+\begin_inset Formula 
+\begin{align*}
+h\left(\beta\right) & =\int_{\gamma}\frac{1}{z-a}\dd z=2\pi\ii n
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: 13.1.12
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(Index)
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ eine geschlossene Kurve, die 
+\begin_inset Formula $a\in\mathbb{C}$
+\end_inset
+
+ nicht schneidet.
+ Dann heißt
+\begin_inset Formula 
+\begin{align*}
+n\left(\gamma,a\right) & =\frac{1}{2\pi\ii}\oint_{\gamma}\frac{\dd z}{z-a}
+\end{align*}
+
+\end_inset
+
+der 
+\emph on
+Index
+\emph default
+ von 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ bezüglich 
+\begin_inset Formula $a$
+\end_inset
+
+ (oder auch 
+\emph on
+Windungszahl
+\emph default
+).
+\end_layout
+
+\begin_layout Subsection
+Theorem 
+\series medium
+(Cauchyscher Integralsatz)
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $f:\Delta=B_{R}\left(0\right)\to\mathbb{C}$
+\end_inset
+
+ holomorph und 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ eine geschlossene Kurve in 
+\begin_inset Formula $\Delta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Dann ist für jedes 
+\begin_inset Formula $a\in\Delta$
+\end_inset
+
+, das nicht auf 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ liegt
+\begin_inset Formula 
+\begin{align*}
+n\left(\gamma,a\right)\cdot f\left(a\right) & =\frac{1}{2\pi\ii}\oint_{\gamma}\frac{f\left(z\right)}{z-a}\dd z
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Setze
+\begin_inset Formula 
+\begin{align*}
+F\left(z\right) & =\frac{f\left(z\right)-f\left(a\right)}{z-a}
+\end{align*}
+
+\end_inset
+
+ist auf 
+\begin_inset Formula $\Delta\setminus\left\{ a\right\} $
+\end_inset
+
+ holomorph.
+\begin_inset Formula 
+\begin{align*}
+\lim_{z\to a}\left(z-a\right)F\left(z\right) & =\lim_{z\to a}\left(f\left(z\right)-f\left(a\right)\right)\stackrel{f\text{ stetig}}{=}0
+\end{align*}
+
+\end_inset
+
+Also können wir Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Thm-OintHolomHebPol"
+
+\end_inset
+
+ anwenden und erhalten:
+\begin_inset Formula 
+\begin{align*}
+0 & =\oint_{\gamma}F\left(z\right)\dd z=\oint_{\gamma}\frac{f\left(z\right)}{z-a}\dd z-f\left(a\right)\cdot\oint_{\gamma}\frac{1}{z-a}\dd z=\\
+ & =\oint_{\gamma}\frac{f\left(z\right)}{z-a}\dd z-f\left(a\right)\cdot2\pi\ii\cdot n\left(\gamma,a\right)
+\end{align*}
+
+\end_inset
+
+Also folgt:
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{2\pi\ii}\oint_{\gamma}\frac{f\left(z\right)}{z-a}\dd z & =f\left(a\right)\cdot n\left(\gamma,a\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Korollar
+\end_layout
+
+\begin_layout Standard
+Sind 
+\begin_inset Formula $f:\Omega\to\mathbb{C}$
+\end_inset
+
+ holomorph, 
+\begin_inset Formula $a\in\Delta$
+\end_inset
+
+ und 
+\begin_inset Formula $\gamma=\partial B_{\varepsilon}\left(a\right)\subseteq\Delta$
+\end_inset
+
+, so gilt:
+\begin_inset Formula 
+\begin{align*}
+f\left(a\right) & =\frac{1}{2\pi\ii}\ointctrclockwise_{\gamma}\frac{f\left(z\right)}{z-a}\dd z
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Der Index ist eins, weil gilt:
+\begin_inset Formula 
+\begin{align*}
+\oint_{\partial B_{\varepsilon}\left(0\right)}\frac{1}{z}\dd z & =2\pi\ii
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Bemerkung und Definition 
+\series medium
+(Zusammenhangskomponenten)
+\end_layout
+
+\begin_layout Standard
+Also ist 
+\begin_inset Formula $f\left(a\right)$
+\end_inset
+
+ eindeutig bestimmt durch 
+\begin_inset Formula $f|_{\partial B_{\varepsilon}\left(a\right)}$
+\end_inset
+
+, das heißt 
+\begin_inset Formula $f$
+\end_inset
+
+ kann nicht in einer kleinen Umgebung um 
+\begin_inset Formula $a$
+\end_inset
+
+ abgeändert werden.
+\begin_inset Formula 
+\begin{align*}
+\nabla^{2}\text{Re}\left(f\right) & =0=\nabla^{2}\text{Im}\left(f\right)\\
+\frac{\partial f}{\partial x} & =-\ii\frac{\partial f}{\partial y}
+\end{align*}
+
+\end_inset
+
+Diese harmonische Differentialgleichung ist im Innern eindeutig durch die
+ Randwerte bestimmt.
+\end_layout
+
+\begin_layout Standard
+Eigenschaften des Index:
+\begin_inset Formula 
+\begin{align*}
+n\left(\gamma,a\right) & =\frac{1}{2\pi\ii}\ointctrclockwise_{\gamma}\frac{\dd z}{z-a}=\frac{1}{2\pi\ii}\int_{a}^{b}\frac{\gamma'\left(\tau\right)}{\gamma\left(\tau\right)}\dd\tau
+\end{align*}
+
+\end_inset
+
+Gehe Kurven rückwärts oder setze geschlossene Kurven aneinander:
+\begin_inset Formula 
+\begin{align*}
+n\left(-\gamma,a\right) & =-n\left(\gamma,a\right)\\
+n\left(\gamma_{1}+\gamma_{2},a\right) & =n\left(\gamma_{1},a\right)+n\left(\gamma_{2},a\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+TODO: Abb1
+\end_layout
+
+\begin_layout Standard
+Das Bild (engl.
+ „
+\lang english
+image
+\lang ngerman
+“) 
+\begin_inset Formula $\text{im}\left(\gamma\right)$
+\end_inset
+
+ (beziehungsweise engl.
+ „
+\lang english
+the range
+\lang ngerman
+“ 
+\begin_inset Formula $\text{Rg}\left(\gamma\right)$
+\end_inset
+
+
+\begin_inset Formula $ $
+\end_inset
+
+)
+\begin_inset Formula 
+\begin{align*}
+\text{im}\left(\gamma\right) & :=\gamma\left(\left[a,b\right]\right)
+\end{align*}
+
+\end_inset
+
+ist eine kompakte, also abgeschlossene und beschränkte Teilmenge von 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+ und
+\begin_inset Formula 
+\begin{align*}
+\mathbb{C}\setminus\text{im}\left(\gamma\right)
+\end{align*}
+
+\end_inset
+
+ist eine offene Teilmenge von 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+n\left(\gamma\right):\mathbb{C}\setminus\text{im}\left(\gamma\right) & \to\mathbb{Z}:a\mapsto n\left(\gamma,a\right)
+\end{align*}
+
+\end_inset
+
+Für offene Teilmengen von 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+ ist zusammenhängend 
+\begin_inset Formula $\Leftrightarrow$
+\end_inset
+
+ wegzusammenhängend (auch genannt bogenzusammenhängend).
+\begin_inset Formula 
+\begin{align*}
+\mathbb{C}\setminus\text{Rg}\left(\gamma\right) & =\bcupd_{\lambda\in\Lambda}\Omega_{\lambda}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $\Omega_{\lambda}$
+\end_inset
+
+ heißen 
+\emph on
+die Zusammenhangskomponenten
+\emph default
+ und für alle 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ aus der Indexmenge 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ ist 
+\begin_inset Formula $\Omega_{\lambda}$
+\end_inset
+
+ zusammenhängend.
+\end_layout
+
+\begin_layout Standard
+Es könnte auch unendlich viele Zusammenhangskomponenten geben.
+\end_layout
+
+\begin_layout Standard
+TODO: Abb2
+\end_layout
+
+\begin_layout Standard
+Da 
+\begin_inset Formula $\text{im}\left(\gamma\right)$
+\end_inset
+
+ beschränkt ist, gibt es einen Radius 
+\begin_inset Formula $R$
+\end_inset
+
+, so dass gilt:
+\begin_inset Formula 
+\begin{align*}
+\text{im}\left(\gamma\right) & \subseteq\Delta=B_{R}\left(0\right)
+\end{align*}
+
+\end_inset
+
+TODO: Abb3
+\end_layout
+
+\begin_layout Subsection
+Satz
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ Falls 
+\begin_inset Formula $\left|a\right|>R$
+\end_inset
+
+ ist, so gilt 
+\begin_inset Formula $n\left(\gamma,a\right)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ Auf jeder Zusammenhangskomponente ist 
+\begin_inset Formula $n\left(\gamma,.\right):\Omega_{\lambda}\to\mathbb{N},x\mapsto n\left(\gamma,x\right)$
+\end_inset
+
+ konstant.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula ${\displaystyle \frac{1}{z-a}}$
+\end_inset
+
+ ist auf ganz 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ holomorph.
+ Nach Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "asdf"
+
+\end_inset
+
+2.10.3 folgt:
+\begin_inset Formula 
+\begin{align*}
+\oint\frac{\dd z}{z-a} & =0
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[
+\backslash
+roman{ale2})]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ Seien 
+\begin_inset Formula $a_{1},a_{2}\in\Omega_{\lambda}$
+\end_inset
+
+.
+ Mann kann dann 
+\begin_inset Formula $a_{1}$
+\end_inset
+
+ und 
+\begin_inset Formula $a_{2}$
+\end_inset
+
+ durch einen Polygonzug miteinander verbinden.
+\end_layout
+
+\begin_layout Standard
+Es genügt zu zeigen, dass gilt:
+\begin_inset Formula 
+\begin{align*}
+n\left(\gamma,a\right) & =n\left(\gamma,b\right)
+\end{align*}
+
+\end_inset
+
+Dabei ist die Verbindungslinie 
+\begin_inset Formula $v\left(a,b\right):=\left\{ \tau a+\left(1-\tau\right)b|0\le\tau\le1\right\} $
+\end_inset
+
+ von 
+\begin_inset Formula $a$
+\end_inset
+
+ nach 
+\begin_inset Formula $b$
+\end_inset
+
+ eine Teilmenge von 
+\begin_inset Formula $\Omega_{\lambda}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Es folgt
+\begin_inset Formula 
+\begin{align*}
+v\left(a,b\right)\cap\text{im}\left(\gamma\right) & =\emptyset
+\end{align*}
+
+\end_inset
+
+und damit ist 
+\begin_inset Formula ${\displaystyle \frac{z-a}{z-b}}$
+\end_inset
+
+ auf 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ nicht Element von 
+\begin_inset Formula $\mathbb{R}_{\le0}$
+\end_inset
+
+, denn wäre 
+\begin_inset Formula ${\displaystyle \frac{z-a}{z-b}}=-c$
+\end_inset
+
+ für ein 
+\begin_inset Formula $c\in\mathbb{R}_{\ge0}$
+\end_inset
+
+, so wäre 
+\begin_inset Formula $z-a=-c\left(z-b\right)$
+\end_inset
+
+, also würde 
+\begin_inset Formula $z\in v\left(a,b\right)$
+\end_inset
+
+ folgen.
+\end_layout
+
+\begin_layout Standard
+TODO: Abb4?
+\end_layout
+
+\begin_layout Standard
+Folglich ist 
+\begin_inset Formula ${\displaystyle \log\left(\frac{z-a}{z-b}\right)}$
+\end_inset
+
+ längs 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ wohldefiniert, wobei bei 
+\begin_inset Formula $\log\left(z\right)$
+\end_inset
+
+ wieder die komplexe Ebene auf der negativen reellen Achse „geschlitzt“
+ ist.
+\begin_inset Formula 
+\begin{align*}
+\left(\log\left(\frac{z-a}{z-b}\right)\right)' & =\frac{1}{\frac{z-a}{z-b}}\left(\frac{1}{z-b}-\frac{z-a}{\left(z-b\right)^{2}}\right)=\frac{1}{z-a}-\frac{1}{z-b}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\oint_{\gamma}\left(\frac{1}{z-a}-\frac{1}{z-b}\right)\dd z & =\log\left(\frac{z-a}{z-b}\right)\bigg|_{z_{0}}^{z_{0}}=n\left(\gamma,a\right)=n\left(\gamma,b\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Lemma
+\end_layout
+
+\begin_layout Standard
+Seien 
+\begin_inset Formula $z_{1},z_{2}$
+\end_inset
+
+ zwei Punkte auf einer geschlossenen Kurve 
+\begin_inset Formula $\gamma$
+\end_inset
+
+, die nicht durch den Ursprung geht.
+\end_layout
+
+\begin_layout Standard
+Es sei 
+\begin_inset Formula $\text{Im}\left(z_{1}\right)<0$
+\end_inset
+
+ und 
+\begin_inset Formula $\text{Im}\left(z_{2}\right)>0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Bezeichne die Teilkurven von 
+\begin_inset Formula $z_{1}$
+\end_inset
+
+ nach 
+\begin_inset Formula $z_{2}$
+\end_inset
+
+ mit 
+\begin_inset Formula $\gamma_{1}$
+\end_inset
+
+ und die von 
+\begin_inset Formula $z_{2}$
+\end_inset
+
+ nach 
+\begin_inset Formula $z_{1}$
+\end_inset
+
+ mit 
+\begin_inset Formula $\gamma_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Falls 
+\begin_inset Formula $\gamma_{1}$
+\end_inset
+
+ die negative reelle Achse nicht schneidet und 
+\begin_inset Formula $\gamma_{2}$
+\end_inset
+
+ die positive reelle Achse nicht schneidet, dann ist 
+\begin_inset Formula $n\left(\gamma,0\right)=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+TODO: Abb5
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $L_{1}$
+\end_inset
+
+ der Strahl durch 0 und 
+\begin_inset Formula $z_{1}$
+\end_inset
+
+ und 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+ der Strahl durch 0 und 
+\begin_inset Formula $z_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $C$
+\end_inset
+
+ ein Kreis um Ursprung, der 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ nicht schneidet.
+\end_layout
+
+\begin_layout Standard
+Wähle 
+\begin_inset Formula $\sigma_{1}$
+\end_inset
+
+ und 
+\begin_inset Formula $\sigma_{2}$
+\end_inset
+
+ wie in der Zeichnung.
+\end_layout
+
+\begin_layout Standard
+TODO: Wie genau werden die 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ gewählt?
+\begin_inset Formula 
+\begin{align*}
+\oint_{\sigma_{1}}\frac{\dd z}{z-a} & =0=\oint_{\sigma_{2}}\frac{\dd z}{z-a}
+\end{align*}
+
+\end_inset
+
+Denn 0 ist in derselben Zusammenhangskomponente wie ein beliebiges 
+\begin_inset Formula $a\in\mathbb{C}$
+\end_inset
+
+ mit 
+\begin_inset Formula $\left|a\right|>R$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+n\left(\sigma_{1},a\right) & =0
+\end{align*}
+
+\end_inset
+
+Nach Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "asdf"
+
+\end_inset
+
+2.11.5 i).
+\end_layout
+
+\begin_layout Standard
+Die Kurve 
+\begin_inset Formula $\mathcal{C}$
+\end_inset
+
+ (siehe Zeichnung) schneidet nach Konstruktion 
+\begin_inset Formula $\sigma_{1}$
+\end_inset
+
+ nicht.
+\end_layout
+
+\begin_layout Standard
+Also liegen 
+\begin_inset Formula $a,0$
+\end_inset
+
+ in der gleichen Zusammenhangskomponente von 
+\begin_inset Formula $\mathbb{C}\setminus\text{im}\left(\sigma_{1}\right)$
+\end_inset
+
+, weswegen 
+\begin_inset Formula $n\left(\sigma_{1},0\right)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Damit folgt:
+\begin_inset Formula 
+\begin{align*}
+0 & =n\left(\sigma_{1},0\right)+n\left(\sigma_{2},0\right)=\frac{1}{2\pi\ii}\oint_{\sigma_{1}}\frac{\dd z}{z}+\frac{1}{2\pi\ii}\oint_{\sigma_{2}}\frac{\dd z}{z}=\frac{1}{2\pi\ii}\oint_{\gamma}\frac{\dd z}{z}-\frac{1}{2\pi\ii}\underbrace{\oint_{C}\frac{\dd z}{z}}_{=2\pi\ii}=n\left(\gamma,0\right)-1
+\end{align*}
+
+\end_inset
+
+Damit folgt:
+\begin_inset Formula 
+\begin{align*}
+n\left(\gamma,0\right) & =1
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Einfache Folgerungen aus dem Cauchyschen Integralsatz
+\end_layout
+
+\begin_layout Standard
+TODO: Abb7
+\end_layout
+
+\begin_layout Standard
+Seien 
+\begin_inset Formula $\Omega\subseteq\mathbb{C}$
+\end_inset
+
+ offen, 
+\begin_inset Formula $f:\Omega\to\mathbb{C}$
+\end_inset
+
+ holomorph und 
+\begin_inset Formula $a\in\Omega$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Wähle 
+\begin_inset Formula $\varepsilon\in\mathbb{R}_{>0}$
+\end_inset
+
+ so, dass 
+\begin_inset Formula $B_{2\varepsilon}\left(a\right)\subseteq\Omega$
+\end_inset
+
+ gilt und definiere 
+\begin_inset Formula $C:=\partial B_{2\varepsilon}\left(a\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Für alle 
+\begin_inset Formula $z\in B_{\varepsilon}\left(a\right)$
+\end_inset
+
+ gilt dann:
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\frac{1}{2\pi\ii}\oint_{C}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta
+\end{align*}
+
+\end_inset
+
+Nehme an, dass man unter dem Integral nach 
+\begin_inset Formula $z$
+\end_inset
+
+ ableiten darf, was wir später rechtfertigen werden.
+\begin_inset Formula 
+\begin{align*}
+f'\left(z\right) & =\frac{1}{2\pi\ii}\oint\frac{f\left(\zeta\right)}{\left(\zeta-z\right)^{2}}\dd\zeta\\
+\vdots\quad\\
+f^{\left(n\right)}\left(z\right) & =\frac{n!}{2\pi\ii}\oint\frac{f\left(\zeta\right)}{\left(\zeta-z\right)^{n+1}}\dd\zeta
+\end{align*}
+
+\end_inset
+
+Also sollte 
+\begin_inset Formula $f$
+\end_inset
+
+ beliebig oft komplex differenzierbar sein.
+\begin_inset Formula 
+\begin{align*}
+\left|f^{\left(n\right)}\left(z\right)\right| & \le\sup_{C}\frac{\left|f\left(\zeta\right)\right|}{\left|\zeta-z\right|^{n+1}}\cdot\underbrace{2\pi\cdot2\varepsilon}_{\text{Länge von }C}\le\\
+ & \le2\varepsilon\cdot n!\cdot\frac{1}{\varepsilon^{n+1}}\cdot\sup_{C}\left|f\right|\le\\
+ & \le\underbrace{2\sup_{C}\left|f\right|}_{=:\mathcal{C}}\cdot\frac{n!}{\varepsilon^{n}}
+\end{align*}
+
+\end_inset
+
+TODO: Stimmt diese Definition von 
+\begin_inset Formula $\mathcal{C}$
+\end_inset
+
+???
+\end_layout
+
+\begin_layout Standard
+„Man hat unter Kontrolle wie rasch die Ableitungen in 
+\begin_inset Formula $n$
+\end_inset
+
+ ansteigen.“
+\end_layout
+
+\begin_layout Standard
+Betrachte die Taylorreihe:
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\sum_{n=0}^{\infty}\frac{f^{\left(n\right)}\left(z_{0}\right)}{n!}\left(z-z_{0}\right)^{n}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\left|\frac{f^{\left(n\right)}\left(z_{0}\right)}{n!}\left(z-z_{0}\right)\right|^{n} & \le\mathcal{C}\cdot\left(\frac{\left|z-z_{0}\right|}{\varepsilon}\right)^{n}
+\end{align*}
+
+\end_inset
+
+Falls 
+\begin_inset Formula $\left|z-z_{0}\right|<\varepsilon$
+\end_inset
+
+ ist die geometrische Reihe eine konvergente Majorante.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Di 17.1.12
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Lemma
+\end_layout
+
+\begin_layout Standard
+TODO: Abb1
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $\Omega\subseteq\mathbb{C}$
+\end_inset
+
+ offen.
+ 
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $\varphi\left(\zeta\right)$
+\end_inset
+
+ stetig auf der geschlossene Kontur 
+\begin_inset Formula $\gamma:=\partial\Delta$
+\end_inset
+
+, mit 
+\begin_inset Formula $\Delta:=B_{2\varepsilon}\left(a\right)\subseteq\Omega$
+\end_inset
+
+ das heißt 
+\begin_inset Formula $\gamma:\left[\alpha,\beta\right]\to\mathbb{C},\left(f\circ\gamma\right):\left[\alpha,\beta\right]\to\mathbb{C}$
+\end_inset
+
+ soll stetig sein.
+\end_layout
+
+\begin_layout Standard
+TODO: „das Kontur“ ??
+\end_layout
+
+\begin_layout Standard
+Dann sind die Funktionen
+\begin_inset Formula 
+\begin{align*}
+F_{n}\left(z\right) & =\oint\frac{\varphi\left(\zeta\right)}{\left(\zeta-z\right)^{n}}\dd\zeta
+\end{align*}
+
+\end_inset
+
+mit 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ auf 
+\begin_inset Formula $B_{\varepsilon}\left(a\right)$
+\end_inset
+
+ holomorph und 
+\begin_inset Formula $F_{n}'\left(z\right)=n\cdot F_{n+1}\left(z\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{abclist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+abc
+\end_layout
+
+\end_inset
+
+ Zeige, dass 
+\begin_inset Formula $F_{1}\left(z\right)$
+\end_inset
+
+ stetig ist:
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $z_{0}\in B_{\varepsilon}\left(a\right)$
+\end_inset
+
+.
+ Wähle 
+\begin_inset Formula $\delta>0$
+\end_inset
+
+ so, dass 
+\begin_inset Formula $B_{2\delta}\left(z_{0}\right)\subseteq B_{\varepsilon}\left(a\right)$
+\end_inset
+
+.
+ Sei 
+\begin_inset Formula $z\in B_{\delta}\left(z_{0}\right)$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+F_{1}\left(z\right)-F_{1}\left(z_{0}\right) & =\oint_{\gamma}\varphi\left(\zeta\right)\underbrace{\left(\frac{1}{\zeta-z}-\frac{1}{\zeta-z_{0}}\right)}_{=\frac{z-z_{0}}{\left(\zeta-z\right)\left(\zeta-z_{0}\right)}}\dd\zeta=\left(z-z_{0}\right)\oint_{\gamma}\frac{\varphi\left(\zeta\right)}{\left(\zeta-z\right)\left(\zeta-z_{0}\right)}\dd\zeta
+\end{align*}
+
+\end_inset
+
+Wir wissen, dass 
+\begin_inset Formula $\left|\zeta-z\right|\ge\varepsilon$
+\end_inset
+
+ und 
+\begin_inset Formula $\left|\zeta-z_{0}\right|\ge\varepsilon$
+\end_inset
+
+ ist.
+\end_layout
+
+\begin_layout Standard
+Damit folgt:
+\begin_inset Formula 
+\begin{align*}
+\left|F\left(z\right)-F\left(z_{0}\right)\right| & \le\left|z-z_{0}\right|\cdot\frac{1}{\varepsilon^{2}}\cdot\oint_{\gamma}\left|\varphi\left(\zeta\right)\right|\underbrace{\left|\dd\zeta\right|}_{=\left|\gamma'\left(\tau\right)\right|\dd\tau}\le\\
+ & \le\left|z-z_{0}\right|\cdot\frac{1}{\varepsilon^{2}}\cdot\sup_{\gamma}\left|\varphi\right|\cdot2\pi\cdot2\varepsilon
+\end{align*}
+
+\end_inset
+
+Also ist 
+\begin_inset Formula $F$
+\end_inset
+
+ lipschitz-stetig in 
+\begin_inset Formula $z_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+abc
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $F_{1}$
+\end_inset
+
+ ist komplex differenzierbar in 
+\begin_inset Formula $z=z_{0}$
+\end_inset
+
+ und 
+\begin_inset Formula $F_{1}'\left(z_{0}\right)=F_{2}\left(z_{0}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Betrachte die Abschätzung aus a) für 
+\begin_inset Formula $\varphi\left(\zeta\right)$
+\end_inset
+
+ ersetzt durch 
+\begin_inset Formula ${\displaystyle \frac{\varphi\left(\zeta\right)}{\zeta-z_{0}}}$
+\end_inset
+
+, also ist
+\begin_inset Formula 
+\begin{align*}
+G_{1}\left(z\right) & =\oint\frac{\varphi\left(\zeta\right)}{\left(\zeta-z_{0}\right)\left(\zeta-z\right)}\dd\zeta=\frac{F_{1}\left(z\right)-F_{1}\left(z_{0}\right)}{z-z_{0}}
+\end{align*}
+
+\end_inset
+
+stetig in 
+\begin_inset Formula $z_{0}$
+\end_inset
+
+.
+ Also existiert der Limes:
+\begin_inset Formula 
+\begin{align*}
+\lim_{z\to z_{0}}\frac{F_{1}\left(z\right)-F_{1}\left(z_{0}\right)}{z-z_{0}}
+\end{align*}
+
+\end_inset
+
+Nochmals erklärt:
+\begin_inset Formula 
+\begin{align*}
+F_{1}\left(z\right) & =\oint_{\gamma}\frac{\varphi\left(\zeta\right)}{\zeta-z}\dd\zeta
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+F_{1}\left(z\right)-F_{1}\left(z_{0}\right) & =\left(z-z_{0}\right)\oint_{\gamma}\frac{\varphi\left(\zeta\right)}{\left(\zeta-z\right)\left(\zeta-z_{0}\right)}\dd\zeta
+\end{align*}
+
+\end_inset
+
+Daher gilt:
+\begin_inset Formula 
+\begin{align*}
+\frac{F_{1}\left(z\right)-F_{1}\left(z_{0}\right)}{z-z_{0}} & =\oint_{\gamma}\frac{\psi\left(\zeta\right)}{\zeta-z}\dd\zeta
+\end{align*}
+
+\end_inset
+
+Dabei ist:
+\begin_inset Formula 
+\begin{align*}
+\psi\left(\zeta\right) & :=\frac{\varphi\left(\zeta\right)}{\zeta-z_{0}}
+\end{align*}
+
+\end_inset
+
+Da 
+\begin_inset Formula $\psi$
+\end_inset
+
+ stetig ist, ist das Konturintegral stetig und daher konvergiert der Differenzen
+quotient.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+abc
+\end_layout
+
+\end_inset
+
+ Der allgemeine Fall folgt durch Induktion:
+\begin_inset Formula 
+\begin{align*}
+F_{n}\left(z\right)-F_{n}\left(z_{0}\right) & =\oint_{\gamma}\varphi\left(\zeta\right)\left(\frac{1}{\left(\zeta-z\right)^{n}}\cdot1-\frac{1}{\left(\zeta-z_{0}\right)^{n}}\right)\dd\zeta
+\end{align*}
+
+\end_inset
+
+Für die Stetigkeit verwende folgendes Ergebnis:
+\end_layout
+
+\begin_layout Standard
+TODO: Differenzierbarkeit?
+\end_layout
+
+\begin_layout Description
+Behauptung 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Für 
+\begin_inset Formula $p,q\in\mathbb{N}$
+\end_inset
+
+ gilt:
+\begin_inset Formula 
+\begin{align*}
+\lim_{z\to z_{0}}\oint_{\gamma}\varphi\left(\zeta\right)\frac{1}{\left(\zeta-z_{0}\right)^{p}\left(\zeta-z\right)^{q}}\dd\zeta & =\oint\varphi\left(\zeta\right)\frac{1}{\left(\zeta-z\right)^{p+q}}\dd\zeta
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Beweis 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\oint\varphi\left(\zeta\right)\frac{1}{\left(\zeta-z_{0}\right)^{p}\left(\zeta-z\right)^{q}}\dd\zeta & =\int_{\alpha}^{\beta}\frac{\varphi\left(\gamma\left(\tau\right)\right)}{\underbrace{\left(\gamma\left(\tau\right)-z_{0}\right)^{p}\left(\gamma\left(\tau\right)-z\right)^{q}}_{\to}}\gamma'\left(\tau\right)\dd\tau\stackrel{z\to z_{0}}{\longrightarrow}\int_{\alpha}^{\beta}\frac{\varphi\left(\gamma\left(\tau\right)\right)}{\left(\gamma\left(\tau\right)-z_{0}\right)^{p+q}}\gamma'\left(\tau\right)\dd\tau
+\end{align*}
+
+\end_inset
+
+Benutze folgende Identität:
+\begin_inset Formula 
+\begin{align*}
+1 & =\frac{\zeta-z_{0}}{\zeta-z_{0}}=\frac{\zeta-z}{\zeta-z_{0}}+\frac{z-z_{0}}{\zeta-z_{0}}
+\end{align*}
+
+\end_inset
+
+Damit ergibt sich:
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{\left(\zeta-z\right)^{n}} & =\frac{1}{\left(\zeta-z\right)^{n}}\cdot\frac{\zeta-z_{0}}{\zeta-z_{0}}=\frac{1}{\left(\zeta-z\right)^{n}}\cdot\left(\frac{\zeta-z}{\zeta-z_{0}}+\frac{z-z_{0}}{\zeta-z_{0}}\right)=\frac{1}{\left(\zeta-z\right)^{n-1}\left(\zeta-z_{0}\right)}+\frac{z-z_{0}}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}=\\
+ & =\frac{1}{\left(\zeta-z\right)^{n-1}\left(\zeta-z_{0}\right)}\frac{\zeta-z_{0}}{\zeta-z_{0}}+\frac{z-z_{0}}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}=\frac{1}{\left(\zeta-z\right)^{n-1}\left(\zeta-z_{0}\right)}\cdot\left(\frac{\zeta-z}{\zeta-z_{0}}+\frac{z-z_{0}}{\zeta-z_{0}}\right)+\frac{z-z_{0}}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}=\\
+ & =\frac{1}{\left(\zeta-z\right)^{n-2}\left(\zeta-z_{0}\right)^{2}}+\frac{z-z_{0}}{\left(\zeta-z\right)^{n-1}\left(\zeta-z_{0}\right)^{2}}+\frac{z-z_{0}}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}=\\
+ & \quad\vdots\\
+ & =\frac{1}{\left(\zeta-z_{0}\right)^{n}}+\underbrace{\frac{z-z_{0}}{\left(\zeta-z\right)\left(\zeta-z_{0}\right)^{n}}+\frac{z-z_{0}}{\left(\zeta-z\right)^{2}\left(\zeta-z_{0}\right)^{n-1}}+\ldots+\frac{z-z_{0}}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}}_{n\text{ Terme}}
+\end{align*}
+
+\end_inset
+
+Also gilt:
+\begin_inset Formula 
+\begin{align*}
+\frac{F_{n}\left(z\right)-F_{n}\left(z_{0}\right)}{z-z_{0}} & =\frac{1}{z-z_{0}}\oint_{\gamma}\varphi\left(\zeta\right)\left(\frac{1}{\left(\zeta-z\right)^{n}}-\frac{1}{\left(\zeta-z_{0}\right)^{n}}\right)\dd\zeta=\\
+ & =\oint_{\gamma}\varphi\left(\zeta\right)\left(\frac{1}{\left(\zeta-z\right)\left(\zeta-z_{0}\right)^{n}}+\frac{1}{\left(\zeta-z\right)^{2}\left(\zeta-z_{0}\right)^{n-1}}+\ldots+\frac{1}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}\right)\dd\zeta
+\end{align*}
+
+\end_inset
+
+Damit folgt:
+\begin_inset Formula 
+\begin{align*}
+F_{n}'\left(z_{0}\right)=\lim_{z\to z_{0}}\frac{F_{n}\left(z\right)-F_{n}\left(z_{0}\right)}{z-z_{0}} & =\int_{\gamma}\varphi\left(\zeta\right)\frac{n}{\left(\zeta-z_{0}\right)^{n+1}}=n\cdot F_{n+1}\left(z_{0}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[Behauptung]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{abclist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem
+\end_layout
+
+\begin_layout Standard
+Jede holomorphe Funktion 
+\begin_inset Formula $f:\Omega\to\mathbb{C}$
+\end_inset
+
+ ist in 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ unendlich oft komplex differenzierbar und es gilt:
+\begin_inset Formula 
+\begin{align*}
+f^{\left(n\right)}\left(z\right) & =\frac{n!}{2\pi\ii}\oint_{\gamma}\frac{f\left(\zeta\right)}{\left(\zeta-z\right)^{n+1}}\dd z
+\end{align*}
+
+\end_inset
+
+Dabei ist 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ eine Kurve in 
+\begin_inset Formula $\Omega$
+\end_inset
+
+, die 
+\begin_inset Formula $z$
+\end_inset
+
+ mit Index 
+\begin_inset Formula $1$
+\end_inset
+
+ umläuft.
+\end_layout
+
+\begin_layout Subsection
+Theorem 
+\series medium
+(Moera)
+\end_layout
+
+\begin_layout Standard
+TODO: Name???
+\end_layout
+
+\begin_layout Standard
+Falls 
+\begin_inset Formula $f:\Omega\to\mathbb{C}$
+\end_inset
+
+ stetig und für jede geschlossene Kurve in 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ schon 
+\begin_inset Formula $\oint_{\gamma}f\left(z\right)\dd z=0$
+\end_inset
+
+ gilt, ist 
+\begin_inset Formula $f$
+\end_inset
+
+ holomorph.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Nach Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "asdf"
+
+\end_inset
+
+2.9.1 gibt es eine holomorphe Stammfunktion 
+\begin_inset Formula $F:\Omega\to\mathbb{C}$
+\end_inset
+
+ und 
+\begin_inset Formula $F'\left(z\right)=f\left(z\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Da 
+\begin_inset Formula $F$
+\end_inset
+
+ nach Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "asdf"
+
+\end_inset
+
+2.12.2 zweimal differenzierbar ist, folgt, dass 
+\begin_inset Formula $f$
+\end_inset
+
+ differenzierbar und damit holomorph ist.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem 
+\series medium
+(Liouville)
+\end_layout
+
+\begin_layout Standard
+Eine beschränkte, auf ganz 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+ holomorphe Funktion ist konstant.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+TODO: Abb2
+\end_layout
+
+\begin_layout Standard
+Für 
+\begin_inset Formula $R>2\left|z\right|$
+\end_inset
+
+ gilt:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\frac{1}{2\pi\ii}\oint_{\partial B_{R}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\left|\zeta-z\right| & >\frac{R}{2}
+\end{align*}
+
+\end_inset
+
+Nach Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "asdf"
+
+\end_inset
+
+2.12.2 gilt:
+\begin_inset Formula 
+\begin{align*}
+f'\left(z\right) & =\frac{1}{2\pi\ii}\oint_{\partial B_{R}\left(0\right)}\frac{f\left(\zeta\right)}{\left(\zeta-z\right)^{2}}\dd\zeta
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\left|f'\left(z\right)\right| & \le\frac{1}{2\pi\ii}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\left|f'\left(z\right)\right| & \le\frac{1}{2\pi}\left(\frac{2}{R}\right)^{2}\cdot\sup_{\partial B_{R}\left(0\right)}\left|f\right|\cdot2\pi R\le\frac{4}{R}\cdot\underbrace{\sup_{\mathbb{C}}\left|f\right|}_{\le C}\stackrel{R\to\infty}{\longrightarrow}0
+\end{align*}
+
+\end_inset
+
+Da 
+\begin_inset Formula $R$
+\end_inset
+
+ beliebig groß gewählt werden kann, folgt 
+\begin_inset Formula $f'\left(z\right)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Wir sehen also, dass gilt:
+\end_layout
+
+\begin_layout Standard
+TODO: Abb3
+\begin_inset Formula 
+\begin{align*}
+f'\left(z\right) & =0
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+f\left(z_{1}\right)-f\left(z_{0}\right) & =\int_{\gamma}f'\left(z\right)\dd z=0
+\end{align*}
+
+\end_inset
+
+Damit folgt:
+\begin_inset Formula 
+\begin{align*}
+f\left(z_{1}\right) & =f\left(z_{0}\right)
+\end{align*}
+
+\end_inset
+
+Also ist 
+\begin_inset Formula $f$
+\end_inset
+
+ konstant.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Eleganter Beweis des Fundamentalsatzes der Algebra
+\end_layout
+
+\begin_layout Standard
+Nehme an, 
+\begin_inset Formula $P\left(z\right)$
+\end_inset
+
+ sei ein Polynom vom Grade 
+\begin_inset Formula $\ge1$
+\end_inset
+
+ ohne Nullstellen.
+\end_layout
+
+\begin_layout Standard
+Damit folgt:
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & :=\frac{1}{P\left(z\right)}
+\end{align*}
+
+\end_inset
+
+ist holomorph auf ganz 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+, da 
+\begin_inset Formula $f'\left(z\right)=-\frac{P'\left(z\right)}{P\left(z\right)^{2}}$
+\end_inset
+
+ ist.
+\begin_inset Formula 
+\begin{align*}
+P\left(z\right) & =a_{n}z^{n}\left(1+\frac{a_{n-1}}{a_{n}}\frac{1}{z}+\ldots\right)
+\end{align*}
+
+\end_inset
+
+Also ist 
+\begin_inset Formula $\lim_{z\to\infty}\left|P\left(z\right)\right|=\infty$
+\end_inset
+
+ und somit:
+\begin_inset Formula 
+\begin{align*}
+\lim_{z\to\infty}f\left(z\right) & =0
+\end{align*}
+
+\end_inset
+
+Daher ist 
+\begin_inset Formula $f$
+\end_inset
+
+ auf ganz 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+ holomorph und beschränkt und damit nach dem Satz von Liouville 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "asdf"
+
+\end_inset
+
+?? konstant.
+\end_layout
+
+\begin_layout Standard
+Also ist 
+\begin_inset Formula $P\left(z\right)$
+\end_inset
+
+ konstant, was ein Widerspruch ist.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Bedingung für „Ausnahmepunkte“:
+\begin_inset Formula 
+\begin{align*}
+\lim_{z\to\zeta}\left(z-\zeta\right)f\left(z\right) & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Hebbare Singularitäten, Taylorreihen
+\end_layout
+
+\begin_layout Subsection
+Satz
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $\Omega\subseteq\mathbb{C}$
+\end_inset
+
+ offen.
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $\Omega'=\Omega\setminus\left\{ a\right\} $
+\end_inset
+
+, 
+\begin_inset Formula $f:\Omega'\to\mathbb{C}$
+\end_inset
+
+ holomorph.
+\end_layout
+
+\begin_layout Standard
+Es gelte:
+\begin_inset Formula 
+\begin{align*}
+\sr{\lim_{z\to a}}{}{z\not=a}\left(z-a\right)f\left(z\right) & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dann gibt es eine holomorphe Funktion
+\begin_inset Formula 
+\begin{align*}
+\tilde{f}:\Omega & \to\mathbb{C}
+\end{align*}
+
+\end_inset
+
+mit 
+\begin_inset Formula $\tilde{f}|_{\Omega'}=f$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Die Umkehrung gilt auch.
+\end_layout
+
+\begin_layout Standard
+Die Funktion 
+\begin_inset Formula $\tilde{f}$
+\end_inset
+
+ ist eindeutig bestimmt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\tilde{f}$
+\end_inset
+
+ heißt 
+\emph on
+holomorphe Fortsetzung
+\emph default
+ von 
+\begin_inset Formula $f$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $a$
+\end_inset
+
+ heißt 
+\emph on
+hebbare Singularität
+\emph default
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+„
+\begin_inset Formula $\Leftarrow$
+\end_inset
+
+“: Sei 
+\begin_inset Formula $\tilde{f}$
+\end_inset
+
+ holomorphe Fortsetzung.
+ Dann gilt
+\begin_inset Formula 
+\begin{align*}
+\sr{\lim_{z\to a}}{}{z\not=a}\left(z-a\right)f\left(z\right) & =\lim_{z\to a}\left(z-a\right)\tilde{f}\left(z\right)=0
+\end{align*}
+
+\end_inset
+
+weil 
+\begin_inset Formula $\tilde{f}$
+\end_inset
+
+ stetig ist.
+\end_layout
+
+\begin_layout Standard
+Die Eindeutigkeit ist wegen der Stetigkeit klar:
+\begin_inset Formula 
+\begin{align*}
+\tilde{f}\left(a\right) & =\lim_{z\to a}\tilde{f}\left(z\right)=\sr{\lim_{z\to a}}{}{z\not=a}f\left(z\right)
+\end{align*}
+
+\end_inset
+
+„
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+“: Sei 
+\begin_inset Formula $C=\partial B_{\varepsilon}\left(a\right)\subseteq\Omega$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Betrachte für 
+\begin_inset Formula $z\in B_{\varepsilon}\left(a\right)\setminus\left\{ a\right\} $
+\end_inset
+
+ die Funktion:
+\begin_inset Formula 
+\begin{align*}
+G\left(\xi\right) & =\frac{f\left(\xi\right)-f\left(z\right)}{\xi-z}
+\end{align*}
+
+\end_inset
+
+Diese Funktion ist holomorph in 
+\begin_inset Formula $\Omega\setminus\left\{ a,z\right\} $
+\end_inset
+
+ und erfüllt die Bedingungen von Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "asdf"
+
+\end_inset
+
+2.10.4, also für 
+\begin_inset Formula $\xi\in\left\{ a,z\right\} $
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\sr{\lim_{z\to\xi}}{}{z\not=\xi}\left(z-\xi\right)G\left(\xi\right) & =0
+\end{align*}
+
+\end_inset
+
+Also gilt
+\begin_inset Formula 
+\begin{align*}
+\oint_{\gamma}G\left(z\right)\dd z & =0
+\end{align*}
+
+\end_inset
+
+und folglich:
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\frac{1}{2\pi\ii}\oint_{C}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta
+\end{align*}
+
+\end_inset
+
+Dies ist genau wie im Beweis des Cauchyschen-Integralsatzes 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "asdf"
+
+\end_inset
+
+??.
+\end_layout
+
+\begin_layout Standard
+Da das Integral auch für 
+\begin_inset Formula $z=a$
+\end_inset
+
+ wohldefiniert ist, können wir setzen
+\begin_inset Formula 
+\begin{align*}
+\tilde{f}\left(z\right) & :=\frac{1}{2\pi\ii}\oint_{C}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta
+\end{align*}
+
+\end_inset
+
+auf 
+\begin_inset Formula $B_{\varepsilon}\left(a\right)$
+\end_inset
+
+, einschließlich 
+\begin_inset Formula $z=a$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\tilde{f}:\Omega\to\mathbb{C}$
+\end_inset
+
+ und definiert durch
+\begin_inset Formula 
+\begin{align*}
+\tilde{f}\left(z\right) & =\begin{cases}
+\frac{1}{2\pi\ii} & \text{falls }z\in B_{\varepsilon}\left(a\right)\\
+f\left(z\right) & \text{sonst}
+\end{cases}
+\end{align*}
+
 \end_inset
 
 
