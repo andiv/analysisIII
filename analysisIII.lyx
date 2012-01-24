@@ -19071,6 +19071,1098 @@ qqed
 
 \end_layout
 
+\begin_layout Standard
+TODO: Rest einfügen
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Di 24.1.12
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Beispiel
+\end_layout
+
+\begin_layout Standard
+Die Singularitäten sind im Allgemeinen nicht isoliert.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Betrachte
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\frac{1}{\sin\left(\frac{1}{z}\right)}
+\end{align*}
+
+\end_inset
+
+auf 
+\begin_inset Formula $\Omega:=\mathbb{C}\setminus\left(\left\{ 0\right\} \cup\left\{ \frac{1}{n\pi}|n\in\mathbb{Z}\setminus\left\{ 0\right\} \right\} \right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f$
+\end_inset
+
+ ist als Verkettung holomorpher Abbildungen auf 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ holomorph.
+\end_layout
+
+\begin_layout Standard
+TODO: Abb2
+\end_layout
+
+\begin_layout Standard
+0 ist ein Häufungspunkt der Singularitäten, also eine nicht isolierte Singularit
+ät.
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(isolierte, hebbare, wesentliche Singularität, Pol)
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $\Omega\subseteq\mathbb{C}$
+\end_inset
+
+ offen, 
+\begin_inset Formula $a\in\Omega$
+\end_inset
+
+, 
+\begin_inset Formula $f:\Omega\setminus\left\{ a\right\} \to\mathbb{C}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Dann heißt 
+\begin_inset Formula $a$
+\end_inset
+
+ 
+\emph on
+isolierte Singularität von 
+\begin_inset Formula $f$
+\end_inset
+
+
+\emph default
+, falls es ein 
+\begin_inset Formula $\varepsilon\in\mathbb{R}_{>0}$
+\end_inset
+
+ mit 
+\begin_inset Formula $B_{\varepsilon}\left(a\right)\subseteq\Omega$
+\end_inset
+
+ -- das als eine Teilmenge von 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ gewählt werden kann, da 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ offen ist -- gibt, sodass 
+\begin_inset Formula 
+\begin{align*}
+f:B_{\varepsilon}\left(a\right)\setminus\left\{ a\right\} \to & \mathbb{C}
+\end{align*}
+
+\end_inset
+
+holomorph ist, es also in 
+\begin_inset Formula $B_{\varepsilon}\left(a\right)$
+\end_inset
+
+ keine weitere Singularität gibt.
+\end_layout
+
+\begin_layout Itemize
+Sei 
+\begin_inset Formula $a$
+\end_inset
+
+ eine isolierte Singularität von 
+\begin_inset Formula $f$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Falls 
+\begin_inset Formula ${\displaystyle \lim_{a\not=z\to a}}\left(z-a\right)f\left(z\right)=0$
+\end_inset
+
+ gilt, so heißt die Singularität 
+\emph on
+hebbar
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+Sei 
+\begin_inset Formula $a$
+\end_inset
+
+ eine isolierte Singularität von 
+\begin_inset Formula $f$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Falls 
+\begin_inset Formula ${\displaystyle \lim_{a\not=z\to a}}f\left(z\right)=\infty$
+\end_inset
+
+ gilt, so heißt 
+\begin_inset Formula $a$
+\end_inset
+
+ ein 
+\emph on
+Pol
+\emph default
+ von 
+\begin_inset Formula $f$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+(
+\begin_inset Formula $\infty$
+\end_inset
+
+ ist auf der Riemannschen Zahlenkugel.)
+\end_layout
+
+\begin_layout Itemize
+Ist 
+\begin_inset Formula $a$
+\end_inset
+
+ weder hebbar noch ein Pol, so heißt 
+\begin_inset Formula $a$
+\end_inset
+
+ eine 
+\emph on
+wesentliche Singularität
+\emph default
+.
+\begin_inset Newline newline
+\end_inset
+
+TODO: Abb2
+\end_layout
+
+\begin_layout Subsection
+Satz und Definition 
+\series medium
+(Ordnung eines Pols)
+\end_layout
+
+\begin_layout Standard
+In einer Umgebung jeder Polstelle kann 
+\begin_inset Formula $f$
+\end_inset
+
+ in einer Umgebung 
+\begin_inset Formula $B_{\varepsilon}\left(a\right)$
+\end_inset
+
+ dargestellt werden als
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\left(z-a\right)^{-n}f_{n}\left(z\right)
+\end{align*}
+
+\end_inset
+
+mit einer holomorphen Funktion 
+\begin_inset Formula $f_{n}$
+\end_inset
+
+ mit 
+\begin_inset Formula $f_{n}\left(a\right)\not=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $n\in\mathbb{N}_{\ge1}$
+\end_inset
+
+ heißt 
+\emph on
+die Ordnung
+\emph default
+ des Pols.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $a$
+\end_inset
+
+ ein Pol von 
+\begin_inset Formula $f$
+\end_inset
+
+.
+ Also gibt es ein 
+\begin_inset Formula $\varepsilon\in\mathbb{R}_{>0}$
+\end_inset
+
+, sodass 
+\begin_inset Formula $f$
+\end_inset
+
+ auf 
+\begin_inset Formula $B_{\varepsilon}\left(a\right)$
+\end_inset
+
+ keine Nullstelle hat.
+\end_layout
+
+\begin_layout Standard
+Dann folgt mit den Konvergenzsätzen:
+\begin_inset Formula 
+\begin{align*}
+f: & B_{\varepsilon}\left(a\right)\setminus\left\{ a\right\} \to\mathbb{C}\text{ ist holomorph} & \lim_{a\not=z\to a}f\left(z\right) & =\infty\\
+g:=\frac{1}{f}: & B_{\varepsilon}\left(a\right)\setminus\left\{ a\right\} \to\mathbb{C}\text{ ist holomorph} & \lim_{a\not=z\to a}g\left(z\right) & =0
+\end{align*}
+
+\end_inset
+
+Also ist 
+\begin_inset Formula ${\displaystyle \lim_{a\not=z\to a}\left(z-a\right)g\left(z\right)=0}$
+\end_inset
+
+ und daher ist 
+\begin_inset Formula $a$
+\end_inset
+
+ eine hebbare Singularität von 
+\begin_inset Formula $g$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Also kann 
+\begin_inset Formula $g$
+\end_inset
+
+ holomorph fortgesetzt werden:
+\begin_inset Formula 
+\begin{align*}
+g:B_{\varepsilon}\left(a\right) & \to\mathbb{C}\text{ ist holomorph}
+\end{align*}
+
+\end_inset
+
+Stelle 
+\begin_inset Formula $g$
+\end_inset
+
+ dar in der Form:
+\begin_inset Formula 
+\begin{align*}
+g\left(z\right) & =\left(z-a\right)^{n}\cdot g_{n}\left(z\right)
+\end{align*}
+
+\end_inset
+
+mit 
+\begin_inset Formula $g_{n}\left(a\right)\not=0$
+\end_inset
+
+.
+ Damit folgt:
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\frac{1}{\left(z-a\right)^{n}}f_{n}\left(z\right)
+\end{align*}
+
+\end_inset
+
+Dabei ist
+\begin_inset Formula 
+\begin{align*}
+f_{n}\left(z\right) & =\frac{1}{g_{n}\left(z\right)}
+\end{align*}
+
+\end_inset
+
+holomorph.
+\end_layout
+
+\begin_layout Standard
+TODO: Bracht man folgende Anmerkung?
+\end_layout
+
+\begin_layout Standard
+(Eventuell 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ verkleinern, um Nullstellen zu vermeiden.)
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(meromorphe Funktion)
+\end_layout
+
+\begin_layout Standard
+Eine Funktion, die nur isolierte Singularitäten 
+\begin_inset Formula $\left(a_{n}\right)_{n\in A\subseteq\mathbb{N}}$
+\end_inset
+
+ besitzt, die alle Pole sind, und die auf 
+\begin_inset Formula $\mathbb{C}\setminus\left\{ a_{n}|n\in A\right\} $
+\end_inset
+
+ holomorph sind, heißt 
+\emph on
+meromorphe Funktion
+\emph default
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Beispiele
+\end_layout
+
+\begin_layout Standard
+Rationale Funktionen 
+\begin_inset Formula ${\displaystyle \frac{P\left(z\right)}{Q\left(z\right)}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $e^{x}$
+\end_inset
+
+, 
+\begin_inset Formula $\sin\left(x\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\cos\left(x\right)$
+\end_inset
+
+ und Quotienten von Polynomen von diesen, also zum Beispiel 
+\begin_inset Formula ${\displaystyle \frac{\sin\left(x\right)}{e^{x}-1}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Beispiel
+\end_layout
+
+\begin_layout Standard
+Nun zu den wesentlichen Singularitäten:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula ${\displaystyle \frac{1}{\sin\left(\frac{1}{x}\right)}}$
+\end_inset
+
+ oder 
+\begin_inset Formula $\sin\left(\frac{1}{x}\right)$
+\end_inset
+
+ an der Stelle 0.
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =e^{\frac{1}{z}}=\sum_{n=0}^{\infty}\frac{1}{n!}\frac{1}{z^{n}}:\mathbb{C}\setminus\left\{ 0\right\} \to\mathbb{C}\text{ holomorph}
+\end{align*}
+
+\end_inset
+
+Also ist 0 eine isolierte Singularität.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f\left(z\right)$
+\end_inset
+
+ ist 
+\emph on
+nicht
+\emph default
+ in der Form
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\frac{1}{z^{n}}g\left(z\right)
+\end{align*}
+
+\end_inset
+
+darstellbar mit
+\begin_inset Formula 
+\begin{align*}
+g:B_{\varepsilon}\left(0\right) & \to\mathbb{C}
+\end{align*}
+
+\end_inset
+
+holomorph, da in 
+\begin_inset Formula $f$
+\end_inset
+
+ beliebig hohe Polordnungen auftreten.
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =e^{\frac{1}{z}}=e^{\frac{\overline{z}}{\left|z\right|^{2}}}=\exp\left(\frac{\text{Re}\left(z\right)-\ii\cdot\text{Im}\left(z\right)}{\left|z\right|^{2}}\right)=\underbrace{\exp\left(\frac{\text{Re}\left(z\right)}{\left|z\right|^{2}}\right)}_{>0}\cdot\underbrace{\exp\left(-\frac{\ii\cdot\text{Im}\left(z\right)}{\left|z\right|^{2}}\right)}_{\text{Phasenfaktor}}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula ${\displaystyle }$
+\end_inset
+
+TODO: Abb3
+\end_layout
+
+\begin_layout Standard
+Auf der imaginären Achse ist 
+\begin_inset Formula $\text{Re}\left(z\right)=0$
+\end_inset
+
+, also ist
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\exp\left(-\frac{\ii\cdot\text{Im}\left(z\right)}{\left|z\right|^{2}}\right)
+\end{align*}
+
+\end_inset
+
+und daher 
+\begin_inset Formula $\left|f\left(z\right)\right|=1$
+\end_inset
+
+, aber 
+\begin_inset Formula $f$
+\end_inset
+
+ „oszilliert immer schneller“.
+\end_layout
+
+\begin_layout Standard
+Auf der reellen Achse ist 
+\begin_inset Formula $\text{Im}\left(z\right)=0$
+\end_inset
+
+, also gilt:
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\exp\left(\frac{\text{Re}\left(z\right)}{\left|z\right|^{2}}\right)\stackrel{z\to0}{\longrightarrow}\infty
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Betrachtung
+\end_layout
+
+\begin_layout Standard
+Für alle 
+\begin_inset Formula $\varepsilon\in\mathbb{R}_{>0}$
+\end_inset
+
+ gilt:
+\begin_inset Formula 
+\begin{align*}
+f\left(B_{\varepsilon}\left(0\right)\setminus\left\{ 0\right\} \right) & =\mathbb{C}\setminus\left\{ 0\right\} 
+\end{align*}
+
+\end_inset
+
+Das Bild von 
+\begin_inset Formula $B_{\varepsilon}\left(0\right)\setminus\left\{ 0\right\} $
+\end_inset
+
+ ist 
+\emph on
+dicht in 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+
+\emph default
+.
+\end_layout
+
+\begin_layout Subsection
+Satz
+\end_layout
+
+\begin_layout Standard
+Eine holomorphe Funktion 
+\begin_inset Formula $f:B_{\varepsilon\left(a\right)}\setminus\left\{ a\right\} \to\mathbb{C}$
+\end_inset
+
+ kommt in jeder Umgebung einer isolierten wesentlichen Singularität 
+\begin_inset Formula $a$
+\end_inset
+
+ jeder komplexen Zahl beliebig nahe.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Ansonsten gäbe es ein 
+\begin_inset Formula $A\in\mathbb{C}$
+\end_inset
+
+ mit 
+\begin_inset Formula $\kappa,\delta\in\mathbb{R}_{>0}$
+\end_inset
+
+, sodass gilt für 
+\begin_inset Formula $z\not=a$
+\end_inset
+
+ gilt:
+\begin_inset Formula 
+\begin{align*}
+\left|z-a\right| & <\delta & \Rightarrow\qquad & \left|f\left(z\right)-A\right|>\kappa
+\end{align*}
+
+\end_inset
+
+TODO: Abb4
+\end_layout
+
+\begin_layout Standard
+Dann wäre
+\begin_inset Formula 
+\begin{align*}
+\lim_{a\not=z\to a}\left|\frac{1}{z-a}\left(f\left(z\right)-A\right)\right| & =\lim_{a\not=z\to a}\underbrace{\frac{1}{\left|z-a\right|}}_{=\infty}\underbrace{\left|f\left(z\right)-A\right|}_{>\kappa}=\infty
+\end{align*}
+
+\end_inset
+
+Daher folgt:
+\begin_inset Formula 
+\begin{align*}
+\lim_{a\not=z\to a}\underbrace{\frac{1}{z-a}\left(f\left(z\right)-A\right)}_{=:g\left(z\right)} & =\infty
+\end{align*}
+
+\end_inset
+
+(
+\begin_inset Formula $\infty$
+\end_inset
+
+ in der Riemannschen Zahlenkugel.)
+\begin_inset Formula 
+\begin{align*}
+g\left(z\right) & =\frac{1}{\left(z-a\right)^{n}}g_{n}\left(z\right)=\frac{1}{z-a}\left(f\left(z\right)-A\right)
+\end{align*}
+
+\end_inset
+
+ 
+\begin_inset Formula $g_{n}\left(z\right)$
+\end_inset
+
+ holomorph auf 
+\begin_inset Formula $B_{\varepsilon}\left(a\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Löse nach 
+\begin_inset Formula $f\left(z\right)$
+\end_inset
+
+ auf:
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\frac{g_{n}\left(z\right)}{\left(z-a\right)^{n-1}}+A
+\end{align*}
+
+\end_inset
+
+Also ist 
+\begin_inset Formula $a$
+\end_inset
+
+ ein Pol von 
+\begin_inset Formula $f$
+\end_inset
+
+ der Ordnung 
+\begin_inset Formula $n-1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Wir haben also eine hebbare Singularität 
+\begin_inset Formula $\left(n=1\right)$
+\end_inset
+
+ oder einen Pol 
+\begin_inset Formula $\left(n>1\right)$
+\end_inset
+
+, aber keine wesentliche Singularität.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Die Laurententwicklung
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $\Omega\subseteq\mathbb{C}$
+\end_inset
+
+ offen und 
+\begin_inset Formula $f:\Omega\to\mathbb{C}$
+\end_inset
+
+ holomorph und 
+\begin_inset Formula $r,R\in\mathbb{R}_{>0}$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\Omega\supseteq\mathcal{R} & =\left\{ z\in\mathbb{C}|r<\left|z\right|<R\right\} 
+\end{align*}
+
+\end_inset
+
+TODO: Abb5
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(Laurent-Reihe)
+\end_layout
+
+\begin_layout Standard
+Eine Reihe der Form
+\begin_inset Formula 
+\begin{align*}
+\sum_{n=-\infty}^{\infty}c_{n}z^{n} & :=\sum_{n=0}^{\infty}c_{n}z^{n}+\sum_{n=1}^{\infty}c_{-n}z^{-n}
+\end{align*}
+
+\end_inset
+
+heißt 
+\emph on
+Laurent-Reihe
+\emph default
+.
+ Die Laurent-Reihe heißt (absolut) konvergent, falls die Reihen
+\begin_inset Formula 
+\begin{align*}
+N\left(z\right) & :={\displaystyle \sum_{n=0}^{\infty}c_{n}z^{n}}
+\end{align*}
+
+\end_inset
+
+und
+\begin_inset Formula 
+\begin{align*}
+H\left(z\right) & :={\displaystyle \sum_{n=1}^{\infty}c_{-n}z^{-n}}
+\end{align*}
+
+\end_inset
+
+beide (absolut) konvergieren.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $H\left(z\right)$
+\end_inset
+
+ heißt 
+\emph on
+der Hauptteil
+\emph default
+ und 
+\begin_inset Formula $N\left(z\right)$
+\end_inset
+
+ heißt 
+\emph on
+der Nebenteil
+\emph default
+ der Laurent-Reihe.
+\end_layout
+
+\begin_layout Subsection
+Theorem
+\end_layout
+
+\begin_layout Standard
+Jede auf 
+\begin_inset Formula $\Omega\supseteq\mathcal{R}$
+\end_inset
+
+ holomorphe Funktion 
+\begin_inset Formula $f$
+\end_inset
+
+ ist in 
+\begin_inset Formula $\mathcal{R}$
+\end_inset
+
+ in einer Laurent-Reihe darstellbar, also:
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\sum_{n=-\infty}^{\infty}c_{n}z^{n}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das heißt es gibt 
+\begin_inset Formula $c_{n}\in\mathbb{C}$
+\end_inset
+
+, sodass die Laurent-Reihe konvergiert und mit 
+\begin_inset Formula $f$
+\end_inset
+
+ übereinstimmt.
+\begin_inset Formula 
+\begin{align*}
+c_{n} & =\frac{1}{2\pi\ii}\ointctrclockwise_{\partial B_{R}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta^{n+1}}\dd\zeta
+\end{align*}
+
+\end_inset
+
+Falls 
+\begin_inset Formula $n\ge0$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+c_{n} & =\frac{1}{2\pi\ii}\ointctrclockwise_{\partial B_{r}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta^{n+1}}\dd\zeta
+\end{align*}
+
+\end_inset
+
+Falls 
+\begin_inset Formula $n<0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+TODO: Abb6
+\end_layout
+
+\begin_layout Standard
+Nach dem Cauchyschen Integralsatz gilt:
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\frac{1}{2\pi\ii}\oint_{C_{1}}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta\\
+0 & =\frac{1}{2\pi\ii}\oint_{C_{2}}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta\\
+\vdots\\
+0 & =\frac{1}{2\pi\ii}\oint_{C_{k}}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\frac{1}{2\pi\ii}\ointctrclockwise_{\partial B_{R}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta-\frac{1}{2\pi\ii}\ointctrclockwise_{\partial B_{r}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Bemerkung
+\end_layout
+
+\begin_layout Standard
+Wir müssen die Kontur 
+\begin_inset Formula $C_{l}$
+\end_inset
+
+ so wählen, dass 
+\begin_inset Formula $C_{l}\subseteq\Delta:=B_{\zeta}\left(a\right)\subseteq\Omega$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+TODO: Abb7
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f\left(\zeta\right)$
+\end_inset
+
+ ist holomorph im Innern von 
+\begin_inset Formula $C_{2}$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+f_{1}\left(z\right) & =\frac{1}{2\pi\ii}\oint_{\partial B_{R}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta\\
+f_{2}\left(z\right) & =-\frac{1}{2\pi\ii}\oint_{\partial B_{r}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $f_{1}\left(z\right)$
+\end_inset
+
+ ist für alle 
+\begin_inset Formula $z\in B_{R}\left(0\right)$
+\end_inset
+
+ wohldefiniert und holomorph.
+\end_layout
+
+\begin_layout Standard
+Beachte: Im Allgemeinen ist 
+\begin_inset Formula $f_{1}\not=f$
+\end_inset
+
+, denn 
+\begin_inset Formula $f_{1}$
+\end_inset
+
+ ist holomorph auf 
+\begin_inset Formula $B_{R}\left(0\right)$
+\end_inset
+
+, aber 
+\begin_inset Formula $f$
+\end_inset
+
+ ist nur holomorph auf 
+\begin_inset Formula $\mathcal{R}$
+\end_inset
+
+ und im Allgemeinen nicht holomorph fortsetzbar auf 
+\begin_inset Formula $B_{R}\left(0\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f_{1}$
+\end_inset
+
+ kann im Folgenden entwickelt werden, also:/
+\begin_inset Formula 
+\begin{align*}
+f_{1}\left(z\right) & =\sum_{n=0}^{\infty}c_{n}z^{n}
+\end{align*}
+
+\end_inset
+
+definiert den Nebenteil der Laurent-Reihe.
+\end_layout
+
+\begin_layout Standard
+Betrachte 
+\begin_inset Formula $\left|\zeta\right|=R$
+\end_inset
+
+, 
+\begin_inset Formula $\left|z\right|<R$
+\end_inset
+
+, also 
+\begin_inset Formula $\left|\frac{z}{\zeta}\right|<1$
+\end_inset
+
+.
+ Etwas expliziter und eleganter:
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{\zeta-z} & =\frac{1}{\zeta}\left(\frac{1}{1-\frac{z}{\zeta}}\right)=\frac{1}{\zeta}\sum_{n=0}^{\infty}\left(\frac{z}{\zeta}\right)^{n}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+f_{1}\left(z\right) & =\frac{1}{2\pi\ii}\oint f\left(\zeta\right)\left(\sum_{n=0}^{\infty}\left(\frac{z}{\zeta}\right)^{n}\cdot\frac{1}{\zeta}\right)\dd\zeta=\sum_{n=0}^{\infty}z^{n}\underbrace{\left(\frac{1}{2\pi\ii}\oint\frac{f\left(\zeta\right)}{\zeta^{n+1}}\dd\zeta\right)}_{=:c_{n}}
+\end{align*}
+
+\end_inset
+
+Für 
+\begin_inset Formula $f_{2}$
+\end_inset
+
+ analog.
+ 
+\begin_inset Formula $\left|\zeta\right|=r$
+\end_inset
+
+ 
+\begin_inset Formula $\left|z\right|>r$
+\end_inset
+
+, also 
+\begin_inset Formula $\left|\frac{z}{\zeta}\right|>1$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{\zeta-z} & =-\frac{1}{z}\left(\frac{1}{1-\frac{\zeta}{z}}\right)=-\frac{1}{z}\sum_{n=0}^{\infty}\left(\frac{\zeta}{z}\right)^{n}
+\end{align*}
+
+\end_inset
+
+Also folgt:
+\begin_inset Formula 
+\begin{align*}
+f_{2}\left(z\right) & =\frac{1}{2\pi\ii}\oint_{\partial B_{r}\left(0\right)}f\left(\zeta\right)\frac{1}{z}\left(\sum_{n=0}^{\infty}\left(\frac{\zeta}{z}\right)^{n}\right)\dd\zeta=\sum_{n=0}^{\infty}\frac{1}{z^{n+1}}\cdot\underbrace{\left(\frac{1}{2\pi\ii}\oint_{\partial B_{r}\left(0\right)}f\left(\zeta\right)\cdot\zeta^{n}\dd\zeta\right)}_{=c_{-\left(n+1\right)}}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Part*
 Anhang
 \begin_inset ERT

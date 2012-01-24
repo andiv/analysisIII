@@ -1,4 +1,4 @@
-%% LyX 2.0.1 created this file.  For more info, see http://www.lyx.org/.
+%% LyX 2.0.2 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
 \documentclass[11pt,english,ngerman]{report}
 \usepackage[T1]{fontenc}
@@ -5455,6 +5455,330 @@ f\left(z\right) & \text{sonst}
 \end{cases}
 \end{align*}
 \qqed
+
+TODO: Rest einfügen
+
+%DATE: Di 24.1.12
+
+
+\subsection{Beispiel}
+
+Die Singularitäten sind im Allgemeinen nicht isoliert.
+
+
+\subsubsection*{Beweis}
+
+Betrachte
+\begin{align*}
+f\left(z\right) & =\frac{1}{\sin\left(\frac{1}{z}\right)}
+\end{align*}
+auf $\Omega:=\mathbb{C}\setminus\left(\left\{ 0\right\} \cup\left\{ \frac{1}{n\pi}|n\in\mathbb{Z}\setminus\left\{ 0\right\} \right\} \right)$.
+
+$f$ ist als Verkettung holomorpher Abbildungen auf $\Omega$ holomorph.
+
+TODO: Abb2
+
+0 ist ein Häufungspunkt der Singularitäten, also eine nicht isolierte
+Singularität.
+
+
+\subsection{Definition \textmd{(isolierte, hebbare, wesentliche Singularität,
+Pol)}}
+
+Sei $\Omega\subseteq\mathbb{C}$ offen, $a\in\Omega$, $f:\Omega\setminus\left\{ a\right\} \to\mathbb{C}$.
+
+Dann heißt $a$ \emph{isolierte Singularität von $f$}, falls es ein
+$\varepsilon\in\mathbb{R}_{>0}$ mit $B_{\varepsilon}\left(a\right)\subseteq\Omega$
+-- das als eine Teilmenge von $\Omega$ gewählt werden kann, da $\Omega$
+offen ist -- gibt, sodass 
+\begin{align*}
+f:B_{\varepsilon}\left(a\right)\setminus\left\{ a\right\} \to & \mathbb{C}
+\end{align*}
+holomorph ist, es also in $B_{\varepsilon}\left(a\right)$ keine weitere
+Singularität gibt.
+\begin{itemize}
+\item Sei $a$ eine isolierte Singularität von $f$.\\
+Falls ${\displaystyle \lim_{a\not=z\to a}}\left(z-a\right)f\left(z\right)=0$
+gilt, so heißt die Singularität \emph{hebbar}.
+\item Sei $a$ eine isolierte Singularität von $f$.\\
+Falls ${\displaystyle \lim_{a\not=z\to a}}f\left(z\right)=\infty$
+gilt, so heißt $a$ ein \emph{Pol} von $f$.\\
+($\infty$ ist auf der Riemannschen Zahlenkugel.)
+\item Ist $a$ weder hebbar noch ein Pol, so heißt $a$ eine \emph{wesentliche
+Singularität}.\\
+TODO: Abb2
+\end{itemize}
+
+\subsection{Satz und Definition \textmd{(Ordnung eines Pols)}}
+
+In einer Umgebung jeder Polstelle kann $f$ in einer Umgebung $B_{\varepsilon}\left(a\right)$
+dargestellt werden als
+\begin{align*}
+f\left(z\right) & =\left(z-a\right)^{-n}f_{n}\left(z\right)
+\end{align*}
+mit einer holomorphen Funktion $f_{n}$ mit $f_{n}\left(a\right)\not=0$.
+
+$n\in\mathbb{N}_{\ge1}$ heißt \emph{die Ordnung} des Pols.
+
+
+\subsubsection*{Beweis}
+
+Sei $a$ ein Pol von $f$. Also gibt es ein $\varepsilon\in\mathbb{R}_{>0}$,
+sodass $f$ auf $B_{\varepsilon}\left(a\right)$ keine Nullstelle
+hat.
+
+Dann folgt mit den Konvergenzsätzen:
+\begin{align*}
+f: & B_{\varepsilon}\left(a\right)\setminus\left\{ a\right\} \to\mathbb{C}\text{ ist holomorph} & \lim_{a\not=z\to a}f\left(z\right) & =\infty\\
+g:=\frac{1}{f}: & B_{\varepsilon}\left(a\right)\setminus\left\{ a\right\} \to\mathbb{C}\text{ ist holomorph} & \lim_{a\not=z\to a}g\left(z\right) & =0
+\end{align*}
+Also ist ${\displaystyle \lim_{a\not=z\to a}\left(z-a\right)g\left(z\right)=0}$
+und daher ist $a$ eine hebbare Singularität von $g$.
+
+Also kann $g$ holomorph fortgesetzt werden:
+\begin{align*}
+g:B_{\varepsilon}\left(a\right) & \to\mathbb{C}\text{ ist holomorph}
+\end{align*}
+Stelle $g$ dar in der Form:
+\begin{align*}
+g\left(z\right) & =\left(z-a\right)^{n}\cdot g_{n}\left(z\right)
+\end{align*}
+mit $g_{n}\left(a\right)\not=0$. Damit folgt:
+\begin{align*}
+f\left(z\right) & =\frac{1}{\left(z-a\right)^{n}}f_{n}\left(z\right)
+\end{align*}
+Dabei ist
+\begin{align*}
+f_{n}\left(z\right) & =\frac{1}{g_{n}\left(z\right)}
+\end{align*}
+holomorph.
+
+TODO: Bracht man folgende Anmerkung?
+
+(Eventuell $\varepsilon$ verkleinern, um Nullstellen zu vermeiden.)
+
+\qqed
+
+
+\subsection{Definition \textmd{(meromorphe Funktion)}}
+
+Eine Funktion, die nur isolierte Singularitäten $\left(a_{n}\right)_{n\in A\subseteq\mathbb{N}}$
+besitzt, die alle Pole sind, und die auf $\mathbb{C}\setminus\left\{ a_{n}|n\in A\right\} $
+holomorph sind, heißt \emph{meromorphe Funktion}.
+
+
+\subsubsection*{Beispiele}
+
+Rationale Funktionen ${\displaystyle \frac{P\left(z\right)}{Q\left(z\right)}}$.
+
+$e^{x}$, $\sin\left(x\right)$, $\cos\left(x\right)$ und Quotienten
+von Polynomen von diesen, also zum Beispiel ${\displaystyle \frac{\sin\left(x\right)}{e^{x}-1}}$.
+
+
+\subsection{Beispiel}
+
+Nun zu den wesentlichen Singularitäten:
+
+${\displaystyle \frac{1}{\sin\left(\frac{1}{x}\right)}}$ oder $\sin\left(\frac{1}{x}\right)$
+an der Stelle 0.
+\begin{align*}
+f\left(z\right) & =e^{\frac{1}{z}}=\sum_{n=0}^{\infty}\frac{1}{n!}\frac{1}{z^{n}}:\mathbb{C}\setminus\left\{ 0\right\} \to\mathbb{C}\text{ holomorph}
+\end{align*}
+Also ist 0 eine isolierte Singularität.
+
+$f\left(z\right)$ ist \emph{nicht} in der Form
+\begin{align*}
+f\left(z\right) & =\frac{1}{z^{n}}g\left(z\right)
+\end{align*}
+darstellbar mit
+\begin{align*}
+g:B_{\varepsilon}\left(0\right) & \to\mathbb{C}
+\end{align*}
+holomorph, da in $f$ beliebig hohe Polordnungen auftreten.
+\begin{align*}
+f\left(z\right) & =e^{\frac{1}{z}}=e^{\frac{\overline{z}}{\left|z\right|^{2}}}=\exp\left(\frac{\text{Re}\left(z\right)-\ii\cdot\text{Im}\left(z\right)}{\left|z\right|^{2}}\right)=\underbrace{\exp\left(\frac{\text{Re}\left(z\right)}{\left|z\right|^{2}}\right)}_{>0}\cdot\underbrace{\exp\left(-\frac{\ii\cdot\text{Im}\left(z\right)}{\left|z\right|^{2}}\right)}_{\text{Phasenfaktor}}
+\end{align*}
+${\displaystyle }$TODO: Abb3
+
+Auf der imaginären Achse ist $\text{Re}\left(z\right)=0$, also ist
+\begin{align*}
+f\left(z\right) & =\exp\left(-\frac{\ii\cdot\text{Im}\left(z\right)}{\left|z\right|^{2}}\right)
+\end{align*}
+und daher $\left|f\left(z\right)\right|=1$, aber $f$ \quotedblbase{}oszilliert
+immer schneller\textquotedblleft{}.
+
+Auf der reellen Achse ist $\text{Im}\left(z\right)=0$, also gilt:
+\begin{align*}
+f\left(z\right) & =\exp\left(\frac{\text{Re}\left(z\right)}{\left|z\right|^{2}}\right)\stackrel{z\to0}{\longrightarrow}\infty
+\end{align*}
+
+
+
+\subsubsection*{Betrachtung}
+
+Für alle $\varepsilon\in\mathbb{R}_{>0}$ gilt:
+\begin{align*}
+f\left(B_{\varepsilon}\left(0\right)\setminus\left\{ 0\right\} \right) & =\mathbb{C}\setminus\left\{ 0\right\} 
+\end{align*}
+Das Bild von $B_{\varepsilon}\left(0\right)\setminus\left\{ 0\right\} $
+ist \emph{dicht in $\mathbb{C}$}.
+
+
+\subsection{Satz}
+
+Eine holomorphe Funktion $f:B_{\varepsilon\left(a\right)}\setminus\left\{ a\right\} \to\mathbb{C}$
+kommt in jeder Umgebung einer isolierten wesentlichen Singularität
+$a$ jeder komplexen Zahl beliebig nahe.
+
+
+\subsubsection*{Beweis}
+
+Ansonsten gäbe es ein $A\in\mathbb{C}$ mit $\kappa,\delta\in\mathbb{R}_{>0}$,
+sodass gilt für $z\not=a$ gilt:
+\begin{align*}
+\left|z-a\right| & <\delta & \Rightarrow\qquad & \left|f\left(z\right)-A\right|>\kappa
+\end{align*}
+TODO: Abb4
+
+Dann wäre
+\begin{align*}
+\lim_{a\not=z\to a}\left|\frac{1}{z-a}\left(f\left(z\right)-A\right)\right| & =\lim_{a\not=z\to a}\underbrace{\frac{1}{\left|z-a\right|}}_{=\infty}\underbrace{\left|f\left(z\right)-A\right|}_{>\kappa}=\infty
+\end{align*}
+Daher folgt:
+\begin{align*}
+\lim_{a\not=z\to a}\underbrace{\frac{1}{z-a}\left(f\left(z\right)-A\right)}_{=:g\left(z\right)} & =\infty
+\end{align*}
+($\infty$ in der Riemannschen Zahlenkugel.)
+\begin{align*}
+g\left(z\right) & =\frac{1}{\left(z-a\right)^{n}}g_{n}\left(z\right)=\frac{1}{z-a}\left(f\left(z\right)-A\right)
+\end{align*}
+ $g_{n}\left(z\right)$ holomorph auf $B_{\varepsilon}\left(a\right)$.
+
+Löse nach $f\left(z\right)$ auf:
+\begin{align*}
+f\left(z\right) & =\frac{g_{n}\left(z\right)}{\left(z-a\right)^{n-1}}+A
+\end{align*}
+Also ist $a$ ein Pol von $f$ der Ordnung $n-1$.
+
+Wir haben also eine hebbare Singularität $\left(n=1\right)$ oder
+einen Pol $\left(n>1\right)$, aber keine wesentliche Singularität.
+
+\qqed
+
+
+\section{Die Laurententwicklung}
+
+Sei $\Omega\subseteq\mathbb{C}$ offen und $f:\Omega\to\mathbb{C}$
+holomorph und $r,R\in\mathbb{R}_{>0}$.
+\begin{align*}
+\Omega\supseteq\mathcal{R} & =\left\{ z\in\mathbb{C}|r<\left|z\right|<R\right\} 
+\end{align*}
+TODO: Abb5
+
+
+\subsection{Definition \textmd{(Laurent-Reihe)}}
+
+Eine Reihe der Form
+\begin{align*}
+\sum_{n=-\infty}^{\infty}c_{n}z^{n} & :=\sum_{n=0}^{\infty}c_{n}z^{n}+\sum_{n=1}^{\infty}c_{-n}z^{-n}
+\end{align*}
+heißt \emph{Laurent-Reihe}. Die Laurent-Reihe heißt (absolut) konvergent,
+falls die Reihen
+\begin{align*}
+N\left(z\right) & :={\displaystyle \sum_{n=0}^{\infty}c_{n}z^{n}}
+\end{align*}
+und
+\begin{align*}
+H\left(z\right) & :={\displaystyle \sum_{n=1}^{\infty}c_{-n}z^{-n}}
+\end{align*}
+beide (absolut) konvergieren.
+
+$H\left(z\right)$ heißt \emph{der Hauptteil} und $N\left(z\right)$
+heißt \emph{der Nebenteil} der Laurent-Reihe.
+
+
+\subsection{Theorem}
+
+Jede auf $\Omega\supseteq\mathcal{R}$ holomorphe Funktion $f$ ist
+in $\mathcal{R}$ in einer Laurent-Reihe darstellbar, also:
+\begin{align*}
+f\left(z\right) & =\sum_{n=-\infty}^{\infty}c_{n}z^{n}
+\end{align*}
+
+
+Das heißt es gibt $c_{n}\in\mathbb{C}$, sodass die Laurent-Reihe
+konvergiert und mit $f$ übereinstimmt.
+\begin{align*}
+c_{n} & =\frac{1}{2\pi\ii}\ointctrclockwise_{\partial B_{R}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta^{n+1}}\dd\zeta
+\end{align*}
+Falls $n\ge0$.
+\begin{align*}
+c_{n} & =\frac{1}{2\pi\ii}\ointctrclockwise_{\partial B_{r}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta^{n+1}}\dd\zeta
+\end{align*}
+Falls $n<0$.
+
+
+\subsubsection*{Beweis}
+
+TODO: Abb6
+
+Nach dem Cauchyschen Integralsatz gilt:
+\begin{align*}
+f\left(z\right) & =\frac{1}{2\pi\ii}\oint_{C_{1}}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta\\
+0 & =\frac{1}{2\pi\ii}\oint_{C_{2}}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta\\
+\vdots\\
+0 & =\frac{1}{2\pi\ii}\oint_{C_{k}}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta
+\end{align*}
+\begin{align*}
+f\left(z\right) & =\frac{1}{2\pi\ii}\ointctrclockwise_{\partial B_{R}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta-\frac{1}{2\pi\ii}\ointctrclockwise_{\partial B_{r}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta
+\end{align*}
+
+
+
+\subsubsection*{Bemerkung}
+
+Wir müssen die Kontur $C_{l}$ so wählen, dass $C_{l}\subseteq\Delta:=B_{\zeta}\left(a\right)\subseteq\Omega$.
+
+TODO: Abb7
+
+$f\left(\zeta\right)$ ist holomorph im Innern von $C_{2}$.
+\begin{align*}
+f_{1}\left(z\right) & =\frac{1}{2\pi\ii}\oint_{\partial B_{R}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta\\
+f_{2}\left(z\right) & =-\frac{1}{2\pi\ii}\oint_{\partial B_{r}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta
+\end{align*}
+$f_{1}\left(z\right)$ ist für alle $z\in B_{R}\left(0\right)$ wohldefiniert
+und holomorph.
+
+Beachte: Im Allgemeinen ist $f_{1}\not=f$, denn $f_{1}$ ist holomorph
+auf $B_{R}\left(0\right)$, aber $f$ ist nur holomorph auf $\mathcal{R}$
+und im Allgemeinen nicht holomorph fortsetzbar auf $B_{R}\left(0\right)$.
+
+$f_{1}$ kann im Folgenden entwickelt werden, also:/
+\begin{align*}
+f_{1}\left(z\right) & =\sum_{n=0}^{\infty}c_{n}z^{n}
+\end{align*}
+definiert den Nebenteil der Laurent-Reihe.
+
+Betrachte $\left|\zeta\right|=R$, $\left|z\right|<R$, also $\left|\frac{z}{\zeta}\right|<1$.
+Etwas expliziter und eleganter:
+\begin{align*}
+\frac{1}{\zeta-z} & =\frac{1}{\zeta}\left(\frac{1}{1-\frac{z}{\zeta}}\right)=\frac{1}{\zeta}\sum_{n=0}^{\infty}\left(\frac{z}{\zeta}\right)^{n}
+\end{align*}
+\begin{align*}
+f_{1}\left(z\right) & =\frac{1}{2\pi\ii}\oint f\left(\zeta\right)\left(\sum_{n=0}^{\infty}\left(\frac{z}{\zeta}\right)^{n}\cdot\frac{1}{\zeta}\right)\dd\zeta=\sum_{n=0}^{\infty}z^{n}\underbrace{\left(\frac{1}{2\pi\ii}\oint\frac{f\left(\zeta\right)}{\zeta^{n+1}}\dd\zeta\right)}_{=:c_{n}}
+\end{align*}
+Für $f_{2}$ analog. $\left|\zeta\right|=r$ $\left|z\right|>r$,
+also $\left|\frac{z}{\zeta}\right|>1$.
+\begin{align*}
+\frac{1}{\zeta-z} & =-\frac{1}{z}\left(\frac{1}{1-\frac{\zeta}{z}}\right)=-\frac{1}{z}\sum_{n=0}^{\infty}\left(\frac{\zeta}{z}\right)^{n}
+\end{align*}
+Also folgt:
+\begin{align*}
+f_{2}\left(z\right) & =\frac{1}{2\pi\ii}\oint_{\partial B_{r}\left(0\right)}f\left(\zeta\right)\frac{1}{z}\left(\sum_{n=0}^{\infty}\left(\frac{\zeta}{z}\right)^{n}\right)\dd\zeta=\sum_{n=0}^{\infty}\frac{1}{z^{n+1}}\cdot\underbrace{\left(\frac{1}{2\pi\ii}\oint_{\partial B_{r}\left(0\right)}f\left(\zeta\right)\cdot\zeta^{n}\dd\zeta\right)}_{=c_{-\left(n+1\right)}}
+\end{align*}
+\qqed
+
+%DATE: 
 
 
 \part*{Anhang\thispagestyle{empty}}
