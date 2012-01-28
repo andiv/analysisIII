@@ -2018,10 +2018,13 @@ Wir betrachten stattdessen später das Produktmaß.
 
 \section{Konstruktion des Integrals}
 
+Im Folgenden sei $\left(X,\mathcal{M},\mu\right)$ ein Maßraum, zum
+Beispiel das eindimensionale Lebesgue-Maß.
+
 \textcolor{green}{TODO: Rest überarbeiten}
 
 
-\subsection{Definition}
+\subsection{Definition \textmd{(Treppenfunktion)}}
 
 TODO: Rest einfügen
 
@@ -3929,7 +3932,7 @@ Dies erlaubt es, die trigonometrischen Funktionen für komplexe Argumente
 zu erweitern.
 \begin{align*}
 \cos\left(z\right) & :=\frac{1}{2}\left(e^{\ii z}+e^{-\ii z}\right)\\
-\sin\left(z\right) & :=\frac{1}{2}\left(e^{\ii z}-e^{-\ii z}\right)
+\sin\left(z\right) & :=\frac{1}{2\ii}\left(e^{\ii z}-e^{-\ii z}\right)
 \end{align*}
 Diese sind als Linearkombination holomorpher Funktionen holomorph
 auf ganz $\mathbb{C}$ und können als Potenzreihe Dargestellt werden.
@@ -5122,7 +5125,7 @@ f^{\left(n\right)}\left(z\right) & =\frac{n!}{2\pi\ii}\oint\frac{f\left(\zeta\ri
 \end{align*}
 Also sollte $f$ beliebig oft komplex differenzierbar sein.
 \begin{align*}
-\left|f^{\left(n\right)}\left(z\right)\right| & \le\sup_{C}\frac{\left|f\left(\zeta\right)\right|}{\left|\zeta-z\right|^{n+1}}\cdot\underbrace{2\pi\cdot2\varepsilon}_{\text{Länge von }C}\le\\
+\left|f^{\left(n\right)}\left(z\right)\right| & \le\frac{n!}{2\pi}\sup_{C}\frac{\left|f\left(\zeta\right)\right|}{\left|\zeta-z\right|^{n+1}}\cdot\underbrace{2\pi\cdot2\varepsilon}_{\text{Länge von }C}\le\\
  & \le2\varepsilon\cdot n!\cdot\frac{1}{\varepsilon^{n+1}}\cdot\sup_{C}\left|f\right|\le\\
  & \le\underbrace{2\sup_{C}\left|f\right|}_{=:\mathcal{C}}\cdot\frac{n!}{\varepsilon^{n}}
 \end{align*}
