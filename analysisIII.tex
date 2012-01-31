@@ -1299,9 +1299,11 @@ Zugang\textquotedblleft{}:
 Beginne mit \quotedblbase{}einfachen\textquotedblleft{} Mengensystemen
 $\mathcal{A}$:
 
-Endliche Vereinigung beschränkter Intervalle, also ist $A\in\mathcal{A}$
-darstellbar als eine disjunkte Vereinigung beschränkter Intervalle
-$I_{k}\subseteq\mathbb{R}$ mit $\left|I_{k}\right|<\infty$ für $1\le k\le n$:
+Sei $X=\mathbb{R}$. Betrachte endliche Vereinigung beschränkter Intervalle:
+
+$A\in\mathcal{A}$ ist darstellbar als eine disjunkte Vereinigung
+beschränkter Intervalle $I_{k}\subseteq\mathbb{R}$ mit $\left|I_{k}\right|<\infty$
+für $1\le k\le n$:
 \begin{align*}
 A & =I_{1}\dot{\cup}\ldots\dot{\cup}I_{n}
 \end{align*}
@@ -1350,7 +1352,8 @@ in $\mathcal{A}$ liegt, gilt:
 
 
 \iii $\mu$ ist \emph{$\sigma$-endlich}, das heißt, es gibt für
-$n\in\mathbb{N}$ schon $S_{n}\in\mathcal{A}$ mit:
+$n\in\mathbb{N}$ schon $S_{n}\in\mathcal{A}$ mit $\mu\left(S_{n}\right)<\infty$
+und:
 \begin{align*}
 X & =\bigcup_{n=1}^{\infty}S_{n}
 \end{align*}
@@ -1359,7 +1362,7 @@ X & =\bigcup_{n=1}^{\infty}S_{n}
 \end{iiilist}
 
 Man nennt $\mu$ mit diesen Eigenschaften auch ein \emph{Prämaß auf
-$\mathcal{A}$} und $\left(X,A,\mu\right)$ ein \emph{Prämaß}.
+$\mathcal{A}$} und $\left(X,\mathcal{A},\mu\right)$ ein \emph{Prämaß}.
 
 
 \subsubsection*{Beweis}
@@ -1464,7 +1467,8 @@ Im Folgenden ist unser Ziel, das Prämaß zu einem Maß zu erweitern.
 Sei $\left(X,\mathcal{A},\mu\right)$ ein Prämaß.
 
 Dann lässt sich $\mu$\emph{ eindeutig} zu einem Maß auf der von $\mathcal{A}$
-erzeugten $\sigma$-Algebra \emph{erweitern} und es gilt für $M\in\mathcal{M}:=\mathcal{M}\left(\mathcal{A}\right)$:
+erzeugten $\sigma$-Algebra $\mathcal{M}\left(\mathcal{A}\right)$
+\emph{erweitern} und es gilt für $M\in\mathcal{M}:=\mathcal{M}\left(\mathcal{A}\right)$:
 \begin{align*}
 \mu\left(M\right) & =\inf\left\{ \sum_{n=1}^{\infty}\mu\left(A_{n}\right)\bigg|\fall_{n\in\mathbb{N}}:A_{n}\in\mathcal{A}\wedge M\subseteq\bigcup_{n=1}^{\infty}A_{n}\right\} 
 \end{align*}
@@ -1857,7 +1861,7 @@ Da $\varepsilon$ beliebig ist, ist $A$ tatsächlich $\mu^{*}$-messbar.
 
 Also ist $\mathcal{A}\subseteq\mathcal{M}$.
 
-Zeige schließlich noch die Eindeutigkeit:
+Zu 2.: Zeige schließlich noch die Eindeutigkeit:
 
 Sei $\mu$ wie oben konstruiert, $\nu$ ein weiteres Maß auf $\mathcal{M}\left(\mathcal{A}\right)$
 und $\mu=\nu$ auf $\mathcal{A}$.
@@ -2021,73 +2025,224 @@ Wir betrachten stattdessen später das Produktmaß.
 Im Folgenden sei $\left(X,\mathcal{M},\mu\right)$ ein Maßraum, zum
 Beispiel das eindimensionale Lebesgue-Maß.
 
-\textcolor{green}{TODO: Rest überarbeiten}
+
+\subsection{Bemerkung und Definition \textmd{(Treppenfunktion, Integral, Norm)}}
+
+Eine Funktion $\varphi:X\to\mathbb{R}$ heißt \emph{Treppenfunktion},
+falls $\left|\varphi\left(X\right)\right|<\infty$ ist und für alle
+$c\in\mathbb{R}\setminus\left\{ 0\right\} $ das Urbild $\varphi^{-1}\left(\left\{ c\right\} \right)$
+endliches Maß hat.
+
+\textcolor{green}{TODO: Abbildung Treppenfunktion einfügen}
+
+Die Treppenfunktionen bilden einen Vektorraum $\mathcal{T}\left(X\right)$,
+denn für Treppenfunktionen $\varphi,\psi\in\mathcal{T}\left(X\right)$
+gilt:
+\begin{align*}
+\left(\varphi+\psi\right)\left(x\right) & =\varphi\left(x\right)+\psi\left(x\right)\\
+\left|\left(\varphi+\psi\right)\left(X\right)\right| & \le\left|\varphi\left(X\right)\right|+\left|\psi\left(X\right)\right|<\infty
+\end{align*}
+\begin{align*}
+\left(\varphi+\psi\right)^{-1}\left(\left\{ c\right\} \right) & \subseteq\varphi^{-1}\left(\mathbb{R}\setminus\left\{ 0\right\} \right)+\psi^{-1}\left(\mathbb{R}\setminus\left\{ 0\right\} \right)\\
+\mu\left(\left(\varphi+\psi\right)^{-1}\left(\left\{ c\right\} \right)\right) & \le\mu\left(\varphi^{-1}\left(\mathbb{R}\setminus\left\{ 0\right\} \right)+\psi^{-1}\left(\mathbb{R}\setminus\left\{ 0\right\} \right)\right)\le\\
+ & \le\underbrace{\sum_{c\in\varphi\left(X\right)}}_{\text{endlich}}\underbrace{\mu\left(\varphi^{-1}\left(c\right)\right)}_{<\infty}+\underbrace{\sum_{c\in\psi\left(X\right)}}_{\text{endlich}}\underbrace{\mu\left(\psi^{-1}\left(c\right)\right)}_{<\infty}<\infty
+\end{align*}
+Die Abgeschlossenheit unter Skalarmultiplikation ist klar.
+
+Für Treppenfunktionen definiere das Integral:
+\begin{align*}
+\int_{X}\varphi\dd\mu & :=\sum_{y\in\varphi\left(X\right)}y\cdot\mu\left(\varphi^{-1}\left(y\right)\right)<\infty
+\end{align*}
+Wir wollen diesen Integralbegriff durch Approximation auf allgemeine
+Funktionen ausdehnen.
+\begin{align*}
+\left|\left|\varphi\right|\right|_{1} & :=\int_{X}\left|\varphi\right|\dd\mu
+\end{align*}
+heißt \emph{$L^{1}$-\quotedblbase{}Norm}\textquotedblleft{}.
 
 
-\subsection{Definition \textmd{(Treppenfunktion)}}
+\subsubsection*{Idee}
 
-TODO: Rest einfügen
+Betrachte die \quotedblbase{}Cauchy-Folge\textquotedblleft{} $\varphi_{n}\in\mathcal{T}\left(X\right)$
+für die es für alle $\varepsilon>0$ schon ein $N\in\mathbb{N}$ mit
+$\left|\left|\varphi_{n}-\varphi_{m}\right|\right|\le\varepsilon$
+für alle $n,m\in\mathbb{N}_{>N}$ gibt.
+
+Hoffnung: $\varphi_{n}\stackrel{?}{\to}\varphi$ und ${\displaystyle \int_{X}\varphi\dd\mu:=\lim_{n\to\infty}\int_{X}\varphi_{n}\dd\mu}$.
+
+Ist $\left|\left|.\right|\right|_{1}$ eine Norm?
+
+Aus der Linearität der Summe und den entsprechenden Eigenschaften
+des Betrages folgt, wie direkt zu überprüfen ist, dass gilt:
+
+\begin{iiilist}
+
+\iii $\left|\left|\varphi\right|\right|_{1}\ge0$
+
+\iii $\left|\left|\lambda\varphi\right|\right|_{1}=\left|\lambda\right|\cdot\left|\left|\varphi\right|\right|_{1}$
+
+\iii $\left|\left|\varphi+\psi\right|\right|\le\left|\left|\varphi\right|\right|+\left|\left|\psi\right|\right|$
+
+\end{iiilist}
+
+Also ist $\left|\left|.\right|\right|_{1}$ eine Seminorm.
+
+Definitheit:
+\begin{align*}
+\left|\left|\varphi\right|\right|_{1}=0 & \quad\Leftrightarrow\quad\int_{X}\left|\varphi\right|\dd\mu=0\quad\Leftrightarrow\quad\sum_{y\in\varphi\left(X\right)}\left|y\right|\cdot\underbrace{\mu\left(\varphi^{-1}\left(y\right)\right)}_{\text{muss }0\text{ sein für }y\not=0}=0\quad\Leftrightarrow\\
+ & \quad\Leftrightarrow\quad\varphi\left(x\right)=0\ \fall_{x\in X\setminus N}\text{ für eine Menge }N\text{ mit }\mu\left(N\right)=0\quad\Leftrightarrow\\
+ & \quad\Leftrightarrow\quad\varphi=0\text{ fast überall}
+\end{align*}
 
 
-\subsection{Lemma}
+Also ist $\left|\left|.\right|\right|_{1}$ nicht definit und damit
+keine Norm.
+\begin{align*}
+\mathcal{N}\left(\mu\right) & :=\left\{ \varphi\in\mathcal{T}\left(X\right)\,|\,\left|\left|\varphi\right|\right|_{1}=0\right\} 
+\end{align*}
+ist ein Teilraum von $\mathcal{T}:=\mathcal{T}\left(\mu\right):=\mathcal{T}\left(X\right)$.
 
-Sei $\left(\varphi_{n}\right)$ eine $L^{1}$-Cauchy-Folge in $\mathcal{T}\left(X\right)$.
 
-Dann gibt es eine Teilfolge $\left(\varphi_{n_{j}}\right)$, die fast
-überall punktweise konvergent ist, also:
+\subsubsection*{Bemerkung}
+
+Auf $\modulo{\mathcal{T}\left(\mu\right)}{\mathcal{N}\left(\mu\right)}$
+ist $\left|\left|.\right|\right|_{1}$ eine Norm.
+
+Aber: $\left(\mathcal{T},\left|\left|.\right|\right|_{1}\right)$
+ist nicht vollständig.
+
+Man könnte nun abstrakt vervollständigen.
+
+%DATE: Di 8.11.2011
+
+
+\subsection{Lemma\label{sub:Lem-TeilfolgePunktweise}}
+
+Sei $\left(\varphi_{n}\right)_{n\in\mathbb{N}}$ eine $L^{1}$-Cauchy-Folge
+in $\mathcal{T}\left(X\right)$.
+
+Dann gibt es eine Teilfolge $\left(\varphi_{n_{j}}\right)_{j\in\mathbb{N}}$,
+die fast überall punktweise konvergent ist, also:
 \begin{align*}
 \varphi_{n_{j}}\left(x\right) & \mapsto\varphi\left(x\right) & \text{für fast alle } & x\in X
 \end{align*}
 
 
-Zusätzlich
+Zusätzlich existiert für alle $\varepsilon\in\mathbb{R}_{>0}$ ein
+$Z\subseteq X$ mit $\mu\left(Z\right)<\varepsilon$, sodass
 \begin{align*}
-\exs_{\varepsilon>0}\exs_{Z\subseteq X} & \text{ mit }\mu\left(Z\right)<\varepsilon
+\varphi_{n_{j}}\Big|_{X\setminus Z} & \rightrightarrows\varphi\Big|_{X\setminus Z}
+\end{align*}
+gleichmäßig konvergiert.
+
+Beachte: Für eine $L^{1}$-Cauchy-Folge $\left(\varphi_{n}\right)_{n\in\mathbb{N}}$
+mit $\varphi_{n}\in\mathcal{T}$ ist
+\begin{align*}
+z_{n} & :=\int_{X}\varphi_{n}\dd\mu
+\end{align*}
+eine Cauchy-Folge in $\mathbb{R}$, weil für $m\in\mathbb{N}_{>n}$
+gilt:
+\begin{align*}
+\left|z_{n}-z_{m}\right| & =\left|\int_{X}\varphi_{n}\dd\mu-\int_{X}\varphi_{m}\dd\mu\right|=\left|\int_{X}\left(\varphi_{n}-\varphi_{m}\right)\dd\mu\right|\le\\
+ & \le\int_{X}\left|\varphi_{n}-\varphi_{m}\right|\dd\mu=\left|\left|\varphi_{n}-\varphi_{m}\right|\right|\to0
 \end{align*}
 
 
-sodass
+
+\subsubsection*{Beweis}
+
+Wähle induktiv eine Teilfolge (zur Einfachheit wieder mit $\left(\varphi_{j}\right)_{j\in\mathbb{N}}$
+bezeichnet), sodass für alle $n,k\in\mathbb{N}$ mit $n\ge k$ gilt:
 \begin{align*}
-\varphi_{n_{j}}\bigg|_{X\setminus Z} & \stackrel{\rightarrow}{\rightarrow}\varphi\bigg|_{X\setminus Z}
+\left|\left|\varphi_{n}-\varphi_{k}\right|\right|_{1} & \le2^{-2k}
+\end{align*}
+Setze:
+\begin{align*}
+Y_{n} & :=\left\{ x\,|\,\left|\varphi_{n+1}\left(x\right)-\varphi_{n}\left(x\right)\right|\ge2^{-n}\right\} 
+\end{align*}
+Die $Y_{n}$ sind messbar, denn die Funktion $\varphi_{n+1}-\varphi_{n}\in\mathcal{T}$
+messbar ist und daher auch $\left|\varphi_{n+1}-\varphi_{n}\right|$,
+weswegen das Urbild
+\begin{align*}
+\left|\varphi_{n+1}-\varphi_{n}\right|^{-1}\left(\left[2^{-n},\infty\right]\right)
+\end{align*}
+der Borelmenge $\left[2^{-n},\infty\right]$ messbar ist. Es folgt:
+\begin{align*}
+2^{-n}\cdot\mu\left(Y_{n}\right) & \le\int_{Y_{n}}\left|\varphi_{n+1}-\varphi_{n}\right|\dd\mu\le\int_{X}\left|\varphi_{n+1}-\varphi_{n}\right|\dd\mu\le2^{-2n}\\
+\Rightarrow\quad\mu\left(Y_{k}\right) & \le2^{-k}
+\end{align*}
+Setze nun ${\displaystyle Z_{k}:=\bigcup_{n=k}^{\infty}Y_{n}}$, dann
+folgt:
+\begin{align*}
+\mu\left(Z_{k}\right) & \stackrel{\sigma\text{-Additivität}}{\le}\sum_{n=k}^{\infty}\mu\left(Y_{n}\right)\le\sum_{n=k}^{\infty}2^{-n}=2^{-k}\cdot\frac{1}{1-\frac{1}{2}}=2\cdot2^{-k}
+\end{align*}
+Sei $x\not\in Z_{k}$, dann ist $x\not\in Y_{n}$ für alle $n\ge k$:
+\begin{align*}
+\left|\varphi_{n+1}\left(x\right)-\varphi_{n}\left(x\right)\right| & \le2^{-n}
 \end{align*}
 
 
-TODO: Beweis einfügen....
+Die Reihe ${\displaystyle \sum_{n=k}^{\infty}\left|\varphi_{n+1}-\varphi_{n}\right|}$
+konvergiert absolut und gleichmäßig in $x$.
 
-Beachte: Für eine $L^{1}$-C.F. $\left(\varphi_{n}\right)$, $\varphi_{n}\in\mathcal{T}\left(X\right)$
-ist
+Also ist $\varphi_{n}\left(x\right)$ eine Cauchy-Folge in $\mathbb{R}$,
+gleichmäßig in $x$.
 \begin{align*}
-Z_{N} & :=\int_{X}\varphi_{n}\dd\mu
+\varphi_{n}\left(x\right) & \rightrightarrows f\left(x\right)\qquad\fall_{x\not\in Z_{k}}
+\end{align*}
+Für $m\ge n$ gilt:
+\begin{align*}
+\left|\varphi_{n}\left(x\right)-\varphi_{m}\left(x\right)\right| & \le\left|\varphi_{n}\left(x\right)-\varphi_{n-1}\left(x\right)\right|+\ldots+\left|\varphi_{m+}\left(x\right)-\varphi_{m}\left(x\right)\right|=\\
+ & =\sum_{k=m}^{n-1}\left|\varphi_{k+1}\left(x\right)-\varphi_{k}\left(x\right)\right|\le\sum_{k=m}^{\infty}\left|\varphi_{k+1}\left(x\right)-\varphi_{k}\left(x\right)\right|\le\sum_{k=m}^{\infty}2^{-k}=2\cdot2^{-m}
+\end{align*}
+Bilde nun ${\displaystyle Z=\bigcap_{k=0}^{\infty}Z_{k}}$. Für jedes
+$x\not\in Z$ gibt es ein $k:=k\left(x\right)$ mit $x\in Z_{k}$
+und deswegen konvergiert
+\begin{align*}
+\varphi_{k}\left(x\right)\to f\left(x\right) & :=\lim_{n\to\infty}\varphi_{n}\left(x\right)\in\mathbb{R}
+\end{align*}
+punktweise.
+\begin{align*}
+\mu\left(Z\right) & =\mu\left(\bigcap_{k=0}^{\infty}Z_{k}\right)\le\mu\left(Z_{k}\right)\le2\cdot2^{-k}\stackrel{k\to\infty}{\longrightarrow}0
+\end{align*}
+Da $k$ beliebig ist, folgt $\mu\left(Z\right)=0$, also ist $Z$
+eine Lebesguesche Nullmenge.
+
+Beachte: Für eine $L^{1}$-Cauchy-Folge $\left(\varphi_{n}\right)_{n\in\mathbb{N}}$
+mit $\varphi_{n}\in\mathcal{T}\left(X\right)$ ist
+\begin{align*}
+z_{n} & :=\int_{X}\varphi_{n}\dd\mu
 \end{align*}
 eine Folge reeller Zahlen.
 
-Diese Folge $\left(z_{n}\right)$ ist auch eine Cauchy-Folge in $\mathbb{R}$,
-weil:
+Diese Folge $\left(z_{n}\right)_{n\in\mathbb{N}}$ ist auch eine Cauchy-Folge
+in $\mathbb{R}$, weil gilt:
 \begin{align*}
-\left|z_{n}-z_{m}\right| & =\left|\int_{X}\varphi_{n}\dd\mu-\int_{X}\varphi_{m}\dd\mu\right|=\left|\int_{X}\left(\varphi_{n}-\varphi_{m}\right)\dd\mu\right|\le\int_{X}\left|\varphi_{n}-\varphi_{m}\right|\dd\mu
+\left|z_{n}-z_{m}\right| & =\left|\int_{X}\varphi_{n}\dd\mu-\int_{X}\varphi_{m}\dd\mu\right|=\left|\int_{X}\left(\varphi_{n}-\varphi_{m}\right)\dd\mu\right|\le\\
+ & \le\int_{X}\left|\varphi_{n}-\varphi_{m}\right|\dd\mu=\left|\left|\varphi_{n}-\varphi_{m}\right|\right|_{1}\stackrel{n,m\to\infty}{\longrightarrow}0
 \end{align*}
 
 
-Wir können also bilden:
+Wir können also folgenden Grenzwert bilden:
 \begin{align*}
 \lim_{n\rightarrow\infty} & \int_{X}\varphi_{n}\dd\mu
 \end{align*}
 
 
 
-\subsection{Definition}
+\subsection{Definition \textmd{(Lebesgue-integrabel, Integral)}}
 
-Eine Funktion $f:X\rightarrow\mathbb{R}$ heißt (lebesgue-)integrabel,
-wenn es eine $L^{1}$-Cauchy-Folge $\left(\varphi_{n}\right)$ von
-Treppenfunktionen gibt, die fast überall punktweise gegen $f$ konvergiert.
-Die Zahl
+Eine Funktion $f:X\rightarrow\mathbb{R}$ heißt \emph{(Lebesgue-)integrabel},
+wenn es eine $L^{1}$-Cauchy-Folge $\left(\varphi_{n}\right)_{n\in\mathbb{N}}$
+von Treppenfunktionen gibt, die fast überall punktweise gegen $f$
+konvergiert. Die Zahl
 \begin{align*}
-\int_{X}f\dd\mu & :=\lim_{n\rightarrow\infty}\int_{X}\varphi_{n}\dd\mu
+\int_{X}f\dd\mu & :=\lim_{n\rightarrow\infty}\int_{X}\varphi_{n}\dd\mu<\infty
 \end{align*}
 
 
-heißt das \emph{Integral} von $f$ über $X$. Für $Y\subseteq X$
-messbar setzt man
+heißt das \emph{Integral} von $f$ über $X$. Für eine messbare Menge
+$Y\subseteq X$ setzt man
 \begin{align*}
 \int_{Y}f\dd\mu & =\int\chi_{Y}\cdot f\dd\mu
 \end{align*}
@@ -2098,17 +2253,17 @@ wobei
 0 & \text{falls }x\not\in Y
 \end{cases}
 \end{align*}
-die charakteristische Funkiton von $Y$ ist.
+die charakteristische Funktion von $Y$ ist.
 
 Beachte, dass $\chi_{Y}\cdot\varphi_{n}\rightarrow\chi_{Y}\cdot\varphi$
-fast überall.
+fast überall konvergiert.
 
 
 \subsection{Lemma}
 
 Seien $\left(\varphi_{n}\right)$ und $\left(\psi_{n}\right)$ zwei
-$L^{1}$-Cauchy-Folgen von Treppenfunktinen, die beide fast überall
-punktweise gegen eine FUnktion $f:X\rightarrow\mathbb{R}$ konvergieren.
+$L^{1}$-Cauchy-Folgen von Treppenfunktionen, die beide fast überall
+punktweise gegen eine Funktion $f:X\rightarrow\mathbb{R}$ konvergieren.
 
 Dann gilt:
 \begin{align*}
@@ -2123,58 +2278,62 @@ Also ist:
 
 \subsubsection*{Beweis}
 
-Setze $\tau_{n}:=\varphi_{n}-\psi_{n}$. Dann ist $\tau_{n}\in\mathcal{T}\left(X\right)$,
-$\left(\tau_{n}\right)$ ist $L^{1}$-Cauchy-Folge und $\tau_{n}\rightarrow0$
-fast überall punktweise konvergent.
+Setze $\tau_{n}:=\varphi_{n}-\psi_{n}$. Dann ist $\tau_{n}\in\mathcal{T}\left(X\right)$
+und $\left(\tau_{n}\right)_{n\in\mathbb{N}}$ eine $L^{1}$-Cauchy-Folge
+und $\tau_{n}\rightarrow0$ fast überall punktweise konvergent.
 
-Zu zeigen ist: $\tau_{n}\rightarrow0$ in $L^{1}$, also $\left|\left|\tau_{n}\right|\right|_{1}\rightarrow0$
+Zu zeigen ist: $\tau_{n}\rightarrow0$ in $L^{1}$, also $\left|\left|\tau_{n}\right|\right|_{1}\rightarrow0$.
 \begin{itemize}
 \item Es genügt, dies für eine Teilfolge zu zeigen, denn nehme an, dass
-$\left|\left|\tau_{n_{j}}\right|\right|\rightarrow0$.\\
-Sei $\varepsilon>0$. Da $\left(\tau_{n}\right)$ eine $L^{1}$-Cauchy-Folge
-sind, gibt es ein $N$ mit $\left|\left|\tau_{n}-\tau_{m}\right|\right|\le\frac{\varepsilon}{2}$
-für alle $n,m\in\mathbb{N}$.\\
+$\left|\left|\tau_{n_{j}}\right|\right|\rightarrow0$ konvergiert.\\
+Sei $\varepsilon\in\mathbb{R}_{>0}$. Da $\left(\tau_{n}\right)_{n\in\mathbb{N}}$
+eine $L^{1}$-Cauchy-Folge ist, gibt es ein $N\in\mathbb{N}$ mit
+${\displaystyle \left|\left|\tau_{n}-\tau_{m}\right|\right|\le\frac{\varepsilon}{2}}$
+für alle $n,m\in\mathbb{N}_{\ge N}$.\\
 Da $\left|\left|\tau_{n_{j}}\right|\right|\rightarrow0$ gibt es ein
-$K>N$ mit $\left|\left|\tau_{K}\right|\right|\le\frac{\varepsilon}{2}$.
+$K\in\mathbb{N}_{>N}$ mit ${\displaystyle \left|\left|\tau_{K}\right|\right|\le\frac{\varepsilon}{2}}$,
+womit für alle $n\in\mathbb{N}_{\ge N}$ folgt:
 \begin{align*}
-\Rightarrow\quad\left|\left|\tau_{n}\right|\right| & \le\left|\left|\tau_{n}-\tau_{K}\right|\right|+\left|\left|\tau_{K}\right|\right|\le\varepsilon\qquad\fall_{n\ge N}
+\left|\left|\tau_{n}\right|\right| & \le\left|\left|\tau_{n}-\tau_{K}\right|\right|+\left|\left|\tau_{K}\right|\right|\le\varepsilon
 \end{align*}
 
-\item Sei $\varepsilon>0$ und $k$ fest gewählt. Wähle die Teilfolge (die
-wir zur Einfachheit wieder mit $\left(\tau_{n}\right)$ bezeichnen)
-so, dass:
+\item Sei $\varepsilon\in\mathbb{R}_{>0}$ und $k\in\mathbb{N}$ fest gewählt.
+Wähle die Teilfolge (die wir zur Einfachheit wieder mit $\left(\tau_{n}\right)_{n\in\mathbb{N}}$
+bezeichnen) so, dass für alle $n\in\mathbb{N}_{\ge k}$ gilt:
 \begin{align*}
-\left|\left|\tau_{n}-\tau_{k}\right|\right| & \le\varepsilon\qquad\fall_{n\ge k}
+\left|\left|\tau_{n}-\tau_{k}\right|\right| & \le\varepsilon
 \end{align*}
-$\tau_{n}$ konvergiert gleichmäsig auf $X\setminus Z$ und ${\displaystyle \mu\left(Z\right)<\frac{\varepsilon}{\left|\left|\tau_{k}\right|\right|_{\infty}}}$.\\
-(genau wie in Lemma \ref{1.3.2})
+$\tau_{n}$ konvergiert gleichmäßig auf $X\setminus Z$ und ${\displaystyle \mu\left(Z\right)<\frac{\varepsilon}{\left|\left|\tau_{k}\right|\right|_{\infty}}}$.
+(genau wie in Lemma \ref{sub:Lem-TeilfolgePunktweise})\\
+Es gilt:
 \begin{align*}
-\left|\left|\tau_{k}\right|\right|_{\infty} & =\sup\left(\tau_{k}\right)<\infty
+\left|\left|\tau_{k}\right|\right|_{\infty} & :=\sup\left(\tau_{k}\right)<\infty
 \end{align*}
-da $\tau_{k}$ als Treppenfunktion nur endlich viele Funktionswerte
-annimmt. Setze:
+Denn $\tau_{k}$ nimmt als Treppenfunktion nur endlich viele Funktionswerte
+an. Setze:
 \begin{align*}
 M & =\left\{ x|\tau_{k}\left(x\right)\not=0\right\} \qquad\text{(wieder für unser festes \ensuremath{k})}
 \end{align*}
 \begin{align*}
-\left|\left|\tau_{n}\right|\right|_{1} & =\int_{X}\left|\tau_{n}\dd\mu\right|\le\int_{Z}\left|\tau_{n}\right|\dd\mu+\int_{M\setminus Z}\left|\tau_{n}\right|\dd\mu+\int_{X\setminus M}\left|\tau_{n}\right|\dd\mu
+\left|\left|\tau_{n}\right|\right|_{1} & =\int_{X}\left|\tau_{n}\right|\dd\mu\le\int_{Z}\left|\tau_{n}\right|\dd\mu+\int_{M\setminus Z}\left|\tau_{n}\right|\dd\mu+\int_{X\setminus M}\left|\tau_{n}\right|\dd\mu
 \end{align*}
 \begin{align*}
 \int_{Z}\left|\tau_{n}\right|\dd\mu & \le\int_{Z}\left|\tau_{n}-\tau_{k}\right|+\int_{Z}\left|\tau_{k}\right|\le\left|\left|\tau_{n}-\tau_{k}\right|\right|_{1}+\underbrace{\sup\left|\tau_{k}\right|\cdot\mu\left(Z\right)}_{<\varepsilon\text{ nach Konstruktion von }Z\text{ auf }M\setminus Z}\le\\
  & \le\left|\left|\tau_{n}-\tau_{k}\right|\right|_{1}+\varepsilon\\
-\int_{M\setminus Z}\left|\tau_{n}\right|\dd\mu & \le\sup_{M\setminus Z}\left|\tau_{n}\right|\cdot\underbrace{\mu\left(M\right)}_{<\infty\text{, da \ensuremath{\tau_{k}}keine TF}}\stackrel{n\rightarrow\infty}{\rightarrow}0\qquad\text{da }\tau_{n}\stackrel{\rightarrow}{\rightarrow}0
+\int_{M\setminus Z}\left|\tau_{n}\right|\dd\mu & \le\sup_{M\setminus Z}\left|\tau_{n}\right|\cdot\underbrace{\mu\left(M\right)}_{<\infty\text{, da \ensuremath{\tau_{n}}Treppenfkt.}}\stackrel{n\rightarrow\infty}{\rightarrow}0\qquad\text{da }\tau_{n}\stackrel{\rightarrow}{\rightarrow}0
 \end{align*}
 \begin{align*}
-\int_{X\setminus M}\left|\tau_{n}\right|\dd\mu & =\int_{X\setminus M}\left|\left|\tau_{n}-\tau_{k}\right|\right|\dd\mu\le\left|\left|\tau_{n}-\tau_{k}\right|\right|
+\int_{X\setminus M}\left|\tau_{n}\right|\dd\mu & =\int_{X\setminus M}\left|\tau_{n}-\tau_{k}\right|\dd\mu\le\left|\left|\tau_{n}-\tau_{k}\right|\right|
 \end{align*}
-(Da $\tau_{k}=0$ auf $X\setminus M$)\\
+(Da $\tau_{k}=0$ auf $X\setminus M$ ist.)\\
 Also insgesamt:
 \begin{align*}
 \left|\left|\tau_{n}\right|\right|_{1} & \le2\left|\left|\tau_{n}-\tau_{k}\right|\right|_{1}+\varepsilon+\varepsilon\qquad\text{falls }n>N\left(\varepsilon\right)
 \end{align*}
 Indem wir $k$ genügend groß wählen können wir erreichen, dass $\left|\left|\tau_{n}-\tau_{k}\right|\right|_{1}<\varepsilon$.
+Damit folgt für alle $n\in\mathbb{N}_{>N\left(k\right)}$:
 \begin{align*}
-\Rightarrow\quad\left|\left|\tau_{n}\right|\right|_{1} & \le4\varepsilon\qquad\fall_{n>N\left(k\right)}
+\left|\left|\tau_{n}\right|\right|_{1} & \le4\varepsilon
 \end{align*}
 \qqed
 \end{itemize}
@@ -2190,18 +2349,22 @@ Das Integral ist darauf eine lineare Abbildung:
 \end{align*}
 
 
-\iii $f,g\in\mathcal{L}^{1}$ und $f\ge g$ fast überall. $\Rightarrow$
-${\displaystyle \int_{X}f\dd\mu}\ge\int_{X}g\dd\mu\qquad$ (Monotonie)
-
-\iii Sei $Y\in X$ messbar und von endlichem Maß.
+\iii Sind $f,g\in\mathcal{L}^{1}$ und ist $f\ge g$ fast überall,
+so folgt: 
 \begin{align*}
-\Rightarrow\qquad\int_{X}\chi_{Y}\dd\mu & =\int_{Y}\dd\mu=\mu\left(Y\right)
+{\displaystyle \int_{X}f\dd\mu} & \ge\int_{X}g\dd\mu\qquad\text{(Monotonie)}
 \end{align*}
 
 
-\iii Sind $Y,Z$ messbar und disjunkt. Ist außerdem $f:Y\cup Z\rightarrow\mathbb{R}$
-integrable, dann sind $f\bigg|_{Y}$ und $f\bigg|_{Z}$ integrabel
-und es gilt:
+\iii Sei $Y\subseteq X$ messbar und von endlichem Maß, dann gilt:
+\begin{align*}
+\int_{X}\chi_{Y}\dd\mu & =\int_{Y}\dd\mu=\mu\left(Y\right)
+\end{align*}
+
+
+\iii Seien $Y$ und $Z$ messbar und disjunkt. Ist außerdem $f:Y\cup Z\rightarrow\mathbb{R}$
+integrabel, dann sind $f\Big|_{Y}$ und $f\Big|_{Z}$ integrabel und
+es gilt:
 \begin{align*}
 \int_{Y\cup Z}f\dd\mu & =\int_{Y}f\dd\mu+\int_{Z}f\dd\mu
 \end{align*}
@@ -2216,7 +2379,7 @@ und es gilt:
 \iii Die $L^{1}$-Norm ist eine Seminorm auf $\mathcal{L}^{1}\left(\mu\right)$.
 Das Integral ist stetig.
 
-\iii Ändert man eine integrable FUnktion auf einer Nullmenge ab,
+\iii Ändert man eine integrable Funktion auf einer Nullmenge ab,
 so ist die neue Funktion wieder integrabel und das Integral ändert
 sich nicht.
 
@@ -2225,24 +2388,32 @@ sich nicht.
 
 \subsubsection*{Beweis}
 
-Sei $f,g\in\mathcal{L}^{1}\left(X\right)$. Wähle $L^{1}$-Cauchy-Folge.
-$\left(\varphi_{n}\right)$,$\left(\gamma_{n}\right)$ von Treppenfunktionen,
-so dass:
+Seien $f,g\in\mathcal{L}^{1}\left(X\right)$. Wähle $L^{1}$-Cauchy-Folgen
+$\left(\varphi_{n}\right)_{n\in\mathbb{N}}$,$\left(\gamma_{n}\right)_{n\in\mathbb{N}}$
+von Treppenfunktionen, so dass:
 \begin{align*}
 \varphi_{n} & \rightarrow f\qquad\text{fast überall}\\
 \gamma_{n} & \rightarrow f\qquad\text{fast überall}
 \end{align*}
-Wir wissen dann, dass ${\displaystyle \int_{X}\varphi_{n}\dd\mu\rightarrow\int_{X}f\dd\mu}$,
-${\displaystyle \int_{X}\gamma_{n}\dd\mu\rightarrow\int_{X}f\dd\mu}$.
+Wir wissen dann, dass die Integrale ${\displaystyle \int_{X}\varphi_{n}\dd\mu\rightarrow\int_{X}f\dd\mu}$,
+${\displaystyle \int_{X}\gamma_{n}\dd\mu\rightarrow\int_{X}f\dd\mu}$
+konvergieren.
 
-Es genügt deshalb, die Rechenregeln für Treppenfunktionen zu überprüfen,
-gehe dann zum Limes über. z. B.: $\varphi_{n}+\gamma_{n}$ ist $L^{1}$-Cauchy-Folge
+Es genügt deshalb, die Rechenregeln für Treppenfunktionen zu überprüfen
+und dann zum Limes überzugehen.
+
+Zum Beispiel ist $\varphi_{n}+\gamma_{n}$ eine $L^{1}$-Cauchy-Folge
+und es konvergiert $\varphi_{n}+\gamma_{n}\to f+g$ fast überall,
+womit folgt:
 \begin{align*}
-\int_{X}\left(f+g\right)\dd\mu & =\lim_{n\rightarrow\infty}\int_{X}\left(\varphi_{n}+\gamma_{n}\right)\dd\mu=\lim_{n\rightarrow\infty}\left(\int_{X}\varphi_{n}\dd\mu+\int_{X}\gamma_{n}\dd\mu\right)\stackrel{\text{Konvergenzsätze für Folgen}}{=}\int_{X}f\dd\mu+\int_{X}g\dd\mu
+\int_{X}\left(f+g\right)\dd\mu & =\lim_{n\rightarrow\infty}\int_{X}\left(\varphi_{n}+\gamma_{n}\right)\dd\mu=\\
+ & =\lim_{n\rightarrow\infty}\left(\int_{X}\varphi_{n}\dd\mu+\int_{X}\gamma_{n}\dd\mu\right)\sr{=}{\text{Konvergenzsätze}}{\text{ für Folgen}}\int_{X}f\dd\mu+\int_{X}g\dd\mu
 \end{align*}
 
 
-TODO: Rest einfügen
+%DATE: Fr 11.11.2011
+
+\textcolor{green}{TODO: Rest überarbeiten}
 
 
 \subsection{Satz}
@@ -5781,7 +5952,286 @@ f_{2}\left(z\right) & =\frac{1}{2\pi\ii}\oint_{\partial B_{r}\left(0\right)}f\le
 \end{align*}
 \qqed
 
-%DATE: 
+TODO: Rest einfügen
+
+%DATE: Di 31.1.2012
+
+Wiederholung:
+
+$S\subseteq\mathbb{C}$ habe keinen Häufungspunkt, aber $S$ kann
+unendlich sein. Sei
+\begin{align*}
+f:\mathbb{C}\setminus\left\{ S\right\}  & \to\mathbb{C}
+\end{align*}
+holomorph. Die Punkte in $S$ sind die Singularitäten und diese sind
+isoliert, aber wesentliche Singularitäten sind möglich.
+
+Betrachte die geschlossene, stückweise stetig differenzierbare Kurve:
+\begin{align*}
+\gamma:\left[a,b\right] & \to\mathbb{C}\setminus\left\{ S\right\} 
+\end{align*}
+Dann gilt nach dem Residuensatz:
+\begin{align*}
+\frac{1}{2\pi\ii}\oint_{\gamma}f\left(z\right)\dd z & =\sum_{a\in S}n\left(\gamma,a\right)\cdot\text{Res}_{a}\left(f\right)
+\end{align*}
+Dabei ist
+\begin{align*}
+n\left(\gamma,a\right) & :=\frac{1}{2\pi\ii}\oint_{\gamma}\frac{\dd z}{z-a}\in\mathbb{N}
+\end{align*}
+die Windungszahl und
+\begin{align*}
+\text{Res}_{a}\left(f\right) & =\frac{1}{2\pi\ii}\oint_{\partial B_{\varepsilon}\left(a\right)}f\left(z\right)\dd z
+\end{align*}
+das Residuum, wobei $B_{\varepsilon}\left(a\right)\cap S=\left\{ a\right\} $.
+
+Laurent-Entwicklung um $a\in S$:
+\begin{align*}
+f\left(z\right) & =\sum_{n=-\infty}^{\infty}c_{n}\left(z-a\right)^{n}
+\end{align*}
+Dann ist:
+\begin{align*}
+\text{Res}_{a}\left(f\right) & =c_{-1}
+\end{align*}
+
+
+TODO: Abb1, Abb2
+
+Beispiel: ${\displaystyle \frac{1}{\sqrt{z}}}$
+\begin{align*}
+\lim_{0\not=z\to0}z\cdot\frac{1}{\sqrt{z}} & =0
+\end{align*}
+Dies ist eine hebbare Singularität. Aber:
+\begin{align*}
+\lim_{0\not=z\to0} & \frac{1}{\sqrt{z}}=\infty
+\end{align*}
+Also ist ${\displaystyle \frac{1}{\sqrt{z}}}$ auch ein Pol!
+
+Das Problem dabei ist, dass ${\displaystyle \frac{1}{\sqrt{z}}}$
+nicht in $B_{\varepsilon}\left(0\right)\setminus\left\{ 0\right\} $
+holomorph, also ist 0 keine isolierte Singularität.
+\begin{align*}
+\frac{1}{\sqrt{z}} & =z^{-\frac{1}{2}}=e^{-\frac{1}{2}\log\left(z\right)}
+\end{align*}
+Dies ist nur holomorph auf $\mathbb{C}\setminus\mathbb{R}_{0}^{-}$.
+
+Ende der Wiederholung
+
+Betrachte Integrale über die ganze reelle Achse.
+
+
+\subsection{Proposition\label{sub:Prop-IntegralReelleAchse}}
+
+Sei ${\displaystyle K\left(z\right)=\frac{P\left(z\right)}{Q\left(z\right)}}$
+eine rationale Funktion, die keine Pole auf der reellen Achse hat
+und im Unendlichen wenigstens quadratisch abfällt.
+
+Dann ist
+\begin{align*}
+\int_{-\infty}^{\infty}K\left(x\right)\dd x & =2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)>0}\text{Res}_{a}\left(K\right)
+\end{align*}
+
+
+
+\subsubsection*{Beweis}
+
+TODO: Abb3
+
+Die Funktion $K$ hat endlich viele Pole in $\mathbb{C}$, die alle
+Nullstellen von $Q$ sind.
+
+Wähle den Radius $R$ so groß, dass alle Pole in $B_{R}\left(0\right)$
+liegen, womit folgt:
+\begin{align*}
+\oint_{C_{1}\cup C_{2}}K\left(z\right)\dd z & =2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)>0}\underbrace{n\left(C_{1}\cup C_{2},a\right)}_{=1}\cdot\text{Res}_{a}\left(f\right)=2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)>0}\text{Res}_{a}\left(K\right)\\
+\Rotate{=}\qquad\\
+\int_{-R}^{R}K\left(x\right)\dd x+\int_{C_{2}}K\left(z\right)\dd z & \stackrel{R\to\infty}{\longrightarrow}\int_{-\infty}^{\infty}K\left(x\right)\dd x
+\end{align*}
+Denn es gilt:
+\begin{align*}
+\left|\int_{C_{2}}K\left(z\right)\dd z\right| & \le\underbrace{\sup_{z\in C_{2}}\left|K\left(z\right)\right|}_{\le\frac{C}{R^{2}}\text{ da \ensuremath{K}quadratisch abfällt}}\cdot\pi R\le\frac{C\pi}{R}\stackrel{R\to\infty}{\longrightarrow}0
+\end{align*}
+
+
+\qqed
+
+
+\subsection{Beispiel}
+
+Berechne:
+\begin{align*}
+\int_{-\infty}^{\infty}\frac{1}{1+x^{2}}\dd x
+\end{align*}
+Die Funktion
+\begin{align*}
+f\left(z\right) & =\frac{1}{1+z^{2}}
+\end{align*}
+hat einen Pol, falls $1+z^{2}=0$, also $z=\pm\ii$ ist.
+
+Nach der Proposition \ref{sub:Prop-IntegralReelleAchse} gilt:
+\begin{align*}
+\int_{-\infty}^{\infty}\frac{\dd x}{1+x^{2}} & =2\pi\ii\cdot\text{Res}_{\ii}\left(\frac{1}{1+x^{2}}\right)
+\end{align*}
+Berechne das Residuum:
+\begin{align*}
+f\left(z\right) & =\left(\frac{1}{z+\ii}-\frac{1}{z-\ii}\right)\cdot\frac{\ii}{2}=-\frac{\ii}{2}\frac{1}{z-\ii}+\underbrace{\frac{\ii}{2}\frac{1}{z+\ii}}_{\text{holomorph in }B_{\varepsilon}\left(\ii\right)}
+\end{align*}
+Damit folgt:
+\begin{align*}
+\text{Res}_{\ii}\left(\frac{1}{1+x^{2}}\right) & =-\frac{\ii}{2}
+\end{align*}
+Also gilt:
+\begin{align*}
+\int_{-\infty}^{\infty}\frac{1}{1+x^{2}}\dd x & =2\pi\ii\cdot\frac{-\ii}{2}=\pi
+\end{align*}
+Eine andere Möglichkeit ist die Taylorentwicklung des Nenners:
+\begin{align*}
+g\left(z\right) & =1+z^{2}=g\left(\ii\right)+g'\left(\ii\right)\left(z-\ii\right)+\mathcal{O}\left(\left(z-\ii\right)^{2}\right)=\\
+ & =0+2\ii\left(z-\ii\right)+\mathcal{O}\left(\left(z-\ii\right)^{2}\right)\\
+g'\left(z\right) & =2z
+\end{align*}
+\begin{align*}
+f\left(z\right) & =\frac{1}{g\left(z\right)}=\frac{1}{2\ii\left(z-\ii\right)+\mathcal{O}\left(\left(z-\ii\right)^{2}\right)}=\frac{1}{2\ii\left(z-\ii\right)}\underbrace{\left(\frac{1}{1+\mathcal{O}\left(z-\ii\right)}\right)}_{=:h\left(z\right)}
+\end{align*}
+Wegen
+\begin{align*}
+\lim_{z\to\ii}h\left(z\right) & =1
+\end{align*}
+ist die Singularität bei $z=\ii$ hebbar und daher $h$ holomorph
+fortsetzbar und daher als Taylorreihe darstellbar, womit folgt:
+\begin{align*}
+f\left(z\right) & =\sum_{k=-1}^{\infty}c_{k}\left(z-\ii\right)^{k}\\
+c_{k} & =\frac{1}{2\ii}\frac{h^{\left(k+1\right)}\left(\ii\right)}{\left(k+1\right)!}\\
+c_{-1} & =\frac{1}{2\ii}\cdot\frac{h\left(\ii\right)}{1}=\frac{1}{2\ii}
+\end{align*}
+
+
+Damit ergibt sich:
+\begin{align*}
+\text{Res}_{\ii}\left(f\right) & =\frac{1}{2\ii}
+\end{align*}
+
+
+
+\subsection{Proposition}
+
+Sei $K\left(x\right)$ rational, habe keine Pole auf der reellen Achse
+und falle wenigstens wie ${\displaystyle \frac{1}{x}}$ ab.
+\begin{align*}
+\int_{-\infty}^{\infty}e^{\ii x}K\left(x\right)\dd x & =2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)>0}\text{Res}_{a}\left(e^{\ii z}K\left(z\right)\right)
+\end{align*}
+
+
+
+\subsubsection*{Beweis}
+
+TODO: Abb4
+
+\begin{align*}
+\int_{C_{2}}e^{\ii z}K\left(z\right)\dd z & \le\sup_{z\in C_{2}}\left|e^{\ii z}K\left(z\right)\right|\cdot\pi R\\
+\left|e^{\ii z}\right| & =e^{\text{Re}\left(\ii z\right)}=e^{-\overbrace{\text{Im}\left(z\right)}^{\ge0}}\le1
+\end{align*}
+
+
+
+\subsection{Erinnerung \textmd{(Hauptwertintegrale)}}
+
+\begin{align*}
+\int_{-\infty}^{\infty}\frac{\overbrace{\text{pp}}^{\text{\textquotedblleft principal part\textquotedblright}}}{x}\cdot f\left(x\right)\dd x & :=\lim_{\varepsilon\to0}\left(\int_{-\infty}^{-\varepsilon}\frac{f\left(x\right)}{x}\dd x+\int_{\varepsilon}^{\infty}\frac{f\left(x\right)}{x}\dd x\right)
+\end{align*}
+
+
+
+\subsection{Proposition}
+
+Die rationale Funktion $f\left(x\right)$ habe einfache Pole bei $p_{1}<\ldots<p_{n}$
+und besitze sonst keine weiteren Pole auf der reellen Achse.
+
+Außerdem falle $f\left(x\right)$ im Unendlichen wenigstens quadratisch
+ab. Dann ist
+\begin{align*}
+\text{P-}\int_{-\infty}^{\infty}f\left(x\right)\dd x & :=\lim_{\varepsilon\to0}\int_{\mathbb{R}\setminus\left(\left[p_{1}-\varepsilon_{1},p_{1}+\varepsilon\right]\cup\ldots\cup\left[p_{n}-\varepsilon_{1},p_{n}+\varepsilon\right]\right)}f\left(x\right)\dd x=\\
+ & =2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)>0}\text{Res}_{a}\left(f\right)+\pi\ii\sum_{k=1}^{n}\text{Res}_{p_{k}}\left(f\right)
+\end{align*}
+
+
+
+\subsubsection*{Beweis}
+
+TODO: Abb5
+
+\begin{align*}
+\int_{C_{1}}f\left(z\right)\dd z & =2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)>0}\text{Res}_{a}\left(f\right)\\
+\int_{C_{2}}f\left(z\right)\dd z & =2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)\ge0}\text{Res}_{a}\left(f\right)
+\end{align*}
+\begin{align*}
+\frac{1}{2}\left(\oint_{C_{1}}+\oint_{C_{2}}\right)f\left(z\right)\dd z & =2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)\ge0}\text{Res}_{a}\left(f\right)+\ii\pi\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)\ge0}\text{Res}_{a}\left(f\right)=\\
+ & =\underbrace{\int_{C_{R}}f\left(z\right)\dd z}_{\to0\text{ für }R\to\infty}+\underbrace{\int_{\left[-R,R\right]\setminus\left(\left[p_{1}-\varepsilon_{1},p_{1}+\varepsilon\right]\cup\ldots\cup\left[p_{n}-\varepsilon_{1},p_{n}+\varepsilon\right]\right)}f\left(z\right)\dd z}_{\to\text{P-}\int_{-\infty}^{\infty}f\left(x\right)\dd x}+\sum_{k=1}^{n}\int_{D_{k}\cap D_{k}'}f\left(z\right)\dd z
+\end{align*}
+Im Limes $R\to\infty$ und dem anschließenden Limes $\varepsilon\to0$
+erhalten wir:
+\begin{align*}
+2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)>0}\text{Res}_{a}\left(f\right)+\ii\pi\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)\ge0}\text{Res}_{a}\left(f\right) & =\text{P-}\int_{-\infty}^{\infty}f\left(z\right)\dd z+\lim_{\varepsilon\to0}\sum_{k=1}^{n}\int_{D_{k}\cup D_{k}'}f\left(z\right)\dd z
+\end{align*}
+Es ist noch zu zeigen:
+\begin{align*}
+\lim_{\varepsilon\to0}\sum_{k=1}^{n}\int_{D_{k}\cup D_{k}'}f\left(z\right)\dd z & =0
+\end{align*}
+Da $f$ nur einen einfachen Pol hat, können wir $f$ um $p_{k}$ entwickeln
+\begin{align*}
+f\left(z\right) & =\frac{C_{-1}}{z-p_{k}}+g\left(z\right)
+\end{align*}
+mit einer holomorphen Funktion $g\left(z\right)$.
+\begin{align*}
+\left|\int_{D_{k}\cup D_{k}'}g\left(z\right)\dd z\right| & \le\underbrace{\sup_{\partial B_{\varepsilon}\left(p_{k}\right)}}_{\le C}\left|g\right|\cdot2\pi\varepsilon\stackrel{\varepsilon\to0}{\longrightarrow}0
+\end{align*}
+
+
+TODO: Abb6
+\begin{align*}
+\int_{D_{k}\cup D_{k}'}\frac{\dd z}{z-p_{k}} & =\log\left(z-p_{k}\right)\Big|_{z=p_{k}-\varepsilon+\ii\cdot0}^{z=p_{k}+\varepsilon}+\log\left(z-p_{k}\right)\Big|_{z=p_{k}-\varepsilon-\ii\cdot0}^{z=p_{k}+\varepsilon}=\\
+ & =\log\left(\varepsilon\right)-\left(\log\left(\varepsilon\right)+\ii\pi\right)+\log\left(\varepsilon\right)-\left(\log\left(\varepsilon\right)-\ii\pi\right)=\ii\pi-\ii\pi=0
+\end{align*}
+\qqed
+
+
+\subsection{Integrale über Intervalle}
+
+Dies geht typischerweise immer dann, wenn der Integrand periodisch
+ist und man über eine oder mehrere Perioden integriert.
+
+
+\subsubsection*{Idee}
+
+Schreibe das Integral als Konturintegral mit Hilfe von $e^{\ii t}$
+um.
+
+
+\subsection{Beispiel}
+
+Mit
+\begin{align*}
+\cos\varphi & =\frac{1}{2}\left(e^{\ii\varphi}+e^{-\ii\varphi}\right)=\frac{1}{2}\left(z+\frac{1}{z}\right)
+\end{align*}
+folgt:
+
+\begin{align*}
+\int_{0}^{2\pi}\frac{1}{\cos\left(\varphi+\ii\right)}\dd\varphi & =\begin{cases}
+z=e^{\ii\varphi}\\
+\dd z=e^{\ii\varphi}\cdot\ii\dd\varphi=\ii z\dd\varphi
+\end{cases}\Bigg\}=\\
+ & =\ointctrclockwise_{\left|z\right|=1}\frac{1}{\cos\varphi+\ii}\frac{\dd z}{\ii z}=\\
+ & =\ointctrclockwise_{\left|z\right|=1}\frac{1}{\frac{1}{2}\left(z+\frac{1}{z}\right)+\ii}\frac{\dd z}{\ii z}=-2\ii\ointctrclockwise_{\left|z\right|=1}\frac{\dd z}{z^{2}+2\ii z+1}
+\end{align*}
+Berechne die Pole:
+\begin{align*}
+z^{2}+2\ii z+1 & =0\\
+z & =-\ii\pm\sqrt{\left(\ii\right)^{2}-1}=-\ii\pm\sqrt{-2}=-\ii\pm\sqrt{2}\ii
+\end{align*}
+TODO: Abb7
+\begin{align*}
+\int_{0}^{2\pi}\frac{1}{\cos\varphi+\ii}\dd\varphi & =\left(-2\ii\right)\cdot2\pi\ii\text{Res}_{-\ii-\sqrt{2}\ii}\frac{1}{z^{2}+2\ii z+1}=\ldots
+\end{align*}
+
 
 
 \part*{Anhang\thispagestyle{empty}}

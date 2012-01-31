@@ -4917,11 +4917,20 @@ Beginne mit „einfachen“ Mengensystemen
 \end_layout
 
 \begin_layout Standard
-Endliche Vereinigung beschränkter Intervalle, also ist 
+Sei 
+\begin_inset Formula $X=\mathbb{R}$
+\end_inset
+
+.
+ Betrachte endliche Vereinigung beschränkter Intervalle:
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula $A\in\mathcal{A}$
 \end_inset
 
- darstellbar als eine disjunkte Vereinigung beschränkter Intervalle 
+ ist darstellbar als eine disjunkte Vereinigung beschränkter Intervalle
+ 
 \begin_inset Formula $I_{k}\subseteq\mathbb{R}$
 \end_inset
 
@@ -5175,7 +5184,11 @@ iii
 \begin_inset Formula $S_{n}\in\mathcal{A}$
 \end_inset
 
- mit:
+ mit 
+\begin_inset Formula $\mu\left(S_{n}\right)<\infty$
+\end_inset
+
+ und:
 \begin_inset Formula 
 \begin{align*}
 X & =\bigcup_{n=1}^{\infty}S_{n}
@@ -5216,7 +5229,7 @@ Prämaß auf
 
 \emph default
  und 
-\begin_inset Formula $\left(X,A,\mu\right)$
+\begin_inset Formula $\left(X,\mathcal{A},\mu\right)$
 \end_inset
 
  ein 
@@ -5608,6 +5621,10 @@ Dann lässt sich
 \end_inset
 
 -Algebra 
+\begin_inset Formula $\mathcal{M}\left(\mathcal{A}\right)$
+\end_inset
+
+ 
 \emph on
 erweitern
 \emph default
@@ -7121,7 +7138,7 @@ Also ist
 \end_layout
 
 \begin_layout Standard
-Zeige schließlich noch die Eindeutigkeit:
+Zu 2.: Zeige schließlich noch die Eindeutigkeit:
 \end_layout
 
 \begin_layout Standard
@@ -7722,29 +7739,345 @@ Im Folgenden sei
  ein Maßraum, zum Beispiel das eindimensionale Lebesgue-Maß.
 \end_layout
 
+\begin_layout Subsection
+Bemerkung und Definition 
+\series medium
+(Treppenfunktion, Integral, Norm)
+\end_layout
+
+\begin_layout Standard
+Eine Funktion 
+\begin_inset Formula $\varphi:X\to\mathbb{R}$
+\end_inset
+
+ heißt 
+\emph on
+Treppenfunktion
+\emph default
+, falls 
+\begin_inset Formula $\left|\varphi\left(X\right)\right|<\infty$
+\end_inset
+
+ ist und für alle 
+\begin_inset Formula $c\in\mathbb{R}\setminus\left\{ 0\right\} $
+\end_inset
+
+ das Urbild 
+\begin_inset Formula $\varphi^{-1}\left(\left\{ c\right\} \right)$
+\end_inset
+
+ endliches Maß hat.
+\end_layout
+
 \begin_layout Standard
 
 \color green
-TODO: Rest überarbeiten
-\end_layout
-
-\begin_layout Subsection
-Definition 
-\series medium
-(Treppenfunktion)
+TODO: Abbildung Treppenfunktion einfügen
 \end_layout
 
 \begin_layout Standard
-TODO: Rest einfügen
+Die Treppenfunktionen bilden einen Vektorraum 
+\begin_inset Formula $\mathcal{T}\left(X\right)$
+\end_inset
+
+, denn für Treppenfunktionen 
+\begin_inset Formula $\varphi,\psi\in\mathcal{T}\left(X\right)$
+\end_inset
+
+ gilt:
+\begin_inset Formula 
+\begin{align*}
+\left(\varphi+\psi\right)\left(x\right) & =\varphi\left(x\right)+\psi\left(x\right)\\
+\left|\left(\varphi+\psi\right)\left(X\right)\right| & \le\left|\varphi\left(X\right)\right|+\left|\psi\left(X\right)\right|<\infty
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\left(\varphi+\psi\right)^{-1}\left(\left\{ c\right\} \right) & \subseteq\varphi^{-1}\left(\mathbb{R}\setminus\left\{ 0\right\} \right)+\psi^{-1}\left(\mathbb{R}\setminus\left\{ 0\right\} \right)\\
+\mu\left(\left(\varphi+\psi\right)^{-1}\left(\left\{ c\right\} \right)\right) & \le\mu\left(\varphi^{-1}\left(\mathbb{R}\setminus\left\{ 0\right\} \right)+\psi^{-1}\left(\mathbb{R}\setminus\left\{ 0\right\} \right)\right)\le\\
+ & \le\underbrace{\sum_{c\in\varphi\left(X\right)}}_{\text{endlich}}\underbrace{\mu\left(\varphi^{-1}\left(c\right)\right)}_{<\infty}+\underbrace{\sum_{c\in\psi\left(X\right)}}_{\text{endlich}}\underbrace{\mu\left(\psi^{-1}\left(c\right)\right)}_{<\infty}<\infty
+\end{align*}
+
+\end_inset
+
+Die Abgeschlossenheit unter Skalarmultiplikation ist klar.
+\end_layout
+
+\begin_layout Standard
+Für Treppenfunktionen definiere das Integral:
+\begin_inset Formula 
+\begin{align*}
+\int_{X}\varphi\dd\mu & :=\sum_{y\in\varphi\left(X\right)}y\cdot\mu\left(\varphi^{-1}\left(y\right)\right)<\infty
+\end{align*}
+
+\end_inset
+
+Wir wollen diesen Integralbegriff durch Approximation auf allgemeine Funktionen
+ ausdehnen.
+\begin_inset Formula 
+\begin{align*}
+\left|\left|\varphi\right|\right|_{1} & :=\int_{X}\left|\varphi\right|\dd\mu
+\end{align*}
+
+\end_inset
+
+heißt 
+\emph on
+
+\begin_inset Formula $L^{1}$
+\end_inset
+
+-„Norm
+\emph default
+“.
+\end_layout
+
+\begin_layout Subsubsection*
+Idee
+\end_layout
+
+\begin_layout Standard
+Betrachte die „Cauchy-Folge“ 
+\begin_inset Formula $\varphi_{n}\in\mathcal{T}\left(X\right)$
+\end_inset
+
+ für die es für alle 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+ schon ein 
+\begin_inset Formula $N\in\mathbb{N}$
+\end_inset
+
+ mit 
+\begin_inset Formula $\left|\left|\varphi_{n}-\varphi_{m}\right|\right|\le\varepsilon$
+\end_inset
+
+ für alle 
+\begin_inset Formula $n,m\in\mathbb{N}_{>N}$
+\end_inset
+
+ gibt.
+\end_layout
+
+\begin_layout Standard
+Hoffnung: 
+\begin_inset Formula $\varphi_{n}\stackrel{?}{\to}\varphi$
+\end_inset
+
+ und 
+\begin_inset Formula ${\displaystyle \int_{X}\varphi\dd\mu:=\lim_{n\to\infty}\int_{X}\varphi_{n}\dd\mu}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Ist 
+\begin_inset Formula $\left|\left|.\right|\right|_{1}$
+\end_inset
+
+ eine Norm?
+\end_layout
+
+\begin_layout Standard
+Aus der Linearität der Summe und den entsprechenden Eigenschaften des Betrages
+ folgt, wie direkt zu überprüfen ist, dass gilt:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\left|\left|\varphi\right|\right|_{1}\ge0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\left|\left|\lambda\varphi\right|\right|_{1}=\left|\lambda\right|\cdot\left|\left|\varphi\right|\right|_{1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\left|\left|\varphi+\psi\right|\right|\le\left|\left|\varphi\right|\right|+\left|\left|\psi\right|\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Also ist 
+\begin_inset Formula $\left|\left|.\right|\right|_{1}$
+\end_inset
+
+ eine Seminorm.
+\end_layout
+
+\begin_layout Standard
+Definitheit:
+\begin_inset Formula 
+\begin{align*}
+\left|\left|\varphi\right|\right|_{1}=0 & \quad\Leftrightarrow\quad\int_{X}\left|\varphi\right|\dd\mu=0\quad\Leftrightarrow\quad\sum_{y\in\varphi\left(X\right)}\left|y\right|\cdot\underbrace{\mu\left(\varphi^{-1}\left(y\right)\right)}_{\text{muss }0\text{ sein für }y\not=0}=0\quad\Leftrightarrow\\
+ & \quad\Leftrightarrow\quad\varphi\left(x\right)=0\ \fall_{x\in X\setminus N}\text{ für eine Menge }N\text{ mit }\mu\left(N\right)=0\quad\Leftrightarrow\\
+ & \quad\Leftrightarrow\quad\varphi=0\text{ fast überall}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Also ist 
+\begin_inset Formula $\left|\left|.\right|\right|_{1}$
+\end_inset
+
+ nicht definit und damit keine Norm.
+\begin_inset Formula 
+\begin{align*}
+\mathcal{N}\left(\mu\right) & :=\left\{ \varphi\in\mathcal{T}\left(X\right)\,|\,\left|\left|\varphi\right|\right|_{1}=0\right\} 
+\end{align*}
+
+\end_inset
+
+ist ein Teilraum von 
+\begin_inset Formula $\mathcal{T}:=\mathcal{T}\left(\mu\right):=\mathcal{T}\left(X\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Bemerkung
+\end_layout
+
+\begin_layout Standard
+Auf 
+\begin_inset Formula $\modulo{\mathcal{T}\left(\mu\right)}{\mathcal{N}\left(\mu\right)}$
+\end_inset
+
+ ist 
+\begin_inset Formula $\left|\left|.\right|\right|_{1}$
+\end_inset
+
+ eine Norm.
+\end_layout
+
+\begin_layout Standard
+Aber: 
+\begin_inset Formula $\left(\mathcal{T},\left|\left|.\right|\right|_{1}\right)$
+\end_inset
+
+ ist nicht vollständig.
+\end_layout
+
+\begin_layout Standard
+Man könnte nun abstrakt vervollständigen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Di 8.11.2011
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
 Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Lem-TeilfolgePunktweise"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 Sei 
-\begin_inset Formula $\left(\varphi_{n}\right)$
+\begin_inset Formula $\left(\varphi_{n}\right)_{n\in\mathbb{N}}$
 \end_inset
 
  eine 
@@ -7760,7 +8093,7 @@ Sei
 
 \begin_layout Standard
 Dann gibt es eine Teilfolge 
-\begin_inset Formula $\left(\varphi_{n_{j}}\right)$
+\begin_inset Formula $\left(\varphi_{n_{j}}\right)_{j\in\mathbb{N}}$
 \end_inset
 
 , die fast überall punktweise konvergent ist, also:
@@ -7775,31 +8108,27 @@ Dann gibt es eine Teilfolge
 \end_layout
 
 \begin_layout Standard
-Zusätzlich
+Zusätzlich existiert für alle 
+\begin_inset Formula $\varepsilon\in\mathbb{R}_{>0}$
+\end_inset
+
+ ein 
+\begin_inset Formula $Z\subseteq X$
+\end_inset
+
+ mit 
+\begin_inset Formula $\mu\left(Z\right)<\varepsilon$
+\end_inset
+
+, sodass
 \begin_inset Formula 
 \begin{align*}
-\exs_{\varepsilon>0}\exs_{Z\subseteq X} & \text{ mit }\mu\left(Z\right)<\varepsilon
+\varphi_{n_{j}}\Big|_{X\setminus Z} & \rightrightarrows\varphi\Big|_{X\setminus Z}
 \end{align*}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-sodass
-\begin_inset Formula 
-\begin{align*}
-\varphi_{n_{j}}\bigg|_{X\setminus Z} & \stackrel{\rightarrow}{\rightarrow}\varphi\bigg|_{X\setminus Z}
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-TODO: Beweis einfügen....
+gleichmäßig konvergiert.
 \end_layout
 
 \begin_layout Standard
@@ -7807,19 +8136,255 @@ Beachte: Für eine
 \begin_inset Formula $L^{1}$
 \end_inset
 
--C.F.
- 
-\begin_inset Formula $\left(\varphi_{n}\right)$
+-Cauchy-Folge 
+\begin_inset Formula $\left(\varphi_{n}\right)_{n\in\mathbb{N}}$
 \end_inset
 
-, 
+ mit 
+\begin_inset Formula $\varphi_{n}\in\mathcal{T}$
+\end_inset
+
+ ist
+\begin_inset Formula 
+\begin{align*}
+z_{n} & :=\int_{X}\varphi_{n}\dd\mu
+\end{align*}
+
+\end_inset
+
+eine Cauchy-Folge in 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+, weil für 
+\begin_inset Formula $m\in\mathbb{N}_{>n}$
+\end_inset
+
+ gilt:
+\begin_inset Formula 
+\begin{align*}
+\left|z_{n}-z_{m}\right| & =\left|\int_{X}\varphi_{n}\dd\mu-\int_{X}\varphi_{m}\dd\mu\right|=\left|\int_{X}\left(\varphi_{n}-\varphi_{m}\right)\dd\mu\right|\le\\
+ & \le\int_{X}\left|\varphi_{n}-\varphi_{m}\right|\dd\mu=\left|\left|\varphi_{n}-\varphi_{m}\right|\right|\to0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Wähle induktiv eine Teilfolge (zur Einfachheit wieder mit 
+\begin_inset Formula $\left(\varphi_{j}\right)_{j\in\mathbb{N}}$
+\end_inset
+
+ bezeichnet), sodass für alle 
+\begin_inset Formula $n,k\in\mathbb{N}$
+\end_inset
+
+ mit 
+\begin_inset Formula $n\ge k$
+\end_inset
+
+ gilt:
+\begin_inset Formula 
+\begin{align*}
+\left|\left|\varphi_{n}-\varphi_{k}\right|\right|_{1} & \le2^{-2k}
+\end{align*}
+
+\end_inset
+
+Setze:
+\begin_inset Formula 
+\begin{align*}
+Y_{n} & :=\left\{ x\,|\,\left|\varphi_{n+1}\left(x\right)-\varphi_{n}\left(x\right)\right|\ge2^{-n}\right\} 
+\end{align*}
+
+\end_inset
+
+Die 
+\begin_inset Formula $Y_{n}$
+\end_inset
+
+ sind messbar, denn die Funktion 
+\begin_inset Formula $\varphi_{n+1}-\varphi_{n}\in\mathcal{T}$
+\end_inset
+
+ messbar ist und daher auch 
+\begin_inset Formula $\left|\varphi_{n+1}-\varphi_{n}\right|$
+\end_inset
+
+, weswegen das Urbild
+\begin_inset Formula 
+\begin{align*}
+\left|\varphi_{n+1}-\varphi_{n}\right|^{-1}\left(\left[2^{-n},\infty\right]\right)
+\end{align*}
+
+\end_inset
+
+der Borelmenge 
+\begin_inset Formula $\left[2^{-n},\infty\right]$
+\end_inset
+
+ messbar ist.
+ Es folgt:
+\begin_inset Formula 
+\begin{align*}
+2^{-n}\cdot\mu\left(Y_{n}\right) & \le\int_{Y_{n}}\left|\varphi_{n+1}-\varphi_{n}\right|\dd\mu\le\int_{X}\left|\varphi_{n+1}-\varphi_{n}\right|\dd\mu\le2^{-2n}\\
+\Rightarrow\quad\mu\left(Y_{k}\right) & \le2^{-k}
+\end{align*}
+
+\end_inset
+
+Setze nun 
+\begin_inset Formula ${\displaystyle Z_{k}:=\bigcup_{n=k}^{\infty}Y_{n}}$
+\end_inset
+
+, dann folgt:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(Z_{k}\right) & \stackrel{\sigma\text{-Additivität}}{\le}\sum_{n=k}^{\infty}\mu\left(Y_{n}\right)\le\sum_{n=k}^{\infty}2^{-n}=2^{-k}\cdot\frac{1}{1-\frac{1}{2}}=2\cdot2^{-k}
+\end{align*}
+
+\end_inset
+
+Sei 
+\begin_inset Formula $x\not\in Z_{k}$
+\end_inset
+
+, dann ist 
+\begin_inset Formula $x\not\in Y_{n}$
+\end_inset
+
+ für alle 
+\begin_inset Formula $n\ge k$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\left|\varphi_{n+1}\left(x\right)-\varphi_{n}\left(x\right)\right| & \le2^{-n}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Reihe 
+\begin_inset Formula ${\displaystyle \sum_{n=k}^{\infty}\left|\varphi_{n+1}-\varphi_{n}\right|}$
+\end_inset
+
+ konvergiert absolut und gleichmäßig in 
+\begin_inset Formula $x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Also ist 
+\begin_inset Formula $\varphi_{n}\left(x\right)$
+\end_inset
+
+ eine Cauchy-Folge in 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+, gleichmäßig in 
+\begin_inset Formula $x$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\varphi_{n}\left(x\right) & \rightrightarrows f\left(x\right)\qquad\fall_{x\not\in Z_{k}}
+\end{align*}
+
+\end_inset
+
+Für 
+\begin_inset Formula $m\ge n$
+\end_inset
+
+ gilt:
+\begin_inset Formula 
+\begin{align*}
+\left|\varphi_{n}\left(x\right)-\varphi_{m}\left(x\right)\right| & \le\left|\varphi_{n}\left(x\right)-\varphi_{n-1}\left(x\right)\right|+\ldots+\left|\varphi_{m+}\left(x\right)-\varphi_{m}\left(x\right)\right|=\\
+ & =\sum_{k=m}^{n-1}\left|\varphi_{k+1}\left(x\right)-\varphi_{k}\left(x\right)\right|\le\sum_{k=m}^{\infty}\left|\varphi_{k+1}\left(x\right)-\varphi_{k}\left(x\right)\right|\le\sum_{k=m}^{\infty}2^{-k}=2\cdot2^{-m}
+\end{align*}
+
+\end_inset
+
+Bilde nun 
+\begin_inset Formula ${\displaystyle Z=\bigcap_{k=0}^{\infty}Z_{k}}$
+\end_inset
+
+.
+ Für jedes 
+\begin_inset Formula $x\not\in Z$
+\end_inset
+
+ gibt es ein 
+\begin_inset Formula $k:=k\left(x\right)$
+\end_inset
+
+ mit 
+\begin_inset Formula $x\in Z_{k}$
+\end_inset
+
+ und deswegen konvergiert
+\begin_inset Formula 
+\begin{align*}
+\varphi_{k}\left(x\right)\to f\left(x\right) & :=\lim_{n\to\infty}\varphi_{n}\left(x\right)\in\mathbb{R}
+\end{align*}
+
+\end_inset
+
+punktweise.
+\begin_inset Formula 
+\begin{align*}
+\mu\left(Z\right) & =\mu\left(\bigcap_{k=0}^{\infty}Z_{k}\right)\le\mu\left(Z_{k}\right)\le2\cdot2^{-k}\stackrel{k\to\infty}{\longrightarrow}0
+\end{align*}
+
+\end_inset
+
+Da 
+\begin_inset Formula $k$
+\end_inset
+
+ beliebig ist, folgt 
+\begin_inset Formula $\mu\left(Z\right)=0$
+\end_inset
+
+, also ist 
+\begin_inset Formula $Z$
+\end_inset
+
+ eine Lebesguesche Nullmenge.
+\end_layout
+
+\begin_layout Standard
+Beachte: Für eine 
+\begin_inset Formula $L^{1}$
+\end_inset
+
+-Cauchy-Folge 
+\begin_inset Formula $\left(\varphi_{n}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+ mit 
 \begin_inset Formula $\varphi_{n}\in\mathcal{T}\left(X\right)$
 \end_inset
 
  ist
 \begin_inset Formula 
 \begin{align*}
-Z_{N} & :=\int_{X}\varphi_{n}\dd\mu
+z_{n} & :=\int_{X}\varphi_{n}\dd\mu
 \end{align*}
 
 \end_inset
@@ -7829,17 +8394,18 @@ eine Folge reeller Zahlen.
 
 \begin_layout Standard
 Diese Folge 
-\begin_inset Formula $\left(z_{n}\right)$
+\begin_inset Formula $\left(z_{n}\right)_{n\in\mathbb{N}}$
 \end_inset
 
  ist auch eine Cauchy-Folge in 
 \begin_inset Formula $\mathbb{R}$
 \end_inset
 
-, weil:
+, weil gilt:
 \begin_inset Formula 
 \begin{align*}
-\left|z_{n}-z_{m}\right| & =\left|\int_{X}\varphi_{n}\dd\mu-\int_{X}\varphi_{m}\dd\mu\right|=\left|\int_{X}\left(\varphi_{n}-\varphi_{m}\right)\dd\mu\right|\le\int_{X}\left|\varphi_{n}-\varphi_{m}\right|\dd\mu
+\left|z_{n}-z_{m}\right| & =\left|\int_{X}\varphi_{n}\dd\mu-\int_{X}\varphi_{m}\dd\mu\right|=\left|\int_{X}\left(\varphi_{n}-\varphi_{m}\right)\dd\mu\right|\le\\
+ & \le\int_{X}\left|\varphi_{n}-\varphi_{m}\right|\dd\mu=\left|\left|\varphi_{n}-\varphi_{m}\right|\right|_{1}\stackrel{n,m\to\infty}{\longrightarrow}0
 \end{align*}
 
 \end_inset
@@ -7848,7 +8414,7 @@ Diese Folge
 \end_layout
 
 \begin_layout Standard
-Wir können also bilden:
+Wir können also folgenden Grenzwert bilden:
 \begin_inset Formula 
 \begin{align*}
 \lim_{n\rightarrow\infty} & \int_{X}\varphi_{n}\dd\mu
@@ -7860,7 +8426,9 @@ Wir können also bilden:
 \end_layout
 
 \begin_layout Subsection
-Definition
+Definition 
+\series medium
+(Lebesgue-integrabel, Integral)
 \end_layout
 
 \begin_layout Standard
@@ -7868,12 +8436,16 @@ Eine Funktion
 \begin_inset Formula $f:X\rightarrow\mathbb{R}$
 \end_inset
 
- heißt (lebesgue-)integrabel, wenn es eine 
+ heißt 
+\emph on
+(Lebesgue-)integrabel
+\emph default
+, wenn es eine 
 \begin_inset Formula $L^{1}$
 \end_inset
 
 -Cauchy-Folge 
-\begin_inset Formula $\left(\varphi_{n}\right)$
+\begin_inset Formula $\left(\varphi_{n}\right)_{n\in\mathbb{N}}$
 \end_inset
 
  von Treppenfunktionen gibt, die fast überall punktweise gegen 
@@ -7884,7 +8456,7 @@ Eine Funktion
  Die Zahl
 \begin_inset Formula 
 \begin{align*}
-\int_{X}f\dd\mu & :=\lim_{n\rightarrow\infty}\int_{X}\varphi_{n}\dd\mu
+\int_{X}f\dd\mu & :=\lim_{n\rightarrow\infty}\int_{X}\varphi_{n}\dd\mu<\infty
 \end{align*}
 
 \end_inset
@@ -7906,11 +8478,11 @@ Integral
 \end_inset
 
 .
- Für 
+ Für eine messbare Menge 
 \begin_inset Formula $Y\subseteq X$
 \end_inset
 
- messbar setzt man
+ setzt man
 \begin_inset Formula 
 \begin{align*}
 \int_{Y}f\dd\mu & =\int\chi_{Y}\cdot f\dd\mu
@@ -7929,7 +8501,7 @@ wobei
 
 \end_inset
 
-die charakteristische Funkiton von 
+die charakteristische Funktion von 
 \begin_inset Formula $Y$
 \end_inset
 
@@ -7941,7 +8513,7 @@ Beachte, dass
 \begin_inset Formula $\chi_{Y}\cdot\varphi_{n}\rightarrow\chi_{Y}\cdot\varphi$
 \end_inset
 
- fast überall.
+ fast überall konvergiert.
 \end_layout
 
 \begin_layout Subsection
@@ -7961,8 +8533,8 @@ Seien
 \begin_inset Formula $L^{1}$
 \end_inset
 
--Cauchy-Folgen von Treppenfunktinen, die beide fast überall punktweise gegen
- eine FUnktion 
+-Cauchy-Folgen von Treppenfunktionen, die beide fast überall punktweise
+ gegen eine Funktion 
 \begin_inset Formula $f:X\rightarrow\mathbb{R}$
 \end_inset
 
@@ -8003,11 +8575,11 @@ Setze
 \begin_inset Formula $\tau_{n}\in\mathcal{T}\left(X\right)$
 \end_inset
 
-, 
-\begin_inset Formula $\left(\tau_{n}\right)$
+ und 
+\begin_inset Formula $\left(\tau_{n}\right)_{n\in\mathbb{N}}$
 \end_inset
 
- ist 
+ eine 
 \begin_inset Formula $L^{1}$
 \end_inset
 
@@ -8031,7 +8603,7 @@ Zu zeigen ist:
 \begin_inset Formula $\left|\left|\tau_{n}\right|\right|_{1}\rightarrow0$
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Itemize
@@ -8039,33 +8611,33 @@ Es genügt, dies für eine Teilfolge zu zeigen, denn nehme an, dass
 \begin_inset Formula $\left|\left|\tau_{n_{j}}\right|\right|\rightarrow0$
 \end_inset
 
-.
+ konvergiert.
 \begin_inset Newline newline
 \end_inset
 
 Sei 
-\begin_inset Formula $\varepsilon>0$
+\begin_inset Formula $\varepsilon\in\mathbb{R}_{>0}$
 \end_inset
 
 .
  Da 
-\begin_inset Formula $\left(\tau_{n}\right)$
+\begin_inset Formula $\left(\tau_{n}\right)_{n\in\mathbb{N}}$
 \end_inset
 
  eine 
 \begin_inset Formula $L^{1}$
 \end_inset
 
--Cauchy-Folge sind, gibt es ein 
-\begin_inset Formula $N$
+-Cauchy-Folge ist, gibt es ein 
+\begin_inset Formula $N\in\mathbb{N}$
 \end_inset
 
  mit 
-\begin_inset Formula $\left|\left|\tau_{n}-\tau_{m}\right|\right|\le\frac{\varepsilon}{2}$
+\begin_inset Formula ${\displaystyle \left|\left|\tau_{n}-\tau_{m}\right|\right|\le\frac{\varepsilon}{2}}$
 \end_inset
 
  für alle 
-\begin_inset Formula $n,m\in\mathbb{N}$
+\begin_inset Formula $n,m\in\mathbb{N}_{\ge N}$
 \end_inset
 
 .
@@ -8077,17 +8649,21 @@ Da
 \end_inset
 
  gibt es ein 
-\begin_inset Formula $K>N$
+\begin_inset Formula $K\in\mathbb{N}_{>N}$
 \end_inset
 
  mit 
-\begin_inset Formula $\left|\left|\tau_{K}\right|\right|\le\frac{\varepsilon}{2}$
+\begin_inset Formula ${\displaystyle \left|\left|\tau_{K}\right|\right|\le\frac{\varepsilon}{2}}$
 \end_inset
 
-.
+, womit für alle 
+\begin_inset Formula $n\in\mathbb{N}_{\ge N}$
+\end_inset
+
+ folgt:
 \begin_inset Formula 
 \begin{align*}
-\Rightarrow\quad\left|\left|\tau_{n}\right|\right| & \le\left|\left|\tau_{n}-\tau_{K}\right|\right|+\left|\left|\tau_{K}\right|\right|\le\varepsilon\qquad\fall_{n\ge N}
+\left|\left|\tau_{n}\right|\right| & \le\left|\left|\tau_{n}-\tau_{K}\right|\right|+\left|\left|\tau_{K}\right|\right|\le\varepsilon
 \end{align*}
 
 \end_inset
@@ -8097,22 +8673,26 @@ Da
 
 \begin_layout Itemize
 Sei 
-\begin_inset Formula $\varepsilon>0$
+\begin_inset Formula $\varepsilon\in\mathbb{R}_{>0}$
 \end_inset
 
  und 
-\begin_inset Formula $k$
+\begin_inset Formula $k\in\mathbb{N}$
 \end_inset
 
  fest gewählt.
  Wähle die Teilfolge (die wir zur Einfachheit wieder mit 
-\begin_inset Formula $\left(\tau_{n}\right)$
+\begin_inset Formula $\left(\tau_{n}\right)_{n\in\mathbb{N}}$
 \end_inset
 
- bezeichnen) so, dass:
+ bezeichnen) so, dass für alle 
+\begin_inset Formula $n\in\mathbb{N}_{\ge k}$
+\end_inset
+
+ gilt:
 \begin_inset Formula 
 \begin{align*}
-\left|\left|\tau_{n}-\tau_{k}\right|\right| & \le\varepsilon\qquad\fall_{n\ge k}
+\left|\left|\tau_{n}-\tau_{k}\right|\right| & \le\varepsilon
 \end{align*}
 
 \end_inset
@@ -8121,7 +8701,7 @@ Sei
 \begin_inset Formula $\tau_{n}$
 \end_inset
 
- konvergiert gleichmäsig auf 
+ konvergiert gleichmäßig auf 
 \begin_inset Formula $X\setminus Z$
 \end_inset
 
@@ -8130,35 +8710,30 @@ Sei
 \end_inset
 
 .
-\begin_inset Newline newline
-\end_inset
-
-(genau wie in Lemma 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-ref{1.3.2}
-\end_layout
+ (genau wie in Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Lem-TeilfolgePunktweise"
 
 \end_inset
 
 )
+\begin_inset Newline newline
+\end_inset
+
+Es gilt:
 \begin_inset Formula 
 \begin{align*}
-\left|\left|\tau_{k}\right|\right|_{\infty} & =\sup\left(\tau_{k}\right)<\infty
+\left|\left|\tau_{k}\right|\right|_{\infty} & :=\sup\left(\tau_{k}\right)<\infty
 \end{align*}
 
 \end_inset
 
-da 
+Denn 
 \begin_inset Formula $\tau_{k}$
 \end_inset
 
- als Treppenfunktion nur endlich viele Funktionswerte annimmt.
+ nimmt als Treppenfunktion nur endlich viele Funktionswerte an.
  Setze:
 \begin_inset Formula 
 \begin{align*}
@@ -8170,7 +8745,7 @@ M & =\left\{ x|\tau_{k}\left(x\right)\not=0\right\} \qquad\text{(wieder für uns
 
 \begin_inset Formula 
 \begin{align*}
-\left|\left|\tau_{n}\right|\right|_{1} & =\int_{X}\left|\tau_{n}\dd\mu\right|\le\int_{Z}\left|\tau_{n}\right|\dd\mu+\int_{M\setminus Z}\left|\tau_{n}\right|\dd\mu+\int_{X\setminus M}\left|\tau_{n}\right|\dd\mu
+\left|\left|\tau_{n}\right|\right|_{1} & =\int_{X}\left|\tau_{n}\right|\dd\mu\le\int_{Z}\left|\tau_{n}\right|\dd\mu+\int_{M\setminus Z}\left|\tau_{n}\right|\dd\mu+\int_{X\setminus M}\left|\tau_{n}\right|\dd\mu
 \end{align*}
 
 \end_inset
@@ -8180,7 +8755,7 @@ M & =\left\{ x|\tau_{k}\left(x\right)\not=0\right\} \qquad\text{(wieder für uns
 \begin{align*}
 \int_{Z}\left|\tau_{n}\right|\dd\mu & \le\int_{Z}\left|\tau_{n}-\tau_{k}\right|+\int_{Z}\left|\tau_{k}\right|\le\left|\left|\tau_{n}-\tau_{k}\right|\right|_{1}+\underbrace{\sup\left|\tau_{k}\right|\cdot\mu\left(Z\right)}_{<\varepsilon\text{ nach Konstruktion von }Z\text{ auf }M\setminus Z}\le\\
  & \le\left|\left|\tau_{n}-\tau_{k}\right|\right|_{1}+\varepsilon\\
-\int_{M\setminus Z}\left|\tau_{n}\right|\dd\mu & \le\sup_{M\setminus Z}\left|\tau_{n}\right|\cdot\underbrace{\mu\left(M\right)}_{<\infty\text{, da \ensuremath{\tau_{k}}keine TF}}\stackrel{n\rightarrow\infty}{\rightarrow}0\qquad\text{da }\tau_{n}\stackrel{\rightarrow}{\rightarrow}0
+\int_{M\setminus Z}\left|\tau_{n}\right|\dd\mu & \le\sup_{M\setminus Z}\left|\tau_{n}\right|\cdot\underbrace{\mu\left(M\right)}_{<\infty\text{, da \ensuremath{\tau_{n}}Treppenfkt.}}\stackrel{n\rightarrow\infty}{\rightarrow}0\qquad\text{da }\tau_{n}\stackrel{\rightarrow}{\rightarrow}0
 \end{align*}
 
 \end_inset
@@ -8188,7 +8763,7 @@ M & =\left\{ x|\tau_{k}\left(x\right)\not=0\right\} \qquad\text{(wieder für uns
 
 \begin_inset Formula 
 \begin{align*}
-\int_{X\setminus M}\left|\tau_{n}\right|\dd\mu & =\int_{X\setminus M}\left|\left|\tau_{n}-\tau_{k}\right|\right|\dd\mu\le\left|\left|\tau_{n}-\tau_{k}\right|\right|
+\int_{X\setminus M}\left|\tau_{n}\right|\dd\mu & =\int_{X\setminus M}\left|\tau_{n}-\tau_{k}\right|\dd\mu\le\left|\left|\tau_{n}-\tau_{k}\right|\right|
 \end{align*}
 
 \end_inset
@@ -8201,7 +8776,7 @@ M & =\left\{ x|\tau_{k}\left(x\right)\not=0\right\} \qquad\text{(wieder für uns
 \begin_inset Formula $X\setminus M$
 \end_inset
 
-)
+ ist.)
 \begin_inset Newline newline
 \end_inset
 
@@ -8222,9 +8797,14 @@ Indem wir
 \end_inset
 
 .
+ Damit folgt für alle 
+\begin_inset Formula $n\in\mathbb{N}_{>N\left(k\right)}$
+\end_inset
+
+:
 \begin_inset Formula 
 \begin{align*}
-\Rightarrow\quad\left|\left|\tau_{n}\right|\right|_{1} & \le4\varepsilon\qquad\fall_{n>N\left(k\right)}
+\left|\left|\tau_{n}\right|\right|_{1} & \le4\varepsilon
 \end{align*}
 
 \end_inset
@@ -8309,47 +8889,18 @@ iii
 
 \end_inset
 
- 
+ Sind 
 \begin_inset Formula $f,g\in\mathcal{L}^{1}$
 \end_inset
 
- und 
+ und ist 
 \begin_inset Formula $f\ge g$
 \end_inset
 
- fast überall.
- 
-\begin_inset Formula $\Rightarrow$
-\end_inset
-
- 
-\begin_inset Formula ${\displaystyle \int_{X}f\dd\mu}\ge\int_{X}g\dd\mu\qquad$
-\end_inset
-
- (Monotonie)
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-iii
-\end_layout
-
-\end_inset
-
- Sei 
-\begin_inset Formula $Y\in X$
-\end_inset
-
- messbar und von endlichem Maß.
+ fast überall, so folgt: 
 \begin_inset Formula 
 \begin{align*}
-\Rightarrow\qquad\int_{X}\chi_{Y}\dd\mu & =\int_{Y}\dd\mu=\mu\left(Y\right)
+{\displaystyle \int_{X}f\dd\mu} & \ge\int_{X}g\dd\mu\qquad\text{(Monotonie)}
 \end{align*}
 
 \end_inset
@@ -8370,8 +8921,40 @@ iii
 
 \end_inset
 
- Sind 
-\begin_inset Formula $Y,Z$
+ Sei 
+\begin_inset Formula $Y\subseteq X$
+\end_inset
+
+ messbar und von endlichem Maß, dann gilt:
+\begin_inset Formula 
+\begin{align*}
+\int_{X}\chi_{Y}\dd\mu & =\int_{Y}\dd\mu=\mu\left(Y\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ Seien 
+\begin_inset Formula $Y$
+\end_inset
+
+ und 
+\begin_inset Formula $Z$
 \end_inset
 
  messbar und disjunkt.
@@ -8379,12 +8962,12 @@ iii
 \begin_inset Formula $f:Y\cup Z\rightarrow\mathbb{R}$
 \end_inset
 
- integrable, dann sind 
-\begin_inset Formula $f\bigg|_{Y}$
+ integrabel, dann sind 
+\begin_inset Formula $f\Big|_{Y}$
 \end_inset
 
  und 
-\begin_inset Formula $f\bigg|_{Z}$
+\begin_inset Formula $f\Big|_{Z}$
 \end_inset
 
  integrabel und es gilt:
@@ -8468,7 +9051,7 @@ iii
 
 \end_inset
 
- Ändert man eine integrable FUnktion auf einer Nullmenge ab, so ist die
+ Ändert man eine integrable Funktion auf einer Nullmenge ab, so ist die
  neue Funktion wieder integrabel und das Integral ändert sich nicht.
 \end_layout
 
@@ -8493,7 +9076,7 @@ Beweis
 \end_layout
 
 \begin_layout Standard
-Sei 
+Seien 
 \begin_inset Formula $f,g\in\mathcal{L}^{1}\left(X\right)$
 \end_inset
 
@@ -8502,13 +9085,12 @@ Sei
 \begin_inset Formula $L^{1}$
 \end_inset
 
--Cauchy-Folge.
- 
-\begin_inset Formula $\left(\varphi_{n}\right)$
+-Cauchy-Folgen 
+\begin_inset Formula $\left(\varphi_{n}\right)_{n\in\mathbb{N}}$
 \end_inset
 
 ,
-\begin_inset Formula $\left(\gamma_{n}\right)$
+\begin_inset Formula $\left(\gamma_{n}\right)_{n\in\mathbb{N}}$
 \end_inset
 
  von Treppenfunktionen, so dass:
@@ -8520,7 +9102,7 @@ Sei
 
 \end_inset
 
-Wir wissen dann, dass 
+Wir wissen dann, dass die Integrale 
 \begin_inset Formula ${\displaystyle \int_{X}\varphi_{n}\dd\mu\rightarrow\int_{X}f\dd\mu}$
 \end_inset
 
@@ -8528,25 +9110,32 @@ Wir wissen dann, dass
 \begin_inset Formula ${\displaystyle \int_{X}\gamma_{n}\dd\mu\rightarrow\int_{X}f\dd\mu}$
 \end_inset
 
-.
+ konvergieren.
 \end_layout
 
 \begin_layout Standard
-Es genügt deshalb, die Rechenregeln für Treppenfunktionen zu überprüfen,
- gehe dann zum Limes über.
- z.
- B.: 
+Es genügt deshalb, die Rechenregeln für Treppenfunktionen zu überprüfen
+ und dann zum Limes überzugehen.
+\end_layout
+
+\begin_layout Standard
+Zum Beispiel ist 
 \begin_inset Formula $\varphi_{n}+\gamma_{n}$
 \end_inset
 
- ist 
+ eine 
 \begin_inset Formula $L^{1}$
 \end_inset
 
--Cauchy-Folge
+-Cauchy-Folge und es konvergiert 
+\begin_inset Formula $\varphi_{n}+\gamma_{n}\to f+g$
+\end_inset
+
+ fast überall, womit folgt:
 \begin_inset Formula 
 \begin{align*}
-\int_{X}\left(f+g\right)\dd\mu & =\lim_{n\rightarrow\infty}\int_{X}\left(\varphi_{n}+\gamma_{n}\right)\dd\mu=\lim_{n\rightarrow\infty}\left(\int_{X}\varphi_{n}\dd\mu+\int_{X}\gamma_{n}\dd\mu\right)\stackrel{\text{Konvergenzsätze für Folgen}}{=}\int_{X}f\dd\mu+\int_{X}g\dd\mu
+\int_{X}\left(f+g\right)\dd\mu & =\lim_{n\rightarrow\infty}\int_{X}\left(\varphi_{n}+\gamma_{n}\right)\dd\mu=\\
+ & =\lim_{n\rightarrow\infty}\left(\int_{X}\varphi_{n}\dd\mu+\int_{X}\gamma_{n}\dd\mu\right)\sr{=}{\text{Konvergenzsätze}}{\text{ für Folgen}}\int_{X}f\dd\mu+\int_{X}g\dd\mu
 \end{align*}
 
 \end_inset
@@ -8555,7 +9144,23 @@ Es genügt deshalb, die Rechenregeln für Treppenfunktionen zu überprüfen,
 \end_layout
 
 \begin_layout Standard
-TODO: Rest einfügen
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Fr 11.11.2011
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Rest überarbeiten
 \end_layout
 
 \begin_layout Subsection
@@ -20160,13 +20765,686 @@ qqed
 \end_layout
 
 \begin_layout Standard
+TODO: Rest einfügen
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-%DATE: 
+%DATE: Di 31.1.2012
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Wiederholung:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $S\subseteq\mathbb{C}$
+\end_inset
+
+ habe keinen Häufungspunkt, aber 
+\begin_inset Formula $S$
+\end_inset
+
+ kann unendlich sein.
+ Sei
+\begin_inset Formula 
+\begin{align*}
+f:\mathbb{C}\setminus\left\{ S\right\}  & \to\mathbb{C}
+\end{align*}
+
+\end_inset
+
+holomorph.
+ Die Punkte in 
+\begin_inset Formula $S$
+\end_inset
+
+ sind die Singularitäten und diese sind isoliert, aber wesentliche Singularitäte
+n sind möglich.
+\end_layout
+
+\begin_layout Standard
+Betrachte die geschlossene, stückweise stetig differenzierbare Kurve:
+\begin_inset Formula 
+\begin{align*}
+\gamma:\left[a,b\right] & \to\mathbb{C}\setminus\left\{ S\right\} 
+\end{align*}
+
+\end_inset
+
+Dann gilt nach dem Residuensatz:
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{2\pi\ii}\oint_{\gamma}f\left(z\right)\dd z & =\sum_{a\in S}n\left(\gamma,a\right)\cdot\text{Res}_{a}\left(f\right)
+\end{align*}
+
+\end_inset
+
+Dabei ist
+\begin_inset Formula 
+\begin{align*}
+n\left(\gamma,a\right) & :=\frac{1}{2\pi\ii}\oint_{\gamma}\frac{\dd z}{z-a}\in\mathbb{N}
+\end{align*}
+
+\end_inset
+
+die Windungszahl und
+\begin_inset Formula 
+\begin{align*}
+\text{Res}_{a}\left(f\right) & =\frac{1}{2\pi\ii}\oint_{\partial B_{\varepsilon}\left(a\right)}f\left(z\right)\dd z
+\end{align*}
+
+\end_inset
+
+das Residuum, wobei 
+\begin_inset Formula $B_{\varepsilon}\left(a\right)\cap S=\left\{ a\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Laurent-Entwicklung um 
+\begin_inset Formula $a\in S$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\sum_{n=-\infty}^{\infty}c_{n}\left(z-a\right)^{n}
+\end{align*}
+
+\end_inset
+
+Dann ist:
+\begin_inset Formula 
+\begin{align*}
+\text{Res}_{a}\left(f\right) & =c_{-1}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+TODO: Abb1, Abb2
+\end_layout
+
+\begin_layout Standard
+Beispiel: 
+\begin_inset Formula ${\displaystyle \frac{1}{\sqrt{z}}}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\lim_{0\not=z\to0}z\cdot\frac{1}{\sqrt{z}} & =0
+\end{align*}
+
+\end_inset
+
+Dies ist eine hebbare Singularität.
+ Aber:
+\begin_inset Formula 
+\begin{align*}
+\lim_{0\not=z\to0} & \frac{1}{\sqrt{z}}=\infty
+\end{align*}
+
+\end_inset
+
+Also ist 
+\begin_inset Formula ${\displaystyle \frac{1}{\sqrt{z}}}$
+\end_inset
+
+ auch ein Pol!
+\end_layout
+
+\begin_layout Standard
+Das Problem dabei ist, dass 
+\begin_inset Formula ${\displaystyle \frac{1}{\sqrt{z}}}$
+\end_inset
+
+ nicht in 
+\begin_inset Formula $B_{\varepsilon}\left(0\right)\setminus\left\{ 0\right\} $
+\end_inset
+
+ holomorph, also ist 0 keine isolierte Singularität.
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{\sqrt{z}} & =z^{-\frac{1}{2}}=e^{-\frac{1}{2}\log\left(z\right)}
+\end{align*}
+
+\end_inset
+
+Dies ist nur holomorph auf 
+\begin_inset Formula $\mathbb{C}\setminus\mathbb{R}_{0}^{-}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Ende der Wiederholung
+\end_layout
+
+\begin_layout Standard
+Betrachte Integrale über die ganze reelle Achse.
+\end_layout
+
+\begin_layout Subsection
+Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Prop-IntegralReelleAchse"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula ${\displaystyle K\left(z\right)=\frac{P\left(z\right)}{Q\left(z\right)}}$
+\end_inset
+
+ eine rationale Funktion, die keine Pole auf der reellen Achse hat und im
+ Unendlichen wenigstens quadratisch abfällt.
+\end_layout
+
+\begin_layout Standard
+Dann ist
+\begin_inset Formula 
+\begin{align*}
+\int_{-\infty}^{\infty}K\left(x\right)\dd x & =2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)>0}\text{Res}_{a}\left(K\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+TODO: Abb3
+\end_layout
+
+\begin_layout Standard
+Die Funktion 
+\begin_inset Formula $K$
+\end_inset
+
+ hat endlich viele Pole in 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+, die alle Nullstellen von 
+\begin_inset Formula $Q$
+\end_inset
+
+ sind.
+\end_layout
+
+\begin_layout Standard
+Wähle den Radius 
+\begin_inset Formula $R$
+\end_inset
+
+ so groß, dass alle Pole in 
+\begin_inset Formula $B_{R}\left(0\right)$
+\end_inset
+
+ liegen, womit folgt:
+\begin_inset Formula 
+\begin{align*}
+\oint_{C_{1}\cup C_{2}}K\left(z\right)\dd z & =2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)>0}\underbrace{n\left(C_{1}\cup C_{2},a\right)}_{=1}\cdot\text{Res}_{a}\left(f\right)=2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)>0}\text{Res}_{a}\left(K\right)\\
+\Rotate{=}\qquad\\
+\int_{-R}^{R}K\left(x\right)\dd x+\int_{C_{2}}K\left(z\right)\dd z & \stackrel{R\to\infty}{\longrightarrow}\int_{-\infty}^{\infty}K\left(x\right)\dd x
+\end{align*}
+
+\end_inset
+
+Denn es gilt:
+\begin_inset Formula 
+\begin{align*}
+\left|\int_{C_{2}}K\left(z\right)\dd z\right| & \le\underbrace{\sup_{z\in C_{2}}\left|K\left(z\right)\right|}_{\le\frac{C}{R^{2}}\text{ da \ensuremath{K}quadratisch abfällt}}\cdot\pi R\le\frac{C\pi}{R}\stackrel{R\to\infty}{\longrightarrow}0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Beispiel
+\end_layout
+
+\begin_layout Standard
+Berechne:
+\begin_inset Formula 
+\begin{align*}
+\int_{-\infty}^{\infty}\frac{1}{1+x^{2}}\dd x
+\end{align*}
+
+\end_inset
+
+Die Funktion
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\frac{1}{1+z^{2}}
+\end{align*}
+
+\end_inset
+
+hat einen Pol, falls 
+\begin_inset Formula $1+z^{2}=0$
+\end_inset
+
+, also 
+\begin_inset Formula $z=\pm\ii$
+\end_inset
+
+ ist.
+\end_layout
+
+\begin_layout Standard
+Nach der Proposition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Prop-IntegralReelleAchse"
+
+\end_inset
+
+ gilt:
+\begin_inset Formula 
+\begin{align*}
+\int_{-\infty}^{\infty}\frac{\dd x}{1+x^{2}} & =2\pi\ii\cdot\text{Res}_{\ii}\left(\frac{1}{1+x^{2}}\right)
+\end{align*}
+
+\end_inset
+
+Berechne das Residuum:
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\left(\frac{1}{z+\ii}-\frac{1}{z-\ii}\right)\cdot\frac{\ii}{2}=-\frac{\ii}{2}\frac{1}{z-\ii}+\underbrace{\frac{\ii}{2}\frac{1}{z+\ii}}_{\text{holomorph in }B_{\varepsilon}\left(\ii\right)}
+\end{align*}
+
+\end_inset
+
+Damit folgt:
+\begin_inset Formula 
+\begin{align*}
+\text{Res}_{\ii}\left(\frac{1}{1+x^{2}}\right) & =-\frac{\ii}{2}
+\end{align*}
+
+\end_inset
+
+Also gilt:
+\begin_inset Formula 
+\begin{align*}
+\int_{-\infty}^{\infty}\frac{1}{1+x^{2}}\dd x & =2\pi\ii\cdot\frac{-\ii}{2}=\pi
+\end{align*}
+
+\end_inset
+
+Eine andere Möglichkeit ist die Taylorentwicklung des Nenners:
+\begin_inset Formula 
+\begin{align*}
+g\left(z\right) & =1+z^{2}=g\left(\ii\right)+g'\left(\ii\right)\left(z-\ii\right)+\mathcal{O}\left(\left(z-\ii\right)^{2}\right)=\\
+ & =0+2\ii\left(z-\ii\right)+\mathcal{O}\left(\left(z-\ii\right)^{2}\right)\\
+g'\left(z\right) & =2z
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\frac{1}{g\left(z\right)}=\frac{1}{2\ii\left(z-\ii\right)+\mathcal{O}\left(\left(z-\ii\right)^{2}\right)}=\frac{1}{2\ii\left(z-\ii\right)}\underbrace{\left(\frac{1}{1+\mathcal{O}\left(z-\ii\right)}\right)}_{=:h\left(z\right)}
+\end{align*}
+
+\end_inset
+
+Wegen
+\begin_inset Formula 
+\begin{align*}
+\lim_{z\to\ii}h\left(z\right) & =1
+\end{align*}
+
+\end_inset
+
+ist die Singularität bei 
+\begin_inset Formula $z=\ii$
+\end_inset
+
+ hebbar und daher 
+\begin_inset Formula $h$
+\end_inset
+
+ holomorph fortsetzbar und daher als Taylorreihe darstellbar, womit folgt:
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\sum_{k=-1}^{\infty}c_{k}\left(z-\ii\right)^{k}\\
+c_{k} & =\frac{1}{2\ii}\frac{h^{\left(k+1\right)}\left(\ii\right)}{\left(k+1\right)!}\\
+c_{-1} & =\frac{1}{2\ii}\cdot\frac{h\left(\ii\right)}{1}=\frac{1}{2\ii}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Damit ergibt sich:
+\begin_inset Formula 
+\begin{align*}
+\text{Res}_{\ii}\left(f\right) & =\frac{1}{2\ii}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Proposition
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $K\left(x\right)$
+\end_inset
+
+ rational, habe keine Pole auf der reellen Achse und falle wenigstens wie
+ 
+\begin_inset Formula ${\displaystyle \frac{1}{x}}$
+\end_inset
+
+ ab.
+\begin_inset Formula 
+\begin{align*}
+\int_{-\infty}^{\infty}e^{\ii x}K\left(x\right)\dd x & =2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)>0}\text{Res}_{a}\left(e^{\ii z}K\left(z\right)\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+TODO: Abb4
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\int_{C_{2}}e^{\ii z}K\left(z\right)\dd z & \le\sup_{z\in C_{2}}\left|e^{\ii z}K\left(z\right)\right|\cdot\pi R\\
+\left|e^{\ii z}\right| & =e^{\text{Re}\left(\ii z\right)}=e^{-\overbrace{\text{Im}\left(z\right)}^{\ge0}}\le1
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Erinnerung 
+\series medium
+(Hauptwertintegrale)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\int_{-\infty}^{\infty}\frac{\overbrace{\text{pp}}^{\text{“principal part”}}}{x}\cdot f\left(x\right)\dd x & :=\lim_{\varepsilon\to0}\left(\int_{-\infty}^{-\varepsilon}\frac{f\left(x\right)}{x}\dd x+\int_{\varepsilon}^{\infty}\frac{f\left(x\right)}{x}\dd x\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Proposition
+\end_layout
+
+\begin_layout Standard
+Die rationale Funktion 
+\begin_inset Formula $f\left(x\right)$
+\end_inset
+
+ habe einfache Pole bei 
+\begin_inset Formula $p_{1}<\ldots<p_{n}$
+\end_inset
+
+ und besitze sonst keine weiteren Pole auf der reellen Achse.
+\end_layout
+
+\begin_layout Standard
+Außerdem falle 
+\begin_inset Formula $f\left(x\right)$
+\end_inset
+
+ im Unendlichen wenigstens quadratisch ab.
+ Dann ist
+\begin_inset Formula 
+\begin{align*}
+\text{P-}\int_{-\infty}^{\infty}f\left(x\right)\dd x & :=\lim_{\varepsilon\to0}\int_{\mathbb{R}\setminus\left(\left[p_{1}-\varepsilon_{1},p_{1}+\varepsilon\right]\cup\ldots\cup\left[p_{n}-\varepsilon_{1},p_{n}+\varepsilon\right]\right)}f\left(x\right)\dd x=\\
+ & =2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)>0}\text{Res}_{a}\left(f\right)+\pi\ii\sum_{k=1}^{n}\text{Res}_{p_{k}}\left(f\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+TODO: Abb5
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\int_{C_{1}}f\left(z\right)\dd z & =2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)>0}\text{Res}_{a}\left(f\right)\\
+\int_{C_{2}}f\left(z\right)\dd z & =2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)\ge0}\text{Res}_{a}\left(f\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{2}\left(\oint_{C_{1}}+\oint_{C_{2}}\right)f\left(z\right)\dd z & =2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)\ge0}\text{Res}_{a}\left(f\right)+\ii\pi\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)\ge0}\text{Res}_{a}\left(f\right)=\\
+ & =\underbrace{\int_{C_{R}}f\left(z\right)\dd z}_{\to0\text{ für }R\to\infty}+\underbrace{\int_{\left[-R,R\right]\setminus\left(\left[p_{1}-\varepsilon_{1},p_{1}+\varepsilon\right]\cup\ldots\cup\left[p_{n}-\varepsilon_{1},p_{n}+\varepsilon\right]\right)}f\left(z\right)\dd z}_{\to\text{P-}\int_{-\infty}^{\infty}f\left(x\right)\dd x}+\sum_{k=1}^{n}\int_{D_{k}\cap D_{k}'}f\left(z\right)\dd z
+\end{align*}
+
+\end_inset
+
+Im Limes 
+\begin_inset Formula $R\to\infty$
+\end_inset
+
+ und dem anschließenden Limes 
+\begin_inset Formula $\varepsilon\to0$
+\end_inset
+
+ erhalten wir:
+\begin_inset Formula 
+\begin{align*}
+2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)>0}\text{Res}_{a}\left(f\right)+\ii\pi\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)\ge0}\text{Res}_{a}\left(f\right) & =\text{P-}\int_{-\infty}^{\infty}f\left(z\right)\dd z+\lim_{\varepsilon\to0}\sum_{k=1}^{n}\int_{D_{k}\cup D_{k}'}f\left(z\right)\dd z
+\end{align*}
+
+\end_inset
+
+Es ist noch zu zeigen:
+\begin_inset Formula 
+\begin{align*}
+\lim_{\varepsilon\to0}\sum_{k=1}^{n}\int_{D_{k}\cup D_{k}'}f\left(z\right)\dd z & =0
+\end{align*}
+
+\end_inset
+
+Da 
+\begin_inset Formula $f$
+\end_inset
+
+ nur einen einfachen Pol hat, können wir 
+\begin_inset Formula $f$
+\end_inset
+
+ um 
+\begin_inset Formula $p_{k}$
+\end_inset
+
+ entwickeln
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\frac{C_{-1}}{z-p_{k}}+g\left(z\right)
+\end{align*}
+
+\end_inset
+
+mit einer holomorphen Funktion 
+\begin_inset Formula $g\left(z\right)$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\left|\int_{D_{k}\cup D_{k}'}g\left(z\right)\dd z\right| & \le\underbrace{\sup_{\partial B_{\varepsilon}\left(p_{k}\right)}}_{\le C}\left|g\right|\cdot2\pi\varepsilon\stackrel{\varepsilon\to0}{\longrightarrow}0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+TODO: Abb6
+\begin_inset Formula 
+\begin{align*}
+\int_{D_{k}\cup D_{k}'}\frac{\dd z}{z-p_{k}} & =\log\left(z-p_{k}\right)\Big|_{z=p_{k}-\varepsilon+\ii\cdot0}^{z=p_{k}+\varepsilon}+\log\left(z-p_{k}\right)\Big|_{z=p_{k}-\varepsilon-\ii\cdot0}^{z=p_{k}+\varepsilon}=\\
+ & =\log\left(\varepsilon\right)-\left(\log\left(\varepsilon\right)+\ii\pi\right)+\log\left(\varepsilon\right)-\left(\log\left(\varepsilon\right)-\ii\pi\right)=\ii\pi-\ii\pi=0
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Integrale über Intervalle
+\end_layout
+
+\begin_layout Standard
+Dies geht typischerweise immer dann, wenn der Integrand periodisch ist und
+ man über eine oder mehrere Perioden integriert.
+\end_layout
+
+\begin_layout Subsubsection*
+Idee
+\end_layout
+
+\begin_layout Standard
+Schreibe das Integral als Konturintegral mit Hilfe von 
+\begin_inset Formula $e^{\ii t}$
+\end_inset
+
+ um.
+\end_layout
+
+\begin_layout Subsection
+Beispiel
+\end_layout
+
+\begin_layout Standard
+Mit
+\begin_inset Formula 
+\begin{align*}
+\cos\varphi & =\frac{1}{2}\left(e^{\ii\varphi}+e^{-\ii\varphi}\right)=\frac{1}{2}\left(z+\frac{1}{z}\right)
+\end{align*}
+
+\end_inset
+
+folgt:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\int_{0}^{2\pi}\frac{1}{\cos\left(\varphi+\ii\right)}\dd\varphi & =\begin{cases}
+z=e^{\ii\varphi}\\
+\dd z=e^{\ii\varphi}\cdot\ii\dd\varphi=\ii z\dd\varphi
+\end{cases}\Bigg\}=\\
+ & =\ointctrclockwise_{\left|z\right|=1}\frac{1}{\cos\varphi+\ii}\frac{\dd z}{\ii z}=\\
+ & =\ointctrclockwise_{\left|z\right|=1}\frac{1}{\frac{1}{2}\left(z+\frac{1}{z}\right)+\ii}\frac{\dd z}{\ii z}=-2\ii\ointctrclockwise_{\left|z\right|=1}\frac{\dd z}{z^{2}+2\ii z+1}
+\end{align*}
+
+\end_inset
+
+Berechne die Pole:
+\begin_inset Formula 
+\begin{align*}
+z^{2}+2\ii z+1 & =0\\
+z & =-\ii\pm\sqrt{\left(\ii\right)^{2}-1}=-\ii\pm\sqrt{-2}=-\ii\pm\sqrt{2}\ii
+\end{align*}
+
+\end_inset
+
+TODO: Abb7
+\begin_inset Formula 
+\begin{align*}
+\int_{0}^{2\pi}\frac{1}{\cos\varphi+\ii}\dd\varphi & =\left(-2\ii\right)\cdot2\pi\ii\text{Res}_{-\ii-\sqrt{2}\ii}\frac{1}{z^{2}+2\ii z+1}=\ldots
+\end{align*}
 
 \end_inset
 
