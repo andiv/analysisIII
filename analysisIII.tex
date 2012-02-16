@@ -2274,7 +2274,7 @@ Wir können also folgenden Grenzwert bilden:
 
 
 
-\subsection{Definition \textmd{(Lebesgue-integrabel, Integral)}}
+\subsection{Definition \textmd{(Lebesgue-integrabel, Integral)\label{sub:Def-Lebesgue-integrabel}}}
 
 Eine Funktion $f:X\rightarrow\mathbb{R}$ heißt \emph{(Lebesgue-)integrabel},
 wenn es eine $L^{1}$-Cauchy-Folge $\left(\varphi_{n}\right)_{n\in\mathbb{N}}$
@@ -2725,7 +2725,7 @@ Derartige Probleme kann man auf zwei Arten vermeiden:
 \end{abclist}
 
 
-\subsection{Theorem\textmd{ (monotone Konvergenz, Beppo-Levi)}}
+\subsection{Theorem\textmd{ (monotone Konvergenz, Beppo-Levi)\label{sub:Thm-monotoneKonvergenz}}}
 
 Sei $\left(f_{n}\right)_{n\in\mathbb{N}}$ mit $f_{n}\in L^{1}\left(X\right)$
 eine fast überall monoton steigende Folge integrabler Funktionen,
@@ -2836,124 +2836,134 @@ also nicht anwendbar ist.
 %DATE: Di 15.11.2011
 
 
-\section[Integration nicht-neg. Fkt.]{Integration nicht-negativer Funktionen}
-
-\textcolor{green}{TODO: Rest überarbeiten}
-
-Sei $f:X\rightarrow\left[0,\infty\right]\subseteq\overline{\mathbb{R}}$
-messbar (muss nicht in $L^{1}$ sein!). Setze:
-\begin{align}
-\int_{X}f\dd\mu & :=\sup\left\{ \int_{X}\varphi\dd\mu\text{ mit }\varphi\text{ Stufenfunktion und }0\le\varphi\le f\right\} \qquad\left(*\right)
-\end{align}
+\section[Integration nicht neg. Fkt.]{Integration nicht negativer Funktionen}
 
 
+\subsection{Definition \textmd{(Stufenfunktion, Treppenfunktion)}}
 
-\subsubsection*{Definition}
-
-$\varphi$ ist eine Stufenfunktion, falls $\varphi:X\rightarrow\overline{\mathbb{R}}$
-messbar und $\#\varphi\left(X\right)<\infty$.
-
-$\varphi$ ist eine Treppenfunktion, falls $\varphi$ Stufenfunktion
-und $\mu\left(\varphi^{-1}\left(c\right)\right)<\infty$ für alle
-$c\not=0$.
-
-z. B. $\varphi\left(x\right)=\begin{cases}
-0 & \text{falls }0\le x\le1\\
-1 & \text{sonst}
-\end{cases}$ ist eine Stufenfunktion, aber keine Treppenfunktion.
+Eine Funktion $\varphi:X\to\overline{\mathbb{R}}$ ist eine \emph{Stufenfunktion},
+falls $\varphi$ messbar und $\abs{\varphi\left(X\right)}<\infty$
+ist. Für eine Stufenfunktion definiert man das Integral:
 \begin{align*}
 \int_{X}\varphi\dd\mu & :=\sum_{y\in\varphi\left(x\right)}y\cdot\mu\left(\varphi^{-1}\left(y\right)\right)
 \end{align*}
 
 
-Treppenfunktion $\varphi:X\rightarrow\mathbb{R}$: $y\in\mathbb{R}$,
-$\mu\left(\varphi^{-1}\left(y\right)\right)<\infty$ $\Rightarrow\int_{X}\varphi\dd\mu<\infty$.
+Eine Funktion $\varphi:X\to\overline{\mathbb{R}}$ ist eine \emph{Treppenfunktion},
+falls $\varphi$ eine Stufenfunktion und für alle $c\not=0$ schon
+$\mu\left(\varphi^{-1}\left(c\right)\right)<\infty$ gilt.
 
-Stufenfunktion: $\varphi:X\rightarrow\left[0,\infty\right]$: $y\in\left[0,\infty\right]$,
-$\mu\left(\varphi^{-1}\left(y\right)\right)\le\infty$ $\Rightarrow\int_{X}\varphi\dd\mu\le\infty$
-ist wohldefiniert.
+Sei $f:X\rightarrow\left[0,\infty\right]\subseteq\overline{\mathbb{R}}$
+(das heißt $f$ ist nicht negativ und darf den Wert $\infty$ annehmen)
+messbar, aber nicht notwendigerweise in $L^{1}$, dann definiere:
+
+\begin{align}
+\int_{X}f\dd\mu & :=\sup\left\{ \int_{X}\varphi\dd\mu\Big|\varphi\text{ ist eine Stufenfunktion und }0\le\varphi\le f\right\} \label{eq:IntegralDefinitionNichtNegFkt}
+\end{align}
+
+
+
+\subsection{Beispiel}
+
+Für $X=\mathbb{R}$ ist
+\begin{align*}
+\varphi\left(x\right) & =\begin{cases}
+0 & \text{falls }0\le x\le1\\
+1 & \text{sonst}
+\end{cases}
+\end{align*}
+eine Stufenfunktion, aber keine Treppenfunktion.
+\begin{align*}
+\int_{X}\varphi\dd\mu & =\sum_{y\in\varphi\left(x\right)}y\cdot\mu\left(\varphi^{-1}\left(y\right)\right)=0\cdot1+1\cdot\infty=\infty
+\end{align*}
+Für eine Treppenfunktion $\varphi:X\rightarrow\mathbb{R}$ gilt für
+alle $y\in\mathbb{R}\setminus\left\{ 0\right\} $ schon $\mu\left(\varphi^{-1}\left(y\right)\right)<\infty$,
+weswegen $\int_{X}\varphi\dd\mu<\infty$ ist.
+
+Für eine Stufenfunktion $\varphi:X\rightarrow\left[0,\infty\right]$
+gilt für alle $y\in\left[0,\infty\right]$ schon $\mu\left(\varphi^{-1}\left(y\right)\right)\le\infty$
+und $\int_{X}\varphi\dd\mu\le\infty$ ist wohldefiniert.
 
 
 \subsection{Satz}
 
-Ist $f\in L^{1}$, so stimmt $\left(*\right)$ tatsächlich mit der
-früheren Integral-Definition (von Definition $\ref{}1.3.3$) überein.
+Ist $f\in L^{1}$, so stimmt \eqref{eq:IntegralDefinitionNichtNegFkt}
+tatsächlich mit der früheren Definition des Integrals in \ref{sub:Def-Lebesgue-integrabel}
+überein.
 
 
 \subsubsection*{Beweis}
 
-Sei $f\in L^{1}$. Wegen der Monotonie gilt:
+Sei $f\in L^{1}$. Wegen der Monotonie gilt für alle Stufenfunktionen
+$\varphi$ mit $0\le\varphi\le f$ schon
 \begin{align*}
-\int_{X}\varphi\dd\mu & \le\int_{X}f\dd\mu\qquad\fall_{\varphi}\text{ mit }0\le\varphi\le f
+\int_{X}\varphi\dd\mu & \le\int_{X}f\dd\mu
 \end{align*}
 
 
-Gehe zum Supremum über
+und nach dem Übergang zum Supremum:
 \begin{align*}
-\int_{X}f\dd\mu & \ge\sup\left\{ \int_{X}\varphi\dd\mu|\varphi\text{ ist Stufenfunktion und }0\le\varphi\le f\right\} 
+\int_{X}f\dd\mu & \ge\sup\left\{ \int_{X}\varphi\dd\mu\middle|\varphi\text{ ist Stufenfunktion und }0\le\varphi\le f\right\} 
 \end{align*}
 
 
-Umgekehrt gibt es nach Satz $\ref{}1.1.8$ eine aufsteigende Folge
-$\left(\varphi_{n}\right)$ von Treppenfunktionen (also auch Stufenfunktionen),
-die fast überall gegen $f$ konvergieren. Nach dem Theorem von der
-monotonen Konvergenz ist dann:
+Umgekehrt gibt es nach Satz \ref{sub:Satz-messFolgeStufenfkt} eine
+aufsteigende Folge $\left(\varphi_{n}\right)_{n\in\mathbb{N}}$ von
+Stufenfunktionen, die fast überall gegen $f$ konvergiert. Nach dem
+Theorem von der monotonen Konvergenz gilt dann:
 \begin{align*}
-\int_{X}f\dd\mu & \le\sup\left\{ \int_{X}\varphi\dd\mu|\varphi\text{ ist Stufenfunktion und }0\le\varphi\le f\right\} 
+\int_{X}f\dd\mu & \le\sup\left\{ \int_{X}\varphi\dd\mu\middle|\varphi\text{ ist Stufenfunktion und }0\le\varphi\le f\right\} 
 \end{align*}
-
-
 \qqed
 
-$f:X\rightarrow\left[0,\infty\right]$ messbar.
-
-\begin{align*}
-\int_{X}f\dd\mu & :=\sup\left\{ \int_{X}\varphi\dd\mu|\varphi\text{ ist Stufenfunktion und }0\le\varphi\le f\right\} 
-\end{align*}
+Also ist \eqref{eq:IntegralDefinitionNichtNegFkt} tatsächlich eine
+Erweiterung des Integralbegriffs.
 
 
+\subsection{Beispiel}
 
-\subsubsection*{Beispiel}
-
+Betrachte die Funktion:
 \begin{align*}
 f\left(x\right) & =\begin{cases}
-\frac{1}{x^{\text{\texttwosuperior}}} & \text{falls }x\not=0\\
+\frac{1}{x^{2}} & \text{falls }x\not=0\\
 \infty & \text{falls }x=0
 \end{cases}
 \end{align*}
 
 
+Dann gilt für das Integral:
 \begin{align*}
 \int_{-\infty}^{\infty}f\left(x\right)\dd\mu & =+\infty
 \end{align*}
-Denn:
+\textcolor{green}{TODO: Abb2 einfügen}
 
-TODO Abb 2
+Denn es gilt:
 
 \begin{align*}
-\int_{\mathbb{R}}\varphi_{n}\dd\mu & =n^{2}\cdot\frac{2}{n}=2n\stackrel{n\rightarrow\infty}{\rightarrow}\infty
+\int_{\mathbb{R}}\varphi_{n}\dd\mu & =n^{2}\cdot\frac{2}{n}=2n\xrightarrow{n\rightarrow\infty}\infty
 \end{align*}
 
 
-Die Rechenregeln für Integrale übertragen sich alle, wenn man (konsequent)
-$0\cdot\infty=0$ als Regel verwendet.
+Die Rechenregeln für Integrale übertragen sich alle, wenn man sinnvoll
+mit \quotedblbase{}$\infty$\textquotedblleft{} umgeht, also (konsequent)
+$0\cdot\infty=0$ als Regel verwendet. Beachte, dass $\infty-\infty$
+nicht definiert ist.
 
-z. B. 
+Betrachte zum Beispiel die Funktion:
+
 \begin{align*}
-f\left(x\right) & =\begin{cases}
-+\infty & \text{falls }x\in\mathbb{Q}\\
+f:\left[0,1\right] & \rightarrow\left[0,\infty\right]\\
+x & \mapsto\begin{cases}
+\infty & \text{falls }x\in\mathbb{Q}\\
 0 & \text{sonst}
 \end{cases}
-\end{align*}
-\begin{align*}
-f:\left[0,1\right]\rightarrow\left[0,\infty\right]
 \end{align*}
 
 
 $\int_{X}f\dd\mu=0$, da jede Stufenfunktion $\varphi$ mit $0\le\varphi\le f$
 identische verschwindet.
 \begin{align*}
-\int_{X}f\dd\mu & =\sum_{y\in f\left(x\right)}y\cdot\mu\left(f^{-1}\left(y\right)\right)=\infty\cdot\mu\left(\mathbb{Q}\cap\left[0,1\right]\right)+0\cdot\mu\left(\left(\mathbb{R}\setminus\mathbb{Q}\right)\cap\left[0,1\right]\right)=\infty\cdot0+0\cdot\infty=0
+\int_{X}f\dd\mu & =\sum_{y\in f\left(X\right)}y\cdot\mu\left(f^{-1}\left(y\right)\right)=\infty\cdot\mu\left(\mathbb{Q}\cap\left[0,1\right]\right)+0\cdot\mu\left(\left(\mathbb{R}\setminus\mathbb{Q}\right)\cap\left[0,1\right]\right)=\infty\cdot0+0\cdot\infty=0
 \end{align*}
 
 
@@ -2963,7 +2973,7 @@ identische verschwindet.
 Sei $f_{n}:X\rightarrow\left[0,\infty\right]$ eine monoton aufsteigende
 Folge messbarer Funktionen mit:
 \begin{align*}
-f\left(x\right) & =\sup_{n}f_{n}\left(x\right)
+f\left(x\right) & =\sup_{n\in\mathbb{N}}f_{n}\left(x\right)
 \end{align*}
 
 
@@ -2977,15 +2987,15 @@ Dann ist:
 \subsubsection*{Beweis}
 
 Ist die linke Seite endlich, so sind alle $f_{n}$ fast überall endlich,
-wende Theorem $\ref{}1.4.2$ an.
+und man kann Theorem \ref{sub:Thm-monotoneKonvergenz} anwenden.
 
 Ist die linke Seite unendlich, so wegen der Monotonie auch die rechte
-Seite.
-
-\qqed
+Seite.\qqed
 
 
 \section[Zsh. zum Riemann-Integral]{Zusammenhang zum Riemann-Integral}
+
+\textcolor{green}{TODO: Rest überarbeiten}
 
 Sei $I=\left[a,b\right]\subset\mathbb{R}$ kompaktes Intervall und
 $f:I\rightarrow\mathbb{R}$ beschränkt.
