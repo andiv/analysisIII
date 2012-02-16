@@ -1,4 +1,4 @@
-%% LyX 2.0.2 created this file.  For more info, see http://www.lyx.org/.
+%% LyX 2.0.1 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
 \documentclass[11pt,english,ngerman]{report}
 \usepackage[T1]{fontenc}
@@ -41,10 +41,10 @@
 \@ifundefined{date}{}{\date{}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 \usepackage{tikz}
-\usetikzlibrary{matrix,arrows,calc}
-\usepackage{latexsym,stmaryrd,stackrel,array,tabularx,multirow}
+%\usepackage{tikz-3dplot}
+\usetikzlibrary{matrix,arrows,calc,decorations.pathmorphing,snakes}
+\usepackage{latexsym,stmaryrd,stackrel,array,tabularx,multirow,icomma,braket,polynom,cancel}
 \usepackage[explicit]{titlesec}
-%\usepackage{polynom} % momentan nicht benötigt
 
 % Inhaltsverzeichnis
 \usepackage{tocloft}
@@ -62,19 +62,12 @@
 \renewcommand{\cftsubsubsecindent}{9 em}
 \renewcommand{\cftsubsubsecnumwidth}{4.5 em}
 
-% Kommandos mit optionalem Argument (für Lyx)
-\newcommand{\sr}[3]{\stackrel[#3]{#2}{#1}}
-
 % Mathe-Operatoren
-\DeclareMathOperator*{\exs}{\exists}
-\DeclareMathOperator*{\exsg}{\exists!}
-\DeclareMathOperator*{\fall}{\forall}
-\DeclareMathOperator*{\bcupd}{\dot{\bigcup}}
-\DeclareMathOperator*{\bcapd}{\dot{\bigcap}}
-
-% Eigene Abkürzungen
-\newcommand{\dd}{\textnormal{d}}
-\newcommand{\ii}{\textbf{i}}
+\DeclareMathOperator*{\exsop}{\exists}
+\DeclareMathOperator*{\exsgop}{\exists!}
+\DeclareMathOperator*{\fallop}{\forall}
+\DeclareMathOperator*{\bcupdop}{\dot{\bigcup}}
+\DeclareMathOperator*{\bcapdop}{\dot{\bigcap}}
 
 % Rotieren
 \newcommand{\Rotate}[1]{
@@ -85,61 +78,46 @@
 
 %QED-Zeichen (Box)
 \newcommand{\qed}{\ensuremath{\Box}}
-\newcommand{\qqed}[1][\arabic{chapter}.\arabic{section}\ifnum\arabic{subsection}>0{.\arabic{subsection}}\fi]{\begin{flushright}\qed\ensuremath{_{\text{#1}}}\end{flushright}}
-
-% Definitons-Zeichen
-\newcommand{\dfn}{\mathrel{\mathop:}=}
-% Menge: TODO: auch die Höhe der zweiten Hälfte für den Strich berücksichtigen!
-\newcommand{\mng}[2]{\ensuremath{\left\{#1\,\left.\vphantom{#1#2}\right|\,#2\right\}}}
-% Abbildung
-\newcommand{\abb}[5]{#1:#2\to #3:#4\mapsto #5}
+\newcommand{\qqed}[1][\arabic{chapter}.\arabic{section}\ifnum\arabic{subsection}>0{.\arabic{subsection}}\fi]{\hfill\qed\ensuremath{_{\text{#1}}}}
 
 % Mengen Modulo
-\newcommand{\modulo}[2]{%
-\mbox{\raisebox{0.6ex}{\ensuremath{\displaystyle #1}}%
-{\Large /}%
-\raisebox{-0.6ex}{\ensuremath{\displaystyle #2}}%
-}%
-}
+\newcommand{\moduloT}[2]{
+\mbox{\raisebox{0.6ex}{\ensuremath{\displaystyle #1}}
+{\hspace*{-1.5mm}\Large /}
+\raisebox{-0.6ex}{\hspace*{-1.5mm}\ensuremath{\displaystyle #2}}
+}}
 
 % Links Modulo
-\newcommand{\lmodulo}[2]{%
-\mbox{\raisebox{-0.6ex}{\ensuremath{\displaystyle #1}}%
-{\Large \ensuremath{\backslash}}%
-\raisebox{0.6ex}{\normalsize\ensuremath{\displaystyle #2}}%
-}%
-}
+\newcommand{\lmoduloT}[2]{
+\mbox{\raisebox{-0.6ex}{\ensuremath{\displaystyle #1}}
+{\hspace*{-1.5mm}\Large \ensuremath{\backslash}}
+\raisebox{0.6ex}{\hspace*{-1.5mm}\ensuremath{\displaystyle #2}}
+}}
 
 % Für Z/2Z, um nicht soviel schreiben zu müssen
-\newcommand{\modlo}[2]{%
-\mbox{\raisebox{0.6ex}{\ensuremath{\displaystyle \mathbb{#1}}}%
-{\Large /}%
-\raisebox{-0.6ex}{\ensuremath{\displaystyle #2\mathbb{#1}}}%
-}%
-}
+\newcommand{\modloT}[2]{\moduloT{ \mathbb{#1}}{#2\mathbb{#1}}}
 
 %Die Modulo-Kommandos in klein, für die Darstellungen unter Quantoren.
-\newcommand{\moduloScript}[2]{%
-\mbox{\raisebox{0.4ex}{\scriptsize\ensuremath{\displaystyle #1}}%
-{\footnotesize /}%
-\raisebox{-0.4ex}{\scriptsize\ensuremath{\displaystyle #2}}%
-}%
-}
+\newcommand{\moduloScriptT}[2]{
+\mbox{\raisebox{0.4ex}{\scriptsize\ensuremath{\displaystyle #1}}
+{\hspace*{-1.5mm}\footnotesize /}
+\raisebox{-0.4ex}{\hspace*{-1.5mm}\scriptsize\ensuremath{\displaystyle #2}}
+}}
 
-% Links Modulo Script
-\newcommand{\lmoduloScript}[2]{%
-\mbox{\raisebox{-0.4ex}{\scriptsize\ensuremath{\displaystyle #1}}%
-{\footnotesize \ensuremath{\backslash}}%
-\raisebox{0.4ex}{\scriptsize\ensuremath{\displaystyle #2}}%
-}%
-}
+\newcommand{\lmoduloScriptT}[2]{
+\mbox{\raisebox{-0.4ex}{\scriptsize\ensuremath{\displaystyle #1}}
+{\hspace*{-1.5mm}\footnotesize \ensuremath{\backslash}}
+\raisebox{0.4ex}{\hspace*{-1.5mm}\scriptsize\ensuremath{\displaystyle #2}}
+}}
 
-\newcommand{\modloScript}[2]{%
-\mbox{\raisebox{0.4ex}{\scriptsize\ensuremath{\displaystyle \mathbb{#1}}}%
-{\footnotesize /}%
-\raisebox{-0.4ex}{\scriptsize\ensuremath{\displaystyle #2\mathbb{#1}}}%
-}%
-}
+\newcommand{\modloScriptT}[2]{\moduloScriptT{ \mathbb{#1}}{#2\mathbb{#1}}}
+
+% stehendes Winkelzeichen
+\newcommand{\winkel}{
+\begin{tikzpicture}[scale=0.25]
+\draw ({-2+3^(1/2)},0) -- (0,1) -- ({2-3^(1/2)},0);
+\draw ($(0,1) + ({cos(235)*0.7},{sin(315)*0.7})$) arc (235:315:0.7);
+\end{tikzpicture}}
 
 % Wurzel mit Häkchen
 \newcommand{\hsqrt}[2][{}]{\setbox0=\hbox{$\sqrt[#1]{\phantom{|}\!\! #2\hspace*{1pt}}$}\dimen0=\ht0
@@ -181,14 +159,75 @@
 \fancyfoot[C]{\thepage\quad\!\!\!\slash\quad\!\!\!\pageref{END-front}} %Seitenzahl der Front-Matter
 
 \AtBeginDocument{
-  \def\labelitemiii{\(\succ\)}
+  \def\labelitemi{\normalfont\bfseries{--}}
+  \def\labelitemii{\(\circ\)}
+  \def\labelitemiii{\(\triangleright\)}
 }
 
 \makeatother
 
 \begin{document}
+\selectlanguage{english}%
 
 
+
+
+\selectlanguage{ngerman}%
+
+
+\selectlanguage{english}%
+\global\long\def\norm#1{\left\lVert #1\right\rVert }
+
+
+\global\long\def\abs#1{\left\lvert #1\right\rvert }
+
+
+\global\long\def\minus{\text{-}}
+
+
+\global\long\def\exs{\exsop}
+
+
+\global\long\def\exsg{\exsgop}
+
+
+\global\long\def\fall{\fallop}
+
+
+\global\long\def\bcupd{\bcupdop}
+
+
+\global\long\def\bcapd{\bcapdop}
+
+
+\global\long\def\sr#1#2#3{\underset{#3}{\overset{#2}{#1}}}
+
+
+\global\long\def\dd{\textnormal{d}}
+
+
+\global\long\def\ii{\textbf{i}}
+
+
+\global\long\def\modulo#1#2{\moduloT{#1}{#2}}
+
+
+\global\long\def\lmodulo#1#2{\lmoduloT{#1}{#2}}
+
+
+\global\long\def\modlo#1#2{\modloT{#1}{#2}}
+
+
+\global\long\def\moduloScript#1#2{\moduloScriptT{#1}{#2}}
+
+
+\global\long\def\lmoduloScript#1#2{\lmoduloScriptT{#1}{#2}}
+
+
+\global\long\def\modloScript#1#2{\modloScriptT{#1}{#2}}
+
+
+\selectlanguage{ngerman}%
 \pagenumbering{roman}
 
 
@@ -1766,7 +1805,10 @@ A & \supseteq A_{1}\dot{\cup}\ldots\dot{\cup}A_{n}\\
 \mu^{*}\left(Z\setminus A\right) & \le\mu^{*}\left(Z\setminus\left(A_{1}\dot{\cup}\ldots\dot{\cup}A_{n}\right)\right)
 \end{align*}
 Da $n\in\mathbb{N}$ beliebig ist, folgt wegen ${\displaystyle Z\cap A=\bigcup_{k=1}^{\infty}Z\cap A_{k}}$
-und ${\displaystyle \mu^{*}\left(Z\cap A\right)=\inf\sum_{k=1}^{\infty}\mu^{*}\left(Z\setminus B_{k}\right)}$
+und
+\begin{align*}
+\mu^{*}\left(Z\cap A\right) & =\inf\sum_{k=1}^{\infty}\mu^{*}\left(Z\setminus B_{k}\right)
+\end{align*}
 mit ${\displaystyle Z\cap A\supseteq\bigcup_{k=1}^{\infty}B_{k}}$:
 \begin{align*}
 \mu^{*}\left(Z\right) & \ge\sum_{k=1}^{\infty}\mu^{*}\left(Z\cap A_{k}\right)+\mu^{*}\left(Z\setminus A\right)\ge\\
@@ -1794,8 +1836,7 @@ Da $\varepsilon$ beliebig ist, folgt die Behauptung:
 \end{align*}
 Daher ist $A:=\bigcup_{n\in\mathbb{N}}A_{n}$ wieder $\mu^{*}$-messbar,
 das heißt $A\in\mathcal{M}$.\\
-Insgesamt folgt, dass $\mathcal{M}$ eine $\sigma$-Algebra ist.\\
-\qqed[\roman{ale2})]
+Insgesamt folgt, dass $\mathcal{M}$ eine $\sigma$-Algebra ist.\qqed[\roman{ale2})]
 \item Das Maß ist $\sigma$-additiv, denn:\\
 Sei wieder $\left(A_{n}\right)_{n\in\mathbb{N}}$ mit $A_{n}\in\mathcal{M}$
 ein System paarweise disjunkter messbarer Mengen. Es folgt:
@@ -1928,9 +1969,7 @@ Wegen der Additivität folgt:
 \begin{align*}
 \mu\left(A\right) & =\nu\left(A\right)=\nu\left(A\setminus Y\right)+\nu\left(Y\right)\le\mu\left(A\setminus Y\right)+\mu\left(Y\right)=\mu\left(A\right)<\infty
 \end{align*}
-Also muss überall schon Gleichheit gelten. Also ist $\mu\left(Y\right)=\nu\left(Y\right)$.
-
-\qqed
+Also muss überall schon Gleichheit gelten. Also ist $\mu\left(Y\right)=\nu\left(Y\right)$.\qqed[\ref{sub:Thm-SatzVonHahn}]
 
 
 \subsubsection*{Bemerkung}
@@ -1952,8 +1991,8 @@ Wir wollen jetzt $\mu$ auf eine etwas größere $\sigma$-Algebra erweitern.
 
 \subsection{Definition \textmd{(Lebesguesche Nullmenge)}}
 
-Eine Menge $A\subseteq\mathbb{R}$ heißt \emph{Lebesguesche Nullmenge},
-falls $\mu^{*}\left(A\right)=0$ ist. Es gilt
+Eine Menge $A\in\mathcal{P}\left(X\right)$ heißt \emph{Lebesguesche
+Nullmenge}, falls $\mu^{*}\left(A\right)=0$ ist. Es gilt
 \begin{align*}
 0 & =\mu^{*}\left(A\right)=\inf\left(\sum_{n=1}^{\infty}\mu\left(A_{n}\right)\right)
 \end{align*}
@@ -1991,8 +2030,8 @@ Maß 0.
 
 \subsection{Definition \textmd{($\mu$-messbar)}}
 
-Eine Menge $A\subseteq\mathbb{R}$ heißt $\mu$-messbar, falls $A$
-mit Hilfe einer Borelmenge $B$ und einer Lebesgueschen Nullmenge
+Eine Menge $A\subseteq\mathbb{R}$ heißt \emph{$\mu$-messbar}, falls
+$A$ mit Hilfe einer Borelmenge $B$ und einer Lebesgueschen Nullmenge
 $N$ in folgender Form dargestellt werden kann:
 \begin{align*}
 A & =B\cup N
@@ -2022,8 +2061,8 @@ Wir betrachten stattdessen später das Produktmaß.
 
 \section{Konstruktion des Integrals}
 
-Im Folgenden sei $\left(X,\mathcal{M},\mu\right)$ ein Maßraum, zum
-Beispiel das eindimensionale Lebesgue-Maß.
+In diesem Abschnitt sei $\left(X,\mathcal{M},\mu\right)$ ein Maßraum,
+zum Beispiel das eindimensionale Lebesgue-Maß.
 
 
 \subsection{Bemerkung und Definition \textmd{(Treppenfunktion, Integral, Norm)}}
@@ -2036,8 +2075,8 @@ endliches Maß hat.
 \textcolor{green}{TODO: Abbildung Treppenfunktion einfügen}
 
 Die Treppenfunktionen bilden einen Vektorraum $\mathcal{T}\left(X\right)$,
-denn für Treppenfunktionen $\varphi,\psi\in\mathcal{T}\left(X\right)$
-gilt:
+denn seien $\varphi,\psi\in\mathcal{T}\left(X\right)$ zwei Treppenfunktionen,
+so gilt:
 \begin{align*}
 \left(\varphi+\psi\right)\left(x\right) & =\varphi\left(x\right)+\psi\left(x\right)\\
 \left|\left(\varphi+\psi\right)\left(X\right)\right| & \le\left|\varphi\left(X\right)\right|+\left|\psi\left(X\right)\right|<\infty
@@ -2055,17 +2094,19 @@ Für Treppenfunktionen definiere das Integral:
 \end{align*}
 Wir wollen diesen Integralbegriff durch Approximation auf allgemeine
 Funktionen ausdehnen.
+
+Dazu betrachten wir
 \begin{align*}
 \left|\left|\varphi\right|\right|_{1} & :=\int_{X}\left|\varphi\right|\dd\mu
 \end{align*}
-heißt \emph{$L^{1}$-\quotedblbase{}Norm}\textquotedblleft{}.
+und nennen dies \emph{$L^{1}$-\quotedblbase{}Norm}\textquotedblleft{}.
 
 
 \subsubsection*{Idee}
 
-Betrachte die \quotedblbase{}Cauchy-Folge\textquotedblleft{} $\varphi_{n}\in\mathcal{T}\left(X\right)$
-für die es für alle $\varepsilon>0$ schon ein $N\in\mathbb{N}$ mit
-$\left|\left|\varphi_{n}-\varphi_{m}\right|\right|\le\varepsilon$
+Betrachte die \quotedblbase{}Cauchy-Folge\textquotedblleft{} $\left(\varphi_{n}\right)_{n\in\mathbb{N}}$
+mit $\varphi_{n}\in\mathcal{T}\left(X\right)$ für die es für alle
+$\varepsilon>0$ schon ein $N\in\mathbb{N}$ mit $\left|\left|\varphi_{n}-\varphi_{m}\right|\right|\le\varepsilon$
 für alle $n,m\in\mathbb{N}_{>N}$ gibt.
 
 Hoffnung: $\varphi_{n}\stackrel{?}{\to}\varphi$ und ${\displaystyle \int_{X}\varphi\dd\mu:=\lim_{n\to\infty}\int_{X}\varphi_{n}\dd\mu}$.
@@ -2108,10 +2149,12 @@ ist ein Teilraum von $\mathcal{T}:=\mathcal{T}\left(\mu\right):=\mathcal{T}\left
 Auf $\modulo{\mathcal{T}\left(\mu\right)}{\mathcal{N}\left(\mu\right)}$
 ist $\left|\left|.\right|\right|_{1}$ eine Norm.
 
-Aber: $\left(\mathcal{T},\left|\left|.\right|\right|_{1}\right)$
-ist nicht vollständig.
+Aber $\left(\mathcal{T},\left|\left|.\right|\right|_{1}\right)$ ist
+nicht vollständig, denn man kann zum Beispiel stetige Funktionen bezüglich
+der $L^{1}$-Norm durch Treppenfunktionen approximieren.
 
-Man könnte nun abstrakt vervollständigen.
+Man könnte nun $\mathcal{T}\left(\mu\right)$ abstrakt vervollständigen,
+dies wäre aber unpraktisch.
 
 %DATE: Di 8.11.2011
 
@@ -2261,9 +2304,10 @@ fast überall konvergiert.
 
 \subsection{Lemma}
 
-Seien $\left(\varphi_{n}\right)$ und $\left(\psi_{n}\right)$ zwei
-$L^{1}$-Cauchy-Folgen von Treppenfunktionen, die beide fast überall
-punktweise gegen eine Funktion $f:X\rightarrow\mathbb{R}$ konvergieren.
+Seien $\left(\varphi_{n}\right)_{n\in\mathbb{N}}$ und $\left(\psi_{n}\right)_{n\in\mathbb{N}}$
+zwei $L^{1}$-Cauchy-Folgen von Treppenfunktionen, die beide fast
+überall punktweise gegen eine Funktion $f:X\rightarrow\mathbb{R}$
+konvergieren.
 
 Dann gilt:
 \begin{align*}
@@ -2338,7 +2382,7 @@ Damit folgt für alle $n\in\mathbb{N}_{>N\left(k\right)}$:
 \qqed
 \end{itemize}
 
-\subsection{Satz\textmd{ (Regeln für Integral)}}
+\subsection{Satz\textmd{ (Regeln für das Integral)\label{sub:Satz-RegelnIntegral}}}
 
 \begin{iiilist}
 
@@ -2386,6 +2430,16 @@ sich nicht.
 \end{iiilist}
 
 
+\subsubsection*{Bemerkung}
+
+Aus v) folgt, dass auch die Funktionen
+\begin{align*}
+f_{+} & :=\frac{1}{2}\left(\left|f\right|+f\right)=\max\left(0,f\right)\\
+f_{-} & :=\frac{1}{2}\left(\left|f\right|-f\right)=\max\left(0,-f\right)
+\end{align*}
+integrabel sind.
+
+
 \subsubsection*{Beweis}
 
 Seien $f,g\in\mathcal{L}^{1}\left(X\right)$. Wähle $L^{1}$-Cauchy-Folgen
@@ -2407,62 +2461,229 @@ und es konvergiert $\varphi_{n}+\gamma_{n}\to f+g$ fast überall,
 womit folgt:
 \begin{align*}
 \int_{X}\left(f+g\right)\dd\mu & =\lim_{n\rightarrow\infty}\int_{X}\left(\varphi_{n}+\gamma_{n}\right)\dd\mu=\\
- & =\lim_{n\rightarrow\infty}\left(\int_{X}\varphi_{n}\dd\mu+\int_{X}\gamma_{n}\dd\mu\right)\sr{=}{\text{Konvergenzsätze}}{\text{ für Folgen}}\int_{X}f\dd\mu+\int_{X}g\dd\mu
+ & =\lim_{n\rightarrow\infty}\left(\int_{X}\varphi_{n}\dd\mu+\int_{X}\gamma_{n}\dd\mu\right)\sr ={\text{Konvergenzsätze}}{\text{ für Folgen}}\int_{X}f\dd\mu+\int_{X}g\dd\mu
 \end{align*}
-
+Zu v): Wähle eine $L^{1}$-Cauchy-Folge $\left(\varphi_{n}\right)_{n\in\mathbb{N}}$
+mit $\varphi_{n}\to f$. Dann ist $\left(\abs{\varphi_{n}}\right)_{n\in\mathbb{N}}$
+auch eine $L^{1}$-Cauchy-Folge, da gilt:
+\begin{align*}
+\abs{\abs{\varphi_{n}}-\abs{\varphi_{m}}} & \le\abs{\varphi_{n}-\varphi_{m}}
+\end{align*}
+\qqed
 
 %DATE: Fr 11.11.2011
 
-\textcolor{green}{TODO: Rest überarbeiten}
 
+\subsection{Satz\label{sub:Satz-IntFktMessbar}}
 
-\subsection{Satz}
-
-TODO: Rest einfügen
-
-
-
-
-\subsection{Satz\textmd{ (Normkonvergenzsatz)}}
-
-Sei $\left(f_{n}\right)$ eine $L^{1}$-Cauchy-Folge integrabler Funktionen
-(nicht notwendigerweise Treppenfunktionen!).
-
-TODO: Rest einfügen
-
-Dann konvergiert eine Teilfolge fast überall punktweise,
+Integrable Funktionen sind $\mu$-messbar, also messbar nach Änderung
+auf einer Nullmenge und es gilt:
 \begin{align*}
-f_{n_{j}} & \rightarrow f\quad\text{fast überall}
+\norm f_{1} & =0 & \Leftrightarrow\qquad f & =0\quad\text{ fast überall}
 \end{align*}
 
 
-$f:X\rightarrow\mathbb{R}$ ist wieder integrabel und 
+
+\subsubsection*{Beweis}
+
+Nach Satz \ref{sub:Satz-MessbarLimesMessbar} ist der punktweise Limes
+messbarer Funktionen wieder messbar, weswegen $f$ als punktweiser
+Limes von Treppenfunktionen messbar.
+
+Nach Satz \ref{sub:Satz-messFolgeStufenfkt} ist $\abs f$ der Limes
+einer aufsteigenden Folge $\left(\varphi_{n}\right)_{n\in\mathbb{N}}$
+von Stufenfunktionen, also:
 \begin{align*}
-\left|\left|f_{n_{j}}-f\right|\right| & \stackrel{n\rightarrow\infty}{\rightarrow}0
+0 & \le\varphi_{n}\le\abs f
+\end{align*}
+Die $\varphi_{n}$ sind sogar Treppenfunktionen, denn $\abs f$ ist
+außerhalb einer Menge $Z$ gleichmäßiger Limes von Treppenfunktionen.
+
+Wäre ein $\varphi_{n}=c>0$ auf einer Menge $M$ vom Maß $\mu\left(M\right)=\infty$,
+dann wäre eine Treppenfunktion größer als ${\displaystyle \frac{c}{2}}$
+auf $M\setminus Z$, was ein Widerspruch ist, da $\mu\left(M\setminus Z\right)=\infty$
+ist.
+
+Aus $\norm f_{1}=0$ folgt $\norm{\varphi_{n}}_{1}=0$ und somit $\varphi_{n}=0$
+fast überall.
+\begin{align*}
+\mu\left(\left\{ \abs f>0\right\} \right) & =\mu\left(\bigcup_{n\in\mathbb{N}}\left\{ \varphi_{n}>0\right\} \right)=0
+\end{align*}
+Also gilt fast überall $f=0$.\qqed
+
+
+\subsection{Satz\textmd{ (Normkonvergenzsatz)\label{sub:Satz-Normkonvergenzsatz}}}
+
+Sei $\left(f_{n}\right)_{n\in\mathbb{N}}$ eine $L^{1}$-Cauchy-Folge
+integrabler Funktionen (nicht notwendigerweise Treppenfunktionen!).
+
+Dann gilt:
+
+\begin{iiilist}
+
+\iii Es gibt eine Teilfolge $\left(f_{n_{j}}\right)_{j\in\mathbb{N}}$
+mit $f_{n_{j}}\to f$ fast überall.
+
+Außerdem gibt es für alle $\varepsilon>0$ ein $Z\subseteq X$ mit
+$\mu\left(Z\right)<\varepsilon$ und $f_{n_{j}}\big|_{X\setminus Z}\rightrightarrows f\big|_{X\setminus Z}$.
+
+\iii Je zwei solche Grenzfunktionen stimmen fast überall überein.
+
+\iii $\norm{f_{n}-f}_{1}\xrightarrow{n\to\infty}0$ und insbesondere
+gilt:
+\begin{align*}
+\int_{X}f\dd\mu & =\lim_{n\to\infty}\int_{X}f_{n}\dd\mu
+\end{align*}
+\end{iiilist}
+
+
+\subsubsection*{Beweis}
+
+\begin{iiilist}
+
+\iii Dies beweist man genauso wie im Konstruktionslemma \ref{sub:Lem-TeilfolgePunktweise}.
+
+Beachte nun, dass
+\begin{align*}
+Y_{k} & :=\left\{ \abs{f_{k+1}-f_{k}}\ge2^{-k}\right\} 
+\end{align*}
+nach \ref{sub:Satz-RegelnIntegral} und \ref{sub:Satz-IntFktMessbar}
+messbar ist.\qqed[\roman{ale2})]
+
+\iii Sei $\left(f_{n_{j}}\right)_{j\in\mathbb{N}}\to f$ eine konvergente
+Teilfolge, also $\norm{f-f_{n_{j}}}_{1}\to0$ und sei $\left(f_{m_{j}}\right)_{j\in\mathbb{N}}\to g$
+eine weitere konvergente Teilfolge, also $\norm{f_{m_{j}}-g}_{1}\to0$.
+
+Mit der Dreiecksungleichung folgt:
+\begin{align*}
+\norm{f-g}_{1} & \le\underbrace{\norm{f-f_{n_{j}}}_{1}}_{\to0}+\underbrace{\norm{f_{n_{j}}-f_{m_{j}}}_{1}}_{\to0\text{ (C.-F.)}}+\underbrace{\norm{f_{m_{j}}-g}_{1}}_{\to0}\to0
+\end{align*}
+Also $\norm{f-g}_{1}=0$ und somit $f=g$ fast überall.\qqed[\roman{ale2})]
+
+\iii Vorüberlegung: Falls $\varphi_{n}\to g$ fast überall konvergiert
+und eine $L^{1}$-Cauchy-Folge von Treppenfunktionen ist, dann gilt
+\begin{align*}
+\norm{\varphi_{n}-g}_{1} & =\lim_{k\to\infty}\norm{\varphi_{n}-\varphi_{k}}_{1}\\
+\lim_{n\to\infty}\norm{\varphi_{n}-g}_{1} & =\lim_{n\to\infty}\lim_{k\to\infty}\norm{\varphi_{n}-\varphi_{k}}_{1}=0
+\end{align*}
+nach der Definition einer Cauchy-Folge.
+
+Zeige nun, dass $f$ integrabel ist:
+
+Wir können annehmen, dass $f_{n}\to f$ punktweise konvergiert, sonst
+gehe zu einer Teilfolge über. Außerdem gibt eine Menge $Z\subseteq X$
+mit $\mu\left(Z\right)=0$ und:
+\begin{align*}
+f_{n}\big|_{X\setminus Z} & \rightrightarrows f
+\end{align*}
+Wähle eine Folge von Treppenfunktionen $\tau_{n}$ so, dass ${\displaystyle \abs{f_{n}-\tau_{n}}<\frac{1}{n}}$
+auf $X\setminus Z_{n}$ mit ${\displaystyle \mu\left(Z_{n}\right)<\frac{1}{2^{n}}}$
+und ${\displaystyle \norm{f_{n}-\tau_{n}}_{1}<\frac{1}{n}}$.
+
+Es folgt:
+\begin{align*}
+\norm{\tau_{l}-\tau_{n}}_{1} & \le\norm{\tau_{l}-f_{l}}+\norm{f_{l}-f_{n}}+\norm{f_{n}-\tau_{n}}\xrightarrow{n,l\to\infty}0
+\end{align*}
+Also ist $\left(\tau_{n}\right)_{n\in\mathbb{N}}$ eine $L^{1}$-Cauchy-Folge.
+Zudem ist klar, dass $\tau_{n}\to f$ fast überall konvergiert, nämlich
+außerhalb von:
+\begin{align*}
+Z & :=\left(\bigcap_{k=1}^{\infty}\bigcup_{l=k}^{\infty}Z_{l}\right)
+\end{align*}
+Wegen
+\begin{align*}
+\mu\left(\bigcup_{l=k}^{\infty}Z_{l}\right) & <\sum_{l=k}^{\infty}\frac{1}{2^{l}}=2\cdot2^{-k}
+\end{align*}
+ist $\mu\left(Z\right)=0$. Also konvergiert $\tau_{n}\to f$ fast
+überall und daher ist $f$ nach der Definition integrabel.
+
+Nach der Vorüberlegung gilt $\norm{\tau_{n}-f_{n}}_{1}\xrightarrow{n\to\infty}0$.
+
+Mit der Dreiecksungleichung folgt für eine Teilfolge $\left(f_{n_{j}}\right)_{j\in\mathbb{N}}$,
+die gegen $f$ konvergiert:
+\begin{align*}
+\norm{f_{n}-f}_{1} & \le\norm{f_{n}-\tau_{n}}_{1}+\norm{\tau_{n}-f}_{1}\to0
+\end{align*}
+Da $f_{n}$ eine $L^{1}$-Cauchy-Folge ist, folgt $\norm{f_{n}-f}_{1}\to0$
+auch für die gesamte Folge.
+
+Hieraus folgt auch, dass $\int_{X}f\dd\mu=\lim_{n\to\infty}\int_{X}f_{n}\dd\mu$
+ist.
+
+\end{iiilist}
+
+\qqed
+
+
+\subsection{Proposition und Definition \textmd{($\left(L^{1}\left(X,\mu\right),\norm ._{1}\right)$
+ist normierter Vektorraum)}}
+
+$\mathcal{L}:=\mathcal{L}\left(X\right):=\mathcal{L}\left(X,\mu\right)$
+bezeichnet die \emph{Menge aller integrablen Funktionen}. Auf dieser
+gibt es die $L^{1}$-Seminorm.
+
+Der \emph{Kern}
+\begin{align*}
+\mathcal{N} & :=\mathcal{N}\left(X\right):=\mathcal{N}\left(X,\mu\right):=\left\{ f\in\mathcal{L}\Big|\norm f_{1}=0\right\} \subseteq\mathcal{L}
+\end{align*}
+\emph{dieser Seminorm} ist ein Untervektorraum.
+
+Betrachte die Äquivalenzrelation:
+\begin{align*}
+f\sim\tilde{f} & \Leftrightarrow f-\tilde{f}\in\mathcal{N}\Leftrightarrow\norm{f-\tilde{f}}_{1}=\int_{X}\abs{f-\tilde{f}}\dd\mu=0\Leftrightarrow f-\tilde{f}=0\text{ fast überall}
 \end{align*}
 
 
-\marginpar{$\mathcal{L}=\mathcal{L}\left(X\right)=\mathcal{L}\left(X,\mu\right)$
-alle integrablen Funktionen.
+Durch herausdividieren des Kerns erhalten wir die Menge der Äquivalenzklassen
+$L^{1}\left(X,\mu\right):=\modulo{\mathcal{L}}{\mathcal{N}}$.
 
-$\mathcal{N}=\left\{ f\in\mathbb{L}\text{ mit }\left|\left|f\right|\right|_{1}=0\right\} \subset\mathcal{L}$
-Untervektorraum
-
-$f\sim\tilde{f}$ falls $f-\tilde{f}\in\mathcal{N}\Leftrightarrow\left|\left|f-\tilde{f}\right|\right|_{1}=\int_{X}\left|f-\tilde{f}\right|\dd\mu=0\Leftrightarrow f-\tilde{f}=0$
-fast überall
-
-$L^{1}=\modulo{\mathcal{L}}{\mathcal{N}}$ Äquivalenzklassen, $\left(L^{1},\left|\left|.\right|\right|_{1}\right)$
-ist ein Banachraum.}
+$\left(L^{1}\left(X,\mu\right),\norm ._{1}\right)$ ist ein normierter
+Raum.
 
 
-\subsection{Korollar}
+\subsubsection*{Beweis}
 
-TODO: Rest einfügen
+Das Integral auf $L^{1}\left(X,\mu\right)$ ist definiert durch:
+\begin{align*}
+\int_{X}\left[f\right]\dd\mu & =\int_{X}f\dd\mu
+\end{align*}
+Es ist wohldefiniert, denn die Funktionen einer Äquivalenzklasse unterscheiden
+sich nur auf einer Nullmenge und dies ändert das Integral nicht.
+
+Zudem gilt:
+\begin{align*}
+\norm{\left[f\right]}_{1} & =\norm f_{1}=0\quad\Leftrightarrow\quad f=0\text{ fast überall}\quad\Leftrightarrow\quad\left[f\right]=0\in L^{1}\left(X,\mu\right)
+\end{align*}
+Daher ist $\left(L^{1}\left(X,\mu\right),\norm ._{1}\right)$ ein
+normierter Vektorraum.\qqed
+
+
+\subsection{Korollar \textmd{($\left(L^{1}\left(X,\mu\right),\norm ._{1}\right)$
+ist Banachraum)}}
+
+$\left(L^{1}\left(X,\mu\right),\norm ._{1}\right)$ ist ein Banachraum.
+
+
+\subsubsection*{Beweis}
+
+Zu zeigen ist, dass $\left(L^{1}\left(X,\mu\right),\norm ._{1}\right)$
+vollständig ist.
+
+Sei also $\left(\left[f_{n}\right]\right)_{n\in\mathbb{N}}$ eine
+Cauchy-Folge.
+
+Nach \ref{sub:Satz-Normkonvergenzsatz} gibt es eine Teilfolge $\left(f_{n_{j}}\right)_{n\in\mathbb{N}}$
+mit $f_{n_{j}}\to f$ fast überall. Außerdem ist die Grenzfunktion
+$f$ eindeutig bis auf eine Nullmenge und es gilt $\norm{f_{n}-f}_{1}\xrightarrow{n\to\infty}0$.
+
+Daher gilt $\left[f_{n}\right]\to\left[f\right]$ und $\left[f\right]$
+ist eindeutig, da sich die Grenzfunktionen nur auf einer Nullmenge
+unterscheiden.\qqed
 
 
 \section{Die Konvergenzsätze}
 
-TODO: Rest einfügen
+\textcolor{green}{TODO: Rest überarbeiten}
 
 
 \subsection{Beispiel}
@@ -4343,7 +4564,7 @@ $\tau$ sei streng monoton steigend und $\tau'\left(t\right)\not=0$
 für alle $t\in\left[\alpha,\beta\right]$.
 \begin{align*}
 \int_{\alpha}^{\beta}\left|\tilde{\gamma}'\left(t\right)\right|\dd t & \stackrel{\text{Kettenregel}}{=}\int_{\alpha}^{\beta}\bigg|\gamma'\left(t\right)\cdot\underbrace{\frac{\dd\tau}{\dd t}}_{>0}\bigg|\dd t=\int_{\alpha}^{\beta}\left|\gamma'\left(t\right)\right|\frac{\dd\tau}{\dd t}\dd t=\\
- & \sr{=}{\text{Substitution}}{t=t\left(\tau\right),\dd t=\frac{\dd t}{\dd\tau}\dd t}\int_{\alpha}^{\beta}\left|\gamma'\left(\tau\right)\right|\dd\tau=L\left(\gamma\right)
+ & \sr ={\text{Substitution}}{t=t\left(\tau\right),\dd t=\frac{\dd t}{\dd\tau}\dd t}\int_{\alpha}^{\beta}\left|\gamma'\left(\tau\right)\right|\dd\tau=L\left(\gamma\right)
 \end{align*}
 \begin{align*}
 \int_{\alpha}^{\beta}\gamma'\left(\tau\right)\frac{\dd\tau}{\dd t}\dd t & =\int_{a}^{b}\gamma'\left(\tau\right)\dd\tau
@@ -6232,6 +6453,336 @@ TODO: Abb7
 \int_{0}^{2\pi}\frac{1}{\cos\varphi+\ii}\dd\varphi & =\left(-2\ii\right)\cdot2\pi\ii\text{Res}_{-\ii-\sqrt{2}\ii}\frac{1}{z^{2}+2\ii z+1}=\ldots
 \end{align*}
 
+
+TODO: Rest einfügen
+
+%DATE: Fr 10.02.2012
+
+
+\section{Die Gamma- und Zetafunktion}
+
+Sei $s\in\mathbb{R}_{>0}$.
+
+\begin{align*}
+\Gamma\left(s\right) & :=\int_{0}^{\infty}x^{s-1}e^{-x}\dd x
+\end{align*}
+Es gilt:
+\begin{align*}
+\Gamma\left(s+1\right) & =\int_{0}^{\infty}x^{s}e^{-x}\dd x=\int_{0}^{\infty}x^{s}\left(-\frac{\dd}{\dd x}e^{-x}\right)\dd x\stackrel{\text{part. Int.}}{=}\int_{0}^{\infty}\left(\frac{\dd}{\dd x}x^{s}\right)\cdot e^{-x}\dd x=\\
+ & =s\cdot\int_{0}^{\infty}x^{s-1}e^{-x}\dd x=s\cdot\Gamma\left(s\right)
+\end{align*}
+Vergleiche mit der Fakultät $n!=n\cdot\left(n-1\right)!$ für $n\in\mathbb{N}$.
+
+Es gilt:
+\begin{align*}
+\Gamma\left(n+1\right) & =n!
+\end{align*}
+Also ist die $\Gamma$-Funktion eine Fortsetzung der Fakultät.
+
+Schreibe das Integral als Konturintegral um:
+\begin{align*}
+x^{s-1} & =e^{\left(s-1\right)\cdot\log\left(x\right)}
+\end{align*}
+Bezeichne den auf der positiven reellen Achse geschlitzten Logarithmus
+mit $\ln\left(z\right)$.
+\begin{align*}
+\lim_{\varepsilon\to0}\ln\left(x+\ii\varepsilon\right) & =\log\left(x\right)\\
+\lim_{\varepsilon\to0}\ln\left(x-\ii\varepsilon\right) & =\log\left(x\right)+2\pi\ii
+\end{align*}
+
+
+TODO: Abb1
+
+Betrachte das Konturintegral:
+\begin{align*}
+\int_{C}e^{\left(s-1\right)\cdot\ln\left(z\right)}e^{-z}\dd z & =\lim_{\varepsilon\to0}\int_{0}^{\infty}\left[e^{\left(s-1\right)\ln\left(x-\ii\varepsilon\right)}\cdot e^{-x}-e^{\left(s-1\right)\ln\left(x+\ii\varepsilon\right)}\cdot e^{-x}\right]\dd x=\\
+ & =\left(e^{\left(s-1\right)\cdot2\pi\ii}-1\right)\cdot\Gamma\left(s\right)=e^{\ii\pi\left(s-1\right)}\cdot2\ii\sin\left(\pi\left(s-1\right)\right)\cdot\Gamma\left(s\right)
+\end{align*}
+
+
+
+\subsection{Lemma}
+
+\begin{align*}
+\Gamma\left(s\right) & =\frac{e^{-\ii\left(s-1\right)\pi}}{2\ii\sin\left(\left(s-1\right)\pi\right)}\underbrace{\int_{C}e^{\left(s-1\right)\ln\left(z\right)}e^{-z}\dd z}_{\text{ist holomorph in }s}
+\end{align*}
+
+
+TODO: Abb2
+
+Man sieht daran:
+
+$\Gamma\left(s\right)$ ist eine meromorphe Funktion und holomorph
+auf $\mathbb{C}\setminus\left\{ 0,\text{-}1,\text{-}2,\ldots\right\} $.
+
+Untersuchung der Pole:
+
+TODO: Abb3
+
+\begin{align*}
+\Gamma\left(z+1\right) & =z\cdot\Gamma\left(z\right)\\
+\Gamma\left(z\right) & =\frac{1}{z}\cdot\Gamma\left(z+1\right)=\frac{1}{z\left(z+1\right)\cdots\left(z+n\right)}\Gamma\left(z+n+1\right)
+\end{align*}
+Man erhält:
+
+$\Gamma\left(s\right)$ hat einfache Pole bei $s=0,\minus1,\minus2,\ldots$.
+
+Nun zur \emph{Riemannschen Zetafunktion}:
+
+Sei $s\in\mathbb{R}_{>1}$. Die Reihe
+\begin{align*}
+\zeta\left(s\right) & =\sum_{n=1}^{\infty}n^{-s}
+\end{align*}
+konvergiert absolut.
+
+
+\subsection{Lemma}
+
+Sei $\left(p_{n}\right)_{n\in\mathbb{N}}=\left(2,3,5,\ldots\right)$
+die aufsteigende Folge der Primzahlen in $\mathbb{N}$.
+
+\begin{align*}
+\frac{1}{\zeta\left(s\right)} & =\prod_{n=1}^{\infty}\left(1-p_{n}^{-s}\right)
+\end{align*}
+
+
+
+\subsubsection*{Beweisskizze}
+
+\begin{align*}
+\left(1-2^{-s}\right)\cdot\zeta\left(s\right) & =\left(1-2^{-s}\right)\cdot\sum_{n=1}^{\infty}n^{-s}=\sum_{n=1}^{\infty}\left(n^{-s}-\left(2n\right)^{-s}\right)=\sum_{n\text{ ungerade}}^{\infty}n^{-s}
+\end{align*}
+\begin{align*}
+\left(1-3^{-s}\right)\left(1-2^{-s}\right)\zeta\left(s\right) & =\sum_{n\text{ ist nicht durch 2 oder 3 teilbar}}n^{-s}
+\end{align*}
+
+
+
+\subsection{Komplexe Fortsetzung}
+
+\begin{align*}
+\zeta\left(s\right) & =\sum_{n=1}^{\infty}e^{-s\cdot\log\left(n\right)}
+\end{align*}
+
+
+Variablentransformation: $x=nx'$, $\dd x=n\dd x'$
+\begin{align*}
+\Gamma\left(s\right) & =\int_{0}^{\infty}x^{s-1}e^{-x}\dd x=n^{s}\cdot\int_{0}^{\infty}x'^{s-1}e^{-nx'}\dd x'\qquad/\cdot n^{-s}\\
+n^{-s}\cdot\Gamma\left(s\right) & =\int_{0}^{\infty}x^{s-1}e^{-nx}\dd x\qquad/\sum_{n=1}^{\infty}\\
+\zeta\left(s\right)\cdot\Gamma\left(s\right) & =\int_{0}^{\infty}x^{s-1}\sum_{n=1}^{\infty}\left(e^{-x}\right)^{n}\dd x=\int_{0}^{\infty}x^{s-1}\frac{1}{e^{x}-1}\dd x
+\end{align*}
+Also gilt:
+\begin{align*}
+\zeta\left(s\right) & =\frac{1}{\Gamma\left(s\right)}\cdot\int_{0}^{\infty}\frac{x^{s-1}}{e^{x}-1}\dd x
+\end{align*}
+Schreibe dies wieder als Konturintegral ($C$ wie oben):
+\begin{align*}
+x^{s-1} & \leadsto e^{\left(s-1\right)\ln\left(z\right)}
+\end{align*}
+Dies ist analog wie bei der $\Gamma$-Funktion.
+
+
+\subsection{Theorem}
+
+\begin{align*}
+\zeta\left(s\right) & =\frac{e^{-\ii\left(s-1\right)\pi}}{\Gamma\left(s\right)\cdot2\ii\sin\left(\left(s-1\right)\pi\right)}\underbrace{\int_{C}e^{\left(s-1\right)\log\left(z\right)}\frac{1}{e^{z}-1}\dd z}_{\text{ist holomorph auf }\mathbb{C}}
+\end{align*}
+Dies liefert eine meromorphe Fortsetzung.
+
+Mögliche Pole sind bei $s\in\mathbb{Z}$:
+\begin{itemize}
+\item $s<0$: Da die $\Gamma$-Funktion einen Pol hat, hat $\zeta$ keinen
+Pol.
+\item $s>1$: Die $\zeta$-Funktion ist endlich, da die Reihe konvergiert.
+\item $s=0$: Es gibt auch keine Probleme.
+\item $s=1$: Einfacher Pol.
+\end{itemize}
+TODO: Abb4
+
+Wo liegen die Nullstellen von $\zeta\left(s\right)$?
+
+
+\subsection{Riemannsche Vermutung}
+
+Alle Nullstellen der $\zeta$-Funktion liegen auf der Geraden ${\displaystyle \text{Re}\left(z\right)=\frac{1}{2}}$.
+
+(Dies ist ein noch unbewiesenes Millenium-Problem.)
+
+
+\section{Der Riemannsche Abbildungssatz}
+
+
+\subsection{Definition (biholomorph)}
+
+Seien $U,V\subseteq\mathbb{C}$ offen.
+
+Eine Abbildung $f:U\to V$ heißt biholomorph, falls $f$ bijektiv
+ist und $f,f^{-1}$ holomorph sind.
+
+
+\subsubsection*{Frage}
+
+Sei $\Omega\subseteq\mathbb{C}$ offen.
+
+Gibt es eine biholomorphe Abbildung $f:\Omega\to B:=B_{1}\left(0\right)$.
+
+TODO: Abb5
+
+\begin{abclist}
+
+\abc Der Radius $1$ ist keine Einschränkung und auch der Mittelpunkt
+0 nicht.
+
+\abc Wähle $\Omega=\mathbb{C}$. Gesucht: $f:\mathbb{C}\to B_{1}\left(0\right)=:B$
+biholomorph.
+
+$\left|f\left(z\right)\right|\le1$. Nach Liouville folgt $f=\text{konst.}$,
+also nicht bijektiv und damit nicht biholomorph.
+
+Also müssen wir $\Omega=\mathbb{C}$ ausschließen.
+
+\abc TODO: Abb6
+
+$\Omega$ muss bogenzusammenhängend (TODO: weg-?) sein, denn:
+
+Seien $z_{1},z_{2}\in\Omega$. Dann ist $\overline{f\left(z_{1}\right)f\left(z_{2}\right)}\subseteq B$.
+Also ist $f^{-1}\left(\overline{f\left(z_{1}\right)f\left(z_{2}\right)}\right)$
+ist eine Kurve in $\Omega$, die $z_{1}$ und $z_{2}$ verbindet.
+
+\abc $\Omega$ muss einfach zusammenhängend sein, das heißt:
+
+Sei $\gamma$ eine geschlossene Kurve. Sei $s\in\left[0,1\right]$.
+\begin{align*}
+\gamma_{s} & :=s\cdot\gamma
+\end{align*}
+$s=1$ gibt die ursprüngliche Kurve und $s=0$ liefert den Ursprung.
+
+Man sagt auch, die Kurve ist 0-homotop.
+
+TODO: Abb8
+
+$\gamma$ ist nicht in einen Punkt \quotedblbase{}zusammenziehbar\textquotedblleft{}.
+
+Beweis:
+
+Sei $\gamma$ eine geschlossene Kurve in $\Omega$. Also ist $\Gamma=f\circ\gamma$
+eine geschlossene Kurve in $B$.
+\begin{align*}
+\Phi\left(\tau,s\right) & :=s\cdot\Gamma\left(\tau\right)
+\end{align*}
+eine Nullhomotopie.
+
+Also ist $f^{-1}\circ\Phi$ ist eine Nullhomotopie von $\gamma$,
+weswegen $\Omega$ einfach zusammenhängend ist.
+
+\end{abclist}
+
+
+\subsection{Definition}
+
+Ein topologischer, zusammenhängender Raum $X$ heißt \emph{einfach
+zusammenhängend}, falls es für jede geschlossene Kurve $\gamma:\left[a,b\right]\to X$
+eine stetige Funktion $\Phi:\left[a,b\right]\times\left[0,1\right]\to X$,
+sodass $\Phi\left(.,1\right)=\gamma\left(.\right)$ und $\Phi\left(.,0\right)=\text{konst.}$.
+
+Falls $\Omega\subseteq\mathbb{C}$, so gilt:
+\begin{itemize}
+\item $\Omega$ ist einfach zusammenhängend $\Leftrightarrow$ $\overline{\mathbb{C}}\setminus\Omega$.
+\item $\Omega$ ist einfach zusammenhängend $\Leftrightarrow$ $n\left(\gamma,a\right)=0$
+für alle geschlossene Kurven $\gamma$ in $\Omega$ und $a\not\in\Omega$.
+\end{itemize}
+
+\subsection{Theorem (Riemannscher Abbildungssatz für $\Omega\subseteq\mathbb{C}$)}
+
+Sei $\Omega\subseteq\mathbb{C}$, $\Omega\not=\mathbb{C}$ eine einfach
+zusammenhängende offene Teilmenge von $\mathbb{C}$ und $z_{0}\in\mathbb{C}$.
+
+Dann gibt es eine eindeutige biholomorphe Abbildung $f:\Omega\to B_{1}\left(0\right)$
+mit $f\left(z_{0}\right)=0$ und $f'\left(z_{0}\right)>0$.
+
+Reimann hat dies vermutet. Koebe hat es bewiesen. siehe zum Beispiel
+Jänich, Ahlfors
+
+Bisher oft: $\gamma$ geschlossene Kurve, $\text{im}\left(\gamma\right)\subseteq\Delta\subseteq\Omega$.
+
+Ab jetzt kann man stets $\Delta=B_{R}\left(a\right)$ durch eine einfache
+zusammenhängende Teilmengen von $\mathbb{C}$ ersetzen.
+
+zur Eindeutigkeit:
+
+Seien $f_{1},f_{2}$ zwei biholomorphe Abbildungen $\Omega\to B$.
+
+Dann ist $g=f_{1}^{-1}\circ f_{2}$ eine biholomorphe Abbildung von
+$B\to B$ und $g\left(0\right)=0$.
+
+
+\subsection{Satz}
+
+$g=c\cdot z$ mit $\left|c\right|=1$.
+
+Erstaunlich ist: $g$ ist bis auf einen Phasenfaktor (eine Drehung)
+eindeutig durch die Biholomorphie festgelegt.
+
+
+\subsubsection*{Beweisskizze}
+
+\begin{align*}
+h\left(z\right) & :=\begin{cases}
+\frac{g\left(z\right)}{z} & \text{für }z\not=0\\
+g'\left(z\right) & \text{für }z=0
+\end{cases}
+\end{align*}
+$g\left(0\right)=0$ ist eine einfache Nullstelle. Also ist $h$ holomorph
+auf $B$.
+
+
+\subsubsection*{Maximumprinzip}
+\begin{quote}
+Ist $h:B_{1}\left(0\right)\to\mathbb{C}$ holomorph und nicht konstant,
+dann nimmt $\left|h\right|$ im Inneren kein Maximum an.
+\end{quote}
+Damit folgt:
+
+\begin{align*}
+\left|h\left(z\right)\right| & =\frac{\left|g\left(z\right)\right|}{\left|z\right|}=\left|g\left(z\right)\right|\le1
+\end{align*}
+auf $\partial B_{1}$.
+
+Aus dem Maximumprinzip folgt:
+\begin{align*}
+1 & \ge\left|h\left(z\right)\right|=\frac{\left|g\left(z\right)\right|}{\left|z\right|}
+\end{align*}
+in ganz $B$, also $\left|g\left(z\right)\right|\le\left|z\right|$.
+
+Analog folgt: $\left|z\right|=\left|g^{-1}\left(g\left(z\right)\right)\right|\le\left|g\left(z\right)\right|$.
+Also folgt $\left|g\left(z\right)\right|=\left|z\right|$.
+
+Somit ist $\left|h\left(z\right)\right|=\frac{\left|g\left(z\right)\right|}{\left|z\right|}=\text{konst.}$.
+
+Aus dem Maximumprinzip folgt $h=\text{konst.}$ und somit $g=\text{konst.}\cdot z$.
+
+
+\subsubsection*{Beweis des Maximumprinzips}
+
+TODO: Abb9
+
+Nehme an $\left|h\right|$ habe in $z_{0}\in\Omega$ ein Maximum.
+
+\begin{align*}
+h\left(z_{0}\right) & =\frac{1}{2\pi\ii}\oint_{\partial B_{\varepsilon}\left(z_{0}\right)}\frac{h\left(\zeta\right)}{\zeta-z}\dd\zeta
+\end{align*}
+Also folgt:
+\begin{align*}
+\left|h\left(z_{0}\right)\right| & \le\frac{1}{2\pi\varepsilon}\oint_{\partial B_{\varepsilon}\left(z_{0}\right)}\left|h\left(\zeta\right)\right|\dd\zeta\le\int_{0}^{1}\left|h\left(\tau\right)\right|\dd\tau
+\end{align*}
+\begin{align*}
+\zeta & =z+\varepsilon e^{2\pi\ii\tau}\\
+\end{align*}
+Da $z_{0}$ ein Maximum ist, folgt:
+\begin{align*}
+\left|h\right| & =\left|h\left(z_{0}\right)\right|
+\end{align*}
+auf $\partial B_{\varepsilon}$.
 
 
 \part*{Anhang\thispagestyle{empty}}
