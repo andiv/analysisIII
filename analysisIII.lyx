@@ -1931,7 +1931,31 @@ Maßräume, Maße
 Definition
 \series medium
  (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texorpdfstring{
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula $\sigma$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}{Sigma}
+\end_layout
+
 \end_inset
 
 -Algebra, Maßraum, messbare Menge)
@@ -5224,7 +5248,32 @@ Lemma
  und Definition 
 \series medium
 (Mengenalgebra, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texorpdfstring{
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula $\sigma$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\series medium
+}{Sigma}
+\end_layout
+
 \end_inset
 
 -Additivität, Prämaß)
@@ -6496,7 +6545,31 @@ Wähle ein System von Teilmengen so aus, dass dieses System eine
 Definition 
 \series medium
 (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texorpdfstring{
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula $\mu^{*}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}{Mu*}
+\end_layout
+
 \end_inset
 
 -messbar)
@@ -10150,7 +10223,32 @@ qqed
 Proposition und Definition 
 \series medium
 (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texorpdfstring{
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula $\left(L^{1}\left(X,\mu\right),\norm ._{1}\right)$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\series medium
+}{L1}
+\end_layout
+
 \end_inset
 
  ist normierter Vektorraum)
@@ -10274,7 +10372,32 @@ qqed
 Korollar 
 \series medium
 (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texorpdfstring{
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula $\left(L^{1}\left(X,\mu\right),\norm ._{1}\right)$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\series medium
+}{L1}
+\end_layout
+
 \end_inset
 
  ist Banachraum)
@@ -10365,10 +10488,28 @@ qqed
 Die Konvergenzsätze
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsubsection*
+Frage
+\end_layout
 
-\color green
-TODO: Rest überarbeiten
+\begin_layout Standard
+Wenn 
+\begin_inset Formula $f_{n}\to f$
+\end_inset
+
+ punktweise konvergiert und alle 
+\begin_inset Formula $f_{n}$
+\end_inset
+
+ integrabel sind, wann ist 
+\begin_inset Formula $f$
+\end_inset
+
+ integrabel?
+\end_layout
+
+\begin_layout Standard
+Wann kann man das Integral und den Grenzwert vertauschen?
 \end_layout
 
 \begin_layout Subsection
@@ -10376,52 +10517,241 @@ Beispiel
 \end_layout
 
 \begin_layout Standard
-TODO: Rest einfügen
+\begin_inset Formula 
+\begin{align*}
+f_{n} & :=\begin{cases}
+n^{2}\left(x+\frac{1}{n}\right) & \text{falls }\minus\frac{1}{n}<x\le0\\
+n^{2}\left(\frac{1}{n}-x\right) & \text{falls }0<x<\frac{1}{n}\\
+0 & \text{sonst}
+\end{cases}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Abbildung 
+\begin_inset Formula $\delta$
+\end_inset
+
+-Funktions-Näherung
+\end_layout
+
+\begin_layout Standard
+Für alle 
+\begin_inset Formula $x\not=0$
+\end_inset
+
+ gilt:
+\begin_inset Formula 
+\begin{align*}
+\lim_{n\to\infty}f_{n}\left(x\right) & =0
+\end{align*}
+
+\end_inset
+
+Also folgt:
+\begin_inset Formula 
+\begin{align*}
+0 & =\int_{-1}^{1}\lim_{n\to\infty}f_{n}\left(x\right)\dd x\not=\lim_{n\to\infty}\int_{-1}^{1}f_{n}\left(x\right)\dd x=1
+\end{align*}
+
+\end_inset
+
+Derartige Probleme kann man auf zwei Arten vermeiden:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{abclist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+abc
+\end_layout
+
+\end_inset
+
+ Die 
+\begin_inset Formula $f_{n}$
+\end_inset
+
+ sind monoton steigend.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+abc
+\end_layout
+
+\end_inset
+
+ Die 
+\begin_inset Formula $f_{n}$
+\end_inset
+
+ werden von einer integrablen Funktion 
+\begin_inset Formula $g$
+\end_inset
+
+ dominiert.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{abclist}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
 Theorem
 \series medium
- (monotone Konvergenz; Beppo-Levi)
+ (monotone Konvergenz, Beppo-Levi)
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\left(f_{n}\right)$
+Sei 
+\begin_inset Formula $\left(f_{n}\right)_{n\in\mathbb{N}}$
 \end_inset
 
-, 
+ mit 
 \begin_inset Formula $f_{n}\in L^{1}\left(X\right)$
 \end_inset
 
- und 
-\begin_inset Formula $f$
-\end_inset
-
- ist fast überall aufsteigend (also 
+ eine fast überall monoton steigende Folge integrabler Funktionen, also
+ 
 \begin_inset Formula $f_{n+1}\left(x\right)\ge f_{n}\left(x\right)$
 \end_inset
 
  für fast alle 
-\begin_inset Formula $x$
+\begin_inset Formula $x\in X$
 \end_inset
 
  und alle 
-\begin_inset Formula $n$
+\begin_inset Formula $n\in\mathbb{N}$
 \end_inset
 
-) und 
-\begin_inset Formula $\int_{X}f_{n}\dd\mu\le C<\infty\quad\fall_{n}$
+, die gegen 
+\begin_inset Formula $f$
+\end_inset
+
+ konvergiere, und für alle 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ sei das Integral 
+\begin_inset Formula $\int_{X}f_{n}\dd\mu\le C<\infty$
+\end_inset
+
+ beschränkt und 
+\begin_inset Formula $f_{n}$
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\Rightarrow f_{n}\rightarrow f$
+Dann gilt für das Integral:
+\begin_inset Formula 
+\begin{align*}
+\int_{X}f\dd\mu & =\lim_{n\rightarrow\infty}\int_{X}f_{n}\dd\mu
+\end{align*}
+
 \end_inset
 
- fast überall und 
-\begin_inset Formula $\int_{X}f\dd\mu=\lim_{n\rightarrow\infty}\int_{X}f_{n}\dd\mu$
+
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Da 
+\begin_inset Formula $L^{1}\left(\mathbb{R},\mu\right)$
+\end_inset
+
+ vollständig ist, genügt es zu zeigen, dass 
+\begin_inset Formula $\left(f_{n}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+ eine 
+\begin_inset Formula $L^{1}$
+\end_inset
+
+-Cauchy-Folge ist.
+\end_layout
+
+\begin_layout Standard
+Für 
+\begin_inset Formula $n\ge m$
+\end_inset
+
+ gilt:
+\begin_inset Formula 
+\begin{align*}
+\norm{f_{n}-f_{m}}_{1} & =\int_{X}\abs{f_{n}-f_{m}}\dd\mu\stackrel{f_{n}\text{ mon. steigend}}{=}\int_{X}\left(f_{n}-f_{m}\right)\dd\mu=\int_{X}f_{n}\dd\mu-\int_{X}f_{m}\dd\mu
+\end{align*}
+
+\end_inset
+
+Da 
+\begin_inset Formula $\left(\int_{X}f_{n}\dd\mu\right)_{n\in\mathbb{N}}$
+\end_inset
+
+ monoton steigend und durch 
+\begin_inset Formula $C$
+\end_inset
+
+ beschränkt ist, ist es demnach eine Cauchy-Folge.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
 \end_inset
 
 
@@ -10434,50 +10764,160 @@ Theorem
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\left(f_{n}\right),f_{n}\in L^{1}$
+Sei 
+\begin_inset Formula $\left(f_{n}\right)_{n\in\mathbb{N}}$
 \end_inset
 
-, 
+ mit 
+\begin_inset Formula $f_{n}\in L^{1}\left(X\right)$
+\end_inset
+
+ eine Folge integrabler Funktionen, die von der integrablen Funktion 
+\begin_inset Formula $g\in L^{1}$
+\end_inset
+
+ dominiert sind, das heißt 
 \begin_inset Formula $\left|f_{n}\right|\le g\in L^{1}$
 \end_inset
 
- und 
+ für alle 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ und fast alle 
+\begin_inset Formula $x\in X$
+\end_inset
+
+, und 
 \begin_inset Formula $f_{n}\rightarrow f$
 \end_inset
 
- fast überall 
-\begin_inset Formula $\Rightarrow f\in L^{1}$
+ konvergiere fast überall.
+\end_layout
+
+\begin_layout Standard
+Dann ist 
+\begin_inset Formula $f\in L^{1}$
 \end_inset
 
- und 
-\begin_inset Formula $\int_{X}f\dd\mu=\lim_{n\rightarrow\infty}\int_{X}f_{n}\dd\mu$
+ integrabel und für das Integral gilt:
+\begin_inset Formula 
+\begin{align*}
+\int_{X}f\dd\mu & =\lim_{n\rightarrow\infty}\int_{X}f_{n}\dd\mu
+\end{align*}
+
 \end_inset
 
 
 \end_layout
 
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
 \begin_layout Standard
-\begin_inset Marginal
+Zeige wiederum, dass 
+\begin_inset Formula $f_{n}$
+\end_inset
+
+ eine 
+\begin_inset Formula $L^{1}$
+\end_inset
+
+-Cauchy-Folge ist.
+\end_layout
+
+\begin_layout Standard
+Ohne Einschränkung konvergiere 
+\begin_inset Formula $f_{n}\to f$
+\end_inset
+
+ überall und es gelte 
+\begin_inset Formula $\abs{f_{n}}\le g$
+\end_inset
+
+ für alle 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Bilde die Funktionenfolge 
+\begin_inset Formula $\left(h_{k}\right)_{k\in\mathbb{N}}$
+\end_inset
+
+ definiert durch:
+\begin_inset Formula 
+\begin{align*}
+h_{k}\left(x\right) & =\sup\left\{ \abs{f_{n}\left(x\right)-f_{m}\left(x\right)}\Big|n,m\in\mathbb{N}_{\ge k}\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Behauptung Die 
+\begin_inset Formula $h_{k}$
+\end_inset
+
+ sind integrabel.
+\end_layout
+
+\begin_layout Description
+Beweis 
+\begin_inset Formula $\abs{f_{n}-f_{m}}$
+\end_inset
+
+ ist für alle 
+\begin_inset Formula $n,m\in\mathbb{N}$
+\end_inset
+
+ integrabel.
+ Also ist für alle 
+\begin_inset Formula $l\in\mathbb{N}_{\ge k}$
+\end_inset
+
+ schon
+\begin_inset Formula 
+\begin{align*}
+v_{l} & :=\max\left\{ \abs{f_{n}-f_{m}}\Big|k\le n,m\le l\right\} 
+\end{align*}
+
+\end_inset
+
+integrabel.
+\begin_inset Newline newline
+\end_inset
+
+Außerdem ist 
+\begin_inset Formula $\left(v_{l}\right)_{l\in\mathbb{N}_{\ge k}}$
+\end_inset
+
+ eine monoton steigende Folge und nach der Dreiecksungleichung gilt:
+\begin_inset Formula 
+\begin{align*}
+\int_{X}v_{l}\dd\mu\le & 2\int_{X}g\dd\mu
+\end{align*}
+
+\end_inset
+
+Wegen der monotone Konvergenz folgt 
+\begin_inset Formula ${\displaystyle h_{k}=\lim_{l\to\infty}v_{l}\in L^{1}}$
+\end_inset
+
+.
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
-Gegenbeispiel: TODO Abb 1, 
-\begin_inset Formula $f_{n}\left(x\right)\rightarrow0$
-\end_inset
 
- punktweise, 
-\begin_inset Formula $\int f_{n}\dd\mu=A\not=\int\lim_{n\rightarrow\infty}\varphi_{n}\left(x\right)$
-\end_inset
 
-, 
-\begin_inset Formula $g\not\in L^{1}$
-\end_inset
-
- (denn 
-\begin_inset Formula $\int g\dd\mu=+\infty$
-\end_inset
-
-)
+\backslash
+qqed[Behauptung]
 \end_layout
 
 \end_inset
@@ -10486,7 +10926,127 @@ Gegenbeispiel: TODO Abb 1,
 \end_layout
 
 \begin_layout Standard
-TODO: Rest einfügen
+\begin_inset Formula $\left(h_{k}\right)_{k\in\mathbb{N}}$
+\end_inset
+
+ ist also eine absteigende Folge integrabler Funktionen, die punktweise
+ gegen 0 konvergiert.
+ Damit folgt:
+\begin_inset Formula 
+\begin{align*}
+\lim_{k\to\infty}\int_{X}h_{k}\dd\mu & =0
+\end{align*}
+
+\end_inset
+
+Also gibt es für alle 
+\begin_inset Formula $\varepsilon\in\mathbb{R}_{>0}$
+\end_inset
+
+ ein 
+\begin_inset Formula $N\in\mathbb{N}$
+\end_inset
+
+ mit:
+\begin_inset Formula 
+\begin{align*}
+\norm{f_{n}-f_{m}}_{1} & =\int_{X}\abs{f_{n}-f_{m}}\dd\mu\le\int_{X}h_{N}\dd\mu<\varepsilon
+\end{align*}
+
+\end_inset
+
+Also ist 
+\begin_inset Formula $\left(f_{n}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+ tatsächlich eine 
+\begin_inset Formula $L^{1}$
+\end_inset
+
+-Cauchy-Folge.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Beispiel
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Abb1 einfügen
+\end_layout
+
+\begin_layout Standard
+Betrachte die Funktionenfolge für 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+f_{n}\left(x\right) & :=\begin{cases}
+1 & \text{falls }n\le x<n+1\\
+0 & \text{sonst}
+\end{cases}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f_{n}\left(x\right)\to0$
+\end_inset
+
+ konvergiert punktweise, aber es gilt:
+\begin_inset Formula 
+\begin{align*}
+0 & =\int_{-\infty}^{\infty}\lim_{n\to\infty}f_{n}\left(x\right)\dd x\not=\lim_{n\to\infty}\int_{-\infty}^{\infty}f_{n}\left(x\right)\dd x=1
+\end{align*}
+
+\end_inset
+
+Beachte, dass für jede dominierende Funktion 
+\begin_inset Formula $g$
+\end_inset
+
+ schon 
+\begin_inset Formula $\int_{-1}^{1}g\dd\mu=\infty$
+\end_inset
+
+ gilt, weswegen 
+\begin_inset Formula $g\not\in L^{1}$
+\end_inset
+
+ ist, der Satz über dominierte Konvergenz also nicht anwendbar ist.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Di 15.11.2011
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -10502,6 +11062,12 @@ Integration nicht-neg.
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Rest überarbeiten
 \end_layout
 
 \begin_layout Standard
@@ -11400,6 +11966,20 @@ status open
 
 \backslash
 end{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Fr 18.11.2011
 \end_layout
 
 \end_inset

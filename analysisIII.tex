@@ -581,7 +581,8 @@ ein.
 \section{Maﬂr‰ume, Maﬂe}
 
 
-\subsection{Definition\textmd{ ($\sigma$-Algebra, Maﬂraum, messbare Menge)\label{sub:Def-sigAlgebra}}}
+\subsection{Definition\textmd{ (\texorpdfstring{$\sigma$}{Sigma}-Algebra,
+Maﬂraum, messbare Menge)\label{sub:Def-sigAlgebra}}}
 
 Sei $X\not=\emptyset$ eine Menge (zum Beispiel $X\subseteq\mathbb{R}^{n}$).
 
@@ -1360,7 +1361,7 @@ ist, da $\mathcal{A}$ keine $\sigma$-Algebra ist.
 
 
 \subsection{Lemma \textmd{(Maﬂregeln)} und Definition \textmd{(Mengenalgebra,
-$\sigma$-Additivit‰t, Pr‰maﬂ)\label{sub:Lem-Massregeln}}}
+\texorpdfstring{$\sigma$}{Sigma}-Additivit‰t, Pr‰maﬂ)\label{sub:Lem-Massregeln}}}
 
 Sei $\left(X,\mathcal{A},\mu\right)$ wie oben.
 
@@ -1677,7 +1678,7 @@ bildet und auﬂerdem die Einschr‰nkung des ‰uﬂeren Maﬂes $\sigma$-additiv
 wird, also ein Maﬂ definiert.
 
 
-\subsection{Definition \textmd{($\mu^{*}$-messbar)}}
+\subsection{Definition \textmd{(\texorpdfstring{$\mu^{*}$}{Mu*}-messbar)}}
 
 Sei $\mu^{*}$ ein ‰uﬂeres Maﬂ auf $\mathcal{P}\left(X\right)$.
 
@@ -2615,7 +2616,7 @@ ist.
 \qqed
 
 
-\subsection{Proposition und Definition \textmd{($\left(L^{1}\left(X,\mu\right),\norm ._{1}\right)$
+\subsection{Proposition und Definition \textmd{(\texorpdfstring{$\left(L^{1}\left(X,\mu\right),\norm ._{1}\right)$}{L1}
 ist normierter Vektorraum)}}
 
 $\mathcal{L}:=\mathcal{L}\left(X\right):=\mathcal{L}\left(X,\mu\right)$
@@ -2658,7 +2659,7 @@ Daher ist $\left(L^{1}\left(X,\mu\right),\norm ._{1}\right)$ ein
 normierter Vektorraum.\qqed
 
 
-\subsection{Korollar \textmd{($\left(L^{1}\left(X,\mu\right),\norm ._{1}\right)$
+\subsection{Korollar \textmd{(\texorpdfstring{$\left(L^{1}\left(X,\mu\right),\norm ._{1}\right)$}{L1}
 ist Banachraum)}}
 
 $\left(L^{1}\left(X,\mu\right),\norm ._{1}\right)$ ist ein Banachraum.
@@ -2683,37 +2684,161 @@ unterscheiden.\qqed
 
 \section{Die Konvergenzs‰tze}
 
-\textcolor{green}{TODO: Rest ¸berarbeiten}
+
+\subsubsection*{Frage}
+
+Wenn $f_{n}\to f$ punktweise konvergiert und alle $f_{n}$ integrabel
+sind, wann ist $f$ integrabel?
+
+Wann kann man das Integral und den Grenzwert vertauschen?
 
 
 \subsection{Beispiel}
 
-TODO: Rest einf¸gen
+\begin{align*}
+f_{n} & :=\begin{cases}
+n^{2}\left(x+\frac{1}{n}\right) & \text{falls }\minus\frac{1}{n}<x\le0\\
+n^{2}\left(\frac{1}{n}-x\right) & \text{falls }0<x<\frac{1}{n}\\
+0 & \text{sonst}
+\end{cases}
+\end{align*}
 
 
-\subsection{Theorem\textmd{ (monotone Konvergenz; Beppo-Levi)}}
+\textcolor{green}{TODO: Abbildung $\delta$-Funktions-N‰herung}
 
-$\left(f_{n}\right)$, $f_{n}\in L^{1}\left(X\right)$ und $f$ ist
-fast ¸berall aufsteigend (also $f_{n+1}\left(x\right)\ge f_{n}\left(x\right)$
-f¸r fast alle $x$ und alle $n$) und $\int_{X}f_{n}\dd\mu\le C<\infty\quad\fall_{n}$.
+F¸r alle $x\not=0$ gilt:
+\begin{align*}
+\lim_{n\to\infty}f_{n}\left(x\right) & =0
+\end{align*}
+Also folgt:
+\begin{align*}
+0 & =\int_{-1}^{1}\lim_{n\to\infty}f_{n}\left(x\right)\dd x\not=\lim_{n\to\infty}\int_{-1}^{1}f_{n}\left(x\right)\dd x=1
+\end{align*}
+Derartige Probleme kann man auf zwei Arten vermeiden:
 
-$\Rightarrow f_{n}\rightarrow f$ fast ¸berall und $\int_{X}f\dd\mu=\lim_{n\rightarrow\infty}\int_{X}f_{n}\dd\mu$
+\begin{abclist}
+
+\abc Die $f_{n}$ sind monoton steigend.
+
+\abc Die $f_{n}$ werden von einer integrablen Funktion $g$ dominiert.
+
+\end{abclist}
+
+
+\subsection{Theorem\textmd{ (monotone Konvergenz, Beppo-Levi)}}
+
+Sei $\left(f_{n}\right)_{n\in\mathbb{N}}$ mit $f_{n}\in L^{1}\left(X\right)$
+eine fast ¸berall monoton steigende Folge integrabler Funktionen,
+also $f_{n+1}\left(x\right)\ge f_{n}\left(x\right)$ f¸r fast alle
+$x\in X$ und alle $n\in\mathbb{N}$, die gegen $f$ konvergiere,
+und f¸r alle $n\in\mathbb{N}$ sei das Integral $\int_{X}f_{n}\dd\mu\le C<\infty$
+beschr‰nkt und $f_{n}$.
+
+Dann gilt f¸r das Integral:
+\begin{align*}
+\int_{X}f\dd\mu & =\lim_{n\rightarrow\infty}\int_{X}f_{n}\dd\mu
+\end{align*}
+
+
+
+\subsubsection*{Beweis}
+
+Da $L^{1}\left(\mathbb{R},\mu\right)$ vollst‰ndig ist, gen¸gt es
+zu zeigen, dass $\left(f_{n}\right)_{n\in\mathbb{N}}$ eine $L^{1}$-Cauchy-Folge
+ist.
+
+F¸r $n\ge m$ gilt:
+\begin{align*}
+\norm{f_{n}-f_{m}}_{1} & =\int_{X}\abs{f_{n}-f_{m}}\dd\mu\stackrel{f_{n}\text{ mon. steigend}}{=}\int_{X}\left(f_{n}-f_{m}\right)\dd\mu=\int_{X}f_{n}\dd\mu-\int_{X}f_{m}\dd\mu
+\end{align*}
+Da $\left(\int_{X}f_{n}\dd\mu\right)_{n\in\mathbb{N}}$ monoton steigend
+und durch $C$ beschr‰nkt ist, ist es demnach eine Cauchy-Folge.\qqed
 
 
 \subsection{Theorem\textmd{ (dominierte Konvergenz)}}
 
-$\left(f_{n}\right),f_{n}\in L^{1}$, $\left|f_{n}\right|\le g\in L^{1}$
-und $f_{n}\rightarrow f$ fast ¸berall $\Rightarrow f\in L^{1}$ und
-$\int_{X}f\dd\mu=\lim_{n\rightarrow\infty}\int_{X}f_{n}\dd\mu$
+Sei $\left(f_{n}\right)_{n\in\mathbb{N}}$ mit $f_{n}\in L^{1}\left(X\right)$
+eine Folge integrabler Funktionen, die von der integrablen Funktion
+$g\in L^{1}$ dominiert sind, das heiﬂt $\left|f_{n}\right|\le g\in L^{1}$
+f¸r alle $n\in\mathbb{N}$ und fast alle $x\in X$, und $f_{n}\rightarrow f$
+konvergiere fast ¸berall.
 
-\marginpar{Gegenbeispiel: TODO Abb 1, $f_{n}\left(x\right)\rightarrow0$ punktweise,
-$\int f_{n}\dd\mu=A\not=\int\lim_{n\rightarrow\infty}\varphi_{n}\left(x\right)$,
-$g\not\in L^{1}$ (denn $\int g\dd\mu=+\infty$)}
+Dann ist $f\in L^{1}$ integrabel und f¸r das Integral gilt:
+\begin{align*}
+\int_{X}f\dd\mu & =\lim_{n\rightarrow\infty}\int_{X}f_{n}\dd\mu
+\end{align*}
 
-TODO: Rest einf¸gen
+
+
+\subsubsection*{Beweis}
+
+Zeige wiederum, dass $f_{n}$ eine $L^{1}$-Cauchy-Folge ist.
+
+Ohne Einschr‰nkung konvergiere $f_{n}\to f$ ¸berall und es gelte
+$\abs{f_{n}}\le g$ f¸r alle $n\in\mathbb{N}$.
+
+Bilde die Funktionenfolge $\left(h_{k}\right)_{k\in\mathbb{N}}$ definiert
+durch:
+\begin{align*}
+h_{k}\left(x\right) & =\sup\left\{ \abs{f_{n}\left(x\right)-f_{m}\left(x\right)}\Big|n,m\in\mathbb{N}_{\ge k}\right\} 
+\end{align*}
+
+\begin{description}
+\item [{Behauptung}] Die $h_{k}$ sind integrabel.
+\item [{Beweis}] $\abs{f_{n}-f_{m}}$ ist f¸r alle $n,m\in\mathbb{N}$
+integrabel. Also ist f¸r alle $l\in\mathbb{N}_{\ge k}$ schon
+\begin{align*}
+v_{l} & :=\max\left\{ \abs{f_{n}-f_{m}}\Big|k\le n,m\le l\right\} 
+\end{align*}
+integrabel.\\
+Auﬂerdem ist $\left(v_{l}\right)_{l\in\mathbb{N}_{\ge k}}$ eine monoton
+steigende Folge und nach der Dreiecksungleichung gilt:
+\begin{align*}
+\int_{X}v_{l}\dd\mu\le & 2\int_{X}g\dd\mu
+\end{align*}
+Wegen der monotone Konvergenz folgt ${\displaystyle h_{k}=\lim_{l\to\infty}v_{l}\in L^{1}}$.\qqed[Behauptung]
+\end{description}
+$\left(h_{k}\right)_{k\in\mathbb{N}}$ ist also eine absteigende Folge
+integrabler Funktionen, die punktweise gegen 0 konvergiert. Damit
+folgt:
+\begin{align*}
+\lim_{k\to\infty}\int_{X}h_{k}\dd\mu & =0
+\end{align*}
+Also gibt es f¸r alle $\varepsilon\in\mathbb{R}_{>0}$ ein $N\in\mathbb{N}$
+mit:
+\begin{align*}
+\norm{f_{n}-f_{m}}_{1} & =\int_{X}\abs{f_{n}-f_{m}}\dd\mu\le\int_{X}h_{N}\dd\mu<\varepsilon
+\end{align*}
+Also ist $\left(f_{n}\right)_{n\in\mathbb{N}}$ tats‰chlich eine $L^{1}$-Cauchy-Folge.\qqed
+
+
+\subsection{Beispiel}
+
+\textcolor{green}{TODO: Abb1 einf¸gen}
+
+Betrachte die Funktionenfolge f¸r $n\in\mathbb{N}$:
+\begin{align*}
+f_{n}\left(x\right) & :=\begin{cases}
+1 & \text{falls }n\le x<n+1\\
+0 & \text{sonst}
+\end{cases}
+\end{align*}
+
+
+$f_{n}\left(x\right)\to0$ konvergiert punktweise, aber es gilt:
+\begin{align*}
+0 & =\int_{-\infty}^{\infty}\lim_{n\to\infty}f_{n}\left(x\right)\dd x\not=\lim_{n\to\infty}\int_{-\infty}^{\infty}f_{n}\left(x\right)\dd x=1
+\end{align*}
+Beachte, dass f¸r jede dominierende Funktion $g$ schon $\int_{-1}^{1}g\dd\mu=\infty$
+gilt, weswegen $g\not\in L^{1}$ ist, der Satz ¸ber dominierte Konvergenz
+also nicht anwendbar ist.
+
+%DATE: Di 15.11.2011
 
 
 \section[Integration nicht-neg. Fkt.]{Integration nicht-negativer Funktionen}
+
+\textcolor{green}{TODO: Rest ¸berarbeiten}
 
 Sei $f:X\rightarrow\left[0,\infty\right]\subseteq\overline{\mathbb{R}}$
 messbar (muss nicht in $L^{1}$ sein!). Setze:
@@ -2990,6 +3115,8 @@ Setze $f=\chi_{U}$, dann ist $f|_{\mathbb{Q}\cap\left[0,1\right]}=1$.
 
 
 \end{iiilist}
+
+%DATE: Fr 18.11.2011
 
 TODO: Rest einf¸gen
 
