@@ -167,12 +167,10 @@
 \makeatother
 
 \begin{document}
-\selectlanguage{english}%
 
 
 
 
-\selectlanguage{ngerman}%
 
 
 \selectlanguage{english}%
@@ -203,10 +201,14 @@
 \global\long\def\sr#1#2#3{\underset{#3}{\overset{#2}{#1}}}
 
 
+\selectlanguage{ngerman}%
 \global\long\def\dd{\textnormal{d}}
 
 
 \global\long\def\ii{\textbf{i}}
+
+
+\global\long\def\Riemann{R\ \minus\negthickspace}
 
 
 \global\long\def\modulo#1#2{\moduloT{#1}{#2}}
@@ -227,7 +229,6 @@
 \global\long\def\modloScript#1#2{\modloScriptT{#1}{#2}}
 
 
-\selectlanguage{ngerman}%
 \pagenumbering{roman}
 
 
@@ -2983,6 +2984,9 @@ Dann ist:
 \end{align*}
 
 
+Beachte: Ist $\int_{X}f\dd\mu=\infty$, so ist $f\not\in L^{1}$ und
+$f$ \emph{nicht} integrierbar.
+
 
 \subsubsection*{Beweis}
 
@@ -2995,109 +2999,137 @@ Seite.\qqed
 
 \section[Zsh. zum Riemann-Integral]{Zusammenhang zum Riemann-Integral}
 
-\textcolor{green}{TODO: Rest überarbeiten}
+
+\subsection{Definition \textmd{(Zerlegung, Feinheit, Ober- und Untersumme, Riemann-integrierbar)}}
 
 Sei $I=\left[a,b\right]\subset\mathbb{R}$ kompaktes Intervall und
 $f:I\rightarrow\mathbb{R}$ beschränkt.
 
-Zerlegung $Z=\left\{ x_{0},\ldots,x_{k+1}\right\} $ mit $x_{0}=a<x_{1}<\ldots<x_{k}<x_{k+1}=b$
-
-Feinheit $\Delta\left(Z\right)=\max_{j=0,\ldots,k}\left(x_{j+1}-x_{j}\right)$
+Eine \emph{Zerlegung} $Z=\left\{ x_{0},\ldots,x_{k+1}\right\} $ ist
+eine Menge von Punkten $x_{j}\in I$ mit:
 \begin{align*}
-\overline{S}_{Z} & =\sum_{j=0}^{k}\sup_{\left[x_{j},x_{j+1}\right]}f\cdot\left|x_{j+1}-x_{j}\right|\\
-\underline{S}_{Z} & =\sum_{j=0}^{k}\inf_{\left[x_{j},x_{j+1}\right]}f\cdot\left|x_{j+1}-x_{j}\right|
+x_{0} & =a<x_{1}<\ldots<x_{k}<x_{k+1}=b
 \end{align*}
 
 
-
-\subsubsection*{Definition:}
-
-$f$ ist $R$-integrierbar, falls es für jedes $\varepsilon>0$ eine
-Zerlegung $Z$ gibt, mit:
+Die \emph{Feinheit der Zerlegung $Z$} ist:
 \begin{align*}
-\overline{S}_{Z}\left(f\right)-\underline{S}_{Z} & \le\varepsilon
+\Delta\left(Z\right) & :=\max_{j=0,\ldots,k}\left(x_{j+1}-x_{j}\right)
+\end{align*}
+Nun kann man die \emph{Obersumme} 
+\begin{align*}
+\overline{S}_{Z}\left(f\right) & =\sum_{j=0}^{k}\sup_{\left[x_{j},x_{j+1}\right]}\left(f\cdot\left|x_{j+1}-x_{j}\right|\right)
+\end{align*}
+und die \emph{Untersumme}
+\begin{align*}
+\underline{S}_{Z}\left(f\right) & =\sum_{j=0}^{k}\inf_{\left[x_{j},x_{j+1}\right]}\left(f\cdot\left|x_{j+1}-x_{j}\right|\right)
+\end{align*}
+bilden.
+
+$f$ heißt \emph{Riemann-integrierbar} (kurz: $R$-integrierbar),
+falls es für jedes $\varepsilon\in\mathbb{R}_{>0}$ eine Zerlegung
+$Z$ gibt, mit:
+\begin{align*}
+\overline{S}_{Z}\left(f\right)-\underline{S}_{Z}\left(f\right) & \le\varepsilon
+\end{align*}
+Das Riemann-Integral ist dann definiert als:
+\begin{align*}
+\Riemann\int_{I}f\left(x\right)\dd x & :=\sup_{Z}\underline{S}_{Z}\left(f\right)
 \end{align*}
 
-
-
-\subsubsection*{Satz:}
-
-$f$ ist $R$-integrierbar $\Leftrightarrow$ ${\displaystyle \fall_{\varepsilon>0}\exs_{\delta>0}\text{ mit }\overline{S}_{Z}\left(f\right)-\underline{S}_{Z}\le\varepsilon\fall_{Z}\text{ mit }\Delta\left(Z\right)<\delta}$
-
-$R-\int_{y}f\left(x\right)\dd x:=\sup_{Z}\underline{S}_{Z}\left(f\right)$
 
 
 \subsection{Satz}
 
-Jede $R$-integrierbar Funktion ist Lebesgue-integrabel und:
+$f$ ist genau dann $R$-integrierbar, wenn für alle $\varepsilon\in\mathbb{R}_{>0}$
+schon ein $\delta\in\mathbb{R}_{>0}$ existiert mit
 \begin{align*}
-R-\int_{Y}f\left(x\right)\dd x & =\int_{Y}f\dd\mu
+\overline{S}_{Z}\left(f\right)-\underline{S}_{Z}\left(f\right) & \le\varepsilon
 \end{align*}
-
-
-(Insbesondere: Jede stetige Funktion auf $\left[a,b\right]$ ist integrabel)
+für alle Zerlegungen $Z$ mit $\Delta\left(Z\right)<\delta$.
 
 
 \subsubsection*{Beweis}
 
-Sei $f$ $R$-integrierbar. Es gibt dann eine absteigende Familie
-von Treppenfunktionen $\psi_{n}$ und eine aufsteigende Folge von
-Treppenfunktionen $\varphi_{n}$ mit:
+\textcolor{green}{TODO: Beweis einfügen}
+
+\qqed
+
+
+\subsection{Satz}
+
+Jede $R$-integrierbare Funktion ist Lebesgue-integrabel und es gilt:
+\begin{align*}
+\Riemann\int_{I}f\left(x\right)\dd x & =\int_{I}f\dd\mu
+\end{align*}
+
+
+Insbesondere ist jede stetige Funktion auf $\left[a,b\right]$ integrabel.
+
+
+\subsubsection*{Beweis}
+
+Sei $f$ eine $R$-integrierbare Funktion. Dann gibt es eine absteigende
+Familie von Treppenfunktionen $\psi_{n}$ und eine aufsteigende Folge
+von Treppenfunktionen $\varphi_{n}$ mit
 \begin{align*}
 \varphi_{n}\le & f\le\psi_{n}
 \end{align*}
 und:
 \begin{align*}
-\left|\left|\psi_{n}-\varphi_{n}\right|\right| & \rightarrow0
+\norm{\psi_{n}-\varphi_{n}} & \rightarrow0
 \end{align*}
 
 
-\emph{Genauer}: Betrachte $Z_{n}$ mit $\Delta\left(Z_{n}\right)<\frac{1}{n}$
-und $Z_{n+1}\supset Z_{n}$ (also $Z_{n+1}$ ist eine Verfeinerung
-von $Z_{n}$)
+Genauer: Betrachte für $n\in\mathbb{N}$ eine Zerlegungen $Z_{n}$
+mit ${\displaystyle \Delta\left(Z_{n}\right)<\frac{1}{n}}$ und $Z_{n+1}\supseteq Z_{n}$,
+das heißt $Z_{n+1}$ ist eine Verfeinerung von $Z_{n}$.
 \begin{align*}
-\psi_{n}|_{[x_{j},x_{j+1})} & =\sup_{[x_{j},x_{j+1})}f\\
-\varphi_{n}|_{[x_{j},x_{j+1})} & =\inf_{[x_{j},x_{j+1})}f
+\psi_{n}\Big|_{[x_{j},x_{j+1})} & =\sup_{[x_{j},x_{j+1})}\left(f\right)\\
+\varphi_{n}\Big|_{[x_{j},x_{j+1})} & =\inf_{[x_{j},x_{j+1})}\left(f\right)
 \end{align*}
 
 
-TODO: Abb 4
+\textcolor{green}{TODO: Abb4 einfügen}
 
 \begin{align*}
-\left|\left|\psi_{n}-\varphi_{n}\right|\right|_{1} & =\int_{X}\left|\psi_{n}-\varphi_{n}\right|\dd\mu=\sum_{j=0}^{k}\left(\sup_{[x_{j},x_{j+1})}f-\inf_{[x_{j},x_{j+1})}f\right)\cdot\left|x_{j+1}-x_{j}\right|\stackrel{\Delta\left(Z\right)\rightarrow0}{\rightarrow}0
+\norm{\psi_{n}-\varphi_{n}}_{1} & =\int_{\mathbb{R}}\abs{\psi_{n}-\varphi_{n}}\dd\mu=\sum_{j=0}^{k}\left(\sup_{[x_{j},x_{j+1})}\left(f\right)-\inf_{[x_{j},x_{j+1})}\left(f\right)\right)\cdot\abs{x_{j+1}-x_{j}}\xrightarrow{\Delta\left(Z\right)\rightarrow0}0
 \end{align*}
 
 
-Da $\left|\varphi_{n}\right|\le\left|\psi_{1}\right|+\left|\varphi_{1}\right|$
-und $\left|\psi_{1}\right|+\left|\varphi_{1}\right|\in L^{1}$, kann
-man den Satz der dominierten Konvergenz anwenden und erhält:
+Da $\abs{\varphi_{n}}\le\abs{\psi_{1}}+\abs{\varphi_{1}}$ und $\abs{\psi_{1}}+\abs{\varphi_{1}}\in L^{1}$,
+kann man den Satz der dominierten Konvergenz anwenden und erhält
 \begin{align*}
-\lim_{n\rightarrow\infty}\int_{X}\varphi_{n}\dd\mu & =\int_{X}\varphi\dd\mu\quad\text{und }\varphi_{n}\rightarrow\varphi\text{ fast überall}
+\lim_{n\rightarrow\infty}\int_{\mathbb{R}}\varphi_{n}\dd\mu & =\int_{\mathbb{R}}\varphi\dd\mu
 \end{align*}
+und $\varphi_{n}\rightarrow\varphi$ konvergiert fast überall.
+
 Genauso ist $ $$\left|\psi_{n}\right|\le\left|\psi_{1}\right|+\left|\varphi_{1}\right|$
 und $\left|\psi_{1}\right|+\left|\varphi_{1}\right|\in L^{1}$, also
 nach der dominierten Konvergenz:
 \begin{align*}
-\lim_{n\rightarrow\infty}\int_{X}\psi_{n}\dd\mu & =\int_{X}\psi\dd\mu\quad\text{und }\psi_{n}\rightarrow\psi\text{ fast überall}
+\lim_{n\rightarrow\infty}\int_{\mathbb{R}}\psi_{n}\dd\mu & =\int_{\mathbb{R}}\psi\dd\mu\quad\text{und }\psi_{n}\rightarrow\psi\text{ fast überall}
 \end{align*}
 
 
 Da
 \begin{align*}
-\int\psi_{n}\dd\mu & =R-\int\psi_{n}\dd\mu\rightarrow R-\int_{Y}f\dd x\\
-\int\varphi_{n}\dd\mu & =R-\int\varphi_{n}\dd\mu\rightarrow R-\int_{Y}f\dd x
+\int_{\mathbb{R}}\psi_{n}\dd\mu & =\Riemann\int_{I}\psi_{n}\dd\mu\rightarrow\Riemann\int_{I}f\dd x\\
+\int_{\mathbb{R}}\varphi_{n}\dd\mu & =\Riemann\int_{I}\varphi_{n}\dd\mu\rightarrow\Riemann\int_{I}f\dd x
 \end{align*}
 
 
-folgt:
+gilt, folgt:
 \begin{align*}
-\int\left|\varphi-\psi\right|\dd\mu & =0=\left|\left|\varphi-\psi\right|\right|_{1}
+\int_{\mathbb{R}}\left|\varphi-\psi\right|\dd\mu & =0=\norm{\varphi-\psi}_{1}
 \end{align*}
 
 
 Also gilt $\varphi=\psi$ fast überall. Da $\varphi\le f\le\psi$
-folgt $f$ ist Lebesgue-integrabel und $\int_{Y}f\dd\mu=R-\int_{Y}-f\dd x$.
-
+gilt, ist $f$ Lebesgue-integrabel und es gilt:
+\begin{align*}
+\int_{I}f\dd\mu & =\Riemann\int_{I}f\dd x
+\end{align*}
 \qqed
 
 
@@ -3106,34 +3138,118 @@ folgt $f$ ist Lebesgue-integrabel und $\int_{Y}f\dd\mu=R-\int_{Y}-f\dd x$.
 \begin{iiilist}
 
 \iii $f=\chi_{\mathbb{Q}\cap\left[0,1\right]}$ ist fast überall
-0, also ist $f$ Lebesgue-integrabel und $\int_{\left[0,1\right]}f\dd\mu=0$
-aber $\overline{S}_{f}-\underline{S}_{f}\ge1$ für beliebige Zerlegungen,
-also ist $f$ \emph{nicht} $R$-integrabel.
+0, also ist $f$ Lebesgue-integrabel und $\int_{\left[0,1\right]}f\dd\mu=0$.
 
-\iii Konstruiere Funktion $f$, die Lebesgue-integrabel ist, die
+Aber für alle Zerlegungen gilt $\overline{S}_{f}-\underline{S}_{f}\ge1$,
+also ist $f$ \emph{nicht} $R$-integrierbar.
+
+\iii Konstruiere nun eine Funktion $f$, die Lebesgue-integrabel,
 aber nicht $R$-integrabel ist, selbst wenn man sie auf einer Nullmenge
-beliebig abändert $\mathbb{Q}\cap\left[0,1\right]=\left\{ q_{n}|n\in\mathbb{N}\right\} $
-ist abzählbar.\\
-Setze $U_{n}=B_{\frac{\varepsilon}{2^{n}}}\left(q_{n}\right)$ mit
-$0<\varepsilon<1$. $U:=\bigcup_{n\in\mathbb{N}}U_{n}\le\sum_{n}\mu\left(U_{n}\right)=\sum_{n=1}^{\infty}\frac{2\varepsilon}{2^{n}}=2\varepsilon$
+beliebig abändert.
 
-Setze $f=\chi_{U}$, dann ist $f|_{\mathbb{Q}\cap\left[0,1\right]}=1$.
+$\mathbb{Q}\cap\left[0,1\right]=\left\{ q_{n}|n\in\mathbb{N}\right\} $
+ist abzählbar. Setze für alle $n\in\mathbb{N}$ nun
+\begin{align*}
+U_{n} & :=B_{\frac{\varepsilon}{2^{n}}}\left(q_{n}\right)
+\end{align*}
+mit $0<\varepsilon<1$ und:
+\begin{align*}
+U:= & \bigcup_{n\in\mathbb{N}}U_{n}
+\end{align*}
+Dann gilt:
+\begin{align*}
+\mu\left(U\right) & \le\sum_{n\in\mathbb{N}}\mu\left(U_{n}\right)=\sum_{n=1}^{\infty}\frac{2\varepsilon}{2^{n}}=2\varepsilon
+\end{align*}
+Setze $f:=\chi_{U}$, dann ist $f|_{\mathbb{Q}\cap\left[0,1\right]}=1$
+und es gilt:
 
 \begin{align*}
-\int f\dd\mu & =\mu\left(U\right)<\varepsilon
+\int f\dd\mu & =\mu\left(U\right)\le2\varepsilon
 \end{align*}
-
+Aber für alle Zerlegungen gilt $\overline{S}_{f}-\underline{S}_{f}\ge1$,
+also ist $f$ \emph{nicht} $R$-integrierbar.
 
 \end{iiilist}
 
 %DATE: Fr 18.11.2011
 
-TODO: Rest einfügen
+
+\subsection{Satz}
+
+Eine beschränkte Funktion $f:\left[a,b\right]\to\mathbb{R}$ ist genau
+dann $R$-integrierbar, wenn sie fast überall stetig ist.
+
+
+\subsubsection*{(ohne Beweis)}
+
+
+\subsection{Satz}
+
+Sei $M_{n}\subseteq X$ eine aufsteigende Folge messbarer Mengen mit:
+\begin{align*}
+X & =\bigcup_{n\in\mathbb{N}}M_{n}
+\end{align*}
+Dann ist $f:X\to\mathbb{R}$ genau dann integrabel, wenn $f\Big|_{M_{n}}$
+für alle $n\in\mathbb{N}$ integrabel ist und $\int_{M_{n}}\abs f\dd\mu\to\int_{X}\abs f\dd\mu$
+konvergiert.
+
+Also sind uneigentliche Integrale im Lebesgue-Integral schon mit berücksichtigt.
+
+
+\subsubsection*{Beweis}
+
+\quotedblbase{}$\Rightarrow$\textquotedblleft{}: Sei $f$ integrabel,
+dann sind $f\Big|_{M_{n}}$ und $\abs f\Big|_{M_{n}}$ für alle $n\in\mathbb{N}$
+integrabel. Setze:
+\begin{align*}
+a_{n} & :=\int_{M_{n}}\abs f\dd\mu:=\int_{X}\chi_{M_{n}}\abs f\dd\mu\le\int_{X}\abs f\dd\mu
+\end{align*}
+Dann ist $\left(a_{n}\right)_{n\in\mathbb{N}}$ eine aufsteigende
+Folge, die beschränkt ist, und daher konvergiert. Für alle $x\in X$
+gilt:
+\begin{align*}
+\chi_{M_{n}}\abs f & \xrightarrow{n\to\infty}\abs f
+\end{align*}
+Die Monotone Konvergenz liefert:
+\begin{align*}
+\lim_{n\to\infty}\int_{M_{n}}\abs f\dd\mu & =\int_{X}\abs f\dd\mu
+\end{align*}
+Da $\abs{\chi_{M_{n}}f}\le\abs f\in L^{1}$ ist, liefert die dominierte
+Konvergenz:
+\begin{align*}
+\lim_{n\to\infty}\int_{M_{n}}f\dd\mu & =\int_{X}f\dd\mu
+\end{align*}
+\quotedblbase{}$\Leftarrow$\textquotedblleft{}: Definiere $f_{n}:=\chi_{M_{n}}\cdot f$.
+Wir nehmen an, dass $\int_{X}\abs f\le C\in\mathbb{R}$ ist.
+
+Da $\abs{f_{n}}\nearrow\abs f$ konvergiert, folgt aus der monotonen
+Konvergenz:
+\begin{align*}
+\int_{X}\abs f\dd\mu & =\lim_{n\to\infty}\int_{X}\abs{f_{n}}\dd\mu
+\end{align*}
+Außerdem konvergiert $f_{n}\to f$ und $\abs{f_{n}}\le\abs f\in L^{1}$.
+Also folgt mit dominierte Konvergenz:
+\begin{align*}
+\int_{X}f\dd\mu & =\lim_{n\to\infty}\int_{X}f_{n}\dd\mu
+\end{align*}
+\qqed
+
+
+\subsection{Bemerkung}
+
+Hauptwertintegrale sind \emph{nicht} berücksichtigt.
+
+Sei zum Beispiel $f\in L^{1}$ mit $f\left(0\right)\not=0$.
+\begin{align*}
+H\ -\negthickspace\int_{\mathbb{R}}\frac{f\left(x\right)}{x}\dd x & :=\lim_{\varepsilon\to\infty}\left(\int_{\minus\infty}^{\minus\varepsilon}\frac{f\left(x\right)}{x}\dd x+\int_{\varepsilon}^{\infty}\frac{f\left(x\right)}{x}\dd x\right)
+\end{align*}
+Aber ${\displaystyle \frac{f\left(x\right)}{x}}$ ist \emph{nicht}
+in $L^{1}$.
 
 
 \section{Die Räume $L^{p}$}
 
-TODO: Rest einfügen
+\textcolor{green}{TODO: Rest überarbeiten}
 
 %22.11.2011
 

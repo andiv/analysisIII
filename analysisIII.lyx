@@ -199,8 +199,6 @@
 \begin_body
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Note
 status collapsed
 
@@ -234,8 +232,6 @@ frac{km}{h}}$
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Note
 status collapsed
 
@@ -505,8 +501,6 @@ TODO: DATEs einfügen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset FormulaMacro
 \newcommand{\dd}{\textnormal{d}}
 \end_inset
@@ -515,8 +509,6 @@ TODO: DATEs einfügen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset FormulaMacro
 \newcommand{\ii}{\textbf{i}}
 \end_inset
@@ -525,8 +517,15 @@ TODO: DATEs einfügen
 \end_layout
 
 \begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\Riemann}{R\ \minus\negthickspace}
+{R-}
+\end_inset
 
-\lang english
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset FormulaMacro
 \newcommand{\modulo}[2]{\moduloT{#1}{#2}}
 {\frac{#1}{#2}}
@@ -536,8 +535,6 @@ TODO: DATEs einfügen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset FormulaMacro
 \newcommand{\lmodulo}[2]{\lmoduloT{#1}{#2}}
 {\frac{#1}{#2}}
@@ -547,8 +544,6 @@ TODO: DATEs einfügen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset FormulaMacro
 \newcommand{\modlo}[2]{\modloT{#1}{#2}}
 {\frac{#1}{#2}}
@@ -558,8 +553,6 @@ TODO: DATEs einfügen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset FormulaMacro
 \newcommand{\moduloScript}[2]{\moduloScriptT{#1}{#2}}
 {{\scriptstyle \frac{#1}{#2}}}
@@ -569,8 +562,6 @@ TODO: DATEs einfügen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset FormulaMacro
 \newcommand{\lmoduloScript}[2]{\lmoduloScriptT{#1}{#2}}
 {{\scriptstyle \frac{#1}{#2}}}
@@ -580,8 +571,6 @@ TODO: DATEs einfügen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset FormulaMacro
 \newcommand{\modloScript}[2]{\modloScriptT{#1}{#2}}
 {{\scriptstyle \frac{#1}{#2}}}
@@ -5270,7 +5259,6 @@ status open
 
 \begin_layout Plain Layout
 
-\series medium
 }{Sigma}
 \end_layout
 
@@ -10252,7 +10240,6 @@ status open
 
 \begin_layout Plain Layout
 
-\series medium
 }{L1}
 \end_layout
 
@@ -10401,7 +10388,6 @@ status open
 
 \begin_layout Plain Layout
 
-\series medium
 }{L1}
 \end_layout
 
@@ -11496,6 +11482,26 @@ Dann ist:
 
 \end_layout
 
+\begin_layout Standard
+Beachte: Ist 
+\begin_inset Formula $\int_{X}f\dd\mu=\infty$
+\end_inset
+
+, so ist 
+\begin_inset Formula $f\not\in L^{1}$
+\end_inset
+
+ und 
+\begin_inset Formula $f$
+\end_inset
+
+ 
+\emph on
+nicht
+\emph default
+ integrierbar.
+\end_layout
+
 \begin_layout Subsubsection*
 Beweis
 \end_layout
@@ -11547,10 +11553,10 @@ Zsh.
 
 \end_layout
 
-\begin_layout Standard
-
-\color green
-TODO: Rest überarbeiten
+\begin_layout Subsection
+Definition 
+\series medium
+(Zerlegung, Feinheit, Ober- und Untersumme, Riemann-integrierbar)
 \end_layout
 
 \begin_layout Standard
@@ -11566,27 +11572,22 @@ Sei
 \end_layout
 
 \begin_layout Standard
-Zerlegung 
+Eine 
+\emph on
+Zerlegung
+\emph default
+ 
 \begin_inset Formula $Z=\left\{ x_{0},\ldots,x_{k+1}\right\} $
 \end_inset
 
- mit 
-\begin_inset Formula $x_{0}=a<x_{1}<\ldots<x_{k}<x_{k+1}=b$
+ ist eine Menge von Punkten 
+\begin_inset Formula $x_{j}\in I$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Feinheit 
-\begin_inset Formula $\Delta\left(Z\right)=\max_{j=0,\ldots,k}\left(x_{j+1}-x_{j}\right)$
-\end_inset
-
-
+ mit:
 \begin_inset Formula 
 \begin{align*}
-\overline{S}_{Z} & =\sum_{j=0}^{k}\sup_{\left[x_{j},x_{j+1}\right]}f\cdot\left|x_{j+1}-x_{j}\right|\\
-\underline{S}_{Z} & =\sum_{j=0}^{k}\inf_{\left[x_{j},x_{j+1}\right]}f\cdot\left|x_{j+1}-x_{j}\right|
+x_{0} & =a<x_{1}<\ldots<x_{k}<x_{k+1}=b
 \end{align*}
 
 \end_inset
@@ -11594,20 +11595,64 @@ Feinheit
 
 \end_layout
 
-\begin_layout Subsubsection*
-Definition:
+\begin_layout Standard
+Die 
+\emph on
+Feinheit der Zerlegung 
+\begin_inset Formula $Z$
+\end_inset
+
+
+\emph default
+ ist:
+\begin_inset Formula 
+\begin{align*}
+\Delta\left(Z\right) & :=\max_{j=0,\ldots,k}\left(x_{j+1}-x_{j}\right)
+\end{align*}
+
+\end_inset
+
+Nun kann man die 
+\emph on
+Obersumme
+\emph default
+ 
+\begin_inset Formula 
+\begin{align*}
+\overline{S}_{Z}\left(f\right) & =\sum_{j=0}^{k}\sup_{\left[x_{j},x_{j+1}\right]}\left(f\cdot\left|x_{j+1}-x_{j}\right|\right)
+\end{align*}
+
+\end_inset
+
+und die 
+\emph on
+Untersumme
+\emph default
+
+\begin_inset Formula 
+\begin{align*}
+\underline{S}_{Z}\left(f\right) & =\sum_{j=0}^{k}\inf_{\left[x_{j},x_{j+1}\right]}\left(f\cdot\left|x_{j+1}-x_{j}\right|\right)
+\end{align*}
+
+\end_inset
+
+bilden.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula $f$
 \end_inset
 
- ist 
+ heißt 
+\emph on
+Riemann-integrierbar
+\emph default
+ (kurz: 
 \begin_inset Formula $R$
 \end_inset
 
--integrierbar, falls es für jedes 
-\begin_inset Formula $\varepsilon>0$
+-integrierbar), falls es für jedes 
+\begin_inset Formula $\varepsilon\in\mathbb{R}_{>0}$
 \end_inset
 
  eine Zerlegung 
@@ -11617,7 +11662,15 @@ Definition:
  gibt, mit:
 \begin_inset Formula 
 \begin{align*}
-\overline{S}_{Z}\left(f\right)-\underline{S}_{Z} & \le\varepsilon
+\overline{S}_{Z}\left(f\right)-\underline{S}_{Z}\left(f\right) & \le\varepsilon
+\end{align*}
+
+\end_inset
+
+Das Riemann-Integral ist dann definiert als:
+\begin_inset Formula 
+\begin{align*}
+\Riemann\int_{I}f\left(x\right)\dd x & :=\sup_{Z}\underline{S}_{Z}\left(f\right)
 \end{align*}
 
 \end_inset
@@ -11625,31 +11678,66 @@ Definition:
 
 \end_layout
 
-\begin_layout Subsubsection*
-Satz:
+\begin_layout Subsection
+Satz
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula $f$
 \end_inset
 
- ist 
+ ist genau dann 
 \begin_inset Formula $R$
 \end_inset
 
--integrierbar 
-\begin_inset Formula $\Leftrightarrow$
+-integrierbar, wenn für alle 
+\begin_inset Formula $\varepsilon\in\mathbb{R}_{>0}$
 \end_inset
 
- 
-\begin_inset Formula ${\displaystyle \fall_{\varepsilon>0}\exs_{\delta>0}\text{ mit }\overline{S}_{Z}\left(f\right)-\underline{S}_{Z}\le\varepsilon\fall_{Z}\text{ mit }\Delta\left(Z\right)<\delta}$
+ schon ein 
+\begin_inset Formula $\delta\in\mathbb{R}_{>0}$
 \end_inset
 
+ existiert mit
+\begin_inset Formula 
+\begin{align*}
+\overline{S}_{Z}\left(f\right)-\underline{S}_{Z}\left(f\right) & \le\varepsilon
+\end{align*}
 
+\end_inset
+
+für alle Zerlegungen 
+\begin_inset Formula $Z$
+\end_inset
+
+ mit 
+\begin_inset Formula $\Delta\left(Z\right)<\delta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $R-\int_{y}f\left(x\right)\dd x:=\sup_{Z}\underline{S}_{Z}\left(f\right)$
+
+\color green
+TODO: Beweis einfügen
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
 \end_inset
 
 
@@ -11664,10 +11752,10 @@ Jede
 \begin_inset Formula $R$
 \end_inset
 
--integrierbar Funktion ist Lebesgue-integrabel und:
+-integrierbare Funktion ist Lebesgue-integrabel und es gilt:
 \begin_inset Formula 
 \begin{align*}
-R-\int_{Y}f\left(x\right)\dd x & =\int_{Y}f\dd\mu
+\Riemann\int_{I}f\left(x\right)\dd x & =\int_{I}f\dd\mu
 \end{align*}
 
 \end_inset
@@ -11676,11 +11764,11 @@ R-\int_{Y}f\left(x\right)\dd x & =\int_{Y}f\dd\mu
 \end_layout
 
 \begin_layout Standard
-(Insbesondere: Jede stetige Funktion auf 
+Insbesondere ist jede stetige Funktion auf 
 \begin_inset Formula $\left[a,b\right]$
 \end_inset
 
- ist integrabel)
+ integrabel.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -11692,12 +11780,12 @@ Sei
 \begin_inset Formula $f$
 \end_inset
 
- 
+ eine 
 \begin_inset Formula $R$
 \end_inset
 
--integrierbar.
- Es gibt dann eine absteigende Familie von Treppenfunktionen 
+-integrierbare Funktion.
+ Dann gibt es eine absteigende Familie von Treppenfunktionen 
 \begin_inset Formula $\psi_{n}$
 \end_inset
 
@@ -11705,7 +11793,7 @@ Sei
 \begin_inset Formula $\varphi_{n}$
 \end_inset
 
- mit:
+ mit
 \begin_inset Formula 
 \begin{align*}
 \varphi_{n}\le & f\le\psi_{n}
@@ -11716,7 +11804,7 @@ Sei
 und:
 \begin_inset Formula 
 \begin{align*}
-\left|\left|\psi_{n}-\varphi_{n}\right|\right| & \rightarrow0
+\norm{\psi_{n}-\varphi_{n}} & \rightarrow0
 \end{align*}
 
 \end_inset
@@ -11725,23 +11813,23 @@ und:
 \end_layout
 
 \begin_layout Standard
+Genauer: Betrachte für 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
 
-\emph on
-Genauer
-\emph default
-: Betrachte 
+ eine Zerlegungen 
 \begin_inset Formula $Z_{n}$
 \end_inset
 
  mit 
-\begin_inset Formula $\Delta\left(Z_{n}\right)<\frac{1}{n}$
+\begin_inset Formula ${\displaystyle \Delta\left(Z_{n}\right)<\frac{1}{n}}$
 \end_inset
 
  und 
-\begin_inset Formula $Z_{n+1}\supset Z_{n}$
+\begin_inset Formula $Z_{n+1}\supseteq Z_{n}$
 \end_inset
 
- (also 
+, das heißt 
 \begin_inset Formula $Z_{n+1}$
 \end_inset
 
@@ -11749,11 +11837,11 @@ Genauer
 \begin_inset Formula $Z_{n}$
 \end_inset
 
-)
+.
 \begin_inset Formula 
 \begin{align*}
-\psi_{n}|_{[x_{j},x_{j+1})} & =\sup_{[x_{j},x_{j+1})}f\\
-\varphi_{n}|_{[x_{j},x_{j+1})} & =\inf_{[x_{j},x_{j+1})}f
+\psi_{n}\Big|_{[x_{j},x_{j+1})} & =\sup_{[x_{j},x_{j+1})}\left(f\right)\\
+\varphi_{n}\Big|_{[x_{j},x_{j+1})} & =\inf_{[x_{j},x_{j+1})}\left(f\right)
 \end{align*}
 
 \end_inset
@@ -11762,13 +11850,15 @@ Genauer
 \end_layout
 
 \begin_layout Standard
-TODO: Abb 4
+
+\color green
+TODO: Abb4 einfügen
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\left|\left|\psi_{n}-\varphi_{n}\right|\right|_{1} & =\int_{X}\left|\psi_{n}-\varphi_{n}\right|\dd\mu=\sum_{j=0}^{k}\left(\sup_{[x_{j},x_{j+1})}f-\inf_{[x_{j},x_{j+1})}f\right)\cdot\left|x_{j+1}-x_{j}\right|\stackrel{\Delta\left(Z\right)\rightarrow0}{\rightarrow}0
+\norm{\psi_{n}-\varphi_{n}}_{1} & =\int_{\mathbb{R}}\abs{\psi_{n}-\varphi_{n}}\dd\mu=\sum_{j=0}^{k}\left(\sup_{[x_{j},x_{j+1})}\left(f\right)-\inf_{[x_{j},x_{j+1})}\left(f\right)\right)\cdot\abs{x_{j+1}-x_{j}}\xrightarrow{\Delta\left(Z\right)\rightarrow0}0
 \end{align*}
 
 \end_inset
@@ -11778,21 +11868,29 @@ TODO: Abb 4
 
 \begin_layout Standard
 Da 
-\begin_inset Formula $\left|\varphi_{n}\right|\le\left|\psi_{1}\right|+\left|\varphi_{1}\right|$
+\begin_inset Formula $\abs{\varphi_{n}}\le\abs{\psi_{1}}+\abs{\varphi_{1}}$
 \end_inset
 
  und 
-\begin_inset Formula $\left|\psi_{1}\right|+\left|\varphi_{1}\right|\in L^{1}$
+\begin_inset Formula $\abs{\psi_{1}}+\abs{\varphi_{1}}\in L^{1}$
 \end_inset
 
-, kann man den Satz der dominierten Konvergenz anwenden und erhält:
+, kann man den Satz der dominierten Konvergenz anwenden und erhält
 \begin_inset Formula 
 \begin{align*}
-\lim_{n\rightarrow\infty}\int_{X}\varphi_{n}\dd\mu & =\int_{X}\varphi\dd\mu\quad\text{und }\varphi_{n}\rightarrow\varphi\text{ fast überall}
+\lim_{n\rightarrow\infty}\int_{\mathbb{R}}\varphi_{n}\dd\mu & =\int_{\mathbb{R}}\varphi\dd\mu
 \end{align*}
 
 \end_inset
 
+und 
+\begin_inset Formula $\varphi_{n}\rightarrow\varphi$
+\end_inset
+
+ konvergiert fast überall.
+\end_layout
+
+\begin_layout Standard
 Genauso ist 
 \begin_inset Formula $ $
 \end_inset
@@ -11808,7 +11906,7 @@ Genauso ist
 , also nach der dominierten Konvergenz:
 \begin_inset Formula 
 \begin{align*}
-\lim_{n\rightarrow\infty}\int_{X}\psi_{n}\dd\mu & =\int_{X}\psi\dd\mu\quad\text{und }\psi_{n}\rightarrow\psi\text{ fast überall}
+\lim_{n\rightarrow\infty}\int_{\mathbb{R}}\psi_{n}\dd\mu & =\int_{\mathbb{R}}\psi\dd\mu\quad\text{und }\psi_{n}\rightarrow\psi\text{ fast überall}
 \end{align*}
 
 \end_inset
@@ -11820,8 +11918,8 @@ Genauso ist
 Da
 \begin_inset Formula 
 \begin{align*}
-\int\psi_{n}\dd\mu & =R-\int\psi_{n}\dd\mu\rightarrow R-\int_{Y}f\dd x\\
-\int\varphi_{n}\dd\mu & =R-\int\varphi_{n}\dd\mu\rightarrow R-\int_{Y}f\dd x
+\int_{\mathbb{R}}\psi_{n}\dd\mu & =\Riemann\int_{I}\psi_{n}\dd\mu\rightarrow\Riemann\int_{I}f\dd x\\
+\int_{\mathbb{R}}\varphi_{n}\dd\mu & =\Riemann\int_{I}\varphi_{n}\dd\mu\rightarrow\Riemann\int_{I}f\dd x
 \end{align*}
 
 \end_inset
@@ -11830,10 +11928,10 @@ Da
 \end_layout
 
 \begin_layout Standard
-folgt:
+gilt, folgt:
 \begin_inset Formula 
 \begin{align*}
-\int\left|\varphi-\psi\right|\dd\mu & =0=\left|\left|\varphi-\psi\right|\right|_{1}
+\int_{\mathbb{R}}\left|\varphi-\psi\right|\dd\mu & =0=\norm{\varphi-\psi}_{1}
 \end{align*}
 
 \end_inset
@@ -11851,18 +11949,19 @@ Also gilt
 \begin_inset Formula $\varphi\le f\le\psi$
 \end_inset
 
- folgt 
+ gilt, ist 
 \begin_inset Formula $f$
 \end_inset
 
- ist Lebesgue-integrabel und 
-\begin_inset Formula $\int_{Y}f\dd\mu=R-\int_{Y}-f\dd x$
+ Lebesgue-integrabel und es gilt:
+\begin_inset Formula 
+\begin{align*}
+\int_{I}f\dd\mu & =\Riemann\int_{I}f\dd x
+\end{align*}
+
 \end_inset
 
-.
-\end_layout
 
-\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -11923,11 +12022,15 @@ iii
 \begin_inset Formula $\int_{\left[0,1\right]}f\dd\mu=0$
 \end_inset
 
- aber 
+.
+\end_layout
+
+\begin_layout Standard
+Aber für alle Zerlegungen gilt 
 \begin_inset Formula $\overline{S}_{f}-\underline{S}_{f}\ge1$
 \end_inset
 
- für beliebige Zerlegungen, also ist 
+, also ist 
 \begin_inset Formula $f$
 \end_inset
 
@@ -11939,7 +12042,7 @@ nicht
 \begin_inset Formula $R$
 \end_inset
 
--integrabel.
+-integrierbar.
 \end_layout
 
 \begin_layout Standard
@@ -11955,70 +12058,90 @@ iii
 
 \end_inset
 
- Konstruiere Funktion 
+ Konstruiere nun eine Funktion 
 \begin_inset Formula $f$
 \end_inset
 
-, die Lebesgue-integrabel ist, die aber nicht 
+, die Lebesgue-integrabel, aber nicht 
 \begin_inset Formula $R$
 \end_inset
 
--integrabel ist, selbst wenn man sie auf einer Nullmenge beliebig abändert
- 
+-integrabel ist, selbst wenn man sie auf einer Nullmenge beliebig abändert.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula $\mathbb{Q}\cap\left[0,1\right]=\left\{ q_{n}|n\in\mathbb{N}\right\} $
 \end_inset
 
  ist abzählbar.
-\begin_inset Newline newline
+ Setze für alle 
+\begin_inset Formula $n\in\mathbb{N}$
 \end_inset
 
-Setze 
-\begin_inset Formula $U_{n}=B_{\frac{\varepsilon}{2^{n}}}\left(q_{n}\right)$
+ nun
+\begin_inset Formula 
+\begin{align*}
+U_{n} & :=B_{\frac{\varepsilon}{2^{n}}}\left(q_{n}\right)
+\end{align*}
+
 \end_inset
 
- mit 
+mit 
 \begin_inset Formula $0<\varepsilon<1$
 \end_inset
 
-.
- 
-\begin_inset Formula $U:=\bigcup_{n\in\mathbb{N}}U_{n}\le\sum_{n}\mu\left(U_{n}\right)=\sum_{n=1}^{\infty}\frac{2\varepsilon}{2^{n}}=2\varepsilon$
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-stimmt das?
-\end_layout
+ und:
+\begin_inset Formula 
+\begin{align*}
+U:= & \bigcup_{n\in\mathbb{N}}U_{n}
+\end{align*}
 
 \end_inset
 
+Dann gilt:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(U\right) & \le\sum_{n\in\mathbb{N}}\mu\left(U_{n}\right)=\sum_{n=1}^{\infty}\frac{2\varepsilon}{2^{n}}=2\varepsilon
+\end{align*}
 
-\end_layout
+\end_inset
 
-\begin_layout Standard
 Setze 
-\begin_inset Formula $f=\chi_{U}$
+\begin_inset Formula $f:=\chi_{U}$
 \end_inset
 
 , dann ist 
 \begin_inset Formula $f|_{\mathbb{Q}\cap\left[0,1\right]}=1$
 \end_inset
 
-.
+ und es gilt:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\int f\dd\mu & =\mu\left(U\right)<\varepsilon
+\int f\dd\mu & =\mu\left(U\right)\le2\varepsilon
 \end{align*}
 
 \end_inset
 
+Aber für alle Zerlegungen gilt 
+\begin_inset Formula $\overline{S}_{f}-\underline{S}_{f}\ge1$
+\end_inset
 
+, also ist 
+\begin_inset Formula $f$
+\end_inset
+
+ 
+\emph on
+nicht
+\emph default
+ 
+\begin_inset Formula $R$
+\end_inset
+
+-integrierbar.
 \end_layout
 
 \begin_layout Standard
@@ -12051,8 +12174,241 @@ status open
 
 \end_layout
 
+\begin_layout Subsection
+Satz
+\end_layout
+
 \begin_layout Standard
-TODO: Rest einfügen
+Eine beschränkte Funktion 
+\begin_inset Formula $f:\left[a,b\right]\to\mathbb{R}$
+\end_inset
+
+ ist genau dann 
+\begin_inset Formula $R$
+\end_inset
+
+-integrierbar, wenn sie fast überall stetig ist.
+\end_layout
+
+\begin_layout Subsubsection*
+(ohne Beweis)
+\end_layout
+
+\begin_layout Subsection
+Satz
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $M_{n}\subseteq X$
+\end_inset
+
+ eine aufsteigende Folge messbarer Mengen mit:
+\begin_inset Formula 
+\begin{align*}
+X & =\bigcup_{n\in\mathbb{N}}M_{n}
+\end{align*}
+
+\end_inset
+
+Dann ist 
+\begin_inset Formula $f:X\to\mathbb{R}$
+\end_inset
+
+ genau dann integrabel, wenn 
+\begin_inset Formula $f\Big|_{M_{n}}$
+\end_inset
+
+ für alle 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ integrabel ist und 
+\begin_inset Formula $\int_{M_{n}}\abs f\dd\mu\to\int_{X}\abs f\dd\mu$
+\end_inset
+
+ konvergiert.
+\end_layout
+
+\begin_layout Standard
+Also sind uneigentliche Integrale im Lebesgue-Integral schon mit berücksichtigt.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+„
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+“: Sei 
+\begin_inset Formula $f$
+\end_inset
+
+ integrabel, dann sind 
+\begin_inset Formula $f\Big|_{M_{n}}$
+\end_inset
+
+ und 
+\begin_inset Formula $\abs f\Big|_{M_{n}}$
+\end_inset
+
+ für alle 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ integrabel.
+ Setze:
+\begin_inset Formula 
+\begin{align*}
+a_{n} & :=\int_{M_{n}}\abs f\dd\mu:=\int_{X}\chi_{M_{n}}\abs f\dd\mu\le\int_{X}\abs f\dd\mu
+\end{align*}
+
+\end_inset
+
+Dann ist 
+\begin_inset Formula $\left(a_{n}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+ eine aufsteigende Folge, die beschränkt ist, und daher konvergiert.
+ Für alle 
+\begin_inset Formula $x\in X$
+\end_inset
+
+ gilt:
+\begin_inset Formula 
+\begin{align*}
+\chi_{M_{n}}\abs f & \xrightarrow{n\to\infty}\abs f
+\end{align*}
+
+\end_inset
+
+Die Monotone Konvergenz liefert:
+\begin_inset Formula 
+\begin{align*}
+\lim_{n\to\infty}\int_{M_{n}}\abs f\dd\mu & =\int_{X}\abs f\dd\mu
+\end{align*}
+
+\end_inset
+
+Da 
+\begin_inset Formula $\abs{\chi_{M_{n}}f}\le\abs f\in L^{1}$
+\end_inset
+
+ ist, liefert die dominierte Konvergenz:
+\begin_inset Formula 
+\begin{align*}
+\lim_{n\to\infty}\int_{M_{n}}f\dd\mu & =\int_{X}f\dd\mu
+\end{align*}
+
+\end_inset
+
+„
+\begin_inset Formula $\Leftarrow$
+\end_inset
+
+“: Definiere 
+\begin_inset Formula $f_{n}:=\chi_{M_{n}}\cdot f$
+\end_inset
+
+.
+ Wir nehmen an, dass 
+\begin_inset Formula $\int_{X}\abs f\le C\in\mathbb{R}$
+\end_inset
+
+ ist.
+\end_layout
+
+\begin_layout Standard
+Da 
+\begin_inset Formula $\abs{f_{n}}\nearrow\abs f$
+\end_inset
+
+ konvergiert, folgt aus der monotonen Konvergenz:
+\begin_inset Formula 
+\begin{align*}
+\int_{X}\abs f\dd\mu & =\lim_{n\to\infty}\int_{X}\abs{f_{n}}\dd\mu
+\end{align*}
+
+\end_inset
+
+Außerdem konvergiert 
+\begin_inset Formula $f_{n}\to f$
+\end_inset
+
+ und 
+\begin_inset Formula $\abs{f_{n}}\le\abs f\in L^{1}$
+\end_inset
+
+.
+ Also folgt mit dominierte Konvergenz:
+\begin_inset Formula 
+\begin{align*}
+\int_{X}f\dd\mu & =\lim_{n\to\infty}\int_{X}f_{n}\dd\mu
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Bemerkung
+\end_layout
+
+\begin_layout Standard
+Hauptwertintegrale sind 
+\emph on
+nicht
+\emph default
+ berücksichtigt.
+\end_layout
+
+\begin_layout Standard
+Sei zum Beispiel 
+\begin_inset Formula $f\in L^{1}$
+\end_inset
+
+ mit 
+\begin_inset Formula $f\left(0\right)\not=0$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+H\ -\negthickspace\int_{\mathbb{R}}\frac{f\left(x\right)}{x}\dd x & :=\lim_{\varepsilon\to\infty}\left(\int_{\minus\infty}^{\minus\varepsilon}\frac{f\left(x\right)}{x}\dd x+\int_{\varepsilon}^{\infty}\frac{f\left(x\right)}{x}\dd x\right)
+\end{align*}
+
+\end_inset
+
+Aber 
+\begin_inset Formula ${\displaystyle \frac{f\left(x\right)}{x}}$
+\end_inset
+
+ ist 
+\emph on
+nicht
+\emph default
+ in 
+\begin_inset Formula $L^{1}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -12064,7 +12420,9 @@ Die Räume
 \end_layout
 
 \begin_layout Standard
-TODO: Rest einfügen
+
+\color green
+TODO: Rest überarbeiten
 \end_layout
 
 \begin_layout Standard
