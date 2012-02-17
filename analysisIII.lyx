@@ -10477,6 +10477,298 @@ qqed
 
 \end_layout
 
+\begin_layout Subsection
+Bemerkung
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $f:X\rightarrow\mathbb{R}$
+\end_inset
+
+ messbar.
+\end_layout
+
+\begin_layout Standard
+Frage: Wann ist die Funktion integrierbar?
+\end_layout
+
+\begin_layout Standard
+Die Definition lautet:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f$
+\end_inset
+
+ ist integrierbar, falls es eine Folge 
+\begin_inset Formula $\left(\varphi_{n}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+ von Treppenfunktionen gibt, die
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $L^{1}$
+\end_inset
+
+-Cauchy-Folge ist, und
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\varphi_{n}\to f$
+\end_inset
+
+ fast überall punktweise konvergiert.
+\end_layout
+
+\begin_layout Standard
+Dann gilt:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\int_{X}f\dd\mu & :=\lim_{n\to\infty}\int_{X}\varphi_{n}\dd\mu
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Einfacher ist folgende Methode:
+\end_layout
+
+\begin_layout Standard
+Die Funktion 
+\begin_inset Formula $\left|f\right|:X\to[0,\infty)$
+\end_inset
+
+ ist wieder messbar und 
+\begin_inset Formula 
+\begin{align*}
+\int_{X}\left|f\right|\dd\mu & :=\sup\left\{ \int_{X}\varphi\dd\mu\Big|0\le\varphi\le f\text{ ist Stufenfunktion}\right\} \in\left[0,\infty\right]
+\end{align*}
+
+\end_inset
+
+ist wohldefiniert.
+\end_layout
+
+\begin_layout Standard
+Falls 
+\begin_inset Formula $\left(X,\mu\right)$
+\end_inset
+
+ schon 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-endlich ist, kann man hier „Stufenfunktion“ durch „Treppenfunktion“ ersetzen,
+ denn es gilt:
+\end_layout
+
+\begin_layout Standard
+Für eine Stufenfunktion 
+\begin_inset Formula $0\le\varphi\le f$
+\end_inset
+
+ gilt 
+\begin_inset Formula $\abs{\varphi\left(X\right)}<\infty$
+\end_inset
+
+ und 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ ist messbar.
+\begin_inset Formula 
+\begin{align*}
+\varphi\left(x\right) & =\sum_{y\in\varphi\left(X\right)}y\cdot\chi_{\varphi^{-1}\left(y\right)}\left(x\right)\ge0
+\end{align*}
+
+\end_inset
+
+Betrachte eine Folge 
+\begin_inset Formula $A_{1}\subseteq A_{2}\subseteq\ldots$
+\end_inset
+
+ mit 
+\begin_inset Formula ${\displaystyle \bigcup_{n\in\mathbb{N}}A_{n}=X}$
+\end_inset
+
+ und 
+\begin_inset Formula $\mu\left(A_{n}\right)<\infty$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\varphi_{n}\left(x\right) & :=\sum_{y\in\varphi\left(X\right)}y\cdot\chi_{A_{n}\cap\varphi^{-1}\left(y\right)}\left(x\right)
+\end{align*}
+
+\end_inset
+
+Die Folge 
+\begin_inset Formula $\varphi_{n}\xrightarrow{n\to\infty}\varphi$
+\end_inset
+
+ konvergiert punktweise und ist aufsteigend.
+\end_layout
+
+\begin_layout Standard
+Also sind die 
+\begin_inset Formula $\varphi_{n}$
+\end_inset
+
+ Treppenfunktionen und nach monotoner Konvergenz gilt:
+\begin_inset Formula 
+\begin{align*}
+\int_{X}\varphi\dd\mu & =\lim_{n\to\infty}\int_{X}\varphi_{n}\dd\mu
+\end{align*}
+
+\end_inset
+
+Also gilt:
+\begin_inset Formula 
+\begin{align*}
+\sup\left\{ \int_{X}\varphi\dd\mu\Big|0\le\varphi\le f\text{ ist Stufenfunktion}\right\}  & =\sup\left\{ \int_{X}\varphi\dd\mu\Big|0\le\varphi\le f\text{ ist Treppenfunktion}\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Fall: 
+\begin_inset Formula $\int_{X}\left|f\right|\dd\mu=+\infty$
+\end_inset
+
+.
+ Dann ist 
+\begin_inset Formula $f$
+\end_inset
+
+ nicht integrierbar 
+\begin_inset Formula $\left(f\not\in L^{1}\right)$
+\end_inset
+
+, weil die 
+\begin_inset Formula $L^{1}$
+\end_inset
+
+-Norm 
+\begin_inset Formula $\int_{X}\left|f\right|\dd\mu$
+\end_inset
+
+ nicht endlich ist.
+\end_layout
+
+\begin_layout Enumerate
+Fall: 
+\begin_inset Formula $\int_{X}\left|f\right|\dd\mu<\infty$
+\end_inset
+
+.
+ Dann ist 
+\begin_inset Formula $f$
+\end_inset
+
+ tatsächlich integrierbar, wie man folgendermaßen sieht:
+\begin_inset Newline newline
+\end_inset
+
+Zerlege 
+\begin_inset Formula $f=f_{+}-f_{-}$
+\end_inset
+
+ mit 
+\begin_inset Formula $f_{+}=\max\left\{ f,0\right\} $
+\end_inset
+
+ und 
+\begin_inset Formula $f_{-}=\max\left\{ \minus f,0\right\} $
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Die Funktionen 
+\begin_inset Formula $f_{\pm}$
+\end_inset
+
+ sind messbar und nicht negativ, außerdem gilt 
+\begin_inset Formula $f_{\pm}\le\left|f\right|$
+\end_inset
+
+.
+ Damit folgt:
+\begin_inset Formula 
+\begin{align*}
+\int_{X}f_{+}\dd\mu & <\infty & \int_{X}f_{-}\dd\mu & <\infty
+\end{align*}
+
+\end_inset
+
+Nach Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Satz-messFolgeStufenfkt"
+
+\end_inset
+
+ gibt es Folgen von Treppenfunktionen 
+\begin_inset Formula $\left(\varphi_{n}^{+}\right)_{n\in\mathbb{N}},\left(\varphi_{n}^{-}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+ mit 
+\begin_inset Formula $\varphi_{n}^{+}\nearrow f_{+}$
+\end_inset
+
+ und 
+\begin_inset Formula $\varphi_{n}^{-}\nearrow f_{-}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Setze 
+\begin_inset Formula $f_{n}:=\varphi_{n}^{+}-\varphi_{n}^{-}$
+\end_inset
+
+.
+ Dann konvergiert 
+\begin_inset Formula $f_{n}\to f$
+\end_inset
+
+ und es gilt 
+\begin_inset Formula $\left|f_{n}\right|\le\left|f\right|$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Nach dominierter Konvergenz ist dann 
+\begin_inset Formula $f$
+\end_inset
+
+ integrierbar und es gilt:
+\begin_inset Formula 
+\begin{align*}
+\int_{X}f\dd\mu & =\lim_{n\to\infty}\int_{X}f_{n}\dd\mu
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Die Konvergenzsätze
 \end_layout
@@ -12419,10 +12711,141 @@ Die Räume
 
 \end_layout
 
+\begin_layout Subsection
+Definition 
+\series medium
+(
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texorpdfstring{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $L^{p}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}{Lp}
+\end_layout
+
+\end_inset
+
+-Norm, konvex)
+\end_layout
+
+\begin_layout Standard
+Für 
+\begin_inset Formula $1<p<\infty$
+\end_inset
+
+ ist die 
+\emph on
+
+\begin_inset Formula $L^{p}$
+\end_inset
+
+-Norm
+\emph default
+ einer Funktion 
+\begin_inset Formula $f$
+\end_inset
+
+ definiert durch:
+\begin_inset Formula 
+\begin{align*}
+\norm f_{p} & =\left(\int_{X}\abs f^{p}\dd\mu\right)^{\frac{1}{p}}
+\end{align*}
+
+\end_inset
+
+Speziell für 
+\begin_inset Formula $p=2$
+\end_inset
+
+ gilt
+\begin_inset Formula 
+\begin{align*}
+\norm f_{2} & =\sqrt{\left\langle f,f\right\rangle }
+\end{align*}
+
+\end_inset
+
+mit:
+\begin_inset Formula 
+\begin{align*}
+\left\langle f,g\right\rangle  & =\int_{X}f\left(x\right)g\left(x\right)\dd\mu
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $I\subseteq\mathbb{R}$
+\end_inset
+
+ ein Intervall.
+ Eine Funktion 
+\begin_inset Formula $\varphi:I\to\mathbb{R}$
+\end_inset
+
+ heißt 
+\emph on
+konvex
+\emph default
+, falls für alle 
+\begin_inset Formula $x,y\in\left[a,b\right]$
+\end_inset
+
+ und 
+\begin_inset Formula $\tau\in\left[0,1\right]$
+\end_inset
+
+ gilt:
+\begin_inset Formula 
+\begin{align*}
+\varphi\left(\tau x+\left(1-\tau\right)y\right) & \le\tau\cdot\varphi\left(x\right)+\left(1-\tau\right)\cdot\varphi\left(y\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 
 \color green
-TODO: Rest überarbeiten
+TODO: Abbildung konvexe Funktion einfügen
+\end_layout
+
+\begin_layout Standard
+Der Graph liegt unterhalb der Sekante durch 
+\begin_inset Formula $x$
+\end_inset
+
+ und 
+\begin_inset Formula $y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Satz
 \end_layout
 
 \begin_layout Standard
@@ -12431,7 +12854,69 @@ status open
 
 \begin_layout Plain Layout
 
-%22.11.2011
+
+\backslash
+begin{abclist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+abc
+\end_layout
+
+\end_inset
+
+ Jede auf einem offenen Intervall definierte konvexe Funktion ist stetig.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+abc
+\end_layout
+
+\end_inset
+
+ Falls 
+\begin_inset Formula $f\in C^{2}\left(\left[a,b\right]\right)$
+\end_inset
+
+ ist, gilt:
+\begin_inset Formula 
+\begin{align*}
+f\text{ ist konvex} & \Leftrightarrow\fall_{x\in\left[a,b\right]}:f''\left(x\right)\ge x
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{abclist}
 \end_layout
 
 \end_inset
@@ -12440,282 +12925,495 @@ status open
 \end_layout
 
 \begin_layout Subsubsection*
-Einschub
+Beweis
 \end_layout
 
 \begin_layout Standard
-Sei 
-\begin_inset Formula $f:X\rightarrow\mathbb{R}$
+
+\color green
+TODO: Beweis einfügen
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(konjugierte Exponenten)
+\end_layout
+
+\begin_layout Standard
+Seien 
+\begin_inset Formula $1<p,q<\infty$
+\end_inset
+
+.
+ 
+\begin_inset Formula $p$
+\end_inset
+
+ und 
+\begin_inset Formula $q$
+\end_inset
+
+ heißen 
+\emph on
+konjugierte Exponenten
+\emph default
+, falls gilt:
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{p}+\frac{1}{q} & =1
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Thm-HoelderMinkowski"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Seien 
+\begin_inset Formula $p$
+\end_inset
+
+ und 
+\begin_inset Formula $q$
+\end_inset
+
+ konjugierte Exponenten, 
+\begin_inset Formula $\left(X,\mathcal{M},\mu\right)$
+\end_inset
+
+ ein Maßraum und 
+\begin_inset Formula $f,g:X\to\left[0,\infty\right]$
 \end_inset
 
  messbar.
 \end_layout
 
 \begin_layout Standard
-Frage: Wann ist die Funktion integrierbar?
+Dann gilt die Hölder-Ungleichung
+\begin_inset Formula 
+\begin{align*}
+\int_{X}f\cdot g\dd\mu & \le\norm f_{p}\cdot\norm g_{q}
+\end{align*}
+
+\end_inset
+
+und die Minkowski-Ungleichung:
+\begin_inset Formula 
+\begin{align*}
+\norm{f+g}_{p} & \le\norm f_{p}+\norm g_{p}
+\end{align*}
+
+\end_inset
+
+Ein wichtiger Spezialfall ist 
+\begin_inset Formula $p=2=q$
+\end_inset
+
+.
+ Die Hölder-Ungleichung liefert dann die Schwarzsche Ungleichung:
+\begin_inset Formula 
+\begin{align*}
+\left\langle f,g\right\rangle  & =\int_{X}f\cdot g\dd\mu\le\norm f_{2}\cdot\norm g_{2}
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection*
-Definition
+Beweis
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $f$
-\end_inset
-
- ist integrierbar, falls es eine Folge 
-\begin_inset Formula $\left(\varphi_{n}\right)$
-\end_inset
-
- von Treppenfunktionen gibt, die
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $L^{1}$
-\end_inset
-
--Cauchy-Folge ist und
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $\varphi_{n}\to f$
-\end_inset
-
- fast überall punktweise gilt.
-\begin_inset Formula 
-\begin{align*}
-\int_{X}\dd\mu & :=\lim_{n\to\infty}\int_{X}\varphi_{n}\dd\mu
-\end{align*}
-
-\end_inset
-
-
+Zunächst die Hölder-Ungleichung:
 \end_layout
 
 \begin_layout Standard
-Einfacher ist folgende Methode:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\left|f\right|:X\to[0,\infty)$
-\end_inset
-
- ist wieder messbar und 
-\begin_inset Formula 
-\begin{align*}
-\int_{X}\left|f\right|\dd\mu & :=\sup\left\{ \int_{X}\varphi\dd\mu\text{ mit }0\le\varphi\le f\text{ und }\varphi\text{ Stufenfunktion}\right\} \in\left[0,\infty\right]
-\end{align*}
-
-\end_inset
-
-ist wohldefiniert.
-\end_layout
-
-\begin_layout Standard
-Falls 
-\begin_inset Formula $\left(X,\mu\right)$
-\end_inset
-
- schon 
-\begin_inset Formula $\sigma$
-\end_inset
-
--endlich ist, kann man hier „Stufenfunktion“ durch „Treppenfunktion“ ersetzen.
-\begin_inset Newline newline
-\end_inset
-
-Stufenfunktion: 
-\begin_inset Formula $\#\varphi\left(X\right)<\infty$
-\end_inset
-
- und 
-\begin_inset Formula $\varphi$
-\end_inset
-
- messbar:
-\begin_inset Formula 
-\begin{align*}
-\varphi\left(x\right) & =\sum_{y\in\varphi\left(X\right)}y\cdot\chi_{\varphi^{-1}\left(y\right)}\left(x\right)\ge0
-\end{align*}
-
-\end_inset
-
-Betrachte 
-\begin_inset Formula $A_{1}\subseteq A_{2}\subseteq\ldots$
-\end_inset
-
- mit 
-\begin_inset Formula ${\displaystyle \bigcup A_{n}=X}$
-\end_inset
-
- und 
-\begin_inset Formula $\mu\left(A_{n}\right)<\infty$
-\end_inset
-
-.
-\begin_inset Formula 
-\begin{align*}
-\varphi_{n}\left(x\right) & =\sum_{y\in\varphi\left(X\right)}y\cdot\chi_{A_{n}\cap\varphi^{-1}\left(y\right)}\left(x\right)
-\end{align*}
-
-\end_inset
-
-
-\begin_inset Formula $\varphi_{n}\stackrel{n\to\infty}{\to}\varphi$
-\end_inset
-
- punktweise und 
-\begin_inset Formula $\varphi_{n}$
-\end_inset
-
- aufsteigend.
-\begin_inset Newline newline
-\end_inset
-
-Die 
-\begin_inset Formula $\varphi_{n}$
-\end_inset
-
- sind dann Treppenfunktionen und nach monotoner Konvergenz ist:
-\begin_inset Formula 
-\begin{align*}
-\int_{X}\varphi\dd\mu & =\lim_{n\to\infty}\int_{X}\varphi_{n}\dd\mu
-\end{align*}
-
-\end_inset
-
-Also ist
-\begin_inset Formula 
-\begin{align*}
- & \sup\left\{ \int_{X}\varphi\dd\mu\text{ mit }0\le\varphi\le f\text{ Stufenfunktion}\right\} \\
- & \sup\left\{ \int_{X}\varphi\dd\mu\text{ mit }0\le\varphi\le f\text{ Treppenfunktion}\right\} 
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Fall: 
-\begin_inset Formula $\int_{X}\left|f\right|\dd\mu=+\infty$
-\end_inset
-
-.
- Dann ist 
-\begin_inset Formula $f$
-\end_inset
-
- nicht integrierbar
-\begin_inset Formula $\left(\not\in L^{1}\right)$
-\end_inset
-
-, weil die 
-\begin_inset Formula $L^{1}$
-\end_inset
-
--Norm 
-\begin_inset Formula $\int_{X}\left|f\right|\dd\mu$
-\end_inset
-
- nicht endlich ist.
-\end_layout
-
-\begin_layout Enumerate
-Fall: 
-\begin_inset Formula $\int_{X}\left|f\right|\dd\mu<\infty$
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-Dann ist 
-\begin_inset Formula $f$
-\end_inset
-
- tatsächlich integrierbar, wie man folgendermaßen sieht:
-\begin_inset Newline newline
-\end_inset
-
-Zerlege 
-\begin_inset Formula $f=f_{+}-f_{-}$
-\end_inset
-
- mit 
-\begin_inset Formula $f_{+}=\max\left\{ f,0\right\} $
-\end_inset
-
- und 
-\begin_inset Formula $f_{-}=\max\left\{ -f,0\right\} $
-\end_inset
-
-.
-\begin_inset Newline newline
-\end_inset
-
-Die Funktionen 
-\begin_inset Formula $f_{\pm}$
-\end_inset
-
- sind messbar und nicht-negativ, außerdem 
-\begin_inset Formula $f_{\pm}\le\left|f\right|$
-\end_inset
-
-.
- Damit folgt:
-\begin_inset Formula 
-\begin{align*}
-\int_{X}f_{+}\dd\mu & ,\,\,\int_{X}f_{-}\dd\mu<\infty
-\end{align*}
-
-\end_inset
-
-Nach Satz 
-\begin_inset Formula $\ref{}1.1.8$
-\end_inset
-
- gibt es Treppenfunktionen 
-\begin_inset Formula $\left(\varphi_{n}^{+}\right),\left(\varphi_{n}^{-}\right)$
-\end_inset
-
- mit 
-\begin_inset Formula $\varphi_{n}^{+}\stackrel{\text{steigender Pfeil}}{\to}f_{+}$
-\end_inset
-
- und 
-\begin_inset Formula $\varphi_{n}^{-}\stackrel{\text{steigender Pfeil}}{\to}f_{-}$
-\end_inset
-
-.
-\begin_inset Newline newline
-\end_inset
-
 Setze 
-\begin_inset Formula $f_{n};=\varphi_{n}^{+}-\varphi_{n}^{-}$
-\end_inset
-
-.
- Dann ist 
-\begin_inset Formula $f_{n}\to f$
+\begin_inset Formula $A:=\norm f_{p}$
 \end_inset
 
  und 
-\begin_inset Formula $\left|f_{n}\right|\le\left|f\right|$
+\begin_inset Formula $B:=\norm g_{q}$
 \end_inset
 
 .
-\begin_inset Newline newline
+\end_layout
+
+\begin_layout Standard
+Betrachte zunächst Spezialfälle:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $A=0$
 \end_inset
 
-Nach dominierter Konvergenz ist dann 
-\begin_inset Formula $f$
+: Dann ist 
+\begin_inset Formula $f^{p}=0$
 \end_inset
 
- integrierbar und:
+ fast überall nach Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Satz-IntFktMessbar"
+
+\end_inset
+
+, also 
+\begin_inset Formula $f=0$
+\end_inset
+
+ fast überall und daher auch 
+\begin_inset Formula $f\cdot g=0$
+\end_inset
+
+ fast überall, womit folgt:
 \begin_inset Formula 
 \begin{align*}
-\int_{X}f\dd\mu & =\lim_{n\to\infty}\int_{X}f_{n}\dd\mu
+\int_{X}f\cdot g\dd\mu & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $B=0$
+\end_inset
+
+ geht analog.
+\end_layout
+
+\begin_layout Itemize
+Die Fälle 
+\begin_inset Formula $A>0$
+\end_inset
+
+ und 
+\begin_inset Formula $B=\infty$
+\end_inset
+
+ sowie 
+\begin_inset Formula $A=\infty$
+\end_inset
+
+ und 
+\begin_inset Formula $B>0$
+\end_inset
+
+ sind trivial.
+\end_layout
+
+\begin_layout Standard
+Wir können also annehmen, dass 
+\begin_inset Formula $0<A,B<\infty$
+\end_inset
+
+ gilt.
+\end_layout
+
+\begin_layout Standard
+Führe eine Reskalierung durch:
+\begin_inset Formula 
+\begin{align*}
+F & :=\frac{f}{A} & G & :=\frac{g}{B}
+\end{align*}
+
+\end_inset
+
+Dann gilt:
+\begin_inset Formula 
+\begin{align*}
+\norm F_{p} & =\left(\int_{X}\left(\frac{f}{A}\right)^{p}\dd\mu\right)^{\frac{1}{p}}=\left(\frac{1}{A^{p}}\int_{X}f^{p}\dd\mu\right)^{\frac{1}{p}}=\frac{1}{A}\cdot\norm f_{p}=1
+\end{align*}
+
+\end_inset
+
+Analog folgt 
+\begin_inset Formula $\norm G_{q}=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Wähle ein 
+\begin_inset Formula $x\in X$
+\end_inset
+
+ mit 
+\begin_inset Formula $0<F\left(x\right)<\infty$
+\end_inset
+
+ und 
+\begin_inset Formula $0<G\left(x\right)<\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Dann gibt es 
+\begin_inset Formula $s,t\in\mathbb{R}$
+\end_inset
+
+ mit 
+\begin_inset Formula $F\left(x\right)=e^{\frac{s}{p}}$
+\end_inset
+
+ und 
+\begin_inset Formula $G\left(x\right)=e^{\frac{t}{q}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Wegen der Konvexität der Exponentialfunktion folgt aus 
+\begin_inset Formula ${\displaystyle \frac{1}{p}+\frac{1}{q}=1}$
+\end_inset
+
+ für 
+\begin_inset Formula ${\displaystyle \tau=\frac{1}{p}}$
+\end_inset
+
+ und 
+\begin_inset Formula ${\displaystyle \left(1-\tau\right)=\frac{1}{q}}$
+\end_inset
+
+ die Youngsche Ungleichung:
+\begin_inset Formula 
+\begin{align*}
+F\left(x\right)\cdot G\left(x\right)=e^{\frac{s}{p}+\frac{t}{q}} & \le\frac{1}{p}e^{s}+\frac{1}{q}e^{t}=\frac{1}{p}\cdot F\left(x\right)^{p}+\frac{1}{q}\cdot G\left(x\right)^{q}
+\end{align*}
+
+\end_inset
+
+Diese Ungleichung ist trivialerweise auch dann erfüllt, wenn 
+\begin_inset Formula $F\left(x\right),G\left(x\right)\in\left\{ 0,\infty\right\} $
+\end_inset
+
+ ist.
+\end_layout
+
+\begin_layout Standard
+Integration liefert wegen 
+\begin_inset Formula $\int_{X}F\left(x\right)^{p}\dd\mu=\norm F_{p}^{p}=1$
+\end_inset
+
+ und 
+\begin_inset Formula $\int_{X}G\left(x\right)^{q}\dd\mu=\norm G_{q}^{q}=1$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\int_{X}F\left(x\right)\cdot G\left(x\right)\dd\mu & \le\frac{1}{p}\cdot\int_{X}F\left(x\right)^{p}\dd\mu+\frac{1}{q}\cdot\int_{X}G\left(x\right)^{q}\dd\mu=\frac{1}{p}+\frac{1}{q}=1
+\end{align*}
+
+\end_inset
+
+Setze nun 
+\begin_inset Formula ${\displaystyle F=\frac{f}{A}}$
+\end_inset
+
+ und 
+\begin_inset Formula ${\displaystyle G=\frac{g}{B}}$
+\end_inset
+
+ ein:
+\begin_inset Formula 
+\begin{align*}
+\int_{X}f\cdot g\dd\mu & \le A\cdot B=\norm f_{p}\cdot\norm g_{q}
+\end{align*}
+
+\end_inset
+
+Beweis der Minkowski-Ungleichung:
+\begin_inset Formula 
+\begin{align*}
+\left(f+g\right)^{p} & =f\cdot\left(f+g\right)^{p-1}+g\left(f+g\right)^{p-1}
+\end{align*}
+
+\end_inset
+
+Integration liefert:
+\begin_inset Formula 
+\begin{align*}
+\norm{f+g}_{p}^{p} & =\int_{X}f\cdot\left(f+g\right)^{p-1}\dd\mu+\int_{X}g\cdot\left(f+g\right)^{p-1}\dd\mu
+\end{align*}
+
+\end_inset
+
+Wende nun die Hölder-Ungleichung an:
+\begin_inset Formula 
+\begin{align*}
+\int_{X}f\cdot\left(f+g\right)^{p-1}\dd\mu & \le\norm f_{p}\cdot\norm{\left(f+g\right)^{p-1}}_{q}
+\end{align*}
+
+\end_inset
+
+Da 
+\begin_inset Formula $p$
+\end_inset
+
+ und 
+\begin_inset Formula $q$
+\end_inset
+
+ konjugierte Exponenten sind, gilt:
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{p}+\frac{1}{q} & =1\\
+q & =\left(1-\frac{1}{p}\right)^{-1}=\frac{p}{p-1}
+\end{align*}
+
+\end_inset
+
+Es folgt:
+\begin_inset Formula 
+\begin{align*}
+\norm{\left(f+g\right)^{p-1}}_{q} & =\left(\int_{X}\left(f+g\right)^{\left(p-1\right)q}\dd\mu\right)^{\frac{1}{q}}=\left(\left(\int_{X}\left(f+g\right)^{p}\dd\mu\right)^{\frac{1}{p}}\right)^{\frac{p}{q}}=\norm{f+g}_{p}^{\frac{p}{q}}
+\end{align*}
+
+\end_inset
+
+Also gilt:
+\begin_inset Formula 
+\begin{align*}
+\int f\left(f+g\right)^{p-1}\dd\mu & \le\norm f_{p}\cdot\norm{f+g}_{p}^{\frac{p}{q}}\\
+\int g\left(f+g\right)^{p-1}\dd\mu & \le\norm g_{p}\cdot\norm{f+g}_{p}^{\frac{p}{q}}
+\end{align*}
+
+\end_inset
+
+Somit ergibt sich:
+\begin_inset Formula 
+\begin{align*}
+\norm{f+g}_{p}^{p} & \le\left(\norm f_{p}+\norm g_{p}\right)\norm{f+g}_{p}^{\frac{p}{q}}
+\end{align*}
+
+\end_inset
+
+Falls 
+\begin_inset Formula $\norm{f+g}_{p}=0$
+\end_inset
+
+ ist, ist die Minkowski-Ungleichung trivialerweise richtig.
+\end_layout
+
+\begin_layout Standard
+Ansonsten können wir durch 
+\begin_inset Formula $\norm{f+g}_{p}^{\frac{p}{q}}$
+\end_inset
+
+ dividieren.
+ Es folgt:
+\begin_inset Formula 
+\begin{align*}
+\norm{f+g}_{p}^{p-\frac{p}{q}} & \le\norm f_{p}+\norm g_{p}
+\end{align*}
+
+\end_inset
+
+Dies beweist die Minkowski-Ungleichung, denn es gilt:
+\begin_inset Formula 
+\begin{align*}
+p-\frac{p}{q} & =p\left(1-\frac{1}{q}\right)=p\cdot\frac{1}{p}=1
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(essentielles Supremum)
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $g:X\to\left[0,\infty\right]$
+\end_inset
+
+ messbar.
+ Setze:
+\begin_inset Formula 
+\begin{align*}
+S & :=\left\{ \alpha\in\overline{\mathbb{R}}\Big|g\le\alpha\text{ fast überall}\right\} \subseteq\overline{\mathbb{R}}
+\end{align*}
+
+\end_inset
+
+Dann heißt
+\begin_inset Formula 
+\begin{align*}
+\sup\text{ess}\left(g\right) & :=\inf\left(S\right)
+\end{align*}
+
+\end_inset
+
+das 
+\emph on
+essentielle Supremum
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Die 
+\begin_inset Formula $L^{\infty}$
+\end_inset
+
+-Norm ist definiert als:
+\begin_inset Formula 
+\begin{align*}
+\norm f_{\infty} & :=\sup\text{ess}\left(\abs f\right)
 \end{align*}
 
 \end_inset
@@ -12728,10 +13426,32 @@ Theorem
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $L^{p}\left(X\right)$
+Die Aussage von Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Thm-HoelderMinkowski"
+
 \end_inset
 
- ist ein normierter Raum.
+ gilt auch dann, wenn 
+\begin_inset Formula $p=\infty$
+\end_inset
+
+ und 
+\begin_inset Formula $q=1$
+\end_inset
+
+ ist, also:
+\begin_inset Formula 
+\begin{align*}
+\int_{X}fg\dd\mu & \le\norm f_{\infty}\cdot\norm g_{1}\\
+\norm{f+g}_{\infty} & \le\norm f_{\infty}+\norm g_{\infty}\\
+\norm{f+g}_{1} & \le\norm f_{1}+\norm g_{1}
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection*
@@ -12739,18 +13459,179 @@ Beweis
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\left|\left|.\right|\right|_{p}$
+Wir wissen nach Definition des essentiellen Supremums, dass für fast alle
+ 
+\begin_inset Formula $x\in X$
 \end_inset
 
- ist eine Norm:
+ gilt:
+\begin_inset Formula 
+\begin{align*}
+0 & \le f\left(x\right)\le\norm f_{\infty}
+\end{align*}
+
+\end_inset
+
+Es folgt:
+\begin_inset Formula 
+\begin{align*}
+f\left(x\right)\cdot g\left(x\right) & \le\norm f_{\infty}\cdot g\left(x\right)\\
+\int_{X}f\cdot g\dd\mu & \le\norm f_{\infty}\cdot\int_{X}g\dd\mu=\norm f_{\infty}\cdot\norm g_{1}
+\end{align*}
+
+\end_inset
+
+Zeige nun die Minkowski-Ungleichungen:
+\end_layout
+
+\begin_layout Standard
+Aus
+\begin_inset Formula 
+\begin{align*}
+\abs{\left(f+g\right)\left(x\right)} & \le\abs{f\left(x\right)}+\abs{g\left(x\right)}
+\end{align*}
+
+\end_inset
+
+folgt direkt
+\begin_inset Formula 
+\begin{align*}
+\sup\text{ess}\left(\abs{f+g}\right) & \le\sup\text{ess}\left(\abs f\right)+\sup\text{ess}\left(\abs g\right)
+\end{align*}
+
+\end_inset
+
+und nach Integration:
+\begin_inset Formula 
+\begin{align*}
+\norm{f+g}_{1}=\int_{X}\abs{f+g}\dd\mu & \le\int_{X}\abs f\dd\mu+\int\abs g\dd\mu=\norm f_{1}+\norm g_{1}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Definition
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $1\le p\le\infty$
+\end_inset
+
+ und 
+\begin_inset Formula $f:X\to\overline{\mathbb{R}}$
+\end_inset
+
+ messbar.
+ Die 
+\emph on
+
+\begin_inset Formula $L^{p}$
+\end_inset
+
+-Norm
+\emph default
+ ist definiert durch:
+\begin_inset Formula 
+\begin{align*}
+\norm f_{p} & =\begin{cases}
+\left(\int_{X}\abs f^{p}\dd\mu\right)^{\frac{1}{p}} & \text{falls }p<\infty\\
+\sup\text{ess}\left(\abs f\right) & \text{falls }p=\infty
+\end{cases}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $\norm f_{p}$
+\end_inset
+
+ ist wohldefiniert, könnte aber 
+\begin_inset Formula $\infty$
+\end_inset
+
+ sein.
+\begin_inset Formula 
+\begin{align*}
+\mathcal{L}^{p}\left(X\right) & :=\left\{ f:X\to\overline{\mathbb{R}}\Big|f\text{ ist messbar mit }\norm f_{p}<\infty\right\} 
+\end{align*}
+
+\end_inset
+
+Identifiziere wieder Funktionen, die fast überall übereinstimmen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $L^{p}\left(X\right)$
+\end_inset
+
+ bezeichnet die Menge von Äquivalenzklassen solcher Funktionen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Di 22.11.2011
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem
+\end_layout
+
+\begin_layout Standard
+Für 
+\begin_inset Formula $1\le p\le\infty$
+\end_inset
+
+ ist 
+\begin_inset Formula $L^{p}\left(X\right)$
+\end_inset
+
+ ein normierter Raum.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Überprüfe, dass 
+\begin_inset Formula $\norm ._{p}$
+\end_inset
+
+ eine Norm ist:
 \end_layout
 
 \begin_layout Itemize
 Homogenität:
 \begin_inset Formula 
 \begin{align*}
-\left|\left|\lambda f\right|\right|_{p} & =\left(\int_{X}\left|\lambda f\right|^{p}\dd\mu\right)^{\frac{1}{p}}=\left|\lambda\right|\left|\left|f\right|\right|_{p}\\
-\left|\left|\lambda f\right|\right|_{\infty} & =\text{supess}\left|\lambda f\right|=\text{supess}\left|\lambda\right|\left|f\right|=\left|\lambda\right|\left|\left|f\right|\right|_{p}
+\norm{\lambda f}_{p} & =\left(\int_{X}\abs{\lambda f}^{p}\dd\mu\right)^{\frac{1}{p}}=\abs{\lambda}\cdot\norm f_{p}\\
+\norm{\lambda f}_{\infty} & =\sup\text{ess}\left(\abs{\lambda f}\right)=\sup\text{ess}\left(\abs{\lambda}\abs f\right)=\abs{\lambda}\cdot\norm f_{\infty}
 \end{align*}
 
 \end_inset
@@ -12762,8 +13643,8 @@ Homogenität:
 Dreiecksungleichung:
 \begin_inset Formula 
 \begin{align*}
-\left|\left|f+g\right|\right|_{p} & \stackrel{\text{Monotonie}}{\le}\left|\left|\left|f\right|+\left|g\right|\right|\right|_{p}\\
- & \stackrel{\text{Minkowski}}{\le}\left|\left|\left|f\right|\right|\right|_{p}+\left|\left|\left|g\right|\right|\right|_{p}=\left|\left|f\right|\right|_{p}+\left|\left|g\right|\right|_{p}
+\norm{f+g}_{p} & \stackrel{\text{Monotonie}}{\le}\norm{\abs f+\abs g\vphantom{\big|}}_{p}\le\\
+ & \stackrel{\text{Minkowski}}{\le}\norm{\abs f\vphantom{\big|}}_{p}+\norm{\abs g\vphantom{\big|}}_{p}=\norm f_{p}+\norm g_{p}
 \end{align*}
 
 \end_inset
@@ -12772,42 +13653,42 @@ Dreiecksungleichung:
 \end_layout
 
 \begin_layout Itemize
-Definitheit: 
-\begin_inset Formula $\left|\left|f\right|\right|_{p}=0\Rightarrow f=0$
+Definitheit: Zu zeigen ist, dass aus 
+\begin_inset Formula $\norm f_{p}=0$
 \end_inset
 
+ schon 
+\begin_inset Formula $f=0$
+\end_inset
 
+ folgt.
 \begin_inset Newline newline
 \end_inset
 
 Sei 
-\begin_inset Formula $0=\left(\int\left|f\right|^{p}\dd\mu\right)^{\frac{1}{p}}$
+\begin_inset Formula $0=\left(\int_{X}\abs f^{p}\dd\mu\right)^{\frac{1}{p}}$
 \end_inset
 
-, also folgt:
+, so folgt:
 \begin_inset Formula 
 \begin{align*}
-\int\left|f\right|^{p}\dd\mu & =0\\
-\Rightarrow\quad\left|f\right|^{p} & =0\text{ fast überall}\\
-\Rightarrow\quad f & =0\text{ fast überall}\\
-\Rightarrow\quad f & =0\text{ in }L^{p}\left(X\right)
+\int_{X}\left|f\right|^{p}\dd\mu & =0\\
+\Rightarrow\quad\left|f\right|^{p} & =0\quad\text{ fast überall}\\
+\Rightarrow\quad\quad f & =0\quad\text{ fast überall}\\
+\Rightarrow\quad\quad f & =0\quad\text{ in }L^{p}\left(X\right)
 \end{align*}
 
 \end_inset
 
 Sei 
-\begin_inset Formula $\left|\left|f\right|\right|_{\infty}=0$
+\begin_inset Formula $\norm f_{\infty}=0$
 \end_inset
 
-, dann folgt: 
-\begin_inset Formula $\text{supess}\left|f\right|=0$
+, dann folgt 
+\begin_inset Formula $\sup\text{ess}\left(\left|f\right|\right)=0$
 \end_inset
 
 , also 
-\begin_inset Formula $\left|f\right|=0$
-\end_inset
-
- fast überall, also 
 \begin_inset Formula $\left|f\right|\le\varepsilon$
 \end_inset
 
@@ -12816,7 +13697,10 @@ Sei
 \end_inset
 
 .
- Damit folgt 
+\begin_inset Newline newline
+\end_inset
+
+Damit folgt 
 \begin_inset Formula $\left|f\right|=0$
 \end_inset
 
@@ -12829,10 +13713,9 @@ Sei
 \end_inset
 
 .
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -12853,66 +13736,85 @@ Theorem
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $L^{p}\left(X\right)$
-\end_inset
-
- ist vollständig.
- (
+Für 
 \begin_inset Formula $1\le p\le\infty$
 \end_inset
 
-)
+ ist 
+\begin_inset Formula $L^{p}\left(X\right)$
+\end_inset
+
+ vollständig.
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Subsubsection*
 Beweis
 \end_layout
 
 \begin_layout Enumerate
-Zunächst der Fall 
+Fall: 
 \begin_inset Formula $p=\infty$
 \end_inset
 
-:
+
 \begin_inset Newline newline
 \end_inset
 
 Sei 
-\begin_inset Formula $\left(f_{n}\right)$
+\begin_inset Formula $\left(f_{n}\right)_{n\in\mathbb{N}}$
 \end_inset
 
  eine Cauchy-Folge in 
 \begin_inset Formula $L^{\infty}$
 \end_inset
 
-, also 
-\begin_inset Formula $\fall_{\varepsilon>0}\exs_{N\in\mathbb{N}}$
+, also gibt es für alle 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+ ein 
+\begin_inset Formula $N\in\mathbb{N}$
 \end_inset
 
  mit 
-\begin_inset Formula $\left|\left|f_{n}-f_{m}\right|\right|_{\infty}<\varepsilon\fall_{n,m\in\mathbb{N}_{>N}}$
+\begin_inset Formula $\norm{f_{n}-f_{m}}_{\infty}<\varepsilon$
+\end_inset
+
+ für alle 
+\begin_inset Formula $n,m\in\mathbb{N}_{>N}$
 \end_inset
 
 .
+ Dann gilt 
 \begin_inset Formula 
 \begin{align*}
-f_{k}\left(x\right) & \le\left|\left|f_{k}\right|\right|_{\infty}\text{ fast überall, also mit Ausnahme einer Nullmenge }A_{k}
+f_{k}\left(x\right) & \le\norm{f_{k}}_{\infty}
 \end{align*}
 
 \end_inset
 
-Entsprechend:
+fast überall, also mit Ausnahme einer Nullmenge 
+\begin_inset Formula $A_{k}$
+\end_inset
+
+.
+ Entsprechend gilt:
 \begin_inset Formula 
 \begin{align*}
-\left|f_{n}\left(x\right)-f_{m}\left(x\right)\right| & \le\left|\left|f_{n}-f_{m}\right|\right|_{\infty}\text{ fast überall, also mit Ausnahme einer Nullmenge }B_{nm}
+\abs{f_{n}\left(x\right)-f_{m}\left(x\right)} & \le\norm{f_{n}-f_{m}}_{\infty}
 \end{align*}
 
 \end_inset
 
-Die Menge
+fast überall, also mit Ausnahme einer Nullmenge 
+\begin_inset Formula $B_{n,m}$
+\end_inset
+
+.
+ Die Menge
 \begin_inset Formula 
 \begin{align*}
-E & :=\bigcup_{k}A_{k}\cup\bigcup_{m,n}B_{mn}
+E & :=\bigcup_{k\in\mathbb{N}}A_{k}\cup\bigcup_{m,n\in\mathbb{N}}B_{m,n}
 \end{align*}
 
 \end_inset
@@ -12921,28 +13823,32 @@ ist als Vereinigung abzählbar vieler Nullmengen wieder eine Nullmenge.
 \begin_inset Newline newline
 \end_inset
 
-Wir wissen 
-\begin_inset Formula $\fall_{k,m,n\in\mathbb{N}}$
+Wir wissen, dass für alle 
+\begin_inset Formula $k,m,n\in\mathbb{N}$
 \end_inset
 
- und für 
+, 
 \begin_inset Formula $\varepsilon\in\mathbb{R}_{>0}$
 \end_inset
 
-:
+ und 
+\begin_inset Formula $x\in X\setminus E$
+\end_inset
+
+ gilt:
 \begin_inset Formula 
 \begin{align*}
-\left|f_{k}\left(x\right)\right| & \le\left|\left|f_{k}\right|\right|_{\infty}\quad\fall_{x\in X\setminus E}\\
-\left|f_{n}\left(x\right)-f_{m}\left(x\right)\right| & \le\left|\left|f_{n}-f_{m}\right|\right|_{\infty}<\varepsilon\quad\fall_{x\in X\setminus E}
+\abs{f_{k}\left(x\right)} & \le\norm{f_{k}}_{\infty}\\
+\abs{f_{n}\left(x\right)-f_{m}\left(x\right)} & \le\norm{f_{n}-f_{m}}_{\infty}<\varepsilon
 \end{align*}
 
 \end_inset
 
-Also 
+Also konvergiert 
 \begin_inset Formula $f_{n}\rightrightarrows f$
 \end_inset
 
- auf 
+ gleichmäßig auf 
 \begin_inset Formula $X\setminus E$
 \end_inset
 
@@ -12950,11 +13856,11 @@ Also
 \begin_inset Newline newline
 \end_inset
 
-(Wobei 
+Dabei ist 
 \begin_inset Formula ${\displaystyle f\left(x\right):=\lim_{n\to\infty}f_{n}\left(x\right)}$
 \end_inset
 
- durch diesen Grenzwert definiert)
+ durch diesen Grenzwert definiert.
 \begin_inset Newline newline
 \end_inset
 
@@ -12974,47 +13880,10 @@ Dann ist
 \begin_inset Formula $f\in L^{\infty}\left(x\right)$
 \end_inset
 
- und 
-\begin_inset Formula ${\displaystyle \left|\left|f_{n}-f\right|\right|=\text{supess}_{x\in X}\left|f_{n}\left(x\right)-f\left(x\right)\right|=\text{supess}_{x\in X\setminus E}\left|f_{n}\left(x\right)-f\left(x\right)\right|\stackrel{n\to\infty}{\to}0}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
-Fall 
-\begin_inset Formula $p<\infty$
-\end_inset
-
-:
-\begin_inset Newline newline
-\end_inset
-
-Sei 
-\begin_inset Formula $\left(f_{n}\right)$
-\end_inset
-
- eine Cauchy-Folge in 
-\begin_inset Formula $L^{p}$
-\end_inset
-
-.
- wähle eine Teilfolge (zur Einfachheit wieder mit 
-\begin_inset Formula $\left(f_{n}\right)$
-\end_inset
-
- bezeichnet), so dass 
-\begin_inset Formula $\left|\left|f_{n+1}-f_{n}\right|\right|<2^{-n}$
-\end_inset
-
-.
-\begin_inset Newline newline
-\end_inset
-
-Setze:
+ und es gilt:
 \begin_inset Formula 
 \begin{align*}
-g_{n} & =\sum_{i=1}^{n}\left|f_{i+1}-f_{i}\right| & g & =\sum_{i=1}^{\infty}\left|f_{i+1}-f_{i}\right|
+\norm{f_{n}-f} & =\sup_{x\in X}\text{ess}\abs{f_{n}\left(x\right)-f\left(x\right)}=\sup_{x\in X\setminus E}\text{ess}\abs{f_{n}\left(x\right)-f\left(x\right)}\xrightarrow{n\to\infty}0
 \end{align*}
 
 \end_inset
@@ -13022,26 +13891,68 @@ g_{n} & =\sum_{i=1}^{n}\left|f_{i+1}-f_{i}\right| & g & =\sum_{i=1}^{\infty}\lef
 
 \end_layout
 
+\begin_layout Enumerate
+Fall: 
+\begin_inset Formula $p<\infty$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Sei 
+\begin_inset Formula $\left(f_{n}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+ eine Cauchy-Folge in 
+\begin_inset Formula $L^{p}$
+\end_inset
+
+.
+ Wähle eine Teilfolge (zur Einfachheit wieder mit 
+\begin_inset Formula $\left(f_{n}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+ bezeichnet), so dass 
+\begin_inset Formula $\norm{f_{n+1}-f_{n}}<2^{-n}$
+\end_inset
+
+ ist.
+ Setze:
+\begin_inset Formula 
+\begin{align*}
+g_{n} & :=\sum_{i=1}^{n}\abs{f_{i+1}-f_{i}} & g & :=\sum_{i=1}^{\infty}\abs{f_{i+1}-f_{i}}
+\end{align*}
+
+\end_inset
+
+Dann ist 
+\begin_inset Formula $\left(g_{n}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+ eine monoton wachsende Folge.
+\end_layout
+
 \begin_deeper
 \begin_layout Enumerate
-Fall a): Reihe konvergiert: 
-\begin_inset Formula ${\displaystyle f\left(x\right)=\lim_{n\to\infty}g_{n}\left(x\right)=\sup_{n}g_{n}\left(x\right)}$
+Die Reihe konvergiert: 
+\begin_inset Formula ${\displaystyle g\left(x\right)=\lim_{n\to\infty}g_{n}\left(x\right)=\sup_{n\in\mathbb{N}}g_{n}\left(x\right)}$
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Enumerate
-Fall b): Reihe divergiert: 
+Die Reihe divergiert: 
 \begin_inset Formula $g\left(x\right)=\infty$
 \end_inset
 
  und 
-\begin_inset Formula $g_{n}\left(x\right)$
+\begin_inset Formula $\left(g_{n}\left(x\right)\right)_{n\in\mathbb{N}}$
 \end_inset
 
  ist unbeschränkt, also 
-\begin_inset Formula ${\displaystyle g\left(x\right)=\sup_{n}g_{n}\left(x\right)}$
+\begin_inset Formula ${\displaystyle g\left(x\right)=\sup_{n\in\mathbb{N}}g_{n}\left(x\right)}$
 \end_inset
 
 .
@@ -13050,26 +13961,22 @@ Fall b): Reihe divergiert:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\left|\left|g_{n}\right|\right| & =\left|\left|\left|f_{2}-f_{1}\right|+\left|f_{3}-f_{2}\right|+\ldots+\left|f_{n+1}-f_{n}\right|\right|\right|_{p}\le\\
- & \le\left|\left|f_{2}-f_{1}\right|\right|_{p}+\left|\left|f_{3}-f_{2}\right|\right|_{p}+\ldots+\left|\left|f_{n+1}-f_{n}\right|\right|_{p}\le\sum_{i=1}^{n}2^{-i}<1
+\norm{g_{n}}_{p} & =\norm{\abs{f_{2}-f_{1}}+\abs{f_{3}-f_{2}}+\ldots+\abs{f_{n+1}-f_{n}}}_{p}\le\\
+ & \le\norm{f_{2}-f_{1}}_{p}+\norm{f_{3}-f_{2}}_{p}+\ldots+\norm{f_{n+1}-f_{n}}_{p}\le\sum_{i=1}^{n}2^{-i}<1
 \end{align*}
 
 \end_inset
 
 Also gilt 
-\begin_inset Formula $\int_{X}\left|g_{n}\right|^{p}\dd\mu=\left|\left|g_{k}\right|\right|^{p}\le1$
+\begin_inset Formula ${\displaystyle \int_{X}\abs{g_{n}}^{p}\dd\mu=\norm{g_{k}}^{p}\le1}$
 \end_inset
 
-.
-\begin_inset Newline newline
-\end_inset
-
-Also 
-\begin_inset Formula $g_{n}\diagup(TODO:arrow)$
+ und daher 
+\begin_inset Formula $g_{n}\nearrow g$
 \end_inset
 
  und 
-\begin_inset Formula ${\displaystyle g\left(x\right)=\sup_{n}g_{n}\left(x\right)}$
+\begin_inset Formula ${\displaystyle g\left(x\right)=\sup_{n\in\mathbb{N}}g_{n}\left(x\right)}$
 \end_inset
 
 .
@@ -13077,7 +13984,10 @@ Also
 \end_inset
 
 Nach monotoner Konvergenz (Theorem 
-\begin_inset Formula $\ref{}1.5.2$
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Thm-monotoneKonvergenz"
+
 \end_inset
 
 ) folgt:
@@ -13093,7 +14003,7 @@ Also ist
 \end_inset
 
  und 
-\begin_inset Formula $\left|\left|g\right|\right|_{p}\le1$
+\begin_inset Formula $\norm g_{p}\le1$
 \end_inset
 
 .
@@ -13106,11 +14016,11 @@ Also ist
 \end_inset
 
 Das heißt, dass die Reihe 
-\begin_inset Formula ${\displaystyle \sum_{i=1}^{\infty}\left|f_{i+1}\left(x\right)-f_{i}\left(x\right)\right|}$
+\begin_inset Formula ${\displaystyle \sum_{i=1}^{\infty}\abs{f_{i+1}\left(x\right)-f_{i}\left(x\right)}}$
 \end_inset
 
  für fast alle 
-\begin_inset Formula $x$
+\begin_inset Formula $x\in X$
 \end_inset
 
  konvergiert.
@@ -13131,7 +14041,7 @@ f\left(x\right) & :=f_{1}\left(x\right)+\sum_{i=1}^{\infty}\left(f_{i+1}\left(x\
 \end_inset
 
 Für alle 
-\begin_inset Formula $x$
+\begin_inset Formula $x\in X$
 \end_inset
 
 , für welche die Reihe 
@@ -13146,12 +14056,11 @@ nicht
 \begin_inset Newline newline
 \end_inset
 
-
+Es konvergiert 
 \begin_inset Formula $f_{n}\to f$
 \end_inset
 
- fast überall.
- Also auch 
+ fast überall, also auch 
 \begin_inset Formula $\left|f_{n}-f\right|^{p}\to0$
 \end_inset
 
@@ -13164,7 +14073,7 @@ nicht
 \end_inset
 
 Nach dem Satz von der dominierten Konvergenz folgt: 
-\begin_inset Formula $\int_{X}\left|f-f_{n}\right|^{p}\dd\mu\stackrel{n\to\infty}{\to}$
+\begin_inset Formula ${\displaystyle \int_{X}\left|f-f_{n}\right|^{p}\dd\mu\xrightarrow{n\to\infty}0}$
 \end_inset
 
 , also 
@@ -13195,7 +14104,7 @@ qqed
 
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsection
 Beispiel
 \end_layout
 
@@ -13213,8 +14122,8 @@ f\left(x\right) & =\begin{cases}
 
 \begin_inset Formula 
 \begin{align*}
-\sup_{\mathbb{R}}f & =\inf\left\{ \alpha\in\mathbb{R}|f\left(x\right)\le\alpha\fall_{x\in\mathbb{R}}\right\} =1\\
-\text{supess}_{\mathbb{R}}f & =\inf\left\{ \alpha\in\mathbb{R}|f\left(x\right)\le\alpha\text{ für fast alle }x\in\mathbb{R}\right\} =0
+\sup_{\mathbb{R}}\left(f\right) & =\inf\left\{ \alpha\in\mathbb{R}\middle|\fall_{x\in\mathbb{R}}:f\left(x\right)\le\alpha\right\} =1\\
+\sup_{\mathbb{R}}\text{ess}\left(f\right) & =\inf\left\{ \alpha\in\mathbb{R}\middle|f\left(x\right)\le\alpha\text{ für fast alle }x\in\mathbb{R}\right\} =0
 \end{align*}
 
 \end_inset
@@ -13224,7 +14133,31 @@ f\left(x\right) & =\begin{cases}
 
 \begin_layout Section
 Das Lebesgue-Maß auf 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texorpdfstring{
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula $\mathbb{R}^{n}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}{Rn}
+\end_layout
+
 \end_inset
 
 
@@ -13236,10 +14169,18 @@ Ziel: Konstruiere das
 \end_inset
 
 -dimensionale Lebesgue-Maß induktiv aus dem eindimensionalen.
-\begin_inset Newline newline
+\end_layout
+
+\begin_layout Standard
+Beginne abstrakt mit dem Produkt von Maßräumen.
+\end_layout
+
+\begin_layout Standard
+Gebe 
+\begin_inset Formula $\sigma$
 \end_inset
 
-Gebe vor: 
+-endliche Maße 
 \begin_inset Formula $\left(X,\mathcal{A},\mu\right)$
 \end_inset
 
@@ -13247,11 +14188,7 @@ Gebe vor:
 \begin_inset Formula $\left(Y,\mathcal{B},\nu\right)$
 \end_inset
 
- 
-\begin_inset Formula $\sigma$
-\end_inset
-
--endliche Maße.
+ vor.
 \end_layout
 
 \begin_layout Standard
@@ -13267,14 +14204,15 @@ Zum Beispiel:
 \begin_inset Formula $\mu=\nu$
 \end_inset
 
- Lebesgue-Maß.
-\end_layout
+ das Lebesgue-Maß.
+\begin_inset Formula 
+\begin{align*}
+X\times Y & =\left\{ \left(x;y\right)|x\in X,y\in Y\right\} 
+\end{align*}
 
-\begin_layout Standard
-\begin_inset Formula $X\times Y=\left\{ \left(x;y\right)|x\in X,y\in Y\right\} $
 \end_inset
 
-
+ist das kartesische Produkt.
 \end_layout
 
 \begin_layout Standard
@@ -13289,8 +14227,14 @@ Produktmaß
 .
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsection
 Definition
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Rest überarbeiten
 \end_layout
 
 \begin_layout Standard

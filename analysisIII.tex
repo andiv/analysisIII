@@ -2683,6 +2683,87 @@ ist eindeutig, da sich die Grenzfunktionen nur auf einer Nullmenge
 unterscheiden.\qqed
 
 
+\subsection{Bemerkung}
+
+Sei $f:X\rightarrow\mathbb{R}$ messbar.
+
+Frage: Wann ist die Funktion integrierbar?
+
+Die Definition lautet:
+
+$f$ ist integrierbar, falls es eine Folge $\left(\varphi_{n}\right)_{n\in\mathbb{N}}$
+von Treppenfunktionen gibt, die
+\begin{itemize}
+\item $L^{1}$-Cauchy-Folge ist, und
+\item $\varphi_{n}\to f$ fast überall punktweise konvergiert.
+\end{itemize}
+Dann gilt:
+
+\begin{align*}
+\int_{X}f\dd\mu & :=\lim_{n\to\infty}\int_{X}\varphi_{n}\dd\mu
+\end{align*}
+
+
+Einfacher ist folgende Methode:
+
+Die Funktion $\left|f\right|:X\to[0,\infty)$ ist wieder messbar und
+\begin{align*}
+\int_{X}\left|f\right|\dd\mu & :=\sup\left\{ \int_{X}\varphi\dd\mu\Big|0\le\varphi\le f\text{ ist Stufenfunktion}\right\} \in\left[0,\infty\right]
+\end{align*}
+ist wohldefiniert.
+
+Falls $\left(X,\mu\right)$ schon $\sigma$-endlich ist, kann man
+hier \quotedblbase{}Stufenfunktion\textquotedblleft{} durch \quotedblbase{}Treppenfunktion\textquotedblleft{}
+ersetzen, denn es gilt:
+
+Für eine Stufenfunktion $0\le\varphi\le f$ gilt $\abs{\varphi\left(X\right)}<\infty$
+und $\varphi$ ist messbar.
+\begin{align*}
+\varphi\left(x\right) & =\sum_{y\in\varphi\left(X\right)}y\cdot\chi_{\varphi^{-1}\left(y\right)}\left(x\right)\ge0
+\end{align*}
+Betrachte eine Folge $A_{1}\subseteq A_{2}\subseteq\ldots$ mit ${\displaystyle \bigcup_{n\in\mathbb{N}}A_{n}=X}$
+und $\mu\left(A_{n}\right)<\infty$.
+\begin{align*}
+\varphi_{n}\left(x\right) & :=\sum_{y\in\varphi\left(X\right)}y\cdot\chi_{A_{n}\cap\varphi^{-1}\left(y\right)}\left(x\right)
+\end{align*}
+Die Folge $\varphi_{n}\xrightarrow{n\to\infty}\varphi$ konvergiert
+punktweise und ist aufsteigend.
+
+Also sind die $\varphi_{n}$ Treppenfunktionen und nach monotoner
+Konvergenz gilt:
+\begin{align*}
+\int_{X}\varphi\dd\mu & =\lim_{n\to\infty}\int_{X}\varphi_{n}\dd\mu
+\end{align*}
+Also gilt:
+\begin{align*}
+\sup\left\{ \int_{X}\varphi\dd\mu\Big|0\le\varphi\le f\text{ ist Stufenfunktion}\right\}  & =\sup\left\{ \int_{X}\varphi\dd\mu\Big|0\le\varphi\le f\text{ ist Treppenfunktion}\right\} 
+\end{align*}
+
+\begin{enumerate}
+\item Fall: $\int_{X}\left|f\right|\dd\mu=+\infty$. Dann ist $f$ nicht
+integrierbar $\left(f\not\in L^{1}\right)$, weil die $L^{1}$-Norm
+$\int_{X}\left|f\right|\dd\mu$ nicht endlich ist.
+\item Fall: $\int_{X}\left|f\right|\dd\mu<\infty$. Dann ist $f$ tatsächlich
+integrierbar, wie man folgendermaßen sieht:\\
+Zerlege $f=f_{+}-f_{-}$ mit $f_{+}=\max\left\{ f,0\right\} $ und
+$f_{-}=\max\left\{ \minus f,0\right\} $.\\
+Die Funktionen $f_{\pm}$ sind messbar und nicht negativ, außerdem
+gilt $f_{\pm}\le\left|f\right|$. Damit folgt:
+\begin{align*}
+\int_{X}f_{+}\dd\mu & <\infty & \int_{X}f_{-}\dd\mu & <\infty
+\end{align*}
+Nach Satz \ref{sub:Satz-messFolgeStufenfkt} gibt es Folgen von Treppenfunktionen
+$\left(\varphi_{n}^{+}\right)_{n\in\mathbb{N}},\left(\varphi_{n}^{-}\right)_{n\in\mathbb{N}}$
+mit $\varphi_{n}^{+}\nearrow f_{+}$ und $\varphi_{n}^{-}\nearrow f_{-}$.\\
+Setze $f_{n}:=\varphi_{n}^{+}-\varphi_{n}^{-}$. Dann konvergiert
+$f_{n}\to f$ und es gilt $\left|f_{n}\right|\le\left|f\right|$.\\
+Nach dominierter Konvergenz ist dann $f$ integrierbar und es gilt:
+\begin{align*}
+\int_{X}f\dd\mu & =\lim_{n\to\infty}\int_{X}f_{n}\dd\mu
+\end{align*}
+
+\end{enumerate}
+
 \section{Die Konvergenzsätze}
 
 
@@ -3249,208 +3330,401 @@ in $L^{1}$.
 
 \section{Die Räume $L^{p}$}
 
-\textcolor{green}{TODO: Rest überarbeiten}
 
-%22.11.2011
+\subsection{Definition \textmd{(\texorpdfstring{$L^{p}$}{Lp}-Norm, konvex)}}
 
-
-\subsubsection*{Einschub}
-
-Sei $f:X\rightarrow\mathbb{R}$ messbar.
-
-Frage: Wann ist die Funktion integrierbar?
-
-
-\subsubsection*{Definition}
-
-$f$ ist integrierbar, falls es eine Folge $\left(\varphi_{n}\right)$
-von Treppenfunktionen gibt, die
-\begin{itemize}
-\item $L^{1}$-Cauchy-Folge ist und
-\item $\varphi_{n}\to f$ fast überall punktweise gilt.
+Für $1<p<\infty$ ist die \emph{$L^{p}$-Norm} einer Funktion $f$
+definiert durch:
 \begin{align*}
-\int_{X}\dd\mu & :=\lim_{n\to\infty}\int_{X}\varphi_{n}\dd\mu
+\norm f_{p} & =\left(\int_{X}\abs f^{p}\dd\mu\right)^{\frac{1}{p}}
+\end{align*}
+Speziell für $p=2$ gilt
+\begin{align*}
+\norm f_{2} & =\sqrt{\left\langle f,f\right\rangle }
+\end{align*}
+mit:
+\begin{align*}
+\left\langle f,g\right\rangle  & =\int_{X}f\left(x\right)g\left(x\right)\dd\mu
 \end{align*}
 
-\end{itemize}
-Einfacher ist folgende Methode:
 
-$\left|f\right|:X\to[0,\infty)$ ist wieder messbar und 
+Sei $I\subseteq\mathbb{R}$ ein Intervall. Eine Funktion $\varphi:I\to\mathbb{R}$
+heißt \emph{konvex}, falls für alle $x,y\in\left[a,b\right]$ und
+$\tau\in\left[0,1\right]$ gilt:
 \begin{align*}
-\int_{X}\left|f\right|\dd\mu & :=\sup\left\{ \int_{X}\varphi\dd\mu\text{ mit }0\le\varphi\le f\text{ und }\varphi\text{ Stufenfunktion}\right\} \in\left[0,\infty\right]
-\end{align*}
-ist wohldefiniert.
-
-Falls $\left(X,\mu\right)$ schon $\sigma$-endlich ist, kann man
-hier \quotedblbase{}Stufenfunktion\textquotedblleft{} durch \quotedblbase{}Treppenfunktion\textquotedblleft{}
-ersetzen.\\
-Stufenfunktion: $\#\varphi\left(X\right)<\infty$ und $\varphi$ messbar:
-\begin{align*}
-\varphi\left(x\right) & =\sum_{y\in\varphi\left(X\right)}y\cdot\chi_{\varphi^{-1}\left(y\right)}\left(x\right)\ge0
-\end{align*}
-Betrachte $A_{1}\subseteq A_{2}\subseteq\ldots$ mit ${\displaystyle \bigcup A_{n}=X}$
-und $\mu\left(A_{n}\right)<\infty$.
-\begin{align*}
-\varphi_{n}\left(x\right) & =\sum_{y\in\varphi\left(X\right)}y\cdot\chi_{A_{n}\cap\varphi^{-1}\left(y\right)}\left(x\right)
-\end{align*}
-$\varphi_{n}\stackrel{n\to\infty}{\to}\varphi$ punktweise und $\varphi_{n}$
-aufsteigend.\\
-Die $\varphi_{n}$ sind dann Treppenfunktionen und nach monotoner
-Konvergenz ist:
-\begin{align*}
-\int_{X}\varphi\dd\mu & =\lim_{n\to\infty}\int_{X}\varphi_{n}\dd\mu
-\end{align*}
-Also ist
-\begin{align*}
- & \sup\left\{ \int_{X}\varphi\dd\mu\text{ mit }0\le\varphi\le f\text{ Stufenfunktion}\right\} \\
- & \sup\left\{ \int_{X}\varphi\dd\mu\text{ mit }0\le\varphi\le f\text{ Treppenfunktion}\right\} 
+\varphi\left(\tau x+\left(1-\tau\right)y\right) & \le\tau\cdot\varphi\left(x\right)+\left(1-\tau\right)\cdot\varphi\left(y\right)
 \end{align*}
 
-\begin{enumerate}
-\item Fall: $\int_{X}\left|f\right|\dd\mu=+\infty$. Dann ist $f$ nicht
-integrierbar$\left(\not\in L^{1}\right)$, weil die $L^{1}$-Norm
-$\int_{X}\left|f\right|\dd\mu$ nicht endlich ist.
-\item Fall: $\int_{X}\left|f\right|\dd\mu<\infty$\\
-Dann ist $f$ tatsächlich integrierbar, wie man folgendermaßen sieht:\\
-Zerlege $f=f_{+}-f_{-}$ mit $f_{+}=\max\left\{ f,0\right\} $ und
-$f_{-}=\max\left\{ -f,0\right\} $.\\
-Die Funktionen $f_{\pm}$ sind messbar und nicht-negativ, außerdem
-$f_{\pm}\le\left|f\right|$. Damit folgt:
+
+\textcolor{green}{TODO: Abbildung konvexe Funktion einfügen}
+
+Der Graph liegt unterhalb der Sekante durch $x$ und $y$.
+
+
+\subsection{Satz}
+
+\begin{abclist}
+
+\abc Jede auf einem offenen Intervall definierte konvexe Funktion
+ist stetig.
+
+\abc Falls $f\in C^{2}\left(\left[a,b\right]\right)$ ist, gilt:
 \begin{align*}
-\int_{X}f_{+}\dd\mu & ,\,\,\int_{X}f_{-}\dd\mu<\infty
-\end{align*}
-Nach Satz $\ref{}1.1.8$ gibt es Treppenfunktionen $\left(\varphi_{n}^{+}\right),\left(\varphi_{n}^{-}\right)$
-mit $\varphi_{n}^{+}\stackrel{\text{steigender Pfeil}}{\to}f_{+}$
-und $\varphi_{n}^{-}\stackrel{\text{steigender Pfeil}}{\to}f_{-}$.\\
-Setze $f_{n};=\varphi_{n}^{+}-\varphi_{n}^{-}$. Dann ist $f_{n}\to f$
-und $\left|f_{n}\right|\le\left|f\right|$.\\
-Nach dominierter Konvergenz ist dann $f$ integrierbar und:
-\begin{align*}
-\int_{X}f\dd\mu & =\lim_{n\to\infty}\int_{X}f_{n}\dd\mu
+f\text{ ist konvex} & \Leftrightarrow\fall_{x\in\left[a,b\right]}:f''\left(x\right)\ge x
 \end{align*}
 
-\end{enumerate}
 
-\subsection{Theorem}
-
-$L^{p}\left(X\right)$ ist ein normierter Raum.
+\end{abclist}
 
 
 \subsubsection*{Beweis}
 
-$\left|\left|.\right|\right|_{p}$ ist eine Norm:
+\textcolor{green}{TODO: Beweis einfügen}
+
+\qqed
+
+
+\subsection{Definition \textmd{(konjugierte Exponenten)}}
+
+Seien $1<p,q<\infty$. $p$ und $q$ heißen \emph{konjugierte Exponenten},
+falls gilt:
+\begin{align*}
+\frac{1}{p}+\frac{1}{q} & =1
+\end{align*}
+
+
+
+\subsection{Theorem\label{sub:Thm-HoelderMinkowski}}
+
+Seien $p$ und $q$ konjugierte Exponenten, $\left(X,\mathcal{M},\mu\right)$
+ein Maßraum und $f,g:X\to\left[0,\infty\right]$ messbar.
+
+Dann gilt die Hölder-Ungleichung
+\begin{align*}
+\int_{X}f\cdot g\dd\mu & \le\norm f_{p}\cdot\norm g_{q}
+\end{align*}
+und die Minkowski-Ungleichung:
+\begin{align*}
+\norm{f+g}_{p} & \le\norm f_{p}+\norm g_{p}
+\end{align*}
+Ein wichtiger Spezialfall ist $p=2=q$. Die Hölder-Ungleichung liefert
+dann die Schwarzsche Ungleichung:
+\begin{align*}
+\left\langle f,g\right\rangle  & =\int_{X}f\cdot g\dd\mu\le\norm f_{2}\cdot\norm g_{2}
+\end{align*}
+
+
+
+\subsubsection*{Beweis}
+
+Zunächst die Hölder-Ungleichung:
+
+Setze $A:=\norm f_{p}$ und $B:=\norm g_{q}$.
+
+Betrachte zunächst Spezialfälle:
+\begin{itemize}
+\item $A=0$: Dann ist $f^{p}=0$ fast überall nach Satz \ref{sub:Satz-IntFktMessbar},
+also $f=0$ fast überall und daher auch $f\cdot g=0$ fast überall,
+womit folgt:
+\begin{align*}
+\int_{X}f\cdot g\dd\mu & =0
+\end{align*}
+
+\item $B=0$ geht analog.
+\item Die Fälle $A>0$ und $B=\infty$ sowie $A=\infty$ und $B>0$ sind
+trivial.
+\end{itemize}
+Wir können also annehmen, dass $0<A,B<\infty$ gilt.
+
+Führe eine Reskalierung durch:
+\begin{align*}
+F & :=\frac{f}{A} & G & :=\frac{g}{B}
+\end{align*}
+Dann gilt:
+\begin{align*}
+\norm F_{p} & =\left(\int_{X}\left(\frac{f}{A}\right)^{p}\dd\mu\right)^{\frac{1}{p}}=\left(\frac{1}{A^{p}}\int_{X}f^{p}\dd\mu\right)^{\frac{1}{p}}=\frac{1}{A}\cdot\norm f_{p}=1
+\end{align*}
+Analog folgt $\norm G_{q}=1$.
+
+Wähle ein $x\in X$ mit $0<F\left(x\right)<\infty$ und $0<G\left(x\right)<\infty$.
+
+Dann gibt es $s,t\in\mathbb{R}$ mit $F\left(x\right)=e^{\frac{s}{p}}$
+und $G\left(x\right)=e^{\frac{t}{q}}$.
+
+Wegen der Konvexität der Exponentialfunktion folgt aus ${\displaystyle \frac{1}{p}+\frac{1}{q}=1}$
+für ${\displaystyle \tau=\frac{1}{p}}$ und ${\displaystyle \left(1-\tau\right)=\frac{1}{q}}$
+die Youngsche Ungleichung:
+\begin{align*}
+F\left(x\right)\cdot G\left(x\right)=e^{\frac{s}{p}+\frac{t}{q}} & \le\frac{1}{p}e^{s}+\frac{1}{q}e^{t}=\frac{1}{p}\cdot F\left(x\right)^{p}+\frac{1}{q}\cdot G\left(x\right)^{q}
+\end{align*}
+Diese Ungleichung ist trivialerweise auch dann erfüllt, wenn $F\left(x\right),G\left(x\right)\in\left\{ 0,\infty\right\} $
+ist.
+
+Integration liefert wegen $\int_{X}F\left(x\right)^{p}\dd\mu=\norm F_{p}^{p}=1$
+und $\int_{X}G\left(x\right)^{q}\dd\mu=\norm G_{q}^{q}=1$:
+\begin{align*}
+\int_{X}F\left(x\right)\cdot G\left(x\right)\dd\mu & \le\frac{1}{p}\cdot\int_{X}F\left(x\right)^{p}\dd\mu+\frac{1}{q}\cdot\int_{X}G\left(x\right)^{q}\dd\mu=\frac{1}{p}+\frac{1}{q}=1
+\end{align*}
+Setze nun ${\displaystyle F=\frac{f}{A}}$ und ${\displaystyle G=\frac{g}{B}}$
+ein:
+\begin{align*}
+\int_{X}f\cdot g\dd\mu & \le A\cdot B=\norm f_{p}\cdot\norm g_{q}
+\end{align*}
+Beweis der Minkowski-Ungleichung:
+\begin{align*}
+\left(f+g\right)^{p} & =f\cdot\left(f+g\right)^{p-1}+g\left(f+g\right)^{p-1}
+\end{align*}
+Integration liefert:
+\begin{align*}
+\norm{f+g}_{p}^{p} & =\int_{X}f\cdot\left(f+g\right)^{p-1}\dd\mu+\int_{X}g\cdot\left(f+g\right)^{p-1}\dd\mu
+\end{align*}
+Wende nun die Hölder-Ungleichung an:
+\begin{align*}
+\int_{X}f\cdot\left(f+g\right)^{p-1}\dd\mu & \le\norm f_{p}\cdot\norm{\left(f+g\right)^{p-1}}_{q}
+\end{align*}
+Da $p$ und $q$ konjugierte Exponenten sind, gilt:
+\begin{align*}
+\frac{1}{p}+\frac{1}{q} & =1\\
+q & =\left(1-\frac{1}{p}\right)^{-1}=\frac{p}{p-1}
+\end{align*}
+Es folgt:
+\begin{align*}
+\norm{\left(f+g\right)^{p-1}}_{q} & =\left(\int_{X}\left(f+g\right)^{\left(p-1\right)q}\dd\mu\right)^{\frac{1}{q}}=\left(\left(\int_{X}\left(f+g\right)^{p}\dd\mu\right)^{\frac{1}{p}}\right)^{\frac{p}{q}}=\norm{f+g}_{p}^{\frac{p}{q}}
+\end{align*}
+Also gilt:
+\begin{align*}
+\int f\left(f+g\right)^{p-1}\dd\mu & \le\norm f_{p}\cdot\norm{f+g}_{p}^{\frac{p}{q}}\\
+\int g\left(f+g\right)^{p-1}\dd\mu & \le\norm g_{p}\cdot\norm{f+g}_{p}^{\frac{p}{q}}
+\end{align*}
+Somit ergibt sich:
+\begin{align*}
+\norm{f+g}_{p}^{p} & \le\left(\norm f_{p}+\norm g_{p}\right)\norm{f+g}_{p}^{\frac{p}{q}}
+\end{align*}
+Falls $\norm{f+g}_{p}=0$ ist, ist die Minkowski-Ungleichung trivialerweise
+richtig.
+
+Ansonsten können wir durch $\norm{f+g}_{p}^{\frac{p}{q}}$ dividieren.
+Es folgt:
+\begin{align*}
+\norm{f+g}_{p}^{p-\frac{p}{q}} & \le\norm f_{p}+\norm g_{p}
+\end{align*}
+Dies beweist die Minkowski-Ungleichung, denn es gilt:
+\begin{align*}
+p-\frac{p}{q} & =p\left(1-\frac{1}{q}\right)=p\cdot\frac{1}{p}=1
+\end{align*}
+\qqed
+
+
+\subsection{Definition \textmd{(essentielles Supremum)}}
+
+Sei $g:X\to\left[0,\infty\right]$ messbar. Setze:
+\begin{align*}
+S & :=\left\{ \alpha\in\overline{\mathbb{R}}\Big|g\le\alpha\text{ fast überall}\right\} \subseteq\overline{\mathbb{R}}
+\end{align*}
+Dann heißt
+\begin{align*}
+\sup\text{ess}\left(g\right) & :=\inf\left(S\right)
+\end{align*}
+das \emph{essentielle Supremum}.
+
+Die $L^{\infty}$-Norm ist definiert als:
+\begin{align*}
+\norm f_{\infty} & :=\sup\text{ess}\left(\abs f\right)
+\end{align*}
+
+
+
+\subsection{Theorem}
+
+Die Aussage von Theorem \ref{sub:Thm-HoelderMinkowski} gilt auch
+dann, wenn $p=\infty$ und $q=1$ ist, also:
+\begin{align*}
+\int_{X}fg\dd\mu & \le\norm f_{\infty}\cdot\norm g_{1}\\
+\norm{f+g}_{\infty} & \le\norm f_{\infty}+\norm g_{\infty}\\
+\norm{f+g}_{1} & \le\norm f_{1}+\norm g_{1}
+\end{align*}
+
+
+
+\subsubsection*{Beweis}
+
+Wir wissen nach Definition des essentiellen Supremums, dass für fast
+alle $x\in X$ gilt:
+\begin{align*}
+0 & \le f\left(x\right)\le\norm f_{\infty}
+\end{align*}
+Es folgt:
+\begin{align*}
+f\left(x\right)\cdot g\left(x\right) & \le\norm f_{\infty}\cdot g\left(x\right)\\
+\int_{X}f\cdot g\dd\mu & \le\norm f_{\infty}\cdot\int_{X}g\dd\mu=\norm f_{\infty}\cdot\norm g_{1}
+\end{align*}
+Zeige nun die Minkowski-Ungleichungen:
+
+Aus
+\begin{align*}
+\abs{\left(f+g\right)\left(x\right)} & \le\abs{f\left(x\right)}+\abs{g\left(x\right)}
+\end{align*}
+folgt direkt
+\begin{align*}
+\sup\text{ess}\left(\abs{f+g}\right) & \le\sup\text{ess}\left(\abs f\right)+\sup\text{ess}\left(\abs g\right)
+\end{align*}
+und nach Integration:
+\begin{align*}
+\norm{f+g}_{1}=\int_{X}\abs{f+g}\dd\mu & \le\int_{X}\abs f\dd\mu+\int\abs g\dd\mu=\norm f_{1}+\norm g_{1}
+\end{align*}
+\qqed
+
+
+\subsection{Definition}
+
+Sei $1\le p\le\infty$ und $f:X\to\overline{\mathbb{R}}$ messbar.
+Die \emph{$L^{p}$-Norm} ist definiert durch:
+\begin{align*}
+\norm f_{p} & =\begin{cases}
+\left(\int_{X}\abs f^{p}\dd\mu\right)^{\frac{1}{p}} & \text{falls }p<\infty\\
+\sup\text{ess}\left(\abs f\right) & \text{falls }p=\infty
+\end{cases}
+\end{align*}
+$\norm f_{p}$ ist wohldefiniert, könnte aber $\infty$ sein.
+\begin{align*}
+\mathcal{L}^{p}\left(X\right) & :=\left\{ f:X\to\overline{\mathbb{R}}\Big|f\text{ ist messbar mit }\norm f_{p}<\infty\right\} 
+\end{align*}
+Identifiziere wieder Funktionen, die fast überall übereinstimmen.
+
+$L^{p}\left(X\right)$ bezeichnet die Menge von Äquivalenzklassen
+solcher Funktionen.
+
+%DATE: Di 22.11.2011
+
+
+\subsection{Theorem}
+
+Für $1\le p\le\infty$ ist $L^{p}\left(X\right)$ ein normierter Raum.
+
+
+\subsubsection*{Beweis}
+
+Überprüfe, dass $\norm ._{p}$ eine Norm ist:
 \begin{itemize}
 \item Homogenität:
 \begin{align*}
-\left|\left|\lambda f\right|\right|_{p} & =\left(\int_{X}\left|\lambda f\right|^{p}\dd\mu\right)^{\frac{1}{p}}=\left|\lambda\right|\left|\left|f\right|\right|_{p}\\
-\left|\left|\lambda f\right|\right|_{\infty} & =\text{supess}\left|\lambda f\right|=\text{supess}\left|\lambda\right|\left|f\right|=\left|\lambda\right|\left|\left|f\right|\right|_{p}
+\norm{\lambda f}_{p} & =\left(\int_{X}\abs{\lambda f}^{p}\dd\mu\right)^{\frac{1}{p}}=\abs{\lambda}\cdot\norm f_{p}\\
+\norm{\lambda f}_{\infty} & =\sup\text{ess}\left(\abs{\lambda f}\right)=\sup\text{ess}\left(\abs{\lambda}\abs f\right)=\abs{\lambda}\cdot\norm f_{\infty}
 \end{align*}
 
 \item Dreiecksungleichung:
 \begin{align*}
-\left|\left|f+g\right|\right|_{p} & \stackrel{\text{Monotonie}}{\le}\left|\left|\left|f\right|+\left|g\right|\right|\right|_{p}\\
- & \stackrel{\text{Minkowski}}{\le}\left|\left|\left|f\right|\right|\right|_{p}+\left|\left|\left|g\right|\right|\right|_{p}=\left|\left|f\right|\right|_{p}+\left|\left|g\right|\right|_{p}
+\norm{f+g}_{p} & \stackrel{\text{Monotonie}}{\le}\norm{\abs f+\abs g\vphantom{\big|}}_{p}\le\\
+ & \stackrel{\text{Minkowski}}{\le}\norm{\abs f\vphantom{\big|}}_{p}+\norm{\abs g\vphantom{\big|}}_{p}=\norm f_{p}+\norm g_{p}
 \end{align*}
 
-\item Definitheit: $\left|\left|f\right|\right|_{p}=0\Rightarrow f=0$\\
-Sei $0=\left(\int\left|f\right|^{p}\dd\mu\right)^{\frac{1}{p}}$,
-also folgt:
+\item Definitheit: Zu zeigen ist, dass aus $\norm f_{p}=0$ schon $f=0$
+folgt.\\
+Sei $0=\left(\int_{X}\abs f^{p}\dd\mu\right)^{\frac{1}{p}}$, so folgt:
 \begin{align*}
-\int\left|f\right|^{p}\dd\mu & =0\\
-\Rightarrow\quad\left|f\right|^{p} & =0\text{ fast überall}\\
-\Rightarrow\quad f & =0\text{ fast überall}\\
-\Rightarrow\quad f & =0\text{ in }L^{p}\left(X\right)
+\int_{X}\left|f\right|^{p}\dd\mu & =0\\
+\Rightarrow\quad\left|f\right|^{p} & =0\quad\text{ fast überall}\\
+\Rightarrow\quad\quad f & =0\quad\text{ fast überall}\\
+\Rightarrow\quad\quad f & =0\quad\text{ in }L^{p}\left(X\right)
 \end{align*}
-Sei $\left|\left|f\right|\right|_{\infty}=0$, dann folgt: $\text{supess}\left|f\right|=0$,
-also $\left|f\right|=0$ fast überall, also $\left|f\right|\le\varepsilon$
-fast überall für alle $\varepsilon>0$. Damit folgt $\left|f\right|=0$
-fast überall, also $f=0$ in $L^{\infty}$.\\
-\qqed
+Sei $\norm f_{\infty}=0$, dann folgt $\sup\text{ess}\left(\left|f\right|\right)=0$,
+also $\left|f\right|\le\varepsilon$ fast überall für alle $\varepsilon>0$.\\
+Damit folgt $\left|f\right|=0$ fast überall, also $f=0$ in $L^{\infty}$.
 \end{itemize}
+\qqed
+
 
 \subsection{Theorem}
 
-$L^{p}\left(X\right)$ ist vollständig. ($1\le p\le\infty$)
+Für $1\le p\le\infty$ ist $L^{p}\left(X\right)$ vollständig.
 
 
-\paragraph*{Beweis}
+\subsubsection*{Beweis}
 \begin{enumerate}
-\item Zunächst der Fall $p=\infty$:\\
-Sei $\left(f_{n}\right)$ eine Cauchy-Folge in $L^{\infty}$, also
-$\fall_{\varepsilon>0}\exs_{N\in\mathbb{N}}$ mit $\left|\left|f_{n}-f_{m}\right|\right|_{\infty}<\varepsilon\fall_{n,m\in\mathbb{N}_{>N}}$.
+\item Fall: $p=\infty$\\
+Sei $\left(f_{n}\right)_{n\in\mathbb{N}}$ eine Cauchy-Folge in $L^{\infty}$,
+also gibt es für alle $\varepsilon>0$ ein $N\in\mathbb{N}$ mit $\norm{f_{n}-f_{m}}_{\infty}<\varepsilon$
+für alle $n,m\in\mathbb{N}_{>N}$. Dann gilt 
 \begin{align*}
-f_{k}\left(x\right) & \le\left|\left|f_{k}\right|\right|_{\infty}\text{ fast überall, also mit Ausnahme einer Nullmenge }A_{k}
+f_{k}\left(x\right) & \le\norm{f_{k}}_{\infty}
 \end{align*}
-Entsprechend:
+fast überall, also mit Ausnahme einer Nullmenge $A_{k}$. Entsprechend
+gilt:
 \begin{align*}
-\left|f_{n}\left(x\right)-f_{m}\left(x\right)\right| & \le\left|\left|f_{n}-f_{m}\right|\right|_{\infty}\text{ fast überall, also mit Ausnahme einer Nullmenge }B_{nm}
+\abs{f_{n}\left(x\right)-f_{m}\left(x\right)} & \le\norm{f_{n}-f_{m}}_{\infty}
 \end{align*}
-Die Menge
+fast überall, also mit Ausnahme einer Nullmenge $B_{n,m}$. Die Menge
 \begin{align*}
-E & :=\bigcup_{k}A_{k}\cup\bigcup_{m,n}B_{mn}
+E & :=\bigcup_{k\in\mathbb{N}}A_{k}\cup\bigcup_{m,n\in\mathbb{N}}B_{m,n}
 \end{align*}
 ist als Vereinigung abzählbar vieler Nullmengen wieder eine Nullmenge.\\
-Wir wissen $\fall_{k,m,n\in\mathbb{N}}$ und für $\varepsilon\in\mathbb{R}_{>0}$:
+Wir wissen, dass für alle $k,m,n\in\mathbb{N}$, $\varepsilon\in\mathbb{R}_{>0}$
+und $x\in X\setminus E$ gilt:
 \begin{align*}
-\left|f_{k}\left(x\right)\right| & \le\left|\left|f_{k}\right|\right|_{\infty}\quad\fall_{x\in X\setminus E}\\
-\left|f_{n}\left(x\right)-f_{m}\left(x\right)\right| & \le\left|\left|f_{n}-f_{m}\right|\right|_{\infty}<\varepsilon\quad\fall_{x\in X\setminus E}
+\abs{f_{k}\left(x\right)} & \le\norm{f_{k}}_{\infty}\\
+\abs{f_{n}\left(x\right)-f_{m}\left(x\right)} & \le\norm{f_{n}-f_{m}}_{\infty}<\varepsilon
 \end{align*}
-Also $f_{n}\rightrightarrows f$ auf $X\setminus E$.\\
-(Wobei ${\displaystyle f\left(x\right):=\lim_{n\to\infty}f_{n}\left(x\right)}$
-durch diesen Grenzwert definiert)\\
+Also konvergiert $f_{n}\rightrightarrows f$ gleichmäßig auf $X\setminus E$.\\
+Dabei ist ${\displaystyle f\left(x\right):=\lim_{n\to\infty}f_{n}\left(x\right)}$
+durch diesen Grenzwert definiert.\\
 Setze $f=0$ auf $E$.\\
-Dann ist $f\in L^{\infty}\left(x\right)$ und ${\displaystyle \left|\left|f_{n}-f\right|\right|=\text{supess}_{x\in X}\left|f_{n}\left(x\right)-f\left(x\right)\right|=\text{supess}_{x\in X\setminus E}\left|f_{n}\left(x\right)-f\left(x\right)\right|\stackrel{n\to\infty}{\to}0}$.
-\item Fall $p<\infty$:\\
-Sei $\left(f_{n}\right)$ eine Cauchy-Folge in $L^{p}$. wähle eine
-Teilfolge (zur Einfachheit wieder mit $\left(f_{n}\right)$ bezeichnet),
-so dass $\left|\left|f_{n+1}-f_{n}\right|\right|<2^{-n}$.\\
-Setze:
+Dann ist $f\in L^{\infty}\left(x\right)$ und es gilt:
 \begin{align*}
-g_{n} & =\sum_{i=1}^{n}\left|f_{i+1}-f_{i}\right| & g & =\sum_{i=1}^{\infty}\left|f_{i+1}-f_{i}\right|
+\norm{f_{n}-f} & =\sup_{x\in X}\text{ess}\abs{f_{n}\left(x\right)-f\left(x\right)}=\sup_{x\in X\setminus E}\text{ess}\abs{f_{n}\left(x\right)-f\left(x\right)}\xrightarrow{n\to\infty}0
 \end{align*}
 
+\item Fall: $p<\infty$\\
+Sei $\left(f_{n}\right)_{n\in\mathbb{N}}$ eine Cauchy-Folge in $L^{p}$.
+Wähle eine Teilfolge (zur Einfachheit wieder mit $\left(f_{n}\right)_{n\in\mathbb{N}}$
+bezeichnet), so dass $\norm{f_{n+1}-f_{n}}<2^{-n}$ ist. Setze:
+\begin{align*}
+g_{n} & :=\sum_{i=1}^{n}\abs{f_{i+1}-f_{i}} & g & :=\sum_{i=1}^{\infty}\abs{f_{i+1}-f_{i}}
+\end{align*}
+Dann ist $\left(g_{n}\right)_{n\in\mathbb{N}}$ eine monoton wachsende
+Folge.
 
 \begin{enumerate}
-\item Fall a): Reihe konvergiert: ${\displaystyle f\left(x\right)=\lim_{n\to\infty}g_{n}\left(x\right)=\sup_{n}g_{n}\left(x\right)}$.
-\item Fall b): Reihe divergiert: $g\left(x\right)=\infty$ und $g_{n}\left(x\right)$
-ist unbeschränkt, also ${\displaystyle g\left(x\right)=\sup_{n}g_{n}\left(x\right)}$.
+\item Die Reihe konvergiert: ${\displaystyle g\left(x\right)=\lim_{n\to\infty}g_{n}\left(x\right)=\sup_{n\in\mathbb{N}}g_{n}\left(x\right)}$.
+\item Die Reihe divergiert: $g\left(x\right)=\infty$ und $\left(g_{n}\left(x\right)\right)_{n\in\mathbb{N}}$
+ist unbeschränkt, also ${\displaystyle g\left(x\right)=\sup_{n\in\mathbb{N}}g_{n}\left(x\right)}$.
 \end{enumerate}
 
 \begin{align*}
-\left|\left|g_{n}\right|\right| & =\left|\left|\left|f_{2}-f_{1}\right|+\left|f_{3}-f_{2}\right|+\ldots+\left|f_{n+1}-f_{n}\right|\right|\right|_{p}\le\\
- & \le\left|\left|f_{2}-f_{1}\right|\right|_{p}+\left|\left|f_{3}-f_{2}\right|\right|_{p}+\ldots+\left|\left|f_{n+1}-f_{n}\right|\right|_{p}\le\sum_{i=1}^{n}2^{-i}<1
+\norm{g_{n}}_{p} & =\norm{\abs{f_{2}-f_{1}}+\abs{f_{3}-f_{2}}+\ldots+\abs{f_{n+1}-f_{n}}}_{p}\le\\
+ & \le\norm{f_{2}-f_{1}}_{p}+\norm{f_{3}-f_{2}}_{p}+\ldots+\norm{f_{n+1}-f_{n}}_{p}\le\sum_{i=1}^{n}2^{-i}<1
 \end{align*}
-Also gilt $\int_{X}\left|g_{n}\right|^{p}\dd\mu=\left|\left|g_{k}\right|\right|^{p}\le1$.\\
-Also $g_{n}\diagup(TODO:arrow)$ und ${\displaystyle g\left(x\right)=\sup_{n}g_{n}\left(x\right)}$.\\
-Nach monotoner Konvergenz (Theorem $\ref{}1.5.2$) folgt:
+Also gilt ${\displaystyle \int_{X}\abs{g_{n}}^{p}\dd\mu=\norm{g_{k}}^{p}\le1}$
+und daher $g_{n}\nearrow g$ und ${\displaystyle g\left(x\right)=\sup_{n\in\mathbb{N}}g_{n}\left(x\right)}$.\\
+Nach monotoner Konvergenz (Theorem \ref{sub:Thm-monotoneKonvergenz})
+folgt:
 \begin{align*}
 \int_{X}g^{p}\dd\mu & =\lim_{n\to\infty}\int_{X}g_{n}^{p}\dd\mu\le1
 \end{align*}
-Also ist $g\in L^{p}$ und $\left|\left|g\right|\right|_{p}\le1$.
-Insbesondere ist $g$ fast überall endlich.\\
-Das heißt, dass die Reihe ${\displaystyle \sum_{i=1}^{\infty}\left|f_{i+1}\left(x\right)-f_{i}\left(x\right)\right|}$
-für fast alle $x$ konvergiert.
+Also ist $g\in L^{p}$ und $\norm g_{p}\le1$. Insbesondere ist $g$
+fast überall endlich.\\
+Das heißt, dass die Reihe ${\displaystyle \sum_{i=1}^{\infty}\abs{f_{i+1}\left(x\right)-f_{i}\left(x\right)}}$
+für fast alle $x\in X$ konvergiert.
 \begin{align*}
 f_{n+1} & =f_{1}+\sum_{i=1}^{n}\left(f_{i+1}-f_{i}\right)\\
 f\left(x\right) & :=f_{1}\left(x\right)+\sum_{i=1}^{\infty}\left(f_{i+1}\left(x\right)-f_{i}\left(x\right)\right)
 \end{align*}
 $f\left(x\right)$ ist fast überall wohldefiniert, weil die Reihe
 fast überall absolut konvergiert.\\
-Für alle $x$, für welche die Reihe \emph{nicht} absolut konvergiert,
+Für alle $x\in X$, für welche die Reihe \emph{nicht} absolut konvergiert,
 setzen wir $f\left(x\right):=0$.\\
-$f_{n}\to f$ fast überall. Also auch $\left|f_{n}-f\right|^{p}\to0$
+Es konvergiert $f_{n}\to f$ fast überall, also auch $\left|f_{n}-f\right|^{p}\to0$
 fast überall.
 \begin{align*}
 \left|f_{n}-f\right|^{p} & \le\bigg|\underbrace{f_{1}}_{\in L^{p}}+\underbrace{g}_{\in L^{p}}\bigg|\in L^{1}
 \end{align*}
-Nach dem Satz von der dominierten Konvergenz folgt: $\int_{X}\left|f-f_{n}\right|^{p}\dd\mu\stackrel{n\to\infty}{\to}$,
+Nach dem Satz von der dominierten Konvergenz folgt: ${\displaystyle \int_{X}\left|f-f_{n}\right|^{p}\dd\mu\xrightarrow{n\to\infty}0}$,
 also $f_{n}\to f$ in $L^{p}$.
 
 \end{enumerate}
 \qqed
 
 
-\subsubsection*{Beispiel}
+\subsection{Beispiel}
 
 \begin{align*}
 f\left(x\right) & =\begin{cases}
@@ -3459,28 +3733,35 @@ f\left(x\right) & =\begin{cases}
 \end{cases}
 \end{align*}
 \begin{align*}
-\sup_{\mathbb{R}}f & =\inf\left\{ \alpha\in\mathbb{R}|f\left(x\right)\le\alpha\fall_{x\in\mathbb{R}}\right\} =1\\
-\text{supess}_{\mathbb{R}}f & =\inf\left\{ \alpha\in\mathbb{R}|f\left(x\right)\le\alpha\text{ für fast alle }x\in\mathbb{R}\right\} =0
+\sup_{\mathbb{R}}\left(f\right) & =\inf\left\{ \alpha\in\mathbb{R}\middle|\fall_{x\in\mathbb{R}}:f\left(x\right)\le\alpha\right\} =1\\
+\sup_{\mathbb{R}}\text{ess}\left(f\right) & =\inf\left\{ \alpha\in\mathbb{R}\middle|f\left(x\right)\le\alpha\text{ für fast alle }x\in\mathbb{R}\right\} =0
 \end{align*}
 
 
 
-\section{Das Lebesgue-Maß auf $\mathbb{R}^{n}$}
+\section{Das Lebesgue-Maß auf \texorpdfstring{$\mathbb{R}^{n}$}{Rn}}
 
 Ziel: Konstruiere das $n$-dimensionale Lebesgue-Maß induktiv aus
-dem eindimensionalen.\\
-Gebe vor: $\left(X,\mathcal{A},\mu\right)$ und $\left(Y,\mathcal{B},\nu\right)$
-$\sigma$-endliche Maße.
+dem eindimensionalen.
+
+Beginne abstrakt mit dem Produkt von Maßräumen.
+
+Gebe $\sigma$-endliche Maße $\left(X,\mathcal{A},\mu\right)$ und
+$\left(Y,\mathcal{B},\nu\right)$ vor.
 
 Zum Beispiel: $X=Y=\mathbb{R}$, $\mathcal{A}=\mathcal{B}=\mathcal{M}\left(\mathbb{R}\right)$
-und $\mu=\nu$ Lebesgue-Maß.
-
-$X\times Y=\left\{ \left(x;y\right)|x\in X,y\in Y\right\} $
+und $\mu=\nu$ das Lebesgue-Maß.
+\begin{align*}
+X\times Y & =\left\{ \left(x;y\right)|x\in X,y\in Y\right\} 
+\end{align*}
+ist das kartesische Produkt.
 
 Wir wollen auf $X\times Y$ ein Maß konstruieren, das sogenannte \emph{Produktmaß}.
 
 
-\subsubsection*{Definition}
+\subsection{Definition}
+
+\textcolor{green}{TODO: Rest überarbeiten}
 
 $A\times B$ mit $A\in\mathcal{A},B\in\mathcal{B}$ nenne \quotedblbase{}Rechteck\textquotedblleft{}.
 
