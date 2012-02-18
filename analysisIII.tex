@@ -4403,25 +4403,111 @@ Wir können wegen der Grenzen des Integrals $x,y>0$ annehmen.
 
 \section{Die Transformationsformel}
 
-\textcolor{green}{TODO: Rest überarbeiten}
-
-1-dimensionale Variablentransformation
+Für die eindimensionale Variablentransformation verwendet man eine
+bijektive, stetige, differenzierbare und streng monoton steigende
+Funktion
 \begin{align*}
 \varphi:\left[a,b\right] & \to\left[\varphi\left(a\right),\varphi\left(b\right)\right]\in C^{1}
 \end{align*}
-und (streng) monoton steigend.
+beziehungsweise streng monoton fallende Funktion:
 \begin{align*}
-\int_{\varphi\left(a\right)}^{\varphi\left(b\right)}f\left(u\right)\dd u & =\left\{ \begin{array}{c}
-u=\varphi\left(t\right)\\
-\dd u=\varphi'\left(t\right)\dd t
-\end{array}\right\} =\int_{a}^{b}f\left(\varphi\left(t\right)\right)\cdot\left|\varphi'\left(t\right)\right|\dd t
+\varphi:\left[a,b\right] & \to\left[\varphi\left(b\right),\varphi\left(a\right)\right]\in C^{1}
 \end{align*}
 
 
-In höherer Dimension: $V=\varphi\left(U\right)$ und $\varphi:U\subseteq\mathbb{R}^{n}\to V\subseteq\mathbb{R}^{n}$
-ein $C^{1}$-Diffeomorphismus. 
+Dann gilt nach der Transformation
 \begin{align*}
-\int_{V\subseteq\mathbb{R}^{n}}f\left(y\right)\dd y & =\int_{U}f\left(\varphi\left(x\right)\right)\cdot\bigg|\det\underbrace{D\varphi}_{\text{Jacobi-Matrix}}\bigg|\dd x
+u & =\varphi\left(t\right)\\
+\dd u & =\varphi'\left(t\right)\dd t
+\end{align*}
+für das Integral:
+\begin{align*}
+\int_{\varphi\left(a\right)}^{\varphi\left(b\right)}f\left(u\right)\dd u & =\int_{a}^{b}f\left(\varphi\left(t\right)\right)\cdot\abs{\varphi'\left(t\right)}\dd t
+\end{align*}
+
+
+Dies soll nun auf die Dimension $n$ verallgemeinert werden. Schreibe
+dazu zunächst um mit $I=\left[a,b\right]$:
+\begin{align*}
+\int_{I}\left(f\circ\varphi\right)\left(t\right)\cdot\abs{\varphi'\left(t\right)}\dd t & =\int_{\varphi\left(I\right)}f\left(x\right)\dd x
+\end{align*}
+
+
+In höherer Dimension sei $U\subseteq\mathbb{R}^{n}$ offen und $\varphi:U\to\varphi\left(U\right)=:V\subseteq\mathbb{R}^{n}\in C^{1}$
+bijektiv. $V$ soll messbar sein, zur Einfachheit sogar offen. Außerdem
+sei $\varphi^{-1}$ stetig, zur Einfachheit sogar in $C^{1}$.
+
+
+\subsection{Definition \textmd{(\texorpdfstring{$C^{1}$}{C1}-Diffeomorphismus,
+Jacobi-Matrix)}}
+
+Eine Abbildung $\varphi:U\to V$ zwischen offenen Mengen $U,V\subseteq\mathbb{R}^{n}$
+heißt \emph{$C^{1}$-Diffeomorphismus}, falls $\varphi$ bijektiv
+ist und $\varphi,\varphi^{-1}\in C^{1}$ sind.
+
+Die \emph{Jacobi-Matrix} ist die $n\times n$-Matrix:
+\begin{align*}
+J\varphi & :=\left(\begin{array}{ccc}
+\partial_{1}\varphi_{1} & \ldots & \partial_{n}\varphi_{1}\\
+\vdots & \ddots & \vdots\\
+\partial_{1}\varphi_{n} & \ldots & \partial_{n}\varphi_{n}
+\end{array}\right)
+\end{align*}
+
+
+
+\subsection{Theorem}
+
+Seien $U,V\subseteq\mathbb{R}^{n}$ offen, $f:V\to\mathbb{R}$ eine
+Funktion und $\varphi:U\to V$ ein $C^{1}$-Diffeomorphismus.
+
+Dann ist $f$ genau dann integrierbar, wenn $\left(f\circ\varphi\right)\cdot\abs{\det\left(J\varphi\right)}:U\to\mathbb{R}$
+integrierbar ist.
+
+Es gilt:
+
+\begin{align*}
+\int_{V}f\left(y\right)\dd y & =\int_{U}f\left(\varphi\left(x\right)\right)\cdot\abs{\det\left(J\varphi\right)}\dd x
+\end{align*}
+
+
+
+\subsubsection*{Beweis}
+
+\textcolor{green}{TODO: Beweis einfügen}
+
+\qqed
+
+
+\subsection{Beispiel}
+
+Berechne das Integral:
+\begin{align*}
+\int_{\mathbb{R}^{2}}e^{\minus\left(x^{2}+y^{2}\right)}\dd x\dd y
+\end{align*}
+Variablentransformation:
+\begin{align*}
+\varphi:\mathbb{R}_{>0}\times\left(0,2\pi\right) & \to\mathbb{R}^{2}\setminus\mathbb{R}_{\ge0}\\
+\left(r,\varphi\right) & \mapsto\left(r\cos\varphi,r\sin\varphi\right)
+\end{align*}
+Das Herausschneiden von Nullmengen wie $\mathbb{R}_{\ge0}\subseteq\mathbb{R}^{2}$
+spielt für den Wert des Integrals keine Rolle.
+\begin{align*}
+J\varphi & =\left(\begin{array}{cc}
+\partial_{r}x & \partial_{\varphi}x\\
+\partial_{r}y & \partial_{\varphi}y
+\end{array}\right)=\left(\begin{array}{cc}
+\cos\varphi & \minus r\sin\varphi\\
+\sin\varphi & \phantom{\minus}r\cos\varphi
+\end{array}\right)
+\end{align*}
+\begin{align*}
+\det\left(J\varphi\right) & =r\left(\cos^{2}\varphi+\sin^{2}\varphi\right)=r
+\end{align*}
+Also gilt:
+\begin{align*}
+\int_{\mathbb{R}^{2}}e^{\minus\left(x^{2}+y^{2}\right)}\dd x\dd y & =\int_{0}^{\infty}\dd r\int_{0}^{2\pi}\dd\varphi r\cdot e^{\minus r^{2}}=2\pi\cdot\int_{0}^{\infty}\dd r\frac{\dd}{\dd r}\left(\frac{\minus1}{2}e^{\minus r^{2}}\right)=\\
+ & =\minus\pi\left(e^{-\infty}-e^{0}\right)=\pi
 \end{align*}
 
 
@@ -4429,6 +4515,8 @@ ein $C^{1}$-Diffeomorphismus.
 \chapter{Komplexe Analysis}
 
 \setcounter{section}{0}
+
+\textcolor{green}{TODO: Rest überarbeiten}
 
 
 \section{Grundlagen, die Riemannsche Zahlenkugel}

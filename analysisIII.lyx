@@ -16598,13 +16598,8 @@ Die Transformationsformel
 \end_layout
 
 \begin_layout Standard
-
-\color green
-TODO: Rest überarbeiten
-\end_layout
-
-\begin_layout Standard
-1-dimensionale Variablentransformation
+Für die eindimensionale Variablentransformation verwendet man eine bijektive,
+ stetige, differenzierbare und streng monoton steigende Funktion
 \begin_inset Formula 
 \begin{align*}
 \varphi:\left[a,b\right] & \to\left[\varphi\left(a\right),\varphi\left(b\right)\right]\in C^{1}
@@ -16612,13 +16607,10 @@ TODO: Rest überarbeiten
 
 \end_inset
 
-und (streng) monoton steigend.
+beziehungsweise streng monoton fallende Funktion:
 \begin_inset Formula 
 \begin{align*}
-\int_{\varphi\left(a\right)}^{\varphi\left(b\right)}f\left(u\right)\dd u & =\left\{ \begin{array}{c}
-u=\varphi\left(t\right)\\
-\dd u=\varphi'\left(t\right)\dd t
-\end{array}\right\} =\int_{a}^{b}f\left(\varphi\left(t\right)\right)\cdot\left|\varphi'\left(t\right)\right|\dd t
+\varphi:\left[a,b\right] & \to\left[\varphi\left(b\right),\varphi\left(a\right)\right]\in C^{1}
 \end{align*}
 
 \end_inset
@@ -16627,12 +16619,176 @@ u=\varphi\left(t\right)\\
 \end_layout
 
 \begin_layout Standard
-In höherer Dimension: 
-\begin_inset Formula $V=\varphi\left(U\right)$
+Dann gilt nach der Transformation
+\begin_inset Formula 
+\begin{align*}
+u & =\varphi\left(t\right)\\
+\dd u & =\varphi'\left(t\right)\dd t
+\end{align*}
+
 \end_inset
 
- und 
-\begin_inset Formula $\varphi:U\subseteq\mathbb{R}^{n}\to V\subseteq\mathbb{R}^{n}$
+für das Integral:
+\begin_inset Formula 
+\begin{align*}
+\int_{\varphi\left(a\right)}^{\varphi\left(b\right)}f\left(u\right)\dd u & =\int_{a}^{b}f\left(\varphi\left(t\right)\right)\cdot\abs{\varphi'\left(t\right)}\dd t
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dies soll nun auf die Dimension 
+\begin_inset Formula $n$
+\end_inset
+
+ verallgemeinert werden.
+ Schreibe dazu zunächst um mit 
+\begin_inset Formula $I=\left[a,b\right]$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\int_{I}\left(f\circ\varphi\right)\left(t\right)\cdot\abs{\varphi'\left(t\right)}\dd t & =\int_{\varphi\left(I\right)}f\left(x\right)\dd x
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In höherer Dimension sei 
+\begin_inset Formula $U\subseteq\mathbb{R}^{n}$
+\end_inset
+
+ offen und 
+\begin_inset Formula $\varphi:U\to\varphi\left(U\right)=:V\subseteq\mathbb{R}^{n}\in C^{1}$
+\end_inset
+
+ bijektiv.
+ 
+\begin_inset Formula $V$
+\end_inset
+
+ soll messbar sein, zur Einfachheit sogar offen.
+ Außerdem sei 
+\begin_inset Formula $\varphi^{-1}$
+\end_inset
+
+ stetig, zur Einfachheit sogar in 
+\begin_inset Formula $C^{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\series medium
+
+\backslash
+texorpdfstring{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $C^{1}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\series medium
+}{C1}
+\end_layout
+
+\end_inset
+
+-Diffeomorphismus, Jacobi-Matrix)
+\end_layout
+
+\begin_layout Standard
+Eine Abbildung 
+\begin_inset Formula $\varphi:U\to V$
+\end_inset
+
+ zwischen offenen Mengen 
+\begin_inset Formula $U,V\subseteq\mathbb{R}^{n}$
+\end_inset
+
+ heißt 
+\emph on
+
+\begin_inset Formula $C^{1}$
+\end_inset
+
+-Diffeomorphismus
+\emph default
+, falls 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ bijektiv ist und 
+\begin_inset Formula $\varphi,\varphi^{-1}\in C^{1}$
+\end_inset
+
+ sind.
+\end_layout
+
+\begin_layout Standard
+Die 
+\emph on
+Jacobi-Matrix
+\emph default
+ ist die 
+\begin_inset Formula $n\times n$
+\end_inset
+
+-Matrix:
+\begin_inset Formula 
+\begin{align*}
+J\varphi & :=\left(\begin{array}{ccc}
+\partial_{1}\varphi_{1} & \ldots & \partial_{n}\varphi_{1}\\
+\vdots & \ddots & \vdots\\
+\partial_{1}\varphi_{n} & \ldots & \partial_{n}\varphi_{n}
+\end{array}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem
+\end_layout
+
+\begin_layout Standard
+Seien 
+\begin_inset Formula $U,V\subseteq\mathbb{R}^{n}$
+\end_inset
+
+ offen, 
+\begin_inset Formula $f:V\to\mathbb{R}$
+\end_inset
+
+ eine Funktion und 
+\begin_inset Formula $\varphi:U\to V$
 \end_inset
 
  ein 
@@ -16640,10 +16796,114 @@ In höherer Dimension:
 \end_inset
 
 -Diffeomorphismus.
- 
+\end_layout
+
+\begin_layout Standard
+Dann ist 
+\begin_inset Formula $f$
+\end_inset
+
+ genau dann integrierbar, wenn 
+\begin_inset Formula $\left(f\circ\varphi\right)\cdot\abs{\det\left(J\varphi\right)}:U\to\mathbb{R}$
+\end_inset
+
+ integrierbar ist.
+\end_layout
+
+\begin_layout Standard
+Es gilt:
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\int_{V\subseteq\mathbb{R}^{n}}f\left(y\right)\dd y & =\int_{U}f\left(\varphi\left(x\right)\right)\cdot\bigg|\det\underbrace{D\varphi}_{\text{Jacobi-Matrix}}\bigg|\dd x
+\int_{V}f\left(y\right)\dd y & =\int_{U}f\left(\varphi\left(x\right)\right)\cdot\abs{\det\left(J\varphi\right)}\dd x
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Beweis einfügen
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Beispiel
+\end_layout
+
+\begin_layout Standard
+Berechne das Integral:
+\begin_inset Formula 
+\begin{align*}
+\int_{\mathbb{R}^{2}}e^{\minus\left(x^{2}+y^{2}\right)}\dd x\dd y
+\end{align*}
+
+\end_inset
+
+Variablentransformation:
+\begin_inset Formula 
+\begin{align*}
+\varphi:\mathbb{R}_{>0}\times\left(0,2\pi\right) & \to\mathbb{R}^{2}\setminus\mathbb{R}_{\ge0}\\
+\left(r,\varphi\right) & \mapsto\left(r\cos\varphi,r\sin\varphi\right)
+\end{align*}
+
+\end_inset
+
+Das Herausschneiden von Nullmengen wie 
+\begin_inset Formula $\mathbb{R}_{\ge0}\subseteq\mathbb{R}^{2}$
+\end_inset
+
+ spielt für den Wert des Integrals keine Rolle.
+\begin_inset Formula 
+\begin{align*}
+J\varphi & =\left(\begin{array}{cc}
+\partial_{r}x & \partial_{\varphi}x\\
+\partial_{r}y & \partial_{\varphi}y
+\end{array}\right)=\left(\begin{array}{cc}
+\cos\varphi & \minus r\sin\varphi\\
+\sin\varphi & \phantom{\minus}r\cos\varphi
+\end{array}\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\det\left(J\varphi\right) & =r\left(\cos^{2}\varphi+\sin^{2}\varphi\right)=r
+\end{align*}
+
+\end_inset
+
+Also gilt:
+\begin_inset Formula 
+\begin{align*}
+\int_{\mathbb{R}^{2}}e^{\minus\left(x^{2}+y^{2}\right)}\dd x\dd y & =\int_{0}^{\infty}\dd r\int_{0}^{2\pi}\dd\varphi r\cdot e^{\minus r^{2}}=2\pi\cdot\int_{0}^{\infty}\dd r\frac{\dd}{\dd r}\left(\frac{\minus1}{2}e^{\minus r^{2}}\right)=\\
+ & =\minus\pi\left(e^{-\infty}-e^{0}\right)=\pi
 \end{align*}
 
 \end_inset
@@ -16669,6 +16929,12 @@ setcounter{section}{0}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Rest überarbeiten
 \end_layout
 
 \begin_layout Section
