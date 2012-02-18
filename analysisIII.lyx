@@ -387,7 +387,8 @@ status open
 \begin_layout Plain Layout
 TODO: 
 \backslash
-begin{iiilist} als LyX-Kommandos einbauen.
+begin{iiilist} etc.
+ als LyX-Kommandos einbauen.
 \end_layout
 
 \begin_layout Plain Layout
@@ -396,6 +397,11 @@ TODO: Beweise überarbeiten („klar“ erklären...)
 
 \begin_layout Plain Layout
 TODO: DATEs einfügen
+\end_layout
+
+\begin_layout Plain Layout
+TODO: Natürliche Zahlen fangen bei 0 an! --> evtl.
+ ausbessern, wo nötig.
 \end_layout
 
 \end_inset
@@ -528,7 +534,7 @@ TODO: DATEs einfügen
 \begin_layout Standard
 \begin_inset FormulaMacro
 \newcommand{\modulo}[2]{\moduloT{#1}{#2}}
-{\frac{#1}{#2}}
+{#1/#2}
 \end_inset
 
 
@@ -537,7 +543,7 @@ TODO: DATEs einfügen
 \begin_layout Standard
 \begin_inset FormulaMacro
 \newcommand{\lmodulo}[2]{\lmoduloT{#1}{#2}}
-{\frac{#1}{#2}}
+{#1\backslash#2}
 \end_inset
 
 
@@ -546,7 +552,7 @@ TODO: DATEs einfügen
 \begin_layout Standard
 \begin_inset FormulaMacro
 \newcommand{\modlo}[2]{\modloT{#1}{#2}}
-{\frac{#1}{#2}}
+{\mathbb{#1}/#2\mathbb{#1}}
 \end_inset
 
 
@@ -555,7 +561,7 @@ TODO: DATEs einfügen
 \begin_layout Standard
 \begin_inset FormulaMacro
 \newcommand{\moduloScript}[2]{\moduloScriptT{#1}{#2}}
-{{\scriptstyle \frac{#1}{#2}}}
+{{\scriptstyle #1/#2}}
 \end_inset
 
 
@@ -564,7 +570,7 @@ TODO: DATEs einfügen
 \begin_layout Standard
 \begin_inset FormulaMacro
 \newcommand{\lmoduloScript}[2]{\lmoduloScriptT{#1}{#2}}
-{{\scriptstyle \frac{#1}{#2}}}
+{{\scriptstyle #1\backslash#2}}
 \end_inset
 
 
@@ -573,7 +579,7 @@ TODO: DATEs einfügen
 \begin_layout Standard
 \begin_inset FormulaMacro
 \newcommand{\modloScript}[2]{\modloScriptT{#1}{#2}}
-{{\scriptstyle \frac{#1}{#2}}}
+{{\scriptstyle \mathbb{#1}/#2\mathbb{#1}}}
 \end_inset
 
 
@@ -14228,46 +14234,68 @@ Produktmaß
 \end_layout
 
 \begin_layout Subsection
-Definition
+Definition 
+\series medium
+(Rechteck)
+\end_layout
+
+\begin_layout Standard
+Seien 
+\begin_inset Formula $\left(X,\mathcal{A},\mu\right)$
+\end_inset
+
+ und 
+\begin_inset Formula $\left(Y,\mathcal{B},\nu\right)$
+\end_inset
+
+ zwei 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-endliche Maße, 
+\begin_inset Formula $A\in\mathcal{A}$
+\end_inset
+
+ und 
+\begin_inset Formula $B\in\mathcal{B}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Dann heißt 
+\begin_inset Formula $A\times B\subseteq X\times Y$
+\end_inset
+
+ 
+\emph on
+Rechteck
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
 
 \color green
-TODO: Rest überarbeiten
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $A\times B$
-\end_inset
-
- mit 
-\begin_inset Formula $A\in\mathcal{A},B\in\mathcal{B}$
-\end_inset
-
- nenne „Rechteck“.
-\end_layout
-
-\begin_layout Standard
-TODO: Abb1
+TODO: Abb1 einfügen
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula $\mu\left(A\right)\cdot\mu\left(B\right)$
 \end_inset
 
- liefert darauf einen sinnvollen „Volumenbegriff“.
+ liefert einen sinnvollen „Volumenbegriff“ dafür.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $A\times B\in\mathcal{P}\left(X\times Y\right)$
-\end_inset
+Die Menge der endlichen disjunkten Vereinigungen von Rechtecken schreiben
+ wir als:
+\begin_inset Formula 
+\begin{align*}
+\mathcal{A}\times\mathcal{B} & :=\left\{ \bcupd_{k=1}^{n}A_{k}\times B_{k}\middle|A_{k}\in\mathcal{A},B_{k}\in\mathcal{B},n\in\mathbb{N}\right\} \subseteq\mathcal{P}\left(X\times Y\right)
+\end{align*}
 
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula ${\displaystyle \mathcal{A}\times\mathcal{B}:=\left\{ \dot{\bigcup}_{k=1}^{n}A_{k}\times B_{k}|A_{k}\in\mathcal{A},B_{k}\in\mathcal{B},n\in\mathbb{N}\right\} \subseteq\mathcal{P}\left(X\times Y\right)}$
 \end_inset
 
 
@@ -14290,13 +14318,20 @@ TODO: Abb1
 
 \begin_layout Subsection
 Satz
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Satz-MengenalgebraKomplementAbgeschlossen"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula $\mathcal{A}\times\mathcal{B}$
 \end_inset
 
- ist eine Mengenalgebra.
+ ist eine Mengenalgebra, die unter Komplementbildung abgeschlossen ist.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -14316,24 +14351,60 @@ Zeige, dass Schnitte und Komplemente von Elementen aus
 \end_layout
 
 \begin_layout Standard
-TODO: Abb2
+
+\color green
+TODO: Abb2 einfügen
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\left(A_{1}\times B_{1}\right)\cap\left(A_{2}\times B_{2}\right) & =\left(A_{1}\cap B_{1}\right)\times\left(A_{2}\cap B_{2}\right)\\
-\complement\left(A\times B\right) & =R_{1}\dot{\cup}\ldots\dot{\cup}R_{2}=\left(\complement A\right)\times B\dot{\cup}A\times\left(\complement B\right)\dot{\cup}\left(\complement A\right)\times\left(\complement B\right)\\
+\left(A_{1}\times B_{1}\right)\cap\left(A_{2}\times B_{2}\right) & =\left(A_{1}\cap B_{1}\right)\times\left(A_{2}\cap B_{2}\right)\in\mathcal{A}\times\mathcal{B}\\
+\complement\left(A\times B\right) & =R_{1}\dot{\cup}\ldots\dot{\cup}R_{7}=\left(\complement A\right)\times B\dot{\cup}A\times\left(\complement B\right)\dot{\cup}\left(\complement A\right)\times\left(\complement B\right)\\
 R_{1}\dot{\cup}R_{5} & =\left(\complement A\right)\times B\\
 R_{3}\dot{\cup}R_{7} & =A\times\left(\complement B\right)
 \end{align*}
 
 \end_inset
 
+Also ist 
+\begin_inset Formula $\mathcal{A}\times\mathcal{B}$
+\end_inset
 
+ unter Schnitt und Komplementbildung abgeschlossen.
 \end_layout
 
 \begin_layout Standard
+Es bleibt noch zu zeigen, dass mit 
+\begin_inset Formula $U,V\in\mathcal{A}\times\mathcal{B}$
+\end_inset
+
+ auch 
+\begin_inset Formula $U\cup V$
+\end_inset
+
+ und 
+\begin_inset Formula $U\setminus V$
+\end_inset
+
+ in 
+\begin_inset Formula $\mathcal{A}\times\mathcal{B}$
+\end_inset
+
+ liegen.
+\end_layout
+
+\begin_layout Standard
+Dies ist aber erfüllt, da gilt:
+\begin_inset Formula 
+\begin{align*}
+U\cup V & =\complement\left(\complement U\cap\complement V\right)\in\mathcal{A}\times\mathcal{B}\\
+U\setminus V & =\complement\left(\complement U\cup\complement V\right)\in\mathcal{A}\times\mathcal{B}
+\end{align*}
+
+\end_inset
+
+
 \begin_inset ERT
 status open
 
@@ -14349,115 +14420,100 @@ qqed
 
 \end_layout
 
-\begin_layout Standard
-TODO: Rest einfügen
-\end_layout
-
 \begin_layout Subsection
-Satz
+Bemerkung
 \end_layout
 
 \begin_layout Standard
-TODO: Rest einfügen
-\end_layout
-
-\begin_layout Subsection
-Definition
-\end_layout
-
-\begin_layout Standard
-TODO: Rest einfügen
-\end_layout
-
-\begin_layout Subsection
-Lemma
-\end_layout
-
-\begin_layout Standard
-TODO: Rest einfügen
-\end_layout
-
-\begin_layout Subsection
-Lemma
-\end_layout
-
-\begin_layout Standard
-TODO: Rest einfügen
-\end_layout
-
-\begin_layout Subsection
-Satz 
-\series medium
-(Cavalierisches Prinzip)
-\end_layout
-
-\begin_layout Standard
-TODO: Rest einfügen
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-29.11.2011
-\end_layout
+Eine naheliegende Definition des Maßes von Rechtecken liefert die Abbildung:
+\begin_inset Formula 
+\begin{align*}
+\mu\otimes\nu:\mathcal{A}\times\mathcal{B} & \to\mathbb{R}_{\ge0}\\
+\left(A\times B\right) & \mapsto\mu\left(A\right)\cdot\mu\left(B\right)
+\end{align*}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Bonaventura Cavalieri 1598-1647
-\end_layout
-
-\begin_layout Standard
-TODO: Abb1
-\end_layout
-
-\begin_layout Standard
-(gleiche Schnittflächen, gleiche Volumina)
-\end_layout
-
-\begin_layout Subsection
-Satz
-\end_layout
-
-\begin_layout Standard
-Seien 
-\begin_inset Formula $\left(X,\mathcal{A},\mu\right)$
-\end_inset
-
-, 
-\begin_inset Formula $\left(Y,\mathcal{B},\nu\right)$
-\end_inset
-
+Wir wissen aber nicht, ob dies ein Prämaß ist, weil nicht klar ist, ob die
  
 \begin_inset Formula $\sigma$
 \end_inset
 
--endliche Maßräume.
- Dann existiert genau ein Maß 
-\begin_inset Formula $\mu\otimes\nu:\mathcal{A}\otimes\mathcal{B}\to\mathbb{R}_{\ge0}$
+-Additivität gilt, also:
+\begin_inset Formula 
+\begin{align*}
+\left(\mu\otimes\nu\right)\Bigg(\underbrace{\bcupd_{n=1}^{\infty}\left(A_{n}\times B_{n}\right)}_{\in\mathcal{A}\times\mathcal{B}}\Bigg) & \stackrel{?}{=}\sum_{n=1}^{\infty}\left(\mu\otimes\nu\right)\underbrace{\left(A_{n}\times B_{n}\right)}_{\in\mathcal{A}\times\mathcal{B}}
+\end{align*}
+
+\end_inset
+
+Um diese Schwierigkeit zu umgehen, verwenden wir lieber den Satz von der
+ monotonen Konvergenz und nutzen die Monotonie:
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(Monotonie)
+\end_layout
+
+\begin_layout Standard
+Ein Mengensystem 
+\begin_inset Formula $\mathcal{M}\subseteq\mathcal{P}\left(Z\right)$
+\end_inset
+
+ heißt 
+\emph on
+monoton
+\emph default
+, falls gilt:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ Sind 
+\begin_inset Formula $Y_{k}\in\mathcal{M}$
 \end_inset
 
  mit 
-\begin_inset Formula $\left(\mu\otimes\nu\right)\left(A\times B\right)=\mu\left(A\right)\cdot\nu\left(B\right)$
+\begin_inset Formula $Y_{k}\subseteq Y_{k+1}$
 \end_inset
 
-, das sogenannte 
-\emph on
-Produktmaß
-\emph default
-.
-\end_layout
+ für alle 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
 
-\begin_layout Standard
+, so gilt:
 \begin_inset Formula 
 \begin{align*}
-\left(\mu\otimes\nu\right)\left(M\right) & =\int_{X}\left(\int_{Y}\chi_{M}\left(x,y\right)\dd y\right)\dd x=\\
- & =\int_{Y}\underbrace{\left(\int_{X}\chi_{M}\left(x,y\right)\dd x\right)}_{=\mu\left(M\right)}\dd y
+\bigcup_{n=1}^{\infty}Y_{n} & \in\mathcal{M}
 \end{align*}
 
 \end_inset
@@ -14465,22 +14521,35 @@ Produktmaß
 
 \end_layout
 
-\begin_layout Subsection
-Definition
-\series medium
- (monotones Mengensystem)
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
 \end_layout
 
-\begin_layout Standard
-Sei 
-\begin_inset Formula $A_{i}\in\mathcal{M}$
 \end_inset
 
- .
+ Sind 
+\begin_inset Formula $Y_{k}\in\mathcal{M}$
+\end_inset
+
+ mit 
+\begin_inset Formula $Y_{k}\supseteq Y_{k+1}$
+\end_inset
+
+ für alle 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+, so gilt:
 \begin_inset Formula 
 \begin{align*}
-A_{1} & \subseteq A_{2}\subseteq\ldots\Rightarrow\bigcup_{i}A_{i}\in\mathcal{M}\\
-A_{1} & \supseteq A_{2}\supseteq\ldots\Rightarrow\bigcap_{i}A_{i}\in\mathcal{M}
+\bigcap_{n=1}^{\infty}Y_{n} & \in\mathcal{M}
 \end{align*}
 
 \end_inset
@@ -14488,37 +14557,132 @@ A_{1} & \supseteq A_{2}\supseteq\ldots\Rightarrow\bigcap_{i}A_{i}\in\mathcal{M}
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
-Satz
+Beispiel
 \end_layout
 
 \begin_layout Standard
-Ist 
-\begin_inset Formula $\mathcal{M}$
+Betrachte 
+\begin_inset Formula $Z=\mathbb{R}$
 \end_inset
 
- das kleinste monotone Mengensystem, das 
-\begin_inset Formula $\mathcal{A}\times\mathcal{B}$
+ und 
+\begin_inset Formula $M_{n}:=\left(-n,n\right)$
 \end_inset
 
- enthält, so ist 
-\begin_inset Formula $\mathcal{M}=\mathcal{A}\times\mathcal{B}$
+ für alle 
+\begin_inset Formula $n\in\mathbb{N}$
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+Dann ist 
+\begin_inset Formula $\mathcal{M}=\left\{ \mathbb{R},M_{0}=\emptyset,M_{1},M_{2},\ldots\right\} $
+\end_inset
+
+ ein monotones Mengensystem, aber keine Mengenalgebra, da zum Beispiel 
+\begin_inset Formula $M_{2}\setminus M_{1}\not\in\mathcal{M}$
+\end_inset
+
+ ist.
 \end_layout
 
 \begin_layout Subsection
 Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Lem-MengenalgebraMonotonMengensystem"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Sei 
-\begin_inset Formula $M\in\mathcal{A}\times\mathcal{B}$
+Seien 
+\begin_inset Formula $Z$
 \end_inset
 
-.
- Dann gilt:
+ eine Menge und 
+\begin_inset Formula $\mathcal{R}\subseteq\mathcal{P}\left(Z\right)$
+\end_inset
+
+ eine Mengenalgebra, die unter Komplementbildung abgeschlossen ist.
+ Sei 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ das kleinste monotone Mengensystem, das 
+\begin_inset Formula $\mathcal{R}$
+\end_inset
+
+ enthält.
+\end_layout
+
+\begin_layout Standard
+Dann ist 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ die von 
+\begin_inset Formula $\mathcal{R}$
+\end_inset
+
+ erzeugte 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-Algebra.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Zur Existenz von 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+: Betrachte den Schnitt aller monotonen Mengensysteme, die 
+\begin_inset Formula $\mathcal{R}$
+\end_inset
+
+ enthalten.
+\end_layout
+
+\begin_layout Standard
+Zeige nun, dass 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ eine Mengenalgebra ist.
+ Nach dem Beweis von 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Satz-MengenalgebraKomplementAbgeschlossen"
+
+\end_inset
+
+ genügt es also zu zeigen:
 \end_layout
 
 \begin_layout Standard
@@ -14551,7 +14715,369 @@ iii
 \end_inset
 
  
-\begin_inset Formula $\chi_{M}\left(X,.\right)$
+\begin_inset Formula $Y\in\mathcal{M}$
+\end_inset
+
+ 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $\complement Y\in\mathcal{M}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $X,Y\in\mathcal{M}$
+\end_inset
+
+ 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $X\cap Y\in\mathcal{M}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dann ist 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ auch automatisch eine 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-Algebra, denn wegen der Monotonie folgt aus 
+\begin_inset Formula $A_{n}\in\mathcal{M}$
+\end_inset
+
+ für alle 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ mit Hilfe der Definition
+\begin_inset Formula 
+\begin{align*}
+B_{k} & :=\bigcup_{n=1}^{k}A_{n}
+\end{align*}
+
+\end_inset
+
+schon:
+\begin_inset Formula 
+\begin{align*}
+\bigcup_{n=1}^{\infty}A_{n} & =\bigcup_{k=1}^{\infty}B_{k}\stackrel{\text{Monotonie}}{\in}\mathcal{M}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Zeige nun i): Setze:
+\begin_inset Formula 
+\begin{align*}
+\mathcal{M}' & :=\left\{ Y\in\mathcal{M}\big|\complement Y\in\mathcal{M}\right\} \subseteq\mathcal{M}
+\end{align*}
+
+\end_inset
+
+Sei 
+\begin_inset Formula $A\in\mathcal{R}$
+\end_inset
+
+, dann ist auch 
+\begin_inset Formula $\complement A\in\mathcal{R}$
+\end_inset
+
+, da 
+\begin_inset Formula $\mathcal{R}$
+\end_inset
+
+ unter Komplementbildung abgeschlossen ist.
+ Also ist 
+\begin_inset Formula $A\in\mathcal{M}'$
+\end_inset
+
+ und weil dies für alle 
+\begin_inset Formula $A\in\mathcal{R}$
+\end_inset
+
+ gilt, folgt 
+\begin_inset Formula $\mathcal{R}\subseteq\mathcal{M}'$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Außerdem ist 
+\begin_inset Formula $\mathcal{M}'$
+\end_inset
+
+ monoton, denn für eine aufsteigende Folge 
+\begin_inset Formula $\left(A_{n}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+ in 
+\begin_inset Formula $\mathcal{M}'$
+\end_inset
+
+ gilt:
+\end_layout
+
+\begin_layout Standard
+Weil 
+\begin_inset Formula $A_{n}\in\mathcal{M}$
+\end_inset
+
+ liegt, folgt 
+\begin_inset Formula ${\displaystyle \bigcup_{n=1}^{\infty}A_{n}\in\mathcal{M}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Für die Komplemente, die definitionsgemäß in 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ liegen, gilt 
+\begin_inset Formula $\complement A_{n}\supseteq\complement A_{n+1}$
+\end_inset
+
+ für alle 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+.
+ Also folgt:
+\begin_inset Formula 
+\begin{align*}
+\complement\left(\bigcup_{n\in\mathbb{N}}A_{n}\right) & =\bigcap_{n\in\mathbb{N}}\complement A_{n}\in\mathcal{M}
+\end{align*}
+
+\end_inset
+
+Insgesamt folgt also
+\begin_inset Formula 
+\begin{align*}
+\bigcup_{n\in\mathbb{N}}A_{n} & \in\mathcal{M}'
+\end{align*}
+
+\end_inset
+
+und damit 
+\begin_inset Formula $\mathcal{M}=\mathcal{M}'$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Zeige nun ii): Setze für 
+\begin_inset Formula $B\in\mathcal{M}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\mathcal{M}_{B} & :=\left\{ Y\in\mathcal{M}\big|Y\cap B\in\mathcal{M}\right\} 
+\end{align*}
+
+\end_inset
+
+Seien 
+\begin_inset Formula $A,B\in\mathcal{R}$
+\end_inset
+
+, dann ist 
+\begin_inset Formula $A\cap B\in\mathcal{R}$
+\end_inset
+
+ und daher 
+\begin_inset Formula $A\in\mathcal{M}_{B}$
+\end_inset
+
+, weswegen für 
+\begin_inset Formula $B\in\mathcal{R}$
+\end_inset
+
+ schon 
+\begin_inset Formula $\mathcal{R}\subseteq\mathcal{M}_{B}$
+\end_inset
+
+ gilt.
+\end_layout
+
+\begin_layout Standard
+Außerdem ist 
+\begin_inset Formula $\mathcal{M}_{B}$
+\end_inset
+
+ monoton, was man analog zu i) zeigen kann.
+ Daher gilt 
+\begin_inset Formula $\mathcal{M}=\mathcal{M}_{B}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Das heißt für alle 
+\begin_inset Formula $Y\in\mathcal{M}$
+\end_inset
+
+ und alle 
+\begin_inset Formula $B\in\mathcal{R}$
+\end_inset
+
+ gilt 
+\begin_inset Formula $Y\cap B\in\mathcal{M}$
+\end_inset
+
+.
+ Also ist 
+\begin_inset Formula $B\in\mathcal{M}_{Y}$
+\end_inset
+
+ also 
+\begin_inset Formula $\mathcal{R}\subseteq\mathcal{M}_{Y}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Da 
+\begin_inset Formula $\mathcal{M}_{Y}$
+\end_inset
+
+ monoton ist, folgt 
+\begin_inset Formula $\mathcal{M}=\mathcal{M}_{Y}$
+\end_inset
+
+ für alle 
+\begin_inset Formula $Y\in\mathcal{M}$
+\end_inset
+
+.
+ Also gilt für alle 
+\begin_inset Formula $X,Y\in\mathcal{M}$
+\end_inset
+
+ schon 
+\begin_inset Formula $X\cap Y\in\mathcal{M}$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Lem-MessbarkeitsFubini"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $f:X\times Y\to\left[0,\infty\right]$
+\end_inset
+
+ eine 
+\begin_inset Formula $\mathcal{A}\otimes\mathcal{B}$
+\end_inset
+
+-messbare nicht negative Funktion.
+ Dann gilt:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ Jede Funktion 
+\begin_inset Formula $f_{x}:Y\to\left[0,\infty\right],\, y\mapsto f\left(x,y\right)$
 \end_inset
 
  ist 
@@ -14574,15 +15100,19 @@ iii
 
 \end_inset
 
- 
-\begin_inset Formula $x\mapsto\int\chi_{M}\left(x,y\right)\dd y$
+ Durch
+\begin_inset Formula 
+\begin{align*}
+x & \mapsto\int_{Y}f_{x}\dd\nu=\int_{Y}f\left(x,y\right)\dd y
+\end{align*}
+
 \end_inset
 
- ist 
+wird eine 
 \begin_inset Formula $\mathcal{A}$
 \end_inset
 
--messbar.
+-messbare Funktion definiert.
 \end_layout
 
 \begin_layout Standard
@@ -14601,82 +15131,606 @@ end{iiilist}
 
 \end_layout
 
+\begin_layout Standard
+Schreibe im Folgenden auch 
+\begin_inset Formula $\dd x$
+\end_inset
+
+ und 
+\begin_inset Formula $\dd y$
+\end_inset
+
+ statt 
+\begin_inset Formula $\dd\mu\left(x\right)$
+\end_inset
+
+ und 
+\begin_inset Formula $\dd\nu\left(y\right)$
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Subsubsection*
 Beweis
 \end_layout
 
 \begin_layout Standard
-Sei 
-\begin_inset Formula $\mathcal{M}\subseteq\mathcal{A}\times\mathcal{B}$
+Nehme zunächst 
+\begin_inset Formula $\mu\left(Y\right)<\infty$
 \end_inset
 
- das Mengensystem, das (i) und (ii) erfüllt.
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $\mathcal{A}\times\mathcal{B}\subseteq\mathcal{M}$
+ an und betrachte den Fall 
+\begin_inset Formula $f=\chi_{M}$
 \end_inset
 
+ mit 
+\begin_inset Formula $M\in\mathcal{A}\otimes\mathcal{B}$
+\end_inset
 
+.
+ Definiere also:
+\begin_inset Formula 
+\begin{align*}
+\mathcal{M} & :=\left\{ M\in\mathcal{A}\otimes\mathcal{B}\Big|f=\chi_{M}\text{ erfüllt die Bedingungen i) und ii)}\right\} 
+\end{align*}
+
+\end_inset
+
+Wir wissen dann:
 \end_layout
 
 \begin_layout Itemize
 \begin_inset Formula $\mathcal{M}$
 \end_inset
 
- ist ein monotones Mengensystem.
-\begin_inset Newline newline
+ enthält alle Rechtecke, denn dann gilt
+\begin_inset Formula 
+\begin{align*}
+f\left(x,y\right) & =\chi_{A\times B}\left(x,y\right)=\chi_{A}\left(x\right)\cdot\chi_{B}\left(y\right)
+\end{align*}
+
 \end_inset
 
-Sei 
-\begin_inset Formula $\chi_{M_{n}}$
+und:
+\begin_inset Formula 
+\begin{align*}
+\int_{Y}f\left(x,y\right)\dd y & =\chi_{A}\left(x\right)\cdot\nu\left(B\right)
+\end{align*}
+
 \end_inset
 
- messbar 
-\begin_inset Formula $\Rightarrow$
+Folglich ist 
+\begin_inset Formula $\mathcal{A}\times\mathcal{B}\subseteq\mathcal{M}$
 \end_inset
 
- 
-\begin_inset Formula $\sup\chi_{M_{n}}$
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ ist monoton: Seien 
+\begin_inset Formula $M_{n}\in\mathcal{M}$
+\end_inset
+
+ mit 
+\begin_inset Formula $M_{n}\subseteq M_{n+1}$
+\end_inset
+
+ für alle 
+\begin_inset Formula $n\in\mathbb{N}$
 \end_inset
 
 , 
-\begin_inset Formula $\inf\chi_{M_{n}}$
+\begin_inset Formula ${\displaystyle M:=\bigcup_{n\in\mathbb{N}}M_{n}}$
 \end_inset
 
-, punktweiser Limes wieder messbar
-\end_layout
+ und:
+\begin_inset Formula 
+\begin{align*}
+f_{n,x}\left(y\right) & :=\chi_{M_{n}}\left(x,y\right)\\
+f_{x}\left(y\right) & :=\chi_{M}\left(x,y\right)=\sup_{n\in\mathbb{N}}f_{n,x}\left(y\right)
+\end{align*}
 
-\begin_layout Itemize
-monotone Konvergenz
-\end_layout
-
-\begin_layout Itemize
-dominierte Konvergenz 
-\begin_inset Formula $\Rightarrow\mathcal{M=A}\otimes\mathcal{B}$
 \end_inset
 
+Die 
+\begin_inset Formula $f_{n,x}$
+\end_inset
 
+ sind messbar, weil 
+\begin_inset Formula $M_{n}\in\mathcal{M}$
+\end_inset
+
+ ist und daher 
+\begin_inset Formula $f_{n}$
+\end_inset
+
+ die Bedingungen i) und ii) erfüllt.
+\begin_inset Newline newline
+\end_inset
+
+Also ist 
+\begin_inset Formula $f_{x}\left(y\right)$
+\end_inset
+
+ als Supremum messbarer Funktionen wieder messbar.
+ 
+\begin_inset Formula 
+\begin{align*}
+g_{n}\left(x\right) & :=\int_{Y}f_{n,x}\left(y\right)\dd y\xrightarrow[\text{Konvergenz}]{\text{monotone}}g\left(x\right):=\int_{Y}f_{x}\left(y\right)\dd y
+\end{align*}
+
+\end_inset
+
+Die Funktionen 
+\begin_inset Formula $g_{n}$
+\end_inset
+
+ sind in 
+\begin_inset Formula $X$
+\end_inset
+
+ messbar und daher ist die Funktion 
+\begin_inset Formula $g$
+\end_inset
+
+ als punktweiser Limes messbarer Funktionen wieder messbar.
+\begin_inset Newline newline
+\end_inset
+
+Seien 
+\begin_inset Formula $M_{n}\in\mathcal{M}$
+\end_inset
+
+ mit 
+\begin_inset Formula $M_{n}\supseteq M_{n+1}$
+\end_inset
+
+ für alle 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+, 
+\begin_inset Formula ${\displaystyle M:=\bigcap_{n\in\mathbb{N}}M_{n}}$
+\end_inset
+
+ und:
+\begin_inset Formula 
+\begin{align*}
+f_{n,x}\left(y\right) & :=\chi_{M_{n}}\left(x,y\right)\\
+f_{x}\left(y\right) & :=\chi_{M}\left(x,y\right)=\inf_{n\in\mathbb{N}}f_{n,x}\left(y\right)
+\end{align*}
+
+\end_inset
+
+Die 
+\begin_inset Formula $f_{n,x}$
+\end_inset
+
+ sind messbar, weil 
+\begin_inset Formula $M_{n}\in\mathcal{M}$
+\end_inset
+
+ ist und daher 
+\begin_inset Formula $f_{n}$
+\end_inset
+
+ die Bedingungen i) und ii) erfüllt.
+\begin_inset Newline newline
+\end_inset
+
+Also ist 
+\begin_inset Formula $f_{x}\left(y\right)$
+\end_inset
+
+ als Infimum messbarer Funktionen wieder messbar.
+\begin_inset Formula 
+\begin{align*}
+g_{n}\left(x\right) & :=\int_{Y}f_{n,x}\left(y\right)\dd y\xrightarrow[\text{Konvergenz}]{\text{dominierte}}g\left(x\right):=\int_{Y}f_{x}\left(y\right)\dd y
+\end{align*}
+
+\end_inset
+
+Die Funktionen 
+\begin_inset Formula $g_{n}$
+\end_inset
+
+ sind in 
+\begin_inset Formula $X$
+\end_inset
+
+ messbar.
+ Da für alle 
+\begin_inset Formula $x\in X$
+\end_inset
+
+ schon 
+\begin_inset Formula $f_{n,x}\left(y\right)\le f_{1,x}\left(y\right)\in L^{1}$
+\end_inset
+
+ eine dominierende Funktion ist und wegen
+\begin_inset Formula 
+\begin{align*}
+\int_{Y}\abs{f_{1,x}\left(y\right)}\dd y & =\int_{Y}\chi_{M_{1}}\left(x,y\right)\dd y\le\nu\left(Y\right)<\infty
+\end{align*}
+
+\end_inset
+
+konvergieren die 
+\begin_inset Formula $g_{n}$
+\end_inset
+
+ punktweise nach 
+\begin_inset Formula $g$
+\end_inset
+
+, weswegen 
+\begin_inset Formula $g$
+\end_inset
+
+ als punktweiser Limes messbarer Funktionen wieder messbar ist.
 \end_layout
 
-\begin_layout Subsubsection*
-Beweis von Satz 
-\begin_inset Formula $\ref{}I\:8.6$
+\begin_layout Standard
+Nach Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Lem-MengenalgebraMonotonMengensystem"
+
+\end_inset
+
+ ist 
+\begin_inset Formula $\mathcal{M}=\mathcal{A}\otimes\mathcal{B}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Falls 
+\begin_inset Formula $\nu\left(Y\right)=\infty$
+\end_inset
+
+ ist, gilt:
+\end_layout
+
+\begin_layout Standard
+Da 
+\begin_inset Formula $\nu$
+\end_inset
+
+ ein 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-endliches Maß ist, betrachte eine Folge 
+\begin_inset Formula $Y_{n}\in\mathcal{M}$
+\end_inset
+
+ mit 
+\begin_inset Formula $\nu\left(Y_{n}\right)<\infty$
+\end_inset
+
+, 
+\begin_inset Formula $Y_{n}\subseteq Y_{n+1}$
+\end_inset
+
+ für alle 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ und 
+\begin_inset Formula ${\displaystyle Y=\bigcup_{n\in\mathbb{N}}Y_{n}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $M\in\mathcal{A}\otimes\mathcal{B}$
+\end_inset
+
+ beliebig, so setze:
+\begin_inset Formula 
+\begin{align*}
+M_{n} & :=M\cap\left(X\times Y_{n}\right)
+\end{align*}
+
+\end_inset
+
+Es folgt 
+\begin_inset Formula $M_{n}\subseteq M_{n+1}$
+\end_inset
+
+ für alle 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ und 
+\begin_inset Formula ${\displaystyle \bigcup_{n\in\mathbb{N}}M_{n}=M}$
+\end_inset
+
+.
+ Definiere:
+\begin_inset Formula 
+\begin{align*}
+f_{n} & :=\chi_{M_{n}} & f & :=\chi_{M}
+\end{align*}
+
+\end_inset
+
+Die 
+\begin_inset Formula $f_{n}$
+\end_inset
+
+ erfüllen i) und ii), da 
+\begin_inset Formula $Y_{n}$
+\end_inset
+
+ endliches Maß hat.
+ (siehe oben)
+\begin_inset Formula 
+\begin{align*}
+f_{x}\left(y\right) & =\sup_{n\in\mathbb{N}}\Bigg(\underbrace{f_{n,x}\left(y\right)}_{\text{messbar nach i)}}\Bigg)
+\end{align*}
+
+\end_inset
+
+Also ist 
+\begin_inset Formula $f_{x}$
+\end_inset
+
+ messbar.
+\begin_inset Formula 
+\begin{align*}
+g_{n}\left(x\right) & :=\int_{Y}f_{n}\left(x,y\right)\dd y\xrightarrow[\text{Konvergenz}]{\text{monotone}}g\left(x\right):=\int_{Y}f\left(x,y\right)\dd y
+\end{align*}
+
+\end_inset
+
+Die 
+\begin_inset Formula $g_{n}$
+\end_inset
+
+ sind messbar wegen ii) und daher ist 
+\begin_inset Formula $g$
+\end_inset
+
+ als punktweiser Limes messbarer Funktionen messbar.
+\end_layout
+
+\begin_layout Standard
+Sei schließlich 
+\begin_inset Formula $f:X\times Y\to\left[0,\infty\right]$
+\end_inset
+
+ messbar, so approximiere 
+\begin_inset Formula $f$
+\end_inset
+
+ durch Treppenfunktionen 
+\begin_inset Formula $\varphi_{n}$
+\end_inset
+
+, also gilt für alle 
+\begin_inset Formula $x\in X$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+0 & \le\varphi_{n}\left(x\right)\nearrow f\left(x\right)
+\end{align*}
+
+\end_inset
+
+Jede Treppenfunktion kann als endliche Summe von charakteristischen Funktionen
+ geschrieben werden:
+\begin_inset Formula 
+\begin{align*}
+\varphi_{n}\left(x\right) & =\sum_{k=1}^{m\left(n\right)}y_{k}\cdot\chi_{M_{k}}\left(x\right)
+\end{align*}
+
+\end_inset
+
+Damit sind für die 
+\begin_inset Formula $\varphi_{n}$
+\end_inset
+
+ die Bedingungen i) und ii) erfüllt.
+\begin_inset Formula 
+\begin{align*}
+f\left(x,y\right) & =\sup_{n\in\mathbb{N}}\left(\varphi_{n}\left(x,y\right)\right)\\
+f_{x}\left(y\right) & =\sup_{n\in\mathbb{N}}\left(\varphi_{n,x}\left(y\right)\right)
+\end{align*}
+
+\end_inset
+
+sind als Suprema messbarer Funktionen wieder messbar.
+\begin_inset Formula 
+\begin{align*}
+g_{n}\left(x\right)=\int_{Y}\varphi_{n}\left(x,y\right)\dd y & \xrightarrow[\text{Konvergenz}]{\text{monotone}}\int_{Y}f\left(x,y\right)\dd y=g\left(x\right)
+\end{align*}
+
+\end_inset
+
+Da die 
+\begin_inset Formula $g_{n}$
+\end_inset
+
+ messbar sind, ist auch 
+\begin_inset Formula $g$
+\end_inset
+
+ messbar.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-Definiere 
-\begin_inset Formula $\left(\mu\otimes\nu\right)\left(M\right):=\int_{X}\left(\int_{Y}\chi_{M}\left(x,y\right)\dd y\right)\dd x:\mathcal{A}\otimes\mathcal{B}\to\left[0,\infty\right]$
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Di 29.11.2011
+\end_layout
+
 \end_inset
 
- wohldefiniert und 
-\begin_inset Formula $\sigma$
+
+\end_layout
+
+\begin_layout Subsection
+Historisch
+\end_layout
+
+\begin_layout Standard
+Bonaventura Cavalieri (1598-1647): 
+\series medium
+Prinzip von Cavalieri
+\end_layout
+
+\begin_layout Quote
+„Zwei Körper besitzen das gleiche Volumen, wenn die Schnittflächen von ebenen
+ parallel zu einer Grundebene den gleichen Flächeninhalt haben.“
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Abb1 einfügen
+\end_layout
+
+\begin_layout Standard
+Guido Fubini (1879-1943)
+\end_layout
+
+\begin_layout Standard
+Beppo Levi (1875-1961)
+\end_layout
+
+\begin_layout Subsection
+Satz 
+\series medium
+(Prinzip von Cavalieri)
+\end_layout
+
+\begin_layout Standard
+Folgendes Prinzip geht auf Cavalieri zurück:
+\end_layout
+
+\begin_layout Standard
+Es gibt auf 
+\begin_inset Formula $X\times Y$
 \end_inset
 
--additiv.
+ genau ein Produktmaß
+\begin_inset Formula 
+\begin{align*}
+\mu\otimes\nu:\mathcal{A}\otimes\mathcal{B} & \to\left[0,\infty\right]
+\end{align*}
+
+\end_inset
+
+mit der Eigenschaft, dass für alle Rechteck 
+\begin_inset Formula $A\times B\in\mathcal{A}\otimes\mathcal{B}$
+\end_inset
+
+ gilt:
+\begin_inset Formula 
+\begin{align*}
+\left(\mu\otimes\nu\right)\left(A\times B\right) & =\mu\left(A\right)\cdot\nu\left(B\right)
+\end{align*}
+
+\end_inset
+
+Dann gilt für jede messbare Menge 
+\begin_inset Formula $M\in\mathcal{A}\otimes\mathcal{B}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\left(\mu\otimes\nu\right)\left(M\right) & =\int_{X}\left(\int_{Y}\chi_{M}\left(x,y\right)\dd y\right)\dd x=\int_{Y}\left(\int_{X}\chi_{M}\left(x,y\right)\dd x\right)\dd y
+\end{align*}
+
+\end_inset
+
+Definiere:
+\begin_inset Formula 
+\begin{align*}
+M_{y} & :=\left\{ x\in X\big|\left(x,y\right)\in M\right\} 
+\end{align*}
+
+\end_inset
+
+Damit ist dies:
+\begin_inset Formula 
+\begin{align*}
+\int_{X}\chi_{M}\left(x,y\right)\dd x & =\mu\left(M_{y}\right)\\
+\left(\mu\otimes\nu\right)\left(M\right) & =\int_{Y}\mu\left(M_{y}\right)\dd y
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Wende Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Lem-MessbarkeitsFubini"
+
+\end_inset
+
+ für 
+\begin_inset Formula $f=\chi_{M}$
+\end_inset
+
+ an.
+ Dies liefert eine 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+-messbare Funktion:
+\begin_inset Formula 
+\begin{align*}
+y & \mapsto\int_{X}\underbrace{f\left(x,y\right)}_{=\chi_{M}\left(x,y\right)}\dd x=\mu\left(M_{y}\right)
+\end{align*}
+
+\end_inset
+
+Die Abbildung
+\begin_inset Formula 
+\begin{align*}
+\mu\otimes\nu:\mathcal{A}\otimes\mathcal{B} & \to\left[0,\infty\right]\\
+M & \mapsto\int_{Y}\mu\left(M_{y}\right)
+\end{align*}
+
+\end_inset
+
+ist wohldefiniert als Integral einer nicht negativen Funktion.
 \end_layout
 
 \begin_layout Standard
@@ -14689,44 +15743,48 @@ Seien
 \end_inset
 
  paarweise disjunkt, 
-\begin_inset Formula $M:=\bigcup_{n=1}^{\infty}M_{n}$
+\begin_inset Formula ${\displaystyle M:=\bcupd_{n=1}^{\infty}M_{n}}$
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\sum_{n=1}^{\infty}\chi_{M_{n}}=\chi_{M_{1}\cap\ldots\cap M_{n}}\nearrow\chi_{n}$
+\begin_inset Formula 
+\begin{align*}
+\sum_{n=1}^{\infty}\chi_{M_{n}} & =\chi_{M_{1}\cup\ldots\cup M_{n}}\nearrow\chi_{M}
+\end{align*}
+
 \end_inset
 
- ist eine aufsteigende Folge messbarer Funktionen, die punktweise konvergiert.
+ist eine aufsteigende Folge messbarer Funktionen, die punktweise konvergiert.
 \end_layout
 
 \begin_layout Standard
 Nach monotoner Konvergenz folgt
 \begin_inset Formula 
 \begin{align*}
-g_{N}\left(x\right) & :=\int_{Y}\chi_{M_{1}\cap\ldots\cap M_{N}}\left(x,y\right)\dd y\stackrel{N\to\infty}{\longrightarrow}\int_{Y}\chi_{M}\left(x,y\right)\dd y=g\left(x\right)
+g_{n}\left(x\right) & :=\int_{Y}\chi_{M_{1}\cup\ldots\cup M_{n}}\left(x,y\right)\dd y\xrightarrow{n\to\infty}\int_{Y}\chi_{M}\left(x,y\right)\dd y=g\left(x\right)
 \end{align*}
 
 \end_inset
 
 und 
-\begin_inset Formula $g_{N}\left(x\right)$
+\begin_inset Formula $g_{n}\left(x\right)$
 \end_inset
 
- ist aufsteigend (also 
-\begin_inset Formula $g_{N+1}\left(x\right)\ge g_{N}\left(x\right)$
+ ist aufsteigend, also 
+\begin_inset Formula $g_{n+1}\left(x\right)\ge g_{n}\left(x\right)$
 \end_inset
 
-).
+.
 \end_layout
 
 \begin_layout Standard
 Nochmals monotone Konvergenz liefert:
 \begin_inset Formula 
 \begin{align*}
-\int_{X}g_{N}\left(x\right)\dd x & \stackrel{N\to\infty}{\longrightarrow}\int_{X}g\left(x\right)\dd x=\int_{X}\left(\int_{Y}\chi_{M}\left(x,y\right)\dd y\right)\dd x=\left(\mu\otimes\nu\right)\left(M\right)
+\int_{X}g_{n}\left(x\right)\dd x & \xrightarrow{n\to\infty}\int_{X}g\left(x\right)\dd x=\int_{X}\left(\int_{Y}\chi_{M}\left(x,y\right)\dd y\right)\dd x=\left(\mu\otimes\nu\right)\left(M\right)
 \end{align*}
 
 \end_inset
@@ -14734,7 +15792,7 @@ Nochmals monotone Konvergenz liefert:
 
 \begin_inset Formula 
 \begin{align*}
-\left(\mu\otimes\nu\right)\left(M_{1}\cup\ldots\cup M_{N}\right) & =\int_{X}\underbrace{\left(\int_{Y}\chi_{M_{1}\cup\ldots\cup M_{N}}\left(x,y\right)\dd y\right)}_{=g_{N}\left(x\right)}\dd x
+\left(\mu\otimes\nu\right)\left(M_{1}\cup\ldots\cup M_{N}\right) & =\int_{X}\underbrace{\left(\int_{Y}\chi_{M_{1}\cup\ldots\cup M_{n}}\left(x,y\right)\dd y\right)}_{=g_{n}\left(x\right)}\dd x
 \end{align*}
 
 \end_inset
@@ -14743,8 +15801,7 @@ Also
 \begin_inset Formula ${\displaystyle \sum_{n=1}^{\infty}\left(\mu\otimes\nu\right)\left(M_{n}\right)=\left(\mu\otimes\nu\right)\left(M\right)}$
 \end_inset
 
-.
- Also ist 
+ und somit ist 
 \begin_inset Formula $\mu\otimes\nu$
 \end_inset
 
@@ -14753,6 +15810,26 @@ Also
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+Auf Rechtecken hat 
+\begin_inset Formula $\mu\otimes\nu$
+\end_inset
+
+ den gewünschten Wert.
+\end_layout
+
+\begin_layout Standard
+Die 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-Additivität folgt aus der monotonen Konvergenz, 
+\begin_inset Formula $\mu\otimes\nu$
+\end_inset
+
+ definiert also tatsächlich ein Maß.
 \end_layout
 
 \begin_layout Standard
@@ -14781,7 +15858,14 @@ Eindeutigkeit:
 \end_layout
 
 \begin_layout Standard
-Nach dem Satz von Hahn ist die Erweiterung von 
+Nach dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Thm-SatzVonHahn"
+
+\end_inset
+
+ von Hahn ist die Erweiterung von 
 \begin_inset Formula $\mu\otimes\nu|_{\mathcal{A}\times\mathcal{B}}$
 \end_inset
 
@@ -14790,9 +15874,6 @@ Nach dem Satz von Hahn ist die Erweiterung von
 \end_inset
 
  eindeutig.
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -14810,6 +15891,13 @@ qqed
 
 \begin_layout Subsection
 Korollar
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Kor-Produktmass"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -14833,7 +15921,7 @@ Betrachte das Produktmaß
 \begin_inset Formula $\lambda$
 \end_inset
 
- das 1-dimensionale Lebesguemaß ist.
+ das 1-dimensionale Lebesgue-Maß ist.
 \end_layout
 
 \begin_layout Standard
@@ -14848,7 +15936,7 @@ M^{f} & :=\left\{ \left(x,t\right)|0\le t<f\left(x\right)\right\} \subseteq X\ti
 messbar und:
 \begin_inset Formula 
 \begin{align*}
-\left(\mu\otimes\lambda\right)\left(M^{f}\right) & =\int_{X}f\dd y
+\left(\mu\otimes\lambda\right)\left(M^{f}\right) & =\int_{X}f\dd\mu
 \end{align*}
 
 \end_inset
@@ -14857,7 +15945,9 @@ messbar und:
 \end_layout
 
 \begin_layout Standard
-TODO: Abb2
+
+\color green
+TODO: Abb2 einfügen
 \end_layout
 
 \begin_layout Subsubsection*
@@ -14870,15 +15960,18 @@ Die Funktion
 \end_inset
 
  ist messbar, also ist auch 
-\begin_inset Formula $M^{f}=\varphi^{-1}\left((0,\infty]\right)\cap X\times\mathbb{R}_{\ge0}$
+\begin_inset Formula $M^{f}=\varphi^{-1}\left((0,\infty]\right)\cap\left(X\times\mathbb{R}_{\ge0}\right)$
 \end_inset
 
 .
- Nach dem Cavalierischen Prinzip ist (
+\end_layout
+
+\begin_layout Standard
+Nach dem Prinzip von Cavalieri folgt mit 
 \begin_inset Formula $\chi_{M^{f}}\left(x,t\right)=\chi_{[0,f\left(x\right))}$
 \end_inset
 
-):
+:
 \begin_inset Formula 
 \begin{align*}
 \left(\mu\otimes\lambda\right)\left(M^{f}\right) & =\int_{X}\underbrace{\left(\int_{\mathbb{R}}\chi_{M^{f}}\left(x,t\right)\dd t\right)}_{=\int_{0}^{f\left(x\right)}\dd t=f\left(x\right)}\dd x=\\
@@ -14888,9 +15981,6 @@ Die Funktion
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -14919,11 +16009,14 @@ Seien nun
 \begin_inset Formula $f:X\times Y\to\mathbb{R}$
 \end_inset
 
- 
+ eine 
 \begin_inset Formula $\mathcal{A}\otimes\mathcal{B}$
 \end_inset
 
- messbar.
+-messbare Abbildung.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
 \int_{X\times Y}f\left(x,y\right)\dd\left(\mu\otimes\nu\right) & \stackrel{?}{=}\int_{Y}\left(\int_{X}f\left(x,y\right)\dd x\right)\dd y
@@ -14976,7 +16069,7 @@ abc
 , so gilt:
 \begin_inset Formula 
 \begin{align}
-\int_{X\times Y}f\dd\left(\mu\otimes\nu\right) & =\int_{Y}\left(\int_{X}f\left(x,y\right)\dd x\right)\dd y\in\left[0,\infty\right]\qquad\left(X\right)
+\int_{X\times Y}f\dd\left(\mu\otimes\nu\right) & =\int_{Y}\left(\int_{X}f\left(x,y\right)\dd x\right)\dd y\in\left[0,\infty\right]\label{eq:Fubini}
 \end{align}
 
 \end_inset
@@ -15001,11 +16094,11 @@ abc
 \begin_inset Formula $f$
 \end_inset
 
- integrierbar(, das heißt 
-\begin_inset Formula $\int_{X\times Y}\left|f\left(x,y\right)\right|\dd\left(\mu\otimes\nu\right)<\infty$
+ integrierbar, das heißt 
+\begin_inset Formula $\int_{X\times Y}\abs{f\left(x,y\right)}\dd\left(\mu\otimes\nu\right)<\infty$
 \end_inset
 
-), so ist
+, so ist
 \begin_inset Formula 
 \begin{align*}
 \int_{X}f\left(x,y\right)\dd x
@@ -15017,15 +16110,18 @@ für fast alle
 \begin_inset Formula $y\in Y$
 \end_inset
 
- definiert, ist eine integrierbare Funktion und 
-\begin_inset Formula $\left(X\right)$
+ definiert und eine integrierbare Funktion und 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Fubini"
+
 \end_inset
 
- gilt (mit Werten in 
+ gilt mit Werten in 
 \begin_inset Formula $\mathbb{R}$
 \end_inset
 
-).
+.
 \end_layout
 
 \begin_layout Standard
@@ -15078,11 +16174,11 @@ abc
 \end_inset
 
  
-\begin_inset Formula $\int_{X}f\left(x,y\right)\dd x=\left(\mu\otimes\lambda\right)\left(M_{y}^{f}\right)$
+\begin_inset Formula ${\displaystyle \int_{X}f\left(x,y\right)\dd x=\left(\mu\otimes\lambda\right)\left(M_{y}^{f}\right)}$
 \end_inset
 
  und 
-\begin_inset Formula $M_{y}^{f}=\left\{ \left(x,t\right)|0\le t<f\left(x,y\right)\right\} \subseteq X\times\mathbb{R}$
+\begin_inset Formula $M_{y}^{f}=\left\{ \left(x,t\right)\Big|0\le t<f\left(x,y\right)\right\} \subseteq X\times\mathbb{R}$
 \end_inset
 
 .
@@ -15094,8 +16190,19 @@ abc
 
 \end_inset
 
-nach letztem Korrolar.
- (Man kann beliebig assoziativ Klammern, weil das Produktmaß eindeutig ist.)
+nach Korollar 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "sub:Kor-Produktmass"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Man kann dabei beliebig assoziativ Klammern, weil das Produktmaß eindeutig
+ ist.
 \end_layout
 
 \begin_layout Standard
@@ -15128,7 +16235,7 @@ Schreibe
 \end_inset
 
  und 
-\begin_inset Formula $f_{-}=\max\left(-f,0\right)$
+\begin_inset Formula $f_{-}=\max\left(\minus f,0\right)$
 \end_inset
 
 .
@@ -15136,7 +16243,7 @@ Schreibe
 \begin_inset Formula $f_{\pm}$
 \end_inset
 
- sind nicht-negativ und messbar.
+ sind nicht negativ und messbar.
 \end_layout
 
 \begin_layout Standard
@@ -15147,8 +16254,7 @@ Ist
  außerdem integrierbar, so ist:
 \begin_inset Formula 
 \begin{align*}
-\int_{X\times Y}\left|f\left(x,y\right)\right|\dd\left(\mu\otimes\nu\right) & <\infty\\
-\ge\int_{X\times Y}f_{\pm}\left(x,y\right)\dd\left(\mu\otimes\nu\right)
+\int_{X\times Y}f_{\pm}\left(x,y\right)\dd\left(\mu\otimes\nu\right)\le\int_{X\times Y}\left|f\left(x,y\right)\right|\dd\left(\mu\otimes\nu\right) & <\infty
 \end{align*}
 
 \end_inset
@@ -15162,7 +16268,7 @@ Nach a) gilt:
 
 \end_inset
 
-
+Damit folgt wegen der Additivität des Integrals auch:
 \end_layout
 
 \begin_layout Standard
@@ -15189,26 +16295,20 @@ end{abclist}
 
 \end_layout
 
-\begin_layout Standard
-
-\series medium
-Guido Fubini (1879-1943)
+\begin_layout Subsection
+Beispiel
 \end_layout
 
 \begin_layout Standard
-Beppo Levi (1875-1961)
-\end_layout
-
-\begin_layout Standard
-Die Bedingung 
+Die Bedingung, dass 
 \begin_inset Formula $f$
 \end_inset
 
- integrierbar ist notwendig, wie folgendes Beispiel zeigt:
-\end_layout
+ integrierbar ist, ist notwendig, wie folgendes Beispiel zeigt: Sei 
+\begin_inset Formula $n\in\mathbb{N}_{\ge1}$
+\end_inset
 
-\begin_layout Subsection
-Beispiel
+.
 \end_layout
 
 \begin_layout Standard
@@ -15226,21 +16326,32 @@ g_{n}\left(t\right) & :=\begin{cases}
 \end_layout
 
 \begin_layout Standard
-TODO: Abb 3
+
+\color green
+TODO: Abb3 einfügen
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\int_{0}^{1}g_{n}\left(t\right)\dd t=1$
+Es gilt für alle 
+\begin_inset Formula $n\in\mathbb{N}_{\ge1}$
 \end_inset
 
+:
+\begin_inset Formula 
+\begin{align*}
+\int_{0}^{1}g_{n}\left(t\right)\dd t & =1
+\end{align*}
 
+\end_inset
+
+Betrachte nun die messbare Funktion:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-f\left(x,y\right) & =\sum_{n=1}^{\infty}n\cdot\left(g_{n}\left(x\right)-g_{n+1}\left(x\right)\right)g_{n}\left(y\right)\\
-f & :\left[0,1\right]\times\left[0,1\right]\to\mathbb{R}\quad\text{messbar}
+f:\left[0,1\right]\times\left[0,1\right] & \to\mathbb{R}\\
+\left(x,y\right) & \mapsto\sum_{n=1}^{\infty}n\cdot\left(g_{n}\left(x\right)-g_{n+1}\left(x\right)\right)g_{n}\left(y\right)
 \end{align*}
 
 \end_inset
@@ -15249,21 +16360,15 @@ f & :\left[0,1\right]\times\left[0,1\right]\to\mathbb{R}\quad\text{messbar}
 \end_layout
 
 \begin_layout Standard
-[[mit 
-\begin_inset Formula $a_{n}-a_{n-1}=2^{-n}$
-\end_inset
 
-]]
+\color green
+TODO: Abb4 einfügen
 \end_layout
 
 \begin_layout Standard
-TODO: Abb4
-\end_layout
-
-\begin_layout Itemize
 \begin_inset Formula 
 \begin{align*}
-\int_{0}^{1}f\left(x,y\right)\dd x & =\int n\cdot\left(g_{n}\left(x\right)-g_{n+1}\left(x\right)\right)g_{n}\left(y\right)
+\int_{0}^{1}f\left(x,y\right)\dd x & =\int n\cdot\left(g_{n}\left(x\right)-g_{n+1}\left(x\right)\right)g_{n}\left(y\right)\dd x
 \end{align*}
 
 \end_inset
@@ -15279,15 +16384,15 @@ Dabei ist
 .
 \begin_inset Formula 
 \begin{align*}
-\int f\left(x,y\right)\dd x & =n\cdot g_{n}\left(y\right)\bigg(\underbrace{\int_{\mathbb{R}}g_{n}\left(x\right)}_{=1}-\underbrace{\int_{\mathbb{R}}g_{n+1}\left(x\right)}_{=1}\bigg)=0
+\int f\left(x,y\right)\dd x & =n\cdot g_{n}\left(y\right)\cdot\bigg(\underbrace{\int_{\mathbb{R}}g_{n}\left(x\right)}_{=1}-\underbrace{\int_{\mathbb{R}}g_{n+1}\left(x\right)}_{=1}\bigg)=0
 \end{align*}
 
 \end_inset
 
-
+Also gilt:
 \begin_inset Formula 
 \begin{align*}
-\Rightarrow\quad\int_{0}^{1}\left(\int_{0}^{1}f\left(x,y\right)\dd x\right)\dd y & =0
+\int_{0}^{1}\left(\int_{0}^{1}f\left(x,y\right)\dd x\right)\dd y & =0
 \end{align*}
 
 \end_inset
@@ -15295,16 +16400,16 @@ Dabei ist
 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 Mit 
-\begin_inset Formula $\frac{1}{n+1}\le x<\frac{1}{n}$
+\begin_inset Formula ${\displaystyle \frac{1}{n+1}\le x<\frac{1}{n}}$
 \end_inset
 
-:
+ gilt:
 \begin_inset Formula 
 \begin{align*}
 \int_{0}^{1}f\left(x,y\right)\dd y & =g_{n}\left(x\right)\int\left(n\cdot g_{n}\left(y\right)-\left(n-1\right)g_{n-1}\left(y\right)\right)\dd y=\\
- & =g_{n}\left(x\right)\bigg(n\cdot\underbrace{\int_{0}^{1}g_{n}\left(y\right)\dd y}_{=1}-\left(n-1\right)\underbrace{\int_{0}^{1}g_{n-1}\left(y\right)\dd y}_{=1}\bigg)=g_{n}\left(x\right)[[\cdot2^{-n}]]
+ & =g_{n}\left(x\right)\bigg(n\cdot\underbrace{\int_{0}^{1}g_{n}\left(y\right)\dd y}_{=1}-\left(n-1\right)\underbrace{\int_{0}^{1}g_{n-1}\left(y\right)\dd y}_{=1}\bigg)=g_{n}\left(x\right)
 \end{align*}
 
 \end_inset
@@ -15312,30 +16417,36 @@ Mit
 
 \begin_inset Formula 
 \begin{align*}
-\int_{0}^{1}\left(\int_{0}^{1}f\left(x,y\right)\dd y\right)\dd x & =\sum_{n}\int_{0}^{1}g_{n}\left(x\right)\dd x=+\infty[[=\sum_{n=1}^{\infty}2^{-n}=1]]
+\int_{0}^{1}\left(\int_{0}^{1}f\left(x,y\right)\dd y\right)\dd x & =\sum_{n}\int_{0}^{1}g_{n}\left(x\right)\dd x=+\infty
 \end{align*}
 
 \end_inset
 
-Also 
-\begin_inset Formula $0=\int_{0}^{1}\left(\int_{0}^{1}f\left(x,y\right)\dd x\right)\dd y\not=\int_{0}^{1}\left(\int_{0}^{1}f\left(x,y\right)\dd y\right)\dd x=+\infty$
+Also gilt insgesamt:
+\begin_inset Formula 
+\begin{align*}
+0=\int_{0}^{1}\left(\int_{0}^{1}f\left(x,y\right)\dd x\right)\dd y & \not=\int_{0}^{1}\left(\int_{0}^{1}f\left(x,y\right)\dd y\right)\dd x=+\infty
+\end{align*}
+
 \end_inset
 
-.
-\begin_inset Newline newline
+Der Grund dafür ist: 
+\begin_inset Formula 
+\begin{align*}
+\int_{\left[0,1\right]\times\left[0,1\right]}\abs{f\left(x,y\right)}\dd x\otimes\dd y & =+\infty
+\end{align*}
+
 \end_inset
 
-Grund: 
-\begin_inset Formula $\int_{\left[0,1\right]\times\left[0,1\right]}\left|f\left(x,y\right)\right|\dd x\otimes\dd y=+\infty$
+Also ist 
+\begin_inset Formula $f$
 \end_inset
 
-, also nicht integrierbar.
+ nicht integrierbar.
 \end_layout
 
-\begin_layout Itemize
-
-\color blue
-[[Man kann erreichen, dass 
+\begin_layout Standard
+Man kann erreichen, dass 
 \begin_inset Formula $0=\int\left(\int f\left(x,y\right)\dd x\right)\dd y\not=\int\left(\int f\left(x,y\right)\dd y\right)\dd x=1$
 \end_inset
 
@@ -15349,11 +16460,11 @@ Grund:
 
 \end_inset
 
-]]
+
 \end_layout
 
 \begin_layout Standard
-Wichtigster Fall:
+Der wichtigste Fall ist:
 \end_layout
 
 \begin_layout Standard
@@ -15364,18 +16475,25 @@ Wichtigster Fall:
 \begin_inset Formula $\dd\nu$
 \end_inset
 
- ist jeweils das 1-dimensionale Lebesguemaß.
+ ist jeweils das 1-dimensionale Lebesgue-Maß.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula $\underbrace{\dd\mu\otimes\ldots\otimes\dd\mu}_{n\text{ Faktoren}}$
 \end_inset
 
- ist das Lebesguemaß auf 
+ ist das Lebesgue-Maß auf 
 \begin_inset Formula $\mathbb{R}^{n}$
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -15399,14 +16517,18 @@ Beweis
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $A:=\left\{ 0\right\} \times\mathbb{R}=\bigcup_{n=-\infty}^{\infty}\underbrace{\left\{ 0\right\} \times[n,n+1)}_{=:A_{n}}=\dot{\bigcup}_{n=-\infty}^{\infty}A_{n}$
+\begin_inset Formula 
+\begin{align*}
+A & :=\left\{ 0\right\} \times\mathbb{R}=\bigcup_{n=-\infty}^{\infty}\underbrace{\left\{ 0\right\} \times[n,n+1)}_{=:A_{n}}=\dot{\bigcup}_{n=-\infty}^{\infty}A_{n}
+\end{align*}
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-Wegen 
+Wegen der 
 \begin_inset Formula $\sigma$
 \end_inset
 
@@ -15419,10 +16541,27 @@ Wegen
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[]
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
 Beispiel
+\end_layout
+
+\begin_layout Standard
+Berechne folgendes Doppelintegral:
 \end_layout
 
 \begin_layout Standard
@@ -15433,24 +16572,20 @@ Beispiel
 
 \end_inset
 
-Der Integrand ist nicht-negativ.
- Darum können wir die Integrale nach Fubini vertauschen.
- Wir können 
+Der Integrand ist nicht negativ.
+ Darum können wir die Integrale nach dem Theorem von Fubini vertauschen.
+\end_layout
+
+\begin_layout Standard
+Wir können wegen der Grenzen des Integrals 
 \begin_inset Formula $x,y>0$
 \end_inset
 
  annehmen.
 \begin_inset Formula 
 \begin{align*}
-\int_{0}^{\infty}\left(\int_{0}^{\infty}e^{-\frac{x}{y}-y^{2}}\dd x\right)\dd y & =e^{-y^{2}}\int_{0}^{\infty}e^{-\frac{x}{y}}\dd x=e^{-y^{2}}\left(-ye^{-\frac{x}{y}}\right)\big|_{0}^{\infty}=e^{-y^{2}}\cdot y
-\end{align*}
-
-\end_inset
-
-
-\begin_inset Formula 
-\begin{align*}
-\int_{0}^{\infty}e^{-y^{2}}\cdot y\dd y & =-\frac{1}{2}\int_{0}^{\infty}\frac{\dd}{\dd y}\left(e^{-y^{2}}\right)\dd y=-\frac{1}{2}e^{-y^{2}}\big|_{0}^{\infty}=-\frac{1}{2}
+\int_{0}^{\infty}e^{-\frac{x}{y}-y^{2}}\dd x & =e^{-y^{2}}\int_{0}^{\infty}e^{-\frac{x}{y}}\dd x=e^{-y^{2}}\left(-ye^{-\frac{x}{y}}\right)\big|_{0}^{\infty}=e^{-y^{2}}\cdot y\\
+\int_{0}^{\infty}ye^{-y^{2}}\dd y & =-\frac{1}{2}\int_{0}^{\infty}\frac{\dd}{\dd y}\left(e^{-y^{2}}\right)\dd y=-\frac{1}{2}e^{-y^{2}}\big|_{0}^{\infty}=-\frac{1}{2}
 \end{align*}
 
 \end_inset
@@ -15460,6 +16595,12 @@ Der Integrand ist nicht-negativ.
 
 \begin_layout Section
 Die Transformationsformel
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Rest überarbeiten
 \end_layout
 
 \begin_layout Standard

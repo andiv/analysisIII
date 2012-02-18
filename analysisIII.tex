@@ -12,7 +12,6 @@
 \usepackage{color}
 \usepackage{babel}
 \usepackage{array}
-\usepackage{verbatim}
 \usepackage{textcomp}
 \usepackage{url}
 \usepackage{amsmath}
@@ -3759,28 +3758,33 @@ ist das kartesische Produkt.
 Wir wollen auf $X\times Y$ ein Maß konstruieren, das sogenannte \emph{Produktmaß}.
 
 
-\subsection{Definition}
+\subsection{Definition \textmd{(Rechteck)}}
 
-\textcolor{green}{TODO: Rest überarbeiten}
+Seien $\left(X,\mathcal{A},\mu\right)$ und $\left(Y,\mathcal{B},\nu\right)$
+zwei $\sigma$-endliche Maße, $A\in\mathcal{A}$ und $B\in\mathcal{B}$.
 
-$A\times B$ mit $A\in\mathcal{A},B\in\mathcal{B}$ nenne \quotedblbase{}Rechteck\textquotedblleft{}.
+Dann heißt $A\times B\subseteq X\times Y$ \emph{Rechteck}.
 
-TODO: Abb1
+\textcolor{green}{TODO: Abb1 einfügen}
 
-$\mu\left(A\right)\cdot\mu\left(B\right)$ liefert darauf einen sinnvollen
-\quotedblbase{}Volumenbegriff\textquotedblleft{}.
+$\mu\left(A\right)\cdot\mu\left(B\right)$ liefert einen sinnvollen
+\quotedblbase{}Volumenbegriff\textquotedblleft{} dafür.
 
-$A\times B\in\mathcal{P}\left(X\times Y\right)$
+Die Menge der endlichen disjunkten Vereinigungen von Rechtecken schreiben
+wir als:
+\begin{align*}
+\mathcal{A}\times\mathcal{B} & :=\left\{ \bcupd_{k=1}^{n}A_{k}\times B_{k}\middle|A_{k}\in\mathcal{A},B_{k}\in\mathcal{B},n\in\mathbb{N}\right\} \subseteq\mathcal{P}\left(X\times Y\right)
+\end{align*}
 
-${\displaystyle \mathcal{A}\times\mathcal{B}:=\left\{ \dot{\bigcup}_{k=1}^{n}A_{k}\times B_{k}|A_{k}\in\mathcal{A},B_{k}\in\mathcal{B},n\in\mathbb{N}\right\} \subseteq\mathcal{P}\left(X\times Y\right)}$
 
 $\mathcal{A}\otimes\mathcal{B}$ bezeichnet die von $\mathcal{A}\times\mathcal{B}$
 erzeugte $\sigma$-Algebra.
 
 
-\subsection{Satz}
+\subsection{Satz\label{sub:Satz-MengenalgebraKomplementAbgeschlossen}}
 
-$\mathcal{A}\times\mathcal{B}$ ist eine Mengenalgebra.
+$\mathcal{A}\times\mathcal{B}$ ist eine Mengenalgebra, die unter
+Komplementbildung abgeschlossen ist.
 
 
 \subsubsection*{Beweis}
@@ -3788,139 +3792,385 @@ $\mathcal{A}\times\mathcal{B}$ ist eine Mengenalgebra.
 Zeige, dass Schnitte und Komplemente von Elementen aus $\mathcal{A}\times\mathcal{B}$
 wieder in $\mathcal{A}\times\mathcal{B}$ liegen.
 
-TODO: Abb2
+\textcolor{green}{TODO: Abb2 einfügen}
 
 \begin{align*}
-\left(A_{1}\times B_{1}\right)\cap\left(A_{2}\times B_{2}\right) & =\left(A_{1}\cap B_{1}\right)\times\left(A_{2}\cap B_{2}\right)\\
-\complement\left(A\times B\right) & =R_{1}\dot{\cup}\ldots\dot{\cup}R_{2}=\left(\complement A\right)\times B\dot{\cup}A\times\left(\complement B\right)\dot{\cup}\left(\complement A\right)\times\left(\complement B\right)\\
+\left(A_{1}\times B_{1}\right)\cap\left(A_{2}\times B_{2}\right) & =\left(A_{1}\cap B_{1}\right)\times\left(A_{2}\cap B_{2}\right)\in\mathcal{A}\times\mathcal{B}\\
+\complement\left(A\times B\right) & =R_{1}\dot{\cup}\ldots\dot{\cup}R_{7}=\left(\complement A\right)\times B\dot{\cup}A\times\left(\complement B\right)\dot{\cup}\left(\complement A\right)\times\left(\complement B\right)\\
 R_{1}\dot{\cup}R_{5} & =\left(\complement A\right)\times B\\
 R_{3}\dot{\cup}R_{7} & =A\times\left(\complement B\right)
 \end{align*}
+Also ist $\mathcal{A}\times\mathcal{B}$ unter Schnitt und Komplementbildung
+abgeschlossen.
 
+Es bleibt noch zu zeigen, dass mit $U,V\in\mathcal{A}\times\mathcal{B}$
+auch $U\cup V$ und $U\setminus V$ in $\mathcal{A}\times\mathcal{B}$
+liegen.
 
+Dies ist aber erfüllt, da gilt:
+\begin{align*}
+U\cup V & =\complement\left(\complement U\cap\complement V\right)\in\mathcal{A}\times\mathcal{B}\\
+U\setminus V & =\complement\left(\complement U\cup\complement V\right)\in\mathcal{A}\times\mathcal{B}
+\end{align*}
 \qqed
 
-TODO: Rest einfügen
 
+\subsection{Bemerkung}
 
-\subsection{Satz}
-
-TODO: Rest einfügen
-
-
-\subsection{Definition}
-
-TODO: Rest einfügen
-
-
-\subsection{Lemma}
-
-TODO: Rest einfügen
-
-
-\subsection{Lemma}
-
-TODO: Rest einfügen
-
-
-\subsection{Satz \textmd{(Cavalierisches Prinzip)}}
-
-TODO: Rest einfügen
-
-\begin{comment}
-29.11.2011
-\end{comment}
-
-
-Bonaventura Cavalieri 1598-1647
-
-TODO: Abb1
-
-(gleiche Schnittflächen, gleiche Volumina)
-
-
-\subsection{Satz}
-
-Seien $\left(X,\mathcal{A},\mu\right)$, $\left(Y,\mathcal{B},\nu\right)$
-$\sigma$-endliche Maßräume. Dann existiert genau ein Maß $\mu\otimes\nu:\mathcal{A}\otimes\mathcal{B}\to\mathbb{R}_{\ge0}$
-mit $\left(\mu\otimes\nu\right)\left(A\times B\right)=\mu\left(A\right)\cdot\nu\left(B\right)$,
-das sogenannte \emph{Produktmaß}.
-
+Eine naheliegende Definition des Maßes von Rechtecken liefert die
+Abbildung:
 \begin{align*}
-\left(\mu\otimes\nu\right)\left(M\right) & =\int_{X}\left(\int_{Y}\chi_{M}\left(x,y\right)\dd y\right)\dd x=\\
- & =\int_{Y}\underbrace{\left(\int_{X}\chi_{M}\left(x,y\right)\dd x\right)}_{=\mu\left(M\right)}\dd y
+\mu\otimes\nu:\mathcal{A}\times\mathcal{B} & \to\mathbb{R}_{\ge0}\\
+\left(A\times B\right) & \mapsto\mu\left(A\right)\cdot\mu\left(B\right)
 \end{align*}
-
-
-
-\subsection{Definition\textmd{ (monotones Mengensystem)}}
-
-Sei $A_{i}\in\mathcal{M}$ .
+Wir wissen aber nicht, ob dies ein Prämaß ist, weil nicht klar ist,
+ob die $\sigma$-Additivität gilt, also:
 \begin{align*}
-A_{1} & \subseteq A_{2}\subseteq\ldots\Rightarrow\bigcup_{i}A_{i}\in\mathcal{M}\\
-A_{1} & \supseteq A_{2}\supseteq\ldots\Rightarrow\bigcap_{i}A_{i}\in\mathcal{M}
+\left(\mu\otimes\nu\right)\Bigg(\underbrace{\bcupd_{n=1}^{\infty}\left(A_{n}\times B_{n}\right)}_{\in\mathcal{A}\times\mathcal{B}}\Bigg) & \stackrel{?}{=}\sum_{n=1}^{\infty}\left(\mu\otimes\nu\right)\underbrace{\left(A_{n}\times B_{n}\right)}_{\in\mathcal{A}\times\mathcal{B}}
 \end{align*}
+Um diese Schwierigkeit zu umgehen, verwenden wir lieber den Satz von
+der monotonen Konvergenz und nutzen die Monotonie:
 
 
+\subsection{Definition \textmd{(Monotonie)}}
 
-\subsection{Satz}
-
-Ist $\mathcal{M}$ das kleinste monotone Mengensystem, das $\mathcal{A}\times\mathcal{B}$
-enthält, so ist $\mathcal{M}=\mathcal{A}\times\mathcal{B}$.
-
-
-\subsection{Lemma}
-
-Sei $M\in\mathcal{A}\times\mathcal{B}$. Dann gilt:
+Ein Mengensystem $\mathcal{M}\subseteq\mathcal{P}\left(Z\right)$
+heißt \emph{monoton}, falls gilt:
 
 \begin{iiilist}
 
-\iii $\chi_{M}\left(X,.\right)$ ist $\mathcal{B}$-messbar.
+\iii Sind $Y_{k}\in\mathcal{M}$ mit $Y_{k}\subseteq Y_{k+1}$ für
+alle $k\in\mathbb{N}$, so gilt:
+\begin{align*}
+\bigcup_{n=1}^{\infty}Y_{n} & \in\mathcal{M}
+\end{align*}
 
-\iii $x\mapsto\int\chi_{M}\left(x,y\right)\dd y$ ist $\mathcal{A}$-messbar.
+
+\iii Sind $Y_{k}\in\mathcal{M}$ mit $Y_{k}\supseteq Y_{k+1}$ für
+alle $k\in\mathbb{N}$, so gilt:
+\begin{align*}
+\bigcap_{n=1}^{\infty}Y_{n} & \in\mathcal{M}
+\end{align*}
+
 
 \end{iiilist}
 
 
+\subsection{Beispiel}
+
+Betrachte $Z=\mathbb{R}$ und $M_{n}:=\left(-n,n\right)$ für alle
+$n\in\mathbb{N}$.
+
+Dann ist $\mathcal{M}=\left\{ \mathbb{R},M_{0}=\emptyset,M_{1},M_{2},\ldots\right\} $
+ein monotones Mengensystem, aber keine Mengenalgebra, da zum Beispiel
+$M_{2}\setminus M_{1}\not\in\mathcal{M}$ ist.
+
+
+\subsection{Lemma\label{sub:Lem-MengenalgebraMonotonMengensystem}}
+
+Seien $Z$ eine Menge und $\mathcal{R}\subseteq\mathcal{P}\left(Z\right)$
+eine Mengenalgebra, die unter Komplementbildung abgeschlossen ist.
+Sei $\mathcal{M}$ das kleinste monotone Mengensystem, das $\mathcal{R}$
+enthält.
+
+Dann ist $\mathcal{M}$ die von $\mathcal{R}$ erzeugte $\sigma$-Algebra.
+
+
 \subsubsection*{Beweis}
 
-Sei $\mathcal{M}\subseteq\mathcal{A}\times\mathcal{B}$ das Mengensystem,
-das (i) und (ii) erfüllt.
+Zur Existenz von $\mathcal{M}$: Betrachte den Schnitt aller monotonen
+Mengensysteme, die $\mathcal{R}$ enthalten.
+
+Zeige nun, dass $\mathcal{M}$ eine Mengenalgebra ist. Nach dem Beweis
+von \ref{sub:Satz-MengenalgebraKomplementAbgeschlossen} genügt es
+also zu zeigen:
+
+\begin{iiilist}
+
+\iii $Y\in\mathcal{M}$ $\Rightarrow$ $\complement Y\in\mathcal{M}$
+
+\iii $X,Y\in\mathcal{M}$ $\Rightarrow$ $X\cap Y\in\mathcal{M}$
+
+\end{iiilist}
+
+Dann ist $\mathcal{M}$ auch automatisch eine $\sigma$-Algebra, denn
+wegen der Monotonie folgt aus $A_{n}\in\mathcal{M}$ für alle $n\in\mathbb{N}$
+mit Hilfe der Definition
+\begin{align*}
+B_{k} & :=\bigcup_{n=1}^{k}A_{n}
+\end{align*}
+schon:
+\begin{align*}
+\bigcup_{n=1}^{\infty}A_{n} & =\bigcup_{k=1}^{\infty}B_{k}\stackrel{\text{Monotonie}}{\in}\mathcal{M}
+\end{align*}
+
+
+Zeige nun i): Setze:
+\begin{align*}
+\mathcal{M}' & :=\left\{ Y\in\mathcal{M}\big|\complement Y\in\mathcal{M}\right\} \subseteq\mathcal{M}
+\end{align*}
+Sei $A\in\mathcal{R}$, dann ist auch $\complement A\in\mathcal{R}$,
+da $\mathcal{R}$ unter Komplementbildung abgeschlossen ist. Also
+ist $A\in\mathcal{M}'$ und weil dies für alle $A\in\mathcal{R}$
+gilt, folgt $\mathcal{R}\subseteq\mathcal{M}'$.
+
+Außerdem ist $\mathcal{M}'$ monoton, denn für eine aufsteigende Folge
+$\left(A_{n}\right)_{n\in\mathbb{N}}$ in $\mathcal{M}'$ gilt:
+
+Weil $A_{n}\in\mathcal{M}$ liegt, folgt ${\displaystyle \bigcup_{n=1}^{\infty}A_{n}\in\mathcal{M}}$.
+
+Für die Komplemente, die definitionsgemäß in $\mathcal{M}$ liegen,
+gilt $\complement A_{n}\supseteq\complement A_{n+1}$ für alle $n\in\mathbb{N}$.
+Also folgt:
+\begin{align*}
+\complement\left(\bigcup_{n\in\mathbb{N}}A_{n}\right) & =\bigcap_{n\in\mathbb{N}}\complement A_{n}\in\mathcal{M}
+\end{align*}
+Insgesamt folgt also
+\begin{align*}
+\bigcup_{n\in\mathbb{N}}A_{n} & \in\mathcal{M}'
+\end{align*}
+und damit $\mathcal{M}=\mathcal{M}'$.
+
+Zeige nun ii): Setze für $B\in\mathcal{M}$:
+\begin{align*}
+\mathcal{M}_{B} & :=\left\{ Y\in\mathcal{M}\big|Y\cap B\in\mathcal{M}\right\} 
+\end{align*}
+Seien $A,B\in\mathcal{R}$, dann ist $A\cap B\in\mathcal{R}$ und
+daher $A\in\mathcal{M}_{B}$, weswegen für $B\in\mathcal{R}$ schon
+$\mathcal{R}\subseteq\mathcal{M}_{B}$ gilt.
+
+Außerdem ist $\mathcal{M}_{B}$ monoton, was man analog zu i) zeigen
+kann. Daher gilt $\mathcal{M}=\mathcal{M}_{B}$.
+
+Das heißt für alle $Y\in\mathcal{M}$ und alle $B\in\mathcal{R}$
+gilt $Y\cap B\in\mathcal{M}$. Also ist $B\in\mathcal{M}_{Y}$ also
+$\mathcal{R}\subseteq\mathcal{M}_{Y}$.
+
+Da $\mathcal{M}_{Y}$ monoton ist, folgt $\mathcal{M}=\mathcal{M}_{Y}$
+für alle $Y\in\mathcal{M}$. Also gilt für alle $X,Y\in\mathcal{M}$
+schon $X\cap Y\in\mathcal{M}$.\qqed
+
+
+\subsection{Lemma\label{sub:Lem-MessbarkeitsFubini}}
+
+Sei $f:X\times Y\to\left[0,\infty\right]$ eine $\mathcal{A}\otimes\mathcal{B}$-messbare
+nicht negative Funktion. Dann gilt:
+
+\begin{iiilist}
+
+\iii Jede Funktion $f_{x}:Y\to\left[0,\infty\right],\, y\mapsto f\left(x,y\right)$
+ist $\mathcal{B}$-messbar.
+
+\iii Durch
+\begin{align*}
+x & \mapsto\int_{Y}f_{x}\dd\nu=\int_{Y}f\left(x,y\right)\dd y
+\end{align*}
+wird eine $\mathcal{A}$-messbare Funktion definiert.
+
+\end{iiilist}
+
+Schreibe im Folgenden auch $\dd x$ und $\dd y$ statt $\dd\mu\left(x\right)$
+und $\dd\nu\left(y\right)$.
+
+
+\subsubsection*{Beweis}
+
+Nehme zunächst $\mu\left(Y\right)<\infty$ an und betrachte den Fall
+$f=\chi_{M}$ mit $M\in\mathcal{A}\otimes\mathcal{B}$. Definiere
+also:
+\begin{align*}
+\mathcal{M} & :=\left\{ M\in\mathcal{A}\otimes\mathcal{B}\Big|f=\chi_{M}\text{ erfüllt die Bedingungen i) und ii)}\right\} 
+\end{align*}
+Wir wissen dann:
 \begin{itemize}
-\item $\mathcal{A}\times\mathcal{B}\subseteq\mathcal{M}$
-\item $\mathcal{M}$ ist ein monotones Mengensystem.\\
-Sei $\chi_{M_{n}}$ messbar $\Rightarrow$ $\sup\chi_{M_{n}}$, $\inf\chi_{M_{n}}$,
-punktweiser Limes wieder messbar
-\item monotone Konvergenz
-\item dominierte Konvergenz $\Rightarrow\mathcal{M=A}\otimes\mathcal{B}$
+\item $\mathcal{M}$ enthält alle Rechtecke, denn dann gilt
+\begin{align*}
+f\left(x,y\right) & =\chi_{A\times B}\left(x,y\right)=\chi_{A}\left(x\right)\cdot\chi_{B}\left(y\right)
+\end{align*}
+und:
+\begin{align*}
+\int_{Y}f\left(x,y\right)\dd y & =\chi_{A}\left(x\right)\cdot\nu\left(B\right)
+\end{align*}
+Folglich ist $\mathcal{A}\times\mathcal{B}\subseteq\mathcal{M}$.
+\item $\mathcal{M}$ ist monoton: Seien $M_{n}\in\mathcal{M}$ mit $M_{n}\subseteq M_{n+1}$
+für alle $n\in\mathbb{N}$, ${\displaystyle M:=\bigcup_{n\in\mathbb{N}}M_{n}}$
+und:
+\begin{align*}
+f_{n,x}\left(y\right) & :=\chi_{M_{n}}\left(x,y\right)\\
+f_{x}\left(y\right) & :=\chi_{M}\left(x,y\right)=\sup_{n\in\mathbb{N}}f_{n,x}\left(y\right)
+\end{align*}
+Die $f_{n,x}$ sind messbar, weil $M_{n}\in\mathcal{M}$ ist und daher
+$f_{n}$ die Bedingungen i) und ii) erfüllt.\\
+Also ist $f_{x}\left(y\right)$ als Supremum messbarer Funktionen
+wieder messbar. 
+\begin{align*}
+g_{n}\left(x\right) & :=\int_{Y}f_{n,x}\left(y\right)\dd y\xrightarrow[\text{Konvergenz}]{\text{monotone}}g\left(x\right):=\int_{Y}f_{x}\left(y\right)\dd y
+\end{align*}
+Die Funktionen $g_{n}$ sind in $X$ messbar und daher ist die Funktion
+$g$ als punktweiser Limes messbarer Funktionen wieder messbar.\\
+Seien $M_{n}\in\mathcal{M}$ mit $M_{n}\supseteq M_{n+1}$ für alle
+$n\in\mathbb{N}$, ${\displaystyle M:=\bigcap_{n\in\mathbb{N}}M_{n}}$
+und:
+\begin{align*}
+f_{n,x}\left(y\right) & :=\chi_{M_{n}}\left(x,y\right)\\
+f_{x}\left(y\right) & :=\chi_{M}\left(x,y\right)=\inf_{n\in\mathbb{N}}f_{n,x}\left(y\right)
+\end{align*}
+Die $f_{n,x}$ sind messbar, weil $M_{n}\in\mathcal{M}$ ist und daher
+$f_{n}$ die Bedingungen i) und ii) erfüllt.\\
+Also ist $f_{x}\left(y\right)$ als Infimum messbarer Funktionen wieder
+messbar.
+\begin{align*}
+g_{n}\left(x\right) & :=\int_{Y}f_{n,x}\left(y\right)\dd y\xrightarrow[\text{Konvergenz}]{\text{dominierte}}g\left(x\right):=\int_{Y}f_{x}\left(y\right)\dd y
+\end{align*}
+Die Funktionen $g_{n}$ sind in $X$ messbar. Da für alle $x\in X$
+schon $f_{n,x}\left(y\right)\le f_{1,x}\left(y\right)\in L^{1}$ eine
+dominierende Funktion ist und wegen
+\begin{align*}
+\int_{Y}\abs{f_{1,x}\left(y\right)}\dd y & =\int_{Y}\chi_{M_{1}}\left(x,y\right)\dd y\le\nu\left(Y\right)<\infty
+\end{align*}
+konvergieren die $g_{n}$ punktweise nach $g$, weswegen $g$ als
+punktweiser Limes messbarer Funktionen wieder messbar ist.
 \end{itemize}
+Nach Lemma \ref{sub:Lem-MengenalgebraMonotonMengensystem} ist $\mathcal{M}=\mathcal{A}\otimes\mathcal{B}$.
 
-\subsubsection*{Beweis von Satz $\ref{}I\:8.6$}
+Falls $\nu\left(Y\right)=\infty$ ist, gilt:
 
-Definiere $\left(\mu\otimes\nu\right)\left(M\right):=\int_{X}\left(\int_{Y}\chi_{M}\left(x,y\right)\dd y\right)\dd x:\mathcal{A}\otimes\mathcal{B}\to\left[0,\infty\right]$
-wohldefiniert und $\sigma$-additiv.
+Da $\nu$ ein $\sigma$-endliches Maß ist, betrachte eine Folge $Y_{n}\in\mathcal{M}$
+mit $\nu\left(Y_{n}\right)<\infty$, $Y_{n}\subseteq Y_{n+1}$ für
+alle $n\in\mathbb{N}$ und ${\displaystyle Y=\bigcup_{n\in\mathbb{N}}Y_{n}}$.
+
+Sei $M\in\mathcal{A}\otimes\mathcal{B}$ beliebig, so setze:
+\begin{align*}
+M_{n} & :=M\cap\left(X\times Y_{n}\right)
+\end{align*}
+Es folgt $M_{n}\subseteq M_{n+1}$ für alle $n\in\mathbb{N}$ und
+${\displaystyle \bigcup_{n\in\mathbb{N}}M_{n}=M}$. Definiere:
+\begin{align*}
+f_{n} & :=\chi_{M_{n}} & f & :=\chi_{M}
+\end{align*}
+Die $f_{n}$ erfüllen i) und ii), da $Y_{n}$ endliches Maß hat. (siehe
+oben)
+\begin{align*}
+f_{x}\left(y\right) & =\sup_{n\in\mathbb{N}}\Bigg(\underbrace{f_{n,x}\left(y\right)}_{\text{messbar nach i)}}\Bigg)
+\end{align*}
+Also ist $f_{x}$ messbar.
+\begin{align*}
+g_{n}\left(x\right) & :=\int_{Y}f_{n}\left(x,y\right)\dd y\xrightarrow[\text{Konvergenz}]{\text{monotone}}g\left(x\right):=\int_{Y}f\left(x,y\right)\dd y
+\end{align*}
+Die $g_{n}$ sind messbar wegen ii) und daher ist $g$ als punktweiser
+Limes messbarer Funktionen messbar.
+
+Sei schließlich $f:X\times Y\to\left[0,\infty\right]$ messbar, so
+approximiere $f$ durch Treppenfunktionen $\varphi_{n}$, also gilt
+für alle $x\in X$:
+\begin{align*}
+0 & \le\varphi_{n}\left(x\right)\nearrow f\left(x\right)
+\end{align*}
+Jede Treppenfunktion kann als endliche Summe von charakteristischen
+Funktionen geschrieben werden:
+\begin{align*}
+\varphi_{n}\left(x\right) & =\sum_{k=1}^{m\left(n\right)}y_{k}\cdot\chi_{M_{k}}\left(x\right)
+\end{align*}
+Damit sind für die $\varphi_{n}$ die Bedingungen i) und ii) erfüllt.
+\begin{align*}
+f\left(x,y\right) & =\sup_{n\in\mathbb{N}}\left(\varphi_{n}\left(x,y\right)\right)\\
+f_{x}\left(y\right) & =\sup_{n\in\mathbb{N}}\left(\varphi_{n,x}\left(y\right)\right)
+\end{align*}
+sind als Suprema messbarer Funktionen wieder messbar.
+\begin{align*}
+g_{n}\left(x\right)=\int_{Y}\varphi_{n}\left(x,y\right)\dd y & \xrightarrow[\text{Konvergenz}]{\text{monotone}}\int_{Y}f\left(x,y\right)\dd y=g\left(x\right)
+\end{align*}
+Da die $g_{n}$ messbar sind, ist auch $g$ messbar.\qqed
+
+%DATE: Di 29.11.2011
+
+
+\subsection{Historisch}
+
+Bonaventura Cavalieri (1598-1647): Prinzip von Cavalieri
+\begin{quote}
+\quotedblbase{}Zwei Körper besitzen das gleiche Volumen, wenn die
+Schnittflächen von ebenen parallel zu einer Grundebene den gleichen
+Flächeninhalt haben.\textquotedblleft{}
+\end{quote}
+\textcolor{green}{TODO: Abb1 einfügen}
+
+Guido Fubini (1879-1943)
+
+Beppo Levi (1875-1961)
+
+
+\subsection{Satz \textmd{(Prinzip von Cavalieri)}}
+
+Folgendes Prinzip geht auf Cavalieri zurück:
+
+Es gibt auf $X\times Y$ genau ein Produktmaß
+\begin{align*}
+\mu\otimes\nu:\mathcal{A}\otimes\mathcal{B} & \to\left[0,\infty\right]
+\end{align*}
+mit der Eigenschaft, dass für alle Rechteck $A\times B\in\mathcal{A}\otimes\mathcal{B}$
+gilt:
+\begin{align*}
+\left(\mu\otimes\nu\right)\left(A\times B\right) & =\mu\left(A\right)\cdot\nu\left(B\right)
+\end{align*}
+Dann gilt für jede messbare Menge $M\in\mathcal{A}\otimes\mathcal{B}$:
+\begin{align*}
+\left(\mu\otimes\nu\right)\left(M\right) & =\int_{X}\left(\int_{Y}\chi_{M}\left(x,y\right)\dd y\right)\dd x=\int_{Y}\left(\int_{X}\chi_{M}\left(x,y\right)\dd x\right)\dd y
+\end{align*}
+Definiere:
+\begin{align*}
+M_{y} & :=\left\{ x\in X\big|\left(x,y\right)\in M\right\} 
+\end{align*}
+Damit ist dies:
+\begin{align*}
+\int_{X}\chi_{M}\left(x,y\right)\dd x & =\mu\left(M_{y}\right)\\
+\left(\mu\otimes\nu\right)\left(M\right) & =\int_{Y}\mu\left(M_{y}\right)\dd y
+\end{align*}
+
+
+
+\subsubsection*{Beweis}
+
+Wende Lemma \ref{sub:Lem-MessbarkeitsFubini} für $f=\chi_{M}$ an.
+Dies liefert eine $\mathcal{B}$-messbare Funktion:
+\begin{align*}
+y & \mapsto\int_{X}\underbrace{f\left(x,y\right)}_{=\chi_{M}\left(x,y\right)}\dd x=\mu\left(M_{y}\right)
+\end{align*}
+Die Abbildung
+\begin{align*}
+\mu\otimes\nu:\mathcal{A}\otimes\mathcal{B} & \to\left[0,\infty\right]\\
+M & \mapsto\int_{Y}\mu\left(M_{y}\right)
+\end{align*}
+ist wohldefiniert als Integral einer nicht negativen Funktion.
 
 Seien $\left(M_{n}\right)_{n\in\mathbb{N}}$ mit $M_{n}\subseteq\mathcal{A}\otimes\mathcal{B}$
-paarweise disjunkt, $M:=\bigcup_{n=1}^{\infty}M_{n}$.
+paarweise disjunkt, ${\displaystyle M:=\bcupd_{n=1}^{\infty}M_{n}}$.
 
-$\sum_{n=1}^{\infty}\chi_{M_{n}}=\chi_{M_{1}\cap\ldots\cap M_{n}}\nearrow\chi_{n}$
+\begin{align*}
+\sum_{n=1}^{\infty}\chi_{M_{n}} & =\chi_{M_{1}\cup\ldots\cup M_{n}}\nearrow\chi_{M}
+\end{align*}
 ist eine aufsteigende Folge messbarer Funktionen, die punktweise konvergiert.
 
 Nach monotoner Konvergenz folgt
 \begin{align*}
-g_{N}\left(x\right) & :=\int_{Y}\chi_{M_{1}\cap\ldots\cap M_{N}}\left(x,y\right)\dd y\stackrel{N\to\infty}{\longrightarrow}\int_{Y}\chi_{M}\left(x,y\right)\dd y=g\left(x\right)
+g_{n}\left(x\right) & :=\int_{Y}\chi_{M_{1}\cup\ldots\cup M_{n}}\left(x,y\right)\dd y\xrightarrow{n\to\infty}\int_{Y}\chi_{M}\left(x,y\right)\dd y=g\left(x\right)
 \end{align*}
-und $g_{N}\left(x\right)$ ist aufsteigend (also $g_{N+1}\left(x\right)\ge g_{N}\left(x\right)$).
+und $g_{n}\left(x\right)$ ist aufsteigend, also $g_{n+1}\left(x\right)\ge g_{n}\left(x\right)$.
 
 Nochmals monotone Konvergenz liefert:
 \begin{align*}
-\int_{X}g_{N}\left(x\right)\dd x & \stackrel{N\to\infty}{\longrightarrow}\int_{X}g\left(x\right)\dd x=\int_{X}\left(\int_{Y}\chi_{M}\left(x,y\right)\dd y\right)\dd x=\left(\mu\otimes\nu\right)\left(M\right)
+\int_{X}g_{n}\left(x\right)\dd x & \xrightarrow{n\to\infty}\int_{X}g\left(x\right)\dd x=\int_{X}\left(\int_{Y}\chi_{M}\left(x,y\right)\dd y\right)\dd x=\left(\mu\otimes\nu\right)\left(M\right)
 \end{align*}
 \begin{align*}
-\left(\mu\otimes\nu\right)\left(M_{1}\cup\ldots\cup M_{N}\right) & =\int_{X}\underbrace{\left(\int_{Y}\chi_{M_{1}\cup\ldots\cup M_{N}}\left(x,y\right)\dd y\right)}_{=g_{N}\left(x\right)}\dd x
+\left(\mu\otimes\nu\right)\left(M_{1}\cup\ldots\cup M_{N}\right) & =\int_{X}\underbrace{\left(\int_{Y}\chi_{M_{1}\cup\ldots\cup M_{n}}\left(x,y\right)\dd y\right)}_{=g_{n}\left(x\right)}\dd x
 \end{align*}
-Also ${\displaystyle \sum_{n=1}^{\infty}\left(\mu\otimes\nu\right)\left(M_{n}\right)=\left(\mu\otimes\nu\right)\left(M\right)}$.
-Also ist $\mu\otimes\nu$ ein Maß auf $\mathcal{A}\otimes\mathcal{B}$.
+Also ${\displaystyle \sum_{n=1}^{\infty}\left(\mu\otimes\nu\right)\left(M_{n}\right)=\left(\mu\otimes\nu\right)\left(M\right)}$
+und somit ist $\mu\otimes\nu$ ein Maß auf $\mathcal{A}\otimes\mathcal{B}$.
+
+Auf Rechtecken hat $\mu\otimes\nu$ den gewünschten Wert.
+
+Die $\sigma$-Additivität folgt aus der monotonen Konvergenz, $\mu\otimes\nu$
+definiert also tatsächlich ein Maß.
 
 \emph{Eindeutigkeit:}
 
@@ -3928,18 +4178,17 @@ $\mu\otimes\nu|_{\mathcal{A}\times\mathcal{B}}$ ist ein Prämaß auf
 der Mengenalgebra $\mathcal{A}\times\mathcal{B}$, weil die $\sigma$-Additivität
 bei Einschränkung auf $\mathcal{A}\times\mathcal{B}$ erhalten bleibt.
 
-Nach dem Satz von Hahn ist die Erweiterung von $\mu\otimes\nu|_{\mathcal{A}\times\mathcal{B}}$
-zu einem Maß auf $\mathcal{A}\times\mathcal{B}$ eindeutig.
+Nach dem Satz \ref{sub:Thm-SatzVonHahn} von Hahn ist die Erweiterung
+von $\mu\otimes\nu|_{\mathcal{A}\times\mathcal{B}}$ zu einem Maß
+auf $\mathcal{A}\times\mathcal{B}$ eindeutig.\qqed
 
-\qqed
 
-
-\subsection{Korollar}
+\subsection{Korollar\label{sub:Kor-Produktmass}}
 
 Sei $f:X\to\left[0,\infty\right]$ messbar.
 
 Betrachte das Produktmaß $\mu\otimes\lambda$ auf $X\otimes\mathbb{R}$,
-wobei $\lambda$ das 1-dimensionale Lebesguemaß ist.
+wobei $\lambda$ das 1-dimensionale Lebesgue-Maß ist.
 
 Dann ist die Menge
 \begin{align*}
@@ -3947,28 +4196,28 @@ M^{f} & :=\left\{ \left(x,t\right)|0\le t<f\left(x\right)\right\} \subseteq X\ti
 \end{align*}
 messbar und:
 \begin{align*}
-\left(\mu\otimes\lambda\right)\left(M^{f}\right) & =\int_{X}f\dd y
+\left(\mu\otimes\lambda\right)\left(M^{f}\right) & =\int_{X}f\dd\mu
 \end{align*}
 
 
-TODO: Abb2
+\textcolor{green}{TODO: Abb2 einfügen}
 
 
 \subsubsection*{Beweis}
 
 Die Funktion $\varphi:\left(x,t\right)\mapsto f\left(x\right)-t$
-ist messbar, also ist auch $M^{f}=\varphi^{-1}\left((0,\infty]\right)\cap X\times\mathbb{R}_{\ge0}$.
-Nach dem Cavalierischen Prinzip ist ($\chi_{M^{f}}\left(x,t\right)=\chi_{[0,f\left(x\right))}$):
+ist messbar, also ist auch $M^{f}=\varphi^{-1}\left((0,\infty]\right)\cap\left(X\times\mathbb{R}_{\ge0}\right)$.
+
+Nach dem Prinzip von Cavalieri folgt mit $\chi_{M^{f}}\left(x,t\right)=\chi_{[0,f\left(x\right))}$:
 \begin{align*}
 \left(\mu\otimes\lambda\right)\left(M^{f}\right) & =\int_{X}\underbrace{\left(\int_{\mathbb{R}}\chi_{M^{f}}\left(x,t\right)\dd t\right)}_{=\int_{0}^{f\left(x\right)}\dd t=f\left(x\right)}\dd x=\\
  & =\int_{X}f\left(x\right)\dd x
 \end{align*}
-
-
 \qqed
 
 Seien nun $X,Y$ zwei $\sigma$-endliche Maßräume und $f:X\times Y\to\mathbb{R}$
-$\mathcal{A}\otimes\mathcal{B}$ messbar.
+eine $\mathcal{A}\otimes\mathcal{B}$-messbare Abbildung.
+
 \begin{align*}
 \int_{X\times Y}f\left(x,y\right)\dd\left(\mu\otimes\nu\right) & \stackrel{?}{=}\int_{Y}\left(\int_{X}f\left(x,y\right)\dd x\right)\dd y
 \end{align*}
@@ -3981,17 +4230,17 @@ $\mathcal{A}\otimes\mathcal{B}$ messbar.
 
 \abc Ist $f\ge0$, so gilt:
 \begin{align}
-\int_{X\times Y}f\dd\left(\mu\otimes\nu\right) & =\int_{Y}\left(\int_{X}f\left(x,y\right)\dd x\right)\dd y\in\left[0,\infty\right]\qquad\left(X\right)
+\int_{X\times Y}f\dd\left(\mu\otimes\nu\right) & =\int_{Y}\left(\int_{X}f\left(x,y\right)\dd x\right)\dd y\in\left[0,\infty\right]\label{eq:Fubini}
 \end{align}
 
 
-\abc Ist $f$ integrierbar(, das heißt $\int_{X\times Y}\left|f\left(x,y\right)\right|\dd\left(\mu\otimes\nu\right)<\infty$),
+\abc Ist $f$ integrierbar, das heißt $\int_{X\times Y}\abs{f\left(x,y\right)}\dd\left(\mu\otimes\nu\right)<\infty$,
 so ist
 \begin{align*}
 \int_{X}f\left(x,y\right)\dd x
 \end{align*}
-für fast alle $y\in Y$ definiert, ist eine integrierbare Funktion
-und $\left(X\right)$ gilt (mit Werten in $\mathbb{R}$).
+für fast alle $y\in Y$ definiert und eine integrierbare Funktion
+und \eqref{eq:Fubini} gilt mit Werten in $\mathbb{R}$.
 
 \end{abclist}
 
@@ -4000,46 +4249,43 @@ und $\left(X\right)$ gilt (mit Werten in $\mathbb{R}$).
 
 \begin{abclist}
 
-\abc $\int_{X}f\left(x,y\right)\dd x=\left(\mu\otimes\lambda\right)\left(M_{y}^{f}\right)$
-und $M_{y}^{f}=\left\{ \left(x,t\right)|0\le t<f\left(x,y\right)\right\} \subseteq X\times\mathbb{R}$.
+\abc ${\displaystyle \int_{X}f\left(x,y\right)\dd x=\left(\mu\otimes\lambda\right)\left(M_{y}^{f}\right)}$
+und $M_{y}^{f}=\left\{ \left(x,t\right)\Big|0\le t<f\left(x,y\right)\right\} \subseteq X\times\mathbb{R}$.
 \begin{align*}
 \int_{X\times Y}f\dd\left(\mu\otimes\nu\right) & =\underbrace{\left(\nu\otimes\left(\mu\otimes\lambda\right)\right)}_{=\nu\otimes\mu\otimes\lambda}\left(M^{f}\right)=\nu\otimes\mu\otimes\lambda\left(M^{f}\right)=\\
  & =\int_{Y}\mu\otimes\lambda\left(M^{f}\right)\dd y=\int_{Y}\left(\int_{X}f\left(x,y\right)\dd x\right)\dd y
 \end{align*}
-nach letztem Korrolar. (Man kann beliebig assoziativ Klammern, weil
-das Produktmaß eindeutig ist.)
+nach Korollar \eqref{sub:Kor-Produktmass}.
+
+Man kann dabei beliebig assoziativ Klammern, weil das Produktmaß eindeutig
+ist.
 
 \abc Sei $f:X\times Y\to\mathbb{R}$ messbar.
 
-Schreibe $f=f^{+}-f^{-}$ mit $f_{+}=\max\left(f,0\right)$ und $f_{-}=\max\left(-f,0\right)$.
-$f_{\pm}$ sind nicht-negativ und messbar.
+Schreibe $f=f^{+}-f^{-}$ mit $f_{+}=\max\left(f,0\right)$ und $f_{-}=\max\left(\minus f,0\right)$.
+$f_{\pm}$ sind nicht negativ und messbar.
 
 Ist $f$ außerdem integrierbar, so ist:
 \begin{align*}
-\int_{X\times Y}\left|f\left(x,y\right)\right|\dd\left(\mu\otimes\nu\right) & <\infty\\
-\ge\int_{X\times Y}f_{\pm}\left(x,y\right)\dd\left(\mu\otimes\nu\right)
+\int_{X\times Y}f_{\pm}\left(x,y\right)\dd\left(\mu\otimes\nu\right)\le\int_{X\times Y}\left|f\left(x,y\right)\right|\dd\left(\mu\otimes\nu\right) & <\infty
 \end{align*}
 Nach a) gilt:
 \begin{align*}
 \int_{X\times Y}f_{+}\left(x,y\right)\dd\left(\mu\otimes\nu\right) & =\int_{Y}\left(\int_{X}f_{+}\left(x,y\right)\dd x\right)\dd y<\infty\\
 \int_{X\times Y}f_{-}\left(x,y\right)\dd\left(\mu\otimes\nu\right) & =\int_{Y}\left(\int_{X}f_{-}\left(x,y\right)\dd x\right)\dd y<\infty
 \end{align*}
-
+Damit folgt wegen der Additivität des Integrals auch:
 
 \begin{align*}
 \int_{X\times Y}f\left(x,y\right)\dd\left(\mu\otimes\nu\right) & =\int_{Y}\left(\int_{X}f\left(x,y\right)\dd x\right)\dd y<\infty
 \end{align*}
 \end{abclist}
 
-Guido Fubini (1879-1943)
-
-Beppo Levi (1875-1961)
-
-Die Bedingung $f$ integrierbar ist notwendig, wie folgendes Beispiel
-zeigt:
-
 
 \subsection{Beispiel}
+
+Die Bedingung, dass $f$ integrierbar ist, ist notwendig, wie folgendes
+Beispiel zeigt: Sei $n\in\mathbb{N}_{\ge1}$.
 
 \begin{align*}
 g_{n}\left(t\right) & :=\begin{cases}
@@ -4049,57 +4295,70 @@ g_{n}\left(t\right) & :=\begin{cases}
 \end{align*}
 
 
-TODO: Abb 3
+\textcolor{green}{TODO: Abb3 einfügen}
 
-$\int_{0}^{1}g_{n}\left(t\right)\dd t=1$
+Es gilt für alle $n\in\mathbb{N}_{\ge1}$:
+\begin{align*}
+\int_{0}^{1}g_{n}\left(t\right)\dd t & =1
+\end{align*}
+Betrachte nun die messbare Funktion:
 
 \begin{align*}
-f\left(x,y\right) & =\sum_{n=1}^{\infty}n\cdot\left(g_{n}\left(x\right)-g_{n+1}\left(x\right)\right)g_{n}\left(y\right)\\
-f & :\left[0,1\right]\times\left[0,1\right]\to\mathbb{R}\quad\text{messbar}
+f:\left[0,1\right]\times\left[0,1\right] & \to\mathbb{R}\\
+\left(x,y\right) & \mapsto\sum_{n=1}^{\infty}n\cdot\left(g_{n}\left(x\right)-g_{n+1}\left(x\right)\right)g_{n}\left(y\right)
 \end{align*}
 
 
-{[}{[}mit $a_{n}-a_{n-1}=2^{-n}${]}{]}
+\textcolor{green}{TODO: Abb4 einfügen}
 
-TODO: Abb4
-\begin{itemize}
-\item 
 \begin{align*}
-\int_{0}^{1}f\left(x,y\right)\dd x & =\int n\cdot\left(g_{n}\left(x\right)-g_{n+1}\left(x\right)\right)g_{n}\left(y\right)
+\int_{0}^{1}f\left(x,y\right)\dd x & =\int n\cdot\left(g_{n}\left(x\right)-g_{n+1}\left(x\right)\right)g_{n}\left(y\right)\dd x
 \end{align*}
 Dabei ist $n$ so gewählt, dass ${\displaystyle \frac{1}{n+1}\le y<\frac{1}{n}}$.
 \begin{align*}
-\int f\left(x,y\right)\dd x & =n\cdot g_{n}\left(y\right)\bigg(\underbrace{\int_{\mathbb{R}}g_{n}\left(x\right)}_{=1}-\underbrace{\int_{\mathbb{R}}g_{n+1}\left(x\right)}_{=1}\bigg)=0
+\int f\left(x,y\right)\dd x & =n\cdot g_{n}\left(y\right)\cdot\bigg(\underbrace{\int_{\mathbb{R}}g_{n}\left(x\right)}_{=1}-\underbrace{\int_{\mathbb{R}}g_{n+1}\left(x\right)}_{=1}\bigg)=0
 \end{align*}
+Also gilt:
 \begin{align*}
-\Rightarrow\quad\int_{0}^{1}\left(\int_{0}^{1}f\left(x,y\right)\dd x\right)\dd y & =0
+\int_{0}^{1}\left(\int_{0}^{1}f\left(x,y\right)\dd x\right)\dd y & =0
 \end{align*}
 
-\item Mit $\frac{1}{n+1}\le x<\frac{1}{n}$:
+
+Mit ${\displaystyle \frac{1}{n+1}\le x<\frac{1}{n}}$ gilt:
 \begin{align*}
 \int_{0}^{1}f\left(x,y\right)\dd y & =g_{n}\left(x\right)\int\left(n\cdot g_{n}\left(y\right)-\left(n-1\right)g_{n-1}\left(y\right)\right)\dd y=\\
- & =g_{n}\left(x\right)\bigg(n\cdot\underbrace{\int_{0}^{1}g_{n}\left(y\right)\dd y}_{=1}-\left(n-1\right)\underbrace{\int_{0}^{1}g_{n-1}\left(y\right)\dd y}_{=1}\bigg)=g_{n}\left(x\right)[[\cdot2^{-n}]]
+ & =g_{n}\left(x\right)\bigg(n\cdot\underbrace{\int_{0}^{1}g_{n}\left(y\right)\dd y}_{=1}-\left(n-1\right)\underbrace{\int_{0}^{1}g_{n-1}\left(y\right)\dd y}_{=1}\bigg)=g_{n}\left(x\right)
 \end{align*}
 \begin{align*}
-\int_{0}^{1}\left(\int_{0}^{1}f\left(x,y\right)\dd y\right)\dd x & =\sum_{n}\int_{0}^{1}g_{n}\left(x\right)\dd x=+\infty[[=\sum_{n=1}^{\infty}2^{-n}=1]]
+\int_{0}^{1}\left(\int_{0}^{1}f\left(x,y\right)\dd y\right)\dd x & =\sum_{n}\int_{0}^{1}g_{n}\left(x\right)\dd x=+\infty
 \end{align*}
-Also $0=\int_{0}^{1}\left(\int_{0}^{1}f\left(x,y\right)\dd x\right)\dd y\not=\int_{0}^{1}\left(\int_{0}^{1}f\left(x,y\right)\dd y\right)\dd x=+\infty$.\\
-Grund: $\int_{\left[0,1\right]\times\left[0,1\right]}\left|f\left(x,y\right)\right|\dd x\otimes\dd y=+\infty$,
-also nicht integrierbar.
-\item \textcolor{blue}{{[}{[}Man kann erreichen, dass $0=\int\left(\int f\left(x,y\right)\dd x\right)\dd y\not=\int\left(\int f\left(x,y\right)\dd y\right)\dd x=1$.
+Also gilt insgesamt:
+\begin{align*}
+0=\int_{0}^{1}\left(\int_{0}^{1}f\left(x,y\right)\dd x\right)\dd y & \not=\int_{0}^{1}\left(\int_{0}^{1}f\left(x,y\right)\dd y\right)\dd x=+\infty
+\end{align*}
+Der Grund dafür ist: 
+\begin{align*}
+\int_{\left[0,1\right]\times\left[0,1\right]}\abs{f\left(x,y\right)}\dd x\otimes\dd y & =+\infty
+\end{align*}
+Also ist $f$ nicht integrierbar.
+
+Man kann erreichen, dass $0=\int\left(\int f\left(x,y\right)\dd x\right)\dd y\not=\int\left(\int f\left(x,y\right)\dd y\right)\dd x=1$.
 Auch hier gilt:
 \begin{align*}
 \int_{\left[0,1\right]\times\left[0,1\right]}\left|f\left(x,y\right)\right|\dd x\otimes\dd y & =+\infty\\
 =\int_{0}^{1}\left(\int_{0}^{1}\left|f\left(x,y\right)\right|\dd x\right)\dd y & =\int\left(\int\left|f\left(x,y\right)\right|\dd y\right)\dd x
 \end{align*}
-{]}{]}}
-\end{itemize}
-Wichtigster Fall:
 
-$\dd\mu$, $\dd\nu$ ist jeweils das 1-dimensionale Lebesguemaß.
+
+Der wichtigste Fall ist:
+
+$\dd\mu$, $\dd\nu$ ist jeweils das 1-dimensionale Lebesgue-Maß.
 
 $\underbrace{\dd\mu\otimes\ldots\otimes\dd\mu}_{n\text{ Faktoren}}$
-ist das Lebesguemaß auf $\mathbb{R}^{n}$.
+ist das Lebesgue-Maß auf $\mathbb{R}^{n}$.
+
+\bigskip{}
+
 
 Was ist eine Lebesguesche Nullmenge?
 
@@ -4112,32 +4371,39 @@ Was ist eine Lebesguesche Nullmenge?
 
 \subsubsection*{Beweis}
 
-$A:=\left\{ 0\right\} \times\mathbb{R}=\bigcup_{n=-\infty}^{\infty}\underbrace{\left\{ 0\right\} \times[n,n+1)}_{=:A_{n}}=\dot{\bigcup}_{n=-\infty}^{\infty}A_{n}$
+\begin{align*}
+A & :=\left\{ 0\right\} \times\mathbb{R}=\bigcup_{n=-\infty}^{\infty}\underbrace{\left\{ 0\right\} \times[n,n+1)}_{=:A_{n}}=\dot{\bigcup}_{n=-\infty}^{\infty}A_{n}
+\end{align*}
 
-Wegen $\sigma$-Additivität folgt:
+
+Wegen der $\sigma$-Additivität folgt:
 \begin{align*}
 \mu\left(A\right) & =\sum_{n=-\infty}^{\infty}\mu\left(A_{n}\right)=\sum_{n=-\infty}^{\infty}\left(0\cdot1\right)=0
 \end{align*}
-
+\qqed[]
 
 
 \subsection{Beispiel}
 
+Berechne folgendes Doppelintegral:
+
 \begin{align*}
 \int_{0}^{\infty}\left(\int_{0}^{\infty}e^{-\frac{x}{y}-y^{2}}\dd y\right)\dd x
 \end{align*}
-Der Integrand ist nicht-negativ. Darum können wir die Integrale nach
-Fubini vertauschen. Wir können $x,y>0$ annehmen.
+Der Integrand ist nicht negativ. Darum können wir die Integrale nach
+dem Theorem von Fubini vertauschen.
+
+Wir können wegen der Grenzen des Integrals $x,y>0$ annehmen.
 \begin{align*}
-\int_{0}^{\infty}\left(\int_{0}^{\infty}e^{-\frac{x}{y}-y^{2}}\dd x\right)\dd y & =e^{-y^{2}}\int_{0}^{\infty}e^{-\frac{x}{y}}\dd x=e^{-y^{2}}\left(-ye^{-\frac{x}{y}}\right)\big|_{0}^{\infty}=e^{-y^{2}}\cdot y
-\end{align*}
-\begin{align*}
-\int_{0}^{\infty}e^{-y^{2}}\cdot y\dd y & =-\frac{1}{2}\int_{0}^{\infty}\frac{\dd}{\dd y}\left(e^{-y^{2}}\right)\dd y=-\frac{1}{2}e^{-y^{2}}\big|_{0}^{\infty}=-\frac{1}{2}
+\int_{0}^{\infty}e^{-\frac{x}{y}-y^{2}}\dd x & =e^{-y^{2}}\int_{0}^{\infty}e^{-\frac{x}{y}}\dd x=e^{-y^{2}}\left(-ye^{-\frac{x}{y}}\right)\big|_{0}^{\infty}=e^{-y^{2}}\cdot y\\
+\int_{0}^{\infty}ye^{-y^{2}}\dd y & =-\frac{1}{2}\int_{0}^{\infty}\frac{\dd}{\dd y}\left(e^{-y^{2}}\right)\dd y=-\frac{1}{2}e^{-y^{2}}\big|_{0}^{\infty}=-\frac{1}{2}
 \end{align*}
 
 
 
 \section{Die Transformationsformel}
+
+\textcolor{green}{TODO: Rest überarbeiten}
 
 1-dimensionale Variablentransformation
 \begin{align*}
