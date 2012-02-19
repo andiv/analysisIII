@@ -4511,6 +4511,8 @@ Also gilt:
 \end{align*}
 
 
+%DATE: Di 6.12.2011
+
 
 \chapter{Komplexe Analysis}
 
@@ -4761,19 +4763,18 @@ Falls $x\in S^{1}$, dann folgt $\varphi\left(x\right)\in\overline{\mathbb{C}}\se
 ist ein Häufungspunkt in $\overline{\mathbb{C}}$.
 \end{itemize}
 
-\section[Cauchy-Riemann DGLn]{Analytische Funktionen, die Cauchy-Riemannschen Differentialgleichungen}
+\section[Cauchy-Riemannsche DGLn]{Analytische Funktionen, die Cauchy-Riemannschen Differentialgleichungen}
 
 Sei $\Omega\subseteq\mathbb{C}$ offen.
 
 
-\subsection{Definition \textmd{(komplex differenzierbar)}}
-
-\textcolor{green}{TODO: Rest überarbeiten}
+\subsection{Definition \textmd{(komplex differenzierbar, holomorph)}}
 
 Eine Funktion $f:\Omega\to\mathbb{C}$ heißt in $z\in\Omega$ \emph{(komplex)
-differenzierbar} mit \emph{komplexer Ableitung} $f'$, falls der Limes
+differenzierbar} mit \emph{komplexer Ableitung} $f'\left(z\right)$,
+falls der Limes
 \begin{align*}
-\lim_{z\to z',z'\not=z}\frac{\overbrace{f\left(z'\right)-f\left(z\right)}^{\in\mathbb{C}}}{\underbrace{z'-z}_{\in}} & =f'\left(z\right)\in\mathbb{C}
+\lim_{\Omega\setminus\left\{ z'\right\} \ni z\to z'}\frac{\overbrace{f\left(z'\right)-f\left(z\right)}^{\in\mathbb{C}}}{\underbrace{z'-z}_{\in\mathbb{C}}} & =f'\left(z\right)\in\mathbb{C}
 \end{align*}
 existiert. Ist $f$ für jedes $z\in\Omega$ differenzierbar, so heißt
 $f$ in $\Omega$ \emph{holomorph}.
@@ -4783,8 +4784,8 @@ $f$ in $\Omega$ \emph{holomorph}.
 
 \begin{abclist}
 
-\abc $f\left(z\right)=a_{n}z^{n}+a_{n-1}z^{n-1}+\ldots+a_{0}$ komplexes
-Polynom, das heißt $a_{k}\in\mathbb{C}$.
+\abc Sei $f\left(z\right)=a_{n}z^{n}+a_{n-1}z^{n-1}+\ldots+a_{0}$
+ein komplexes Polynom, das heißt $a_{k}\in\mathbb{C}$.
 \begin{align*}
 f\left(z'\right)-f\left(z\right) & =a_{n}\left(z'^{n}-z^{n}\right)+a_{n-1}\left(z'^{n-1}-z^{n-1}\right)+\ldots+a_{1}\left(z'-z\right)=\\
  & =\left(z'-z\right)\left(a_{n}\left(\left(z'\right)^{n-1}+\left(z'\right)^{n-2}\cdot z+\left(z'\right)^{n-3}z^{2}+\ldots+z^{n-1}\right)+\ldots+a_{1}\right)
@@ -4795,31 +4796,35 @@ f'\left(z\right) & =na_{n}z^{n-1}+\left(n-1\right)a_{n-1}z^{n-1}+\ldots+a_{1}
 \end{align*}
 Dies ist dasselbe wie die Ableitung eines reellen Polynoms.
 
-\abc Nehme an, $f\left(z\right)$ ist reellwertig (zum Beispiel $f\left(z\right)=\left|z\right|^{2}$)
-und komplex differenzierbar.
+\abc Nehme an, $f\left(z\right)$ ist reellwertig, das heißt $f\left(z\right)\in\mathbb{R}$
+für alle $z\in\Omega$, zum Beispiel $f\left(z\right)=\left|z\right|^{2}$,
+und komplex differenzierbar ist.
 
-Das heißt
+Das heißt der Limes
 \begin{align*}
-f'\left(z\right) & =\lim_{z'\to z,z'\not=z}\frac{f\left(z'\right)-f\left(z\right)}{z'-z}
+f'\left(z\right) & =\lim_{\Omega\setminus\left\{ z'\right\} \ni z\to z'}\frac{f\left(z'\right)-f\left(z\right)}{z'-z}
 \end{align*}
 existiert. Betrachte speziell $z'=z+h$ mit $h\in\mathbb{R}\subseteq\mathbb{C}$.
 
 Dann ist
 \begin{align*}
-f'\left(z\right) & =\lim_{h\to0,h\not=0}\frac{\overbrace{f\left(z+h\right)}^{\in\mathbb{R}}-\overbrace{f\left(z\right)}^{\in\mathbb{R}}}{\underbrace{h}_{\in\mathbb{R}}}\in\mathbb{R}
+f'\left(z\right) & =\lim_{\mathbb{R}\setminus\left\{ 0\right\} \ni h\to0}\frac{\overbrace{f\left(z+h\right)}^{\in\mathbb{R}}-\overbrace{f\left(z\right)}^{\in\mathbb{R}}}{\underbrace{h}_{\in\mathbb{R}}}\in\mathbb{R}
 \end{align*}
 reell.
 
 Betrachte nun $z'=z+\ii h$ mit $h\in\mathbb{R}\subseteq\mathbb{C}$.
 Dann ist
 \begin{align*}
-f'\left(x\right) & =\sr{\lim_{h\to0}}{}{h\not=0}\frac{\overbrace{f\left(z+h\right)}^{\in\mathbb{R}}-\overbrace{f\left(z\right)}^{\in\mathbb{R}}}{\ii\underbrace{h}_{\in\ii\mathbb{R}}}\in\ii\mathbb{R}
+f'\left(x\right) & =\lim_{\mathbb{R}\setminus\left\{ 0\right\} \ni h\to0}\frac{\overbrace{f\left(z+h\right)}^{\in\mathbb{R}}-\overbrace{f\left(z\right)}^{\in\mathbb{R}}}{\underbrace{\ii h}_{\in\ii\mathbb{R}}}\in\ii\mathbb{R}
 \end{align*}
 rein imaginär.
 
-Insgesamt folgt $f'\left(z\right)=0$.
+Insgesamt folgt also $f'\left(z\right)=0$.
 
 \end{abclist}
+
+
+\subsection{Bemerkung}
 
 Was heißt komplex differenzierbar?
 
@@ -4841,20 +4846,20 @@ h_{2}
 \end{align*}
 
 
-$g\in o\left(h\right)$ heißt:
+Dabei bedeutet $g\in o\left(h\right)$:
 \begin{align*}
-\sr{\lim_{h\to0}}{}{h\not=0}\frac{g\left(h\right)}{\left|\left|h\right|\right|} & =0
+\lim_{\mathbb{R}\setminus\left\{ 0\right\} \ni h\to0}\frac{g\left(h\right)}{\norm h} & =0
 \end{align*}
 Dabei ist $h=\left(\begin{array}{c}
 h_{1}\\
 h_{2}
-\end{array}\right)$ und $\left|\left|h\right|\right|=\sqrt{h_{1}^{2}+h_{2}^{2}}$.
+\end{array}\right)$ und $\norm h=\sqrt{h_{1}^{2}+h_{2}^{2}}$.
 
-Außerdem ist $A\in L\left(\mathbb{R}^{2}\right)$ die Jacobi-Matrix.
+Außerdem ist $A\in L\left(\mathbb{R}^{2}\right)$ die Jacobi-Matrix:
 \begin{align*}
 A & =\left(\begin{array}{cc}
-\frac{\partial u}{\partial x} & \frac{\partial u}{\partial y}\\
-\frac{\partial v}{\partial x} & \frac{\partial v}{\partial y}
+\partial_{1}u & \partial_{2}u\\
+\partial_{1}v & \partial_{2}v
 \end{array}\right)
 \end{align*}
 
@@ -4864,27 +4869,27 @@ A & =\left(\begin{array}{cc}
 
 $f$ ist genau dann in $z\in\mathbb{C}$ komplex differenzierbar,
 wenn $f$ in $\left(x,y\right)$ reell differenzierbar ist und die
-sogennante \emph{Cauchy-Riemannschen Differentialgleichungen} erfüllt:
+sogenannten \emph{Cauchy-Riemannschen Differentialgleichungen} erfüllt:
 \begin{align*}
-\frac{\partial u}{\partial x} & =\frac{\partial v}{\partial y} & \frac{\partial u}{\partial y} & =-\frac{\partial v}{\partial x}
+\partial_{1}u & =\partial_{2}v & \partial_{2}u & =-\partial_{1}v
 \end{align*}
 Günstige Notation:
 \begin{align*}
-\frac{\partial f}{\partial x} & :=\frac{\partial u}{\partial x}+\ii\frac{\partial v}{\partial x}\\
-\frac{\partial f}{\partial y} & :=\frac{\partial v}{\partial x}+\ii\frac{\partial v}{\partial y}
+\partial_{1}f & :=\partial_{1}u+\ii\partial_{1}v\\
+\partial_{2}f & :=\partial_{2}u+\ii\partial_{2}v
 \end{align*}
 Dann kann man die Cauchy-Riemannschen Differentialgleichungen in folgender
 Form schreiben:
 \begin{align*}
-\frac{\partial f}{\partial x} & =-\ii\frac{\partial f}{\partial y}
+\partial_{1}f & =-\ii\partial_{2}f
 \end{align*}
 Realteil:
 \begin{align*}
-\frac{\partial u}{\partial x} & =\frac{\partial v}{\partial y}
+\partial_{1}u & =\partial_{2}v
 \end{align*}
 Imaginärteil:
 \begin{align*}
-\frac{\partial v}{\partial x} & =-\frac{\partial u}{\partial y}
+\partial_{1}v & =-\partial_{2}u
 \end{align*}
 
 
@@ -4894,20 +4899,27 @@ Imaginärteil:
 Die Bedingung von komplexer Differenzierbarkeit kann man auch mit
 einer \quotedblbase{}Approximationsformel\textquotedblleft{} schreiben:
 \begin{align*}
-f\left(z+h\right) & =f\left(z\right)+f'\left(z\right)h+o\left(h\right)
+f\left(z+h\right) & =f\left(z\right)+f'\left(z\right)h+E\left(h\right)
 \end{align*}
-$h=h_{1}+\ii h_{2}$ mit:
+Dabei ist $h=h_{1}+\ii h_{2}$ und $E\left(h\right)\in o\left(h\right)$,
+also:
 \begin{align*}
-\sr{\lim_{h\to0}}{}{h\not=0}\frac{o\left(h\right)}{\left|h\right|} & =0
+\lim_{\mathbb{R}\setminus\left\{ 0\right\} \ni h\to0}\frac{E\left(h\right)}{\left|h\right|} & =0
 \end{align*}
 Dies ist äquivalent zu:
 \begin{align*}
-\frac{f\left(z+h\right)-f\left(z\right)}{h} & -f'\left(z\right)=\frac{o\left(h\right)}{h}\stackrel{h\to0}{\longrightarrow}0
+\frac{f\left(z+h\right)-f\left(z\right)}{h} & -f'\left(z\right)=\frac{E\left(h\right)}{h}\xrightarrow{h\to0}0
 \end{align*}
 Diese Approximationsformel ist also tatsächlich äquivalent zur Existenz
 des Limes des Differenzenquotienten.
 
-Schreibe nun den Real- und Imaginärteil aus.
+Schreibe nun Real- und Imaginärteil aus:
+\begin{align*}
+\text{Re}\left(f'\left(z\right)\cdot h\right) & =\text{Re}\left(f'\left(z\right)\right)\cdot\text{Re}\left(h\right)-\text{Im}\left(f'\right)\cdot\text{Im}\left(h\right)\\
+\text{Im}\left(f'\left(z\right)\cdot h\right) & =\text{Re}\left(f'\left(z\right)\right)\cdot\text{Im}\left(h\right)+\text{Im}\left(f'\right)\cdot\text{Re}\left(h\right)
+\end{align*}
+Mit $h_{1}=\text{Re}\left(h\right)$ und $h_{2}=\text{Im}\left(h\right)$
+folgt:
 \begin{align*}
 \left(\begin{array}{c}
 u\\
@@ -4923,28 +4935,23 @@ h_{1}\\
 h_{2}
 \end{array}\right)+o\left(h\right)
 \end{align*}
-\begin{align*}
-\text{Re}\left(f'\left(z\right)\cdot h\right) & =\text{Re}\left(f'\left(z\right)\right)\cdot\text{Re}\left(h\right)-\text{Im}\left(f'\right)\cdot\text{Im}\left(h\right)\\
-\text{Im}\left(f'\left(z\right)\cdot h\right) & =\text{Re}\left(f'\left(z\right)\right)\cdot\text{Im}\left(h\right)+\text{Im}\left(f'\right)\cdot\text{Re}\left(h\right)
-\end{align*}
-$h_{1}=\text{Re}\left(h\right),h_{2}=\text{Im}\left(h\right)$
-
 Hierin sieht man folgendes:
 \begin{enumerate}
-\item Ist $f$komplex differenzierbar, so auch reell differenzierbar und:
+\item Ist $f$ komplex differenzierbar, so ist $f$ auch reell differenzierbar
+und es gilt:
 \begin{align*}
-\text{Re}\left(f'\left(z\right)\right) & =\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y}\\
-\text{Im}\left(f'\left(z\right)\right) & =-\frac{\partial u}{\partial y}=\frac{\partial v}{\partial x}
+\text{Re}\left(f'\left(z\right)\right) & =\partial_{1}u=\partial_{2}v\\
+\text{Im}\left(f'\left(z\right)\right) & =-\partial_{2}u=\partial_{1}v
 \end{align*}
 Also sind die Cauchy-Riemannschen Differentialgleichungen erfüllt.
-\item Ist $f$ reell differenzierbar und die Cauchy-Riemannschen Differentialgleichungen
-sind erfüllt.\\
-Dann erfüllt ${\displaystyle \alpha:=\frac{\partial u}{\partial x}+\ii\frac{\partial v}{\partial x}\in\mathbb{C}}$
+\item Sei $f$ reell differenzierbar und die Cauchy-Riemannschen Differentialgleichungen
+seien erfüllt.\\
+Dann erfüllt ${\displaystyle \alpha:=\partial_{1}u+\ii\partial_{1}v\in\mathbb{C}}$
 die Approximationsformel:
 \begin{align*}
-f\left(z+h\right) & =f\left(z\right)+\alpha h+o\left(h\right)
+f\left(z+h\right) & =f\left(z\right)+\alpha\cdot h+o\left(h\right)
 \end{align*}
-Denn:
+Denn es gilt:
 \begin{align*}
 \left(\begin{array}{c}
 \text{Re}\left(\alpha h\right)\\
@@ -4962,31 +4969,32 @@ Denn:
 \qqed
 
 
-\subsection*{Beispiel und Definition}
+\subsection{Beispiel und Definition \textmd{(Laplace-Operator, harmonisch)}}
 
-Cauchy-Riemannsche Differentialgleichungen:
-\begin{align*}
-\frac{\partial u}{\partial x} & =\frac{\partial v}{\partial y}\quad\left(1\right) & \frac{\partial u}{\partial y} & =\frac{\partial v}{\partial x}\quad\left(2\right)
-\end{align*}
+Die Cauchy-Riemannsche Differentialgleichungen lauten:
+\begin{align}
+\partial_{1}u & =\partial_{2}v\label{eq:CR1}\\
+\partial_{2}u & =-\partial_{1}v\label{eq:CR2}
+\end{align}
 Nehme an, dass $u$ und $v$ zweimal stetig reell differenzierbar
 sind. Dann folgt:
 \begin{align*}
-\frac{\partial^{2}u}{\partial x^{2}} & \stackrel{\left(1\right)}{=}\frac{\partial^{2}v}{\partial x\partial y}=\frac{\partial^{2}v}{\partial y\partial x}\stackrel{\left(2\right)}{=}-\frac{\partial}{\partial y}\left(\frac{\partial u}{\partial y}\right)=-\frac{\partial^{2}u}{\partial y^{2}}
+\partial_{1}^{2}u & \stackrel{\ref{eq:CR1}}{=}\partial_{12}^{2}v\stackrel{\text{S.v.Schwarz}}{=}\partial_{21}^{2}v\stackrel{\ref{eq:CR2}}{=}-\partial_{2}\left(\partial_{2}u\right)=-\partial_{2}^{2}u
 \end{align*}
-Laplace-Operator:
+Mit dem \emph{Laplace-Operator}
 \begin{align*}
-\Delta & :=\frac{\partial^{2}}{\partial x^{2}}+\frac{\partial^{2}}{\partial y^{2}}
+\Delta & :=\partial_{1}^{2}+\partial_{2}^{2}
 \end{align*}
-Laplace-Gleichung:
+sieht man, dass $u$ die \emph{Laplace-Gleichung}
 \begin{align*}
-\Delta u & =\frac{\partial^{2}u}{\partial x^{2}}+\frac{\partial^{2}u}{\partial y^{2}}\stackrel{!}{=}0
+\Delta u & =\partial_{1}^{2}u+\partial_{2}^{2}u\stackrel{!}{=}0
 \end{align*}
-
+erfüllt.
 
 Lösungen der Laplace-Gleichung nennt man auch \emph{harmonisch}.
 
 \begin{align*}
-\frac{\partial^{2}v}{\partial x^{2}} & \stackrel{\left(2\right)}{=}\frac{\partial^{2}u}{\partial x\partial y}=-\frac{\partial^{2}u}{\partial y\partial x}\stackrel{\left(1\right)}{=}-\frac{\partial^{2}v}{\partial y^{2}}
+\partial_{1}^{2}v & \stackrel{\ref{eq:CR2}}{=}\partial_{12}^{2}u\stackrel{\text{S.v.Schwarz}}{=}\partial_{21}^{2}u\stackrel{\ref{eq:CR1}}{=}-\partial_{2}\left(\partial_{2}v\right)=-\partial_{2}^{2}v
 \end{align*}
 $u$ und $v$ sind durch die Cauchy-Riemannsche Differentialgleichungen
 miteinander verknüpft.
@@ -4994,89 +5002,418 @@ miteinander verknüpft.
 Man sagt dazu auch: $u$ und $v$ sind zueinander \emph{konjugierte
 harmonische Funktionen}.
 
-Hilfreich: $z=x+\ii y$ und $\overline{z}=x-\ii y$. Fasse $x$ und
-$y$ als komplexe Zahlen auf. Dann sind $z$ und $\overline{z}$ zwei
-unabhängige komplexe Variablen.
+%DATE: Fr 9.12.2011
+
+
+\subsection{Bemerkung}
+
+Gegeben sei die Funktion:
 \begin{align*}
-f:\Omega\subseteq\mathbb{C} & \to\mathbb{C},f\left(x,y\right)=f\left(z,\overline{z}\right)
+f:\Omega & \to\mathbb{C}\\
+\left(x,y\right) & \mapsto f\left(x,y\right)
 \end{align*}
-$z=x+\ii y$ also:
+Die Frage ist, wann $f$ holomorph ist.
+
+Hilfreich ist, wenn man in der Darstellung
 \begin{align*}
-\frac{\partial}{\partial z} & =\frac{\partial x}{\partial z}\frac{\partial}{\partial x}+\frac{\partial y}{\partial z}\frac{\partial}{\partial y}
+z & =x+\ii y\\
+\overline{z} & =x-\ii y
 \end{align*}
+nun $x$ und $y$ als komplexe Zahlen auffasst. Auflösen liefert:
 \begin{align*}
 x & =\frac{1}{2}\left(z+\overline{z}\right) & y & =\frac{1}{2\ii}\left(z-\overline{z}\right)
 \end{align*}
+Setze $x=x\left(z,\overline{z}\right)$ und $y=y\left(z,\overline{z}\right)$
+in $f\left(x,y\right)$ ein:
+\begin{align*}
+\tilde{f}:\Omega\subseteq\mathbb{C} & \to\mathbb{C}\\
+\left(z,\overline{z}\right) & \mapsto\tilde{f}\left(z,\overline{z}\right)
+\end{align*}
+Fasse $z$ und $\overline{z}$ \emph{formal} als zwei unabhängige
+Variablen auf, womit folgt:
+\begin{align*}
+\partial_{1}\tilde{f} & =\partial_{1}x\cdot\partial_{1}f+\partial_{1}y\cdot\partial_{2}f=\frac{1}{2}\left(\partial_{1}f-\ii\partial_{2}f\right)\\
+\partial_{2}\tilde{f} & =\partial_{2}\cdot\partial_{1}f+\partial_{2}y\cdot\partial_{2}f=\frac{1}{2}\left(\partial_{1}f+\ii\partial_{2}f\right)
+\end{align*}
+Also ist genau dann $\partial_{2}\tilde{f}=0$, wenn die Cauchy-Riemannschen
+Differentialgleichungen erfüllt sind. In diesem Fall gilt:
+\begin{align*}
+\partial_{1}\tilde{f} & =\partial_{1}f
+\end{align*}
 
 
-TODO: Rest
 
-%DATE: Di 13.12.2011
+\subsection{Beispiel}
 
-Wiederholung:
-\begin{itemize}
-\item Rationale Funktionen für Polynome $P,Q$:
+\begin{abclist}
+
+\abc $f\left(x,y\right)=x^{2}+2\ii xy-y^{2}=\left(x+\ii y\right)^{2}$
+
+Überprüfe die Cauchy-Riemannschen Differentialgleichungen:
+\begin{align*}
+\partial_{1}f\left(x,y\right) & =2x+2\ii y\\
+\partial_{2}f\left(x,y\right) & =2\ii x-2y
+\end{align*}
+Also gilt:
+\begin{align*}
+\partial_{1}f & =-\ii\partial_{2}f
+\end{align*}
+Daher sind die Cauchy-Riemannschen Differentialgleichungen erfüllt
+und $f$ ist holomorph auf $\mathbb{C}$.
+
+Rechenverfahren:
+\begin{align*}
+x & =\frac{1}{2}\left(z+\overline{z}\right) & y & =\frac{1}{2\ii}\left(z-\overline{z}\right)
+\end{align*}
+\begin{align*}
+\tilde{f}\left(z,\overline{z}\right) & =z^{2}
+\end{align*}
+$\tilde{f}$ hängt also nur von $z$ und nicht von $\overline{z}$
+ab. Deshalb ist $f$ holomorph.
+
+\abc $f\left(x,y\right)=x^{2}+2\ii xy$
+\begin{align*}
+\partial_{1}f & =2x+2\ii y & \partial_{2}f & =2\ii x
+\end{align*}
+\begin{align*}
+\partial_{1}f & =-\ii\partial_{2}f\\
+\Leftrightarrow\quad2x+2\ii y & =2x\\
+\Leftrightarrow\qquad\qquad y & =0
+\end{align*}
+Also ist $f$ \emph{nicht} auf $\mathbb{C}$ holomorph, denn $f$
+ist genau dann an der Stelle $z$ komplex differenzierbar, wenn $\text{Im}\left(z\right)=0$
+gilt.
+
+Rechenverfahren:
+\begin{align*}
+\tilde{f}\left(z,\overline{z}\right) & =\frac{1}{4}\left(z+\overline{z}\right)^{2}+2\ii\cdot\frac{1}{2}\left(z+\overline{z}\right)\cdot\frac{1}{2\ii}\left(z-\overline{z}\right)=\\
+ & =\frac{1}{4}z^{2}+\frac{1}{2}z\overline{z}+\frac{1}{4}\overline{z}^{2}+\frac{1}{2}z^{2}-\frac{1}{2}\overline{z}^{2}=\frac{3}{4}z^{2}+\frac{1}{2}z\overline{z}-\frac{1}{4}\overline{z}^{2}
+\end{align*}
+Also ist $f$ nicht holomorph, da $\tilde{f}$ von $\overline{z}$
+abhängt.
+\begin{align*}
+\partial_{2}\tilde{f} & =\frac{1}{2}z-\frac{1}{2}\overline{z}=\frac{1}{2}\left(z-\overline{z}\right)
+\end{align*}
+Das heißt $\tilde{f}=0$ ist äquivalent zu $\text{Im}\left(z\right)=0$.
+
+\end{abclist}
+
+
+\section{Polynome}
+
+Ein komplexes Polynom vom Grade $n\in\mathbb{N}_{\ge0}$ ist eine
+Funktion der Form
+\begin{align*}
+P:\mathbb{C} & \to\mathbb{C}\\
+z & \mapsto a_{0}+a_{1}z+\ldots+a_{n}z^{n}
+\end{align*}
+mit Koeffizienten $a_{k}\in\mathbb{C}$ und $a_{n}\not=0$.
+
+$P\left(z\right)$ ist holomorph mit:
+\begin{align*}
+P'\left(z\right) & =a_{1}+2a_{2}z+\ldots+na_{n}z^{n-1}
+\end{align*}
+
+
+
+\subsection{Theorem \textmd{(Fundamentalsatz der Algebra, Gauß)}}
+
+Jedes nicht konstante Polynom besitzt wenigstens eine Nullstelle.
+
+
+\subsubsection*{Beweis}
+
+\begin{iiilist}
+
+\iii Zeige, dass die Funktion $\varphi\left(z\right):=\abs{P\left(z\right)}$
+ihr Infimum annimmt, das heißt, dass es ein $\zeta\in\mathbb{C}$
+mit $\varphi\left(z\right)\ge\varphi\left(\zeta\right)$ für alle
+$z\in\mathbb{C}$ gibt. 
+\begin{align*}
+\varphi\left(z\right) & \ge\abs{a_{n}}\cdot\abs z^{n}-\abs{\sum_{k=0}^{n-1}a_{k}z^{k}}\ge\underbrace{\abs z^{n}}_{\to\infty}\cdot\left(\underbrace{\abs{a_{n}}}_{\not=0}-\sum_{k=0}^{n-1}\abs{a_{k}}\cdot\underbrace{\abs z^{k-n}}_{\to0\text{ für }\abs z\to\infty}\right)\xrightarrow{\abs z\to\infty}\infty
+\end{align*}
+Zur Bildung des Infimums genügt es, $z\in B_{R}\left(0\right)$ für
+ein \quotedblbase{}großes\textquotedblleft{} $R\in\mathbb{R}$ zu
+betrachten.
+
+Da $\varphi$ stetig ist, nimmt sie auf der kompakten Menge $\overline{B_{R}\left(0\right)}$
+ihr Infimum an der Stelle $\zeta$ an.
+
+\iii Nehme an, dass $\varphi\left(\zeta\right)\not=0$ ist, denn
+ansonsten sind wir fertig.
+
+Nehme außerdem ohne Einschränkung an, dass $\zeta=0$ und $P\left(\zeta\right)=1$
+ist, denn man kann zu
+\begin{align*}
+\frac{P\left(z+\zeta\right)}{P\left(\zeta\right)}
+\end{align*}
+übergehen. Also ist:
+\begin{align*}
+P\left(z\right) & =1+\sum_{m=1}^{n}a_{k}z^{k}
+\end{align*}
+Wähle dabei $m\in\mathbb{N}$ mit $1\le m\le n$ so, dass $a_{m}\not=0$
+ist.
+
+Polarkoordinaten: $r\in\mathbb{R}_{>0}$ und $\varphi\in[0,2\pi)$
+mit:
+\begin{align*}
+z & =r\cdot e^{\ii\varphi}
+\end{align*}
+\begin{align*}
+\abs{P\left(z\right)} & =1+a_{m}r^{m}e^{\ii m\varphi}+\sum_{k=m+1}^{n}a_{k}r^{k}e^{\ii k\varphi}
+\end{align*}
+Wähle $\varphi$ so, dass $a_{m}r^{m}e^{\ii m\varphi}=-\abs{a_{m}}r^{m}$
+ist. Wählt man nun $r$ klein genug, zum Beispiel
+\begin{align*}
+r & =\min\left(1,\frac{\abs{a_{m}}}{2\cdot\sum_{k=m+1}^{n}\abs{a_{k}}}\right)
+\end{align*}
+so gilt:
+\begin{align*}
+\abs{P\left(z\right)} & \le1-\abs{a_{m}}r^{m}+\sum_{k=m+1}^{n}\abs{a_{k}}r^{k}<1
+\end{align*}
+Man sieht, dass $\abs{P\left(z\right)}<\abs{P\left(0\right)}$ ist,
+im Widerspruch dazu, dass $\abs{P\left(z\right)}$ bei $z=0$ sein
+Infimum annimmt.
+
+Also ist $\varphi\left(0\right)=0$ und somit haben wir eine Nullstelle
+von $P$ gefunden.
+
+\end{iiilist}
+
+\qqed
+
+
+\subsection{Korollar}
+
+Jedes Polynom $P$ zerfällt über $\mathbb{C}$ in Linearfaktoren,
+das heißt es gibt $\zeta_{n}\in\mathbb{C}$ für $n=\deg\left(P\right)$
+mit:
+\begin{align*}
+P\left(z\right) & =a_{n}\cdot\prod_{k=1}^{n}\left(z-\zeta_{k}\right)
+\end{align*}
+
+
+
+\subsubsection*{Beweis}
+
+Sei $\zeta\in\mathbb{C}$ eine Nullstelle, dann kann man eine Polynomdivision
+durchführen und erhält
+\begin{align*}
+P\left(z\right) & =\left(z-\zeta\right)P_{1}\left(z\right)
+\end{align*}
+mit $\deg\left(P_{1}\right)=\deg\left(P\right)-1$.
+
+Induktiv kann man den Grad bis auf 0 reduzieren.\qqed
+
+
+\subsection{Definition \textmd{(Vielfachheit)}}
+
+Eine Nullstelle kann in einem Polynom mehrfach auftreten.
+
+Jedes nicht konstante Polynom $P$ hat $N\in\mathbb{N}$ verschiedene
+Nullstellen und kann mit $A,\zeta_{k}\in\mathbb{C}$ und $r_{k}\in\mathbb{N}$
+für $k\in\left\{ 1,\ldots,N\right\} $ schreiben als:
+\begin{align*}
+P\left(z\right) & =A\cdot\prod_{k=1}\left(z-\zeta_{k}\right)^{r_{k}}
+\end{align*}
+Die Zahl $r_{k}$ heißt die \emph{Vielfachheit} oder \emph{Ordnung}
+der Nullstelle $\zeta_{k}$.
+
+
+\subsection{Theorem \textmd{(Lucas)}}
+
+Liegen alle Nullstellen eines Polynoms $P$ in einer Halbebene der
+komplexen Ebene, dann liegen die Nullstellen von $P'$ auch in dieser
+Halbebene.
+
+Wie kann man eine Halbebene charakterisieren?
+
+\begin{align*}
+\text{Im}\left(z\right) & >0 & \text{obere} & \text{ Halbebene}\\
+\text{Im}\left(z\right) & <0 & \text{untere} & \text{ Halbebene}\\
+\text{Re}\left(z\right) & >0 & \text{rechte} & \text{ Halbebene}\\
+\text{Re}\left(z\right) & <0 & \text{linke} & \text{ Halbebene}
+\end{align*}
+Allgemeiner kann man eine Halbebene mit $a\in\mathbb{C}$ und $b\in\mathbb{C}\setminus\left\{ 0\right\} $
+wie folgt charakterisieren:
+\begin{align*}
+\text{Im}\left(\frac{z-a}{b}\right) & <0
+\end{align*}
+
+
+
+\subsubsection*{Beweis}
+
+\textcolor{green}{TODO: Abbildung Halbebene mit Nullstellen einfügen}
+
+Die Produktregel liefert:
+\begin{align*}
+P\left(z\right) & =a_{n}\left(z-\zeta_{1}\right)\ldots\left(z-\zeta_{n}\right)\\
+\frac{P'\left(z\right)}{P\left(z\right)} & =\frac{1}{z-\zeta_{1}}+\frac{1}{z-\zeta_{2}}+\ldots+\frac{1}{z-\zeta_{n}}
+\end{align*}
+Nehme an, dass die $\zeta_{k}$ alle in der Halbebene $H$ liegen,
+die durch die Ungleichung
+\begin{align*}
+\text{Im}\left(\frac{z-a}{b}\right) & <0
+\end{align*}
+charakterisiert ist.
+
+Nehme an, dass $z\not\in H$ liegt, womit folgt:
+\begin{align*}
+\text{Im}\left(\frac{z-\zeta_{k}}{b}\right) & =\underbrace{\text{Im}\left(\frac{z-a}{b}\right)}_{\ge0}+\underbrace{\text{Im}\left(\frac{a-\zeta_{k}}{b}\right)}_{>0}>0
+\end{align*}
+Sei $\xi\in\mathbb{C}$, so gilt:
+\begin{align*}
+\text{Im}\left(\frac{1}{\xi}\right)=\text{Im}\left(\frac{\overline{\xi}}{\abs{\xi}^{2}}\right) & =-\frac{\text{Im}\left(\xi\right)}{\abs{\xi}^{2}}
+\end{align*}
+Beim Bilden des Reziproken ändert sich also das Vorzeichen des Imaginärteils.
+Also gilt für alle $k\in\left\{ 1,\ldots,n\right\} $:
+\begin{align*}
+\text{Im}\left(\frac{b}{z-\zeta_{k}}\right) & <0
+\end{align*}
+Es folgt:
+\begin{align*}
+\text{Im}\left(b\cdot\frac{P'\left(z\right)}{P\left(z\right)}\right) & =\text{Im}\left(\frac{b}{z-\zeta_{1}}+\ldots+\frac{b}{z-\zeta_{n}}\right)<0
+\end{align*}
+Also ist ${\displaystyle \frac{P'\left(z\right)}{P\left(z\right)}\not=0}$
+für alle $z\not\in H$.
+
+Daher hat $P'$ im Komplement von $H$ keine Nullstelle.\qqed
+
+
+\section[Rationale Funktionen]{Rationale Funktionen, Möbiustransformation}
+
+
+\subsection{Definition \textmd{(rationale Funktion)}}
+
+Seien $P$ und $Q\not=0$ komplexe Polynome. Dann heißt die Funktion
 \begin{align*}
 R\left(z\right) & :=\frac{P\left(z\right)}{Q\left(z\right)}
 \end{align*}
+eine \emph{rationale Funktion}.
 
-\item \textbf{Satz 2.4.1} (Partialbruchzerlegung)\\
-Sei $Q\left(z\right)=\left(z-\zeta_{1}\right)\cdot\ldots\cdot\left(z-\zeta_{n}\right)$,
-dann $\exs_{G,G_{j}}$ so dass 
+Betrachte im Folgenden eine solche rationale Funktion.
+
+
+\subsection{Bemerkung}
+
+Man kann Zähler und Nenner in Linearfaktoren zerlegen.
+
+Wenn der gleiche Linearfaktor in Zähler und Nenner vorkommt, kürzen
+wir immer. So kann man erreichen, dass $P\left(z\right)$ und $Q\left(z\right)$
+keine gemeinsame Nullstelle haben.
+
+Nehme dies im Folgenden stets an.
+
+
+\subsection{Definition \textmd{(Pol)}}
+
+Hat $Q$ eine Nullstelle der Ordnung $n$, so heißt dies ein \emph{Pol}
+von $R$ der Ordnung $n$.
+
+
+\subsection{Proposition \textmd{(Quotientenregel)}}
+
+Falls $Q\left(z\right)\not=0$ ist, so ist $R\left(z\right)$ komplex
+differenzierbar und es gilt die Quotientenregel:
 \begin{align*}
-R\left(z\right) & =G\left(z\right)+\sum_{j=1}^{^{n}}G_{j}\left(\frac{1}{z-\zeta_{j}}\right)
+R'\left(z\right) & =\frac{P'Q-PQ'}{Q^{2}}
 \end{align*}
-$\leadsto$ in Argumenten $z$, $\frac{1}{z-\zeta_{j}}$
-\end{itemize}
-ENDE: Wiederholung
+
+
+
+\subsubsection*{Beweis}
+
+Man kann genau wie in der reellen Analysis den Limes des Differenzenquotienten
+bilden und erhält das selbe Ergebnis.\qqed
+
+
+\subsection{Bemerkung}
+
+$R$ kann zu einer Abbildung $\mathbb{C}\to\overline{\mathbb{C}}$
+erweitert werden, indem man an den Polstellen $R\left(z\right):=\infty$
+setzt.
+
+Man kann $R$ sogar zu einer Abbildung $\overline{\mathbb{C}}\to\overline{\mathbb{C}}$
+erweitern, indem man setzt:
+\begin{align*}
+R\left(\infty\right) & :=\lim_{z\to\infty}R\left(z\right)=\lim_{z\to\infty}\frac{a_{n}z^{n}}{a_{m}z^{m}}=\begin{cases}
+0 & m>n\\
+\frac{a_{n}}{b_{m}} & m=n\\
+\infty & m<n
+\end{cases}
+\end{align*}
+Dabei ist $n=\deg\left(P\right)$ und $m=\deg\left(Q\right)$.
+
+
+\subsection{Satz \textmd{(Partialbruchzerlegung)}}
+
+Sei ${\displaystyle R\left(z\right)=\frac{P\left(z\right)}{Q\left(z\right)}}$
+und $Q=\left(z-\zeta_{1}\right)^{r_{1}}\ldots\left(z-\zeta_{n}\right)^{r_{n}}$
+mit paarweise verschiedenen Nullstellen $\zeta_{n}$.
+
+Dann ist $R$ darstellbar in der Form
+\begin{align*}
+R\left(z\right) & =G\left(z\right)+\sum_{j=1}^{n}G_{j}\left(\frac{1}{z-\zeta_{j}}\right)
+\end{align*}
+mit Polynomen $G,G_{j}$.
+
+
+\subsubsection*{Beweis}
+
+Die elementare Partialbruchzerlegung (Polynomdivision) ist:
+\begin{align*}
+R\left(z\right) & =G\left(z\right)+\frac{P_{1}\left(z\right)}{\left(z-\zeta_{1}\right)^{r_{1}}}+\ldots+\frac{P_{k}\left(z\right)}{\left(z-\zeta_{n}\right)^{r_{n}}}
+\end{align*}
+Schreibe nun:
+\begin{align*}
+\frac{P_{j}}{\left(z-\zeta_{j}\right)^{r_{j}}} & =\frac{c_{r_{j}}}{\left(z-\zeta_{j}\right)^{r_{j}}}+\frac{c_{r_{j}-1}}{\left(z-\zeta_{j}\right)^{r_{j}-1}}+\ldots+\frac{c_{1}}{z-\zeta_{j}}=:G_{j}\left(\frac{1}{z-\zeta_{j}}\right)
+\end{align*}
+\qqed
+
+%DATE: Di 13.12.2011
 
 Dies führt einen dazu, die Transformationen ${\displaystyle z\mapsto\frac{1}{z-\zeta}}$
-zu betrachten. Etwas allgemeiner:
+etwas allgemeiner zu betrachten:
 
 
-\subsection{Definition}
+\subsection{Definition \textmd{(Möbiustransformation)}}
 
 Eine rationale Funktion
 \begin{align*}
-\zeta\left(z\right) & =\frac{az+b}{cz+d}
+S\left(z\right) & =\frac{az+b}{cz+d}
 \end{align*}
 mit $a,b,c,d\in\mathbb{C}$ und $ad-cb\not=0$ heißt \emph{Möbiustransformation}.
 
 
-\subsubsection*{Bemerkung}
+\subsection{Bemerkung}
 
 Die Bedingung $ad-bc\not=0$ bedeutet gerade, dass die Nullstellen
 von Zähler und Nenner verschieden sind, denn:
 \begin{align*}
-z_{\text{Nenner}} & =-\frac{d}{c}\not=-\frac{b}{a}=z_{\text{Zähler}}
+\zeta_{\text{Nenner}} & =-\frac{d}{c}\not=-\frac{b}{a}=\zeta_{\text{Zähler}}
 \end{align*}
-Somit:
-\begin{align*}
-s & \not\equiv0
-\end{align*}
-
-
-$S$ ist eine Abbildung:
+Somit folgt $S\not=0$. $S$ ist eine Abbildung:
 \begin{align*}
 S:\mathbb{C}\setminus\left\{ -\frac{d}{c}\right\}  & \to\mathbb{C}
 \end{align*}
-Erweitere durch die Vorschrift:
+Erweitere durch die Vorschrift
 \begin{align*}
 S\left(\infty\right) & :=\frac{a}{c} & S\left(-\frac{d}{c}\right) & :=\infty
 \end{align*}
-zu
+zu einer Abbildung:
 \begin{align*}
 S:\overline{\mathbb{C}} & \to\overline{\mathbb{C}}
 \end{align*}
-bijektiv, stetig und hat stetige Inverse, dies nennt man \emph{Homöomorphismus
-der Riemannschen Zahlenkugel}.
+Diese ist bijektiv, stetig und hat eine stetige Inverse, ist also
+ein \emph{Homöomorphismus der Riemannschen Zahlenkugel}.
 
 Betrachte nun \emph{homogene Koordinaten}:
 \begin{align*}
 z & =:\frac{z_{1}}{z_{2}} & w & =:\frac{w_{1}}{w_{2}}
 \end{align*}
-(Beachte: $w_{j},z_{j}\in\mathbb{C}$ sind nicht eindeutig bestimmt,
-da nur der Quotient von Bedeutung ist.)
+Beachte, dass die $w_{j},z_{j}\in\mathbb{C}$ für $j\in\left\{ 1,2\right\} $
+nicht eindeutig bestimmt sind, da nur der Quotient von Bedeutung ist.
 
 Die Möbiustransformation lässt sich dann schreiben als
 \begin{align*}
@@ -5099,19 +5436,23 @@ z_{2}
 
 Die Möbiustransformationen bilden also eine Gruppe unter der Matrixmultiplikation,
 da $S^{-1}$ existiert, weil die Determinante $\det\left(S\right)=ad-cb\not=0$
-nicht verschwindet).
+nicht verschwindet.
 
-Dies ist die sogenannte \emph{Projektive Gruppe}:
+Dies ist die sogenannte \emph{projektive Gruppe}:
 \begin{align*}
 P\left(1,\mathbb{C}\right) & \subseteq\text{Gl}\left(2,\mathbb{C}\right)
 \end{align*}
 
 
-Jede Matrix $\left(\begin{array}{cc}
+Jede Matrix
+\begin{align*}
+\left(\begin{array}{cc}
 a & b\\
 c & d
-\end{array}\right)$ kann als Produkt folgender Faktoren mit $\alpha,h\in\mathbb{C}$
-und $h\not=0$ geschrieben werden:
+\end{array}\right)
+\end{align*}
+kann als Produkt folgender Faktoren mit $\alpha,h\in\mathbb{C}$ und
+$h\not=0$ geschrieben werden:
 \begin{align*}
 \left(\begin{array}{cc}
 1 & \alpha\\
@@ -5126,32 +5467,39 @@ h & 0\\
 \end{align*}
 
 
-Bedeutung:
+Die Bedeutung von $S$ ist:
 \begin{enumerate}
 \item $S\left(z\right)=z+\alpha$ (Parallelverschiebung)
-\item $S\left(z\right)=k\cdot\alpha$ (Rotation falls $\left|k\right|=1$,
-zentrische Streckung falls $k>1$)
-\item $S\left(z\right)=\frac{1}{z}$ (Inversion am Einheitskreis)
+\item $S\left(z\right)=h\cdot z$ (Rotation falls $\left|k\right|=1$, andernfalls
+zusätzlich Streckung)
+\item ${\displaystyle S\left(z\right)=\frac{1}{z}}$ (Inversion am Einheitskreis)
 \end{enumerate}
-Beachte: Diese Abbildungen sind winkeltreu.
+Beachte, dass diese Abbildungen winkeltreu sind, das heißt, dass die
+Transformation einen Winkel (zum Beispiel festgelegt durch drei Punkte)
+nicht ändert.
 
 
 \section[Potenzreihen]{Potenzreihen, der Konvergenzsatz von Abel}
 
 
-\subsubsection*{Erinnerung}
+\subsection{Erinnerung}
 
-Potenzreihe: ${\displaystyle \sum_{n=0}^{\infty}a_{n}z^{n}}$ mit
-$a_{n},z\in\mathbb{C}$
-
-Konvergenzradius:
+Eine \emph{Potenzreihe} in $\mathbb{C}$ ist definiert als
 \begin{align*}
-R & =\frac{1}{\lim\sup_{n\to\infty}\sqrt[n]{\left|a_{n}\right|}}
+{\displaystyle \sum_{n=0}^{\infty}a_{n}z^{n}}
+\end{align*}
+mit $a_{n},z\in\mathbb{C}$.
+
+Der \emph{Konvergenzradius} ist:
+\begin{align*}
+R & =\frac{1}{\lim\sup_{n\to\infty}\sqrt[n]{\abs{a_{n}}}}
 \end{align*}
 
 
 
-\subsubsection*{Satz \textmd{(aus der Analysis I)}}
+\subsection{Satz}
+
+\textcolor{green}{TODO: Rest überarbeiten}
 
 \begin{iiilist}
 
@@ -5175,6 +5523,13 @@ von auf $\Omega\subseteq\mathbb{C}$ definierten Funktionen mit $f_{n}\rightright
 
 Wegen der gleichmäßigen Konvergenz kann man im Innern des Konvergenzradius
 gliedweise differenzieren.
+
+
+\subsubsection*{Beweis}
+
+Siehe Analysis I.
+
+\qqed
 
 
 \subsection{Satz}

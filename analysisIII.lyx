@@ -404,6 +404,13 @@ TODO: Natürliche Zahlen fangen bei 0 an! --> evtl.
  ausbessern, wo nötig.
 \end_layout
 
+\begin_layout Plain Layout
+TODO: Matrizen mit 
+\backslash
+begin{matrix} statt array schreiben.
+ (Wegen zu großem Abstand zu den Klammern!)
+\end_layout
+
 \end_inset
 
 
@@ -16909,6 +16916,20 @@ Also gilt:
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Di 6.12.2011
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 Komplexe Analysis
 \end_layout
@@ -17762,7 +17783,7 @@ Analytische Funktionen, die Cauchy-Riemannschen Differentialgleichungen
 status open
 
 \begin_layout Plain Layout
-Cauchy-Riemann DGLn
+Cauchy-Riemannsche DGLn
 \end_layout
 
 \end_inset
@@ -17781,13 +17802,7 @@ Sei
 \begin_layout Subsection
 Definition 
 \series medium
-(komplex differenzierbar)
-\end_layout
-
-\begin_layout Standard
-
-\color green
-TODO: Rest überarbeiten
+(komplex differenzierbar, holomorph)
 \end_layout
 
 \begin_layout Standard
@@ -17808,13 +17823,13 @@ Eine Funktion
 komplexer Ableitung
 \emph default
  
-\begin_inset Formula $f'$
+\begin_inset Formula $f'\left(z\right)$
 \end_inset
 
 , falls der Limes
 \begin_inset Formula 
 \begin{align*}
-\lim_{z\to z',z'\not=z}\frac{\overbrace{f\left(z'\right)-f\left(z\right)}^{\in\mathbb{C}}}{\underbrace{z'-z}_{\in}} & =f'\left(z\right)\in\mathbb{C}
+\lim_{\Omega\setminus\left\{ z'\right\} \ni z\to z'}\frac{\overbrace{f\left(z'\right)-f\left(z\right)}^{\in\mathbb{C}}}{\underbrace{z'-z}_{\in\mathbb{C}}} & =f'\left(z\right)\in\mathbb{C}
 \end{align*}
 
 \end_inset
@@ -17876,11 +17891,11 @@ abc
 
 \end_inset
 
- 
+ Sei 
 \begin_inset Formula $f\left(z\right)=a_{n}z^{n}+a_{n-1}z^{n-1}+\ldots+a_{0}$
 \end_inset
 
- komplexes Polynom, das heißt 
+ ein komplexes Polynom, das heißt 
 \begin_inset Formula $a_{k}\in\mathbb{C}$
 \end_inset
 
@@ -17929,18 +17944,26 @@ abc
 \begin_inset Formula $f\left(z\right)$
 \end_inset
 
- ist reellwertig (zum Beispiel 
+ ist reellwertig, das heißt 
+\begin_inset Formula $f\left(z\right)\in\mathbb{R}$
+\end_inset
+
+ für alle 
+\begin_inset Formula $z\in\Omega$
+\end_inset
+
+, zum Beispiel 
 \begin_inset Formula $f\left(z\right)=\left|z\right|^{2}$
 \end_inset
 
-) und komplex differenzierbar.
+, und komplex differenzierbar ist.
 \end_layout
 
 \begin_layout Standard
-Das heißt
+Das heißt der Limes
 \begin_inset Formula 
 \begin{align*}
-f'\left(z\right) & =\lim_{z'\to z,z'\not=z}\frac{f\left(z'\right)-f\left(z\right)}{z'-z}
+f'\left(z\right) & =\lim_{\Omega\setminus\left\{ z'\right\} \ni z\to z'}\frac{f\left(z'\right)-f\left(z\right)}{z'-z}
 \end{align*}
 
 \end_inset
@@ -17961,7 +17984,7 @@ existiert.
 Dann ist
 \begin_inset Formula 
 \begin{align*}
-f'\left(z\right) & =\lim_{h\to0,h\not=0}\frac{\overbrace{f\left(z+h\right)}^{\in\mathbb{R}}-\overbrace{f\left(z\right)}^{\in\mathbb{R}}}{\underbrace{h}_{\in\mathbb{R}}}\in\mathbb{R}
+f'\left(z\right) & =\lim_{\mathbb{R}\setminus\left\{ 0\right\} \ni h\to0}\frac{\overbrace{f\left(z+h\right)}^{\in\mathbb{R}}-\overbrace{f\left(z\right)}^{\in\mathbb{R}}}{\underbrace{h}_{\in\mathbb{R}}}\in\mathbb{R}
 \end{align*}
 
 \end_inset
@@ -17982,7 +18005,7 @@ Betrachte nun
  Dann ist
 \begin_inset Formula 
 \begin{align*}
-f'\left(x\right) & =\sr{\lim_{h\to0}}{}{h\not=0}\frac{\overbrace{f\left(z+h\right)}^{\in\mathbb{R}}-\overbrace{f\left(z\right)}^{\in\mathbb{R}}}{\ii\underbrace{h}_{\in\ii\mathbb{R}}}\in\ii\mathbb{R}
+f'\left(x\right) & =\lim_{\mathbb{R}\setminus\left\{ 0\right\} \ni h\to0}\frac{\overbrace{f\left(z+h\right)}^{\in\mathbb{R}}-\overbrace{f\left(z\right)}^{\in\mathbb{R}}}{\underbrace{\ii h}_{\in\ii\mathbb{R}}}\in\ii\mathbb{R}
 \end{align*}
 
 \end_inset
@@ -17991,7 +18014,7 @@ rein imaginär.
 \end_layout
 
 \begin_layout Standard
-Insgesamt folgt 
+Insgesamt folgt also 
 \begin_inset Formula $f'\left(z\right)=0$
 \end_inset
 
@@ -18012,6 +18035,10 @@ end{abclist}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Bemerkung
 \end_layout
 
 \begin_layout Standard
@@ -18073,13 +18100,14 @@ h_{2}
 \end_layout
 
 \begin_layout Standard
+Dabei bedeutet 
 \begin_inset Formula $g\in o\left(h\right)$
 \end_inset
 
- heißt:
+:
 \begin_inset Formula 
 \begin{align*}
-\sr{\lim_{h\to0}}{}{h\not=0}\frac{g\left(h\right)}{\left|\left|h\right|\right|} & =0
+\lim_{\mathbb{R}\setminus\left\{ 0\right\} \ni h\to0}\frac{g\left(h\right)}{\norm h} & =0
 \end{align*}
 
 \end_inset
@@ -18092,7 +18120,7 @@ h_{2}
 \end_inset
 
  und 
-\begin_inset Formula $\left|\left|h\right|\right|=\sqrt{h_{1}^{2}+h_{2}^{2}}$
+\begin_inset Formula $\norm h=\sqrt{h_{1}^{2}+h_{2}^{2}}$
 \end_inset
 
 .
@@ -18103,12 +18131,12 @@ Außerdem ist
 \begin_inset Formula $A\in L\left(\mathbb{R}^{2}\right)$
 \end_inset
 
- die Jacobi-Matrix.
+ die Jacobi-Matrix:
 \begin_inset Formula 
 \begin{align*}
 A & =\left(\begin{array}{cc}
-\frac{\partial u}{\partial x} & \frac{\partial u}{\partial y}\\
-\frac{\partial v}{\partial x} & \frac{\partial v}{\partial y}
+\partial_{1}u & \partial_{2}u\\
+\partial_{1}v & \partial_{2}v
 \end{array}\right)
 \end{align*}
 
@@ -18137,14 +18165,14 @@ Satz
 \begin_inset Formula $\left(x,y\right)$
 \end_inset
 
- reell differenzierbar ist und die sogennante 
+ reell differenzierbar ist und die sogenannten 
 \emph on
 Cauchy-Riemannschen Differentialgleichungen
 \emph default
  erfüllt:
 \begin_inset Formula 
 \begin{align*}
-\frac{\partial u}{\partial x} & =\frac{\partial v}{\partial y} & \frac{\partial u}{\partial y} & =-\frac{\partial v}{\partial x}
+\partial_{1}u & =\partial_{2}v & \partial_{2}u & =-\partial_{1}v
 \end{align*}
 
 \end_inset
@@ -18152,8 +18180,8 @@ Cauchy-Riemannschen Differentialgleichungen
 Günstige Notation:
 \begin_inset Formula 
 \begin{align*}
-\frac{\partial f}{\partial x} & :=\frac{\partial u}{\partial x}+\ii\frac{\partial v}{\partial x}\\
-\frac{\partial f}{\partial y} & :=\frac{\partial v}{\partial x}+\ii\frac{\partial v}{\partial y}
+\partial_{1}f & :=\partial_{1}u+\ii\partial_{1}v\\
+\partial_{2}f & :=\partial_{2}u+\ii\partial_{2}v
 \end{align*}
 
 \end_inset
@@ -18162,7 +18190,7 @@ Dann kann man die Cauchy-Riemannschen Differentialgleichungen in folgender
  Form schreiben:
 \begin_inset Formula 
 \begin{align*}
-\frac{\partial f}{\partial x} & =-\ii\frac{\partial f}{\partial y}
+\partial_{1}f & =-\ii\partial_{2}f
 \end{align*}
 
 \end_inset
@@ -18170,7 +18198,7 @@ Dann kann man die Cauchy-Riemannschen Differentialgleichungen in folgender
 Realteil:
 \begin_inset Formula 
 \begin{align*}
-\frac{\partial u}{\partial x} & =\frac{\partial v}{\partial y}
+\partial_{1}u & =\partial_{2}v
 \end{align*}
 
 \end_inset
@@ -18178,7 +18206,7 @@ Realteil:
 Imaginärteil:
 \begin_inset Formula 
 \begin{align*}
-\frac{\partial v}{\partial x} & =-\frac{\partial u}{\partial y}
+\partial_{1}v & =-\partial_{2}u
 \end{align*}
 
 \end_inset
@@ -18195,19 +18223,23 @@ Die Bedingung von komplexer Differenzierbarkeit kann man auch mit einer
  „Approximationsformel“ schreiben:
 \begin_inset Formula 
 \begin{align*}
-f\left(z+h\right) & =f\left(z\right)+f'\left(z\right)h+o\left(h\right)
+f\left(z+h\right) & =f\left(z\right)+f'\left(z\right)h+E\left(h\right)
 \end{align*}
 
 \end_inset
 
-
+Dabei ist 
 \begin_inset Formula $h=h_{1}+\ii h_{2}$
 \end_inset
 
- mit:
+ und 
+\begin_inset Formula $E\left(h\right)\in o\left(h\right)$
+\end_inset
+
+, also:
 \begin_inset Formula 
 \begin{align*}
-\sr{\lim_{h\to0}}{}{h\not=0}\frac{o\left(h\right)}{\left|h\right|} & =0
+\lim_{\mathbb{R}\setminus\left\{ 0\right\} \ni h\to0}\frac{E\left(h\right)}{\left|h\right|} & =0
 \end{align*}
 
 \end_inset
@@ -18215,7 +18247,7 @@ f\left(z+h\right) & =f\left(z\right)+f'\left(z\right)h+o\left(h\right)
 Dies ist äquivalent zu:
 \begin_inset Formula 
 \begin{align*}
-\frac{f\left(z+h\right)-f\left(z\right)}{h} & -f'\left(z\right)=\frac{o\left(h\right)}{h}\stackrel{h\to0}{\longrightarrow}0
+\frac{f\left(z+h\right)-f\left(z\right)}{h} & -f'\left(z\right)=\frac{E\left(h\right)}{h}\xrightarrow{h\to0}0
 \end{align*}
 
 \end_inset
@@ -18225,7 +18257,24 @@ Diese Approximationsformel ist also tatsächlich äquivalent zur Existenz
 \end_layout
 
 \begin_layout Standard
-Schreibe nun den Real- und Imaginärteil aus.
+Schreibe nun Real- und Imaginärteil aus:
+\begin_inset Formula 
+\begin{align*}
+\text{Re}\left(f'\left(z\right)\cdot h\right) & =\text{Re}\left(f'\left(z\right)\right)\cdot\text{Re}\left(h\right)-\text{Im}\left(f'\right)\cdot\text{Im}\left(h\right)\\
+\text{Im}\left(f'\left(z\right)\cdot h\right) & =\text{Re}\left(f'\left(z\right)\right)\cdot\text{Im}\left(h\right)+\text{Im}\left(f'\right)\cdot\text{Re}\left(h\right)
+\end{align*}
+
+\end_inset
+
+Mit 
+\begin_inset Formula $h_{1}=\text{Re}\left(h\right)$
+\end_inset
+
+ und 
+\begin_inset Formula $h_{2}=\text{Im}\left(h\right)$
+\end_inset
+
+ folgt:
 \begin_inset Formula 
 \begin{align*}
 \left(\begin{array}{c}
@@ -18245,23 +18294,6 @@ h_{2}
 
 \end_inset
 
-
-\begin_inset Formula 
-\begin{align*}
-\text{Re}\left(f'\left(z\right)\cdot h\right) & =\text{Re}\left(f'\left(z\right)\right)\cdot\text{Re}\left(h\right)-\text{Im}\left(f'\right)\cdot\text{Im}\left(h\right)\\
-\text{Im}\left(f'\left(z\right)\cdot h\right) & =\text{Re}\left(f'\left(z\right)\right)\cdot\text{Im}\left(h\right)+\text{Im}\left(f'\right)\cdot\text{Re}\left(h\right)
-\end{align*}
-
-\end_inset
-
-
-\begin_inset Formula $h_{1}=\text{Re}\left(h\right),h_{2}=\text{Im}\left(h\right)$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Hierin sieht man folgendes:
 \end_layout
 
@@ -18270,11 +18302,15 @@ Ist
 \begin_inset Formula $f$
 \end_inset
 
-komplex differenzierbar, so auch reell differenzierbar und:
+ komplex differenzierbar, so ist 
+\begin_inset Formula $f$
+\end_inset
+
+ auch reell differenzierbar und es gilt:
 \begin_inset Formula 
 \begin{align*}
-\text{Re}\left(f'\left(z\right)\right) & =\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y}\\
-\text{Im}\left(f'\left(z\right)\right) & =-\frac{\partial u}{\partial y}=\frac{\partial v}{\partial x}
+\text{Re}\left(f'\left(z\right)\right) & =\partial_{1}u=\partial_{2}v\\
+\text{Im}\left(f'\left(z\right)\right) & =-\partial_{2}u=\partial_{1}v
 \end{align*}
 
 \end_inset
@@ -18283,28 +18319,28 @@ Also sind die Cauchy-Riemannschen Differentialgleichungen erfüllt.
 \end_layout
 
 \begin_layout Enumerate
-Ist 
+Sei 
 \begin_inset Formula $f$
 \end_inset
 
  reell differenzierbar und die Cauchy-Riemannschen Differentialgleichungen
- sind erfüllt.
+ seien erfüllt.
 \begin_inset Newline newline
 \end_inset
 
 Dann erfüllt 
-\begin_inset Formula ${\displaystyle \alpha:=\frac{\partial u}{\partial x}+\ii\frac{\partial v}{\partial x}\in\mathbb{C}}$
+\begin_inset Formula ${\displaystyle \alpha:=\partial_{1}u+\ii\partial_{1}v\in\mathbb{C}}$
 \end_inset
 
  die Approximationsformel:
 \begin_inset Formula 
 \begin{align*}
-f\left(z+h\right) & =f\left(z\right)+\alpha h+o\left(h\right)
+f\left(z+h\right) & =f\left(z\right)+\alpha\cdot h+o\left(h\right)
 \end{align*}
 
 \end_inset
 
-Denn:
+Denn es gilt:
 \begin_inset Formula 
 \begin{align*}
 \left(\begin{array}{c}
@@ -18340,16 +18376,19 @@ qqed
 
 \end_layout
 
-\begin_layout Subsection*
-Beispiel und Definition
+\begin_layout Subsection
+Beispiel und Definition 
+\series medium
+(Laplace-Operator, harmonisch)
 \end_layout
 
 \begin_layout Standard
-Cauchy-Riemannsche Differentialgleichungen:
+Die Cauchy-Riemannsche Differentialgleichungen lauten:
 \begin_inset Formula 
-\begin{align*}
-\frac{\partial u}{\partial x} & =\frac{\partial v}{\partial y}\quad\left(1\right) & \frac{\partial u}{\partial y} & =\frac{\partial v}{\partial x}\quad\left(2\right)
-\end{align*}
+\begin{align}
+\partial_{1}u & =\partial_{2}v\label{eq:CR1}\\
+\partial_{2}u & =-\partial_{1}v\label{eq:CR2}
+\end{align}
 
 \end_inset
 
@@ -18365,28 +18404,40 @@ Nehme an, dass
  Dann folgt:
 \begin_inset Formula 
 \begin{align*}
-\frac{\partial^{2}u}{\partial x^{2}} & \stackrel{\left(1\right)}{=}\frac{\partial^{2}v}{\partial x\partial y}=\frac{\partial^{2}v}{\partial y\partial x}\stackrel{\left(2\right)}{=}-\frac{\partial}{\partial y}\left(\frac{\partial u}{\partial y}\right)=-\frac{\partial^{2}u}{\partial y^{2}}
+\partial_{1}^{2}u & \stackrel{\ref{eq:CR1}}{=}\partial_{12}^{2}v\stackrel{\text{S.v.Schwarz}}{=}\partial_{21}^{2}v\stackrel{\ref{eq:CR2}}{=}-\partial_{2}\left(\partial_{2}u\right)=-\partial_{2}^{2}u
 \end{align*}
 
 \end_inset
 
-Laplace-Operator:
+Mit dem 
+\emph on
+Laplace-Operator
+\emph default
+
 \begin_inset Formula 
 \begin{align*}
-\Delta & :=\frac{\partial^{2}}{\partial x^{2}}+\frac{\partial^{2}}{\partial y^{2}}
+\Delta & :=\partial_{1}^{2}+\partial_{2}^{2}
 \end{align*}
 
 \end_inset
 
-Laplace-Gleichung:
+sieht man, dass 
+\begin_inset Formula $u$
+\end_inset
+
+ die 
+\emph on
+Laplace-Gleichung
+\emph default
+
 \begin_inset Formula 
 \begin{align*}
-\Delta u & =\frac{\partial^{2}u}{\partial x^{2}}+\frac{\partial^{2}u}{\partial y^{2}}\stackrel{!}{=}0
+\Delta u & =\partial_{1}^{2}u+\partial_{2}^{2}u\stackrel{!}{=}0
 \end{align*}
 
 \end_inset
 
-
+erfüllt.
 \end_layout
 
 \begin_layout Standard
@@ -18400,7 +18451,7 @@ harmonisch
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\frac{\partial^{2}v}{\partial x^{2}} & \stackrel{\left(2\right)}{=}\frac{\partial^{2}u}{\partial x\partial y}=-\frac{\partial^{2}u}{\partial y\partial x}\stackrel{\left(1\right)}{=}-\frac{\partial^{2}v}{\partial y^{2}}
+\partial_{1}^{2}v & \stackrel{\ref{eq:CR2}}{=}\partial_{12}^{2}u\stackrel{\text{S.v.Schwarz}}{=}\partial_{21}^{2}u\stackrel{\ref{eq:CR1}}{=}-\partial_{2}\left(\partial_{2}v\right)=-\partial_{2}^{2}v
 \end{align*}
 
 \end_inset
@@ -18433,16 +18484,51 @@ konjugierte harmonische Funktionen
 \end_layout
 
 \begin_layout Standard
-Hilfreich: 
-\begin_inset Formula $z=x+\ii y$
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Fr 9.12.2011
+\end_layout
+
 \end_inset
 
- und 
-\begin_inset Formula $\overline{z}=x-\ii y$
+
+\end_layout
+
+\begin_layout Subsection
+Bemerkung
+\end_layout
+
+\begin_layout Standard
+Gegeben sei die Funktion:
+\begin_inset Formula 
+\begin{align*}
+f:\Omega & \to\mathbb{C}\\
+\left(x,y\right) & \mapsto f\left(x,y\right)
+\end{align*}
+
 \end_inset
 
-.
- Fasse 
+Die Frage ist, wann 
+\begin_inset Formula $f$
+\end_inset
+
+ holomorph ist.
+\end_layout
+
+\begin_layout Standard
+Hilfreich ist, wenn man in der Darstellung
+\begin_inset Formula 
+\begin{align*}
+z & =x+\ii y\\
+\overline{z} & =x-\ii y
+\end{align*}
+
+\end_inset
+
+nun 
 \begin_inset Formula $x$
 \end_inset
 
@@ -18450,8 +18536,37 @@ Hilfreich:
 \begin_inset Formula $y$
 \end_inset
 
- als komplexe Zahlen auf.
- Dann sind 
+ als komplexe Zahlen auffasst.
+ Auflösen liefert:
+\begin_inset Formula 
+\begin{align*}
+x & =\frac{1}{2}\left(z+\overline{z}\right) & y & =\frac{1}{2\ii}\left(z-\overline{z}\right)
+\end{align*}
+
+\end_inset
+
+Setze 
+\begin_inset Formula $x=x\left(z,\overline{z}\right)$
+\end_inset
+
+ und 
+\begin_inset Formula $y=y\left(z,\overline{z}\right)$
+\end_inset
+
+ in 
+\begin_inset Formula $f\left(x,y\right)$
+\end_inset
+
+ ein:
+\begin_inset Formula 
+\begin{align*}
+\tilde{f}:\Omega\subseteq\mathbb{C} & \to\mathbb{C}\\
+\left(z,\overline{z}\right) & \mapsto\tilde{f}\left(z,\overline{z}\right)
+\end{align*}
+
+\end_inset
+
+Fasse 
 \begin_inset Formula $z$
 \end_inset
 
@@ -18459,27 +18574,106 @@ Hilfreich:
 \begin_inset Formula $\overline{z}$
 \end_inset
 
- zwei unabhängige komplexe Variablen.
+ 
+\emph on
+formal
+\emph default
+ als zwei unabhängige Variablen auf, womit folgt:
 \begin_inset Formula 
 \begin{align*}
-f:\Omega\subseteq\mathbb{C} & \to\mathbb{C},f\left(x,y\right)=f\left(z,\overline{z}\right)
+\partial_{1}\tilde{f} & =\partial_{1}x\cdot\partial_{1}f+\partial_{1}y\cdot\partial_{2}f=\frac{1}{2}\left(\partial_{1}f-\ii\partial_{2}f\right)\\
+\partial_{2}\tilde{f} & =\partial_{2}\cdot\partial_{1}f+\partial_{2}y\cdot\partial_{2}f=\frac{1}{2}\left(\partial_{1}f+\ii\partial_{2}f\right)
+\end{align*}
+
+\end_inset
+
+Also ist genau dann 
+\begin_inset Formula $\partial_{2}\tilde{f}=0$
+\end_inset
+
+, wenn die Cauchy-Riemannschen Differentialgleichungen erfüllt sind.
+ In diesem Fall gilt:
+\begin_inset Formula 
+\begin{align*}
+\partial_{1}\tilde{f} & =\partial_{1}f
 \end{align*}
 
 \end_inset
 
 
-\begin_inset Formula $z=x+\ii y$
+\end_layout
+
+\begin_layout Subsection
+Beispiel
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{abclist}
+\end_layout
+
 \end_inset
 
- also:
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+abc
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $f\left(x,y\right)=x^{2}+2\ii xy-y^{2}=\left(x+\ii y\right)^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Überprüfe die Cauchy-Riemannschen Differentialgleichungen:
 \begin_inset Formula 
 \begin{align*}
-\frac{\partial}{\partial z} & =\frac{\partial x}{\partial z}\frac{\partial}{\partial x}+\frac{\partial y}{\partial z}\frac{\partial}{\partial y}
+\partial_{1}f\left(x,y\right) & =2x+2\ii y\\
+\partial_{2}f\left(x,y\right) & =2\ii x-2y
 \end{align*}
 
 \end_inset
 
+Also gilt:
+\begin_inset Formula 
+\begin{align*}
+\partial_{1}f & =-\ii\partial_{2}f
+\end{align*}
 
+\end_inset
+
+Daher sind die Cauchy-Riemannschen Differentialgleichungen erfüllt und 
+\begin_inset Formula $f$
+\end_inset
+
+ ist holomorph auf 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Rechenverfahren:
 \begin_inset Formula 
 \begin{align*}
 x & =\frac{1}{2}\left(z+\overline{z}\right) & y & =\frac{1}{2\ii}\left(z-\overline{z}\right)
@@ -18488,10 +18682,1051 @@ x & =\frac{1}{2}\left(z+\overline{z}\right) & y & =\frac{1}{2\ii}\left(z-\overli
 \end_inset
 
 
+\begin_inset Formula 
+\begin{align*}
+\tilde{f}\left(z,\overline{z}\right) & =z^{2}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $\tilde{f}$
+\end_inset
+
+ hängt also nur von 
+\begin_inset Formula $z$
+\end_inset
+
+ und nicht von 
+\begin_inset Formula $\overline{z}$
+\end_inset
+
+ ab.
+ Deshalb ist 
+\begin_inset Formula $f$
+\end_inset
+
+ holomorph.
 \end_layout
 
 \begin_layout Standard
-TODO: Rest
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+abc
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $f\left(x,y\right)=x^{2}+2\ii xy$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\partial_{1}f & =2x+2\ii y & \partial_{2}f & =2\ii x
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\partial_{1}f & =-\ii\partial_{2}f\\
+\Leftrightarrow\quad2x+2\ii y & =2x\\
+\Leftrightarrow\qquad\qquad y & =0
+\end{align*}
+
+\end_inset
+
+Also ist 
+\begin_inset Formula $f$
+\end_inset
+
+ 
+\emph on
+nicht
+\emph default
+ auf 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+ holomorph, denn 
+\begin_inset Formula $f$
+\end_inset
+
+ ist genau dann an der Stelle 
+\begin_inset Formula $z$
+\end_inset
+
+ komplex differenzierbar, wenn 
+\begin_inset Formula $\text{Im}\left(z\right)=0$
+\end_inset
+
+ gilt.
+\end_layout
+
+\begin_layout Standard
+Rechenverfahren:
+\begin_inset Formula 
+\begin{align*}
+\tilde{f}\left(z,\overline{z}\right) & =\frac{1}{4}\left(z+\overline{z}\right)^{2}+2\ii\cdot\frac{1}{2}\left(z+\overline{z}\right)\cdot\frac{1}{2\ii}\left(z-\overline{z}\right)=\\
+ & =\frac{1}{4}z^{2}+\frac{1}{2}z\overline{z}+\frac{1}{4}\overline{z}^{2}+\frac{1}{2}z^{2}-\frac{1}{2}\overline{z}^{2}=\frac{3}{4}z^{2}+\frac{1}{2}z\overline{z}-\frac{1}{4}\overline{z}^{2}
+\end{align*}
+
+\end_inset
+
+Also ist 
+\begin_inset Formula $f$
+\end_inset
+
+ nicht holomorph, da 
+\begin_inset Formula $\tilde{f}$
+\end_inset
+
+ von 
+\begin_inset Formula $\overline{z}$
+\end_inset
+
+ abhängt.
+\begin_inset Formula 
+\begin{align*}
+\partial_{2}\tilde{f} & =\frac{1}{2}z-\frac{1}{2}\overline{z}=\frac{1}{2}\left(z-\overline{z}\right)
+\end{align*}
+
+\end_inset
+
+Das heißt 
+\begin_inset Formula $\tilde{f}=0$
+\end_inset
+
+ ist äquivalent zu 
+\begin_inset Formula $\text{Im}\left(z\right)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{abclist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Polynome
+\end_layout
+
+\begin_layout Standard
+Ein komplexes Polynom vom Grade 
+\begin_inset Formula $n\in\mathbb{N}_{\ge0}$
+\end_inset
+
+ ist eine Funktion der Form
+\begin_inset Formula 
+\begin{align*}
+P:\mathbb{C} & \to\mathbb{C}\\
+z & \mapsto a_{0}+a_{1}z+\ldots+a_{n}z^{n}
+\end{align*}
+
+\end_inset
+
+mit Koeffizienten 
+\begin_inset Formula $a_{k}\in\mathbb{C}$
+\end_inset
+
+ und 
+\begin_inset Formula $a_{n}\not=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P\left(z\right)$
+\end_inset
+
+ ist holomorph mit:
+\begin_inset Formula 
+\begin{align*}
+P'\left(z\right) & =a_{1}+2a_{2}z+\ldots+na_{n}z^{n-1}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem 
+\series medium
+(Fundamentalsatz der Algebra, Gauß)
+\end_layout
+
+\begin_layout Standard
+Jedes nicht konstante Polynom besitzt wenigstens eine Nullstelle.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ Zeige, dass die Funktion 
+\begin_inset Formula $\varphi\left(z\right):=\abs{P\left(z\right)}$
+\end_inset
+
+ ihr Infimum annimmt, das heißt, dass es ein 
+\begin_inset Formula $\zeta\in\mathbb{C}$
+\end_inset
+
+ mit 
+\begin_inset Formula $\varphi\left(z\right)\ge\varphi\left(\zeta\right)$
+\end_inset
+
+ für alle 
+\begin_inset Formula $z\in\mathbb{C}$
+\end_inset
+
+ gibt.
+ 
+\begin_inset Formula 
+\begin{align*}
+\varphi\left(z\right) & \ge\abs{a_{n}}\cdot\abs z^{n}-\abs{\sum_{k=0}^{n-1}a_{k}z^{k}}\ge\underbrace{\abs z^{n}}_{\to\infty}\cdot\left(\underbrace{\abs{a_{n}}}_{\not=0}-\sum_{k=0}^{n-1}\abs{a_{k}}\cdot\underbrace{\abs z^{k-n}}_{\to0\text{ für }\abs z\to\infty}\right)\xrightarrow{\abs z\to\infty}\infty
+\end{align*}
+
+\end_inset
+
+Zur Bildung des Infimums genügt es, 
+\begin_inset Formula $z\in B_{R}\left(0\right)$
+\end_inset
+
+ für ein „großes“ 
+\begin_inset Formula $R\in\mathbb{R}$
+\end_inset
+
+ zu betrachten.
+\end_layout
+
+\begin_layout Standard
+Da 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ stetig ist, nimmt sie auf der kompakten Menge 
+\begin_inset Formula $\overline{B_{R}\left(0\right)}$
+\end_inset
+
+ ihr Infimum an der Stelle 
+\begin_inset Formula $\zeta$
+\end_inset
+
+ an.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ Nehme an, dass 
+\begin_inset Formula $\varphi\left(\zeta\right)\not=0$
+\end_inset
+
+ ist, denn ansonsten sind wir fertig.
+\end_layout
+
+\begin_layout Standard
+Nehme außerdem ohne Einschränkung an, dass 
+\begin_inset Formula $\zeta=0$
+\end_inset
+
+ und 
+\begin_inset Formula $P\left(\zeta\right)=1$
+\end_inset
+
+ ist, denn man kann zu
+\begin_inset Formula 
+\begin{align*}
+\frac{P\left(z+\zeta\right)}{P\left(\zeta\right)}
+\end{align*}
+
+\end_inset
+
+übergehen.
+ Also ist:
+\begin_inset Formula 
+\begin{align*}
+P\left(z\right) & =1+\sum_{m=1}^{n}a_{k}z^{k}
+\end{align*}
+
+\end_inset
+
+Wähle dabei 
+\begin_inset Formula $m\in\mathbb{N}$
+\end_inset
+
+ mit 
+\begin_inset Formula $1\le m\le n$
+\end_inset
+
+ so, dass 
+\begin_inset Formula $a_{m}\not=0$
+\end_inset
+
+ ist.
+\end_layout
+
+\begin_layout Standard
+Polarkoordinaten: 
+\begin_inset Formula $r\in\mathbb{R}_{>0}$
+\end_inset
+
+ und 
+\begin_inset Formula $\varphi\in[0,2\pi)$
+\end_inset
+
+ mit:
+\begin_inset Formula 
+\begin{align*}
+z & =r\cdot e^{\ii\varphi}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\abs{P\left(z\right)} & =1+a_{m}r^{m}e^{\ii m\varphi}+\sum_{k=m+1}^{n}a_{k}r^{k}e^{\ii k\varphi}
+\end{align*}
+
+\end_inset
+
+Wähle 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ so, dass 
+\begin_inset Formula $a_{m}r^{m}e^{\ii m\varphi}=-\abs{a_{m}}r^{m}$
+\end_inset
+
+ ist.
+ Wählt man nun 
+\begin_inset Formula $r$
+\end_inset
+
+ klein genug, zum Beispiel
+\begin_inset Formula 
+\begin{align*}
+r & =\min\left(1,\frac{\abs{a_{m}}}{2\cdot\sum_{k=m+1}^{n}\abs{a_{k}}}\right)
+\end{align*}
+
+\end_inset
+
+so gilt:
+\begin_inset Formula 
+\begin{align*}
+\abs{P\left(z\right)} & \le1-\abs{a_{m}}r^{m}+\sum_{k=m+1}^{n}\abs{a_{k}}r^{k}<1
+\end{align*}
+
+\end_inset
+
+Man sieht, dass 
+\begin_inset Formula $\abs{P\left(z\right)}<\abs{P\left(0\right)}$
+\end_inset
+
+ ist, im Widerspruch dazu, dass 
+\begin_inset Formula $\abs{P\left(z\right)}$
+\end_inset
+
+ bei 
+\begin_inset Formula $z=0$
+\end_inset
+
+ sein Infimum annimmt.
+\end_layout
+
+\begin_layout Standard
+Also ist 
+\begin_inset Formula $\varphi\left(0\right)=0$
+\end_inset
+
+ und somit haben wir eine Nullstelle von 
+\begin_inset Formula $P$
+\end_inset
+
+ gefunden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Korollar
+\end_layout
+
+\begin_layout Standard
+Jedes Polynom 
+\begin_inset Formula $P$
+\end_inset
+
+ zerfällt über 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+ in Linearfaktoren, das heißt es gibt 
+\begin_inset Formula $\zeta_{n}\in\mathbb{C}$
+\end_inset
+
+ für 
+\begin_inset Formula $n=\deg\left(P\right)$
+\end_inset
+
+ mit:
+\begin_inset Formula 
+\begin{align*}
+P\left(z\right) & =a_{n}\cdot\prod_{k=1}^{n}\left(z-\zeta_{k}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $\zeta\in\mathbb{C}$
+\end_inset
+
+ eine Nullstelle, dann kann man eine Polynomdivision durchführen und erhält
+\begin_inset Formula 
+\begin{align*}
+P\left(z\right) & =\left(z-\zeta\right)P_{1}\left(z\right)
+\end{align*}
+
+\end_inset
+
+mit 
+\begin_inset Formula $\deg\left(P_{1}\right)=\deg\left(P\right)-1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Induktiv kann man den Grad bis auf 0 reduzieren.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(Vielfachheit)
+\end_layout
+
+\begin_layout Standard
+Eine Nullstelle kann in einem Polynom mehrfach auftreten.
+\end_layout
+
+\begin_layout Standard
+Jedes nicht konstante Polynom 
+\begin_inset Formula $P$
+\end_inset
+
+ hat 
+\begin_inset Formula $N\in\mathbb{N}$
+\end_inset
+
+ verschiedene Nullstellen und kann mit 
+\begin_inset Formula $A,\zeta_{k}\in\mathbb{C}$
+\end_inset
+
+ und 
+\begin_inset Formula $r_{k}\in\mathbb{N}$
+\end_inset
+
+ für 
+\begin_inset Formula $k\in\left\{ 1,\ldots,N\right\} $
+\end_inset
+
+ schreiben als:
+\begin_inset Formula 
+\begin{align*}
+P\left(z\right) & =A\cdot\prod_{k=1}\left(z-\zeta_{k}\right)^{r_{k}}
+\end{align*}
+
+\end_inset
+
+Die Zahl 
+\begin_inset Formula $r_{k}$
+\end_inset
+
+ heißt die 
+\emph on
+Vielfachheit
+\emph default
+ oder 
+\emph on
+Ordnung
+\emph default
+ der Nullstelle 
+\begin_inset Formula $\zeta_{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Theorem 
+\series medium
+(Lucas)
+\end_layout
+
+\begin_layout Standard
+Liegen alle Nullstellen eines Polynoms 
+\begin_inset Formula $P$
+\end_inset
+
+ in einer Halbebene der komplexen Ebene, dann liegen die Nullstellen von
+ 
+\begin_inset Formula $P'$
+\end_inset
+
+ auch in dieser Halbebene.
+\end_layout
+
+\begin_layout Standard
+Wie kann man eine Halbebene charakterisieren?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\text{Im}\left(z\right) & >0 & \text{obere} & \text{ Halbebene}\\
+\text{Im}\left(z\right) & <0 & \text{untere} & \text{ Halbebene}\\
+\text{Re}\left(z\right) & >0 & \text{rechte} & \text{ Halbebene}\\
+\text{Re}\left(z\right) & <0 & \text{linke} & \text{ Halbebene}
+\end{align*}
+
+\end_inset
+
+Allgemeiner kann man eine Halbebene mit 
+\begin_inset Formula $a\in\mathbb{C}$
+\end_inset
+
+ und 
+\begin_inset Formula $b\in\mathbb{C}\setminus\left\{ 0\right\} $
+\end_inset
+
+ wie folgt charakterisieren:
+\begin_inset Formula 
+\begin{align*}
+\text{Im}\left(\frac{z-a}{b}\right) & <0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Abbildung Halbebene mit Nullstellen einfügen
+\end_layout
+
+\begin_layout Standard
+Die Produktregel liefert:
+\begin_inset Formula 
+\begin{align*}
+P\left(z\right) & =a_{n}\left(z-\zeta_{1}\right)\ldots\left(z-\zeta_{n}\right)\\
+\frac{P'\left(z\right)}{P\left(z\right)} & =\frac{1}{z-\zeta_{1}}+\frac{1}{z-\zeta_{2}}+\ldots+\frac{1}{z-\zeta_{n}}
+\end{align*}
+
+\end_inset
+
+Nehme an, dass die 
+\begin_inset Formula $\zeta_{k}$
+\end_inset
+
+ alle in der Halbebene 
+\begin_inset Formula $H$
+\end_inset
+
+ liegen, die durch die Ungleichung
+\begin_inset Formula 
+\begin{align*}
+\text{Im}\left(\frac{z-a}{b}\right) & <0
+\end{align*}
+
+\end_inset
+
+charakterisiert ist.
+\end_layout
+
+\begin_layout Standard
+Nehme an, dass 
+\begin_inset Formula $z\not\in H$
+\end_inset
+
+ liegt, womit folgt:
+\begin_inset Formula 
+\begin{align*}
+\text{Im}\left(\frac{z-\zeta_{k}}{b}\right) & =\underbrace{\text{Im}\left(\frac{z-a}{b}\right)}_{\ge0}+\underbrace{\text{Im}\left(\frac{a-\zeta_{k}}{b}\right)}_{>0}>0
+\end{align*}
+
+\end_inset
+
+Sei 
+\begin_inset Formula $\xi\in\mathbb{C}$
+\end_inset
+
+, so gilt:
+\begin_inset Formula 
+\begin{align*}
+\text{Im}\left(\frac{1}{\xi}\right)=\text{Im}\left(\frac{\overline{\xi}}{\abs{\xi}^{2}}\right) & =-\frac{\text{Im}\left(\xi\right)}{\abs{\xi}^{2}}
+\end{align*}
+
+\end_inset
+
+Beim Bilden des Reziproken ändert sich also das Vorzeichen des Imaginärteils.
+ Also gilt für alle 
+\begin_inset Formula $k\in\left\{ 1,\ldots,n\right\} $
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\text{Im}\left(\frac{b}{z-\zeta_{k}}\right) & <0
+\end{align*}
+
+\end_inset
+
+Es folgt:
+\begin_inset Formula 
+\begin{align*}
+\text{Im}\left(b\cdot\frac{P'\left(z\right)}{P\left(z\right)}\right) & =\text{Im}\left(\frac{b}{z-\zeta_{1}}+\ldots+\frac{b}{z-\zeta_{n}}\right)<0
+\end{align*}
+
+\end_inset
+
+Also ist 
+\begin_inset Formula ${\displaystyle \frac{P'\left(z\right)}{P\left(z\right)}\not=0}$
+\end_inset
+
+ für alle 
+\begin_inset Formula $z\not\in H$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Daher hat 
+\begin_inset Formula $P'$
+\end_inset
+
+ im Komplement von 
+\begin_inset Formula $H$
+\end_inset
+
+ keine Nullstelle.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Rationale Funktionen, Möbiustransformation
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+Rationale Funktionen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(rationale Funktion)
+\end_layout
+
+\begin_layout Standard
+Seien 
+\begin_inset Formula $P$
+\end_inset
+
+ und 
+\begin_inset Formula $Q\not=0$
+\end_inset
+
+ komplexe Polynome.
+ Dann heißt die Funktion
+\begin_inset Formula 
+\begin{align*}
+R\left(z\right) & :=\frac{P\left(z\right)}{Q\left(z\right)}
+\end{align*}
+
+\end_inset
+
+eine 
+\emph on
+rationale Funktion
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Betrachte im Folgenden eine solche rationale Funktion.
+\end_layout
+
+\begin_layout Subsection
+Bemerkung
+\end_layout
+
+\begin_layout Standard
+Man kann Zähler und Nenner in Linearfaktoren zerlegen.
+\end_layout
+
+\begin_layout Standard
+Wenn der gleiche Linearfaktor in Zähler und Nenner vorkommt, kürzen wir
+ immer.
+ So kann man erreichen, dass 
+\begin_inset Formula $P\left(z\right)$
+\end_inset
+
+ und 
+\begin_inset Formula $Q\left(z\right)$
+\end_inset
+
+ keine gemeinsame Nullstelle haben.
+\end_layout
+
+\begin_layout Standard
+Nehme dies im Folgenden stets an.
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(Pol)
+\end_layout
+
+\begin_layout Standard
+Hat 
+\begin_inset Formula $Q$
+\end_inset
+
+ eine Nullstelle der Ordnung 
+\begin_inset Formula $n$
+\end_inset
+
+, so heißt dies ein 
+\emph on
+Pol
+\emph default
+ von 
+\begin_inset Formula $R$
+\end_inset
+
+ der Ordnung 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Proposition 
+\series medium
+(Quotientenregel)
+\end_layout
+
+\begin_layout Standard
+Falls 
+\begin_inset Formula $Q\left(z\right)\not=0$
+\end_inset
+
+ ist, so ist 
+\begin_inset Formula $R\left(z\right)$
+\end_inset
+
+ komplex differenzierbar und es gilt die Quotientenregel:
+\begin_inset Formula 
+\begin{align*}
+R'\left(z\right) & =\frac{P'Q-PQ'}{Q^{2}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Man kann genau wie in der reellen Analysis den Limes des Differenzenquotienten
+ bilden und erhält das selbe Ergebnis.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Bemerkung
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $R$
+\end_inset
+
+ kann zu einer Abbildung 
+\begin_inset Formula $\mathbb{C}\to\overline{\mathbb{C}}$
+\end_inset
+
+ erweitert werden, indem man an den Polstellen 
+\begin_inset Formula $R\left(z\right):=\infty$
+\end_inset
+
+ setzt.
+\end_layout
+
+\begin_layout Standard
+Man kann 
+\begin_inset Formula $R$
+\end_inset
+
+ sogar zu einer Abbildung 
+\begin_inset Formula $\overline{\mathbb{C}}\to\overline{\mathbb{C}}$
+\end_inset
+
+ erweitern, indem man setzt:
+\begin_inset Formula 
+\begin{align*}
+R\left(\infty\right) & :=\lim_{z\to\infty}R\left(z\right)=\lim_{z\to\infty}\frac{a_{n}z^{n}}{a_{m}z^{m}}=\begin{cases}
+0 & m>n\\
+\frac{a_{n}}{b_{m}} & m=n\\
+\infty & m<n
+\end{cases}
+\end{align*}
+
+\end_inset
+
+Dabei ist 
+\begin_inset Formula $n=\deg\left(P\right)$
+\end_inset
+
+ und 
+\begin_inset Formula $m=\deg\left(Q\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Satz 
+\series medium
+(Partialbruchzerlegung)
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula ${\displaystyle R\left(z\right)=\frac{P\left(z\right)}{Q\left(z\right)}}$
+\end_inset
+
+ und 
+\begin_inset Formula $Q=\left(z-\zeta_{1}\right)^{r_{1}}\ldots\left(z-\zeta_{n}\right)^{r_{n}}$
+\end_inset
+
+ mit paarweise verschiedenen Nullstellen 
+\begin_inset Formula $\zeta_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Dann ist 
+\begin_inset Formula $R$
+\end_inset
+
+ darstellbar in der Form
+\begin_inset Formula 
+\begin{align*}
+R\left(z\right) & =G\left(z\right)+\sum_{j=1}^{n}G_{j}\left(\frac{1}{z-\zeta_{j}}\right)
+\end{align*}
+
+\end_inset
+
+mit Polynomen 
+\begin_inset Formula $G,G_{j}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Die elementare Partialbruchzerlegung (Polynomdivision) ist:
+\begin_inset Formula 
+\begin{align*}
+R\left(z\right) & =G\left(z\right)+\frac{P_{1}\left(z\right)}{\left(z-\zeta_{1}\right)^{r_{1}}}+\ldots+\frac{P_{k}\left(z\right)}{\left(z-\zeta_{n}\right)^{r_{n}}}
+\end{align*}
+
+\end_inset
+
+Schreibe nun:
+\begin_inset Formula 
+\begin{align*}
+\frac{P_{j}}{\left(z-\zeta_{j}\right)^{r_{j}}} & =\frac{c_{r_{j}}}{\left(z-\zeta_{j}\right)^{r_{j}}}+\frac{c_{r_{j}-1}}{\left(z-\zeta_{j}\right)^{r_{j}-1}}+\ldots+\frac{c_{1}}{z-\zeta_{j}}=:G_{j}\left(\frac{1}{z-\zeta_{j}}\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -18509,87 +19744,24 @@ status open
 \end_layout
 
 \begin_layout Standard
-Wiederholung:
-\end_layout
-
-\begin_layout Itemize
-Rationale Funktionen für Polynome 
-\begin_inset Formula $P,Q$
-\end_inset
-
-:
-\begin_inset Formula 
-\begin{align*}
-R\left(z\right) & :=\frac{P\left(z\right)}{Q\left(z\right)}
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Satz 2.4.1
-\series default
- (Partialbruchzerlegung)
-\begin_inset Newline newline
-\end_inset
-
-Sei 
-\begin_inset Formula $Q\left(z\right)=\left(z-\zeta_{1}\right)\cdot\ldots\cdot\left(z-\zeta_{n}\right)$
-\end_inset
-
-, dann 
-\begin_inset Formula $\exs_{G,G_{j}}$
-\end_inset
-
- so dass 
-\begin_inset Formula 
-\begin{align*}
-R\left(z\right) & =G\left(z\right)+\sum_{j=1}^{^{n}}G_{j}\left(\frac{1}{z-\zeta_{j}}\right)
-\end{align*}
-
-\end_inset
-
-
-\begin_inset Formula $\leadsto$
-\end_inset
-
- in Argumenten 
-\begin_inset Formula $z$
-\end_inset
-
-, 
-\begin_inset Formula $\frac{1}{z-\zeta_{j}}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-ENDE: Wiederholung
-\end_layout
-
-\begin_layout Standard
 Dies führt einen dazu, die Transformationen 
 \begin_inset Formula ${\displaystyle z\mapsto\frac{1}{z-\zeta}}$
 \end_inset
 
- zu betrachten.
- Etwas allgemeiner:
+ etwas allgemeiner zu betrachten:
 \end_layout
 
 \begin_layout Subsection
-Definition
+Definition 
+\series medium
+(Möbiustransformation)
 \end_layout
 
 \begin_layout Standard
 Eine rationale Funktion
 \begin_inset Formula 
 \begin{align*}
-\zeta\left(z\right) & =\frac{az+b}{cz+d}
+S\left(z\right) & =\frac{az+b}{cz+d}
 \end{align*}
 
 \end_inset
@@ -18609,7 +19781,7 @@ Möbiustransformation
 .
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsection
 Bemerkung
 \end_layout
 
@@ -18622,23 +19794,17 @@ Die Bedingung
  sind, denn:
 \begin_inset Formula 
 \begin{align*}
-z_{\text{Nenner}} & =-\frac{d}{c}\not=-\frac{b}{a}=z_{\text{Zähler}}
+\zeta_{\text{Nenner}} & =-\frac{d}{c}\not=-\frac{b}{a}=\zeta_{\text{Zähler}}
 \end{align*}
 
 \end_inset
 
-Somit:
-\begin_inset Formula 
-\begin{align*}
-s & \not\equiv0
-\end{align*}
-
+Somit folgt 
+\begin_inset Formula $S\not=0$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
+.
+ 
 \begin_inset Formula $S$
 \end_inset
 
@@ -18650,7 +19816,7 @@ S:\mathbb{C}\setminus\left\{ -\frac{d}{c}\right\}  & \to\mathbb{C}
 
 \end_inset
 
-Erweitere durch die Vorschrift:
+Erweitere durch die Vorschrift
 \begin_inset Formula 
 \begin{align*}
 S\left(\infty\right) & :=\frac{a}{c} & S\left(-\frac{d}{c}\right) & :=\infty
@@ -18658,7 +19824,7 @@ S\left(\infty\right) & :=\frac{a}{c} & S\left(-\frac{d}{c}\right) & :=\infty
 
 \end_inset
 
-zu
+zu einer Abbildung:
 \begin_inset Formula 
 \begin{align*}
 S:\overline{\mathbb{C}} & \to\overline{\mathbb{C}}
@@ -18666,7 +19832,7 @@ S:\overline{\mathbb{C}} & \to\overline{\mathbb{C}}
 
 \end_inset
 
-bijektiv, stetig und hat stetige Inverse, dies nennt man 
+Diese ist bijektiv, stetig und hat eine stetige Inverse, ist also ein 
 \emph on
 Homöomorphismus der Riemannschen Zahlenkugel
 \emph default
@@ -18686,11 +19852,15 @@ z & =:\frac{z_{1}}{z_{2}} & w & =:\frac{w_{1}}{w_{2}}
 
 \end_inset
 
-(Beachte: 
+Beachte, dass die 
 \begin_inset Formula $w_{j},z_{j}\in\mathbb{C}$
 \end_inset
 
- sind nicht eindeutig bestimmt, da nur der Quotient von Bedeutung ist.)
+ für 
+\begin_inset Formula $j\in\left\{ 1,2\right\} $
+\end_inset
+
+ nicht eindeutig bestimmt sind, da nur der Quotient von Bedeutung ist.
 \end_layout
 
 \begin_layout Standard
@@ -18732,13 +19902,13 @@ n, da
 \begin_inset Formula $\det\left(S\right)=ad-cb\not=0$
 \end_inset
 
- nicht verschwindet).
+ nicht verschwindet.
 \end_layout
 
 \begin_layout Standard
 Dies ist die sogenannte 
 \emph on
-Projektive Gruppe
+projektive Gruppe
 \emph default
 :
 \begin_inset Formula 
@@ -18752,14 +19922,18 @@ P\left(1,\mathbb{C}\right) & \subseteq\text{Gl}\left(2,\mathbb{C}\right)
 \end_layout
 
 \begin_layout Standard
-Jede Matrix 
-\begin_inset Formula $\left(\begin{array}{cc}
+Jede Matrix
+\begin_inset Formula 
+\begin{align*}
+\left(\begin{array}{cc}
 a & b\\
 c & d
-\end{array}\right)$
+\end{array}\right)
+\end{align*}
+
 \end_inset
 
- kann als Produkt folgender Faktoren mit 
+kann als Produkt folgender Faktoren mit 
 \begin_inset Formula $\alpha,h\in\mathbb{C}$
 \end_inset
 
@@ -18788,7 +19962,11 @@ h & 0\\
 \end_layout
 
 \begin_layout Standard
-Bedeutung:
+Die Bedeutung von 
+\begin_inset Formula $S$
+\end_inset
+
+ ist:
 \end_layout
 
 \begin_layout Enumerate
@@ -18799,29 +19977,26 @@ Bedeutung:
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Formula $S\left(z\right)=k\cdot\alpha$
+\begin_inset Formula $S\left(z\right)=h\cdot z$
 \end_inset
 
  (Rotation falls 
 \begin_inset Formula $\left|k\right|=1$
 \end_inset
 
-, zentrische Streckung falls 
-\begin_inset Formula $k>1$
-\end_inset
-
-)
+, andernfalls zusätzlich Streckung)
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Formula $S\left(z\right)=\frac{1}{z}$
+\begin_inset Formula ${\displaystyle S\left(z\right)=\frac{1}{z}}$
 \end_inset
 
  (Inversion am Einheitskreis)
 \end_layout
 
 \begin_layout Standard
-Beachte: Diese Abbildungen sind winkeltreu.
+Beachte, dass diese Abbildungen winkeltreu sind, das heißt, dass die Transformat
+ion einen Winkel (zum Beispiel festgelegt durch drei Punkte) nicht ändert.
 \end_layout
 
 \begin_layout Section
@@ -18838,27 +20013,43 @@ Potenzreihen
 
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsection
 Erinnerung
 \end_layout
 
 \begin_layout Standard
-Potenzreihe: 
-\begin_inset Formula ${\displaystyle \sum_{n=0}^{\infty}a_{n}z^{n}}$
+Eine 
+\emph on
+Potenzreihe
+\emph default
+ in 
+\begin_inset Formula $\mathbb{C}$
 \end_inset
 
- mit 
+ ist definiert als
+\begin_inset Formula 
+\begin{align*}
+{\displaystyle \sum_{n=0}^{\infty}a_{n}z^{n}}
+\end{align*}
+
+\end_inset
+
+mit 
 \begin_inset Formula $a_{n},z\in\mathbb{C}$
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
-Konvergenzradius:
+Der 
+\emph on
+Konvergenzradius
+\emph default
+ ist:
 \begin_inset Formula 
 \begin{align*}
-R & =\frac{1}{\lim\sup_{n\to\infty}\sqrt[n]{\left|a_{n}\right|}}
+R & =\frac{1}{\lim\sup_{n\to\infty}\sqrt[n]{\abs{a_{n}}}}
 \end{align*}
 
 \end_inset
@@ -18866,10 +20057,14 @@ R & =\frac{1}{\lim\sup_{n\to\infty}\sqrt[n]{\left|a_{n}\right|}}
 
 \end_layout
 
-\begin_layout Subsubsection*
-Satz 
-\series medium
-(aus der Analysis I)
+\begin_layout Subsection
+Satz
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Rest überarbeiten
 \end_layout
 
 \begin_layout Standard
@@ -19005,6 +20200,30 @@ end{iiilist}
 \begin_layout Standard
 Wegen der gleichmäßigen Konvergenz kann man im Innern des Konvergenzradius
  gliedweise differenzieren.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Siehe Analysis I.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
