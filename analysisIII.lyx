@@ -16695,7 +16695,6 @@ status open
 
 \begin_layout Plain Layout
 
-\series medium
 
 \backslash
 texorpdfstring{
@@ -16713,7 +16712,6 @@ status open
 
 \begin_layout Plain Layout
 
-\series medium
 }{C1}
 \end_layout
 
@@ -16931,58 +16929,440 @@ setcounter{section}{0}
 
 \end_layout
 
+\begin_layout Section
+Grundlagen, Riemannsche Zahlenkugel
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+Grundlagen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Setze die Rechenregeln im Körper 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+ der komplexen Zahlen als bekannt voraus.
+\end_layout
+
+\begin_layout Standard
+Beginne mit der Norm:
+\begin_inset Formula 
+\begin{align*}
+\norm z & =\abs z=\sqrt{z\cdot\overline{z}}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $\left(\mathbb{C},\norm .\right)$
+\end_inset
+
+ ist ein normierter Raum.
+\end_layout
+
+\begin_layout Standard
+Es ist oft günstig, 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+ mit 
+\begin_inset Formula $\mathbb{R}^{2}$
+\end_inset
+
+ zu identifizieren.
+\begin_inset Formula 
+\begin{align*}
+\varphi:\mathbb{R}\times\mathbb{R} & \to\mathbb{C}\\
+\left(x,y\right) & \mapsto x+\ii y
+\end{align*}
+
+\end_inset
+
+ist bijektiv, denn 
+\begin_inset Formula $\varphi^{-1}\left(z\right)=\left(\text{Re}\left(z\right),\text{Im}\left(z\right)\right)$
+\end_inset
+
+ ist sogar eine Isometrie, denn es gilt:
+\begin_inset Formula 
+\begin{align*}
+\norm{\varphi\left(x,y\right)} & =\abs{x+\ii y}=\sqrt{x^{2}+y^{2}}=\norm{\left(x,y\right)}
+\end{align*}
+
+\end_inset
+
+Also ist 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+ metrisch und topologisch äquivalent zum 
+\begin_inset Formula $\mathbb{R}^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Wir haben die Gaußsche Zahlenebene bereits kennengelernt.
+\end_layout
+
 \begin_layout Standard
 
 \color green
-TODO: Rest überarbeiten
+TODO: Abb Gaußsche Zahlenebene
 \end_layout
 
-\begin_layout Section
-Grundlagen, die Riemannsche Zahlenkugel
+\begin_layout Standard
+Konvergenz:
+\end_layout
+
+\begin_layout Standard
+Eine folge 
+\begin_inset Formula $\left(z_{n}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+ ist genau dann eine Cauchy-Folge in 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+, wenn 
+\begin_inset Formula $\left(\text{\text{Re}}\left(z_{n}\right)\right)_{n\in\mathbb{N}}$
+\end_inset
+
+ und 
+\begin_inset Formula $\left(\text{\text{Im}}\left(z_{n}\right)\right)_{n\in\mathbb{N}}$
+\end_inset
+
+ Cauchy-Folgen in 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+ sind.
+\end_layout
+
+\begin_layout Standard
+Insbesondere ist 
+\begin_inset Formula $\left(\mathbb{C},\abs .\right)$
+\end_inset
+
+ vollständig.
+\end_layout
+
+\begin_layout Standard
+Stetigkeit ist genau wie in 
+\begin_inset Formula $\mathbb{R}^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Anders ausgedrückt: 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+ ist 
+\begin_inset Formula $\mathbb{R}^{2}$
+\end_inset
+
+ zusätzlich mit einer Multiplikation, die 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+ zu einem Körper macht.
+\end_layout
+
+\begin_layout Standard
+Diese Multiplikation
+\begin_inset Formula 
+\begin{align*}
+\cdot:\mathbb{C}\times\mathbb{C} & \to\mathbb{C}\\
+\left(z_{1},z_{2}\right) & \mapsto z_{1}\cdot z_{2}
+\end{align*}
+
+\end_inset
+
+ist stetig, denn es gilt:
+\begin_inset Formula 
+\begin{align*}
+\abs{z_{1}z_{2}-z_{1}'z_{2}'} & \le\abs{z_{1}-z_{1}'}\cdot\abs{z_{2}}+\abs{z_{1}'}\cdot\abs{z_{2}-z_{2}'}
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
-Definition
+Definition 
+\series medium
+(erweiterte komplexe Ebene
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\series medium
+
+\backslash
+texorpdfstring{
 \end_layout
 
-\begin_layout Standard
-Sei 
-\begin_inset Formula $X\not=\emptyset$
 \end_inset
 
- eine Menge.
+
+ 
+\lang ngerman
+
+\begin_inset Formula $\overline{\mathbb{C}}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\series medium
+}{}
+\end_layout
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Standard
-TODO: Rest
+Es ist manchmal nützlich, 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+ zu „kompaktifizieren“.
 \end_layout
 
 \begin_layout Standard
-TODO: Abb1
-\end_layout
+Führe dann 
+\begin_inset Formula $\infty$
+\end_inset
 
-\begin_layout Standard
-Riemannsche Zahlenkugel
+ ein, das heißt „der Punkt im Unendlichen“, und nenne
 \begin_inset Formula 
 \begin{align*}
-\varphi: & S^{2}\setminus\left\{ N\right\} \to\mathbb{C}
+\overline{\mathbb{C}} & :=\mathbb{C}\cup\left\{ \infty\right\} 
 \end{align*}
 
 \end_inset
 
-bijektiv, stetig, 
+
+\emph on
+die erweiterte komplexe Ebene
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Rechenregeln:
+\end_layout
+
+\begin_layout Standard
+Für alle 
+\begin_inset Formula $b\in\mathbb{C}\setminus\left\{ 0\right\} $
+\end_inset
+
+ gilt:
+\begin_inset Formula 
+\begin{align*}
+b\cdot\infty & =\infty\cdot b=\infty
+\end{align*}
+
+\end_inset
+
+Es ist 
+\emph on
+nicht
+\emph default
+ möglich, 
+\begin_inset Formula $0\cdot\infty$
+\end_inset
+
+ zu bilden, also ist 
+\begin_inset Formula $\overline{\mathbb{C}}$
+\end_inset
+
+ 
+\emph on
+kein
+\emph default
+ Körper.
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(Einheitskugel)
+\end_layout
+
+\begin_layout Standard
+Für 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ ist die 
+\begin_inset Formula $n$
+\end_inset
+
+-dimensionale 
+\emph on
+Einheitskugel
+\emph default
+:
+\begin_inset Formula 
+\begin{align*}
+S^{n} & :=\left\{ x\in\mathbb{R}^{n+1}\Big|\norm x=1\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Fr 2.12.2011
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Proposition und Definition 
+\series medium
+(Riemannsche Zahlenkugel)
+\end_layout
+
+\begin_layout Standard
+Eine geometrische Darstellung von 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+ beziehungsweise 
+\begin_inset Formula $\overline{\mathbb{C}}$
+\end_inset
+
+ ist die 
+\emph on
+Riemannsche Zahlenkugel
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Abb1 (Riemannsche Zahlenkugel) einfügen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $N=\left(0,0,1\right)$
+\end_inset
+
+ ist der Nordpol und 
+\begin_inset Formula $Z=\left(x_{1},x_{2},x_{3}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Die Riemannsche Zahlenkugel wird durch die 
+\emph on
+stereographische Projektion
+\emph default
+
+\begin_inset Formula 
+\begin{align*}
+S^{2}\setminus N & \to\mathbb{C}\\
+Z & \mapsto z=\frac{x_{1}+\ii x_{2}}{1-x_{3}}
+\end{align*}
+
+\end_inset
+
+in die Gaußsche Zahlenebene überführt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\varphi$
+\end_inset
+
+ ist bijektiv, stetig und die inverse Abbildung 
 \begin_inset Formula $\varphi^{-1}$
 \end_inset
 
- stetig
+ ist auch stetig, 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ ist also ein Homöomorphismus.
+\end_layout
+
+\begin_layout Standard
+Man kann 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ auch zu einer Abbildung 
 \begin_inset Formula 
 \begin{align*}
-\varphi: & S^{2}\to\overline{\mathbb{C}}:=\mathbb{C}\cup\left\{ \infty\right\} ,N\mapsto\infty
+\overline{\varphi}:S^{2} & \to\overline{\mathbb{C}}\\
+Z & \mapsto\begin{cases}
+\varphi\left(Z\right) & \text{falls }Z\not=N\\
+\infty & \text{falls }Z=N
+\end{cases}
 \end{align*}
 
 \end_inset
 
-bijektiv.
+erweitern.
+\end_layout
+
+\begin_layout Standard
+Da 
+\begin_inset Formula $S^{2}$
+\end_inset
+
+ ein metrische Raum mit der Metrik
+\begin_inset Formula 
+\begin{align*}
+d\left(Z,Z'\right) & =\norm{Z-Z'}_{\mathbb{R}^{3}}
+\end{align*}
+
+\end_inset
+
+ist, liefert dies auch eine Metrik auf 
+\begin_inset Formula $\overline{\mathbb{C}}$
+\end_inset
+
+, indem man setzt:
+\begin_inset Formula 
+\begin{align*}
+d\left(z,z'\right) & :=d\left(Z,Z'\right)
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -16991,18 +17371,17 @@ Wähle auf
 \end_inset
 
  die Topologie 
-\begin_inset Formula $\mathcal{O}:=\left\{ \varphi\left(\Omega\right)|\Omega\subseteq S^{2}\text{ offen}\right\} $
+\begin_inset Formula $\mathcal{O}:=\left\{ \overline{\varphi}\left(\Omega\right)|\Omega\subseteq S^{2}\text{ offen}\right\} $
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $S^{2}\subseteq S^{3}$
+\begin_inset Formula $S^{2}\subseteq\mathbb{R}^{3}$
 \end_inset
 
- ist ein kompakter topologischer Raum.
- Also auch 
+ ist ein kompakter topologischer Raum, also auch 
 \begin_inset Formula $\overline{\mathbb{C}}$
 \end_inset
 
@@ -17010,10 +17389,18 @@ Wähle auf
 \end_layout
 
 \begin_layout Standard
+Diese Topologie ist auf 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+ äquivalent zur Standardtopologie.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula $\overline{\mathbb{C}}$
 \end_inset
 
- ist eine Kompaktifizierung von 
+ ist daher eine Kompaktifizierung von 
 \begin_inset Formula $\mathbb{C}$
 \end_inset
 
@@ -17021,15 +17408,199 @@ Wähle auf
 \end_layout
 
 \begin_layout Standard
-1-Punkt-Kompaktifizierung (denn nur ein Punkt 
+Man dies eine 1-Punkt-Kompaktifizierung, da nur ein Punkt „
 \begin_inset Formula $\infty$
 \end_inset
 
- wurde hinzugenommen)
+“ hinzugenommen wurde.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
 \end_layout
 
 \begin_layout Standard
-Andere Beispiele von Kompaktifizierungen:
+Geradengleichung:
+\begin_inset Formula 
+\begin{align*}
+\left(\text{Re}\left(z\right),\text{Im}\left(z\right),0\right) & \stackrel{!}{=}N+\lambda\cdot\left(Z-N\right)=\left(\begin{array}{c}
+\lambda x_{1}\\
+\lambda x_{2}\\
+1+\lambda\left(x_{3}-1\right)
+\end{array}\right)
+\end{align*}
+
+\end_inset
+
+Es folgt:
+\begin_inset Formula 
+\begin{align*}
+\lambda & =\frac{1}{1-x_{3}}
+\end{align*}
+
+\end_inset
+
+Also folgt:
+\begin_inset Formula 
+\begin{align*}
+z & =\frac{x_{1}+\ii x_{2}}{1-x_{3}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Berechne die Abstandsfunktion in 
+\begin_inset Formula $\overline{\mathbb{C}}$
+\end_inset
+
+ genauer:
+\begin_inset Formula 
+\begin{align*}
+\abs z^{2} & =\frac{x_{1}^{2}+x_{2}^{2}}{\left(1-x_{3}\right)^{2}}=\frac{1-x_{3}^{2}}{\left(1-x_{3}\right)\left(1+x_{3}\right)}=\frac{1-x_{3}}{1+x_{3}}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\abs z^{2}-x_{3}\abs z^{2} & =1+x_{3}\\
+x_{3} & =\frac{\abs z^{2}-1}{\abs z^{2}+1}\\
+1-x_{3} & =\frac{\abs z^{2}+1-\abs z^{2}+1}{\abs z^{2}+1}=\frac{2}{1+\abs z^{2}}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+x_{1} & =\frac{z+\overline{z}}{1+\abs z^{2}} & x_{2} & =\frac{z-\overline{z}}{\ii\left(1+\abs z^{2}\right)}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+d\left(z,z'\right)^{2} & =\left(x_{1}-x_{1}'\right)^{2}+\left(x_{2}-x_{2}'\right)^{2}+\left(x_{3}-x_{3}'\right)^{2}=\\
+ & =2-2\cdot\left(x_{1}x_{1}'+x_{2}x_{2}'+x_{3}x_{3}'\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+x_{1}x_{1}'+x_{2}x_{2}'+x_{3}x_{3}' & =\frac{\left(z+\overline{z}\right)\left(z'+\overline{z}'\right)-\left(z-\overline{z}\right)\left(z'-\overline{z}'\right)+\left(\abs z^{2}-1\right)\left(\abs{z'}^{2}-1\right)}{\left(1+\abs z^{2}\right)\left(1+\abs z'^{2}\right)}=\\
+ & =\frac{2z\overline{z}'+2\overline{z}z'+\left(\abs z^{2}-1\right)\left(\abs{z'}^{2}-1\right)}{\left(1+\abs z^{2}\right)\left(1+\abs z'^{2}\right)}=\\
+ & =\frac{\left(1+\abs z^{2}\right)\left(1+\abs{z'}^{2}\right)-2\abs{z-z'}^{2}}{\left(1+\abs z^{2}\right)\left(1+\abs z'^{2}\right)}
+\end{align*}
+
+\end_inset
+
+Es folgt:
+\begin_inset Formula 
+\begin{align*}
+d\left(z,z'\right) & =\frac{2\abs{z-z'}}{\sqrt{\left(1+\abs z^{2}\right)\left(1+\abs{z'}^{2}\right)}}\\
+d\left(z,\infty\right) & =\frac{2}{\sqrt{\left(1+\abs z^{2}\right)}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: restlichen Beweis einfügen
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Bemerkung 
+\series medium
+(Konvergenz
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texorpdfstring{
+\end_layout
+
+\end_inset
+
+ in 
+\begin_inset Formula $\overline{\mathbb{C}}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}{}
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+Die Topologie 
+\begin_inset Formula $\mathcal{O}:=\left\{ \overline{\varphi}\left(\Omega\right)|\Omega\subseteq S^{2}\text{ offen}\right\} $
+\end_inset
+
+ liefert einen Konvergenzbegriff auf 
+\begin_inset Formula $\overline{\mathbb{C}}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+z_{n} & \to z\not=\infty &  & z_{n}\text{ konvergiert in }\mathbb{C}\\
+z_{n} & \to\infty &  & \fall_{L\in\mathbb{R}_{>0}}\exs_{N\in\mathbb{N}}\fall_{n\ge N}:\abs{z_{n}}>L
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Beispiel
+\end_layout
+
+\begin_layout Itemize
+Ein anderes Beispiel einer Kompaktifizierung ist die 2-Punkt-Kompaktifizierung
+ von 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+:
 \begin_inset Formula 
 \begin{align*}
 \overline{\mathbb{R}} & =\mathbb{R}\cup\left\{ -\infty,+\infty\right\} 
@@ -17037,25 +17608,22 @@ Andere Beispiele von Kompaktifizierungen:
 
 \end_inset
 
-2-Punkt-Kompaktifizierung
-\end_layout
-
-\begin_layout Standard
+Sei 
 \begin_inset Formula $\varphi:\left(-1,1\right)\to\mathbb{R}$
 \end_inset
 
- (zum Beispiel 
-\begin_inset Formula $\tan\left(\frac{\pi}{2}x\right)$
+ ein Homöomorphismus, zum Beispiel 
+\begin_inset Formula ${\displaystyle \tan\left(\frac{\pi}{2}x\right)}$
 \end_inset
 
-) Homomorphismus.
-\end_layout
+.
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 Erweitere nun:
 \begin_inset Formula 
 \begin{align*}
-\varphi:\mathbb{R} & \to\overline{\mathbb{R}}=\mathbb{R}\cup\left\{ \pm\infty\right\} \\
+\overline{\varphi}:\mathbb{R} & \to\overline{\mathbb{R}}=\mathbb{R}\cup\left\{ \pm\infty\right\} \\
 1 & \mapsto+\infty\\
 -1 & \mapsto-\infty
 \end{align*}
@@ -17069,7 +17637,7 @@ Wähle auf
  die Topologie:
 \begin_inset Formula 
 \begin{align*}
-\mathcal{O} & :=\left\{ \varphi\left(\Omega\right)|\Omega\text{ offen in }\left[-1,1\right]\text{ bezüglich der Relativtopologie}\right\} 
+\mathcal{O} & :=\left\{ \overline{\varphi}\left(\Omega\right)|\Omega\text{ offen in }\left[-1,1\right]\text{ bezüglich der Teilraumtopologie}\right\} 
 \end{align*}
 
 \end_inset
@@ -17077,44 +17645,61 @@ Wähle auf
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 Beispiel für eine andere Kompaktifizierung von 
 \begin_inset Formula $\mathbb{C}$
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-TODO: Abb2
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\tilde{\mathbb{C}}:=\mathbb{C}\cup S^{1}$
+\begin_inset Newline newline
 \end_inset
 
 
-\end_layout
+\color green
+TODO: Abb2 einfügen
+\color inherit
 
-\begin_layout Standard
-erweitere 
+\begin_inset Formula 
+\begin{align*}
+\tilde{\mathbb{C}} & :=\mathbb{C}\cup S^{1}
+\end{align*}
+
+\end_inset
+
+
+\color green
+TODO: Was ist 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ und 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+?
+\color inherit
+
+\begin_inset Newline newline
+\end_inset
+
+Erweitere 
 \begin_inset Formula $\varphi$
 \end_inset
 
 :
 \begin_inset Formula 
 \begin{align*}
-\varphi:\overline{\mathcal{H}}=\mathcal{H}\dot{\cup}S^{1} & \to\tilde{\mathbb{C}}\\
+\overline{\varphi}:\overline{\mathcal{H}}=\mathcal{H}\dot{\cup}S^{1} & \to\tilde{\mathbb{C}}\\
 x\in S^{1} & \to x\in S^{1}
 \end{align*}
 
 \end_inset
 
 Sei 
-\begin_inset Formula $\left(z_{n}\right)$
+\begin_inset Formula $\left(z_{n}\right)_{n\in\mathbb{N}}$
 \end_inset
 
-, 
+ mit 
 \begin_inset Formula $z_{n}\in\mathbb{C}$
 \end_inset
 
@@ -17129,7 +17714,7 @@ Sei
 
 .
  
-\begin_inset Formula $\left(x_{n}\right)$
+\begin_inset Formula $\left(x_{n}\right)_{n\in\mathbb{N}}$
 \end_inset
 
  besitzt Häufungspunkt 
@@ -17137,9 +17722,9 @@ Sei
 \end_inset
 
 .
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 Falls 
 \begin_inset Formula $x\in\mathcal{H}$
 \end_inset
@@ -17149,13 +17734,13 @@ Falls
 \end_inset
 
  ist Häufungspunkt von 
-\begin_inset Formula $\left(z_{n}\right)$
+\begin_inset Formula $\left(z_{n}\right)_{n\in\mathbb{N}}$
 \end_inset
 
 .
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 Falls 
 \begin_inset Formula $x\in S^{1}$
 \end_inset
@@ -17194,7 +17779,15 @@ Sei
 \end_layout
 
 \begin_layout Subsection
-Definition
+Definition 
+\series medium
+(komplex differenzierbar)
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Rest überarbeiten
 \end_layout
 
 \begin_layout Standard
@@ -22839,6 +23432,16 @@ qqed
 
 \begin_layout Section
 Einfache Folgerungen aus dem Cauchyschen Integralsatz
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+Folgerungen des Integralsatzes
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -23769,6 +24372,16 @@ Bedingung für „Ausnahmepunkte“:
 
 \begin_layout Section
 Hebbare Singularitäten, Taylorreihen
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+Taylorreihen
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -26207,6 +26820,16 @@ Alle Nullstellen der
 
 \begin_layout Section
 Der Riemannsche Abbildungssatz
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+Riemannscher Abbildungssatz
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection

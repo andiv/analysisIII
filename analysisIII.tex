@@ -4516,88 +4516,259 @@ Also gilt:
 
 \setcounter{section}{0}
 
-\textcolor{green}{TODO: Rest überarbeiten}
 
+\section[Grundlagen]{Grundlagen, Riemannsche Zahlenkugel}
 
-\section{Grundlagen, die Riemannsche Zahlenkugel}
+Setze die Rechenregeln im Körper $\mathbb{C}$ der komplexen Zahlen
+als bekannt voraus.
 
-
-\subsection{Definition}
-
-Sei $X\not=\emptyset$ eine Menge.
-
-TODO: Rest
-
-TODO: Abb1
-
-Riemannsche Zahlenkugel
+Beginne mit der Norm:
 \begin{align*}
-\varphi: & S^{2}\setminus\left\{ N\right\} \to\mathbb{C}
+\norm z & =\abs z=\sqrt{z\cdot\overline{z}}
 \end{align*}
-bijektiv, stetig, $\varphi^{-1}$ stetig
+$\left(\mathbb{C},\norm .\right)$ ist ein normierter Raum.
+
+Es ist oft günstig, $\mathbb{C}$ mit $\mathbb{R}^{2}$ zu identifizieren.
 \begin{align*}
-\varphi: & S^{2}\to\overline{\mathbb{C}}:=\mathbb{C}\cup\left\{ \infty\right\} ,N\mapsto\infty
+\varphi:\mathbb{R}\times\mathbb{R} & \to\mathbb{C}\\
+\left(x,y\right) & \mapsto x+\ii y
 \end{align*}
-bijektiv.
+ist bijektiv, denn $\varphi^{-1}\left(z\right)=\left(\text{Re}\left(z\right),\text{Im}\left(z\right)\right)$
+ist sogar eine Isometrie, denn es gilt:
+\begin{align*}
+\norm{\varphi\left(x,y\right)} & =\abs{x+\ii y}=\sqrt{x^{2}+y^{2}}=\norm{\left(x,y\right)}
+\end{align*}
+Also ist $\mathbb{C}$ metrisch und topologisch äquivalent zum $\mathbb{R}^{2}$.
 
-Wähle auf $\overline{\mathbb{C}}$ die Topologie $\mathcal{O}:=\left\{ \varphi\left(\Omega\right)|\Omega\subseteq S^{2}\text{ offen}\right\} $.
+Wir haben die Gaußsche Zahlenebene bereits kennengelernt.
 
-$S^{2}\subseteq S^{3}$ ist ein kompakter topologischer Raum. Also
-auch $\overline{\mathbb{C}}$.
+\textcolor{green}{TODO: Abb Gaußsche Zahlenebene}
 
-$\overline{\mathbb{C}}$ ist eine Kompaktifizierung von $\mathbb{C}$.
+Konvergenz:
 
-1-Punkt-Kompaktifizierung (denn nur ein Punkt $\infty$ wurde hinzugenommen)
+Eine folge $\left(z_{n}\right)_{n\in\mathbb{N}}$ ist genau dann eine
+Cauchy-Folge in $\mathbb{C}$, wenn $\left(\text{\text{Re}}\left(z_{n}\right)\right)_{n\in\mathbb{N}}$
+und $\left(\text{\text{Im}}\left(z_{n}\right)\right)_{n\in\mathbb{N}}$
+Cauchy-Folgen in $\mathbb{R}$ sind.
 
-Andere Beispiele von Kompaktifizierungen:
+Insbesondere ist $\left(\mathbb{C},\abs .\right)$ vollständig.
+
+Stetigkeit ist genau wie in $\mathbb{R}^{2}$.
+
+Anders ausgedrückt: $\mathbb{C}$ ist $\mathbb{R}^{2}$ zusätzlich
+mit einer Multiplikation, die $\mathbb{C}$ zu einem Körper macht.
+
+Diese Multiplikation
+\begin{align*}
+\cdot:\mathbb{C}\times\mathbb{C} & \to\mathbb{C}\\
+\left(z_{1},z_{2}\right) & \mapsto z_{1}\cdot z_{2}
+\end{align*}
+ist stetig, denn es gilt:
+\begin{align*}
+\abs{z_{1}z_{2}-z_{1}'z_{2}'} & \le\abs{z_{1}-z_{1}'}\cdot\abs{z_{2}}+\abs{z_{1}'}\cdot\abs{z_{2}-z_{2}'}
+\end{align*}
+
+
+
+\subsection{Definition \textmd{(erweiterte komplexe Ebene\texorpdfstring{}{\textmd{
+}}\textmd{$\overline{\mathbb{C}}$}{})}}
+
+Es ist manchmal nützlich, $\mathbb{C}$ zu \quotedblbase{}kompaktifizieren\textquotedblleft{}.
+
+Führe dann $\infty$ ein, das heißt \quotedblbase{}der Punkt im Unendlichen\textquotedblleft{},
+und nenne
+\begin{align*}
+\overline{\mathbb{C}} & :=\mathbb{C}\cup\left\{ \infty\right\} 
+\end{align*}
+\emph{die erweiterte komplexe Ebene}.
+
+Rechenregeln:
+
+Für alle $b\in\mathbb{C}\setminus\left\{ 0\right\} $ gilt:
+\begin{align*}
+b\cdot\infty & =\infty\cdot b=\infty
+\end{align*}
+Es ist \emph{nicht} möglich, $0\cdot\infty$ zu bilden, also ist $\overline{\mathbb{C}}$
+\emph{kein} Körper.
+
+
+\subsection{Definition \textmd{(Einheitskugel)}}
+
+Für $n\in\mathbb{N}$ ist die $n$-dimensionale \emph{Einheitskugel}:
+\begin{align*}
+S^{n} & :=\left\{ x\in\mathbb{R}^{n+1}\Big|\norm x=1\right\} 
+\end{align*}
+
+
+%DATE: Fr 2.12.2011
+
+
+\subsection{Proposition und Definition \textmd{(Riemannsche Zahlenkugel)}}
+
+Eine geometrische Darstellung von $\mathbb{C}$ beziehungsweise $\overline{\mathbb{C}}$
+ist die \emph{Riemannsche Zahlenkugel}.
+
+\textcolor{green}{TODO: Abb1 (Riemannsche Zahlenkugel) einfügen}
+
+$N=\left(0,0,1\right)$ ist der Nordpol und $Z=\left(x_{1},x_{2},x_{3}\right)$.
+
+Die Riemannsche Zahlenkugel wird durch die \emph{stereographische
+Projektion}
+\begin{align*}
+S^{2}\setminus N & \to\mathbb{C}\\
+Z & \mapsto z=\frac{x_{1}+\ii x_{2}}{1-x_{3}}
+\end{align*}
+in die Gaußsche Zahlenebene überführt.
+
+$\varphi$ ist bijektiv, stetig und die inverse Abbildung $\varphi^{-1}$
+ist auch stetig, $\varphi$ ist also ein Homöomorphismus.
+
+Man kann $\varphi$ auch zu einer Abbildung 
+\begin{align*}
+\overline{\varphi}:S^{2} & \to\overline{\mathbb{C}}\\
+Z & \mapsto\begin{cases}
+\varphi\left(Z\right) & \text{falls }Z\not=N\\
+\infty & \text{falls }Z=N
+\end{cases}
+\end{align*}
+erweitern.
+
+Da $S^{2}$ ein metrische Raum mit der Metrik
+\begin{align*}
+d\left(Z,Z'\right) & =\norm{Z-Z'}_{\mathbb{R}^{3}}
+\end{align*}
+ist, liefert dies auch eine Metrik auf $\overline{\mathbb{C}}$, indem
+man setzt:
+\begin{align*}
+d\left(z,z'\right) & :=d\left(Z,Z'\right)
+\end{align*}
+
+
+Wähle auf $\overline{\mathbb{C}}$ die Topologie $\mathcal{O}:=\left\{ \overline{\varphi}\left(\Omega\right)|\Omega\subseteq S^{2}\text{ offen}\right\} $.
+
+$S^{2}\subseteq\mathbb{R}^{3}$ ist ein kompakter topologischer Raum,
+also auch $\overline{\mathbb{C}}$.
+
+Diese Topologie ist auf $\mathbb{C}$ äquivalent zur Standardtopologie.
+
+$\overline{\mathbb{C}}$ ist daher eine Kompaktifizierung von $\mathbb{C}$.
+
+Man dies eine 1-Punkt-Kompaktifizierung, da nur ein Punkt \quotedblbase{}$\infty$\textquotedblleft{}
+hinzugenommen wurde.
+
+
+\subsubsection*{Beweis}
+
+Geradengleichung:
+\begin{align*}
+\left(\text{Re}\left(z\right),\text{Im}\left(z\right),0\right) & \stackrel{!}{=}N+\lambda\cdot\left(Z-N\right)=\left(\begin{array}{c}
+\lambda x_{1}\\
+\lambda x_{2}\\
+1+\lambda\left(x_{3}-1\right)
+\end{array}\right)
+\end{align*}
+Es folgt:
+\begin{align*}
+\lambda & =\frac{1}{1-x_{3}}
+\end{align*}
+Also folgt:
+\begin{align*}
+z & =\frac{x_{1}+\ii x_{2}}{1-x_{3}}
+\end{align*}
+
+
+Berechne die Abstandsfunktion in $\overline{\mathbb{C}}$ genauer:
+\begin{align*}
+\abs z^{2} & =\frac{x_{1}^{2}+x_{2}^{2}}{\left(1-x_{3}\right)^{2}}=\frac{1-x_{3}^{2}}{\left(1-x_{3}\right)\left(1+x_{3}\right)}=\frac{1-x_{3}}{1+x_{3}}
+\end{align*}
+\begin{align*}
+\abs z^{2}-x_{3}\abs z^{2} & =1+x_{3}\\
+x_{3} & =\frac{\abs z^{2}-1}{\abs z^{2}+1}\\
+1-x_{3} & =\frac{\abs z^{2}+1-\abs z^{2}+1}{\abs z^{2}+1}=\frac{2}{1+\abs z^{2}}
+\end{align*}
+\begin{align*}
+x_{1} & =\frac{z+\overline{z}}{1+\abs z^{2}} & x_{2} & =\frac{z-\overline{z}}{\ii\left(1+\abs z^{2}\right)}
+\end{align*}
+\begin{align*}
+d\left(z,z'\right)^{2} & =\left(x_{1}-x_{1}'\right)^{2}+\left(x_{2}-x_{2}'\right)^{2}+\left(x_{3}-x_{3}'\right)^{2}=\\
+ & =2-2\cdot\left(x_{1}x_{1}'+x_{2}x_{2}'+x_{3}x_{3}'\right)
+\end{align*}
+\begin{align*}
+x_{1}x_{1}'+x_{2}x_{2}'+x_{3}x_{3}' & =\frac{\left(z+\overline{z}\right)\left(z'+\overline{z}'\right)-\left(z-\overline{z}\right)\left(z'-\overline{z}'\right)+\left(\abs z^{2}-1\right)\left(\abs{z'}^{2}-1\right)}{\left(1+\abs z^{2}\right)\left(1+\abs z'^{2}\right)}=\\
+ & =\frac{2z\overline{z}'+2\overline{z}z'+\left(\abs z^{2}-1\right)\left(\abs{z'}^{2}-1\right)}{\left(1+\abs z^{2}\right)\left(1+\abs z'^{2}\right)}=\\
+ & =\frac{\left(1+\abs z^{2}\right)\left(1+\abs{z'}^{2}\right)-2\abs{z-z'}^{2}}{\left(1+\abs z^{2}\right)\left(1+\abs z'^{2}\right)}
+\end{align*}
+Es folgt:
+\begin{align*}
+d\left(z,z'\right) & =\frac{2\abs{z-z'}}{\sqrt{\left(1+\abs z^{2}\right)\left(1+\abs{z'}^{2}\right)}}\\
+d\left(z,\infty\right) & =\frac{2}{\sqrt{\left(1+\abs z^{2}\right)}}
+\end{align*}
+
+
+\textcolor{green}{TODO: restlichen Beweis einfügen}
+
+\qqed
+
+
+\subsection{Bemerkung \textmd{(Konvergenz\texorpdfstring{ in $\overline{\mathbb{C}}$}{})}}
+
+Die Topologie $\mathcal{O}:=\left\{ \overline{\varphi}\left(\Omega\right)|\Omega\subseteq S^{2}\text{ offen}\right\} $
+liefert einen Konvergenzbegriff auf $\overline{\mathbb{C}}$:
+\begin{align*}
+z_{n} & \to z\not=\infty &  & z_{n}\text{ konvergiert in }\mathbb{C}\\
+z_{n} & \to\infty &  & \fall_{L\in\mathbb{R}_{>0}}\exs_{N\in\mathbb{N}}\fall_{n\ge N}:\abs{z_{n}}>L
+\end{align*}
+
+
+
+\subsection{Beispiel}
+\begin{itemize}
+\item Ein anderes Beispiel einer Kompaktifizierung ist die 2-Punkt-Kompaktifizierung
+von $\mathbb{R}$:
 \begin{align*}
 \overline{\mathbb{R}} & =\mathbb{R}\cup\left\{ -\infty,+\infty\right\} 
 \end{align*}
-2-Punkt-Kompaktifizierung
-
-$\varphi:\left(-1,1\right)\to\mathbb{R}$ (zum Beispiel $\tan\left(\frac{\pi}{2}x\right)$)
-Homomorphismus.
-
+Sei $\varphi:\left(-1,1\right)\to\mathbb{R}$ ein Homöomorphismus,
+zum Beispiel ${\displaystyle \tan\left(\frac{\pi}{2}x\right)}$.\\
 Erweitere nun:
 \begin{align*}
-\varphi:\mathbb{R} & \to\overline{\mathbb{R}}=\mathbb{R}\cup\left\{ \pm\infty\right\} \\
+\overline{\varphi}:\mathbb{R} & \to\overline{\mathbb{R}}=\mathbb{R}\cup\left\{ \pm\infty\right\} \\
 1 & \mapsto+\infty\\
 -1 & \mapsto-\infty
 \end{align*}
 Wähle auf $\mathbb{R}$ die Topologie:
 \begin{align*}
-\mathcal{O} & :=\left\{ \varphi\left(\Omega\right)|\Omega\text{ offen in }\left[-1,1\right]\text{ bezüglich der Relativtopologie}\right\} 
+\mathcal{O} & :=\left\{ \overline{\varphi}\left(\Omega\right)|\Omega\text{ offen in }\left[-1,1\right]\text{ bezüglich der Teilraumtopologie}\right\} 
 \end{align*}
 
-
-Beispiel für eine andere Kompaktifizierung von $\mathbb{C}$.
-
-TODO: Abb2
-
-$\tilde{\mathbb{C}}:=\mathbb{C}\cup S^{1}$
-
-erweitere $\varphi$:
+\item Beispiel für eine andere Kompaktifizierung von $\mathbb{C}$.\\
+\textcolor{green}{TODO: Abb2 einfügen}
 \begin{align*}
-\varphi:\overline{\mathcal{H}}=\mathcal{H}\dot{\cup}S^{1} & \to\tilde{\mathbb{C}}\\
+\tilde{\mathbb{C}} & :=\mathbb{C}\cup S^{1}
+\end{align*}
+\textcolor{green}{TODO: Was ist $\varphi$ und $\mathcal{H}$?}\\
+Erweitere $\varphi$:
+\begin{align*}
+\overline{\varphi}:\overline{\mathcal{H}}=\mathcal{H}\dot{\cup}S^{1} & \to\tilde{\mathbb{C}}\\
 x\in S^{1} & \to x\in S^{1}
 \end{align*}
-Sei $\left(z_{n}\right)$, $z_{n}\in\mathbb{C}$ eine Folge. Betrachte
-$x_{n}\in\mathcal{H}$ mit $\varphi\left(x_{n}\right)=z_{n}$. $\left(x_{n}\right)$
-besitzt Häufungspunkt $x\in\overline{\mathcal{H}}$.
-
+Sei $\left(z_{n}\right)_{n\in\mathbb{N}}$ mit $z_{n}\in\mathbb{C}$
+eine Folge. Betrachte $x_{n}\in\mathcal{H}$ mit $\varphi\left(x_{n}\right)=z_{n}$.
+$\left(x_{n}\right)_{n\in\mathbb{N}}$ besitzt Häufungspunkt $x\in\overline{\mathcal{H}}$.\\
 Falls $x\in\mathcal{H}$, dann folgt $\varphi\left(x\right)$ ist
-Häufungspunkt von $\left(z_{n}\right)$.
-
+Häufungspunkt von $\left(z_{n}\right)_{n\in\mathbb{N}}$.\\
 Falls $x\in S^{1}$, dann folgt $\varphi\left(x\right)\in\overline{\mathbb{C}}\setminus\mathbb{C}$
 ist ein Häufungspunkt in $\overline{\mathbb{C}}$.
-
+\end{itemize}
 
 \section[Cauchy-Riemann DGLn]{Analytische Funktionen, die Cauchy-Riemannschen Differentialgleichungen}
 
 Sei $\Omega\subseteq\mathbb{C}$ offen.
 
 
-\subsection{Definition}
+\subsection{Definition \textmd{(komplex differenzierbar)}}
+
+\textcolor{green}{TODO: Rest überarbeiten}
 
 Eine Funktion $f:\Omega\to\mathbb{C}$ heißt in $z\in\Omega$ \emph{(komplex)
 differenzierbar} mit \emph{komplexer Ableitung} $f'$, falls der Limes
@@ -6382,7 +6553,7 @@ n\left(\gamma,0\right) & =1
 \qqed
 
 
-\section{Einfache Folgerungen aus dem Cauchyschen Integralsatz}
+\section[Folgerungen des Integralsatzes]{Einfache Folgerungen aus dem Cauchyschen Integralsatz}
 
 TODO: Abb7
 
@@ -6657,7 +6828,7 @@ Bedingung für \quotedblbase{}Ausnahmepunkte\textquotedblleft{}:
 
 
 
-\section{Hebbare Singularitäten, Taylorreihen}
+\section[Taylorreihen]{Hebbare Singularitäten, Taylorreihen}
 
 
 \subsection{Satz}
@@ -7497,7 +7668,7 @@ Alle Nullstellen der $\zeta$-Funktion liegen auf der Geraden ${\displaystyle \te
 (Dies ist ein noch unbewiesenes Millenium-Problem.)
 
 
-\section{Der Riemannsche Abbildungssatz}
+\section[Riemannscher Abbildungssatz]{Der Riemannsche Abbildungssatz}
 
 
 \subsection{Definition (biholomorph)}
