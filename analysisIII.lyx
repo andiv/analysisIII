@@ -20054,6 +20054,54 @@ R & =\frac{1}{\lim\sup_{n\to\infty}\sqrt[n]{\abs{a_{n}}}}
 
 \end_inset
 
+Sei 
+\begin_inset Formula ${\displaystyle \left(f_{n}\right)_{n\in\mathbb{N}}}$
+\end_inset
+
+ eine Folge von auf 
+\begin_inset Formula $\Omega\subseteq\mathbb{C}$
+\end_inset
+
+ definierten Funktionen mit 
+\begin_inset Formula $f_{n}\rightrightarrows f$
+\end_inset
+
+, das heißt 
+\begin_inset Formula $f_{n}$
+\end_inset
+
+ 
+\emph on
+konvergiert gleichmäßig
+\emph default
+ gegen 
+\begin_inset Formula $f$
+\end_inset
+
+, wenn es für alle 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+ ein 
+\begin_inset Formula $N\in\mathbb{N}$
+\end_inset
+
+ gibt, sodass für alle 
+\begin_inset Formula $n\in\mathbb{N}_{\ge N}$
+\end_inset
+
+ und alle 
+\begin_inset Formula $z\in\mathbb{C}$
+\end_inset
+
+ gilt:
+\begin_inset Formula 
+\begin{align*}
+\abs{f_{n}\left(z\right)-f\left(z\right)} & <\varepsilon
+\end{align*}
+
+\end_inset
+
 
 \end_layout
 
@@ -20062,9 +20110,19 @@ Satz
 \end_layout
 
 \begin_layout Standard
+Sei 
+\begin_inset Formula $R$
+\end_inset
 
-\color green
-TODO: Rest überarbeiten
+ der Konvergenzradius einer Folge 
+\begin_inset Formula $\left(f_{n}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+ in 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -20101,7 +20159,7 @@ iii
 \end_inset
 
  mit 
-\begin_inset Formula $\left|z\right|<R$
+\begin_inset Formula $\abs z<R$
 \end_inset
 
  konvergiert die Potenzreihe absolut.
@@ -20109,6 +20167,10 @@ iii
 
 \begin_layout Standard
 Für jedes 
+\begin_inset Formula $\varrho\in\mathbb{R}$
+\end_inset
+
+ mit 
 \begin_inset Formula $0<\varrho<R$
 \end_inset
 
@@ -20117,48 +20179,6 @@ Für jedes
 \end_inset
 
  gleichmäßig.
-\begin_inset Marginal
-status open
-
-\begin_layout Plain Layout
-Gleichmäßige Konvergenz:
-\end_layout
-
-\begin_layout Plain Layout
-Sei 
-\begin_inset Formula ${\displaystyle \left(f_{n}\right)_{n\in\mathbb{N}}}$
-\end_inset
-
- eine Folge von auf 
-\begin_inset Formula $\Omega\subseteq\mathbb{C}$
-\end_inset
-
- definierten Funktionen mit 
-\begin_inset Formula $f_{n}\rightrightarrows f$
-\end_inset
-
- (das heißt 
-\begin_inset Formula $f_{n}$
-\end_inset
-
- konvergiert gleichmäßig gegen 
-\begin_inset Formula $f$
-\end_inset
-
-), wenn:
-\begin_inset Formula 
-\begin{align*}
-\fall_{\varepsilon>0}\exs_{N\in\mathbb{N}} & \left|f_{n}\left(z\right)-f\left(z\right)\right|<\varepsilon\quad\fall_{n\in\mathbb{N}_{\ge N}}\fall_{z\in\mathbb{Z}}
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -20175,7 +20195,7 @@ iii
 \end_inset
 
  Falls 
-\begin_inset Formula $\left|z\right|>R$
+\begin_inset Formula $\abs z>R$
 \end_inset
 
  ist, divergiert die Potenzreihe.
@@ -20208,9 +20228,6 @@ Beweis
 
 \begin_layout Standard
 Siehe Analysis I.
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -20231,19 +20248,39 @@ Satz
 \end_layout
 
 \begin_layout Standard
+Sei 
+\begin_inset Formula $R$
+\end_inset
+
+ der Konvergenzradius einer Folge 
+\begin_inset Formula $\left(f_{n}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+ in 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
 Auf 
-\begin_inset Formula $\Omega=\left\{ \left|z\right|<R\right\} $
+\begin_inset Formula $\Omega=\left\{ \abs z<R\right\} $
 \end_inset
 
  ist die Funktion 
 \begin_inset Formula ${\displaystyle f\left(z\right)=\sum_{n=0}^{\infty}a_{n}z^{n}}$
 \end_inset
 
- holomorph und 
-\begin_inset Formula $f'\left(z\right)=\sum_{n=1}^{\infty}na_{n}z^{n-1}$
+ holomorph und für die Ableitung gilt:
+\begin_inset Formula 
+\begin{align*}
+f'\left(z\right) & =\sum_{n=1}^{\infty}na_{n}z^{n-1}
+\end{align*}
+
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Subsubsection*
@@ -20260,12 +20297,16 @@ g_{n} & :=f_{n}'
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Sei nun 
 \begin_inset Formula $z\in\Omega$
 \end_inset
 
 , so wähle ein 
-\begin_inset Formula $\varepsilon>0$
+\begin_inset Formula $\varepsilon\in\mathbb{R}_{>0}$
 \end_inset
 
  mit 
@@ -20276,7 +20317,9 @@ Sei nun
 \end_layout
 
 \begin_layout Standard
-TODO: Abb1
+
+\color green
+TODO: Abb1 einfügen
 \end_layout
 
 \begin_layout Standard
@@ -20303,12 +20346,12 @@ f_{n} & \rightrightarrows f & g_{n} & \rightrightarrows g
  gegeben ist durch:
 \begin_inset Formula 
 \begin{align*}
-\frac{1}{{\displaystyle \lim\sup_{k\to\infty}\sqrt[k]{k\left|a_{k}\right|}}} & =\frac{1}{{\displaystyle \lim\sup_{k\to\infty}\sqrt[k]{k}\cdot\sqrt[k]{\left|a_{k}\right|}}}=R
+\frac{1}{{\displaystyle \lim\sup_{k\to\infty}\sqrt[k]{k\abs{a_{k}}}}} & =\frac{1}{{\displaystyle \lim\sup_{k\to\infty}\sqrt[k]{k}\cdot\sqrt[k]{\abs{a_{k}}}}}=R
 \end{align*}
 
 \end_inset
 
-Denn:
+Denn es gilt:
 \begin_inset Formula 
 \begin{align*}
 \lim_{n\to\infty}\sqrt[k]{k} & =\lim_{k\to\infty}e^{\frac{\log k}{k}}=1
@@ -20326,7 +20369,7 @@ Aus der gleichmäßigen Konvergenz und der Konvergenz der Ableitung folgt
 \end_layout
 
 \begin_layout Standard
-Schreibe: 
+Schreibe 
 \begin_inset Formula $f=f_{n}+R_{n}$
 \end_inset
 
@@ -20334,14 +20377,14 @@ Schreibe:
 \begin_inset Formula ${\displaystyle R_{n}=\sum_{k=n+1}^{\infty}a_{k}z^{k}}$
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
 Dann ist:
 \begin_inset Formula 
 \begin{align*}
-\frac{f\left(z'\right)-f\left(z\right)}{z'-z}-g\left(z\right) & =\left(\frac{f_{n}\left(z'\right)-f_{n}\left(z\right)}{z'-z}-g_{n}\left(z\right)\right)^{1.}-\left(g\left(z\right)-g_{n}\left(z\right)\right)^{2.}+\left(\frac{R_{n}\left(z'\right)-R_{n}\left(z\right)}{z'-z}\right)^{3.}
+\frac{f\left(z'\right)-f\left(z\right)}{z'-z}-g\left(z\right) & =\left(\frac{f_{n}\left(z'\right)-f_{n}\left(z\right)}{z'-z}-g_{n}\left(z\right)\right)^{1.}-\left(\vphantom{\bigg|}g\left(z\right)-g_{n}\left(z\right)\right)^{2.}+\left(\frac{R_{n}\left(z'\right)-R_{n}\left(z\right)}{z'-z}\right)^{3.}
 \end{align*}
 
 \end_inset
@@ -20350,11 +20393,11 @@ Zeige nun, dass alle Terme im Limes
 \begin_inset Formula $z'\to z$
 \end_inset
 
- verschwinden (für hinreichend großes 
-\begin_inset Formula $n$
+ und 
+\begin_inset Formula $n\to\infty$
 \end_inset
 
-).
+ verschwinden.
 \end_layout
 
 \begin_layout Enumerate
@@ -20378,7 +20421,7 @@ Term verschwindet, da die Potenzreihe
  konvergiert, denn:
 \begin_inset Formula 
 \begin{align*}
-g\left(z\right)-g_{n}\left(z\right) & =\sum_{k=n+1}^{\infty}ka_{k}z^{k-1}\stackrel{n\to\infty}{\longrightarrow}0
+g\left(z\right)-g_{n}\left(z\right) & =\sum_{k=n+1}^{\infty}ka_{k}z^{k-1}\xrightarrow{n\to\infty}0
 \end{align*}
 
 \end_inset
@@ -20387,19 +20430,7 @@ g\left(z\right)-g_{n}\left(z\right) & =\sum_{k=n+1}^{\infty}ka_{k}z^{k-1}\stackr
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
+Term:
 \begin_inset Formula 
 \begin{align*}
 \frac{R_{n}\left(z'\right)-R_{n}\left(z\right)}{z'-z} & =\sum_{k=n+1}^{\infty}a_{k}\frac{z'^{k}-z^{k}}{z'-z}=\sum_{k=n+1}^{\infty}a_{k}\left(z'^{k-1}+z'^{k-2}z+\ldots+z^{k-1}\right)
@@ -20418,7 +20449,7 @@ Sei
 , dann folgt:
 \begin_inset Formula 
 \begin{align*}
-\left|\frac{R_{n}\left(z'\right)-R_{n}\left(z\right)}{z'-z}\right| & \le\sum_{k=n+1}^{\infty}ka_{k}\varrho^{k+1}\stackrel{n\to\infty}{\longrightarrow}0
+\abs{\frac{R_{n}\left(z'\right)-R_{n}\left(z\right)}{z'-z}} & \le\sum_{k=n+1}^{\infty}ka_{k}\varrho^{k+1}\xrightarrow{n\to\infty}0
 \end{align*}
 
 \end_inset
@@ -20428,24 +20459,21 @@ Sei
 
 \begin_layout Standard
 Induktiv folgt sofort, dass 
-\begin_inset Formula ${\displaystyle f=\sum_{n}a_{n}z^{n}}$
+\begin_inset Formula ${\displaystyle f=\sum_{n\in\mathbb{N}}a_{n}z^{n}}$
 \end_inset
 
- innerhalb des Konvergenzradius beliebig oft differenzierbar ist und:
+ innerhalb des Konvergenzradius beliebig oft differenzierbar ist und dass
+ gilt:
 \begin_inset Formula 
 \begin{align*}
 f\left(z\right) & =a_{0}+a_{1}z+a_{2}z^{2}+a_{3}z^{3}+\ldots\\
 f'\left(z\right) & =a_{1}+2a_{2}z+3a_{3}z^{2}+\ldots\\
  & \,\,\,\vdots\\
-f^{\left(k\right)}\left(z\right) & =k!a_{k}+\frac{\left(k+1\right)!}{1!}a_{k+1}z+\ldots
+f^{\left(k\right)}\left(z\right) & =k!\cdot a_{k}+\frac{\left(k+1\right)!}{1!}\cdot a_{k+1}z+\ldots
 \end{align*}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 Damit ergibt sich:
 \begin_inset Formula 
 \begin{align*}
@@ -20457,7 +20485,7 @@ a_{k} & =\frac{f^{\left(k\right)}\left(0\right)}{k!}
 Einsetzen liefert dann sofort die Taylorreihe:
 \begin_inset Formula 
 \begin{align*}
-f\left(z\right) & =\sum_{n=0}^{\infty}\frac{f^{\left(m\right)}\left(0\right)}{n!}z^{n}
+f\left(z\right) & =\sum_{n=0}^{\infty}\frac{f^{\left(n\right)}\left(0\right)}{n!}z^{n}
 \end{align*}
 
 \end_inset
@@ -20485,12 +20513,7 @@ lässt sich für
 \begin_inset Formula $\left|z\right|<1$
 \end_inset
 
- als geometrische Reihe umschreiben
-\begin_inset Marginal
-status open
-
-\begin_layout Plain Layout
-geometrische Reihe:
+ mit Hilfe der geometrischen Reihe
 \begin_inset Formula 
 \begin{align*}
 \frac{1}{1-z} & =\sum_{n=0}^{\infty}z^{n}
@@ -20498,16 +20521,7 @@ geometrische Reihe:
 
 \end_inset
 
-für 
-\begin_inset Formula $\left|z\right|<1$
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
+umschreiben zu:
 \begin_inset Formula 
 \begin{align*}
 f\left(z\right) & =\sum_{n=0}^{\infty}\left(-z^{2}\right)^{n}
@@ -20515,27 +20529,29 @@ f\left(z\right) & =\sum_{n=0}^{\infty}\left(-z^{2}\right)^{n}
 
 \end_inset
 
-Konvergenzradius 
-\begin_inset Formula $R=1$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Pole von 
+Der Konvergenzradius von 
 \begin_inset Formula $f$
 \end_inset
 
-: 
-\begin_inset Formula $z=\pm i$
+ ist 
+\begin_inset Formula $R=1$
 \end_inset
 
+ und die Pole von 
+\begin_inset Formula $f$
+\end_inset
 
+ sind 
+\begin_inset Formula $z=\pm\ii$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-TODO: Abb2
+
+\color green
+TODO: Abb2 einfügen
 \end_layout
 
 \begin_layout Standard
@@ -20543,7 +20559,7 @@ Dieses Beispiel haben wir schon früher als reelle Funktion betrachtet.
 \end_layout
 
 \begin_layout Standard
-Wir verstehen jetzt, warum den Konvergenzradius 1 ist, denn 
+Wir verstehen jetzt, warum der Konvergenzradius 1 ist, denn 
 \begin_inset Formula $f$
 \end_inset
 
@@ -20569,7 +20585,11 @@ Sei
 \begin_inset Formula ${\displaystyle f\left(z\right)=\sum_{n=0}^{\infty}a_{n}z^{n}}$
 \end_inset
 
- mit Konvergenzradius 1.
+ mit Konvergenzradius 
+\begin_inset Formula $R=1$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -20577,8 +20597,12 @@ Falls
 \begin_inset Formula ${\displaystyle \sum_{n=0}^{\infty}a_{n}}$
 \end_inset
 
- konvergiert, dann ist für jedes 
-\begin_inset Formula $k>0$
+ konvergiert, dann gilt für jedes 
+\begin_inset Formula $K\in\mathbb{R}_{>0}$
+\end_inset
+
+ für 
+\begin_inset Formula ${\displaystyle \frac{\abs{1-z}}{1-\abs z}\le K}$
 \end_inset
 
 :
@@ -20589,23 +20613,21 @@ f\left(1\right) & =\lim_{z\to1}f\left(z\right)
 
 \end_inset
 
-mit 
-\begin_inset Formula ${\displaystyle \frac{\left|1-z\right|}{1-\left|z\right|}\le k}$
-\end_inset
 
-.
 \end_layout
 
 \begin_layout Standard
-TODO: Abb3
+
+\color green
+TODO: Abb3 einfügen
 \end_layout
 
 \begin_layout Standard
-Geometrische Bedeutung: 
+Geometrische Bedeutung ist, dass 
 \begin_inset Formula $z$
 \end_inset
 
- muss im „Kegel“ liegen.
+ in einem „Kegel“ liegen muss.
 \end_layout
 
 \begin_layout Standard
@@ -20627,11 +20649,11 @@ Beachte:
 \end_layout
 
 \begin_layout Itemize
-Konvergenzradius 1 ist keine Einschränkung (reskaliere sonst).
+Konvergenzradius 1 ist keine Einschränkung, denn sonst kann man reskalieren.
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\sum a_{n}$
+\begin_inset Formula ${\displaystyle \sum_{n\in\mathbb{N}}a_{n}}$
 \end_inset
 
  braucht 
@@ -20647,15 +20669,14 @@ Es gilt auch
 \end_inset
 
 , für 
-\begin_inset Formula $\left|z_{0}\right|=1$
+\begin_inset Formula $\abs{z_{0}}=1$
 \end_inset
 
  mit 
-\begin_inset Formula $\frac{\left|z-z_{0}\right|}{1-\left|z\right|}\le K$
+\begin_inset Formula ${\displaystyle \frac{\abs{z-z_{0}}}{1-\abs z}\le K}$
 \end_inset
 
 .
- (von Vertretung)
 \end_layout
 
 \begin_layout Subsubsection*
@@ -20671,11 +20692,11 @@ Ohne Einschränkung gilt:
 
 \end_inset
 
-(Ansonsten addiere eine Konstante zu 
+Ansonsten addiere eine Konstante zu 
 \begin_inset Formula $a_{0}$
 \end_inset
 
-.)
+.
 \end_layout
 
 \begin_layout Standard
@@ -20692,58 +20713,62 @@ S_{n}\left(z\right) & :=a_{0}+a_{1}z\ldots+a_{n}z^{n}=\\
 \end_inset
 
 Es gilt 
-\begin_inset Formula $S_{n}z^{n}\stackrel{n\to\infty}{\longrightarrow}0$
+\begin_inset Formula $S_{n}z^{n}\xrightarrow{n\to\infty}0$
 \end_inset
 
 , da 
 \begin_inset Formula $S_{n}\to0$
 \end_inset
 
- und 
-\begin_inset Formula $z^{n}$
+ konvergiert und und 
+\begin_inset Formula $z^{n}\to0$
 \end_inset
 
- beschränkt ist.
-\end_layout
-
-\begin_layout Standard
-Somit ist 
-\begin_inset Formula $f\left(z\right)=\left(1-z\right)\sum_{n=0}^{\infty}S_{n}z^{n}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Wir nehmen an, dass 
-\begin_inset Formula $\left|1-z\right|\le K\left(1-\left|z\right|\right)$
-\end_inset
-
-, und zudem gilt 
-\begin_inset Formula $S_{n}\to0$
+ konvergiert wegen 
+\begin_inset Formula $\abs z<R=1$
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+Somit folgt:
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\left(1-z\right)\sum_{n=0}^{\infty}S_{n}z^{n}
+\end{align*}
+
+\end_inset
+
+Wir nehmen an, dass 
+\begin_inset Formula $\abs{1-z}\le K\cdot\left(1-\abs z\right)$
+\end_inset
+
+ ist und zudem 
+\begin_inset Formula $S_{n}\to0$
+\end_inset
+
+ gilt.
 \end_layout
 
 \begin_layout Standard
 Wähle 
-\begin_inset Formula $N$
+\begin_inset Formula $N\in\mathbb{N}$
 \end_inset
 
- so groß, dass 
+ so groß, dass für alle 
+\begin_inset Formula $n\in\mathbb{N}_{\ge N}$
+\end_inset
+
+ schon 
 \begin_inset Formula $S_{n}<\varepsilon$
 \end_inset
 
- für alle 
-\begin_inset Formula $n\ge N$
-\end_inset
-
-.
+ ist.
  Dann folgt:
 \begin_inset Formula 
 \begin{align*}
-\sum_{n=N}^{\infty}\left|S_{n}z^{n}\right| & \le\varepsilon\frac{\left|z\right|^{N}}{1-\left|z\right|}<\frac{\varepsilon}{1-\left|z\right|}\le\frac{K\varepsilon}{\left|1-z\right|}
+\sum_{n=N}^{\infty}\abs{S_{n}z^{n}} & \le\varepsilon\frac{\abs z^{N}}{1-\abs z}<\frac{\varepsilon}{1-\abs z}\le\frac{K\varepsilon}{\abs{1-z}}
 \end{align*}
 
 \end_inset
@@ -20751,7 +20776,7 @@ Wähle
 Und es ergibt sich:
 \begin_inset Formula 
 \begin{align*}
-\left|f\left(z\right)\right| & \le\left|1-z\right|\left|\sum_{k=0}^{N-1}S_{k}z^{k}\right|+K\varepsilon\stackrel{z\to1}{\longrightarrow}K\varepsilon
+\abs{f\left(z\right)} & \le\abs{1-z}\abs{\sum_{k=0}^{N-1}S_{k}z^{k}}+K\varepsilon\xrightarrow{z\to1}K\varepsilon
 \end{align*}
 
 \end_inset
@@ -20786,7 +20811,7 @@ Exponential- und Logarithmusfunktionen
 status open
 
 \begin_layout Plain Layout
-Exp- und Log-Funktion
+Die Funktionen exp und log
 \end_layout
 
 \end_inset
@@ -20799,10 +20824,11 @@ Eigenschaften der Exponentialfunktion
 \end_layout
 
 \begin_layout Standard
+Die Funktion 
 \begin_inset Formula ${\displaystyle \exp\left(z\right):=\sum_{n=0}^{\infty}\frac{z^{n}}{n!}}$
 \end_inset
 
- hat Konvergenzradius 
+ hat den Konvergenzradius 
 \begin_inset Formula $\infty$
 \end_inset
 
@@ -20810,7 +20836,7 @@ Eigenschaften der Exponentialfunktion
 \begin_inset Formula $\mathbb{C}$
 \end_inset
 
-.
+ und es gilt.
 \begin_inset Formula 
 \begin{align*}
 \frac{\dd}{\dd z}e^{z} & =e^{z}
@@ -20818,7 +20844,7 @@ Eigenschaften der Exponentialfunktion
 
 \end_inset
 
-Mit der Cauchy-Produktformel folgt:
+Mit der Produktformel von Cauchy folgt:
 \begin_inset Formula 
 \begin{align*}
 e^{z_{1}}\cdot e^{z_{2}} & =e^{\left(z_{1}+z_{2}\right)}
@@ -20826,14 +20852,25 @@ e^{z_{1}}\cdot e^{z_{2}} & =e^{\left(z_{1}+z_{2}\right)}
 
 \end_inset
 
-
+Bereits in Analysis I wurde gezeigt:
 \end_layout
 
 \begin_layout Standard
-Bereits in Analysis I wurde gezeigt:
+Polardarstellung mit 
+\begin_inset Formula $r:=e^{\text{Re}\left(z\right)}$
+\end_inset
+
+ und 
+\begin_inset Formula $\varphi=:\text{Im}\left(z\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-e^{z} & =re^{i\varphi} &  & \text{Polardarstellung mit }r=e^{\text{Re}\left(z\right)},\,\varphi=\text{Im}\left(z\right)\\
+e^{z} & =re^{i\varphi}\\
 e^{\ii\varphi} & =\cos\left(\varphi\right)+\ii\sin\left(\varphi\right)
 \end{align*}
 
@@ -20854,27 +20891,19 @@ Diese sind als Linearkombination holomorpher Funktionen holomorph auf ganz
 \begin_inset Formula $\mathbb{C}$
 \end_inset
 
- und können als Potenzreihe Dargestellt werden.
+ und können als Potenzreihe dargestellt werden.
 \end_layout
 
 \begin_layout Standard
 Periodizität:
 \begin_inset Formula 
 \begin{align*}
-\cos\left(2\pi\right) & =1 & \sin\left(2\pi\right) & =0
+\cos\left(2\pi\right) & =1 & \sin\left(2\pi\right) & =0 & e^{2\pi\ii} & =1
 \end{align*}
 
 \end_inset
 
-Oder:
-\begin_inset Formula 
-\begin{align*}
-e^{2\pi\ii} & =1
-\end{align*}
-
-\end_inset
-
-Allgemeiner für ein 
+Allgemeiner gilt für ein 
 \begin_inset Formula $a\in\mathbb{Z}$
 \end_inset
 
@@ -20894,7 +20923,7 @@ Eigenschaften der Logarithmusfunktion
 \end_layout
 
 \begin_layout Standard
-Bestimmungsgleichung:
+Die definierende Gleichung für den Logarithmus ist:
 \begin_inset Formula 
 \begin{align*}
 e^{\text{log}\left(z\right)} & =z
@@ -20910,34 +20939,37 @@ Diese Gleichung ist nur für
 \begin_inset Formula $z\not=0$
 \end_inset
 
- lösbar und
+ lösbar.
 \end_layout
 
 \begin_layout Itemize
-nur bis auf ein Vielfaches von 
-\begin_inset Formula $2\pi\ii$
-\end_inset
-
- bestimmt.
- (Wegen 
+Wegen 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:period"
 
 \end_inset
 
-)
-\end_layout
-
-\begin_layout Standard
-Betrachte Absolutbetrag 
-\begin_inset Formula $\left|e^{\text{log}\left(x\right)}\right|=e^{\text{Re}\left(\log\left(z\right)\right)}=\left|z\right|$
+ ist sie nur bis auf ein Vielfaches von 
+\begin_inset Formula $2\pi\ii$
 \end_inset
 
-.
+ bestimmt.
 \end_layout
 
 \begin_layout Standard
+Betrachte für 
+\begin_inset Formula $z\not=0$
+\end_inset
+
+ den Absolutbetrag:
+\begin_inset Formula 
+\begin{align*}
+\abs{e^{\text{log}\left(z\right)}} & =e^{\text{Re}\left(\log\left(z\right)\right)}=\abs z
+\end{align*}
+
+\end_inset
+
 Daher ist 
 \begin_inset Formula $\text{Re}\left(\log\left(z\right)\right)$
 \end_inset
@@ -20954,11 +20986,15 @@ Für
 \begin_inset Formula $\theta\in\mathbb{R}$
 \end_inset
 
- folgt mit der Argumentfunktion 
-\begin_inset Formula $\text{arg}\left(z\right):=\varphi=2\cdot\text{arctan}\left(\frac{y}{1+x}\right)\in[\theta,\theta+2\pi)$
+ folgt mit der Argumentfunktion
+\begin_inset Formula 
+\begin{align*}
+\text{arg}\left(z\right) & :=\varphi=2\cdot\text{arctan}\left(\frac{y}{1+x}\right)\in[\theta,\theta+2\pi)
+\end{align*}
+
 \end_inset
 
-, für 
+für 
 \begin_inset Formula $z=\left|z\right|e^{\ii\varphi}=x+\ii y$
 \end_inset
 
@@ -20973,15 +21009,11 @@ Für
 
 \begin_inset Formula 
 \begin{align}
-\log\left(z\right) & =\text{log}\left(\left|z\right|\right)+\ii\text{arg}\left(z\right)\label{eq:logHaupt}
+\log\left(z\right) & =\text{log}\left(\left|z\right|\right)+\ii\cdot\text{arg}\left(z\right)\label{eq:logHaupt}
 \end{align}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 Also ist die Bestimmungsgleichung für 
 \begin_inset Formula $\log$
 \end_inset
@@ -21001,35 +21033,34 @@ reference "eq:logHaupt"
 \end_layout
 
 \begin_layout Standard
-Problem: 
+Das Problem ist, dass 
 \begin_inset Formula $\text{log}$
 \end_inset
 
- ist unste tig an 
+ unstetig an 
 \begin_inset Formula $L_{\theta}:=\left\{ te^{\ii\theta}|t\ge0\right\} $
 \end_inset
 
-.
+ ist.
 \end_layout
 
 \begin_layout Standard
-Lösung: „Schneide die komplexe Ebene auf.“, zum Beispiel so:
+Lösung: „Schneide die komplexe Ebene auf.“
 \end_layout
 
 \begin_layout Standard
-TODO: Abb1
+Zum Beispiel so:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $L_{\theta}:=\left\{ te^{\ii\theta}|t\ge0\right\} $
-\end_inset
 
-
+\color green
+TODO: Abb1 einfügen
 \end_layout
 
 \begin_layout Standard
 Dann ist 
-\begin_inset Formula $\text{log}:\mathbb{C}|_{L_{\varphi}}\to\mathbb{C}$
+\begin_inset Formula $\text{log}:\mathbb{C}|_{L_{\theta}}\to\mathbb{C}$
 \end_inset
 
  stetig.
@@ -21104,13 +21135,13 @@ Falls
 \begin_inset Formula $\gamma\left(a\right)=\gamma\left(b\right)$
 \end_inset
 
- heißt 
+ heißt die Kurve 
 \begin_inset Formula $\gamma$
 \end_inset
 
  
 \emph on
-geschlossene Kurve
+geschlossen
 \emph default
 .
 \end_layout
@@ -21123,19 +21154,23 @@ geschlossene Kurve
 \emph on
 Parameter der Kurve
 \emph default
- (
-\begin_inset Formula $\tau\mapsto\gamma\left(\tau\right)$
+ 
+\begin_inset Formula $\gamma:\tau\mapsto\gamma\left(\tau\right)$
 \end_inset
 
-)
+.
 \end_layout
 
 \begin_layout Itemize
-Falls die (reelle) Ableitung 
-\begin_inset Formula ${\displaystyle \gamma'\left(\tau\right)=\lim_{h\to0}\frac{\gamma\left(\tau+h\right)-\gamma\left(\tau\right)}{h}}$
+Falls die (reelle) Ableitung
+\begin_inset Formula 
+\begin{align*}
+\gamma'\left(\tau\right) & =\lim_{h\to0}\frac{\gamma\left(\tau+h\right)-\gamma\left(\tau\right)}{h}
+\end{align*}
+
 \end_inset
 
- existiert und stetig ist, heißt 
+existiert und stetig ist, heißt 
 \begin_inset Formula $\gamma$
 \end_inset
 
@@ -21200,7 +21235,7 @@ stückweise (stetig) differenzierbar
  gilt.
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 Beispiel und Definition
 \end_layout
 
@@ -21210,22 +21245,24 @@ Betrachte die holomorphe Abbildung
 \end_inset
 
  und die reguläre Kurve 
-\begin_inset Formula $x:I\to\Omega$
+\begin_inset Formula $\gamma:I\to\Omega$
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Standard
-Ziel: Gewinne geometrische Informationen über 
+Das Ziel ist, geometrische Informationen über 
 \begin_inset Formula $f$
 \end_inset
 
-, indem man das Bild der Kurve betrachtet.
+ zu gewinnen, indem man das Bild der Kurve betrachtet.
 \end_layout
 
 \begin_layout Standard
-TODO: Abb2
+
+\color green
+TODO: Abb2 einfügen
 \end_layout
 
 \begin_layout Standard
@@ -21240,7 +21277,9 @@ TODO: Abb2
 \end_layout
 
 \begin_layout Standard
-TODO: Abb3 ändere 
+
+\color green
+TODO: Abb3 einfügen (ändere 
 \begin_inset Formula $u$
 \end_inset
 
@@ -21248,7 +21287,7 @@ TODO: Abb3 ändere
 \begin_inset Formula $v$
 \end_inset
 
-, 
+ und 
 \begin_inset Formula $\tilde{u}$
 \end_inset
 
@@ -21256,7 +21295,7 @@ TODO: Abb3 ändere
 \begin_inset Formula $\tilde{v}$
 \end_inset
 
-
+)
 \end_layout
 
 \begin_layout Standard
@@ -21274,15 +21313,12 @@ TODO: Abb3 ändere
 .
 \begin_inset Formula 
 \begin{align*}
-\tilde{v}:=\frac{\dd}{\dd\tau}\left(f\circ\gamma\right)\left(\tau_{0}\right) & =f'\left(\gamma\left(\tau_{0}\right)\right)\cdot\gamma'\left(\tau_{0}\right)=\underbrace{f'\left(z_{0}\right)}_{\in\mathbb{C}}\cdot v
+\tilde{v}:=\left(\frac{\dd}{\dd\tau}\left(f\circ\gamma\right)\right)\left(\tau_{0}\right) & =f'\left(\gamma\left(\tau_{0}\right)\right)\cdot\gamma'\left(\tau_{0}\right)=\underbrace{f'\left(z_{0}\right)}_{\in\mathbb{C}}\cdot v
 \end{align*}
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -21300,7 +21336,7 @@ status open
 Schreibe nun Real- und Imaginärteil aus:
 \begin_inset Formula 
 \begin{align*}
-v & =v_{1}+\ii v_{2} & \tilde{v} & =\tilde{v}_{1}+\ii\tilde{v}_{2}
+v & =v_{1}+\ii v_{2} & \tilde{v} & =\tilde{v}_{1}+\ii\tilde{v}_{2} & f'\left(z_{0}\right) & =a+\ii b
 \end{align*}
 
 \end_inset
@@ -21311,10 +21347,10 @@ v & =v_{1}+\ii v_{2} & \tilde{v} & =\tilde{v}_{1}+\ii\tilde{v}_{2}
 \left(\begin{array}{c}
 \tilde{v}_{1}\\
 \tilde{v}_{2}
-\end{array}\right) & =\left(\begin{array}{cc}
+\end{array}\right) & =\underbrace{\left(\begin{array}{cc}
 a & -b\\
 b & a
-\end{array}\right)\left(\begin{array}{c}
+\end{array}\right)}_{=A}\left(\begin{array}{c}
 v_{1}\\
 v_{2}
 \end{array}\right)
@@ -21334,18 +21370,18 @@ Determinante:
 
 \end_inset
 
-Also erhält 
+Daher erhält 
 \begin_inset Formula $A$
 \end_inset
 
- die Orientierung („Drehstreckung“ einschließlich Achsenstreckung).
+ die Orientierung, ist also eine „Drehstreckung“ einschließlich Achsenstreckung.
 \end_layout
 
 \begin_layout Itemize
 Es gilt:
 \begin_inset Formula 
 \begin{align*}
-\underbrace{A^{*}}_{=A^{T}}A & =\left(\begin{array}{cc}
+\underbrace{A^{*}}_{=A^{T}}\cdot A & =\left(\begin{array}{cc}
 a & b\\
 -b & a
 \end{array}\right)\left(\begin{array}{cc}
@@ -21366,7 +21402,7 @@ Eine unitäre Matrix
  erfüllt:
 \begin_inset Formula 
 \begin{align*}
-U^{*}U & =E
+U^{*}\cdot U & =E
 \end{align*}
 
 \end_inset
@@ -21388,7 +21424,7 @@ Winkel erhalten
 \end_layout
 
 \begin_layout Standard
-Statt winkelerhaltend sagt man auch 
+Statt winkeltreu sagt man auch 
 \emph on
 konform
 \emph default
@@ -21400,18 +21436,18 @@ Also beschreibt die Multiplikation mit
 \begin_inset Formula $f'\left(z_{0}\right)$
 \end_inset
 
- eine orientierungs- und winkelerhaltende Transformation der komplexen Ebene.
+ eine Orientierungs- und Winkelerhaltende Transformation der komplexen Ebene.
 \end_layout
 
 \begin_layout Standard
-Genauer: 
+Genauer: Seien 
 \begin_inset Formula $u,v\in\mathbb{C}\stackrel{\sim}{=}\mathbb{R}^{2}$
 \end_inset
 
-
+.
 \begin_inset Formula 
 \begin{align*}
-\cos\varphi & =\frac{\left\langle u,v\right\rangle _{\mathbb{R}^{2}}}{\left|\left|u\right|\right|\cdot\left|\left|v\right|\right|}=\frac{\left\langle \tilde{u},\tilde{v}\right\rangle _{\mathbb{R}^{2}}}{\left|\left|\tilde{u}\right|\right|\cdot\left|\left|\tilde{v}\right|\right|}=\cos\tilde{\varphi}
+\cos\varphi & =\frac{\left\langle u,v\right\rangle _{\mathbb{R}^{2}}}{\norm u\cdot\norm v}=\frac{\left\langle \tilde{u},\tilde{v}\right\rangle _{\mathbb{R}^{2}}}{\norm{\tilde{u}}\cdot\norm{\tilde{v}}}=\cos\tilde{\varphi}
 \end{align*}
 
 \end_inset
@@ -21435,8 +21471,8 @@ Nebenrechnung:
 
 \begin_inset Formula 
 \begin{align*}
-\left|\left|\tilde{u}\right|\right|^{2} & =\left\langle \tilde{u},\tilde{u}\right\rangle =\left\langle Au,Au\right\rangle =\left\langle u,A^{*}Au\right\rangle =\left(a^{2}+b^{2}\right)\cdot\left\langle u,u\right\rangle \\
-\left|\left|\tilde{v}\right|\right|^{2} & =\left\langle \tilde{v},\tilde{v}\right\rangle =\left\langle Av,Av\right\rangle =\left\langle v,A^{*}Av\right\rangle =\left(a^{2}+b^{2}\right)\cdot\left\langle v,v\right\rangle 
+\norm{\tilde{u}}^{2} & =\left\langle \tilde{u},\tilde{u}\right\rangle =\left\langle Au,Au\right\rangle =\left\langle u,A^{*}Au\right\rangle =\left(a^{2}+b^{2}\right)\cdot\left\langle u,u\right\rangle \\
+\norm{\tilde{v}}^{2} & =\left\langle \tilde{v},\tilde{v}\right\rangle =\left\langle Av,Av\right\rangle =\left\langle v,A^{*}Av\right\rangle =\left(a^{2}+b^{2}\right)\cdot\left\langle v,v\right\rangle 
 \end{align*}
 
 \end_inset
@@ -21445,22 +21481,33 @@ Analog kann man den Winkel zwischen zwei Kurven betrachten:
 \end_layout
 
 \begin_layout Standard
-TODO: Abb1
+
+\color green
+TODO: Abb1 einfügen
 \end_layout
 
 \begin_layout Standard
-Polarzerlegung: 
-\begin_inset Formula $u=\left|u\right|e^{\ii\varphi}$
+Polarzerlegung:
+\begin_inset Formula 
+\begin{align*}
+u & =\left|u\right|e^{\ii\varphi}
+\end{align*}
+
+\end_inset
+
+mit
+\begin_inset Formula 
+\begin{align*}
+\arg u & :=\varphi\mod2\pi\in[0,2\pi)
+\end{align*}
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\arg u:=\varphi\text{(mod)}2\pi\in[0,2\pi)$
-\end_inset
-
- nach der üblichen Konvention.
+nach der üblichen Konvention.
 \begin_inset Formula 
 \begin{align*}
 \alpha=\arg u-\arg v & =\arg\frac{u}{v}
@@ -21485,23 +21532,25 @@ Beispiel
 
 \begin_layout Standard
 Betrachte Kurvenscharen 
-\begin_inset Formula $\gamma_{x}\left(t\right),\delta_{y}\left(t\right)$
+\begin_inset Formula $\gamma_{x}\left(t\right)$
+\end_inset
+
+ und 
+\begin_inset Formula $\delta_{y}\left(t\right)$
 \end_inset
 
 .
 \begin_inset Formula 
 \begin{align*}
-\gamma_{x}:\mathbb{R} & \to\mathbb{C}:t\mapsto x+\ii t\\
-\delta_{y}:\mathbb{R} & \to\mathbb{C}:t\mapsto t+\ii y
+\gamma_{x}:\mathbb{R} & \to\mathbb{C} & \delta_{y}:\mathbb{R} & \to\mathbb{C}\\
+t & \mapsto x+\ii t & t & \mapsto t+\ii y
 \end{align*}
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-TODO: Abb2
+\color green
+TODO: Abb2 einfügen
 \end_layout
 
 \begin_layout Standard
@@ -21526,12 +21575,14 @@ Betrachte nun die Kurven
 \end_layout
 
 \begin_layout Standard
-TODO: Abb3, Abb4
+
+\color green
+TODO: Abb3 und Abb4 einfügen
 \end_layout
 
 \begin_layout Standard
-Die Winkel bleiben erhalten, aber Längen und Flächeninhalte bleiben aber
- im Allgemeinen 
+Die Winkel bleiben erhalten, aber Längen und Flächeninhalte bleiben im Allgemein
+en 
 \emph on
 nicht
 \emph default
@@ -21550,6 +21601,12 @@ Komplexe Integration
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Rest überarbeiten
 \end_layout
 
 \begin_layout Standard

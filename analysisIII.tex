@@ -5494,30 +5494,31 @@ Der \emph{Konvergenzradius} ist:
 \begin{align*}
 R & =\frac{1}{\lim\sup_{n\to\infty}\sqrt[n]{\abs{a_{n}}}}
 \end{align*}
+Sei ${\displaystyle \left(f_{n}\right)_{n\in\mathbb{N}}}$ eine Folge
+von auf $\Omega\subseteq\mathbb{C}$ definierten Funktionen mit $f_{n}\rightrightarrows f$,
+das heißt $f_{n}$ \emph{konvergiert gleichmäßig} gegen $f$, wenn
+es für alle $\varepsilon>0$ ein $N\in\mathbb{N}$ gibt, sodass für
+alle $n\in\mathbb{N}_{\ge N}$ und alle $z\in\mathbb{C}$ gilt:
+\begin{align*}
+\abs{f_{n}\left(z\right)-f\left(z\right)} & <\varepsilon
+\end{align*}
 
 
 
 \subsection{Satz}
 
-\textcolor{green}{TODO: Rest überarbeiten}
+Sei $R$ der Konvergenzradius einer Folge $\left(f_{n}\right)_{n\in\mathbb{N}}$
+in $\mathbb{C}$.
 
 \begin{iiilist}
 
-\iii Für alle $z\in\mathbb{C}$ mit $\left|z\right|<R$ konvergiert
-die Potenzreihe absolut.
+\iii Für alle $z\in\mathbb{C}$ mit $\abs z<R$ konvergiert die Potenzreihe
+absolut.
 
-Für jedes $0<\varrho<R$ ist die Konvergenz auf $B_{\varrho}\left(0\right)$
-gleichmäßig.\marginpar{Gleichmäßige Konvergenz:
+Für jedes $\varrho\in\mathbb{R}$ mit $0<\varrho<R$ ist die Konvergenz
+auf $B_{\varrho}\left(0\right)$ gleichmäßig.
 
-Sei ${\displaystyle \left(f_{n}\right)_{n\in\mathbb{N}}}$ eine Folge
-von auf $\Omega\subseteq\mathbb{C}$ definierten Funktionen mit $f_{n}\rightrightarrows f$
-(das heißt $f_{n}$ konvergiert gleichmäßig gegen $f$), wenn:
-\begin{align*}
-\fall_{\varepsilon>0}\exs_{N\in\mathbb{N}} & \left|f_{n}\left(z\right)-f\left(z\right)\right|<\varepsilon\quad\fall_{n\in\mathbb{N}_{\ge N}}\fall_{z\in\mathbb{Z}}
-\end{align*}
-}
-
-\iii Falls $\left|z\right|>R$ ist, divergiert die Potenzreihe.
+\iii Falls $\abs z>R$ ist, divergiert die Potenzreihe.
 
 \end{iiilist}
 
@@ -5527,15 +5528,20 @@ gliedweise differenzieren.
 
 \subsubsection*{Beweis}
 
-Siehe Analysis I.
-
-\qqed
+Siehe Analysis I.\qqed
 
 
 \subsection{Satz}
 
-Auf $\Omega=\left\{ \left|z\right|<R\right\} $ ist die Funktion ${\displaystyle f\left(z\right)=\sum_{n=0}^{\infty}a_{n}z^{n}}$
-holomorph und $f'\left(z\right)=\sum_{n=1}^{\infty}na_{n}z^{n-1}$.
+Sei $R$ der Konvergenzradius einer Folge $\left(f_{n}\right)_{n\in\mathbb{N}}$
+in $\mathbb{C}$.
+
+Auf $\Omega=\left\{ \abs z<R\right\} $ ist die Funktion ${\displaystyle f\left(z\right)=\sum_{n=0}^{\infty}a_{n}z^{n}}$
+holomorph und für die Ableitung gilt:
+\begin{align*}
+f'\left(z\right) & =\sum_{n=1}^{\infty}na_{n}z^{n-1}
+\end{align*}
+
 
 
 \subsubsection*{Beweis}
@@ -5545,9 +5551,12 @@ Definiere die Polynome:
 f_{n} & :=\sum_{k=0}^{n}a_{k}z^{k}\\
 g_{n} & :=f_{n}'
 \end{align*}
-Sei nun $z\in\Omega$, so wähle ein $\varepsilon>0$ mit $B_{2\varepsilon}\left(z\right)\subseteq\Omega$.
 
-TODO: Abb1
+
+Sei nun $z\in\Omega$, so wähle ein $\varepsilon\in\mathbb{R}_{>0}$
+mit $B_{2\varepsilon}\left(z\right)\subseteq\Omega$.
+
+\textcolor{green}{TODO: Abb1 einfügen}
 
 Auf $B_{\varepsilon}\left(z\right)$ gilt dann:
 \begin{align*}
@@ -5555,9 +5564,9 @@ f_{n} & \rightrightarrows f & g_{n} & \rightrightarrows g
 \end{align*}
 $g$ existiert, da der Konvergenzradius von $g$ gegeben ist durch:
 \begin{align*}
-\frac{1}{{\displaystyle \lim\sup_{k\to\infty}\sqrt[k]{k\left|a_{k}\right|}}} & =\frac{1}{{\displaystyle \lim\sup_{k\to\infty}\sqrt[k]{k}\cdot\sqrt[k]{\left|a_{k}\right|}}}=R
+\frac{1}{{\displaystyle \lim\sup_{k\to\infty}\sqrt[k]{k\abs{a_{k}}}}} & =\frac{1}{{\displaystyle \lim\sup_{k\to\infty}\sqrt[k]{k}\cdot\sqrt[k]{\abs{a_{k}}}}}=R
 \end{align*}
-Denn:
+Denn es gilt:
 \begin{align*}
 \lim_{n\to\infty}\sqrt[k]{k} & =\lim_{k\to\infty}e^{\frac{\log k}{k}}=1
 \end{align*}
@@ -5567,51 +5576,49 @@ Aus der gleichmäßigen Konvergenz und der Konvergenz der Ableitung
 folgt allgemein, dass man Differentiation und Summation vertauschen
 kann. Zur Deutlichkeit im Detail:
 
-Schreibe: $f=f_{n}+R_{n}$ mit ${\displaystyle R_{n}=\sum_{k=n+1}^{\infty}a_{k}z^{k}}$
+Schreibe $f=f_{n}+R_{n}$ mit ${\displaystyle R_{n}=\sum_{k=n+1}^{\infty}a_{k}z^{k}}$.
 
 Dann ist:
 \begin{align*}
-\frac{f\left(z'\right)-f\left(z\right)}{z'-z}-g\left(z\right) & =\left(\frac{f_{n}\left(z'\right)-f_{n}\left(z\right)}{z'-z}-g_{n}\left(z\right)\right)^{1.}-\left(g\left(z\right)-g_{n}\left(z\right)\right)^{2.}+\left(\frac{R_{n}\left(z'\right)-R_{n}\left(z\right)}{z'-z}\right)^{3.}
+\frac{f\left(z'\right)-f\left(z\right)}{z'-z}-g\left(z\right) & =\left(\frac{f_{n}\left(z'\right)-f_{n}\left(z\right)}{z'-z}-g_{n}\left(z\right)\right)^{1.}-\left(\vphantom{\bigg|}g\left(z\right)-g_{n}\left(z\right)\right)^{2.}+\left(\frac{R_{n}\left(z'\right)-R_{n}\left(z\right)}{z'-z}\right)^{3.}
 \end{align*}
-Zeige nun, dass alle Terme im Limes $z'\to z$ verschwinden (für hinreichend
-großes $n$).
+Zeige nun, dass alle Terme im Limes $z'\to z$ und $n\to\infty$ verschwinden.
 \begin{enumerate}
 \item Term verschwindet, da Polynome differenzierbar sind und wegen der
 Definition von $g_{n}$.
 \item Term verschwindet, da die Potenzreihe $g_{n}$ in $z$ konvergiert,
 denn:
 \begin{align*}
-g\left(z\right)-g_{n}\left(z\right) & =\sum_{k=n+1}^{\infty}ka_{k}z^{k-1}\stackrel{n\to\infty}{\longrightarrow}0
+g\left(z\right)-g_{n}\left(z\right) & =\sum_{k=n+1}^{\infty}ka_{k}z^{k-1}\xrightarrow{n\to\infty}0
 \end{align*}
 
-\item \hspace*{1mm}
+\item Term:
 \begin{align*}
 \frac{R_{n}\left(z'\right)-R_{n}\left(z\right)}{z'-z} & =\sum_{k=n+1}^{\infty}a_{k}\frac{z'^{k}-z^{k}}{z'-z}=\sum_{k=n+1}^{\infty}a_{k}\left(z'^{k-1}+z'^{k-2}z+\ldots+z^{k-1}\right)
 \end{align*}
 Sei $0<\varrho<R$ so gewählt, dass $z\in B_{\varrho}\left(0\right)$,
 dann folgt:
 \begin{align*}
-\left|\frac{R_{n}\left(z'\right)-R_{n}\left(z\right)}{z'-z}\right| & \le\sum_{k=n+1}^{\infty}ka_{k}\varrho^{k+1}\stackrel{n\to\infty}{\longrightarrow}0
+\abs{\frac{R_{n}\left(z'\right)-R_{n}\left(z\right)}{z'-z}} & \le\sum_{k=n+1}^{\infty}ka_{k}\varrho^{k+1}\xrightarrow{n\to\infty}0
 \end{align*}
 
 \end{enumerate}
-Induktiv folgt sofort, dass ${\displaystyle f=\sum_{n}a_{n}z^{n}}$
-innerhalb des Konvergenzradius beliebig oft differenzierbar ist und:
+Induktiv folgt sofort, dass ${\displaystyle f=\sum_{n\in\mathbb{N}}a_{n}z^{n}}$
+innerhalb des Konvergenzradius beliebig oft differenzierbar ist und
+dass gilt:
 \begin{align*}
 f\left(z\right) & =a_{0}+a_{1}z+a_{2}z^{2}+a_{3}z^{3}+\ldots\\
 f'\left(z\right) & =a_{1}+2a_{2}z+3a_{3}z^{2}+\ldots\\
  & \,\,\,\vdots\\
-f^{\left(k\right)}\left(z\right) & =k!a_{k}+\frac{\left(k+1\right)!}{1!}a_{k+1}z+\ldots
+f^{\left(k\right)}\left(z\right) & =k!\cdot a_{k}+\frac{\left(k+1\right)!}{1!}\cdot a_{k+1}z+\ldots
 \end{align*}
-
-
 Damit ergibt sich:
 \begin{align*}
 a_{k} & =\frac{f^{\left(k\right)}\left(0\right)}{k!}
 \end{align*}
 Einsetzen liefert dann sofort die Taylorreihe:
 \begin{align*}
-f\left(z\right) & =\sum_{n=0}^{\infty}\frac{f^{\left(m\right)}\left(0\right)}{n!}z^{n}
+f\left(z\right) & =\sum_{n=0}^{\infty}\frac{f^{\left(n\right)}\left(0\right)}{n!}z^{n}
 \end{align*}
 
 
@@ -5623,23 +5630,22 @@ Die Funktion
 \begin{align*}
 f\left(z\right) & :=\frac{1}{1+z^{2}}
 \end{align*}
-lässt sich für $\left|z\right|<1$ als geometrische Reihe umschreiben\marginpar{geometrische Reihe:
+lässt sich für $\left|z\right|<1$ mit Hilfe der geometrischen Reihe
 \begin{align*}
 \frac{1}{1-z} & =\sum_{n=0}^{\infty}z^{n}
 \end{align*}
-für $\left|z\right|<1$.}
+umschreiben zu:
 \begin{align*}
 f\left(z\right) & =\sum_{n=0}^{\infty}\left(-z^{2}\right)^{n}
 \end{align*}
-Konvergenzradius $R=1$
+Der Konvergenzradius von $f$ ist $R=1$ und die Pole von $f$ sind
+$z=\pm\ii$.
 
-Pole von $f$: $z=\pm i$
-
-TODO: Abb2
+\textcolor{green}{TODO: Abb2 einfügen}
 
 Dieses Beispiel haben wir schon früher als reelle Funktion betrachtet.
 
-Wir verstehen jetzt, warum den Konvergenzradius 1 ist, denn $f$ hat
+Wir verstehen jetzt, warum der Konvergenzradius 1 ist, denn $f$ hat
 Pole in der komplexen Ebene, deren Betrag $1$ ist.
 
 Wir überlegen nun, was auf dem Rand des Konvergenzgebiets passiert:
@@ -5648,29 +5654,29 @@ Wir überlegen nun, was auf dem Rand des Konvergenzgebiets passiert:
 \subsection{Theorem \textmd{(Satz von Abel)}}
 
 Sei ${\displaystyle f\left(z\right)=\sum_{n=0}^{\infty}a_{n}z^{n}}$
-mit Konvergenzradius 1.
+mit Konvergenzradius $R=1$.
 
 Falls ${\displaystyle \sum_{n=0}^{\infty}a_{n}}$ konvergiert, dann
-ist für jedes $k>0$:
+gilt für jedes $K\in\mathbb{R}_{>0}$ für ${\displaystyle \frac{\abs{1-z}}{1-\abs z}\le K}$:
 \begin{align*}
 f\left(1\right) & =\lim_{z\to1}f\left(z\right)
 \end{align*}
-mit ${\displaystyle \frac{\left|1-z\right|}{1-\left|z\right|}\le k}$.
 
-TODO: Abb3
 
-Geometrische Bedeutung: $z$ muss im \quotedblbase{}Kegel\textquotedblleft{}
-liegen.
+\textcolor{green}{TODO: Abb3 einfügen}
+
+Geometrische Bedeutung ist, dass $z$ in einem \quotedblbase{}Kegel\textquotedblleft{}
+liegen muss.
 
 %DATE: Fr 16.12.2011
 
 Beachte:
 \begin{itemize}
-\item Konvergenzradius 1 ist keine Einschränkung (reskaliere sonst).
-\item $\sum a_{n}$ braucht \emph{nicht} absolut zu konvergieren.
+\item Konvergenzradius 1 ist keine Einschränkung, denn sonst kann man reskalieren.
+\item ${\displaystyle \sum_{n\in\mathbb{N}}a_{n}}$ braucht \emph{nicht}
+absolut zu konvergieren.
 \item Es gilt auch $f\left(z_{0}\right)=\lim_{z\to z_{0}}f\left(z\right)$,
-für $\left|z_{0}\right|=1$ mit $\frac{\left|z-z_{0}\right|}{1-\left|z\right|}\le K$.
-(von Vertretung)
+für $\abs{z_{0}}=1$ mit ${\displaystyle \frac{\abs{z-z_{0}}}{1-\abs z}\le K}$.
 \end{itemize}
 
 \subsubsection*{Beweis}
@@ -5679,7 +5685,7 @@ Ohne Einschränkung gilt:
 \begin{align*}
 \sum_{n=0}^{\infty}a_{n} & =0
 \end{align*}
-(Ansonsten addiere eine Konstante zu $a_{0}$.)
+Ansonsten addiere eine Konstante zu $a_{0}$.
 
 Setze:
 \begin{align*}
@@ -5689,22 +5695,24 @@ S_{n}\left(z\right) & :=a_{0}+a_{1}z\ldots+a_{n}z^{n}=\\
  & =S_{0}\left(1-z\right)+S_{1}\left(z-z^{2}\right)+\ldots+S_{n-1}\left(z^{n-1}-z^{n}\right)+S_{n}z^{n}=\\
  & =\left(1-z\right)\left(S_{0}+S_{1}z+\ldots+S_{n-1}z^{n-1}\right)+S_{n}z^{n}
 \end{align*}
-Es gilt $S_{n}z^{n}\stackrel{n\to\infty}{\longrightarrow}0$, da $S_{n}\to0$
-und $z^{n}$ beschränkt ist.
+Es gilt $S_{n}z^{n}\xrightarrow{n\to\infty}0$, da $S_{n}\to0$ konvergiert
+und und $z^{n}\to0$ konvergiert wegen $\abs z<R=1$.
 
-Somit ist $f\left(z\right)=\left(1-z\right)\sum_{n=0}^{\infty}S_{n}z^{n}$
-
-Wir nehmen an, dass $\left|1-z\right|\le K\left(1-\left|z\right|\right)$,
-und zudem gilt $S_{n}\to0$.
-
-Wähle $N$ so groß, dass $S_{n}<\varepsilon$ für alle $n\ge N$.
-Dann folgt:
+Somit folgt:
 \begin{align*}
-\sum_{n=N}^{\infty}\left|S_{n}z^{n}\right| & \le\varepsilon\frac{\left|z\right|^{N}}{1-\left|z\right|}<\frac{\varepsilon}{1-\left|z\right|}\le\frac{K\varepsilon}{\left|1-z\right|}
+f\left(z\right) & =\left(1-z\right)\sum_{n=0}^{\infty}S_{n}z^{n}
+\end{align*}
+Wir nehmen an, dass $\abs{1-z}\le K\cdot\left(1-\abs z\right)$ ist
+und zudem $S_{n}\to0$ gilt.
+
+Wähle $N\in\mathbb{N}$ so groß, dass für alle $n\in\mathbb{N}_{\ge N}$
+schon $S_{n}<\varepsilon$ ist. Dann folgt:
+\begin{align*}
+\sum_{n=N}^{\infty}\abs{S_{n}z^{n}} & \le\varepsilon\frac{\abs z^{N}}{1-\abs z}<\frac{\varepsilon}{1-\abs z}\le\frac{K\varepsilon}{\abs{1-z}}
 \end{align*}
 Und es ergibt sich:
 \begin{align*}
-\left|f\left(z\right)\right| & \le\left|1-z\right|\left|\sum_{k=0}^{N-1}S_{k}z^{k}\right|+K\varepsilon\stackrel{z\to1}{\longrightarrow}K\varepsilon
+\abs{f\left(z\right)} & \le\abs{1-z}\abs{\sum_{k=0}^{N-1}S_{k}z^{k}}+K\varepsilon\xrightarrow{z\to1}K\varepsilon
 \end{align*}
 Also gilt:
 \begin{align*}
@@ -5713,25 +5721,27 @@ f\left(z\right) & \stackrel{z\to1}{\longrightarrow}0
 \qqed
 
 
-\section[Exp- und Log-Funktion]{Exponential- und Logarithmusfunktionen}
+\section[Die Funktionen exp und log]{Exponential- und Logarithmusfunktionen}
 
 
 \subsection{Eigenschaften der Exponentialfunktion}
 
-${\displaystyle \exp\left(z\right):=\sum_{n=0}^{\infty}\frac{z^{n}}{n!}}$
-hat Konvergenzradius $\infty$, ist also holomorph auf ganz $\mathbb{C}$.
+Die Funktion ${\displaystyle \exp\left(z\right):=\sum_{n=0}^{\infty}\frac{z^{n}}{n!}}$
+hat den Konvergenzradius $\infty$, ist also holomorph auf ganz $\mathbb{C}$
+und es gilt.
 \begin{align*}
 \frac{\dd}{\dd z}e^{z} & =e^{z}
 \end{align*}
-Mit der Cauchy-Produktformel folgt:
+Mit der Produktformel von Cauchy folgt:
 \begin{align*}
 e^{z_{1}}\cdot e^{z_{2}} & =e^{\left(z_{1}+z_{2}\right)}
 \end{align*}
-
-
 Bereits in Analysis I wurde gezeigt:
+
+Polardarstellung mit $r:=e^{\text{Re}\left(z\right)}$ und $\varphi=:\text{Im}\left(z\right)$:
+
 \begin{align*}
-e^{z} & =re^{i\varphi} &  & \text{Polardarstellung mit }r=e^{\text{Re}\left(z\right)},\,\varphi=\text{Im}\left(z\right)\\
+e^{z} & =re^{i\varphi}\\
 e^{\ii\varphi} & =\cos\left(\varphi\right)+\ii\sin\left(\varphi\right)
 \end{align*}
 Dies erlaubt es, die trigonometrischen Funktionen für komplexe Argumente
@@ -5741,17 +5751,13 @@ zu erweitern.
 \sin\left(z\right) & :=\frac{1}{2\ii}\left(e^{\ii z}-e^{-\ii z}\right)
 \end{align*}
 Diese sind als Linearkombination holomorpher Funktionen holomorph
-auf ganz $\mathbb{C}$ und können als Potenzreihe Dargestellt werden.
+auf ganz $\mathbb{C}$ und können als Potenzreihe dargestellt werden.
 
 Periodizität:
 \begin{align*}
-\cos\left(2\pi\right) & =1 & \sin\left(2\pi\right) & =0
+\cos\left(2\pi\right) & =1 & \sin\left(2\pi\right) & =0 & e^{2\pi\ii} & =1
 \end{align*}
-Oder:
-\begin{align*}
-e^{2\pi\ii} & =1
-\end{align*}
-Allgemeiner für ein $a\in\mathbb{Z}$:
+Allgemeiner gilt für ein $a\in\mathbb{Z}$:
 \begin{align}
 e^{z+2\pi a\ii} & =e^{z}\label{eq:period}
 \end{align}
@@ -5760,44 +5766,47 @@ e^{z+2\pi a\ii} & =e^{z}\label{eq:period}
 
 \subsection{Eigenschaften der Logarithmusfunktion}
 
-Bestimmungsgleichung:
+Die definierende Gleichung für den Logarithmus ist:
 \begin{align*}
 e^{\text{log}\left(z\right)} & =z
 \end{align*}
 Man sieht sofort:
 \begin{itemize}
-\item Diese Gleichung ist nur für $z\not=0$ lösbar und
-\item nur bis auf ein Vielfaches von $2\pi\ii$ bestimmt. (Wegen \eqref{eq:period})
+\item Diese Gleichung ist nur für $z\not=0$ lösbar.
+\item Wegen \eqref{eq:period} ist sie nur bis auf ein Vielfaches von $2\pi\ii$
+bestimmt.
 \end{itemize}
-Betrachte Absolutbetrag $\left|e^{\text{log}\left(x\right)}\right|=e^{\text{Re}\left(\log\left(z\right)\right)}=\left|z\right|$.
-
+Betrachte für $z\not=0$ den Absolutbetrag:
+\begin{align*}
+\abs{e^{\text{log}\left(z\right)}} & =e^{\text{Re}\left(\log\left(z\right)\right)}=\abs z
+\end{align*}
 Daher ist $\text{Re}\left(\log\left(z\right)\right)$ eindeutig bestimmt.
 
 Für $n\in\mathbb{Z}$ und $\theta\in\mathbb{R}$ folgt mit der Argumentfunktion
-$\text{arg}\left(z\right):=\varphi=2\cdot\text{arctan}\left(\frac{y}{1+x}\right)\in[\theta,\theta+2\pi)$,
+\begin{align*}
+\text{arg}\left(z\right) & :=\varphi=2\cdot\text{arctan}\left(\frac{y}{1+x}\right)\in[\theta,\theta+2\pi)
+\end{align*}
 für $z=\left|z\right|e^{\ii\varphi}=x+\ii y$:
 \begin{align*}
 \text{Im}\left(\log\left(z\right)\right) & =\text{arg}\left(z\right)+2\pi n
 \end{align*}
 \begin{align}
-\log\left(z\right) & =\text{log}\left(\left|z\right|\right)+\ii\text{arg}\left(z\right)\label{eq:logHaupt}
+\log\left(z\right) & =\text{log}\left(\left|z\right|\right)+\ii\cdot\text{arg}\left(z\right)\label{eq:logHaupt}
 \end{align}
-
-
 Also ist die Bestimmungsgleichung für $\log$ mehrdeutig lösbar.
 
 Die Gleichung \eqref{eq:logHaupt} definierte einen eindeutigen Logarithmus.
 
-Problem: $\text{log}$ ist unste tig an $L_{\theta}:=\left\{ te^{\ii\theta}|t\ge0\right\} $.
+Das Problem ist, dass $\text{log}$ unstetig an $L_{\theta}:=\left\{ te^{\ii\theta}|t\ge0\right\} $
+ist.
 
-Lösung: \quotedblbase{}Schneide die komplexe Ebene auf.\textquotedblleft{},
-zum Beispiel so:
+Lösung: \quotedblbase{}Schneide die komplexe Ebene auf.\textquotedblleft{}
 
-TODO: Abb1
+Zum Beispiel so:
 
-$L_{\theta}:=\left\{ te^{\ii\theta}|t\ge0\right\} $
+\textcolor{green}{TODO: Abb1 einfügen}
 
-Dann ist $\text{log}:\mathbb{C}|_{L_{\varphi}}\to\mathbb{C}$ stetig.
+Dann ist $\text{log}:\mathbb{C}|_{L_{\theta}}\to\mathbb{C}$ stetig.
 
 
 \section{Kurven, Konformität}
@@ -5811,10 +5820,13 @@ Eine \emph{Kurve} $\gamma$ ist eine stetige Abbildung $\gamma:I\to\mathbb{C}$.
 \begin{itemize}
 \item $\gamma\left(a\right)$ heißt der \emph{Anfangspunkt}.
 \item $\gamma\left(b\right)$ heißt der \emph{Endpunkt}.
-\item Falls $\gamma\left(a\right)=\gamma\left(b\right)$ heißt $\gamma$
-\emph{geschlossene Kurve}.
-\item $\tau\in I$ heißt \emph{Parameter der Kurve} ($\tau\mapsto\gamma\left(\tau\right)$)
-\item Falls die (reelle) Ableitung ${\displaystyle \gamma'\left(\tau\right)=\lim_{h\to0}\frac{\gamma\left(\tau+h\right)-\gamma\left(\tau\right)}{h}}$
+\item Falls $\gamma\left(a\right)=\gamma\left(b\right)$ heißt die Kurve
+$\gamma$ \emph{geschlossen}.
+\item $\tau\in I$ heißt \emph{Parameter der Kurve} $\gamma:\tau\mapsto\gamma\left(\tau\right)$.
+\item Falls die (reelle) Ableitung
+\begin{align*}
+\gamma'\left(\tau\right) & =\lim_{h\to0}\frac{\gamma\left(\tau+h\right)-\gamma\left(\tau\right)}{h}
+\end{align*}
 existiert und stetig ist, heißt $\gamma$ \emph{stetig differenzierbar}.
 \item $\gamma$ heißt \emph{regulär}, falls $\gamma$ stetig differenzierbar
 ist und für alle $\tau\in I$ schon $\gamma'\left(\tau\right)\not=0$
@@ -5825,40 +5837,39 @@ dass $\gamma|_{I_{j}^{\circ}}$ stetig differenzierbar ist, und $I=I_{1}\dot{\cup
 gilt.
 \end{itemize}
 
-\subsection*{Beispiel und Definition}
+\subsection{Beispiel und Definition}
 
 Betrachte die holomorphe Abbildung $f:\Omega\to\mathbb{C}$ und die
-reguläre Kurve $x:I\to\Omega$.
+reguläre Kurve $\gamma:I\to\Omega$.
 
-Ziel: Gewinne geometrische Informationen über $f$, indem man das
-Bild der Kurve betrachtet.
+Das Ziel ist, geometrische Informationen über $f$ zu gewinnen, indem
+man das Bild der Kurve betrachtet.
 
-TODO: Abb2
+\textcolor{green}{TODO: Abb2 einfügen}
 
 $f\circ\gamma$ ist eine Kurve in $f\left(\Omega\right)$.
 
-TODO: Abb3 ändere $u$ in $v$, $\tilde{u}$ in $\tilde{v}$
+\textcolor{green}{TODO: Abb3 einfügen (ändere $u$ in $v$ und $\tilde{u}$
+in $\tilde{v}$)}
 
 $v:=\gamma'\left(\tau\right)$ ist die Tangente an $\gamma$ in $z_{0}$.
 \begin{align*}
-\tilde{v}:=\frac{\dd}{\dd\tau}\left(f\circ\gamma\right)\left(\tau_{0}\right) & =f'\left(\gamma\left(\tau_{0}\right)\right)\cdot\gamma'\left(\tau_{0}\right)=\underbrace{f'\left(z_{0}\right)}_{\in\mathbb{C}}\cdot v
+\tilde{v}:=\left(\frac{\dd}{\dd\tau}\left(f\circ\gamma\right)\right)\left(\tau_{0}\right) & =f'\left(\gamma\left(\tau_{0}\right)\right)\cdot\gamma'\left(\tau_{0}\right)=\underbrace{f'\left(z_{0}\right)}_{\in\mathbb{C}}\cdot v
 \end{align*}
-
-
 %DATE Di 20.12.2011
 
 Schreibe nun Real- und Imaginärteil aus:
 \begin{align*}
-v & =v_{1}+\ii v_{2} & \tilde{v} & =\tilde{v}_{1}+\ii\tilde{v}_{2}
+v & =v_{1}+\ii v_{2} & \tilde{v} & =\tilde{v}_{1}+\ii\tilde{v}_{2} & f'\left(z_{0}\right) & =a+\ii b
 \end{align*}
 \begin{align*}
 \left(\begin{array}{c}
 \tilde{v}_{1}\\
 \tilde{v}_{2}
-\end{array}\right) & =\left(\begin{array}{cc}
+\end{array}\right) & =\underbrace{\left(\begin{array}{cc}
 a & -b\\
 b & a
-\end{array}\right)\left(\begin{array}{c}
+\end{array}\right)}_{=A}\left(\begin{array}{c}
 v_{1}\\
 v_{2}
 \end{array}\right)
@@ -5869,11 +5880,11 @@ v_{2}
 \begin{align*}
 \det\left(A\right) & =a^{2}-b\cdot\left(-b\right)=a^{2}+b^{2}\ge0
 \end{align*}
-Also erhält $A$ die Orientierung (\quotedblbase{}Drehstreckung\textquotedblleft{}
-einschließlich Achsenstreckung).
+Daher erhält $A$ die Orientierung, ist also eine \quotedblbase{}Drehstreckung\textquotedblleft{}
+einschließlich Achsenstreckung.
 \item Es gilt:
 \begin{align*}
-\underbrace{A^{*}}_{=A^{T}}A & =\left(\begin{array}{cc}
+\underbrace{A^{*}}_{=A^{T}}\cdot A & =\left(\begin{array}{cc}
 a & b\\
 -b & a
 \end{array}\right)\left(\begin{array}{cc}
@@ -5886,20 +5897,20 @@ a^{2}+b^{2} & 0\\
 \end{align*}
 Eine unitäre Matrix $U$ erfüllt:
 \begin{align*}
-U^{*}U & =E
+U^{*}\cdot U & =E
 \end{align*}
 Dies ist eine Drehung.\\
 Also ist $A$ eine Drehung verkettet mit einer zentrischen Streckung.
 Hierbei bleiben die \emph{Winkel erhalten}.
 \end{itemize}
-Statt winkelerhaltend sagt man auch \emph{konform}.
+Statt winkeltreu sagt man auch \emph{konform}.
 
 Also beschreibt die Multiplikation mit $f'\left(z_{0}\right)$ eine
-orientierungs- und winkelerhaltende Transformation der komplexen Ebene.
+Orientierungs- und Winkelerhaltende Transformation der komplexen Ebene.
 
-Genauer: $u,v\in\mathbb{C}\stackrel{\sim}{=}\mathbb{R}^{2}$
+Genauer: Seien $u,v\in\mathbb{C}\stackrel{\sim}{=}\mathbb{R}^{2}$.
 \begin{align*}
-\cos\varphi & =\frac{\left\langle u,v\right\rangle _{\mathbb{R}^{2}}}{\left|\left|u\right|\right|\cdot\left|\left|v\right|\right|}=\frac{\left\langle \tilde{u},\tilde{v}\right\rangle _{\mathbb{R}^{2}}}{\left|\left|\tilde{u}\right|\right|\cdot\left|\left|\tilde{v}\right|\right|}=\cos\tilde{\varphi}
+\cos\varphi & =\frac{\left\langle u,v\right\rangle _{\mathbb{R}^{2}}}{\norm u\cdot\norm v}=\frac{\left\langle \tilde{u},\tilde{v}\right\rangle _{\mathbb{R}^{2}}}{\norm{\tilde{u}}\cdot\norm{\tilde{v}}}=\cos\tilde{\varphi}
 \end{align*}
 Nebenrechnung:
 \begin{align*}
@@ -5909,16 +5920,24 @@ Nebenrechnung:
 \left\langle \tilde{u},\tilde{v}\right\rangle  & =\left\langle Au,Av\right\rangle =\left\langle u,A^{*}Av\right\rangle =\left(a^{2}+b^{2}\right)\cdot\left\langle u,v\right\rangle 
 \end{align*}
 \begin{align*}
-\left|\left|\tilde{u}\right|\right|^{2} & =\left\langle \tilde{u},\tilde{u}\right\rangle =\left\langle Au,Au\right\rangle =\left\langle u,A^{*}Au\right\rangle =\left(a^{2}+b^{2}\right)\cdot\left\langle u,u\right\rangle \\
-\left|\left|\tilde{v}\right|\right|^{2} & =\left\langle \tilde{v},\tilde{v}\right\rangle =\left\langle Av,Av\right\rangle =\left\langle v,A^{*}Av\right\rangle =\left(a^{2}+b^{2}\right)\cdot\left\langle v,v\right\rangle 
+\norm{\tilde{u}}^{2} & =\left\langle \tilde{u},\tilde{u}\right\rangle =\left\langle Au,Au\right\rangle =\left\langle u,A^{*}Au\right\rangle =\left(a^{2}+b^{2}\right)\cdot\left\langle u,u\right\rangle \\
+\norm{\tilde{v}}^{2} & =\left\langle \tilde{v},\tilde{v}\right\rangle =\left\langle Av,Av\right\rangle =\left\langle v,A^{*}Av\right\rangle =\left(a^{2}+b^{2}\right)\cdot\left\langle v,v\right\rangle 
 \end{align*}
 Analog kann man den Winkel zwischen zwei Kurven betrachten:
 
-TODO: Abb1
+\textcolor{green}{TODO: Abb1 einfügen}
 
-Polarzerlegung: $u=\left|u\right|e^{\ii\varphi}$
+Polarzerlegung:
+\begin{align*}
+u & =\left|u\right|e^{\ii\varphi}
+\end{align*}
+mit
+\begin{align*}
+\arg u & :=\varphi\mod2\pi\in[0,2\pi)
+\end{align*}
 
-$\arg u:=\varphi\text{(mod)}2\pi\in[0,2\pi)$ nach der üblichen Konvention.
+
+nach der üblichen Konvention.
 \begin{align*}
 \alpha=\arg u-\arg v & =\arg\frac{u}{v}
 \end{align*}
@@ -5930,14 +5949,12 @@ $\arg u:=\varphi\text{(mod)}2\pi\in[0,2\pi)$ nach der üblichen Konvention.
 
 \subsection{Beispiel}
 
-Betrachte Kurvenscharen $\gamma_{x}\left(t\right),\delta_{y}\left(t\right)$.
+Betrachte Kurvenscharen $\gamma_{x}\left(t\right)$ und $\delta_{y}\left(t\right)$.
 \begin{align*}
-\gamma_{x}:\mathbb{R} & \to\mathbb{C}:t\mapsto x+\ii t\\
-\delta_{y}:\mathbb{R} & \to\mathbb{C}:t\mapsto t+\ii y
+\gamma_{x}:\mathbb{R} & \to\mathbb{C} & \delta_{y}:\mathbb{R} & \to\mathbb{C}\\
+t & \mapsto x+\ii t & t & \mapsto t+\ii y
 \end{align*}
-
-
-TODO: Abb2
+\textcolor{green}{TODO: Abb2 einfügen}
 
 Betrachte nun die Kurven $\exp\circ\gamma_{x}$ und $\exp\circ\delta_{y}$:
 \begin{align*}
@@ -5946,13 +5963,15 @@ Betrachte nun die Kurven $\exp\circ\gamma_{x}$ und $\exp\circ\delta_{y}$:
 \end{align*}
 
 
-TODO: Abb3, Abb4
+\textcolor{green}{TODO: Abb3 und Abb4 einfügen}
 
 Die Winkel bleiben erhalten, aber Längen und Flächeninhalte bleiben
-aber im Allgemeinen \emph{nicht} erhalten.
+im Allgemeinen \emph{nicht} erhalten.
 
 
 \section[Komplexe Integration]{Kurvenintegrale, Komplexe Integration}
+
+\textcolor{green}{TODO: Rest überarbeiten}
 
 Betrachte wieder Kurve $\gamma:I=\left[a,b\right]\to\Omega\subseteq\mathbb{C}$
 ($\Omega$ offen) sei stetig und stückweise differenzierbar.
