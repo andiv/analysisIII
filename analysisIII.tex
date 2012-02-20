@@ -153,7 +153,7 @@
 %\renewcommand{\headrulewidth}{0.4pt} %obere Trennlinie
 \fancyhf{} %alle Kopf- und Fußzeilenfelder bereinigen
 \fancyhead[L]{\textbf{Analysis III}} %Kopfzeile links
-\fancyhead[C]{\leftmark} %zentrierte Kopfzeile
+\fancyhead[C]{\textit{\leftmark}} %zentrierte Kopfzeile
 \fancyhead[R]{\rightmark} %Kopfzeile rechts
 \fancyfoot[C]{\thepage\quad\!\!\!\slash\quad\!\!\!\pageref{END-front}} %Seitenzahl der Front-Matter
 
@@ -179,7 +179,7 @@
 \global\long\def\abs#1{\left\lvert #1\right\rvert }
 
 
-\global\long\def\minus{\text{-}}
+\global\long\def\minus{\text{-}\,}
 
 
 \global\long\def\exs{\exsop}
@@ -360,7 +360,7 @@ McGraw-Hill, 1979, ISBN 0-07-000657-1;\\
 \label{END-front}\newpage{}\pagenumbering{arabic}
 \fancyfoot[C]{\thepage\quad\!\!\!\slash\quad\!\!\!\pageref{END}} % Seitenzahl des Hauptteils
 \fancyhead[R]{\rightmark}
-\fancyhead[C]{\leftmark}%DATE: Di 18.10.2011
+\fancyhead[C]{\textit{\leftmark}}%DATE: Di 18.10.2011
 
 
 \chapter{Integrationstheorie}
@@ -391,7 +391,7 @@ Summe:
 \begin{align*}
 \sum_{k=1}^{n}f\left(\zeta_{k}\right)\cdot\left|I_{k}\right|
 \end{align*}
-$f$ heißt Riemann-integrierbar (Abkürzung: R-integrierbar), falls
+$f$ heißt Riemann-integrierbar (Abkürzung: $R$-integrierbar), falls
 der Limes
 \begin{align*}
 \lim_{\Delta Z\to0}\sum_{k=1}^{n}f\left(\zeta_{k}\right)\cdot\left|I_{k}\right| & =:\int_{a}^{b}f\left(x\right)\dd x
@@ -4572,8 +4572,7 @@ ist stetig, denn es gilt:
 
 
 
-\subsection{Definition \textmd{(erweiterte komplexe Ebene\texorpdfstring{}{\textmd{
-}}\textmd{$\overline{\mathbb{C}}$}{})}}
+\subsection{Definition \textmd{(erweiterte komplexe Ebene\texorpdfstring{ $\overline{\mathbb{C}}$}{})}}
 
 Es ist manchmal nützlich, $\mathbb{C}$ zu \quotedblbase{}kompaktifizieren\textquotedblleft{}.
 
@@ -4878,11 +4877,17 @@ Günstige Notation:
 \partial_{1}f & :=\partial_{1}u+\ii\partial_{1}v\\
 \partial_{2}f & :=\partial_{2}u+\ii\partial_{2}v
 \end{align*}
-Dann kann man die Cauchy-Riemannschen Differentialgleichungen in folgender
-Form schreiben:
+Dann kann man die Cauchy-Riemannschen Differentialgleichungen in der
+Form
 \begin{align*}
 \partial_{1}f & =-\ii\partial_{2}f
 \end{align*}
+oder auch als
+\begin{align*}
+\partial_{2}f & =\ii\partial_{1}f
+\end{align*}
+schreiben.
+
 Realteil:
 \begin{align*}
 \partial_{1}u & =\partial_{2}v
@@ -5971,46 +5976,61 @@ im Allgemeinen \emph{nicht} erhalten.
 
 \section[Komplexe Integration]{Kurvenintegrale, Komplexe Integration}
 
-\textcolor{green}{TODO: Rest überarbeiten}
+Betrachte wieder eine stetige und stückweise differenzierbare Kurve
+$\gamma:I=\left[a,b\right]\to\Omega$ mit $\Omega\subseteq\mathbb{C}$
+offen.
 
-Betrachte wieder Kurve $\gamma:I=\left[a,b\right]\to\Omega\subseteq\mathbb{C}$
-($\Omega$ offen) sei stetig und stückweise differenzierbar.
-
-TODO: Abb4
+\textcolor{green}{TODO: Abb4 einfügen}
 
 Identifiziere zunächst $\mathbb{C}$ mit $\mathbb{R}^{2}$.
 
-Dann kann man die \emph{Bogenlänge} $L\left(\gamma\right)$ folgendermaßen
-einführen:
+
+\subsection{Proposition und Definition \textmd{(Bogenlänge)}}
+
+Die \emph{Bogenlänge} $L\left(\gamma\right)$ der Kurve $\gamma$
+ist folgendermaßen definiert:
 \begin{align*}
-L\left(\gamma\right) & =\int_{a}^{b}\left|\gamma'\left(\tau\right)\right|\dd\tau
+L\left(\gamma\right) & :=\int_{a}^{b}\abs{\gamma'\left(\tau\right)}\dd\tau
 \end{align*}
 (Nehme hier zur Einfachheit an, dass $\gamma$ differenzierbar ist,
-sonst stückweise integrieren und Integrale addieren.)
+sonst muss man stückweise integrieren und die Integrale addieren.)
 
-$L\left(\gamma\right)$ soll unabhängig von der Parametrisierung sein.
-Rechne dies nach:
+$L\left(\gamma\right)$ ist unabhängig von der Parametrisierung sein.
+
+
+\subsubsection*{Beweis}
+
+Rechne die Unabhängigkeit von der Parametrisierung nach.
+
+Sei $\tilde{\gamma}$ eine andere Parametrisierung der Kurve, also:
 \begin{align*}
 \tilde{\gamma}\left(t\right) & =\left(\gamma\circ\tau\right)\left(t\right) & \tau:\left[\alpha,\beta\right] & \to\left[a,b\right]
 \end{align*}
-$\tau$ sei streng monoton steigend und $\tau'\left(t\right)\not=0$
+$\tau$ sei streng monoton steigend, also $\tau'\left(t\right)\not=0$
 für alle $t\in\left[\alpha,\beta\right]$.
 \begin{align*}
-\int_{\alpha}^{\beta}\left|\tilde{\gamma}'\left(t\right)\right|\dd t & \stackrel{\text{Kettenregel}}{=}\int_{\alpha}^{\beta}\bigg|\gamma'\left(t\right)\cdot\underbrace{\frac{\dd\tau}{\dd t}}_{>0}\bigg|\dd t=\int_{\alpha}^{\beta}\left|\gamma'\left(t\right)\right|\frac{\dd\tau}{\dd t}\dd t=\\
- & \sr ={\text{Substitution}}{t=t\left(\tau\right),\dd t=\frac{\dd t}{\dd\tau}\dd t}\int_{\alpha}^{\beta}\left|\gamma'\left(\tau\right)\right|\dd\tau=L\left(\gamma\right)
+L\left(\tilde{\gamma}\right) & =\int_{\alpha}^{\beta}\abs{\tilde{\gamma}'\left(t\right)}\dd t\stackrel{\text{Kettenregel}}{=}\int_{\alpha}^{\beta}\bigg|\gamma'\left(t\right)\cdot\underbrace{\frac{\dd\tau}{\dd t}}_{>0}\bigg|\dd t=\int_{\alpha}^{\beta}\abs{\gamma'\left(t\right)}\frac{\dd\tau}{\dd t}\dd t=\\
+ & \sr ={\text{Substitution}}{t=t\left(\tau\right),\dd\tau=\frac{\dd\tau}{\dd t}\dd t}\int_{\alpha}^{\beta}\abs{\gamma'\left(\tau\right)}\dd\tau=L\left(\gamma\right)
 \end{align*}
-\begin{align*}
-\int_{\alpha}^{\beta}\gamma'\left(\tau\right)\frac{\dd\tau}{\dd t}\dd t & =\int_{a}^{b}\gamma'\left(\tau\right)\dd\tau
-\end{align*}
-Sei nun außerdem $f:\Omega\to\mathbb{C}$ stetig (wichtigstes Beispiel:
-$f$ holomorph).
+\qqed
 
-Wir wollen \quotedblbase{}$f$ längs $\gamma$ integrieren\textquotedblleft{}:
+
+\subsection{Bemerkung}
+
+Es gilt zudem:
+\begin{align*}
+\int_{\alpha}^{\beta}\gamma'\left(t\right)\frac{\dd\tau}{\dd t}\dd t & =\int_{a}^{b}\gamma'\left(\tau\right)\dd\tau
+\end{align*}
+Sei nun außerdem $f:\Omega\to\mathbb{C}$ stetig, zum Beispiel $f$
+holomorph.
+
+Wir wollen \quotedblbase{}$f$ längs $\gamma$ integrieren\textquotedblleft{},
+also:
 \begin{align*}
 \gamma:\left[a,b\right] & \to\mathbb{C}
 \end{align*}
 \begin{align*}
-\int_{a}^{b}f\left(\gamma\left(\tau\right)\right)\left|\gamma'\left(\tau\right)\right|\dd\tau
+\int_{a}^{b}f\left(\gamma\left(\tau\right)\right)\cdot\abs{\gamma'\left(\tau\right)}\dd\tau
 \end{align*}
 Dies wäre eine Möglichkeit, denn dies ist unabhängig von der Parametrisierung.
 
@@ -6039,16 +6059,16 @@ $\gamma$.
 Wir integrieren über eine \emph{reelle Variable} $t\in\left[a,b\right]$,
 aber der Integrand ist komplexwertig.
 
-Man kann das auf reellwertige Integrale zurückführen.
+Man kann dies auf reellwertige Integrale zurückführen:
 \begin{align*}
-\int_{\gamma}f\left(z\right)\dd z & :=\int_{a}^{b}\text{Re}\left(f\left(\gamma\left(\tau\right)\right)\gamma'\left(\tau\right)\right)\dd\tau+\ii\int_{a}^{b}\text{Im}\left(f\left(\gamma\left(\tau\right)\right)\gamma'\left(\tau\right)\right)\dd\tau
+\int_{\gamma}f\left(z\right)\dd z & =\int_{a}^{b}\text{Re}\left(f\left(\gamma\left(\tau\right)\right)\gamma'\left(\tau\right)\right)\dd\tau+\ii\int_{a}^{b}\text{Im}\left(f\left(\gamma\left(\tau\right)\right)\gamma'\left(\tau\right)\right)\dd\tau
 \end{align*}
-Riemann- beziehungsweise Lebesgue-Integral im Reellen.
+Dies sind Riemann- beziehungsweise Lebesgue-Integral im Reellen.
 
 Insbesondere sieht man:
 \begin{align*}
 \text{Re}\left(\int_{\gamma}f\left(z\right)\dd z\right) & =\int_{a}^{b}\text{Re}\big(f\left(\gamma\left(\tau\right)\right)\gamma'\left(\tau\right)\big)\dd\tau\\
- & \not=\int_{\gamma}\text{Re}\left(f\left(z\right)\right)\dd z=\int_{a}^{b}\text{Re}\big(f\left(\gamma\left(\tau\right)\right)\big)\gamma'\left(\tau\right)\dd\tau
+ & \stackrel{\text{i.A.}}{\not=}\int_{\gamma}\text{Re}\left(f\left(z\right)\right)\dd z=\int_{a}^{b}\text{Re}\big(f\left(\gamma\left(\tau\right)\right)\big)\gamma'\left(\tau\right)\dd\tau
 \end{align*}
 
 
@@ -6062,12 +6082,12 @@ von der Parametrisierung.
 \subsubsection*{Beweis}
 
 Sei $t:\left[\alpha,\beta\right]\to\left[a,b\right]$ streng monoton
-steigend, stetig, stückweise differenzierbar.
+steigend, stetig und stückweise differenzierbar.
 
-Dann folgt mit $\tilde{\gamma}\left(\tau\right)=\left(\gamma\circ t\right)\left(\tau\right)$:
+Dann folgt aus $\tilde{\gamma}\left(\tau\right)=\left(\gamma\circ t\right)\left(\tau\right)$:
 \begin{align*}
 \int_{\alpha}^{\beta}\left(f\circ\gamma\circ t\right)\left(\tau\right)\cdot\left(\gamma\circ t\right)'\left(\tau\right)\dd\tau & =\int_{\alpha}^{\beta}\left(f\circ\gamma\right)\left(t\left(\tau\right)\right)\cdot\gamma'\left(t\left(\tau\right)\right)\frac{\dd t}{\dd\tau}\dd\tau=\\
- & \stackrel{\text{Transformationsformel}}{=}\int_{\alpha}^{\beta}\left(f\circ\gamma\right)\left(t\right)\cdot\gamma'\left(t\right)\dd t
+ & \sr ={\text{Transformations-}}{\text{formel}}\int_{\alpha}^{\beta}\left(f\circ\gamma\right)\left(t\right)\cdot\gamma'\left(t\right)\dd t
 \end{align*}
 \qqed
 
@@ -6076,16 +6096,22 @@ Dann folgt mit $\tilde{\gamma}\left(\tau\right)=\left(\gamma\circ t\right)\left(
 
 \begin{iiilist}
 
-\iii ${\displaystyle f\left(z\right)=\frac{1}{z^{2}}}$, $\gamma:\left[1,2\right]\to\mathbb{C}:t\mapsto t$
+\iii Betrachte ${\displaystyle f\left(z\right)=\frac{1}{z^{2}}}$
+und:
+\begin{align*}
+\gamma:\left[1,2\right] & \to\mathbb{C}\\
+t & \mapsto t
+\end{align*}
+Dann gilt:
 \begin{align*}
 \int_{\gamma}f\left(z\right)\dd z & =\int_{1}^{2}f\left(\gamma\left(t\right)\right)\gamma'\left(t\right)\dd t=\int_{1}^{2}\frac{1}{t^{2}}\cdot1\dd t=\frac{-1}{t}\bigg|_{1}^{2}=\frac{-1}{2}+1=\frac{1}{2}
 \end{align*}
 
 
-%DATE Fr 23.12.2011
+%DATE: Fr 23.12.2011
 
-\iii $f\left(z\right)=z^{n},\: n\ge0$\\
-Wähle eine Parametrisierung zum Beispiel
+\iii Betrachte $f\left(z\right)=z^{n}$ für $n\in\mathbb{N}_{\ge0}$.\\
+Wähle eine Parametrisierung, zum Beispiel:
 
 \begin{align*}
 \gamma_{1}:\left[0,1\right] & \to\mathbb{C}\\
@@ -6096,7 +6122,7 @@ Wähle eine Parametrisierung zum Beispiel
 \int_{\gamma_{1}}f\left(z\right)\dd z & =\int_{0}^{1}f\left(\gamma\left(\tau\right)\right)\cdot\gamma'\left(\tau\right)\dd\tau=\int_{0}^{1}\left(\left(1+\ii\right)\cdot\tau\right)^{n}\cdot\left(1+\ii\right)\dd\tau=\\
  & =\left(1+\ii\right)^{n+1}\cdot\int_{0}^{1}\tau^{n}\dd\tau=\frac{1}{n+1}\cdot\left(1+\ii\right)^{n+1}
 \end{align*}
-$\gamma_{2}$: Parametrisiere so:
+Wähle eine andere Parametrisierung:
 \begin{align*}
 \gamma_{2}:\left[0,2\right] & \to\mathbb{C}\\
 \gamma\left(\tau\right) & =\begin{cases}
@@ -6109,34 +6135,32 @@ $\gamma_{2}$: Parametrisiere so:
 \end{cases}
 \end{align*}
 \begin{align*}
-\int_{\gamma_{2}}f\left(z\right)\dd z & =\int_{0}^{1}\tau^{n}\cdot1\dd\tau+\int_{1}^{2}\left(1+\left(\tau-1\right)\cdot\ii\right)^{n}\cdot\ii\dd\tau=\frac{1}{n+1}+\ii\cdot\frac{1}{\left(n+1\right)\ii}\left(1+\left(\tau-1\right)\ii\right)^{n+1}\bigg|_{1}^{2}=\\
+\int_{\gamma_{2}}f\left(z\right)\dd z & =\int_{0}^{1}\tau^{n}\cdot1\dd\tau+\int_{1}^{2}\left(1+\left(\tau-1\right)\cdot\ii\right)^{n}\cdot\ii\dd\tau=\\
+ & =\frac{1}{n+1}+\ii\cdot\frac{1}{\left(n+1\right)\ii}\left(1+\left(\tau-1\right)\ii\right)^{n+1}\bigg|_{1}^{2}=\\
  & =\frac{1}{n+1}+\frac{1}{n+1}\left(\left(1+\ii\right)^{n+1}-1\right)=\frac{1}{n+1}\cdot\left(1+\ii\right)^{n+1}
 \end{align*}
-
+Der Wert dieses Integrals ist also für beide Integrationswege gleich.
 
 \end{iiilist}
-
-Der Wert des Integrals ist also für beide Integrationswege gleich.
 
 
 \subsection{Definition}
 
-Sei $\gamma:\left[0,1\right]\to\mathbb{C}$.
-
-Setze
+Sei $\gamma:\left[0,1\right]\to\mathbb{C}$. Setze:
 \begin{align*}
--\gamma & :=\tilde{\gamma}:\left[0,1\right]\to\mathbb{C},\:\tilde{\gamma}\left(\tau\right)=\gamma\left(1-\tau\right)
+\minus\gamma:=\tilde{\gamma}:\left[0,1\right] & \to\mathbb{C}\\
+\tau & \mapsto\tilde{\gamma}\left(\tau\right)=\gamma\left(1-\tau\right)
 \end{align*}
-also \quotedblbase{}durchlaufe die Kurve rückwärts\textquotedblleft{}.
+Also \quotedblbase{}durchlaufe die Kurve rückwärts\textquotedblleft{}.
 
 Sei $\gamma_{1}:\left[a,b\right]\to\mathbb{C}$ und $\gamma_{2}:\left[b,c\right]\to\mathbb{C}$
 mit $\gamma_{1}\left(b\right)=\gamma_{2}\left(b\right)$.\\
-Setze dann $\gamma_{1}+\gamma_{2}:\left[a,c\right]\to\mathbb{C}$
-definiert durch: 
+Definiere dann $\gamma_{1}+\gamma_{2}:\left[a,c\right]\to\mathbb{C}$
+durch: 
 \begin{align*}
 \left(\gamma_{1}+\gamma_{2}\right)\left(\tau\right) & =\begin{cases}
 \gamma_{1}\left(\tau\right) & \tau\in\left[a,b\right]\\
-\gamma_{2}\left(\tau\right) & \tau\in\left[b,c\right]
+\gamma_{2}\left(\tau\right) & \tau\in(b,c]
 \end{cases}
 \end{align*}
 
@@ -6145,7 +6169,7 @@ definiert durch:
 \subsection{Lemma}
 
 \begin{align*}
-\int_{-\gamma}f\left(z\right)\dd z & =-\int_{\gamma}f\left(z\right)\dd z
+\int_{\minus\gamma}f\left(z\right)\dd z & =\minus\int_{\gamma}f\left(z\right)\dd z
 \end{align*}
 \begin{align*}
 \int_{\gamma_{1}+\ldots+\gamma_{n}}f\left(z\right)\dd z & =\int_{\gamma_{1}}f\left(z\right)\dd z+\ldots+\int_{\gamma_{n}}f\left(z\right)\dd z
@@ -6155,23 +6179,34 @@ definiert durch:
 
 \subsubsection*{Beweis}
 
-TODO: Fehlt???
+\begin{align*}
+\int_{\minus\gamma}f\left(z\right)\dd z & =\int_{0}^{1}f\left(\minus\gamma\left(\tau\right)\right)\cdot\left(\minus\gamma\right)'\left(\tau\right)\dd\tau=\int_{0}^{1}f\left(\gamma\left(1-\tau\right)\right)\cdot\frac{\dd}{\dd\tau}\left(\gamma\left(1-\tau\right)\right)\dd\tau=\\
+ & =\int_{0}^{1}f\left(\gamma\left(1-\tau\right)\right)\cdot\gamma'\left(1-\tau\right)\cdot\left(\minus1\right)\dd\tau\sr ={\text{Substitution}}{t:=1-\tau,\dd t=-\dd\tau}\minus\int_{1}^{0}f\left(\gamma\left(t\right)\right)\cdot\gamma'\left(t\right)\cdot\left(\minus1\right)\dd t=\\
+ & =\minus\int_{0}^{1}f\left(\gamma\left(t\right)\right)\cdot\gamma'\left(t\right)\dd t=\minus\int_{\gamma}f\left(z\right)\dd z
+\end{align*}
+
+
+\begin{align*}
+\int_{\gamma_{1}+\gamma_{2}}f\left(z\right)\dd z & =\int_{a}^{c}f\left(\left(\gamma_{1}+\gamma_{2}\right)\left(\tau\right)\right)\cdot\left(\gamma_{1}+\gamma_{2}\right)'\left(\tau\right)\dd\tau=\\
+ & =\int_{a}^{b}f\left(\gamma_{1}\left(\tau\right)\right)\cdot\gamma_{1}'\left(\tau\right)\dd\tau+\int_{b}^{c}f\left(\gamma_{2}\left(\tau\right)\right)\cdot\gamma_{2}'\left(\tau\right)\dd\tau=\\
+ & =\int_{\gamma_{1}}f\left(z\right)\dd z+\int_{2}f\left(z\right)\dd z
+\end{align*}
+Induktiv folgt die Behauptung.\qqed
 
 
 \subsection{Definition}
 
 Setze:
 \begin{align*}
-\int_{\gamma}f\left(z\right)\dd\overline{z} & =\overline{\int_{\gamma}\overline{f\left(z\right)}\dd z}\\
-\int_{\gamma}f\left(z\right)\dd x & =\frac{1}{2}\left(\int_{\gamma}f\left(z\right)\dd z+\int_{\gamma}f\left(z\right)\dd\overline{z}\right)\\
-\int_{\gamma}f\left(z\right)\dd y & =\frac{1}{2\ii}\left(\int_{\gamma}f\left(z\right)\dd z-\int_{\gamma}f\left(z\right)\dd\overline{z}\right)
+\int_{\gamma}f\left(z\right)\dd\overline{z} & :=\overline{\int_{\gamma}\overline{f\left(z\right)}\dd z}\\
+\int_{\gamma}f\left(z\right)\dd x & :=\frac{1}{2}\left(\int_{\gamma}f\left(z\right)\dd z+\int_{\gamma}f\left(z\right)\dd\overline{z}\right)\\
+\int_{\gamma}f\left(z\right)\dd y & :=\frac{1}{2\ii}\left(\int_{\gamma}f\left(z\right)\dd z-\int_{\gamma}f\left(z\right)\dd\overline{z}\right)
 \end{align*}
 Dann gilt:
 \begin{align*}
 \int_{\gamma}f\left(z\right)\dd z & =\int_{\gamma}f\left(z\right)\dd x+\ii\int_{\gamma}f\left(z\right)\dd y
 \end{align*}
-Also: \quotedblbase{}$\dd z=\dd x+\ii\dd y$\textquotedblleft{}
-
+Also gilt \quotedblbase{}$\dd z=\dd x+\ii\dd y$\textquotedblleft{}.
 Etwas ausführlicher:
 \begin{align*}
 x+\ii y & =z=\gamma\left(\tau\right)\\
@@ -6182,49 +6217,70 @@ y\left(\tau\right) & :=\text{Im}\left(\gamma\left(\tau\right)\right) & \Rightarr
 \end{align*}
 \begin{align*}
 \int_{\gamma}f\left(z\right)\dd z & =\int_{a}^{b}f\left(\gamma\left(\tau\right)\right)\gamma'\left(\tau\right)\dd\tau\\
-\int_{\gamma}f\left(z\right)\dd\overline{z} & =\overline{\int_{\gamma}\overline{f\left(z\right)}\dd z}=\int_{a}^{b}\overline{f\left(\gamma\left(\tau\right)\right)}\gamma'\left(\tau\right)\dd\tau=\int_{a}^{b}f\left(\gamma\left(\tau\right)\right)\overline{\gamma'\left(\tau\right)}\dd\tau\\
-\int_{\gamma}f\left(z\right)\dd x & =\int_{a}^{b}f\left(\gamma\left(\tau\right)\right)\cdot\underbrace{\text{Re}\left(\gamma'\left(\tau\right)\right)}_{=x'\left(\tau\right)}\dd\tau\\
-\int_{\gamma}f\left(z\right)\dd y & =\int_{a}^{b}f\left(\gamma\left(\tau\right)\right)\cdot\underbrace{\text{Im}\left(\gamma'\left(\tau\right)\right)}_{=y'\left(\tau\right)}\dd\tau\\
-\int_{\gamma}f\left(z\right)\dd y & =\int_{\gamma}p\dd x+\int_{y}q\dd y
+\int_{\gamma}f\left(z\right)\dd\overline{z} & =\overline{\int_{\gamma}\overline{f\left(z\right)}\dd z}=\overline{\int_{a}^{b}\overline{f\left(\gamma\left(\tau\right)\right)}\gamma'\left(\tau\right)\dd\tau}=\int_{a}^{b}f\left(\gamma\left(\tau\right)\right)\overline{\gamma'\left(\tau\right)}\dd\tau\\
+\int_{\gamma}f\left(z\right)\dd x & =\int_{a}^{b}f\left(\gamma\left(\tau\right)\right)\cdot\underbrace{\text{Re}\left(\gamma'\left(\tau\right)\right)}_{=:x'\left(\tau\right)}\dd\tau\\
+\int_{\gamma}f\left(z\right)\dd y & =\int_{a}^{b}f\left(\gamma\left(\tau\right)\right)\cdot\underbrace{\text{Im}\left(\gamma'\left(\tau\right)\right)}_{=:y'\left(\tau\right)}\dd\tau
 \end{align*}
-Später: Setze $p=f$ und $q=\ii f$.
+Setze $p=f$ und $q=\ii f$ und schreibe:
+\begin{align*}
+\int_{\gamma}f\left(z\right)\dd z & =\int_{\gamma}p\dd x+\int_{\gamma}q\dd y
+\end{align*}
+
 
 
 \section[Weg(un)abhängigkeit]{Abhängigkeit vom Integrationsgebiet}
 
-Sei $\Omega\subseteq\mathbb{C}$ offen, $z_{0},z\in\Omega$, $p,q:\Omega\to\mathbb{C}$
-stetig und wegzusammenhängend.
+Seien $\Omega\subseteq\mathbb{C}$ offen und wegzusammenhängend, $z_{0},z\in\Omega$
+und $p,q:\Omega\to\mathbb{C}$ stetig.
+
+
+\subsection{Definition \textmd{(wegunabhängig)}}
+
+Sei $\gamma_{1}$ eine differenzierbare Kurve, die $z_{0}$ mit $z$
+verbinden.
+
+Das Integral
+\begin{align*}
+\int_{\gamma_{1}}\left(p\dd x+q\dd y\right)
+\end{align*}
+heißt \emph{wegunabhängig}, wenn für alle differenzierbaren Kurven
+$\gamma_{2}$, die $z_{0}$ mit $z$ verbinden, gilt:
+\begin{align*}
+\int_{\gamma_{1}}\left(p\dd x+q\dd y\right) & =\int_{\gamma_{2}}\left(p\dd x+q\dd y\right)
+\end{align*}
+
+
+\textcolor{green}{TODO: Abb2 einfügen}
+
+In diesem Fall schreibt man auch:
+\begin{align*}
+\int_{z_{0}}^{z}\left(p\dd x+q\dd y\right) & :=\int_{\gamma_{1}}\left(p\dd x+q\dd y\right)
+\end{align*}
+
 
 
 \subsubsection*{Frage}
 
-Wann gilt folgende Gleichheit?
-\begin{align*}
-\int_{\gamma_{1}}\left(p\dd x+q\dd y\right) & =\int_{\gamma_{2}}\left(p\dd x+q\dd y\right)
-\end{align*}
-Seien $\gamma_{1},\gamma_{2}$ zwei differenzierbare Kurven, die $z_{0}$
-mit $z$ verbinden.
-
-TODO: Abb2
+Wann gilt diese Gleichheit?
 
 
 \subsubsection*{Allgemeine Frage}
 
-Wann ist das Integral unabhängig vom Weg?
+Wann ist ein Integral wegunabhängig?
 
 
-\subsection{Theorem\label{sub:Theo-wegunabh=0000E4ngig}}
+\subsection{Theorem \textmd{(Frobenius, Poincaré, $\ldots$)}\label{sub:Theo-wegunabh=0000E4ngig}}
 
 Das Linienintegral
 \begin{align*}
 \int_{\gamma}\left(p\dd x+q\dd y\right)
 \end{align*}
-ist genau dann wegunabhängig, wenn es eine Funktion $U:\Omega\to\mathbb{C}$
-gibt, so dass:
+ist genau dann wegunabhängig, wenn es eine Funktion $U:\Omega\to\mathbb{C},x+\ii y\mapsto U\left(x,y\right)$
+gibt, sodass gilt:
 \begin{align}
-p & =\frac{\partial U}{\partial x} & q & =\frac{\partial U}{\partial y}\label{eq:pUxqUy}
+p & =\partial_{1}U & q & =\partial_{2}U\label{eq:pUxqUy}
 \end{align}
-(Frobenius, Poincaré, $\ldots$)
+
 
 
 \subsubsection*{Beweis}
@@ -6232,7 +6288,7 @@ p & =\frac{\partial U}{\partial x} & q & =\frac{\partial U}{\partial y}\label{eq
 \quotedblbase{}$\Leftarrow$\textquotedblleft{}: Nehme an, dass \eqref{eq:pUxqUy}
 gilt, womit folgt:
 \begin{align*}
-\int_{\gamma}\left(p\dd x+q\dd y\right) & =\int_{a}^{b}\left(\frac{\partial U}{\partial x}x'\left(\tau\right)\dd x+\frac{\partial U}{\partial y}y'\left(\tau\right)\dd y\right)=\int_{a}^{b}\frac{\dd}{\dd\tau}\left(U\left(x\left(\tau\right),y\left(\tau\right)\right)\right)=\\
+\int_{\gamma}\left(p\dd x+q\dd y\right) & =\int_{a}^{b}\left(\partial_{1}U\cdot x'\left(\tau\right)\dd x+\partial_{2}U\cdot y'\left(\tau\right)\dd y\right)=\int_{a}^{b}\frac{\dd}{\dd\tau}\left(U\left(x\left(\tau\right),y\left(\tau\right)\right)\right)=\\
  & =U\left(x\left(b\right),y\left(b\right)\right)-U\left(x\left(a\right),y\left(a\right)\right)=U\left(z\right)-U\left(z_{0}\right)
 \end{align*}
 Also hängt das Integral tatsächlich nur von Anfangs- und Endpunkt
@@ -6242,16 +6298,16 @@ ab.
 das Integral wegunabhängig ist.
 
 $z_{0}=\left(x_{0},y_{0}\right)$ sei fest, während $z=\left(x,y\right)$
-variabel.
+variabel sei.
 
-Wähle als Kurve speziell ein Polygonzug, der parallel zur $x$- oder
-$y$-Achse verläuft.
+Wähle als Kurve speziell ein Polygonzug, dessen Teile parallel zur
+$x$- oder $y$-Achse verlaufen.
 
-TODO: Abb3
+\textcolor{green}{TODO: Abb3 einfügen}
 
 $\gamma$ kann durch einen solchen Polygonzug approximiert werden.
 
-Verwende hierbei, dass $\Omega$ offen und bogenzusammenhängend ist.
+Verwende hierbei, dass $\Omega$ offen und wegzusammenhängend ist.
 
 Definiere:
 \begin{align*}
@@ -6260,73 +6316,88 @@ U\left(x,y\right) & :=\int_{\gamma}\left(p\dd x+q\dd y\right)
 Dies ist wohldefiniert, weil das Integral nach Voraussetzung wegunabhängig
 ist.
 
-Berechne ${\displaystyle \frac{\partial U}{\partial x}}$:
+Berechne die partielle Ableitung ${\displaystyle \partial_{1}U}$:
 
 Wähle den Polygonzug so, dass er in einer Umgebung von $\left(x,y\right)$
 horizontal verläuft.
 
-Dann gilt:
+Dann gilt mit einer Konstante $C\in\mathbb{C}$:
 \begin{align*}
-U\left(x,y\right) & =\int^{x}p\left(\tilde{x},y\right)\dd\tilde{x}+\text{Konstante}\\
-\frac{\partial U}{\partial x} & =p\left(x,y\right)
+U\left(x,y\right) & =\int^{x}p\left(\tilde{x},y\right)\dd\tilde{x}+C\\
+\partial_{1}U & =p\left(x,y\right)
 \end{align*}
-Berechne ${\displaystyle \frac{\partial U}{\partial x}}$:
+Berechne die partielle Ableitung ${\displaystyle \partial_{2}U}$:
 
 Wähle den Polygonzug so, dass er in einer Umgebung von $\left(x,y\right)$
 vertikal verläuft.
 
-Dann gilt:
+Dann gilt mit einer Konstante $K\in\mathbb{C}$:
 \begin{align*}
-U\left(x,y\right) & =\int^{y}q\left(x,\tilde{y}\right)\dd\tilde{y}+\text{Konstante}\\
-\frac{\partial U}{\partial y} & =q\left(x,y\right)
+U\left(x,y\right) & =\int^{y}q\left(x,\tilde{y}\right)\dd\tilde{y}+K\\
+\partial_{2}U & =q\left(x,y\right)
 \end{align*}
 
 
-Also sind die Differentialgleichungen \eqref{eq:pUxqUy} erfüllt.\\
-\qqed
+Also sind die Differentialgleichungen \eqref{eq:pUxqUy} erfüllt.\qqed
 
-Schreibe auch:
+
+\subsection{Definition \textmd{(totales Differential)}}
+
+Man schreibt auch das \emph{unbestimmte Integral}
 \begin{align*}
-\int p\dd x+q\dd y & =U\\
-p\dd x+q\dd y & =\frac{\partial U}{\partial x}\dd x+\frac{\partial U}{\partial y}\dd y\left(=:\dd U\right)
+\int p\dd x+q\dd y & =U
 \end{align*}
-Und man nennt $\dd U$ das \emph{totale Differential}.
+und nennt $U$ eine \emph{Stammfunktion}. Außerdem heißt
+\begin{align*}
+p\dd x+q\dd y & =\partial_{1}U\dd x+\partial_{2}U\dd y=:\dd U
+\end{align*}
+das \emph{totale Differential} $\dd U$.
 
 Das totale Differential ist \emph{exakt}, das heißt es kann in obiger
 Form geschrieben werden.
 
+
+\subsection{Bemerkung}
+
 Zurück zum Konturintegral:
 \begin{align*}
-\int_{\gamma}f\left(z\right)\dd z & =\int\bigg(\underbrace{f}_{=p}\dd x+\underbrace{\ii f}_{=q}\dd y\bigg)
+\int_{\gamma}f\left(z\right)\dd z & =\int_{\gamma}\bigg(\underbrace{f}_{=p}\dd x+\underbrace{\ii f}_{=q}\dd y\bigg)
 \end{align*}
 Nach Theorem \ref{sub:Theo-wegunabh=0000E4ngig} ist das Konturintegral
-genau dann wegunabhängig, wenn ein $F\left(z\right)$ in $\Omega$
-existiert, so dass gilt:
+genau dann wegunabhängig, wenn ein
 \begin{align*}
-\frac{\partial F}{\partial x} & =f\left(z\right) & \frac{\partial F}{\partial y} & =\ii f\left(z\right)
+F\left(z=x+\ii y\right) & =F\left(x,y\right)
 \end{align*}
+in $\Omega$ existiert, so dass gilt:
 \begin{align*}
-\Rightarrow\quad\frac{\partial F}{\partial x} & =-\ii\frac{\partial F}{\partial y}
+\partial_{1}F & =f\left(z\right) & \partial_{2}F & =\ii f\left(z\right)
+\end{align*}
+Also folgt:
+\begin{align*}
+\partial_{1}F & =\minus\ii\cdot\partial_{2}F
 \end{align*}
 Also erfüllt $F$ die Cauchy-Riemannschen Differentialgleichungen
-und $f\left(z\right)=F'\left(z\right)$.
+und es gilt $f\left(z\right)=F'\left(z\right)$.
 
 
-\subsection{Korollar}
+\subsection{Korollar\label{sub:Kor-WegunabhaengigHolomorpheStammfunktion}}
 
-$\int_{\gamma}f\left(z\right)\dd z$ ist genau dann wegunabhängig,
-wenn es eine holomorphe Funktion $F:\Omega\to\mathbb{C}$ gibt mit
-$f\left(z\right)=F'\left(z\right)$.
+${\displaystyle \int_{\gamma}f\left(z\right)\dd z}$ ist genau dann
+wegunabhängig, wenn es eine holomorphe Funktion $F:\Omega\to\mathbb{C}$
+gibt mit $f\left(z\right)=F'\left(z\right)$.
 
 
 \subsubsection*{Beweis}
 
-TODO: ???
+\textcolor{green}{TODO: Beweis einfügen}
+
+\qqed
 
 
 \subsection{Satz\label{sub:Satz-PolyOint0}}
 
-Für jedes Polynom $P\left(z\right)$ und jede geschlossene Kurve gilt:
+Für jedes Polynom $P\left(z\right)$ und jede geschlossene Kurve $\gamma$
+gilt:
 \begin{align*}
 \int_{\gamma}P\left(z\right)\dd z & =0
 \end{align*}
@@ -6337,37 +6408,39 @@ Für jedes Polynom $P\left(z\right)$ und jede geschlossene Kurve gilt:
 
 \begin{align*}
 P\left(z\right) & =a_{n}z^{n}+a_{n-1}z^{n-1}+\ldots+a_{0}\\
-Q\left(z\right) & =\frac{a_{n}}{n+1}z^{n+1}+\frac{a_{n-1}}{n}z^{n}+\ldots+a_{0}z
+Q\left(z\right) & :=\frac{a_{n}}{n+1}z^{n+1}+\frac{a_{n-1}}{n}z^{n}+\ldots+a_{0}z
 \end{align*}
-$Q\left(z\right)$ ist eine holomorphe Stammfunktion, also $Q'\left(z\right)=P\left(z\right)$.\\
-\qqed
+$Q\left(z\right)$ ist eine holomorphe Stammfunktion, denn es gilt
+$Q'\left(z\right)=P\left(z\right)$.\qqed
 
 
 \section{Das Cauchysche Theorem}
 
-Betrachte das Rechteck $R:a\le x\le b,\, c\le y\le d$. $R\subseteq\Omega\subseteq\mathbb{C}$
+Betrachte ein Rechteck $R:a\le x\le b,\, c\le y\le d$ mit $R\subseteq\Omega\subseteq\mathbb{C}$.
 
-TODO: Abb4
+\textcolor{green}{TODO: Abb4 einfügen}
 
 
 \subsubsection*{Frage}
 
-Äquivalente Fragestellungen:
+Die Frage kann in zwei äquivalenten Fragestellungen formuliert werden:
 \begin{enumerate}
-\item Für welche $f$ ist $\int_{\gamma}f\left(z\right)\dd z$ unabhängig
-vom Integrationsweg.
+\item Für welche $f$ ist ${\displaystyle \int_{\gamma}f\left(z\right)\dd z}$
+unabhängig vom Integrationsweg.
 \item Für welche $f$ gibt es eine holomorphe Stammfunktion.
 \end{enumerate}
-Notwendiges Kriterium:
 
-Falls $f\in C^{1}$ ist, sehen wir, dass für alle geschlossenen Wege
-$\gamma$ schon $\oint_{\gamma}f\left(z\right)\dd z=0$ nur dann,
-wenn $f$ holomorph ist.
+\subsubsection*{Notwendiges Kriterium}
 
-TODO: Rest überprüfen $f\in C^{1}$ = holomorph?
+Falls für eine Funktion $f:\Omega\to\mathbb{C}$ für alle geschlossenen
+Wege $\gamma$ schon 
+\begin{align*}
+\oint_{\gamma}f\left(z\right)\dd z & =0
+\end{align*}
+gilt, dann ist jedes Kurvenintegral über $f\left(z\right)$ wegunabhängig
+und somit gibt es eine holomorphe Stammfunktion $F$.
 
-$f:\Omega\to\mathbb{C}$ ist holomorph, denn wenn es eine holomorphe
-Stammfunktion $F$ gibt, so ist $f=F'$ auch holomorph.
+Nun gilt aber $f=F'$, weswegen auch $f$ holomorph ist.
 
 Beginne mit einfachen Integrationswegen und zwar dem Integral längs
 des Randes von $R$.
@@ -6375,50 +6448,50 @@ des Randes von $R$.
 %DATE: Di 10.1.12
 
 
-\subsection{Theorem\label{sub:Thm-Goursat}}
+\subsection{Theorem \textmd{(Goursat)}\label{sub:Thm-Goursat}}
 
 Ist $f:\Omega\to\mathbb{C}$ holomorph, so gilt:
 \begin{align*}
-\int_{\partial R}f\left(z\right)\dd z & =0
+\oint_{\partial R}f\left(z\right)\dd z & =0
 \end{align*}
 
 
 
-\subsubsection*{Beweis \textmd{(nach Goursat)}}
+\subsubsection*{Beweis}
 
 Zerlege $R$ in vier kongruente Rechtecke $R^{\left(1\right)},\ldots,R^{\left(4\right)}$.
 
-TODO: Abb5
+\textcolor{green}{TODO: Abb5 einfügen}
 
 \begin{align*}
-\int_{\partial R}f\left(z\right)\dd z & =\int_{\partial R^{\left(1\right)}}f\left(z\right)\dd z+\ldots+\int_{\partial R^{\left(4\right)}}f\left(z\right)\dd z
+\oint_{\partial R}f\left(z\right)\dd z & =\int_{\partial R^{\left(1\right)}}f\left(z\right)\dd z+\ldots+\int_{\partial R^{\left(4\right)}}f\left(z\right)\dd z
 \end{align*}
 Dies gilt, da sich die Integrale längs der \quotedblbase{}inneren
 Kanten\textquotedblleft{} gegenseitig aufheben.
 
-Für eines der Rechtecke $R^{\left(k\right)}$ gilt:
+Da dies vier Summanden sind, gilt für mindestens eines der Rechtecke
+$R^{\left(k\right)}$:
 \begin{align*}
-\left|\int_{\partial R_{1}}f\left(z\right)\dd z\right| & \ge\frac{1}{4}\left|\int_{\partial R}f\left(z\right)\right|
+\abs{\oint_{\partial R_{1}}f\left(z\right)\dd z} & \ge\frac{1}{4}\abs{\oint_{\partial R}f\left(z\right)}
 \end{align*}
-Dieses nennen wir $R_{1}$.
+Dieses nennen wir $R_{1}:=R^{\left(k\right)}$.
 
 $ $Wähle nun induktiv Rechtecke $R=R_{0}\supseteq R_{1}\supseteq R_{2}\supseteq\ldots$
 so, dass gilt:
 \begin{align*}
-\left|\eta\left(R_{n}\right)\right| & \ge\frac{1}{4^{n}}\left|\eta\left(R\right)\right|
+\abs{\oint_{\partial R_{n}}f\left(z\right)\dd z} & \ge\frac{1}{4^{n}}\abs{\oint_{\partial R}f\left(z\right)\dd z}
 \end{align*}
 Zudem gilt
 \begin{align*}
-\text{Vol}\left(R_{n}\right) & =4^{-n}\cdot\text{Vol}\left(R\right)
+\text{Vol}\left(R_{n}\right) & =4^{\minus n}\cdot\text{Vol}\left(R\right)
 \end{align*}
-und die Kantenlängen von $R_{n}$ sind schon $2^{-n}$ mal die Kantenlängen
-von $R$.
+und die Kantenlängen von $R_{n}$ sind schon $2^{\minus n}$ mal die
+Kantenlängen von $R$.
 
-Seien $z_{n}$ die Mittelpunkte dieser Rechtecke.
+Seien $z_{n}$ die Mittelpunkte dieser Rechtecke. Die Folge $\left(z_{n}\right)_{n\in\mathbb{N}}$
+besitzt einen Häufungspunkt $z^{*}\in R$.
 
-Die Folge $\left(z_{n}\right)$ besitzt einen Häufungspunkt $z^{*}\in R$.
-
-TODO: Abb6
+\textcolor{green}{TODO: Abb6 einfügen}
 
 Verwende nun ein lokales Argument:
 
@@ -6427,56 +6500,55 @@ Da $f$ in $z^{*}$ holomorph ist, gilt:
 f\left(z\right) & =f\left(z^{*}\right)+f'\left(z^{*}\right)\left(z-z^{*}\right)+o\left(\left|z-z^{*}\right|\right)
 \end{align*}
 Anders ausgedrückt gibt es zu jedem $\varepsilon>0$ ein $\delta>0$,
-so dass gilt für alle $z\in B_{\delta}\left(z^{*}\right)\setminus\left\{ z^{*}\right\} $:
+so dass für alle $z\in B_{\delta}\left(z^{*}\right)\setminus\left\{ z^{*}\right\} $
+gilt:
 \begin{align*}
-\left|f\left(z\right)-f\left(z^{*}\right)-f'\left(z^{*}\right)\left(z-z^{*}\right)\right| & <\varepsilon\left|z-z^{*}\right|
+\abs{f\left(z\right)-f\left(z^{*}\right)-f'\left(z^{*}\right)\left(z-z^{*}\right)} & <\varepsilon\abs{z-z^{*}}
 \end{align*}
-Dies ist ein Polynom, es hat also eine holomorphe Stammfunktion.
+$f\left(z^{*}\right)+f'\left(z^{*}\right)\left(z-z^{*}\right)$ ist
+ein Polynom in $z$, hat also eine holomorphe Stammfunktion.
 
 Wähle nun $n$ so groß, dass $R_{n}\subseteq B_{\delta}\left(z^{*}\right)$
-ist.
-
-Dann gilt:
+ist. Dann gilt:
 \begin{align*}
-\int_{\partial R_{n}}\left[f\left(z^{*}\right)+f'\left(z^{*}\right)\left(z-z^{*}\right)\right] & \stackrel{\ref{sub:Satz-PolyOint0}}{=}0
+\oint_{\partial R_{n}}\left[f\left(z^{*}\right)+f'\left(z^{*}\right)\left(z-z^{*}\right)\right] & \stackrel{\ref{sub:Satz-PolyOint0}}{=}0
 \end{align*}
 Beachte dabei, das wir ein Polynom integrieren.
 \begin{align*}
-\eta\left(R_{n}\right) & =\int_{\partial R_{n}}f\left(z\right)\dd z=\int_{\partial R_{n}}\left(f\left(z\right)-f\left(z^{*}\right)-f'\left(z^{*}\right)\left(z-z^{*}\right)\right)\dd z
+\oint_{\partial R_{n}}f\left(z\right)\dd z & =\int_{\partial R_{n}}\left(f\left(z\right)-f\left(z^{*}\right)-f'\left(z^{*}\right)\left(z-z^{*}\right)\right)\dd z
 \end{align*}
 Also gilt:
 \begin{align*}
-\left|\eta\left(R_{n}\right)\right| & =\Bigg|\int_{\partial R_{n}}\bigg(\underbrace{f\left(z\right)-f\left(z^{*}\right)-f'\left(z^{*}\right)\left(z-z^{*}\right)}_{\left|\ldots\right|\le\varepsilon\left|z-z^{*}\right|}\bigg)\dd z\Bigg|\le\\
- & \le\varepsilon\Bigg|\int_{\partial R_{n}}\underbrace{\left|z-z^{*}\right|}_{\le2^{-n}\cdot\max\left\{ b-a,d-c\right\} }\dd z\Bigg|\le\\
+\abs{\oint_{\partial R_{n}}f\left(z\right)\dd z} & =\Bigg|\oint_{\partial R_{n}}\bigg(\underbrace{f\left(z\right)-f\left(z^{*}\right)-f'\left(z^{*}\right)\left(z-z^{*}\right)}_{\left|\ldots\right|\le\varepsilon\left|z-z^{*}\right|}\bigg)\dd z\Bigg|\le\\
+ & \le\varepsilon\Bigg|\oint_{\partial R_{n}}\underbrace{\left|z-z^{*}\right|}_{\le2^{-n}\cdot\max\left\{ b-a,d-c\right\} =:d_{n}}\dd z\Bigg|\le\\
  & \le\varepsilon\cdot\underbrace{d_{n}}_{\text{Durchmesser von }R_{n}}\cdot\underbrace{L_{n}}_{\text{Umfang von }R}\\
- & \le\varepsilon\cdot4^{-n}\cdot\underbrace{d}_{\text{Durchmesser von }R}\cdot\underbrace{L}_{\text{Umfang von }R_{n}}
+ & \le\varepsilon\cdot4^{-n}\cdot\underbrace{d}_{\text{Durchmesser von }R}\cdot\underbrace{L}_{\text{Umfang von }R}
 \end{align*}
 Andererseits gilt:
 \begin{align*}
-\eta\left(R_{n}\right) & \ge4^{-n}\left|\eta\left(R\right)\right|
+\oint_{\partial R_{n}}f\left(z\right)\dd z & \ge4^{-n}\abs{\oint_{\partial R}f\left(z\right)\dd z}
 \end{align*}
 
 
 Damit folgt:
 \begin{align*}
-\eta\left(R\right) & \le\varepsilon\cdot d\cdot L
+\abs{\oint_{\partial R}f\left(z\right)\dd z} & \le\varepsilon\cdot d\cdot L
 \end{align*}
-Da $\varepsilon$ beliebig ist, folgt $\eta\left(R\right)=0$.\\
-\qqed
+Da $\varepsilon$ beliebig ist, folgt ${\displaystyle \oint_{\partial R}f\left(z\right)\dd z=0}$.\qqed
 
 
-\subsection{Theorem}
+\subsection{Theorem\label{sub:Thm-RechteckHebbareInnerePunkteInt0}}
 
-Sei $R'=R\setminus\left\{ \zeta_{1},\ldots,\zeta_{n}\right\} $ ein
-Rechteck ohne endlich viele innere Punkte, also $\zeta_{1}\in R^{\circ}$.
-
-Sei $f$ auf $R'$ holomorph und es gelte:
+Sei $R'=R\setminus\left\{ \zeta_{1},\ldots,\zeta_{n}\right\} $ mit
+$n\in\mathbb{N}$ ein Rechteck ohne endlich viele innere Punkte, also
+$\zeta_{k}\in R^{\circ}$ für $k\in\left\{ 1,\ldots,n\right\} $.
+Sei zudem $f$ auf $R'$ holomorph und es gelte:
 \begin{align*}
 \lim_{z\to\zeta_{j}}\left(z-\zeta_{j}\right)f\left(z\right) & =0
 \end{align*}
 Dann gilt:
 \begin{align*}
-\int_{\partial R}f\left(z\right)\dd z & =0
+\oint_{\partial R}f\left(z\right)\dd z & =0
 \end{align*}
 
 
@@ -6486,34 +6558,34 @@ Dann gilt:
 Es genügt, einen Ausnahmepunkt zu betrachten, da wir das Rechteck
 ansonsten in endlich viele Rechtecke zerlegen können.
 
-TODO: Abb1-b
+\textcolor{green}{TODO: Abb1-b einfügen}
 
-Nenne den Ausnahmepunkt $\zeta$.
+Den Ausnahmepunkt nennen wir $\zeta$.
 
-Wähle ein kleines Rechteck $R_{0}$ um $\zeta$ und nenne die restlichen
-Rechtecke $R_{i}$.
+Wähle ein kleines Rechteck $R_{0}$ mit Durchmesser $d_{0}$ und Umfang
+$L_{0}$ um $\zeta$ und nenne die restlichen Rechtecke $R_{i}$ mit
+$i\in\left\{ 1,\ldots,N\right\} $ und $N\in\mathbb{N}$.
 
-TODO: Abb2
+\textcolor{green}{TODO: Abb2 einfügen}
 
 Weil $f$ in $R_{i}$ für $i\ge1$ holomorph ist, folgt:
 \begin{align*}
-\int_{\partial R_{i}}f\left(z\right)\dd z & =0
+\oint_{\partial R_{i}}f\left(z\right)\dd z & =0
 \end{align*}
 Damit folgt:
 \begin{align*}
-\int_{\partial R}f\left(z\right)\dd z & =\int_{\partial R_{0}}f\left(z\right)\dd z
+\oint_{\partial R}f\left(z\right)\dd z & =\oint_{\partial R_{0}}f\left(z\right)\dd z
 \end{align*}
 Nach Voraussetzung können wir zu einem gegebene $\varepsilon>0$ das
 Rechteck $R_{0}$ so klein wählen, dass für alle $z\in\partial R_{0}$
 gilt:
 \begin{align*}
-\left|f\left(z\right)\cdot\left(z-\zeta\right)\right| & \le\varepsilon\\
-\left|f\left(z\right)\right| & \le\frac{\varepsilon}{\left|z-\zeta\right|}
+\abs{f\left(z\right)\cdot\left(z-\zeta\right)} & \le\varepsilon\\
+\abs{f\left(z\right)} & \le\frac{\varepsilon}{\abs{z-\zeta}}
 \end{align*}
 Also gilt:
 \begin{align*}
-\left|\int_{\partial R_{0}}f\left(z\right)\dd z\right| & \le\varepsilon\int_{\partial R_{o}}\frac{\overbrace{\left|\dd z\right|}^{=\left|\gamma'\left(t\right)\right|\dd t}}{\left|z-\zeta\right|}\le\\
- & \le\frac{\varepsilon}{\frac{d_{0}}{4}}\cdot L_{0}=\varepsilon\cdot\frac{4L_{0}}{d_{0}}\le16\varepsilon
+\abs{\oint_{\partial R_{0}}f\left(z\right)\dd z} & \le\varepsilon\int_{\partial R_{0}}\frac{\overbrace{\abs{\dd z}}^{=\abs{\gamma'\left(t\right)}\dd t}}{\abs{z-\zeta}}\le\varepsilon\cdot\frac{1}{\min_{z\in\partial R_{0}}\underbrace{\left(\abs{z-\zeta}\right)}_{>0}}\cdot L_{0}
 \end{align*}
 Da $\varepsilon$ beliebig ist, folgt:
 \begin{align*}
@@ -6524,9 +6596,10 @@ Da $\varepsilon$ beliebig ist, folgt:
 Verallgemeinere dies nun auf beliebige Kurven in einer Kreisscheibe.
 
 
-\subsection{Theorem}
+\subsection{Theorem\label{sub:Thm-HolomorphInt0}}
 
-Sei $f$ in $\Delta:=B_{R}\left(0\right)\in\mathbb{C}$ holomorph.
+Sei $f$ in $\Delta:=B_{R}\left(0\right)\in\mathbb{C}$ mit $R\in\mathbb{R}_{>0}$
+holomorph.
 
 Dann gilt für jede geschlossene Kurve $\gamma$ in $\Delta$:
 \begin{align*}
@@ -6539,14 +6612,14 @@ Dann gilt für jede geschlossene Kurve $\gamma$ in $\Delta$:
 
 Sei $z=x+\ii y\in\Delta$.
 
-TODO: Abb3
+\textcolor{green}{TODO: Abb3 einfügen}
 
 Wähle ein Rechteck $R$ so, dass die linke untere Ecke der Ursprung
 und die rechte obere Ecke $z$ ist.
 
 Nach Theorem \ref{sub:Thm-Goursat} ist
 \begin{align*}
-\int_{\partial R}f\left(z\right)\dd z & =0
+\oint_{\partial R}f\left(z\right)\dd z & =0
 \end{align*}
 und deshalb ist
 \begin{align*}
@@ -6554,8 +6627,9 @@ und deshalb ist
 \end{align*}
 wohldefiniert.
 
-Nach Korollar \ref{asdf}2.9.2 genügt es zu zeigen, dass $F\left(z\right)$
-eine holomorphe Stammfunktion von $f$ ist.
+Nach Korollar \ref{sub:Kor-WegunabhaengigHolomorpheStammfunktion}
+genügt es zu zeigen, dass $F\left(z\right)=F\left(x,y\right)$ mit
+$z=x+\ii y$ eine holomorphe Stammfunktion von $f$ ist.
 
 Sei $\gamma_{h}$ ein Weg, der $z$ und $z+h$ parallel zur reellen
 Achse verbindet.
@@ -6563,13 +6637,14 @@ Achse verbindet.
 Sei $\gamma_{g}$ ein Weg, der $z$ und $z+\ii h$ parallel zur imaginären
 Achse verbindet.
 
-TODO: Abb4
+\textcolor{green}{TODO: Abb4 einfügen}
+
 \begin{align*}
-\frac{\partial F}{\partial x} & =\lim_{0\not=h\to0}\int_{\gamma_{h}}f\left(z\right)\dd z=\lim_{0\not=h\to0}\frac{1}{h}\int_{0}^{h}f\left(z+h\right)\cdot\underbrace{\gamma'\left(h\right)}_{=1}\dd h=f\left(z\right)\\
-\frac{\partial F}{\partial y} & =\lim_{0\not=h\to0}\frac{1}{h}\left(F\left(z+\ii h\right)-F\left(z\right)\right)=\lim_{0\not=h\to0}\frac{1}{h}\int_{0}^{h}f\left(z+\ii h\right)\cdot\ii\dd h=\ii f\left(z\right)
+\partial_{1}F & =\lim_{0\not=h\to0}\int_{\gamma_{h}}f\left(z\right)\dd z=\lim_{0\not=h\to0}\frac{1}{h}\int_{0}^{h}f\left(z+h\right)\cdot\underbrace{\gamma'\left(h\right)}_{=1}\dd h=f\left(z\right)\\
+\partial_{2}F & =\lim_{0\not=h\to0}\frac{1}{h}\left(F\left(z+\ii h\right)-F\left(z\right)\right)=\lim_{0\not=h\to0}\frac{1}{h}\int_{0}^{h}f\left(z+\ii h\right)\cdot\ii\dd h=\ii f\left(z\right)=\ii\partial_{1}F
 \end{align*}
 Damit sind die Cauchy-Riemannschen Differentialgleichungen erfüllt,
-also ist $F$ holomorph und es gilt:
+weswegen $F$ holomorph ist und es gilt:
 \begin{align*}
 F'\left(z\right) & =f\left(z\right)
 \end{align*}
@@ -6579,7 +6654,8 @@ F'\left(z\right) & =f\left(z\right)
 \subsection{Theorem\label{sub:Thm-OintHolomHebPol}}
 
 Sei $f$ holomorph in $\Delta'=\Delta\setminus\left\{ \zeta_{1},\ldots,\zeta_{n}\right\} $
-mit $\zeta_{j}\in\Delta$ für $1\le j\le n$ und es gelte für $1\le j\le n$:
+mit $\zeta_{j}\in\Delta$ für $1\le j\le n\in\mathbb{N}$ und es gelte
+für $1\le j\le n$:
 \begin{align*}
 \lim_{z\to\zeta_{j}}\left(z-\zeta_{j}\right)f\left(z\right) & =0
 \end{align*}
@@ -6587,33 +6663,33 @@ Dann ist
 \begin{align*}
 \int_{\gamma}f\left(z\right)\dd z & =0
 \end{align*}
-für jede geschlossene Kurve $\gamma$ in $\Delta$'.
+für jede geschlossene Kurve $\gamma$ in $\Delta'$.
 
 
 \subsubsection*{Beweis}
 
-TODO: Abb5
+\textcolor{green}{TODO: Abb5 einfügen}
 
 Wähle Kurven $\gamma_{1}$ und $\gamma_{2}$ so, dass
 \begin{itemize}
-\item die Kurven keinen der $\zeta_{j}$ schneiden.
+\item die Kurven keinen der Punkte $\zeta_{j}$ schneiden.
 \item in einer Umgebung von $z$ die Kurve $\gamma_{1}$ parallel zur imaginären
 Achse und $\gamma_{2}$ parallel zur reellen Achse ist.
 \end{itemize}
-Da nach Theorem \ref{asdf}2.10.2
+Da nach Theorem \ref{sub:Thm-RechteckHebbareInnerePunkteInt0} schon
 \begin{align*}
-\int_{\partial R}f\left(z\right)\dd z & =0
+\oint_{\partial R}f\left(z\right)\dd z & =0
 \end{align*}
-ist, folgt wieder:
+gilt, folgt wieder:
 \begin{align*}
 \int_{\gamma_{1}}f\left(z\right)\dd z & =\int_{\gamma_{2}}f\left(z\right)\dd z=:F\left(z\right)
 \end{align*}
-Ab jetzt geht der Beweis genau wie der von Theorem \ref{asdf}2.10.3.
-
-\qqed
+Ab jetzt geht der Beweis genau wie der von Theorem \ref{sub:Thm-HolomorphInt0}.\qqed
 
 
 \section{Der Cauchysche Integralsatz}
+
+\textcolor{green}{TODO: Rest überarbeiten}
 
 Sei $\gamma$ wieder eine geschlossene Kurve.
 

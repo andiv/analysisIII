@@ -118,7 +118,7 @@
 %\renewcommand{\headrulewidth}{0.4pt} %obere Trennlinie
 \fancyhf{} %alle Kopf- und Fußzeilenfelder bereinigen
 \fancyhead[L]{\textbf{Analysis III}} %Kopfzeile links
-\fancyhead[C]{\leftmark} %zentrierte Kopfzeile
+\fancyhead[C]{\textit{\leftmark}} %zentrierte Kopfzeile
 \fancyhead[R]{\rightmark} %Kopfzeile rechts
 \fancyfoot[C]{\thepage\quad\!\!\!\slash\quad\!\!\!\pageref{END-front}} %Seitenzahl der Front-Matter
 \end_preamble
@@ -442,7 +442,7 @@ begin{matrix} statt array schreiben.
 
 \lang english
 \begin_inset FormulaMacro
-\newcommand{\minus}{\text{-}}
+\newcommand{\minus}{\text{-}\,}
 \end_inset
 
 
@@ -1173,7 +1173,9 @@ rightmark}
 \backslash
 fancyhead[C]{
 \backslash
-leftmark}
+textit{
+\backslash
+leftmark}}
 \end_layout
 
 \end_inset
@@ -1295,7 +1297,11 @@ Wähle Zwischenpunkte
 \begin_inset Formula $f$
 \end_inset
 
- heißt Riemann-integrierbar (Abkürzung: R-integrierbar), falls der Limes
+ heißt Riemann-integrierbar (Abkürzung: 
+\begin_inset Formula $R$
+\end_inset
+
+-integrierbar), falls der Limes
 \begin_inset Formula 
 \begin{align*}
 \lim_{\Delta Z\to0}\sum_{k=1}^{n}f\left(\zeta_{k}\right)\cdot\left|I_{k}\right| & =:\int_{a}^{b}f\left(x\right)\dd x
@@ -17129,7 +17135,6 @@ status open
 
 \begin_layout Plain Layout
 
-\series medium
 
 \backslash
 texorpdfstring{
@@ -17137,10 +17142,7 @@ texorpdfstring{
 
 \end_inset
 
-
  
-\lang ngerman
-
 \begin_inset Formula $\overline{\mathbb{C}}$
 \end_inset
 
@@ -17150,7 +17152,6 @@ status open
 
 \begin_layout Plain Layout
 
-\series medium
 }{}
 \end_layout
 
@@ -18186,8 +18187,7 @@ Günstige Notation:
 
 \end_inset
 
-Dann kann man die Cauchy-Riemannschen Differentialgleichungen in folgender
- Form schreiben:
+Dann kann man die Cauchy-Riemannschen Differentialgleichungen in der Form
 \begin_inset Formula 
 \begin{align*}
 \partial_{1}f & =-\ii\partial_{2}f
@@ -18195,6 +18195,18 @@ Dann kann man die Cauchy-Riemannschen Differentialgleichungen in folgender
 
 \end_inset
 
+oder auch als
+\begin_inset Formula 
+\begin{align*}
+\partial_{2}f & =\ii\partial_{1}f
+\end{align*}
+
+\end_inset
+
+schreiben.
+\end_layout
+
+\begin_layout Standard
 Realteil:
 \begin_inset Formula 
 \begin{align*}
@@ -21604,25 +21616,21 @@ Komplexe Integration
 \end_layout
 
 \begin_layout Standard
+Betrachte wieder eine stetige und stückweise differenzierbare Kurve 
+\begin_inset Formula $\gamma:I=\left[a,b\right]\to\Omega$
+\end_inset
+
+ mit 
+\begin_inset Formula $\Omega\subseteq\mathbb{C}$
+\end_inset
+
+ offen.
+\end_layout
+
+\begin_layout Standard
 
 \color green
-TODO: Rest überarbeiten
-\end_layout
-
-\begin_layout Standard
-Betrachte wieder Kurve 
-\begin_inset Formula $\gamma:I=\left[a,b\right]\to\Omega\subseteq\mathbb{C}$
-\end_inset
-
- (
-\begin_inset Formula $\Omega$
-\end_inset
-
- offen) sei stetig und stückweise differenzierbar.
-\end_layout
-
-\begin_layout Standard
-TODO: Abb4
+TODO: Abb4 einfügen
 \end_layout
 
 \begin_layout Standard
@@ -21637,8 +21645,14 @@ Identifiziere zunächst
 .
 \end_layout
 
+\begin_layout Subsection
+Proposition und Definition 
+\series medium
+(Bogenlänge)
+\end_layout
+
 \begin_layout Standard
-Dann kann man die 
+Die 
 \emph on
 Bogenlänge
 \emph default
@@ -21646,10 +21660,14 @@ Bogenlänge
 \begin_inset Formula $L\left(\gamma\right)$
 \end_inset
 
- folgendermaßen einführen:
+ der Kurve 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ ist folgendermaßen definiert:
 \begin_inset Formula 
 \begin{align*}
-L\left(\gamma\right) & =\int_{a}^{b}\left|\gamma'\left(\tau\right)\right|\dd\tau
+L\left(\gamma\right) & :=\int_{a}^{b}\abs{\gamma'\left(\tau\right)}\dd\tau
 \end{align*}
 
 \end_inset
@@ -21658,15 +21676,31 @@ L\left(\gamma\right) & =\int_{a}^{b}\left|\gamma'\left(\tau\right)\right|\dd\tau
 \begin_inset Formula $\gamma$
 \end_inset
 
- differenzierbar ist, sonst stückweise integrieren und Integrale addieren.)
+ differenzierbar ist, sonst muss man stückweise integrieren und die Integrale
+ addieren.)
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula $L\left(\gamma\right)$
 \end_inset
 
- soll unabhängig von der Parametrisierung sein.
- Rechne dies nach:
+ ist unabhängig von der Parametrisierung sein.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Rechne die Unabhängigkeit von der Parametrisierung nach.
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $\tilde{\gamma}$
+\end_inset
+
+ eine andere Parametrisierung der Kurve, also:
 \begin_inset Formula 
 \begin{align*}
 \tilde{\gamma}\left(t\right) & =\left(\gamma\circ\tau\right)\left(t\right) & \tau:\left[\alpha,\beta\right] & \to\left[a,b\right]
@@ -21678,7 +21712,7 @@ L\left(\gamma\right) & =\int_{a}^{b}\left|\gamma'\left(\tau\right)\right|\dd\tau
 \begin_inset Formula $\tau$
 \end_inset
 
- sei streng monoton steigend und 
+ sei streng monoton steigend, also 
 \begin_inset Formula $\tau'\left(t\right)\not=0$
 \end_inset
 
@@ -21689,16 +21723,37 @@ L\left(\gamma\right) & =\int_{a}^{b}\left|\gamma'\left(\tau\right)\right|\dd\tau
 .
 \begin_inset Formula 
 \begin{align*}
-\int_{\alpha}^{\beta}\left|\tilde{\gamma}'\left(t\right)\right|\dd t & \stackrel{\text{Kettenregel}}{=}\int_{\alpha}^{\beta}\bigg|\gamma'\left(t\right)\cdot\underbrace{\frac{\dd\tau}{\dd t}}_{>0}\bigg|\dd t=\int_{\alpha}^{\beta}\left|\gamma'\left(t\right)\right|\frac{\dd\tau}{\dd t}\dd t=\\
- & \sr ={\text{Substitution}}{t=t\left(\tau\right),\dd t=\frac{\dd t}{\dd\tau}\dd t}\int_{\alpha}^{\beta}\left|\gamma'\left(\tau\right)\right|\dd\tau=L\left(\gamma\right)
+L\left(\tilde{\gamma}\right) & =\int_{\alpha}^{\beta}\abs{\tilde{\gamma}'\left(t\right)}\dd t\stackrel{\text{Kettenregel}}{=}\int_{\alpha}^{\beta}\bigg|\gamma'\left(t\right)\cdot\underbrace{\frac{\dd\tau}{\dd t}}_{>0}\bigg|\dd t=\int_{\alpha}^{\beta}\abs{\gamma'\left(t\right)}\frac{\dd\tau}{\dd t}\dd t=\\
+ & \sr ={\text{Substitution}}{t=t\left(\tau\right),\dd\tau=\frac{\dd\tau}{\dd t}\dd t}\int_{\alpha}^{\beta}\abs{\gamma'\left(\tau\right)}\dd\tau=L\left(\gamma\right)
 \end{align*}
 
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Bemerkung
+\end_layout
+
+\begin_layout Standard
+Es gilt zudem:
 \begin_inset Formula 
 \begin{align*}
-\int_{\alpha}^{\beta}\gamma'\left(\tau\right)\frac{\dd\tau}{\dd t}\dd t & =\int_{a}^{b}\gamma'\left(\tau\right)\dd\tau
+\int_{\alpha}^{\beta}\gamma'\left(t\right)\frac{\dd\tau}{\dd t}\dd t & =\int_{a}^{b}\gamma'\left(\tau\right)\dd\tau
 \end{align*}
 
 \end_inset
@@ -21707,11 +21762,11 @@ Sei nun außerdem
 \begin_inset Formula $f:\Omega\to\mathbb{C}$
 \end_inset
 
- stetig (wichtigstes Beispiel: 
+ stetig, zum Beispiel 
 \begin_inset Formula $f$
 \end_inset
 
- holomorph).
+ holomorph.
 \end_layout
 
 \begin_layout Standard
@@ -21723,7 +21778,7 @@ Wir wollen „
 \begin_inset Formula $\gamma$
 \end_inset
 
- integrieren“:
+ integrieren“, also:
 \begin_inset Formula 
 \begin{align*}
 \gamma:\left[a,b\right] & \to\mathbb{C}
@@ -21734,7 +21789,7 @@ Wir wollen „
 
 \begin_inset Formula 
 \begin{align*}
-\int_{a}^{b}f\left(\gamma\left(\tau\right)\right)\left|\gamma'\left(\tau\right)\right|\dd\tau
+\int_{a}^{b}f\left(\gamma\left(\tau\right)\right)\cdot\abs{\gamma'\left(\tau\right)}\dd\tau
 \end{align*}
 
 \end_inset
@@ -21817,15 +21872,15 @@ reelle Variable
 \end_layout
 
 \begin_layout Standard
-Man kann das auf reellwertige Integrale zurückführen.
+Man kann dies auf reellwertige Integrale zurückführen:
 \begin_inset Formula 
 \begin{align*}
-\int_{\gamma}f\left(z\right)\dd z & :=\int_{a}^{b}\text{Re}\left(f\left(\gamma\left(\tau\right)\right)\gamma'\left(\tau\right)\right)\dd\tau+\ii\int_{a}^{b}\text{Im}\left(f\left(\gamma\left(\tau\right)\right)\gamma'\left(\tau\right)\right)\dd\tau
+\int_{\gamma}f\left(z\right)\dd z & =\int_{a}^{b}\text{Re}\left(f\left(\gamma\left(\tau\right)\right)\gamma'\left(\tau\right)\right)\dd\tau+\ii\int_{a}^{b}\text{Im}\left(f\left(\gamma\left(\tau\right)\right)\gamma'\left(\tau\right)\right)\dd\tau
 \end{align*}
 
 \end_inset
 
-Riemann- beziehungsweise Lebesgue-Integral im Reellen.
+Dies sind Riemann- beziehungsweise Lebesgue-Integral im Reellen.
 \end_layout
 
 \begin_layout Standard
@@ -21833,7 +21888,7 @@ Insbesondere sieht man:
 \begin_inset Formula 
 \begin{align*}
 \text{Re}\left(\int_{\gamma}f\left(z\right)\dd z\right) & =\int_{a}^{b}\text{Re}\big(f\left(\gamma\left(\tau\right)\right)\gamma'\left(\tau\right)\big)\dd\tau\\
- & \not=\int_{\gamma}\text{Re}\left(f\left(z\right)\right)\dd z=\int_{a}^{b}\text{Re}\big(f\left(\gamma\left(\tau\right)\right)\big)\gamma'\left(\tau\right)\dd\tau
+ & \stackrel{\text{i.A.}}{\not=}\int_{\gamma}\text{Re}\left(f\left(z\right)\right)\dd z=\int_{a}^{b}\text{Re}\big(f\left(\gamma\left(\tau\right)\right)\big)\gamma'\left(\tau\right)\dd\tau
 \end{align*}
 
 \end_inset
@@ -21861,11 +21916,11 @@ Sei
 \begin_inset Formula $t:\left[\alpha,\beta\right]\to\left[a,b\right]$
 \end_inset
 
- streng monoton steigend, stetig, stückweise differenzierbar.
+ streng monoton steigend, stetig und stückweise differenzierbar.
 \end_layout
 
 \begin_layout Standard
-Dann folgt mit 
+Dann folgt aus 
 \begin_inset Formula $\tilde{\gamma}\left(\tau\right)=\left(\gamma\circ t\right)\left(\tau\right)$
 \end_inset
 
@@ -21873,7 +21928,7 @@ Dann folgt mit
 \begin_inset Formula 
 \begin{align*}
 \int_{\alpha}^{\beta}\left(f\circ\gamma\circ t\right)\left(\tau\right)\cdot\left(\gamma\circ t\right)'\left(\tau\right)\dd\tau & =\int_{\alpha}^{\beta}\left(f\circ\gamma\right)\left(t\left(\tau\right)\right)\cdot\gamma'\left(t\left(\tau\right)\right)\frac{\dd t}{\dd\tau}\dd\tau=\\
- & \stackrel{\text{Transformationsformel}}{=}\int_{\alpha}^{\beta}\left(f\circ\gamma\right)\left(t\right)\cdot\gamma'\left(t\right)\dd t
+ & \sr ={\text{Transformations-}}{\text{formel}}\int_{\alpha}^{\beta}\left(f\circ\gamma\right)\left(t\right)\cdot\gamma'\left(t\right)\dd t
 \end{align*}
 
 \end_inset
@@ -21927,15 +21982,20 @@ iii
 
 \end_inset
 
- 
+ Betrachte 
 \begin_inset Formula ${\displaystyle f\left(z\right)=\frac{1}{z^{2}}}$
 \end_inset
 
-, 
-\begin_inset Formula $\gamma:\left[1,2\right]\to\mathbb{C}:t\mapsto t$
+ und:
+\begin_inset Formula 
+\begin{align*}
+\gamma:\left[1,2\right] & \to\mathbb{C}\\
+t & \mapsto t
+\end{align*}
+
 \end_inset
 
-
+Dann gilt:
 \begin_inset Formula 
 \begin{align*}
 \int_{\gamma}f\left(z\right)\dd z & =\int_{1}^{2}f\left(\gamma\left(t\right)\right)\gamma'\left(t\right)\dd t=\int_{1}^{2}\frac{1}{t^{2}}\cdot1\dd t=\frac{-1}{t}\bigg|_{1}^{2}=\frac{-1}{2}+1=\frac{1}{2}
@@ -21952,7 +22012,7 @@ status open
 
 \begin_layout Plain Layout
 
-%DATE Fr 23.12.2011
+%DATE: Fr 23.12.2011
 \end_layout
 
 \end_inset
@@ -21973,15 +22033,19 @@ iii
 
 \end_inset
 
- 
-\begin_inset Formula $f\left(z\right)=z^{n},\: n\ge0$
+ Betrachte 
+\begin_inset Formula $f\left(z\right)=z^{n}$
 \end_inset
 
+ für 
+\begin_inset Formula $n\in\mathbb{N}_{\ge0}$
+\end_inset
 
+.
 \begin_inset Newline newline
 \end_inset
 
-Wähle eine Parametrisierung zum Beispiel
+Wähle eine Parametrisierung, zum Beispiel:
 \end_layout
 
 \begin_layout Standard
@@ -22003,11 +22067,7 @@ Wähle eine Parametrisierung zum Beispiel
 
 \end_inset
 
-
-\begin_inset Formula $\gamma_{2}$
-\end_inset
-
-: Parametrisiere so:
+Wähle eine andere Parametrisierung:
 \begin_inset Formula 
 \begin{align*}
 \gamma_{2}:\left[0,2\right] & \to\mathbb{C}\\
@@ -22026,13 +22086,14 @@ Wähle eine Parametrisierung zum Beispiel
 
 \begin_inset Formula 
 \begin{align*}
-\int_{\gamma_{2}}f\left(z\right)\dd z & =\int_{0}^{1}\tau^{n}\cdot1\dd\tau+\int_{1}^{2}\left(1+\left(\tau-1\right)\cdot\ii\right)^{n}\cdot\ii\dd\tau=\frac{1}{n+1}+\ii\cdot\frac{1}{\left(n+1\right)\ii}\left(1+\left(\tau-1\right)\ii\right)^{n+1}\bigg|_{1}^{2}=\\
+\int_{\gamma_{2}}f\left(z\right)\dd z & =\int_{0}^{1}\tau^{n}\cdot1\dd\tau+\int_{1}^{2}\left(1+\left(\tau-1\right)\cdot\ii\right)^{n}\cdot\ii\dd\tau=\\
+ & =\frac{1}{n+1}+\ii\cdot\frac{1}{\left(n+1\right)\ii}\left(1+\left(\tau-1\right)\ii\right)^{n+1}\bigg|_{1}^{2}=\\
  & =\frac{1}{n+1}+\frac{1}{n+1}\left(\left(1+\ii\right)^{n+1}-1\right)=\frac{1}{n+1}\cdot\left(1+\ii\right)^{n+1}
 \end{align*}
 
 \end_inset
 
-
+Der Wert dieses Integrals ist also für beide Integrationswege gleich.
 \end_layout
 
 \begin_layout Standard
@@ -22051,10 +22112,6 @@ end{iiilist}
 
 \end_layout
 
-\begin_layout Standard
-Der Wert des Integrals ist also für beide Integrationswege gleich.
-\end_layout
-
 \begin_layout Subsection
 Definition
 \end_layout
@@ -22065,18 +22122,16 @@ Sei
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-Setze
+ Setze:
 \begin_inset Formula 
 \begin{align*}
--\gamma & :=\tilde{\gamma}:\left[0,1\right]\to\mathbb{C},\:\tilde{\gamma}\left(\tau\right)=\gamma\left(1-\tau\right)
+\minus\gamma:=\tilde{\gamma}:\left[0,1\right] & \to\mathbb{C}\\
+\tau & \mapsto\tilde{\gamma}\left(\tau\right)=\gamma\left(1-\tau\right)
 \end{align*}
 
 \end_inset
 
-also „durchlaufe die Kurve rückwärts“.
+Also „durchlaufe die Kurve rückwärts“.
 \end_layout
 
 \begin_layout Standard
@@ -22096,16 +22151,16 @@ Sei
 \begin_inset Newline newline
 \end_inset
 
-Setze dann 
+Definiere dann 
 \begin_inset Formula $\gamma_{1}+\gamma_{2}:\left[a,c\right]\to\mathbb{C}$
 \end_inset
 
- definiert durch: 
+ durch: 
 \begin_inset Formula 
 \begin{align*}
 \left(\gamma_{1}+\gamma_{2}\right)\left(\tau\right) & =\begin{cases}
 \gamma_{1}\left(\tau\right) & \tau\in\left[a,b\right]\\
-\gamma_{2}\left(\tau\right) & \tau\in\left[b,c\right]
+\gamma_{2}\left(\tau\right) & \tau\in(b,c]
 \end{cases}
 \end{align*}
 
@@ -22121,7 +22176,7 @@ Lemma
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\int_{-\gamma}f\left(z\right)\dd z & =-\int_{\gamma}f\left(z\right)\dd z
+\int_{\minus\gamma}f\left(z\right)\dd z & =\minus\int_{\gamma}f\left(z\right)\dd z
 \end{align*}
 
 \end_inset
@@ -22142,7 +22197,42 @@ Beweis
 \end_layout
 
 \begin_layout Standard
-TODO: Fehlt???
+\begin_inset Formula 
+\begin{align*}
+\int_{\minus\gamma}f\left(z\right)\dd z & =\int_{0}^{1}f\left(\minus\gamma\left(\tau\right)\right)\cdot\left(\minus\gamma\right)'\left(\tau\right)\dd\tau=\int_{0}^{1}f\left(\gamma\left(1-\tau\right)\right)\cdot\frac{\dd}{\dd\tau}\left(\gamma\left(1-\tau\right)\right)\dd\tau=\\
+ & =\int_{0}^{1}f\left(\gamma\left(1-\tau\right)\right)\cdot\gamma'\left(1-\tau\right)\cdot\left(\minus1\right)\dd\tau\sr ={\text{Substitution}}{t:=1-\tau,\dd t=-\dd\tau}\minus\int_{1}^{0}f\left(\gamma\left(t\right)\right)\cdot\gamma'\left(t\right)\cdot\left(\minus1\right)\dd t=\\
+ & =\minus\int_{0}^{1}f\left(\gamma\left(t\right)\right)\cdot\gamma'\left(t\right)\dd t=\minus\int_{\gamma}f\left(z\right)\dd z
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\int_{\gamma_{1}+\gamma_{2}}f\left(z\right)\dd z & =\int_{a}^{c}f\left(\left(\gamma_{1}+\gamma_{2}\right)\left(\tau\right)\right)\cdot\left(\gamma_{1}+\gamma_{2}\right)'\left(\tau\right)\dd\tau=\\
+ & =\int_{a}^{b}f\left(\gamma_{1}\left(\tau\right)\right)\cdot\gamma_{1}'\left(\tau\right)\dd\tau+\int_{b}^{c}f\left(\gamma_{2}\left(\tau\right)\right)\cdot\gamma_{2}'\left(\tau\right)\dd\tau=\\
+ & =\int_{\gamma_{1}}f\left(z\right)\dd z+\int_{2}f\left(z\right)\dd z
+\end{align*}
+
+\end_inset
+
+Induktiv folgt die Behauptung.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -22153,9 +22243,9 @@ Definition
 Setze:
 \begin_inset Formula 
 \begin{align*}
-\int_{\gamma}f\left(z\right)\dd\overline{z} & =\overline{\int_{\gamma}\overline{f\left(z\right)}\dd z}\\
-\int_{\gamma}f\left(z\right)\dd x & =\frac{1}{2}\left(\int_{\gamma}f\left(z\right)\dd z+\int_{\gamma}f\left(z\right)\dd\overline{z}\right)\\
-\int_{\gamma}f\left(z\right)\dd y & =\frac{1}{2\ii}\left(\int_{\gamma}f\left(z\right)\dd z-\int_{\gamma}f\left(z\right)\dd\overline{z}\right)
+\int_{\gamma}f\left(z\right)\dd\overline{z} & :=\overline{\int_{\gamma}\overline{f\left(z\right)}\dd z}\\
+\int_{\gamma}f\left(z\right)\dd x & :=\frac{1}{2}\left(\int_{\gamma}f\left(z\right)\dd z+\int_{\gamma}f\left(z\right)\dd\overline{z}\right)\\
+\int_{\gamma}f\left(z\right)\dd y & :=\frac{1}{2\ii}\left(\int_{\gamma}f\left(z\right)\dd z-\int_{\gamma}f\left(z\right)\dd\overline{z}\right)
 \end{align*}
 
 \end_inset
@@ -22168,15 +22258,12 @@ Dann gilt:
 
 \end_inset
 
-Also: „
+Also gilt „
 \begin_inset Formula $\dd z=\dd x+\ii\dd y$
 \end_inset
 
-“
-\end_layout
-
-\begin_layout Standard
-Etwas ausführlicher:
+“.
+ Etwas ausführlicher:
 \begin_inset Formula 
 \begin{align*}
 x+\ii y & =z=\gamma\left(\tau\right)\\
@@ -22192,15 +22279,14 @@ y\left(\tau\right) & :=\text{Im}\left(\gamma\left(\tau\right)\right) & \Rightarr
 \begin_inset Formula 
 \begin{align*}
 \int_{\gamma}f\left(z\right)\dd z & =\int_{a}^{b}f\left(\gamma\left(\tau\right)\right)\gamma'\left(\tau\right)\dd\tau\\
-\int_{\gamma}f\left(z\right)\dd\overline{z} & =\overline{\int_{\gamma}\overline{f\left(z\right)}\dd z}=\int_{a}^{b}\overline{f\left(\gamma\left(\tau\right)\right)}\gamma'\left(\tau\right)\dd\tau=\int_{a}^{b}f\left(\gamma\left(\tau\right)\right)\overline{\gamma'\left(\tau\right)}\dd\tau\\
-\int_{\gamma}f\left(z\right)\dd x & =\int_{a}^{b}f\left(\gamma\left(\tau\right)\right)\cdot\underbrace{\text{Re}\left(\gamma'\left(\tau\right)\right)}_{=x'\left(\tau\right)}\dd\tau\\
-\int_{\gamma}f\left(z\right)\dd y & =\int_{a}^{b}f\left(\gamma\left(\tau\right)\right)\cdot\underbrace{\text{Im}\left(\gamma'\left(\tau\right)\right)}_{=y'\left(\tau\right)}\dd\tau\\
-\int_{\gamma}f\left(z\right)\dd y & =\int_{\gamma}p\dd x+\int_{y}q\dd y
+\int_{\gamma}f\left(z\right)\dd\overline{z} & =\overline{\int_{\gamma}\overline{f\left(z\right)}\dd z}=\overline{\int_{a}^{b}\overline{f\left(\gamma\left(\tau\right)\right)}\gamma'\left(\tau\right)\dd\tau}=\int_{a}^{b}f\left(\gamma\left(\tau\right)\right)\overline{\gamma'\left(\tau\right)}\dd\tau\\
+\int_{\gamma}f\left(z\right)\dd x & =\int_{a}^{b}f\left(\gamma\left(\tau\right)\right)\cdot\underbrace{\text{Re}\left(\gamma'\left(\tau\right)\right)}_{=:x'\left(\tau\right)}\dd\tau\\
+\int_{\gamma}f\left(z\right)\dd y & =\int_{a}^{b}f\left(\gamma\left(\tau\right)\right)\cdot\underbrace{\text{Im}\left(\gamma'\left(\tau\right)\right)}_{=:y'\left(\tau\right)}\dd\tau
 \end{align*}
 
 \end_inset
 
-Später: Setze 
+Setze 
 \begin_inset Formula $p=f$
 \end_inset
 
@@ -22208,7 +22294,15 @@ Später: Setze
 \begin_inset Formula $q=\ii f$
 \end_inset
 
-.
+ und schreibe:
+\begin_inset Formula 
+\begin{align*}
+\int_{\gamma}f\left(z\right)\dd z & =\int_{\gamma}p\dd x+\int_{\gamma}q\dd y
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -22226,39 +22320,33 @@ Weg(un)abhängigkeit
 \end_layout
 
 \begin_layout Standard
-Sei 
+Seien 
 \begin_inset Formula $\Omega\subseteq\mathbb{C}$
 \end_inset
 
- offen, 
+ offen und wegzusammenhängend, 
 \begin_inset Formula $z_{0},z\in\Omega$
 \end_inset
 
-, 
+ und 
 \begin_inset Formula $p,q:\Omega\to\mathbb{C}$
 \end_inset
 
- stetig und wegzusammenhängend.
+ stetig.
 \end_layout
 
-\begin_layout Subsubsection*
-Frage
+\begin_layout Subsection
+Definition 
+\series medium
+(wegunabhängig)
 \end_layout
 
 \begin_layout Standard
-Wann gilt folgende Gleichheit?
-\begin_inset Formula 
-\begin{align*}
-\int_{\gamma_{1}}\left(p\dd x+q\dd y\right) & =\int_{\gamma_{2}}\left(p\dd x+q\dd y\right)
-\end{align*}
-
+Sei 
+\begin_inset Formula $\gamma_{1}$
 \end_inset
 
-Seien 
-\begin_inset Formula $\gamma_{1},\gamma_{2}$
-\end_inset
-
- zwei differenzierbare Kurven, die 
+ eine differenzierbare Kurve, die 
 \begin_inset Formula $z_{0}$
 \end_inset
 
@@ -22270,7 +22358,65 @@ Seien
 \end_layout
 
 \begin_layout Standard
-TODO: Abb2
+Das Integral
+\begin_inset Formula 
+\begin{align*}
+\int_{\gamma_{1}}\left(p\dd x+q\dd y\right)
+\end{align*}
+
+\end_inset
+
+heißt 
+\emph on
+wegunabhängig
+\emph default
+, wenn für alle differenzierbaren Kurven 
+\begin_inset Formula $\gamma_{2}$
+\end_inset
+
+, die 
+\begin_inset Formula $z_{0}$
+\end_inset
+
+ mit 
+\begin_inset Formula $z$
+\end_inset
+
+ verbinden, gilt:
+\begin_inset Formula 
+\begin{align*}
+\int_{\gamma_{1}}\left(p\dd x+q\dd y\right) & =\int_{\gamma_{2}}\left(p\dd x+q\dd y\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Abb2 einfügen
+\end_layout
+
+\begin_layout Standard
+In diesem Fall schreibt man auch:
+\begin_inset Formula 
+\begin{align*}
+\int_{z_{0}}^{z}\left(p\dd x+q\dd y\right) & :=\int_{\gamma_{1}}\left(p\dd x+q\dd y\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Frage
+\end_layout
+
+\begin_layout Standard
+Wann gilt diese Gleichheit?
 \end_layout
 
 \begin_layout Subsubsection*
@@ -22278,11 +22424,19 @@ Allgemeine Frage
 \end_layout
 
 \begin_layout Standard
-Wann ist das Integral unabhängig vom Weg?
+Wann ist ein Integral wegunabhängig?
 \end_layout
 
 \begin_layout Subsection
-Theorem
+Theorem 
+\series medium
+(Frobenius, Poincaré, 
+\begin_inset Formula $\ldots$
+\end_inset
+
+)
+\series default
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Theo-wegunabhängig"
@@ -22302,22 +22456,18 @@ Das Linienintegral
 \end_inset
 
 ist genau dann wegunabhängig, wenn es eine Funktion 
-\begin_inset Formula $U:\Omega\to\mathbb{C}$
+\begin_inset Formula $U:\Omega\to\mathbb{C},x+\ii y\mapsto U\left(x,y\right)$
 \end_inset
 
- gibt, so dass:
+ gibt, sodass gilt:
 \begin_inset Formula 
 \begin{align}
-p & =\frac{\partial U}{\partial x} & q & =\frac{\partial U}{\partial y}\label{eq:pUxqUy}
+p & =\partial_{1}U & q & =\partial_{2}U\label{eq:pUxqUy}
 \end{align}
 
 \end_inset
 
-(Frobenius, Poincaré, 
-\begin_inset Formula $\ldots$
-\end_inset
 
-)
 \end_layout
 
 \begin_layout Subsubsection*
@@ -22339,7 +22489,7 @@ reference "eq:pUxqUy"
  gilt, womit folgt:
 \begin_inset Formula 
 \begin{align*}
-\int_{\gamma}\left(p\dd x+q\dd y\right) & =\int_{a}^{b}\left(\frac{\partial U}{\partial x}x'\left(\tau\right)\dd x+\frac{\partial U}{\partial y}y'\left(\tau\right)\dd y\right)=\int_{a}^{b}\frac{\dd}{\dd\tau}\left(U\left(x\left(\tau\right),y\left(\tau\right)\right)\right)=\\
+\int_{\gamma}\left(p\dd x+q\dd y\right) & =\int_{a}^{b}\left(\partial_{1}U\cdot x'\left(\tau\right)\dd x+\partial_{2}U\cdot y'\left(\tau\right)\dd y\right)=\int_{a}^{b}\frac{\dd}{\dd\tau}\left(U\left(x\left(\tau\right),y\left(\tau\right)\right)\right)=\\
  & =U\left(x\left(b\right),y\left(b\right)\right)-U\left(x\left(a\right),y\left(a\right)\right)=U\left(z\right)-U\left(z_{0}\right)
 \end{align*}
 
@@ -22364,11 +22514,11 @@ Also hängt das Integral tatsächlich nur von Anfangs- und Endpunkt ab.
 \begin_inset Formula $z=\left(x,y\right)$
 \end_inset
 
- variabel.
+ variabel sei.
 \end_layout
 
 \begin_layout Standard
-Wähle als Kurve speziell ein Polygonzug, der parallel zur 
+Wähle als Kurve speziell ein Polygonzug, dessen Teile parallel zur 
 \begin_inset Formula $x$
 \end_inset
 
@@ -22376,11 +22526,13 @@ Wähle als Kurve speziell ein Polygonzug, der parallel zur
 \begin_inset Formula $y$
 \end_inset
 
--Achse verläuft.
+-Achse verlaufen.
 \end_layout
 
 \begin_layout Standard
-TODO: Abb3
+
+\color green
+TODO: Abb3 einfügen
 \end_layout
 
 \begin_layout Standard
@@ -22395,7 +22547,7 @@ Verwende hierbei, dass
 \begin_inset Formula $\Omega$
 \end_inset
 
- offen und bogenzusammenhängend ist.
+ offen und wegzusammenhängend ist.
 \end_layout
 
 \begin_layout Standard
@@ -22412,8 +22564,8 @@ Dies ist wohldefiniert, weil das Integral nach Voraussetzung wegunabhängig
 \end_layout
 
 \begin_layout Standard
-Berechne 
-\begin_inset Formula ${\displaystyle \frac{\partial U}{\partial x}}$
+Berechne die partielle Ableitung 
+\begin_inset Formula ${\displaystyle \partial_{1}U}$
 \end_inset
 
 :
@@ -22428,17 +22580,21 @@ Wähle den Polygonzug so, dass er in einer Umgebung von
 \end_layout
 
 \begin_layout Standard
-Dann gilt:
+Dann gilt mit einer Konstante 
+\begin_inset Formula $C\in\mathbb{C}$
+\end_inset
+
+:
 \begin_inset Formula 
 \begin{align*}
-U\left(x,y\right) & =\int^{x}p\left(\tilde{x},y\right)\dd\tilde{x}+\text{Konstante}\\
-\frac{\partial U}{\partial x} & =p\left(x,y\right)
+U\left(x,y\right) & =\int^{x}p\left(\tilde{x},y\right)\dd\tilde{x}+C\\
+\partial_{1}U & =p\left(x,y\right)
 \end{align*}
 
 \end_inset
 
-Berechne 
-\begin_inset Formula ${\displaystyle \frac{\partial U}{\partial x}}$
+Berechne die partielle Ableitung 
+\begin_inset Formula ${\displaystyle \partial_{2}U}$
 \end_inset
 
 :
@@ -22453,11 +22609,15 @@ Wähle den Polygonzug so, dass er in einer Umgebung von
 \end_layout
 
 \begin_layout Standard
-Dann gilt:
+Dann gilt mit einer Konstante 
+\begin_inset Formula $K\in\mathbb{C}$
+\end_inset
+
+:
 \begin_inset Formula 
 \begin{align*}
-U\left(x,y\right) & =\int^{y}q\left(x,\tilde{y}\right)\dd\tilde{y}+\text{Konstante}\\
-\frac{\partial U}{\partial y} & =q\left(x,y\right)
+U\left(x,y\right) & =\int^{y}q\left(x,\tilde{y}\right)\dd\tilde{y}+K\\
+\partial_{2}U & =q\left(x,y\right)
 \end{align*}
 
 \end_inset
@@ -22474,10 +22634,6 @@ reference "eq:pUxqUy"
 \end_inset
 
  erfüllt.
-\begin_inset Newline newline
-\end_inset
-
-
 \begin_inset ERT
 status open
 
@@ -22493,24 +22649,50 @@ qqed
 
 \end_layout
 
+\begin_layout Subsection
+Definition 
+\series medium
+(totales Differential)
+\end_layout
+
 \begin_layout Standard
-Schreibe auch:
+Man schreibt auch das 
+\emph on
+unbestimmte Integral
+\emph default
+
 \begin_inset Formula 
 \begin{align*}
-\int p\dd x+q\dd y & =U\\
-p\dd x+q\dd y & =\frac{\partial U}{\partial x}\dd x+\frac{\partial U}{\partial y}\dd y\left(=:\dd U\right)
+\int p\dd x+q\dd y & =U
 \end{align*}
 
 \end_inset
 
-Und man nennt 
-\begin_inset Formula $\dd U$
+und nennt 
+\begin_inset Formula $U$
 \end_inset
 
- das 
+ eine 
+\emph on
+Stammfunktion
+\emph default
+.
+ Außerdem heißt
+\begin_inset Formula 
+\begin{align*}
+p\dd x+q\dd y & =\partial_{1}U\dd x+\partial_{2}U\dd y=:\dd U
+\end{align*}
+
+\end_inset
+
+das 
 \emph on
 totale Differential
 \emph default
+ 
+\begin_inset Formula $\dd U$
+\end_inset
+
 .
 \end_layout
 
@@ -22522,11 +22704,15 @@ exakt
 , das heißt es kann in obiger Form geschrieben werden.
 \end_layout
 
+\begin_layout Subsection
+Bemerkung
+\end_layout
+
 \begin_layout Standard
 Zurück zum Konturintegral:
 \begin_inset Formula 
 \begin{align*}
-\int_{\gamma}f\left(z\right)\dd z & =\int\bigg(\underbrace{f}_{=p}\dd x+\underbrace{\ii f}_{=q}\dd y\bigg)
+\int_{\gamma}f\left(z\right)\dd z & =\int_{\gamma}\bigg(\underbrace{f}_{=p}\dd x+\underbrace{\ii f}_{=q}\dd y\bigg)
 \end{align*}
 
 \end_inset
@@ -22538,26 +22724,30 @@ reference "sub:Theo-wegunabhängig"
 
 \end_inset
 
- ist das Konturintegral genau dann wegunabhängig, wenn ein 
-\begin_inset Formula $F\left(z\right)$
+ ist das Konturintegral genau dann wegunabhängig, wenn ein
+\begin_inset Formula 
+\begin{align*}
+F\left(z=x+\ii y\right) & =F\left(x,y\right)
+\end{align*}
+
 \end_inset
 
- in 
+in 
 \begin_inset Formula $\Omega$
 \end_inset
 
  existiert, so dass gilt:
 \begin_inset Formula 
 \begin{align*}
-\frac{\partial F}{\partial x} & =f\left(z\right) & \frac{\partial F}{\partial y} & =\ii f\left(z\right)
+\partial_{1}F & =f\left(z\right) & \partial_{2}F & =\ii f\left(z\right)
 \end{align*}
 
 \end_inset
 
-
+Also folgt:
 \begin_inset Formula 
 \begin{align*}
-\Rightarrow\quad\frac{\partial F}{\partial x} & =-\ii\frac{\partial F}{\partial y}
+\partial_{1}F & =\minus\ii\cdot\partial_{2}F
 \end{align*}
 
 \end_inset
@@ -22566,7 +22756,7 @@ Also erfüllt
 \begin_inset Formula $F$
 \end_inset
 
- die Cauchy-Riemannschen Differentialgleichungen und 
+ die Cauchy-Riemannschen Differentialgleichungen und es gilt 
 \begin_inset Formula $f\left(z\right)=F'\left(z\right)$
 \end_inset
 
@@ -22575,10 +22765,17 @@ Also erfüllt
 
 \begin_layout Subsection
 Korollar
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Kor-WegunabhaengigHolomorpheStammfunktion"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\int_{\gamma}f\left(z\right)\dd z$
+\begin_inset Formula ${\displaystyle \int_{\gamma}f\left(z\right)\dd z}$
 \end_inset
 
  ist genau dann wegunabhängig, wenn es eine holomorphe Funktion 
@@ -22597,7 +22794,25 @@ Beweis
 \end_layout
 
 \begin_layout Standard
-TODO: ???
+
+\color green
+TODO: Beweis einfügen
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -22616,7 +22831,11 @@ Für jedes Polynom
 \begin_inset Formula $P\left(z\right)$
 \end_inset
 
- und jede geschlossene Kurve gilt:
+ und jede geschlossene Kurve 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ gilt:
 \begin_inset Formula 
 \begin{align*}
 \int_{\gamma}P\left(z\right)\dd z & =0
@@ -22635,7 +22854,7 @@ Beweis
 \begin_inset Formula 
 \begin{align*}
 P\left(z\right) & =a_{n}z^{n}+a_{n-1}z^{n-1}+\ldots+a_{0}\\
-Q\left(z\right) & =\frac{a_{n}}{n+1}z^{n+1}+\frac{a_{n-1}}{n}z^{n}+\ldots+a_{0}z
+Q\left(z\right) & :=\frac{a_{n}}{n+1}z^{n+1}+\frac{a_{n-1}}{n}z^{n}+\ldots+a_{0}z
 \end{align*}
 
 \end_inset
@@ -22644,15 +22863,11 @@ Q\left(z\right) & =\frac{a_{n}}{n+1}z^{n+1}+\frac{a_{n-1}}{n}z^{n}+\ldots+a_{0}z
 \begin_inset Formula $Q\left(z\right)$
 \end_inset
 
- ist eine holomorphe Stammfunktion, also 
+ ist eine holomorphe Stammfunktion, denn es gilt 
 \begin_inset Formula $Q'\left(z\right)=P\left(z\right)$
 \end_inset
 
 .
-\begin_inset Newline newline
-\end_inset
-
-
 \begin_inset ERT
 status open
 
@@ -22673,20 +22888,21 @@ Das Cauchysche Theorem
 \end_layout
 
 \begin_layout Standard
-Betrachte das Rechteck 
+Betrachte ein Rechteck 
 \begin_inset Formula $R:a\le x\le b,\, c\le y\le d$
 \end_inset
 
-.
- 
+ mit 
 \begin_inset Formula $R\subseteq\Omega\subseteq\mathbb{C}$
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
-TODO: Abb4
+
+\color green
+TODO: Abb4 einfügen
 \end_layout
 
 \begin_layout Subsubsection*
@@ -22694,7 +22910,7 @@ Frage
 \end_layout
 
 \begin_layout Standard
-Äquivalente Fragestellungen:
+Die Frage kann in zwei äquivalenten Fragestellungen formuliert werden:
 \end_layout
 
 \begin_layout Enumerate
@@ -22703,7 +22919,7 @@ Für welche
 \end_inset
 
  ist 
-\begin_inset Formula $\int_{\gamma}f\left(z\right)\dd z$
+\begin_inset Formula ${\displaystyle \int_{\gamma}f\left(z\right)\dd z}$
 \end_inset
 
  unabhängig vom Integrationsweg.
@@ -22717,51 +22933,48 @@ Für welche
  gibt es eine holomorphe Stammfunktion.
 \end_layout
 
-\begin_layout Standard
-Notwendiges Kriterium:
+\begin_layout Subsubsection*
+Notwendiges Kriterium
 \end_layout
 
 \begin_layout Standard
-Falls 
-\begin_inset Formula $f\in C^{1}$
+Falls für eine Funktion 
+\begin_inset Formula $f:\Omega\to\mathbb{C}$
 \end_inset
 
- ist, sehen wir, dass für alle geschlossenen Wege 
+ für alle geschlossenen Wege 
 \begin_inset Formula $\gamma$
 \end_inset
 
  schon 
-\begin_inset Formula $\oint_{\gamma}f\left(z\right)\dd z=0$
+\begin_inset Formula 
+\begin{align*}
+\oint_{\gamma}f\left(z\right)\dd z & =0
+\end{align*}
+
 \end_inset
 
- nur dann, wenn 
+gilt, dann ist jedes Kurvenintegral über 
+\begin_inset Formula $f\left(z\right)$
+\end_inset
+
+ wegunabhängig und somit gibt es eine holomorphe Stammfunktion 
+\begin_inset Formula $F$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Nun gilt aber 
+\begin_inset Formula $f=F'$
+\end_inset
+
+, weswegen auch 
 \begin_inset Formula $f$
 \end_inset
 
  holomorph ist.
-\end_layout
-
-\begin_layout Standard
-TODO: Rest überprüfen 
-\begin_inset Formula $f\in C^{1}$
-\end_inset
-
- = holomorph?
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $f:\Omega\to\mathbb{C}$
-\end_inset
-
- ist holomorph, denn wenn es eine holomorphe Stammfunktion 
-\begin_inset Formula $F$
-\end_inset
-
- gibt, so ist 
-\begin_inset Formula $f=F'$
-\end_inset
-
- auch holomorph.
 \end_layout
 
 \begin_layout Standard
@@ -22788,7 +23001,11 @@ status open
 \end_layout
 
 \begin_layout Subsection
-Theorem
+Theorem 
+\series medium
+(Goursat)
+\series default
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Thm-Goursat"
@@ -22806,7 +23023,7 @@ Ist
  holomorph, so gilt:
 \begin_inset Formula 
 \begin{align*}
-\int_{\partial R}f\left(z\right)\dd z & =0
+\oint_{\partial R}f\left(z\right)\dd z & =0
 \end{align*}
 
 \end_inset
@@ -22815,9 +23032,7 @@ Ist
 \end_layout
 
 \begin_layout Subsubsection*
-Beweis 
-\series medium
-(nach Goursat)
+Beweis
 \end_layout
 
 \begin_layout Standard
@@ -22833,13 +23048,15 @@ Zerlege
 \end_layout
 
 \begin_layout Standard
-TODO: Abb5
+
+\color green
+TODO: Abb5 einfügen
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\int_{\partial R}f\left(z\right)\dd z & =\int_{\partial R^{\left(1\right)}}f\left(z\right)\dd z+\ldots+\int_{\partial R^{\left(4\right)}}f\left(z\right)\dd z
+\oint_{\partial R}f\left(z\right)\dd z & =\int_{\partial R^{\left(1\right)}}f\left(z\right)\dd z+\ldots+\int_{\partial R^{\left(4\right)}}f\left(z\right)\dd z
 \end{align*}
 
 \end_inset
@@ -22849,20 +23066,20 @@ Dies gilt, da sich die Integrale längs der „inneren Kanten“ gegenseitig
 \end_layout
 
 \begin_layout Standard
-Für eines der Rechtecke 
+Da dies vier Summanden sind, gilt für mindestens eines der Rechtecke 
 \begin_inset Formula $R^{\left(k\right)}$
 \end_inset
 
- gilt:
+:
 \begin_inset Formula 
 \begin{align*}
-\left|\int_{\partial R_{1}}f\left(z\right)\dd z\right| & \ge\frac{1}{4}\left|\int_{\partial R}f\left(z\right)\right|
+\abs{\oint_{\partial R_{1}}f\left(z\right)\dd z} & \ge\frac{1}{4}\abs{\oint_{\partial R}f\left(z\right)}
 \end{align*}
 
 \end_inset
 
 Dieses nennen wir 
-\begin_inset Formula $R_{1}$
+\begin_inset Formula $R_{1}:=R^{\left(k\right)}$
 \end_inset
 
 .
@@ -22879,7 +23096,7 @@ Wähle nun induktiv Rechtecke
  so, dass gilt:
 \begin_inset Formula 
 \begin{align*}
-\left|\eta\left(R_{n}\right)\right| & \ge\frac{1}{4^{n}}\left|\eta\left(R\right)\right|
+\abs{\oint_{\partial R_{n}}f\left(z\right)\dd z} & \ge\frac{1}{4^{n}}\abs{\oint_{\partial R}f\left(z\right)\dd z}
 \end{align*}
 
 \end_inset
@@ -22887,7 +23104,7 @@ Wähle nun induktiv Rechtecke
 Zudem gilt
 \begin_inset Formula 
 \begin{align*}
-\text{Vol}\left(R_{n}\right) & =4^{-n}\cdot\text{Vol}\left(R\right)
+\text{Vol}\left(R_{n}\right) & =4^{\minus n}\cdot\text{Vol}\left(R\right)
 \end{align*}
 
 \end_inset
@@ -22897,7 +23114,7 @@ und die Kantenlängen von
 \end_inset
 
  sind schon 
-\begin_inset Formula $2^{-n}$
+\begin_inset Formula $2^{\minus n}$
 \end_inset
 
  mal die Kantenlängen von 
@@ -22913,11 +23130,8 @@ Seien
 \end_inset
 
  die Mittelpunkte dieser Rechtecke.
-\end_layout
-
-\begin_layout Standard
-Die Folge 
-\begin_inset Formula $\left(z_{n}\right)$
+ Die Folge 
+\begin_inset Formula $\left(z_{n}\right)_{n\in\mathbb{N}}$
 \end_inset
 
  besitzt einen Häufungspunkt 
@@ -22928,7 +23142,9 @@ Die Folge
 \end_layout
 
 \begin_layout Standard
-TODO: Abb6
+
+\color green
+TODO: Abb6 einfügen
 \end_layout
 
 \begin_layout Standard
@@ -22960,19 +23176,27 @@ Anders ausgedrückt gibt es zu jedem
 \begin_inset Formula $\delta>0$
 \end_inset
 
-, so dass gilt für alle 
+, so dass für alle 
 \begin_inset Formula $z\in B_{\delta}\left(z^{*}\right)\setminus\left\{ z^{*}\right\} $
 \end_inset
 
-:
+ gilt:
 \begin_inset Formula 
 \begin{align*}
-\left|f\left(z\right)-f\left(z^{*}\right)-f'\left(z^{*}\right)\left(z-z^{*}\right)\right| & <\varepsilon\left|z-z^{*}\right|
+\abs{f\left(z\right)-f\left(z^{*}\right)-f'\left(z^{*}\right)\left(z-z^{*}\right)} & <\varepsilon\abs{z-z^{*}}
 \end{align*}
 
 \end_inset
 
-Dies ist ein Polynom, es hat also eine holomorphe Stammfunktion.
+
+\begin_inset Formula $f\left(z^{*}\right)+f'\left(z^{*}\right)\left(z-z^{*}\right)$
+\end_inset
+
+ ist ein Polynom in 
+\begin_inset Formula $z$
+\end_inset
+
+, hat also eine holomorphe Stammfunktion.
 \end_layout
 
 \begin_layout Standard
@@ -22985,13 +23209,10 @@ Wähle nun
 \end_inset
 
  ist.
-\end_layout
-
-\begin_layout Standard
-Dann gilt:
+ Dann gilt:
 \begin_inset Formula 
 \begin{align*}
-\int_{\partial R_{n}}\left[f\left(z^{*}\right)+f'\left(z^{*}\right)\left(z-z^{*}\right)\right] & \stackrel{\ref{sub:Satz-PolyOint0}}{=}0
+\oint_{\partial R_{n}}\left[f\left(z^{*}\right)+f'\left(z^{*}\right)\left(z-z^{*}\right)\right] & \stackrel{\ref{sub:Satz-PolyOint0}}{=}0
 \end{align*}
 
 \end_inset
@@ -22999,7 +23220,7 @@ Dann gilt:
 Beachte dabei, das wir ein Polynom integrieren.
 \begin_inset Formula 
 \begin{align*}
-\eta\left(R_{n}\right) & =\int_{\partial R_{n}}f\left(z\right)\dd z=\int_{\partial R_{n}}\left(f\left(z\right)-f\left(z^{*}\right)-f'\left(z^{*}\right)\left(z-z^{*}\right)\right)\dd z
+\oint_{\partial R_{n}}f\left(z\right)\dd z & =\int_{\partial R_{n}}\left(f\left(z\right)-f\left(z^{*}\right)-f'\left(z^{*}\right)\left(z-z^{*}\right)\right)\dd z
 \end{align*}
 
 \end_inset
@@ -23007,10 +23228,10 @@ Beachte dabei, das wir ein Polynom integrieren.
 Also gilt:
 \begin_inset Formula 
 \begin{align*}
-\left|\eta\left(R_{n}\right)\right| & =\Bigg|\int_{\partial R_{n}}\bigg(\underbrace{f\left(z\right)-f\left(z^{*}\right)-f'\left(z^{*}\right)\left(z-z^{*}\right)}_{\left|\ldots\right|\le\varepsilon\left|z-z^{*}\right|}\bigg)\dd z\Bigg|\le\\
- & \le\varepsilon\Bigg|\int_{\partial R_{n}}\underbrace{\left|z-z^{*}\right|}_{\le2^{-n}\cdot\max\left\{ b-a,d-c\right\} }\dd z\Bigg|\le\\
+\abs{\oint_{\partial R_{n}}f\left(z\right)\dd z} & =\Bigg|\oint_{\partial R_{n}}\bigg(\underbrace{f\left(z\right)-f\left(z^{*}\right)-f'\left(z^{*}\right)\left(z-z^{*}\right)}_{\left|\ldots\right|\le\varepsilon\left|z-z^{*}\right|}\bigg)\dd z\Bigg|\le\\
+ & \le\varepsilon\Bigg|\oint_{\partial R_{n}}\underbrace{\left|z-z^{*}\right|}_{\le2^{-n}\cdot\max\left\{ b-a,d-c\right\} =:d_{n}}\dd z\Bigg|\le\\
  & \le\varepsilon\cdot\underbrace{d_{n}}_{\text{Durchmesser von }R_{n}}\cdot\underbrace{L_{n}}_{\text{Umfang von }R}\\
- & \le\varepsilon\cdot4^{-n}\cdot\underbrace{d}_{\text{Durchmesser von }R}\cdot\underbrace{L}_{\text{Umfang von }R_{n}}
+ & \le\varepsilon\cdot4^{-n}\cdot\underbrace{d}_{\text{Durchmesser von }R}\cdot\underbrace{L}_{\text{Umfang von }R}
 \end{align*}
 
 \end_inset
@@ -23018,7 +23239,7 @@ Also gilt:
 Andererseits gilt:
 \begin_inset Formula 
 \begin{align*}
-\eta\left(R_{n}\right) & \ge4^{-n}\left|\eta\left(R\right)\right|
+\oint_{\partial R_{n}}f\left(z\right)\dd z & \ge4^{-n}\abs{\oint_{\partial R}f\left(z\right)\dd z}
 \end{align*}
 
 \end_inset
@@ -23030,7 +23251,7 @@ Andererseits gilt:
 Damit folgt:
 \begin_inset Formula 
 \begin{align*}
-\eta\left(R\right) & \le\varepsilon\cdot d\cdot L
+\abs{\oint_{\partial R}f\left(z\right)\dd z} & \le\varepsilon\cdot d\cdot L
 \end{align*}
 
 \end_inset
@@ -23040,14 +23261,10 @@ Da
 \end_inset
 
  beliebig ist, folgt 
-\begin_inset Formula $\eta\left(R\right)=0$
+\begin_inset Formula ${\displaystyle \oint_{\partial R}f\left(z\right)\dd z=0}$
 \end_inset
 
 .
-\begin_inset Newline newline
-\end_inset
-
-
 \begin_inset ERT
 status open
 
@@ -23065,6 +23282,13 @@ qqed
 
 \begin_layout Subsection
 Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Thm-RechteckHebbareInnerePunkteInt0"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -23072,15 +23296,20 @@ Sei
 \begin_inset Formula $R'=R\setminus\left\{ \zeta_{1},\ldots,\zeta_{n}\right\} $
 \end_inset
 
+ mit 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
  ein Rechteck ohne endlich viele innere Punkte, also 
-\begin_inset Formula $\zeta_{1}\in R^{\circ}$
+\begin_inset Formula $\zeta_{k}\in R^{\circ}$
+\end_inset
+
+ für 
+\begin_inset Formula $k\in\left\{ 1,\ldots,n\right\} $
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-Sei 
+ Sei zudem 
 \begin_inset Formula $f$
 \end_inset
 
@@ -23099,7 +23328,7 @@ Sei
 Dann gilt:
 \begin_inset Formula 
 \begin{align*}
-\int_{\partial R}f\left(z\right)\dd z & =0
+\oint_{\partial R}f\left(z\right)\dd z & =0
 \end{align*}
 
 \end_inset
@@ -23117,11 +23346,13 @@ Es genügt, einen Ausnahmepunkt zu betrachten, da wir das Rechteck ansonsten
 \end_layout
 
 \begin_layout Standard
-TODO: Abb1-b
+
+\color green
+TODO: Abb1-b einfügen
 \end_layout
 
 \begin_layout Standard
-Nenne den Ausnahmepunkt 
+Den Ausnahmepunkt nennen wir 
 \begin_inset Formula $\zeta$
 \end_inset
 
@@ -23133,6 +23364,14 @@ Wähle ein kleines Rechteck
 \begin_inset Formula $R_{0}$
 \end_inset
 
+ mit Durchmesser 
+\begin_inset Formula $d_{0}$
+\end_inset
+
+ und Umfang 
+\begin_inset Formula $L_{0}$
+\end_inset
+
  um 
 \begin_inset Formula $\zeta$
 \end_inset
@@ -23141,11 +23380,21 @@ Wähle ein kleines Rechteck
 \begin_inset Formula $R_{i}$
 \end_inset
 
+ mit 
+\begin_inset Formula $i\in\left\{ 1,\ldots,N\right\} $
+\end_inset
+
+ und 
+\begin_inset Formula $N\in\mathbb{N}$
+\end_inset
+
 .
 \end_layout
 
 \begin_layout Standard
-TODO: Abb2
+
+\color green
+TODO: Abb2 einfügen
 \end_layout
 
 \begin_layout Standard
@@ -23164,7 +23413,7 @@ Weil
  holomorph ist, folgt:
 \begin_inset Formula 
 \begin{align*}
-\int_{\partial R_{i}}f\left(z\right)\dd z & =0
+\oint_{\partial R_{i}}f\left(z\right)\dd z & =0
 \end{align*}
 
 \end_inset
@@ -23172,7 +23421,7 @@ Weil
 Damit folgt:
 \begin_inset Formula 
 \begin{align*}
-\int_{\partial R}f\left(z\right)\dd z & =\int_{\partial R_{0}}f\left(z\right)\dd z
+\oint_{\partial R}f\left(z\right)\dd z & =\oint_{\partial R_{0}}f\left(z\right)\dd z
 \end{align*}
 
 \end_inset
@@ -23192,8 +23441,8 @@ Nach Voraussetzung können wir zu einem gegebene
  gilt:
 \begin_inset Formula 
 \begin{align*}
-\left|f\left(z\right)\cdot\left(z-\zeta\right)\right| & \le\varepsilon\\
-\left|f\left(z\right)\right| & \le\frac{\varepsilon}{\left|z-\zeta\right|}
+\abs{f\left(z\right)\cdot\left(z-\zeta\right)} & \le\varepsilon\\
+\abs{f\left(z\right)} & \le\frac{\varepsilon}{\abs{z-\zeta}}
 \end{align*}
 
 \end_inset
@@ -23201,8 +23450,7 @@ Nach Voraussetzung können wir zu einem gegebene
 Also gilt:
 \begin_inset Formula 
 \begin{align*}
-\left|\int_{\partial R_{0}}f\left(z\right)\dd z\right| & \le\varepsilon\int_{\partial R_{o}}\frac{\overbrace{\left|\dd z\right|}^{=\left|\gamma'\left(t\right)\right|\dd t}}{\left|z-\zeta\right|}\le\\
- & \le\frac{\varepsilon}{\frac{d_{0}}{4}}\cdot L_{0}=\varepsilon\cdot\frac{4L_{0}}{d_{0}}\le16\varepsilon
+\abs{\oint_{\partial R_{0}}f\left(z\right)\dd z} & \le\varepsilon\int_{\partial R_{0}}\frac{\overbrace{\abs{\dd z}}^{=\abs{\gamma'\left(t\right)}\dd t}}{\abs{z-\zeta}}\le\varepsilon\cdot\frac{1}{\min_{z\in\partial R_{0}}\underbrace{\left(\abs{z-\zeta}\right)}_{>0}}\cdot L_{0}
 \end{align*}
 
 \end_inset
@@ -23241,6 +23489,13 @@ Verallgemeinere dies nun auf beliebige Kurven in einer Kreisscheibe.
 
 \begin_layout Subsection
 Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Thm-HolomorphInt0"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -23250,6 +23505,10 @@ Sei
 
  in 
 \begin_inset Formula $\Delta:=B_{R}\left(0\right)\in\mathbb{C}$
+\end_inset
+
+ mit 
+\begin_inset Formula $R\in\mathbb{R}_{>0}$
 \end_inset
 
  holomorph.
@@ -23288,7 +23547,9 @@ Sei
 \end_layout
 
 \begin_layout Standard
-TODO: Abb3
+
+\color green
+TODO: Abb3 einfügen
 \end_layout
 
 \begin_layout Standard
@@ -23314,7 +23575,7 @@ reference "sub:Thm-Goursat"
  ist
 \begin_inset Formula 
 \begin{align*}
-\int_{\partial R}f\left(z\right)\dd z & =0
+\oint_{\partial R}f\left(z\right)\dd z & =0
 \end{align*}
 
 \end_inset
@@ -23334,12 +23595,16 @@ wohldefiniert.
 Nach Korollar 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "asdf"
+reference "sub:Kor-WegunabhaengigHolomorpheStammfunktion"
 
 \end_inset
 
-2.9.2 genügt es zu zeigen, dass 
-\begin_inset Formula $F\left(z\right)$
+ genügt es zu zeigen, dass 
+\begin_inset Formula $F\left(z\right)=F\left(x,y\right)$
+\end_inset
+
+ mit 
+\begin_inset Formula $z=x+\ii y$
 \end_inset
 
  eine holomorphe Stammfunktion von 
@@ -23382,21 +23647,26 @@ Sei
 \end_layout
 
 \begin_layout Standard
-TODO: Abb4
+
+\color green
+TODO: Abb4 einfügen
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\frac{\partial F}{\partial x} & =\lim_{0\not=h\to0}\int_{\gamma_{h}}f\left(z\right)\dd z=\lim_{0\not=h\to0}\frac{1}{h}\int_{0}^{h}f\left(z+h\right)\cdot\underbrace{\gamma'\left(h\right)}_{=1}\dd h=f\left(z\right)\\
-\frac{\partial F}{\partial y} & =\lim_{0\not=h\to0}\frac{1}{h}\left(F\left(z+\ii h\right)-F\left(z\right)\right)=\lim_{0\not=h\to0}\frac{1}{h}\int_{0}^{h}f\left(z+\ii h\right)\cdot\ii\dd h=\ii f\left(z\right)
+\partial_{1}F & =\lim_{0\not=h\to0}\int_{\gamma_{h}}f\left(z\right)\dd z=\lim_{0\not=h\to0}\frac{1}{h}\int_{0}^{h}f\left(z+h\right)\cdot\underbrace{\gamma'\left(h\right)}_{=1}\dd h=f\left(z\right)\\
+\partial_{2}F & =\lim_{0\not=h\to0}\frac{1}{h}\left(F\left(z+\ii h\right)-F\left(z\right)\right)=\lim_{0\not=h\to0}\frac{1}{h}\int_{0}^{h}f\left(z+\ii h\right)\cdot\ii\dd h=\ii f\left(z\right)=\ii\partial_{1}F
 \end{align*}
 
 \end_inset
 
-Damit sind die Cauchy-Riemannschen Differentialgleichungen erfüllt, also
- ist 
+Damit sind die Cauchy-Riemannschen Differentialgleichungen erfüllt, weswegen
+ 
 \begin_inset Formula $F$
 \end_inset
 
- holomorph und es gilt:
+ holomorph ist und es gilt:
 \begin_inset Formula 
 \begin{align*}
 F'\left(z\right) & =f\left(z\right)
@@ -23445,7 +23715,7 @@ Sei
 \end_inset
 
  für 
-\begin_inset Formula $1\le j\le n$
+\begin_inset Formula $1\le j\le n\in\mathbb{N}$
 \end_inset
 
  und es gelte für 
@@ -23473,10 +23743,10 @@ für jede geschlossene Kurve
 \end_inset
 
  in 
-\begin_inset Formula $\Delta$
+\begin_inset Formula $\Delta'$
 \end_inset
 
-'.
+.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -23484,7 +23754,9 @@ Beweis
 \end_layout
 
 \begin_layout Standard
-TODO: Abb5
+
+\color green
+TODO: Abb5 einfügen
 \end_layout
 
 \begin_layout Standard
@@ -23500,7 +23772,7 @@ Wähle Kurven
 \end_layout
 
 \begin_layout Itemize
-die Kurven keinen der 
+die Kurven keinen der Punkte 
 \begin_inset Formula $\zeta_{j}$
 \end_inset
 
@@ -23527,19 +23799,19 @@ in einer Umgebung von
 Da nach Theorem 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "asdf"
+reference "sub:Thm-RechteckHebbareInnerePunkteInt0"
 
 \end_inset
 
-2.10.2
+ schon
 \begin_inset Formula 
 \begin{align*}
-\int_{\partial R}f\left(z\right)\dd z & =0
+\oint_{\partial R}f\left(z\right)\dd z & =0
 \end{align*}
 
 \end_inset
 
-ist, folgt wieder:
+gilt, folgt wieder:
 \begin_inset Formula 
 \begin{align*}
 \int_{\gamma_{1}}f\left(z\right)\dd z & =\int_{\gamma_{2}}f\left(z\right)\dd z=:F\left(z\right)
@@ -23550,14 +23822,11 @@ ist, folgt wieder:
 Ab jetzt geht der Beweis genau wie der von Theorem 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "asdf"
+reference "sub:Thm-HolomorphInt0"
 
 \end_inset
 
-2.10.3.
-\end_layout
-
-\begin_layout Standard
+.
 \begin_inset ERT
 status open
 
@@ -23575,6 +23844,12 @@ qqed
 
 \begin_layout Section
 Der Cauchysche Integralsatz
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Rest überarbeiten
 \end_layout
 
 \begin_layout Standard
