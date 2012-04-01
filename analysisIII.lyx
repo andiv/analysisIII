@@ -442,7 +442,7 @@ begin{matrix} statt array schreiben.
 
 \lang english
 \begin_inset FormulaMacro
-\newcommand{\minus}{\text{-}\,}
+\newcommand{\minus}{\,\text{-}\,}
 \end_inset
 
 
@@ -22706,6 +22706,13 @@ exakt
 
 \begin_layout Subsection
 Bemerkung
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Bem-Konturintegral"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -23507,11 +23514,11 @@ Sei
 \begin_inset Formula $\Delta:=B_{R}\left(0\right)\in\mathbb{C}$
 \end_inset
 
- mit 
+ holomorph mit 
 \begin_inset Formula $R\in\mathbb{R}_{>0}$
 \end_inset
 
- holomorph.
+.
 \end_layout
 
 \begin_layout Standard
@@ -23847,12 +23854,6 @@ Der Cauchysche Integralsatz
 \end_layout
 
 \begin_layout Standard
-
-\color green
-TODO: Rest überarbeiten
-\end_layout
-
-\begin_layout Standard
 Sei 
 \begin_inset Formula $\gamma$
 \end_inset
@@ -23874,14 +23875,20 @@ Beginne speziell mit der Funktion
 \end_inset
 
 wobei 
-\begin_inset Formula $a\not\in\text{im}\left(\gamma\right)$
+\begin_inset Formula $a$
 \end_inset
 
- ist.
+ nicht im Bild 
+\begin_inset Formula $\text{im}\left(\gamma\right)$
+\end_inset
+
+ der Kurve liegt.
 \end_layout
 
 \begin_layout Standard
-TODO: Abb6
+
+\color green
+TODO: Abb6 einfügen
 \end_layout
 
 \begin_layout Subsection
@@ -23901,10 +23908,7 @@ für ein
 \begin_inset Formula $n\in\mathbb{Z}\setminus\left\{ 0\right\} $
 \end_inset
 
-.
-\end_layout
-
-\begin_layout Standard
+ und 
 \begin_inset Formula $\log\left(z-a\right)$
 \end_inset
 
@@ -23916,7 +23920,9 @@ für ein
 \end_layout
 
 \begin_layout Standard
-TODO: Abb7
+
+\color green
+TODO: Abb7 einfügen
 \end_layout
 
 \begin_layout Subsubsection*
@@ -23936,7 +23942,7 @@ und setze
 \begin_inset Formula $z\left(t\right)=\gamma\left(t\right)$
 \end_inset
 
- und
+ und:
 \begin_inset Formula 
 \begin{align*}
 h\left(t\right) & :=\int_{\alpha}^{t}\frac{z'\left(t\right)}{z\left(t\right)-a}\dd t
@@ -23944,7 +23950,12 @@ h\left(t\right) & :=\int_{\alpha}^{t}\frac{z'\left(t\right)}{z\left(t\right)-a}\
 
 \end_inset
 
-TODO: Abb8
+
+\color green
+TODO: Abb8 einfügen
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
 h'\left(t\right) & =\frac{z'\left(t\right)}{z\left(t\right)-a}
@@ -23952,7 +23963,7 @@ h'\left(t\right) & =\frac{z'\left(t\right)}{z\left(t\right)-a}
 
 \end_inset
 
-Dann gilt:
+Dann ist
 \begin_inset Formula 
 \begin{align*}
 e^{-h\left(t\right)}\left(z\left(t\right)-a\right)
@@ -23960,7 +23971,7 @@ e^{-h\left(t\right)}\left(z\left(t\right)-a\right)
 
 \end_inset
 
-ist stetig und stückweise differenzierbar und hat die Ableitung:
+stetig und stückweise differenzierbar und hat die Ableitung:
 \begin_inset Formula 
 \begin{align*}
 \left(e^{-h\left(t\right)}\left(z\left(t\right)-a\right)\right)' & =e^{-h\left(t\right)}\left(-h'\left(t\right)\left(z\left(t\right)-a\right)+z'\left(t\right)\right)=0
@@ -23968,11 +23979,11 @@ ist stetig und stückweise differenzierbar und hat die Ableitung:
 
 \end_inset
 
-Also ist es eine Konstante 
+Also es eine Konstante 
 \begin_inset Formula $K\in\mathbb{C}$
 \end_inset
 
-.
+, das heißt:
 \begin_inset Formula 
 \begin{align*}
 e^{-h\left(t\right)} & =\frac{K}{z\left(t\right)-a}
@@ -23984,7 +23995,11 @@ Da
 \begin_inset Formula $h\left(\alpha\right)=0$
 \end_inset
 
- ist, folgt:
+ ist, weil 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ die untere Integralgrenze ist, folgt:
 \begin_inset Formula 
 \begin{align*}
 e^{-h\left(t\right)} & =\frac{z\left(\alpha\right)-a}{z\left(t\right)-a}
@@ -23992,7 +24007,11 @@ e^{-h\left(t\right)} & =\frac{z\left(\alpha\right)-a}{z\left(t\right)-a}
 
 \end_inset
 
-Also gilt:
+Da die Kurve geschlossen ist, also 
+\begin_inset Formula $z\left(\alpha\right)=z\left(\beta\right)$
+\end_inset
+
+ gilt, folgt:
 \begin_inset Formula 
 \begin{align*}
 e^{-h\left(\beta\right)} & =\frac{z\left(\alpha\right)-a}{z\left(\beta\right)-a}=1
@@ -24000,18 +24019,10 @@ e^{-h\left(\beta\right)} & =\frac{z\left(\alpha\right)-a}{z\left(\beta\right)-a}
 
 \end_inset
 
-Denn die Kurve ist geschlossen, also 
-\begin_inset Formula $z\left(a\right)=z\left(b\right)$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
 Damit ergibt sich:
 \begin_inset Formula 
 \begin{align*}
-h\left(\beta\right) & =\int_{\gamma}\frac{1}{z-a}\dd z=2\pi\ii n
+\int_{\gamma}\frac{1}{z-a}\dd z & =h\left(\beta\right)=2\pi\ii n
 \end{align*}
 
 \end_inset
@@ -24070,9 +24081,13 @@ n\left(\gamma,a\right) & =\frac{1}{2\pi\ii}\oint_{\gamma}\frac{\dd z}{z-a}
 
 \end_inset
 
-der 
+
 \emph on
-Index
+der Index
+\emph default
+ oder auch 
+\emph on
+die Windungszahl
 \emph default
  von 
 \begin_inset Formula $\gamma$
@@ -24082,17 +24097,20 @@ Index
 \begin_inset Formula $a$
 \end_inset
 
- (oder auch 
-\emph on
-Windungszahl
-\emph default
-).
+.
 \end_layout
 
 \begin_layout Subsection
 Theorem 
 \series medium
 (Cauchyscher Integralsatz)
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Thm-CauchyscherIntegralsatz"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -24112,7 +24130,7 @@ Sei
 \end_layout
 
 \begin_layout Standard
-Dann ist für jedes 
+Dann gilt für jedes 
 \begin_inset Formula $a\in\Delta$
 \end_inset
 
@@ -24136,10 +24154,10 @@ Beweis
 \end_layout
 
 \begin_layout Standard
-Setze
+Die Funktion
 \begin_inset Formula 
 \begin{align*}
-F\left(z\right) & =\frac{f\left(z\right)-f\left(a\right)}{z-a}
+F\left(z\right) & :=\frac{f\left(z\right)-f\left(a\right)}{z-a}
 \end{align*}
 
 \end_inset
@@ -24148,7 +24166,7 @@ ist auf
 \begin_inset Formula $\Delta\setminus\left\{ a\right\} $
 \end_inset
 
- holomorph.
+ holomorph und es gilt:
 \begin_inset Formula 
 \begin{align*}
 \lim_{z\to a}\left(z-a\right)F\left(z\right) & =\lim_{z\to a}\left(f\left(z\right)-f\left(a\right)\right)\stackrel{f\text{ stetig}}{=}0
@@ -24253,7 +24271,7 @@ qqed
 
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsection
 Bemerkung und Definition 
 \series medium
 (Zusammenhangskomponenten)
@@ -24265,7 +24283,7 @@ Also ist
 \end_inset
 
  eindeutig bestimmt durch 
-\begin_inset Formula $f|_{\partial B_{\varepsilon}\left(a\right)}$
+\begin_inset Formula $f\Big|_{\partial B_{\varepsilon}\left(a\right)}$
 \end_inset
 
 , das heißt 
@@ -24280,7 +24298,7 @@ Also ist
 \begin_inset Formula 
 \begin{align*}
 \nabla^{2}\text{Re}\left(f\right) & =0=\nabla^{2}\text{Im}\left(f\right)\\
-\frac{\partial f}{\partial x} & =-\ii\frac{\partial f}{\partial y}
+\partial_{1}f & =-\ii\partial_{2}f
 \end{align*}
 
 \end_inset
@@ -24301,7 +24319,7 @@ n\left(\gamma,a\right) & =\frac{1}{2\pi\ii}\ointctrclockwise_{\gamma}\frac{\dd z
 Gehe Kurven rückwärts oder setze geschlossene Kurven aneinander:
 \begin_inset Formula 
 \begin{align*}
-n\left(-\gamma,a\right) & =-n\left(\gamma,a\right)\\
+n\left(\minus\gamma,a\right) & =\minus n\left(\gamma,a\right)\\
 n\left(\gamma_{1}+\gamma_{2},a\right) & =n\left(\gamma_{1},a\right)+n\left(\gamma_{2},a\right)
 \end{align*}
 
@@ -24311,33 +24329,29 @@ n\left(\gamma_{1}+\gamma_{2},a\right) & =n\left(\gamma_{1},a\right)+n\left(\gamm
 \end_layout
 
 \begin_layout Standard
-TODO: Abb1
+
+\color green
+TODO: Abb1 einfügen
 \end_layout
 
 \begin_layout Standard
-Das Bild (engl.
- „
+Das Bild (englisch „
 \lang english
 image
 \lang ngerman
-“) 
+“) bezeichnet man mit 
 \begin_inset Formula $\text{im}\left(\gamma\right)$
 \end_inset
 
- (beziehungsweise engl.
- „
+ (beziehungsweise englisch „
 \lang english
-the range
+range
 \lang ngerman
 “ 
 \begin_inset Formula $\text{Rg}\left(\gamma\right)$
 \end_inset
 
-
-\begin_inset Formula $ $
-\end_inset
-
-)
+).
 \begin_inset Formula 
 \begin{align*}
 \text{im}\left(\gamma\right) & :=\gamma\left(\left[a,b\right]\right)
@@ -24364,7 +24378,8 @@ ist eine offene Teilmenge von
 .
 \begin_inset Formula 
 \begin{align*}
-n\left(\gamma\right):\mathbb{C}\setminus\text{im}\left(\gamma\right) & \to\mathbb{Z}:a\mapsto n\left(\gamma,a\right)
+n\left(\gamma\right):\mathbb{C}\setminus\text{im}\left(\gamma\right) & \to\mathbb{Z}\\
+a & \mapsto n\left(\gamma,a\right)
 \end{align*}
 
 \end_inset
@@ -24373,14 +24388,11 @@ Für offene Teilmengen von
 \begin_inset Formula $\mathbb{C}$
 \end_inset
 
- ist zusammenhängend 
-\begin_inset Formula $\Leftrightarrow$
-\end_inset
-
- wegzusammenhängend (auch genannt bogenzusammenhängend).
+ ist zusammenhängend äquivalent zu wegzusammenhängend (auch bogenzusammenhängend
+ genannt).
 \begin_inset Formula 
 \begin{align*}
-\mathbb{C}\setminus\text{Rg}\left(\gamma\right) & =\bcupd_{\lambda\in\Lambda}\Omega_{\lambda}
+\mathbb{C}\setminus\text{im}\left(\gamma\right) & =\bcupd_{\lambda\in\Lambda}\Omega_{\lambda}
 \end{align*}
 
 \end_inset
@@ -24413,7 +24425,9 @@ Es könnte auch unendlich viele Zusammenhangskomponenten geben.
 \end_layout
 
 \begin_layout Standard
-TODO: Abb2
+
+\color green
+TODO: Abb2 einfügen
 \end_layout
 
 \begin_layout Standard
@@ -24433,11 +24447,36 @@ Da
 
 \end_inset
 
-TODO: Abb3
+
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Abb3 einfügen
 \end_layout
 
 \begin_layout Subsection
 Satz
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Satz-nKonstantaufZusammenhangskomponente"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $R\in\mathbb{R}_{>0}$
+\end_inset
+
+ mit 
+\begin_inset Formula $\text{im}\left(\gamma\right)\subseteq\Delta=B_{R}\left(0\right)$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -24493,11 +24532,16 @@ iii
 
 \end_inset
 
- Auf jeder Zusammenhangskomponente ist 
-\begin_inset Formula $n\left(\gamma,.\right):\Omega_{\lambda}\to\mathbb{N},x\mapsto n\left(\gamma,x\right)$
+ Auf jeder Zusammenhangskomponente ist
+\begin_inset Formula 
+\begin{align*}
+n\left(\gamma,.\right):\Omega_{\lambda} & \to\mathbb{N}\\
+x & \mapsto n\left(\gamma,x\right)
+\end{align*}
+
 \end_inset
 
- konstant.
+konstant.
 \end_layout
 
 \begin_layout Standard
@@ -24553,7 +24597,7 @@ iii
 \begin_inset Formula ${\displaystyle \frac{1}{z-a}}$
 \end_inset
 
- ist auf ganz 
+ ist in diesem Falls auf ganz 
 \begin_inset Formula $\Delta$
 \end_inset
 
@@ -24561,11 +24605,11 @@ iii
  Nach Theorem 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "asdf"
+reference "sub:Thm-HolomorphInt0"
 
 \end_inset
 
-2.10.3 folgt:
+ folgt:
 \begin_inset Formula 
 \begin{align*}
 \oint\frac{\dd z}{z-a} & =0
@@ -24605,32 +24649,29 @@ iii
 \end_inset
 
  Seien 
-\begin_inset Formula $a_{1},a_{2}\in\Omega_{\lambda}$
+\begin_inset Formula $a,b\in\Omega_{\lambda}$
 \end_inset
 
 .
  Mann kann dann 
-\begin_inset Formula $a_{1}$
+\begin_inset Formula $a$
 \end_inset
 
  und 
-\begin_inset Formula $a_{2}$
+\begin_inset Formula $b$
 \end_inset
 
  durch einen Polygonzug miteinander verbinden.
 \end_layout
 
 \begin_layout Standard
-Es genügt zu zeigen, dass gilt:
-\begin_inset Formula 
-\begin{align*}
-n\left(\gamma,a\right) & =n\left(\gamma,b\right)
-\end{align*}
+Ohne Einschränkung kann man annehmen, dass der Polygonzug nur aus einer
+ Linie besteht, denn sonst kann man ihn in endlich viele Linien zerlegen.
+\end_layout
 
-\end_inset
-
-Dabei ist die Verbindungslinie 
-\begin_inset Formula $v\left(a,b\right):=\left\{ \tau a+\left(1-\tau\right)b|0\le\tau\le1\right\} $
+\begin_layout Standard
+Daher ist die Verbindungslinie 
+\begin_inset Formula $v\left(a,b\right):=\left\{ \tau a+\left(1-\tau\right)b\Big|0\le\tau\le1\right\} $
 \end_inset
 
  von 
@@ -24649,7 +24690,27 @@ Dabei ist die Verbindungslinie
 \end_layout
 
 \begin_layout Standard
-Es folgt
+Es genügt also zu zeigen, dass gilt:
+\begin_inset Formula 
+\begin{align*}
+n\left(\gamma,a\right) & =n\left(\gamma,b\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Da 
+\begin_inset Formula $a$
+\end_inset
+
+ und 
+\begin_inset Formula $b$
+\end_inset
+
+ in der gleichen Zusammenhangskomponente liegen, gilt
 \begin_inset Formula 
 \begin{align*}
 v\left(a,b\right)\cap\text{im}\left(\gamma\right) & =\emptyset
@@ -24677,11 +24738,24 @@ und damit ist
 \begin_inset Formula $c\in\mathbb{R}_{\ge0}$
 \end_inset
 
-, so wäre 
-\begin_inset Formula $z-a=-c\left(z-b\right)$
+, so würde
+\begin_inset Formula 
+\begin{align*}
+z-a & =-c\left(z-b\right)\\
+z & =\frac{1}{1+c}\cdot a+\frac{c}{1+c}\cdot b
+\end{align*}
+
 \end_inset
 
-, also würde 
+mit
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{1+c}+\frac{c}{1+c} & =1
+\end{align*}
+
+\end_inset
+
+gelten, also würde 
 \begin_inset Formula $z\in v\left(a,b\right)$
 \end_inset
 
@@ -24689,7 +24763,9 @@ und damit ist
 \end_layout
 
 \begin_layout Standard
-TODO: Abb4?
+
+\color green
+TODO: Abb4? einfügen
 \end_layout
 
 \begin_layout Standard
@@ -24701,7 +24777,7 @@ Folglich ist
 \begin_inset Formula $\gamma$
 \end_inset
 
- wohldefiniert, wobei bei 
+ wohldefiniert, wobei für 
 \begin_inset Formula $\log\left(z\right)$
 \end_inset
 
@@ -24714,10 +24790,10 @@ Folglich ist
 
 \end_inset
 
-
+Es folgt:
 \begin_inset Formula 
 \begin{align*}
-\oint_{\gamma}\left(\frac{1}{z-a}-\frac{1}{z-b}\right)\dd z & =\log\left(\frac{z-a}{z-b}\right)\bigg|_{z_{0}}^{z_{0}}=n\left(\gamma,a\right)=n\left(\gamma,b\right)
+\oint_{\gamma}\left(\frac{1}{z-a}-\frac{1}{z-b}\right)\dd z & =\log\left(\frac{z-a}{z-b}\right)\bigg|_{z_{0}}^{z_{0}}=0=n\left(\gamma,a\right)-n\left(\gamma,b\right)
 \end{align*}
 
 \end_inset
@@ -24763,30 +24839,23 @@ Lemma
 
 \begin_layout Standard
 Seien 
-\begin_inset Formula $z_{1},z_{2}$
-\end_inset
-
- zwei Punkte auf einer geschlossenen Kurve 
 \begin_inset Formula $\gamma$
 \end_inset
 
-, die nicht durch den Ursprung geht.
-\end_layout
+ eine geschlossenen Kurve, die nicht durch den Ursprung geht, und 
+\begin_inset Formula $z_{1},z_{2}\in\text{im}\left(\gamma\right)$
+\end_inset
 
-\begin_layout Standard
-Es sei 
-\begin_inset Formula $\text{Im}\left(z_{1}\right)<0$
+ mit 
+\begin_inset Formula $\text{im}\left(z_{1}\right)<0$
 \end_inset
 
  und 
-\begin_inset Formula $\text{Im}\left(z_{2}\right)>0$
+\begin_inset Formula $\text{im}\left(z_{2}\right)>0$
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-Bezeichne die Teilkurven von 
+ Bezeichne die Teilkurven von 
 \begin_inset Formula $z_{1}$
 \end_inset
 
@@ -24830,7 +24899,9 @@ Falls
 \end_layout
 
 \begin_layout Standard
-TODO: Abb5
+
+\color green
+TODO: Abb5 einfügen
 \end_layout
 
 \begin_layout Subsubsection*
@@ -24839,7 +24910,7 @@ Beweis
 
 \begin_layout Standard
 Sei 
-\begin_inset Formula $L_{1}$
+\begin_inset Formula $L_{1}=\left\{ \lambda\cdot z_{1}\Big|\lambda\in\mathbb{R}_{\ge0}\right\} $
 \end_inset
 
  der Strahl durch 0 und 
@@ -24862,7 +24933,7 @@ Sei
 \begin_inset Formula $C$
 \end_inset
 
- ein Kreis um Ursprung, der 
+ ein Kreis um den Ursprung, der 
 \begin_inset Formula $\gamma$
 \end_inset
 
@@ -24882,11 +24953,15 @@ Wähle
 \end_layout
 
 \begin_layout Standard
+
+\color green
 TODO: Wie genau werden die 
 \begin_inset Formula $\sigma$
 \end_inset
 
  gewählt?
+\color inherit
+
 \begin_inset Formula 
 \begin{align*}
 \oint_{\sigma_{1}}\frac{\dd z}{z-a} & =0=\oint_{\sigma_{2}}\frac{\dd z}{z-a}
@@ -24894,7 +24969,8 @@ TODO: Wie genau werden die
 
 \end_inset
 
-Denn 0 ist in derselben Zusammenhangskomponente wie ein beliebiges 
+Dies gilt, da 0 in derselben Zusammenhangskomponente wie ein beliebiges
+ 
 \begin_inset Formula $a\in\mathbb{C}$
 \end_inset
 
@@ -24902,7 +24978,18 @@ Denn 0 ist in derselben Zusammenhangskomponente wie ein beliebiges
 \begin_inset Formula $\left|a\right|>R$
 \end_inset
 
-.
+ ist.
+\end_layout
+
+\begin_layout Standard
+Nach Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Satz-nKonstantaufZusammenhangskomponente"
+
+\end_inset
+
+ i) gilt:
 \begin_inset Formula 
 \begin{align*}
 n\left(\sigma_{1},a\right) & =0
@@ -24910,14 +24997,7 @@ n\left(\sigma_{1},a\right) & =0
 
 \end_inset
 
-Nach Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "asdf"
 
-\end_inset
-
-2.11.5 i).
 \end_layout
 
 \begin_layout Standard
@@ -24934,10 +25014,10 @@ Die Kurve
 
 \begin_layout Standard
 Also liegen 
-\begin_inset Formula $a,0$
+\begin_inset Formula $a$
 \end_inset
 
- in der gleichen Zusammenhangskomponente von 
+ und 0 in der gleichen Zusammenhangskomponente von 
 \begin_inset Formula $\mathbb{C}\setminus\text{im}\left(\sigma_{1}\right)$
 \end_inset
 
@@ -24945,7 +25025,7 @@ Also liegen
 \begin_inset Formula $n\left(\sigma_{1},0\right)=0$
 \end_inset
 
-.
+ ist.
 \end_layout
 
 \begin_layout Standard
@@ -24996,7 +25076,9 @@ Folgerungen des Integralsatzes
 \end_layout
 
 \begin_layout Standard
-TODO: Abb7
+
+\color green
+TODO: Abb7 einfügen
 \end_layout
 
 \begin_layout Standard
@@ -25065,21 +25147,13 @@ Also sollte
  beliebig oft komplex differenzierbar sein.
 \begin_inset Formula 
 \begin{align*}
-\left|f^{\left(n\right)}\left(z\right)\right| & \le\frac{n!}{2\pi}\sup_{C}\frac{\left|f\left(\zeta\right)\right|}{\left|\zeta-z\right|^{n+1}}\cdot\underbrace{2\pi\cdot2\varepsilon}_{\text{Länge von }C}\le\\
- & \le2\varepsilon\cdot n!\cdot\frac{1}{\varepsilon^{n+1}}\cdot\sup_{C}\left|f\right|\le\\
- & \le\underbrace{2\sup_{C}\left|f\right|}_{=:\mathcal{C}}\cdot\frac{n!}{\varepsilon^{n}}
+\abs{f^{\left(n\right)}\left(z\right)} & \le\frac{n!}{2\pi}\sup_{C}\frac{\abs{f\left(\zeta\right)}}{\abs{\zeta-z}^{n+1}}\cdot\underbrace{2\pi\cdot2\varepsilon}_{\text{Länge von }C}\le\\
+ & \le2\varepsilon\cdot n!\cdot\frac{1}{\varepsilon^{n+1}}\cdot\sup_{C}\abs f\le\\
+ & \le\underbrace{2\sup_{C}\abs f}_{=:K}\cdot\frac{n!}{\varepsilon^{n}}
 \end{align*}
 
 \end_inset
 
-TODO: Stimmt diese Definition von 
-\begin_inset Formula $\mathcal{C}$
-\end_inset
-
-???
-\end_layout
-
-\begin_layout Standard
 „Man hat unter Kontrolle wie rasch die Ableitungen in 
 \begin_inset Formula $n$
 \end_inset
@@ -25099,13 +25173,13 @@ f\left(z\right) & =\sum_{n=0}^{\infty}\frac{f^{\left(n\right)}\left(z_{0}\right)
 
 \begin_inset Formula 
 \begin{align*}
-\left|\frac{f^{\left(n\right)}\left(z_{0}\right)}{n!}\left(z-z_{0}\right)\right|^{n} & \le\mathcal{C}\cdot\left(\frac{\left|z-z_{0}\right|}{\varepsilon}\right)^{n}
+\abs{\frac{f^{\left(n\right)}\left(z_{0}\right)}{n!}\left(z-z_{0}\right)}^{n} & \le K\cdot\left(\frac{\abs{z-z_{0}}}{\varepsilon}\right)^{n}
 \end{align*}
 
 \end_inset
 
 Falls 
-\begin_inset Formula $\left|z-z_{0}\right|<\varepsilon$
+\begin_inset Formula $\abs{z-z_{0}}<\varepsilon$
 \end_inset
 
  ist die geometrische Reihe eine konvergente Majorante.
@@ -25130,24 +25204,21 @@ Lemma
 \end_layout
 
 \begin_layout Standard
-TODO: Abb1
+
+\color green
+TODO: Abb1 einfügen
 \end_layout
 
 \begin_layout Standard
-Sei 
+Seien 
 \begin_inset Formula $\Omega\subseteq\mathbb{C}$
 \end_inset
 
- offen.
- 
-\end_layout
-
-\begin_layout Standard
-Sei 
-\begin_inset Formula $\varphi\left(\zeta\right)$
+ offen und 
+\begin_inset Formula $\varphi\left(\zeta\right):\mathbb{C}\to\mathbb{C}$
 \end_inset
 
- stetig auf der geschlossene Kontur 
+ stetig auf der geschlossenen Kurve 
 \begin_inset Formula $\gamma:=\partial\Delta$
 \end_inset
 
@@ -25156,21 +25227,21 @@ Sei
 \end_inset
 
  das heißt 
-\begin_inset Formula $\gamma:\left[\alpha,\beta\right]\to\mathbb{C},\left(f\circ\gamma\right):\left[\alpha,\beta\right]\to\mathbb{C}$
+\begin_inset Formula $\gamma:\left[\alpha,\beta\right]\to\mathbb{C}$
 \end_inset
 
- soll stetig sein.
-\end_layout
+ und 
+\begin_inset Formula $\left(\varphi\circ\gamma\right):\left[\alpha,\beta\right]\to\mathbb{C}$
+\end_inset
 
-\begin_layout Standard
-TODO: „das Kontur“ ??
+ sollen stetig sein.
 \end_layout
 
 \begin_layout Standard
 Dann sind die Funktionen
 \begin_inset Formula 
 \begin{align*}
-F_{n}\left(z\right) & =\oint\frac{\varphi\left(\zeta\right)}{\left(\zeta-z\right)^{n}}\dd\zeta
+F_{n}\left(z\right) & =\oint_{\gamma}\frac{\varphi\left(\zeta\right)}{\left(\zeta-z\right)^{n}}\dd\zeta
 \end{align*}
 
 \end_inset
@@ -25183,7 +25254,7 @@ mit
 \begin_inset Formula $B_{\varepsilon}\left(a\right)$
 \end_inset
 
- holomorph und 
+ holomorph und es gilt 
 \begin_inset Formula $F_{n}'\left(z\right)=n\cdot F_{n+1}\left(z\right)$
 \end_inset
 
@@ -25258,11 +25329,11 @@ F_{1}\left(z\right)-F_{1}\left(z_{0}\right) & =\oint_{\gamma}\varphi\left(\zeta\
 \end_inset
 
 Wir wissen, dass 
-\begin_inset Formula $\left|\zeta-z\right|\ge\varepsilon$
+\begin_inset Formula $\abs{\zeta-z}\ge\varepsilon$
 \end_inset
 
  und 
-\begin_inset Formula $\left|\zeta-z_{0}\right|\ge\varepsilon$
+\begin_inset Formula $\abs{\zeta-z_{0}}\ge\varepsilon$
 \end_inset
 
  ist.
@@ -25272,8 +25343,8 @@ Wir wissen, dass
 Damit folgt:
 \begin_inset Formula 
 \begin{align*}
-\left|F\left(z\right)-F\left(z_{0}\right)\right| & \le\left|z-z_{0}\right|\cdot\frac{1}{\varepsilon^{2}}\cdot\oint_{\gamma}\left|\varphi\left(\zeta\right)\right|\underbrace{\left|\dd\zeta\right|}_{=\left|\gamma'\left(\tau\right)\right|\dd\tau}\le\\
- & \le\left|z-z_{0}\right|\cdot\frac{1}{\varepsilon^{2}}\cdot\sup_{\gamma}\left|\varphi\right|\cdot2\pi\cdot2\varepsilon
+\abs{F\left(z\right)-F\left(z_{0}\right)} & \le\abs{z-z_{0}}\cdot\frac{1}{\varepsilon^{2}}\cdot\oint_{\gamma}\abs{\varphi\left(\zeta\right)}\underbrace{\abs{\dd\zeta}}_{=\left|\gamma'\left(\tau\right)\right|\dd\tau}\le\\
+ & \le\abs{z-z_{0}}\cdot\frac{1}{\varepsilon^{2}}\cdot\sup_{\gamma}\abs{\varphi}\cdot2\pi\cdot2\varepsilon
 \end{align*}
 
 \end_inset
@@ -25282,7 +25353,7 @@ Also ist
 \begin_inset Formula $F$
 \end_inset
 
- lipschitz-stetig in 
+ Lipschitz stetig in 
 \begin_inset Formula $z_{0}$
 \end_inset
 
@@ -25302,34 +25373,34 @@ abc
 
 \end_inset
 
- 
+ Zeige, dass 
 \begin_inset Formula $F_{1}$
 \end_inset
 
- ist komplex differenzierbar in 
+ komplex differenzierbar in 
 \begin_inset Formula $z=z_{0}$
 \end_inset
 
- und 
+ ist und dass 
 \begin_inset Formula $F_{1}'\left(z_{0}\right)=F_{2}\left(z_{0}\right)$
 \end_inset
 
-.
+ gilt.
 \end_layout
 
 \begin_layout Standard
-Betrachte die Abschätzung aus a) für 
+Betrachte die Abschätzung aus a) und ersetze 
 \begin_inset Formula $\varphi\left(\zeta\right)$
 \end_inset
 
- ersetzt durch 
+ durch 
 \begin_inset Formula ${\displaystyle \frac{\varphi\left(\zeta\right)}{\zeta-z_{0}}}$
 \end_inset
 
 , also ist
 \begin_inset Formula 
 \begin{align*}
-G_{1}\left(z\right) & =\oint\frac{\varphi\left(\zeta\right)}{\left(\zeta-z_{0}\right)\left(\zeta-z\right)}\dd\zeta=\frac{F_{1}\left(z\right)-F_{1}\left(z_{0}\right)}{z-z_{0}}
+G_{1}\left(z\right) & =\oint_{\gamma}\frac{\varphi\left(\zeta\right)}{\left(\zeta-z_{0}\right)\left(\zeta-z\right)}\dd\zeta=\frac{F_{1}\left(z\right)-F_{1}\left(z_{0}\right)}{z-z_{0}}
 \end{align*}
 
 \end_inset
@@ -25338,8 +25409,7 @@ stetig in
 \begin_inset Formula $z_{0}$
 \end_inset
 
-.
- Also existiert der Limes:
+ und daher existiert der Limes:
 \begin_inset Formula 
 \begin{align*}
 \lim_{z\to z_{0}}\frac{F_{1}\left(z\right)-F_{1}\left(z_{0}\right)}{z-z_{0}}
@@ -25403,16 +25473,12 @@ abc
  Der allgemeine Fall folgt durch Induktion:
 \begin_inset Formula 
 \begin{align*}
-F_{n}\left(z\right)-F_{n}\left(z_{0}\right) & =\oint_{\gamma}\varphi\left(\zeta\right)\left(\frac{1}{\left(\zeta-z\right)^{n}}\cdot1-\frac{1}{\left(\zeta-z_{0}\right)^{n}}\right)\dd\zeta
+F_{n}\left(z\right)-F_{n}\left(z_{0}\right) & =\oint_{\gamma}\varphi\left(\zeta\right)\left(\frac{1}{\left(\zeta-z\right)^{n}}-\frac{1}{\left(\zeta-z_{0}\right)^{n}}\right)\dd\zeta
 \end{align*}
 
 \end_inset
 
 Für die Stetigkeit verwende folgendes Ergebnis:
-\end_layout
-
-\begin_layout Standard
-TODO: Differenzierbarkeit?
 \end_layout
 
 \begin_layout Description
@@ -25440,7 +25506,7 @@ Für
  gilt:
 \begin_inset Formula 
 \begin{align*}
-\lim_{z\to z_{0}}\oint_{\gamma}\varphi\left(\zeta\right)\frac{1}{\left(\zeta-z_{0}\right)^{p}\left(\zeta-z\right)^{q}}\dd\zeta & =\oint\varphi\left(\zeta\right)\frac{1}{\left(\zeta-z\right)^{p+q}}\dd\zeta
+\lim_{z\to z_{0}}\oint_{\gamma}\frac{\varphi\left(\zeta\right)}{\left(\zeta-z_{0}\right)^{p}\left(\zeta-z\right)^{q}}\dd\zeta & =\oint_{\gamma}\frac{\varphi\left(\zeta\right)}{\left(\zeta-z\right)^{p+q}}\dd\zeta
 \end{align*}
 
 \end_inset
@@ -25469,52 +25535,13 @@ hspace*{1mm}
 
 \begin_inset Formula 
 \begin{align*}
-\oint\varphi\left(\zeta\right)\frac{1}{\left(\zeta-z_{0}\right)^{p}\left(\zeta-z\right)^{q}}\dd\zeta & =\int_{\alpha}^{\beta}\frac{\varphi\left(\gamma\left(\tau\right)\right)}{\underbrace{\left(\gamma\left(\tau\right)-z_{0}\right)^{p}\left(\gamma\left(\tau\right)-z\right)^{q}}_{\to}}\gamma'\left(\tau\right)\dd\tau\stackrel{z\to z_{0}}{\longrightarrow}\int_{\alpha}^{\beta}\frac{\varphi\left(\gamma\left(\tau\right)\right)}{\left(\gamma\left(\tau\right)-z_{0}\right)^{p+q}}\gamma'\left(\tau\right)\dd\tau
-\end{align*}
-
-\end_inset
-
-Benutze folgende Identität:
-\begin_inset Formula 
-\begin{align*}
-1 & =\frac{\zeta-z_{0}}{\zeta-z_{0}}=\frac{\zeta-z}{\zeta-z_{0}}+\frac{z-z_{0}}{\zeta-z_{0}}
-\end{align*}
-
-\end_inset
-
-Damit ergibt sich:
-\begin_inset Formula 
-\begin{align*}
-\frac{1}{\left(\zeta-z\right)^{n}} & =\frac{1}{\left(\zeta-z\right)^{n}}\cdot\frac{\zeta-z_{0}}{\zeta-z_{0}}=\frac{1}{\left(\zeta-z\right)^{n}}\cdot\left(\frac{\zeta-z}{\zeta-z_{0}}+\frac{z-z_{0}}{\zeta-z_{0}}\right)=\frac{1}{\left(\zeta-z\right)^{n-1}\left(\zeta-z_{0}\right)}+\frac{z-z_{0}}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}=\\
- & =\frac{1}{\left(\zeta-z\right)^{n-1}\left(\zeta-z_{0}\right)}\frac{\zeta-z_{0}}{\zeta-z_{0}}+\frac{z-z_{0}}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}=\frac{1}{\left(\zeta-z\right)^{n-1}\left(\zeta-z_{0}\right)}\cdot\left(\frac{\zeta-z}{\zeta-z_{0}}+\frac{z-z_{0}}{\zeta-z_{0}}\right)+\frac{z-z_{0}}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}=\\
- & =\frac{1}{\left(\zeta-z\right)^{n-2}\left(\zeta-z_{0}\right)^{2}}+\frac{z-z_{0}}{\left(\zeta-z\right)^{n-1}\left(\zeta-z_{0}\right)^{2}}+\frac{z-z_{0}}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}=\\
- & \quad\vdots\\
- & =\frac{1}{\left(\zeta-z_{0}\right)^{n}}+\underbrace{\frac{z-z_{0}}{\left(\zeta-z\right)\left(\zeta-z_{0}\right)^{n}}+\frac{z-z_{0}}{\left(\zeta-z\right)^{2}\left(\zeta-z_{0}\right)^{n-1}}+\ldots+\frac{z-z_{0}}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}}_{n\text{ Terme}}
-\end{align*}
-
-\end_inset
-
-Also gilt:
-\begin_inset Formula 
-\begin{align*}
-\frac{F_{n}\left(z\right)-F_{n}\left(z_{0}\right)}{z-z_{0}} & =\frac{1}{z-z_{0}}\oint_{\gamma}\varphi\left(\zeta\right)\left(\frac{1}{\left(\zeta-z\right)^{n}}-\frac{1}{\left(\zeta-z_{0}\right)^{n}}\right)\dd\zeta=\\
- & =\oint_{\gamma}\varphi\left(\zeta\right)\left(\frac{1}{\left(\zeta-z\right)\left(\zeta-z_{0}\right)^{n}}+\frac{1}{\left(\zeta-z\right)^{2}\left(\zeta-z_{0}\right)^{n-1}}+\ldots+\frac{1}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}\right)\dd\zeta
-\end{align*}
-
-\end_inset
-
-Damit folgt:
-\begin_inset Formula 
-\begin{align*}
-F_{n}'\left(z_{0}\right)=\lim_{z\to z_{0}}\frac{F_{n}\left(z\right)-F_{n}\left(z_{0}\right)}{z-z_{0}} & =\int_{\gamma}\varphi\left(\zeta\right)\frac{n}{\left(\zeta-z_{0}\right)^{n+1}}=n\cdot F_{n+1}\left(z_{0}\right)
+\lim_{z\to z_{0}}\oint\frac{\varphi\left(\zeta\right)}{\left(\zeta-z_{0}\right)^{p}\left(\zeta-z\right)^{q}}\dd\zeta & =\lim_{z\to z_{0}}\int_{\alpha}^{\beta}\frac{\varphi\left(\gamma\left(\tau\right)\right)}{\left(\gamma\left(\tau\right)-z_{0}\right)^{p}\left(\gamma\left(\tau\right)-z\right)^{q}}\gamma'\left(\tau\right)\dd\tau=\\
+ & =\int_{\alpha}^{\beta}\frac{\varphi\left(\gamma\left(\tau\right)\right)}{\left(\gamma\left(\tau\right)-z_{0}\right)^{p+q}}\gamma'\left(\tau\right)\dd\tau=\oint_{\gamma}\frac{\varphi\left(\zeta\right)}{\left(\zeta-z\right)^{p+q}}\dd\zeta
 \end{align*}
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -25528,6 +25555,49 @@ qqed[Behauptung]
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Benutze folgende Identität:
+\begin_inset Formula 
+\begin{align*}
+1 & =\frac{\zeta-z_{0}}{\zeta-z_{0}}=\frac{\zeta-z}{\zeta-z_{0}}+\frac{z-z_{0}}{\zeta-z_{0}}
+\end{align*}
+
+\end_inset
+
+Damit ergibt sich:
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{\left(\zeta-z\right)^{n}} & =\frac{1}{\left(\zeta-z\right)^{n}}\cdot\frac{\zeta-z_{0}}{\zeta-z_{0}}=\frac{1}{\left(\zeta-z\right)^{n}}\cdot\left(\frac{\zeta-z}{\zeta-z_{0}}+\frac{z-z_{0}}{\zeta-z_{0}}\right)=\\
+ & =\frac{1}{\left(\zeta-z\right)^{n-1}\left(\zeta-z_{0}\right)}+\frac{z-z_{0}}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}=\\
+ & =\frac{1}{\left(\zeta-z\right)^{n-1}\left(\zeta-z_{0}\right)}\frac{\zeta-z_{0}}{\zeta-z_{0}}+\frac{z-z_{0}}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}=\\
+ & =\frac{1}{\left(\zeta-z\right)^{n-1}\left(\zeta-z_{0}\right)}\cdot\left(\frac{\zeta-z}{\zeta-z_{0}}+\frac{z-z_{0}}{\zeta-z_{0}}\right)+\frac{z-z_{0}}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}=\\
+ & =\frac{1}{\left(\zeta-z\right)^{n-2}\left(\zeta-z_{0}\right)^{2}}+\frac{z-z_{0}}{\left(\zeta-z\right)^{n-1}\left(\zeta-z_{0}\right)^{2}}+\frac{z-z_{0}}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}=\\
+ & \quad\qquad\vdots\\
+ & =\frac{1}{\left(\zeta-z_{0}\right)^{n}}+\underbrace{\frac{z-z_{0}}{\left(\zeta-z\right)\left(\zeta-z_{0}\right)^{n}}+\ldots+\frac{z-z_{0}}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}}_{n\text{ Terme}}
+\end{align*}
+
+\end_inset
+
+Also gilt:
+\begin_inset Formula 
+\begin{align*}
+\frac{F_{n}\left(z\right)-F_{n}\left(z_{0}\right)}{z-z_{0}} & =\frac{1}{z-z_{0}}\oint_{\gamma}\varphi\left(\zeta\right)\left(\frac{1}{\left(\zeta-z\right)^{n}}-\frac{1}{\left(\zeta-z_{0}\right)^{n}}\right)\dd\zeta=\\
+ & =\oint_{\gamma}\varphi\left(\zeta\right)\left(\frac{1}{\left(\zeta-z\right)\left(\zeta-z_{0}\right)^{n}}+\ldots+\frac{1}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}\right)\dd\zeta
+\end{align*}
+
+\end_inset
+
+Damit folgt:
+\begin_inset Formula 
+\begin{align*}
+F_{n}'\left(z_{0}\right)=\lim_{z\to z_{0}}\frac{F_{n}\left(z\right)-F_{n}\left(z_{0}\right)}{z-z_{0}} & =\int_{\gamma}\varphi\left(\zeta\right)\frac{n}{\left(\zeta-z_{0}\right)^{n+1}}=n\cdot F_{n+1}\left(z_{0}\right)
+\end{align*}
+
+\end_inset
+
+Damit folgt auch die Differenzierbarkeit.
 \end_layout
 
 \begin_layout Standard
@@ -25546,8 +25616,31 @@ end{abclist}
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Thm-holomorphUnendlichOftDiffbar"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -25586,76 +25679,14 @@ Dabei ist
  umläuft.
 \end_layout
 
-\begin_layout Subsection
-Theorem 
-\series medium
-(Moera)
-\end_layout
-
-\begin_layout Standard
-TODO: Name???
-\end_layout
-
-\begin_layout Standard
-Falls 
-\begin_inset Formula $f:\Omega\to\mathbb{C}$
-\end_inset
-
- stetig und für jede geschlossene Kurve in 
-\begin_inset Formula $\Omega$
-\end_inset
-
- schon 
-\begin_inset Formula $\oint_{\gamma}f\left(z\right)\dd z=0$
-\end_inset
-
- gilt, ist 
-\begin_inset Formula $f$
-\end_inset
-
- holomorph.
-\end_layout
-
 \begin_layout Subsubsection*
 Beweis
 \end_layout
 
 \begin_layout Standard
-Nach Theorem 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "asdf"
 
-\end_inset
-
-2.9.1 gibt es eine holomorphe Stammfunktion 
-\begin_inset Formula $F:\Omega\to\mathbb{C}$
-\end_inset
-
- und 
-\begin_inset Formula $F'\left(z\right)=f\left(z\right)$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Da 
-\begin_inset Formula $F$
-\end_inset
-
- nach Theorem 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "asdf"
-
-\end_inset
-
-2.12.2 zweimal differenzierbar ist, folgt, dass 
-\begin_inset Formula $f$
-\end_inset
-
- differenzierbar und damit holomorph ist.
+\color green
+TODO: Beweis einfügen
 \end_layout
 
 \begin_layout Standard
@@ -25675,17 +25706,33 @@ qqed
 \end_layout
 
 \begin_layout Subsection
-Theorem 
+Satz 
 \series medium
-(Liouville)
+(Morera)
 \end_layout
 
 \begin_layout Standard
-Eine beschränkte, auf ganz 
-\begin_inset Formula $\mathbb{C}$
+Sei 
+\begin_inset Formula $f:\Omega\to\mathbb{C}$
 \end_inset
 
- holomorphe Funktion ist konstant.
+ stetig und für jede geschlossene Kurve in 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ gelte 
+\begin_inset Formula $\oint_{\gamma}f\left(z\right)\dd z=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Dann ist 
+\begin_inset Formula $f$
+\end_inset
+
+ holomorph.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -25693,7 +25740,109 @@ Beweis
 \end_layout
 
 \begin_layout Standard
-TODO: Abb2
+Nach Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Bem-Konturintegral"
+
+\end_inset
+
+ gibt es eine holomorphe Stammfunktion 
+\begin_inset Formula $F:\Omega\to\mathbb{C}$
+\end_inset
+
+ und 
+\begin_inset Formula $F'\left(z\right)=f\left(z\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Da 
+\begin_inset Formula $F$
+\end_inset
+
+ nach Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Thm-holomorphUnendlichOftDiffbar"
+
+\end_inset
+
+ zweimal differenzierbar ist, folgt, dass 
+\begin_inset Formula $f$
+\end_inset
+
+ differenzierbar und damit holomorph ist.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Satz 
+\series medium
+(Liouville)
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Satz-Liouville"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Eine auf ganz 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+ holomorphe Funktion, die beschränkt ist, ist konstant.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Da 
+\begin_inset Formula $f$
+\end_inset
+
+ beschränkt ist, gilt für ein 
+\begin_inset Formula $C\in\mathbb{R}_{\ge0}$
+\end_inset
+
+ und für alle 
+\begin_inset Formula $z\in\mathbb{C}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\abs{f\left(z\right)} & \le C
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Abb2 einfügen
 \end_layout
 
 \begin_layout Standard
@@ -25715,7 +25864,7 @@ f\left(z\right) & =\frac{1}{2\pi\ii}\oint_{\partial B_{R}\left(0\right)}\frac{f\
 
 \begin_inset Formula 
 \begin{align*}
-\left|\zeta-z\right| & >\frac{R}{2}
+\abs{\zeta-z} & >\frac{R}{2}
 \end{align*}
 
 \end_inset
@@ -25723,11 +25872,11 @@ f\left(z\right) & =\frac{1}{2\pi\ii}\oint_{\partial B_{R}\left(0\right)}\frac{f\
 Nach Theorem 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "asdf"
+reference "sub:Thm-holomorphUnendlichOftDiffbar"
 
 \end_inset
 
-2.12.2 gilt:
+ gilt:
 \begin_inset Formula 
 \begin{align*}
 f'\left(z\right) & =\frac{1}{2\pi\ii}\oint_{\partial B_{R}\left(0\right)}\frac{f\left(\zeta\right)}{\left(\zeta-z\right)^{2}}\dd\zeta
@@ -25738,15 +25887,7 @@ f'\left(z\right) & =\frac{1}{2\pi\ii}\oint_{\partial B_{R}\left(0\right)}\frac{f
 
 \begin_inset Formula 
 \begin{align*}
-\left|f'\left(z\right)\right| & \le\frac{1}{2\pi\ii}
-\end{align*}
-
-\end_inset
-
-
-\begin_inset Formula 
-\begin{align*}
-\left|f'\left(z\right)\right| & \le\frac{1}{2\pi}\left(\frac{2}{R}\right)^{2}\cdot\sup_{\partial B_{R}\left(0\right)}\left|f\right|\cdot2\pi R\le\frac{4}{R}\cdot\underbrace{\sup_{\mathbb{C}}\left|f\right|}_{\le C}\stackrel{R\to\infty}{\longrightarrow}0
+\abs{f'\left(z\right)} & \le\frac{1}{2\pi}\left(\frac{R}{2}\right)^{\minus2}\cdot\sup_{\partial B_{R}\left(0\right)}\abs f\cdot2\pi R\le\frac{4}{R}\cdot C\xrightarrow{R\to\infty}0
 \end{align*}
 
 \end_inset
@@ -25763,11 +25904,11 @@ Da
 \end_layout
 
 \begin_layout Standard
-Wir sehen also, dass gilt:
-\end_layout
+Wir sehen also, dass für alle 
+\begin_inset Formula $z\in\mathbb{C}$
+\end_inset
 
-\begin_layout Standard
-TODO: Abb3
+ gilt:
 \begin_inset Formula 
 \begin{align*}
 f'\left(z\right) & =0
@@ -25776,6 +25917,35 @@ f'\left(z\right) & =0
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Abb3 einfügen
+\end_layout
+
+\begin_layout Standard
+Seien nun 
+\begin_inset Formula $z_{1},z_{2}\in\mathbb{C}$
+\end_inset
+
+ und 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ ein Weg, der 
+\begin_inset Formula $z_{1}$
+\end_inset
+
+ und 
+\begin_inset Formula $z_{2}$
+\end_inset
+
+ verbindet, dann gilt:
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
 f\left(z_{1}\right)-f\left(z_{0}\right) & =\int_{\gamma}f'\left(z\right)\dd z=0
@@ -25796,9 +25966,6 @@ Also ist
 \end_inset
 
  konstant.
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -25814,8 +25981,28 @@ qqed
 
 \end_layout
 
+\begin_layout Standard
+Dies liefert einen eleganten Beweis für den Fundamentalsatz der Algebra:
+\end_layout
+
 \begin_layout Subsection
-Eleganter Beweis des Fundamentalsatzes der Algebra
+Fundamentalsatz der Algebra
+\end_layout
+
+\begin_layout Standard
+Jedes nicht konstante Polynom 
+\begin_inset Formula $P\left(z\right)\in\mathbb{C}\left[z\right]$
+\end_inset
+
+ besitzt in 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+ mindestens eine Nullstelle.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
 \end_layout
 
 \begin_layout Standard
@@ -25823,15 +26010,11 @@ Nehme an,
 \begin_inset Formula $P\left(z\right)$
 \end_inset
 
- sei ein Polynom vom Grade 
-\begin_inset Formula $\ge1$
-\end_inset
-
- ohne Nullstellen.
+ sei ein nicht konstantes Polynom ohne Nullstellen.
 \end_layout
 
 \begin_layout Standard
-Damit folgt:
+Damit würde folgen, das
 \begin_inset Formula 
 \begin{align*}
 f\left(z\right) & :=\frac{1}{P\left(z\right)}
@@ -25839,15 +26022,31 @@ f\left(z\right) & :=\frac{1}{P\left(z\right)}
 
 \end_inset
 
-ist holomorph auf ganz 
+holomorph auf ganz 
 \begin_inset Formula $\mathbb{C}$
 \end_inset
 
-, da 
-\begin_inset Formula $f'\left(z\right)=-\frac{P'\left(z\right)}{P\left(z\right)^{2}}$
+ ist, da gilt:
+\begin_inset Formula 
+\begin{align*}
+f'\left(z\right) & =-\frac{P'\left(z\right)}{P\left(z\right)^{2}}
+\end{align*}
+
 \end_inset
 
- ist.
+Das Polynom vom Grad 
+\begin_inset Formula $n\in\mathbb{N}_{\ge1}$
+\end_inset
+
+ lässt sich mit 
+\begin_inset Formula $a_{k}\in\mathbb{C}$
+\end_inset
+
+ für 
+\begin_inset Formula $k\in\mathbb{N}_{\le n}$
+\end_inset
+
+ schreiben als: 
 \begin_inset Formula 
 \begin{align*}
 P\left(z\right) & =a_{n}z^{n}\left(1+\frac{a_{n-1}}{a_{n}}\frac{1}{z}+\ldots\right)
@@ -25856,10 +26055,10 @@ P\left(z\right) & =a_{n}z^{n}\left(1+\frac{a_{n-1}}{a_{n}}\frac{1}{z}+\ldots\rig
 \end_inset
 
 Also ist 
-\begin_inset Formula $\lim_{z\to\infty}\left|P\left(z\right)\right|=\infty$
+\begin_inset Formula $\lim_{z\to\infty}\abs{P\left(z\right)}=\infty$
 \end_inset
 
- und somit:
+ und somit gilt:
 \begin_inset Formula 
 \begin{align*}
 \lim_{z\to\infty}f\left(z\right) & =0
@@ -25867,6 +26066,22 @@ Also ist
 
 \end_inset
 
+Daher nimmt 
+\begin_inset Formula $\abs{f\left(z\right)}$
+\end_inset
+
+ sein Maximum innerhalb einer Kugel 
+\begin_inset Formula $B_{R}\left(0\right)$
+\end_inset
+
+ für eine 
+\begin_inset Formula $R\in\mathbb{R}_{\ge0}$
+\end_inset
+
+ an.
+\end_layout
+
+\begin_layout Standard
 Daher ist 
 \begin_inset Formula $f$
 \end_inset
@@ -25878,11 +26093,11 @@ Daher ist
  holomorph und beschränkt und damit nach dem Satz von Liouville 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "asdf"
+reference "sub:Satz-Liouville"
 
 \end_inset
 
-?? konstant.
+ konstant.
 \end_layout
 
 \begin_layout Standard
@@ -25891,9 +26106,6 @@ Also ist
 \end_inset
 
  konstant, was ein Widerspruch ist.
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -25903,18 +26115,6 @@ status open
 \backslash
 qqed
 \end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Bedingung für „Ausnahmepunkte“:
-\begin_inset Formula 
-\begin{align*}
-\lim_{z\to\zeta}\left(z-\zeta\right)f\left(z\right) & =0
-\end{align*}
 
 \end_inset
 
@@ -25935,35 +26135,18 @@ Taylorreihen
 
 \end_layout
 
-\begin_layout Subsection
-Satz
-\end_layout
-
 \begin_layout Standard
-Sei 
-\begin_inset Formula $\Omega\subseteq\mathbb{C}$
+Die Bedingung für „Ausnahmepunkte“ in Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Thm-OintHolomHebPol"
+
 \end_inset
 
- offen.
-\end_layout
-
-\begin_layout Standard
-Sei 
-\begin_inset Formula $\Omega'=\Omega\setminus\left\{ a\right\} $
-\end_inset
-
-, 
-\begin_inset Formula $f:\Omega'\to\mathbb{C}$
-\end_inset
-
- holomorph.
-\end_layout
-
-\begin_layout Standard
-Es gelte:
+  war:
 \begin_inset Formula 
 \begin{align*}
-\sr{\lim_{z\to a}}{}{z\not=a}\left(z-a\right)f\left(z\right) & =0
+\lim_{z\to\zeta}\left(z-\zeta\right)f\left(z\right) & =0
 \end{align*}
 
 \end_inset
@@ -25971,7 +26154,37 @@ Es gelte:
 
 \end_layout
 
+\begin_layout Subsection
+Satz und Definition 
+\series medium
+(hebbare Singularität, holomorphe Fortsetzung)
+\end_layout
+
 \begin_layout Standard
+Seien 
+\begin_inset Formula $\Omega\subseteq\mathbb{C}$
+\end_inset
+
+ offen, 
+\begin_inset Formula $a\in\Omega$
+\end_inset
+
+, 
+\begin_inset Formula $\Omega'=\Omega\setminus\left\{ a\right\} $
+\end_inset
+
+, 
+\begin_inset Formula $f:\Omega'\to\mathbb{C}$
+\end_inset
+
+ holomorph und es gelte:
+\begin_inset Formula 
+\begin{align*}
+\lim_{a\not=z\to a}\left(z-a\right)f\left(z\right) & =0
+\end{align*}
+
+\end_inset
+
 Dann gibt es eine holomorphe Funktion
 \begin_inset Formula 
 \begin{align*}
@@ -26011,10 +26224,7 @@ holomorphe Fortsetzung
 \begin_inset Formula $f$
 \end_inset
 
-.
-\end_layout
-
-\begin_layout Standard
+ und 
 \begin_inset Formula $a$
 \end_inset
 
@@ -26042,7 +26252,7 @@ Beweis
  Dann gilt
 \begin_inset Formula 
 \begin{align*}
-\sr{\lim_{z\to a}}{}{z\not=a}\left(z-a\right)f\left(z\right) & =\lim_{z\to a}\left(z-a\right)\tilde{f}\left(z\right)=0
+\lim_{a\not=z\to a}\left(z-a\right)f\left(z\right) & =\lim_{z\to a}\left(z-a\right)\tilde{f}\left(z\right)=0
 \end{align*}
 
 \end_inset
@@ -26058,7 +26268,7 @@ weil
 Die Eindeutigkeit ist wegen der Stetigkeit klar:
 \begin_inset Formula 
 \begin{align*}
-\tilde{f}\left(a\right) & =\lim_{z\to a}\tilde{f}\left(z\right)=\sr{\lim_{z\to a}}{}{z\not=a}f\left(z\right)
+\tilde{f}\left(a\right) & =\lim_{z\to a}\tilde{f}\left(z\right)=\lim_{a\not=z\to a}f\left(z\right)
 \end{align*}
 
 \end_inset
@@ -26094,23 +26304,30 @@ Diese Funktion ist holomorph in
  und erfüllt die Bedingungen von Theorem 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "asdf"
+reference "sub:Thm-OintHolomHebPol"
 
 \end_inset
 
-2.10.4, also für 
-\begin_inset Formula $\xi\in\left\{ a,z\right\} $
+, denn es gilt für 
+\begin_inset Formula $\xi\in\Omega\setminus\left\{ a,z\right\} $
 \end_inset
 
 :
 \begin_inset Formula 
 \begin{align*}
-\sr{\lim_{z\to\xi}}{}{z\not=\xi}\left(z-\xi\right)G\left(\xi\right) & =0
+\lim_{\xi\not=z\to\xi}\left(z-\xi\right)G\left(\xi\right) & =0
 \end{align*}
 
 \end_inset
 
-Also gilt
+Also gilt nach Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Thm-OintHolomHebPol"
+
+\end_inset
+
+ schon
 \begin_inset Formula 
 \begin{align*}
 \oint_{\gamma}G\left(z\right)\dd z & =0
@@ -26126,14 +26343,14 @@ f\left(z\right) & =\frac{1}{2\pi\ii}\oint_{C}\frac{f\left(\zeta\right)}{\zeta-z}
 
 \end_inset
 
-Dies ist genau wie im Beweis des Cauchyschen-Integralsatzes 
+Dies ist genau wie im Beweis des Cauchyschen Integralsatzes 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "asdf"
+reference "sub:Thm-CauchyscherIntegralsatz"
 
 \end_inset
 
-??.
+.
 \end_layout
 
 \begin_layout Standard
@@ -26141,15 +26358,7 @@ Da das Integral auch für
 \begin_inset Formula $z=a$
 \end_inset
 
- wohldefiniert ist, können wir setzen
-\begin_inset Formula 
-\begin{align*}
-\tilde{f}\left(z\right) & :=\frac{1}{2\pi\ii}\oint_{C}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta
-\end{align*}
-
-\end_inset
-
-auf 
+ wohldefiniert ist, können wir auf 
 \begin_inset Formula $B_{\varepsilon}\left(a\right)$
 \end_inset
 
@@ -26157,18 +26366,27 @@ auf
 \begin_inset Formula $z=a$
 \end_inset
 
-.
+ setzen:
+\begin_inset Formula 
+\begin{align*}
+\tilde{f}\left(z\right) & :=\frac{1}{2\pi\ii}\oint_{C}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
+Also ist 
 \begin_inset Formula $\tilde{f}:\Omega\to\mathbb{C}$
 \end_inset
 
- und definiert durch
+ definiert durch:
 \begin_inset Formula 
 \begin{align*}
 \tilde{f}\left(z\right) & =\begin{cases}
-\frac{1}{2\pi\ii} & \text{falls }z\in B_{\varepsilon}\left(a\right)\\
+\frac{1}{2\pi\ii}\oint_{C}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta & \text{falls }z\in B_{\varepsilon}\left(a\right)\\
 f\left(z\right) & \text{sonst}
 \end{cases}
 \end{align*}
@@ -26192,7 +26410,1245 @@ qqed
 \end_layout
 
 \begin_layout Standard
-TODO: Rest einfügen
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Fr 20.1.12
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem 
+\series medium
+(Taylorformel)
+\end_layout
+
+\begin_layout Standard
+Seien 
+\begin_inset Formula $\Omega\subseteq\mathbb{C}$
+\end_inset
+
+ offen, 
+\begin_inset Formula $f:\Omega\to\mathbb{C}$
+\end_inset
+
+ holomorph und 
+\begin_inset Formula $a\in\Omega$
+\end_inset
+
+.
+ Dann gilt:
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\sum_{k=0}^{n-1}\frac{f^{\left(k\right)}}{k!}\cdot\left(z-a\right)^{k}+f_{n}\left(z\right)\cdot\left(z-a\right)^{n}
+\end{align*}
+
+\end_inset
+
+Dabei ist 
+\begin_inset Formula $f_{n}:\Omega\to\mathbb{C}$
+\end_inset
+
+ holomorph und es gilt mit 
+\begin_inset Formula $\varepsilon\in\mathbb{R}_{>0}$
+\end_inset
+
+, 
+\begin_inset Formula $C:=\partial B_{\varepsilon}\left(a\right)$
+\end_inset
+
+ und 
+\begin_inset Formula $z\in B_{\varepsilon}\left(a\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+f_{n}\left(z\right) & =\frac{1}{2\pi\ii}\cdot\oint_{C}\frac{f\left(\zeta\right)}{\left(\zeta-a\right)^{n}\cdot\left(\zeta-z\right)}\dd\zeta
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Die Funktion
+\begin_inset Formula 
+\begin{align*}
+F & :\Omega\setminus\left\{ a\right\} \to\mathbb{C}\\
+z & \mapsto F\left(z\right):=\frac{f\left(z\right)-f\left(a\right)}{z-a}
+\end{align*}
+
+\end_inset
+
+ist holomorph und es gilt:
+\begin_inset Formula 
+\begin{align*}
+\lim_{a\not=z\to a}\left(z-a\right)\cdot F\left(z\right) & =\lim_{z\to a}\left(f\left(z\right)-f\left(a\right)\right)
+\end{align*}
+
+\end_inset
+
+Also ist die Singularität von 
+\begin_inset Formula $F$
+\end_inset
+
+ an der Stelle 
+\begin_inset Formula $a$
+\end_inset
+
+ hebbar.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f_{1}$
+\end_inset
+
+ sei die holomorphe Fortsetzung von 
+\begin_inset Formula $F$
+\end_inset
+
+, das heißt 
+\begin_inset Formula $f_{1}:\Omega\to\mathbb{C}$
+\end_inset
+
+ ist holomorph und für alle 
+\begin_inset Formula $z\in\Omega\setminus\left\{ a\right\} $
+\end_inset
+
+ gilt 
+\begin_inset Formula $f_{1}\left(z\right)=F\left(z\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Dann gilt für alle 
+\begin_inset Formula $z\in\Omega\setminus\left\{ a\right\} $
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =f\left(a\right)+f_{1}\left(z\right)\cdot\left(z-a\right)\\
+\Leftrightarrow\quad f_{1}\left(z\right) & =\frac{f\left(z\right)-f\left(a\right)}{z-a}
+\end{align*}
+
+\end_inset
+
+Nun kann man induktiv weiter schließen:
+\end_layout
+
+\begin_layout Standard
+Es gibt eine holomorphe Funktion 
+\begin_inset Formula $f_{2}:\Omega\to\mathbb{C}$
+\end_inset
+
+ mit:
+\begin_inset Formula 
+\begin{align*}
+f_{1}\left(z\right) & =f_{1}\left(a\right)+\left(z-a\right)\cdot f_{2}\left(z\right)
+\end{align*}
+
+\end_inset
+
+Es gibt eine holomorphe Funktion 
+\begin_inset Formula $f_{3}:\Omega\to\mathbb{C}$
+\end_inset
+
+ mit:
+\begin_inset Formula 
+\begin{align*}
+f_{2}\left(z\right) & =f_{2}\left(a\right)+\left(z-a\right)\cdot f_{3}\left(z\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $\ldots$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es gibt eine holomorphe Funktion 
+\begin_inset Formula $f_{n}:\Omega\to\mathbb{C}$
+\end_inset
+
+ mit:
+\begin_inset Formula 
+\begin{align*}
+f_{n-1}\left(z\right) & =f_{n-1}\left(a\right)+\left(z-a\right)\cdot f_{n}\left(z\right)
+\end{align*}
+
+\end_inset
+
+Zusammengesetzt ergibt das:
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =f\left(a\right)+\left(z-a\right)f_{1}\left(a\right)+\ldots+\left(z-a\right)^{n-1}f_{n-1}\left(a\right)+\left(z-a\right)^{n}f_{n}\left(z\right)
+\end{align*}
+
+\end_inset
+
+Um die Koeffizienten zu bestimmen, leiten wir 
+\begin_inset Formula $k$
+\end_inset
+
+-mal (mit 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+) nach 
+\begin_inset Formula $z$
+\end_inset
+
+ ab:
+\begin_inset Formula 
+\begin{align*}
+f^{\left(k\right)}\left(z\right) & =k!\cdot f_{k}\left(a\right)+\frac{\left(k+1\right)!}{1!}\left(z-a\right)f_{k+1}\left(a\right)+\ldots+\frac{n!}{\left(n-k\right)!}\left(z-a\right)^{n-k}f_{n}\left(a\right)
+\end{align*}
+
+\end_inset
+
+Werte nun an der Stelle 
+\begin_inset Formula $a$
+\end_inset
+
+ aus:
+\begin_inset Formula 
+\begin{align*}
+f^{\left(k\right)}\left(a\right) & =k!\cdot f_{k}\left(a\right)\\
+f_{k}\left(a\right) & =\frac{f^{\left(k\right)}\left(a\right)}{k!}
+\end{align*}
+
+\end_inset
+
+Setze dies ein und erhalte:
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =f\left(a\right)+f'\left(a\right)\left(z-a\right)+\ldots+\frac{f^{\left(n-1\right)}}{\left(n-1\right)!}\left(z-a\right)^{n-1}+\left(z-a\right)^{n}f_{n}\left(a\right)
+\end{align*}
+
+\end_inset
+
+Bestimme nun das Restglied:
+\end_layout
+
+\begin_layout Standard
+Da 
+\begin_inset Formula $f_{n}$
+\end_inset
+
+ holomorph ist, gilt:
+\begin_inset Formula 
+\begin{align*}
+f_{n}\left(z\right) & =\frac{1}{2\pi\ii}\oint_{C}\frac{f_{n}\left(\zeta\right)}{\zeta-z}\dd\zeta
+\end{align*}
+
+\end_inset
+
+Setze nun 
+\begin_inset Formula $z=\zeta$
+\end_inset
+
+ in die Taylorreihe ein und löse nach 
+\begin_inset Formula $f_{n}\left(\zeta\right)$
+\end_inset
+
+ auf:
+\begin_inset Formula 
+\begin{align*}
+f_{n}\left(\zeta\right) & =\frac{f\left(\zeta\right)}{\left(\zeta-a\right)^{n}}-\frac{f\left(a\right)}{\left(\zeta-a\right)^{n}}-\frac{f'\left(a\right)}{\left(\zeta-a\right)^{n-1}}-\ldots-\frac{f^{\left(n-1\right)}\left(a\right)}{\left(n-1\right)!\left(\zeta-a\right)}
+\end{align*}
+
+\end_inset
+
+Setzt man dies in das Integral ein, so erhält man:
+\begin_inset Formula 
+\begin{align*}
+f_{n}\left(z\right) & =\frac{1}{2\pi\ii}\oint_{C}\left(\frac{f\left(\zeta\right)}{\left(\zeta-a\right)^{n}}-\frac{f\left(a\right)}{\left(\zeta-a\right)^{n}}-\frac{f'\left(a\right)}{\left(\zeta-a\right)^{n-1}}-\ldots-\frac{f^{\left(n-1\right)}\left(a\right)}{\left(n-1\right)!\left(\zeta-a\right)}\right)\dd\zeta
+\end{align*}
+
+\end_inset
+
+Es bleibt zu zeigen, dass für 
+\begin_inset Formula $k\in\left\{ 0,\ldots,n-1\right\} $
+\end_inset
+
+ gilt:
+\begin_inset Formula 
+\begin{align*}
+\frac{f^{\left(k\right)}\left(a\right)}{k!}\oint_{C}\frac{\dd\zeta}{\left(\zeta-z\right)\left(\zeta-a\right)^{n-l}} & =0
+\end{align*}
+
+\end_inset
+
+Zeige dies induktiv:
+\end_layout
+
+\begin_layout Standard
+Setze 
+\begin_inset Formula $\nu:=n-k\in\left\{ 1,\ldots,n\right\} $
+\end_inset
+
+ und:
+\begin_inset Formula 
+\begin{align*}
+F_{\nu}\left(a\right) & :=\oint_{C}\frac{\dd\zeta}{\left(\zeta-z\right)\left(\zeta-a\right)^{\nu}}
+\end{align*}
+
+\end_inset
+
+Zu zeigen ist also 
+\begin_inset Formula $F_{\nu}\left(a\right)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Es folgt mit einer Partialbruchzerlegung:
+\begin_inset Formula 
+\begin{align*}
+F_{1}\left(a\right) & =\oint_{C}\frac{\dd\zeta}{\left(\zeta-z\right)\left(\zeta-a\right)}=\oint_{C}\dd\zeta\left(\frac{1}{\zeta-z}-\frac{1}{\zeta-a}\right)\cdot\frac{1}{z-a}\dd z=\\
+ & =\frac{1}{z-a}\left(2\pi\ii-2\pi\ii\right)=0
+\end{align*}
+
+\end_inset
+
+Denn sowohl 
+\begin_inset Formula $z$
+\end_inset
+
+, als auch 
+\begin_inset Formula $a$
+\end_inset
+
+ liegen im Inneren 
+\begin_inset Formula $B_{\varepsilon}\left(a\right)$
+\end_inset
+
+ der Kurve 
+\begin_inset Formula $C$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\frac{\dd}{\dd a}F_{\nu}\left(a\right) & =\oint_{C}\dd\zeta\frac{\dd}{\dd a}\left(\frac{1}{\left(\zeta-z\right)\left(\zeta-a\right)^{\nu}}\right)=\nu\cdot\oint_{C}\frac{\dd\zeta}{\left(\zeta-z\right)\left(\zeta-a\right)^{\nu+1}}=\nu\cdot F_{\nu+1}\left(a\right)
+\end{align*}
+
+\end_inset
+
+Da 
+\begin_inset Formula $F_{1}\left(a\right)=0$
+\end_inset
+
+ gilt, folgt:
+\begin_inset Formula 
+\begin{align*}
+F_{1}'\left(a\right) & =0 & F_{1}'\left(a\right) & =F_{2}\left(a\right)\\
+F_{2}'\left(a\right) & =0 & F_{2}'\left(a\right) & =2\cdot F_{3}\left(a\right)\\
+ & \quad\vdots
+\end{align*}
+
+\end_inset
+
+Also gilt 
+\begin_inset Formula $F_{\nu}\left(a\right)=0$
+\end_inset
+
+ für alle 
+\begin_inset Formula $\nu\in\left\{ 1,\ldots,n\right\} $
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Bemerkung und Definition 
+\series medium
+(Taylorformel, Taylorreihe)
+\end_layout
+
+\begin_layout Standard
+Die Schreibweise
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\sum_{k=0}^{n-1}\frac{f^{\left(k\right)}}{k!}\cdot\left(z-a\right)^{k}+f_{n}\left(z\right)\cdot\left(z-a\right)^{n}
+\end{align*}
+
+\end_inset
+
+wird als 
+\emph on
+Taylorformel
+\emph default
+ bezeichnet.
+\end_layout
+
+\begin_layout Standard
+Die Frage ist nun, wann die 
+\emph on
+Taylorreihe
+\emph default
+
+\begin_inset Formula 
+\begin{align*}
+\sum_{k=0}^{\infty}\frac{f^{\left(k\right)}}{k!}\cdot\left(z-a\right)^{k}
+\end{align*}
+
+\end_inset
+
+konvergiert, das heißt, wann das Restglied konvergiert, also wann gilt:
+\begin_inset Formula 
+\begin{align*}
+f_{n}\left(z\right)\cdot\left(z-a\right)^{n} & \xrightarrow{n\to\infty}0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem
+\end_layout
+
+\begin_layout Standard
+Seien 
+\begin_inset Formula $f:\Omega\to\mathbb{C}$
+\end_inset
+
+ holomorph, 
+\begin_inset Formula $a\in\Omega$
+\end_inset
+
+ und 
+\begin_inset Formula $\overline{B_{r}\left(a\right)}\subseteq\Omega$
+\end_inset
+
+ für ein 
+\begin_inset Formula $r\in\mathbb{R}_{>0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Dann konvergiert die Taylorreihe um 
+\begin_inset Formula $a$
+\end_inset
+
+ in 
+\begin_inset Formula $B_{r}\left(a\right)$
+\end_inset
+
+ absolut und stimmt mit 
+\begin_inset Formula $f$
+\end_inset
+
+ überein, es gilt also:
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\sum_{n=0}^{\infty}\frac{f^{\left(n\right)}\left(a\right)}{n!}\cdot\left(z-a\right)^{n}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Abbildung 
+\begin_inset Formula $\overline{B_{r}\left(a\right)}\subseteq\Omega$
+\end_inset
+
+ einfügen
+\end_layout
+
+\begin_layout Standard
+Dabei ist 
+\begin_inset Formula $C:=\partial B_{r}\left(a\right)$
+\end_inset
+
+ und 
+\begin_inset Formula $\delta=\inf_{\zeta\in C}\abs{z-\zeta}>0$
+\end_inset
+
+, denn es gilt 
+\begin_inset Formula $z\not\in\partial B_{r}\left(a\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+f_{n}\left(z\right)\cdot\left(z-a\right)^{n} & =\frac{1}{2\pi\ii}\cdot\oint_{C}\frac{f\left(\zeta\right)}{\left(\zeta-a\right)^{n}\left(\zeta-z\right)}\left(z-a\right)^{n}\dd\zeta
+\end{align*}
+
+\end_inset
+
+Schätze dies ab:
+\begin_inset Formula 
+\begin{align*}
+\abs{f_{n}\left(z\right)\left(z-a\right)^{n}} & \le\frac{1}{2\pi}\sup_{C}\left(\abs f\right)\cdot\frac{1}{r^{n}}\cdot\abs{z-a}^{n}\cdot\underbrace{\oint_{C}\frac{\abs{\dd z}}{\abs{\zeta-z}}}_{\le\frac{2\pi r}{\delta}}\le\\
+ & \le\frac{\sup_{C}\left(\abs f\right)}{\delta}\cdot r\cdot\Bigg(\underbrace{\frac{\abs{z-a}}{r}}_{<1}\Bigg)^{n}\xrightarrow{n\to\infty}0
+\end{align*}
+
+\end_inset
+
+Dies zeigt die Konvergenz der Taylorreihe und die Gleichheit mit 
+\begin_inset Formula $f$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Zeige nun die absolute Konvergenz:
+\end_layout
+
+\begin_layout Standard
+Die Reihe
+\begin_inset Formula 
+\begin{align*}
+\sum_{n=0}^{\infty}\frac{f^{\left(n\right)}\left(a\right)}{n!}\cdot\left(z-a\right)^{n}
+\end{align*}
+
+\end_inset
+
+habe den Konvergenzradius:
+\begin_inset Formula 
+\begin{align*}
+R & :=\left(\limsup_{n\to\infty}\left(\sqrt[n]{\abs{a_{n}}}\right)\right)^{-1}
+\end{align*}
+
+\end_inset
+
+Wir wissen wegen der Konvergenz in 
+\begin_inset Formula $B_{r}\left(a\right)$
+\end_inset
+
+, dass 
+\begin_inset Formula $R\ge r$
+\end_inset
+
+ ist.
+\end_layout
+
+\begin_layout Standard
+Also gilt für 
+\begin_inset Formula $z\in\mathbb{C}$
+\end_inset
+
+ mit 
+\begin_inset Formula $\abs{z-a}<r$
+\end_inset
+
+ schon absolute Konvergenz, da die Potenzreihe im Inneren absolut konvergiert.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Beispiel
+\end_layout
+
+\begin_layout Standard
+Die Funktion
+\begin_inset Formula 
+\begin{align*}
+f:\mathbb{C}\setminus\pi\mathbb{Z} & \to\mathbb{C}\\
+z & \mapsto\frac{1}{\sin\left(z\right)}
+\end{align*}
+
+\end_inset
+
+ist holomorph, denn die Nullstellen von
+\begin_inset Formula 
+\begin{align*}
+\sin\left(z\right) & =\frac{1}{2\ii}\left(e^{\ii z}-e^{\minus\ii z}\right)
+\end{align*}
+
+\end_inset
+
+sind gerade 
+\begin_inset Formula $\pi\mathbb{Z}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Abbildung einfügen
+\end_layout
+
+\begin_layout Standard
+Die Taylorreihe um 
+\begin_inset Formula $z$
+\end_inset
+
+ konvergiert auf 
+\begin_inset Formula $B_{r}\left(a\right)$
+\end_inset
+
+, falls 
+\begin_inset Formula $\overline{B_{r}\left(a\right)}\cap\pi\mathbb{Z}=\emptyset$
+\end_inset
+
+ ist.
+\end_layout
+
+\begin_layout Standard
+Falls 
+\begin_inset Formula $B_{r}\left(a\right)\cap\pi\mathbb{Z}\not=\emptyset$
+\end_inset
+
+ ist, konvergiert die Taylorreihe im Allgemeinen nicht.
+\end_layout
+
+\begin_layout Section
+Nullstellen und Pole
+\end_layout
+
+\begin_layout Standard
+Seien 
+\begin_inset Formula $f:\Omega\to\mathbb{C}$
+\end_inset
+
+ holomorph und 
+\begin_inset Formula $a\in\Omega$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Es gilt also für ein 
+\begin_inset Formula $\varepsilon\in\mathbb{R}_{>0}$
+\end_inset
+
+ mit 
+\begin_inset Formula $B_{\varepsilon}\left(a\right)\subseteq\Omega$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\sum_{n=0}^{\infty}\frac{f^{\left(n\right)}\left(a\right)}{n!}\left(z-a\right)^{n}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Satz
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Satz-fna0dannf0"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ist 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ zusammenhängend und gilt 
+\begin_inset Formula $f^{\left(n\right)}\left(a\right)=0$
+\end_inset
+
+ für alle 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+, so ist 
+\begin_inset Formula $f=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Definiere:
+\begin_inset Formula 
+\begin{align*}
+E_{1} & :=\left\{ \zeta\in\Omega\Big|\fall_{n\in\mathbb{N}}:f^{\left(n\right)}\left(\zeta\right)=0\right\} \\
+E_{2} & :=\left\{ \zeta\in\Omega\Big|\exs_{n\in\mathbb{N}}:f^{\left(n\right)}\left(\zeta\right)\not=0\right\} 
+\end{align*}
+
+\end_inset
+
+Dann ist 
+\begin_inset Formula $\Omega=E_{1}\dot{\cup}E_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $E_{1}$
+\end_inset
+
+ ist offen, denn für 
+\begin_inset Formula $\zeta\in E_{1}$
+\end_inset
+
+ und 
+\begin_inset Formula $z\in B_{\delta}\left(\zeta\right)$
+\end_inset
+
+ gilt:
+\begin_inset Formula 
+\begin{align*}
+0 & =\sum_{n=0}^{\infty}\frac{f^{\left(n\right)}\left(\zeta\right)}{n!}\left(z-\zeta\right)^{n}=f\left(z\right)
+\end{align*}
+
+\end_inset
+
+Also ist 
+\begin_inset Formula $f^{\left(n\right)}\left(z\right)=0$
+\end_inset
+
+ für alle 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ und daher 
+\begin_inset Formula $z\in E_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $E_{2}$
+\end_inset
+
+ ist offen, denn für 
+\begin_inset Formula $\zeta\in E_{2}$
+\end_inset
+
+ und 
+\begin_inset Formula $z\in B_{\delta}\left(\zeta\right)$
+\end_inset
+
+ gibt es ein 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+, sodass 
+\begin_inset Formula $f^{\left(n\right)}\left(\zeta\right)\not=0$
+\end_inset
+
+ ist.
+ Also ist 
+\begin_inset Formula $f^{\left(n\right)}\left(z\right)\not=0$
+\end_inset
+
+ und daher 
+\begin_inset Formula $z\in E_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Da 
+\begin_inset Formula $a\in E_{1}$
+\end_inset
+
+ ist und 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ zusammenhängend ist, folgt 
+\begin_inset Formula $E_{2}=\emptyset$
+\end_inset
+
+, also 
+\begin_inset Formula $f=0$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Satz
+\end_layout
+
+\begin_layout Standard
+Seien 
+\begin_inset Formula $\Omega\subseteq\mathbb{C}$
+\end_inset
+
+ offen und zusammenhängend, 
+\begin_inset Formula $f:\Omega\to\mathbb{C}$
+\end_inset
+
+ eine holomorphe Funktion mit 
+\begin_inset Formula $f\not=0$
+\end_inset
+
+, 
+\begin_inset Formula $a\in\Omega$
+\end_inset
+
+ und 
+\begin_inset Formula $f\left(a\right)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Dann gibt es ein 
+\begin_inset Formula $n>0$
+\end_inset
+
+ und eine holomorphe Funktion 
+\begin_inset Formula $f:B_{\varepsilon}\left(a\right)\to\mathbb{C}$
+\end_inset
+
+ mit 
+\begin_inset Formula $f_{n}\left(a\right)\not=0$
+\end_inset
+
+, sodass gilt:
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\left(z-a\right)^{n}f_{n}\left(z\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Nach Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Satz-fna0dannf0"
+
+\end_inset
+
+ gibt es ein 
+\begin_inset Formula $n\in\mathbb{N}_{>0}$
+\end_inset
+
+ mit 
+\begin_inset Formula $f^{\left(n\right)}\left(a\right)\not=0$
+\end_inset
+
+ und wir können dieses minimal wählen.
+\end_layout
+
+\begin_layout Standard
+Betrachte nun die Taylorformel mit 
+\begin_inset Formula $f^{\left(1\right)}\left(a\right)=\ldots=f^{\left(n-1\right)}\left(a\right)=0$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\sum_{k=0}^{n-1}\frac{f^{\left(k\right)}\left(a\right)}{k!}\cdot\left(z-a\right)^{n}+\left(z-a\right)^{n}\cdot f_{n}\left(z\right)=\left(z-a\right)^{n}\cdot f_{n}\left(z\right)
+\end{align*}
+
+\end_inset
+
+Zudem gilt:
+\begin_inset Formula 
+\begin{align*}
+f_{n}\left(a\right) & =\frac{f^{\left(n\right)}\left(a\right)}{n!}\not=0
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Satz und Definition 
+\series medium
+(isoliert)
+\end_layout
+
+\begin_layout Standard
+Die Nullstellen einer holomorphen Funktion 
+\begin_inset Formula $f\not=0$
+\end_inset
+
+, die nicht identisch verschwindet, sind 
+\emph on
+isoliert
+\emph default
+, das heißt falls 
+\begin_inset Formula $f\left(a\right)=0$
+\end_inset
+
+ ist, so gibt es ein 
+\begin_inset Formula $\varepsilon\in\mathbb{R}_{>0}$
+\end_inset
+
+ mit 
+\begin_inset Formula $f\left(z\right)\not=0$
+\end_inset
+
+ für alle 
+\begin_inset Formula $z\in B_{\varepsilon}\left(a\right)\setminus\left\{ a\right\} $
+\end_inset
+
+ und 
+\begin_inset Formula $B_{\varepsilon}\left(a\right)\subseteq\Omega$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Verwende die Darstellung
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\left(z-a\right)^{n}\cdot f_{n}\left(z\right)
+\end{align*}
+
+\end_inset
+
+mit:
+\begin_inset Formula 
+\begin{align*}
+f_{n}\left(a\right) & \not=0
+\end{align*}
+
+\end_inset
+
+Da 
+\begin_inset Formula $f_{n}$
+\end_inset
+
+ stetig ist, folgt 
+\begin_inset Formula $f_{n}\left(z\right)\not=0$
+\end_inset
+
+ auf 
+\begin_inset Formula $B_{\varepsilon}\left(a\right)$
+\end_inset
+
+ für ein 
+\begin_inset Formula $\varepsilon\in\mathbb{R}_{>0}$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Satz
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Satz-fgHolomfIstgAufMengeHaeufungspunkt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Seien 
+\begin_inset Formula $f,g:\Omega\to\mathbb{C}$
+\end_inset
+
+ holomorph, 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ zusammenhängend und 
+\begin_inset Formula $f\left(z\right)=g\left(z\right)$
+\end_inset
+
+ auf einer Menge, die 
+\emph on
+in 
+\begin_inset Formula $\Omega$
+\end_inset
+
+
+\emph default
+ einen Häufungspunkt besitzt.
+\end_layout
+
+\begin_layout Standard
+Dann gilt 
+\begin_inset Formula $f=g$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Betrachte 
+\begin_inset Formula $h\left(z\right):=f\left(z\right)-g\left(z\right)$
+\end_inset
+
+.
+ Sei 
+\begin_inset Formula $a\in\Omega$
+\end_inset
+
+ der Häufungspunkt.
+\end_layout
+
+\begin_layout Standard
+Dann ist 
+\begin_inset Formula $h\left(a\right)=0$
+\end_inset
+
+, aber 
+\begin_inset Formula $a$
+\end_inset
+
+ ist keine isolierte Nullstelle von 
+\begin_inset Formula $h$
+\end_inset
+
+, weswegen 
+\begin_inset Formula $h=0$
+\end_inset
+
+ ist.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Beispiel
+\end_layout
+
+\begin_layout Standard
+Betrachte die Funktion:
+\begin_inset Formula 
+\begin{align*}
+f:\mathbb{R}\setminus\left\{ 0\right\}  & \to\mathbb{R}\\
+x & \mapsto\sin\left(\frac{1}{x}\right)
+\end{align*}
+
+\end_inset
+
+Die Nullstellen sind mit 
+\begin_inset Formula $n\in\mathbb{Z}\setminus\left\{ 0\right\} $
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{x} & =n\pi\\
+x & =\frac{1}{n\pi}
+\end{align*}
+
+\end_inset
+
+Analog im Komplexen: Die Funktion
+\begin_inset Formula 
+\begin{align*}
+f:\mathbb{C}\setminus\left\{ 0\right\}  & \to\mathbb{C}\\
+z & \mapsto\sin\left(\frac{1}{z}\right)
+\end{align*}
+
+\end_inset
+
+ist holomorph und hat die Nullstellen 
+\begin_inset Formula ${\displaystyle z_{n}=\frac{1}{n\pi}}$
+\end_inset
+
+ für 
+\begin_inset Formula $n\in\mathbb{Z}\setminus\left\{ 0\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Die Folge 
+\begin_inset Formula $\left(z_{n}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+ hat den Häufungspunkt 
+\begin_inset Formula $z=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Aber da 
+\begin_inset Formula $0$
+\end_inset
+
+ nicht im Definitionsbereich von 
+\begin_inset Formula $f$
+\end_inset
+
+ liegt, gibt es keinen Widerspruch zu Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Satz-fgHolomfIstgAufMengeHaeufungspunkt"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Wir sehen (vergleiche Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Definition-KlassifizierungSingularitaet"
+
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Itemize
+0 ist keine hebbare Singularität.
+\end_layout
+
+\begin_layout Itemize
+0 ist eine 
+\emph on
+wesentliche
+\emph default
+ Singularität (kein Pol!).
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Abbildung 
+\begin_inset Formula $\sin\left(\frac{1}{x}\right)$
+\end_inset
+
+ einfügen
 \end_layout
 
 \begin_layout Standard
@@ -26222,7 +27678,7 @@ Beweis
 \end_layout
 
 \begin_layout Standard
-Betrachte
+Betrachte die Funktion
 \begin_inset Formula 
 \begin{align*}
 f\left(z\right) & =\frac{1}{\sin\left(\frac{1}{z}\right)}
@@ -26249,7 +27705,9 @@ auf
 \end_layout
 
 \begin_layout Standard
-TODO: Abb2
+
+\color green
+TODO: Abb2 einfügen
 \end_layout
 
 \begin_layout Standard
@@ -26261,6 +27719,13 @@ TODO: Abb2
 Definition 
 \series medium
 (isolierte, hebbare, wesentliche Singularität, Pol)
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Definition-KlassifizierungSingularitaet"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -26272,11 +27737,11 @@ Sei
 \begin_inset Formula $a\in\Omega$
 \end_inset
 
-, 
+ und 
 \begin_inset Formula $f:\Omega\setminus\left\{ a\right\} \to\mathbb{C}$
 \end_inset
 
-.
+ eine Funktion.
 \end_layout
 
 \begin_layout Standard
@@ -26321,10 +27786,7 @@ holomorph ist, es also in
 \end_inset
 
  keine weitere Singularität gibt.
-\end_layout
-
-\begin_layout Itemize
-Sei 
+ Sei 
 \begin_inset Formula $a$
 \end_inset
 
@@ -26333,9 +27795,9 @@ Sei
 \end_inset
 
 .
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Itemize
 Falls 
 \begin_inset Formula ${\displaystyle \lim_{a\not=z\to a}}\left(z-a\right)f\left(z\right)=0$
 \end_inset
@@ -26348,18 +27810,6 @@ hebbar
 \end_layout
 
 \begin_layout Itemize
-Sei 
-\begin_inset Formula $a$
-\end_inset
-
- eine isolierte Singularität von 
-\begin_inset Formula $f$
-\end_inset
-
-.
-\begin_inset Newline newline
-\end_inset
-
 Falls 
 \begin_inset Formula ${\displaystyle \lim_{a\not=z\to a}}f\left(z\right)=\infty$
 \end_inset
@@ -26404,7 +27854,17 @@ wesentliche Singularität
 \begin_inset Newline newline
 \end_inset
 
-TODO: Abb2
+
+\color green
+TODO: Abb2 einfügen ??
+\end_layout
+
+\begin_layout Subsubsection*
+Beachte
+\end_layout
+
+\begin_layout Standard
+Nach unserer Konvention hat man diese Begriffe nur für isolierte Singularitäten.
 \end_layout
 
 \begin_layout Subsection
@@ -26414,12 +27874,12 @@ Satz und Definition
 \end_layout
 
 \begin_layout Standard
-In einer Umgebung jeder Polstelle kann 
-\begin_inset Formula $f$
+In einer Umgebung 
+\begin_inset Formula $B_{\varepsilon}\left(a\right)$
 \end_inset
 
- in einer Umgebung 
-\begin_inset Formula $B_{\varepsilon}\left(a\right)$
+ jeder Polstelle kann 
+\begin_inset Formula $f$
 \end_inset
 
  dargestellt werden als
@@ -26553,21 +28013,6 @@ f_{n}\left(z\right) & =\frac{1}{g_{n}\left(z\right)}
 \end_inset
 
 holomorph.
-\end_layout
-
-\begin_layout Standard
-TODO: Bracht man folgende Anmerkung?
-\end_layout
-
-\begin_layout Standard
-(Eventuell 
-\begin_inset Formula $\varepsilon$
-\end_inset
-
- verkleinern, um Nullstellen zu vermeiden.)
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -26641,18 +28086,26 @@ Beispiel
 \end_layout
 
 \begin_layout Standard
+\begin_inset Formula ${\displaystyle \frac{1}{\sin\left(\frac{1}{x}\right)}}$
+\end_inset
+
+ hat bei 
+\begin_inset Formula $z=0$
+\end_inset
+
+ eine Singularität, die nicht isoliert ist, also auch keine wesentliche
+ Singularität ist.
+\end_layout
+
+\begin_layout Standard
 Nun zu den wesentlichen Singularitäten:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula ${\displaystyle \frac{1}{\sin\left(\frac{1}{x}\right)}}$
-\end_inset
-
- oder 
 \begin_inset Formula $\sin\left(\frac{1}{x}\right)$
 \end_inset
 
- an der Stelle 0.
+ hat an der Stelle 0 eine wesentliche Singularität.
 \begin_inset Formula 
 \begin{align*}
 f\left(z\right) & =e^{\frac{1}{z}}=\sum_{n=0}^{\infty}\frac{1}{n!}\frac{1}{z^{n}}:\mathbb{C}\setminus\left\{ 0\right\} \to\mathbb{C}\text{ holomorph}
@@ -26694,16 +28147,14 @@ holomorph, da in
  beliebig hohe Polordnungen auftreten.
 \begin_inset Formula 
 \begin{align*}
-f\left(z\right) & =e^{\frac{1}{z}}=e^{\frac{\overline{z}}{\left|z\right|^{2}}}=\exp\left(\frac{\text{Re}\left(z\right)-\ii\cdot\text{Im}\left(z\right)}{\left|z\right|^{2}}\right)=\underbrace{\exp\left(\frac{\text{Re}\left(z\right)}{\left|z\right|^{2}}\right)}_{>0}\cdot\underbrace{\exp\left(-\frac{\ii\cdot\text{Im}\left(z\right)}{\left|z\right|^{2}}\right)}_{\text{Phasenfaktor}}
+f\left(z\right) & =e^{\frac{1}{z}}=e^{\frac{\overline{z}}{\abs z^{2}}}=\exp\left(\frac{\text{Re}\left(z\right)-\ii\cdot\text{Im}\left(z\right)}{\abs z^{2}}\right)=\underbrace{\exp\left(\frac{\text{Re}\left(z\right)}{\abs z^{2}}\right)}_{>0}\cdot\underbrace{\exp\left(-\frac{\ii\cdot\text{Im}\left(z\right)}{\abs z^{2}}\right)}_{\text{Phasenfaktor}}
 \end{align*}
 
 \end_inset
 
 
-\begin_inset Formula ${\displaystyle }$
-\end_inset
-
-TODO: Abb3
+\color green
+TODO: Abb3 einfügen
 \end_layout
 
 \begin_layout Standard
@@ -26714,13 +28165,13 @@ Auf der imaginären Achse ist
 , also ist
 \begin_inset Formula 
 \begin{align*}
-f\left(z\right) & =\exp\left(-\frac{\ii\cdot\text{Im}\left(z\right)}{\left|z\right|^{2}}\right)
+f\left(z\right) & =\exp\left(\minus\frac{\ii\cdot\text{Im}\left(z\right)}{\abs z^{2}}\right)
 \end{align*}
 
 \end_inset
 
-und daher 
-\begin_inset Formula $\left|f\left(z\right)\right|=1$
+und daher ist 
+\begin_inset Formula $\abs{f\left(z\right)}=1$
 \end_inset
 
 , aber 
@@ -26738,7 +28189,7 @@ Auf der reellen Achse ist
 , also gilt:
 \begin_inset Formula 
 \begin{align*}
-f\left(z\right) & =\exp\left(\frac{\text{Re}\left(z\right)}{\left|z\right|^{2}}\right)\stackrel{z\to0}{\longrightarrow}\infty
+f\left(z\right) & =\exp\left(\frac{\text{Re}\left(z\right)}{\abs z^{2}}\right)\xrightarrow{z\to0}\infty
 \end{align*}
 
 \end_inset
@@ -26819,11 +28270,13 @@ Ansonsten gäbe es ein
 
 \end_inset
 
-TODO: Abb4
+
+\color green
+TODO: Abb4 einfügen
 \end_layout
 
 \begin_layout Standard
-Dann wäre
+Dann würde gelten:
 \begin_inset Formula 
 \begin{align*}
 \lim_{a\not=z\to a}\left|\frac{1}{z-a}\left(f\left(z\right)-A\right)\right| & =\lim_{a\not=z\to a}\underbrace{\frac{1}{\left|z-a\right|}}_{=\infty}\underbrace{\left|f\left(z\right)-A\right|}_{>\kappa}=\infty
@@ -26846,12 +28299,12 @@ Daher folgt:
  in der Riemannschen Zahlenkugel.)
 \begin_inset Formula 
 \begin{align*}
-g\left(z\right) & =\frac{1}{\left(z-a\right)^{n}}g_{n}\left(z\right)=\frac{1}{z-a}\left(f\left(z\right)-A\right)
+g\left(z\right) & =\frac{1}{\left(z-a\right)^{n}}\cdot g_{n}\left(z\right)=\frac{1}{z-a}\left(f\left(z\right)-A\right)
 \end{align*}
 
 \end_inset
 
- 
+Dabei ist 
 \begin_inset Formula $g_{n}\left(z\right)$
 \end_inset
 
@@ -26900,9 +28353,6 @@ Wir haben also eine hebbare Singularität
 \end_inset
 
 , aber keine wesentliche Singularität.
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -26938,12 +28388,14 @@ Sei
 .
 \begin_inset Formula 
 \begin{align*}
-\Omega\supseteq\mathcal{R} & =\left\{ z\in\mathbb{C}|r<\left|z\right|<R\right\} 
+\Omega\supseteq\mathcal{R} & :=\left\{ z\in\mathbb{C}\Big|r<\left|z\right|<R\right\} 
 \end{align*}
 
 \end_inset
 
-TODO: Abb5
+
+\color green
+TODO: Abb5 einfügen
 \end_layout
 
 \begin_layout Subsection
@@ -27010,7 +28462,7 @@ Theorem
 
 \begin_layout Standard
 Jede auf 
-\begin_inset Formula $\Omega\supseteq\mathcal{R}$
+\begin_inset Formula $\Omega$
 \end_inset
 
  holomorphe Funktion 
@@ -27044,28 +28496,15 @@ Das heißt es gibt
  übereinstimmt.
 \begin_inset Formula 
 \begin{align*}
-c_{n} & =\frac{1}{2\pi\ii}\ointctrclockwise_{\partial B_{R}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta^{n+1}}\dd\zeta
+c_{n} & :=\begin{cases}
+{\displaystyle \frac{1}{2\pi\ii}\ointctrclockwise_{\partial B_{R}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta^{n+1}}\dd\zeta} & \text{falls }n\ge0\\
+{\displaystyle \frac{1}{2\pi\ii}\ointctrclockwise_{\partial B_{r}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta^{n+1}}\dd\zeta} & \text{falls }n<0
+\end{cases}
 \end{align*}
 
 \end_inset
 
-Falls 
-\begin_inset Formula $n\ge0$
-\end_inset
 
-.
-\begin_inset Formula 
-\begin{align*}
-c_{n} & =\frac{1}{2\pi\ii}\ointctrclockwise_{\partial B_{r}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta^{n+1}}\dd\zeta
-\end{align*}
-
-\end_inset
-
-Falls 
-\begin_inset Formula $n<0$
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -27073,7 +28512,9 @@ Beweis
 \end_layout
 
 \begin_layout Standard
-TODO: Abb6
+
+\color green
+TODO: Abb6 einfügen
 \end_layout
 
 \begin_layout Standard
@@ -27099,39 +28540,37 @@ f\left(z\right) & =\frac{1}{2\pi\ii}\ointctrclockwise_{\partial B_{R}\left(0\rig
 
 \end_layout
 
-\begin_layout Subsubsection*
-Bemerkung
-\end_layout
-
 \begin_layout Standard
-Wir müssen die Kontur 
+Bemerkung: Wir müssen die Kontur 
 \begin_inset Formula $C_{l}$
 \end_inset
 
  so wählen, dass 
-\begin_inset Formula $C_{l}\subseteq\Delta:=B_{\zeta}\left(a\right)\subseteq\Omega$
+\begin_inset Formula $C_{l}\subseteq\Delta:=B_{\varepsilon}\left(a\right)\subseteq\Omega$
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Standard
-TODO: Abb7
+
+\color green
+TODO: Abb7 einfügen
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula $f\left(\zeta\right)$
 \end_inset
 
- ist holomorph im Innern von 
+ ist im Innern von 
 \begin_inset Formula $C_{2}$
 \end_inset
 
-.
+ holomorph.
 \begin_inset Formula 
 \begin{align*}
-f_{1}\left(z\right) & =\frac{1}{2\pi\ii}\oint_{\partial B_{R}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta\\
-f_{2}\left(z\right) & =-\frac{1}{2\pi\ii}\oint_{\partial B_{r}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta
+f_{1}\left(z\right) & =\phantom{\minus}\frac{1}{2\pi\ii}\oint_{\partial B_{R}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta\\
+f_{2}\left(z\right) & =\minus\frac{1}{2\pi\ii}\oint_{\partial B_{r}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta
 \end{align*}
 
 \end_inset
@@ -27179,7 +28618,7 @@ Beachte: Im Allgemeinen ist
 \begin_inset Formula $f_{1}$
 \end_inset
 
- kann im Folgenden entwickelt werden, also:/
+ kann im Folgenden entwickelt werden, definiert
 \begin_inset Formula 
 \begin{align*}
 f_{1}\left(z\right) & =\sum_{n=0}^{\infty}c_{n}z^{n}
@@ -27187,7 +28626,7 @@ f_{1}\left(z\right) & =\sum_{n=0}^{\infty}c_{n}z^{n}
 
 \end_inset
 
-definiert den Nebenteil der Laurent-Reihe.
+den Nebenteil der Laurent-Reihe.
 \end_layout
 
 \begin_layout Standard
@@ -27195,12 +28634,12 @@ Betrachte
 \begin_inset Formula $\left|\zeta\right|=R$
 \end_inset
 
-, 
+ und 
 \begin_inset Formula $\left|z\right|<R$
 \end_inset
 
 , also 
-\begin_inset Formula $\left|\frac{z}{\zeta}\right|<1$
+\begin_inset Formula ${\displaystyle \left|\frac{z}{\zeta}\right|<1}$
 \end_inset
 
 .
@@ -27215,7 +28654,7 @@ Betrachte
 
 \begin_inset Formula 
 \begin{align*}
-f_{1}\left(z\right) & =\frac{1}{2\pi\ii}\oint f\left(\zeta\right)\left(\sum_{n=0}^{\infty}\left(\frac{z}{\zeta}\right)^{n}\cdot\frac{1}{\zeta}\right)\dd\zeta=\sum_{n=0}^{\infty}z^{n}\underbrace{\left(\frac{1}{2\pi\ii}\oint\frac{f\left(\zeta\right)}{\zeta^{n+1}}\dd\zeta\right)}_{=:c_{n}}
+f_{1}\left(z\right) & =\frac{1}{2\pi\ii}\oint_{\partial B_{R}\left(0\right)}f\left(\zeta\right)\left(\sum_{n=0}^{\infty}\left(\frac{z}{\zeta}\right)^{n}\cdot\frac{1}{\zeta}\right)\dd\zeta=\sum_{n=0}^{\infty}z^{n}\underbrace{\left(\frac{1}{2\pi\ii}\oint_{\partial B_{R}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta^{n+1}}\dd\zeta\right)}_{=:c_{n}}
 \end{align*}
 
 \end_inset
@@ -27224,23 +28663,22 @@ Für
 \begin_inset Formula $f_{2}$
 \end_inset
 
- analog.
- 
+ folgt analog mit 
 \begin_inset Formula $\left|\zeta\right|=r$
 \end_inset
 
- 
+ und 
 \begin_inset Formula $\left|z\right|>r$
 \end_inset
 
 , also 
-\begin_inset Formula $\left|\frac{z}{\zeta}\right|>1$
+\begin_inset Formula ${\displaystyle \left|\frac{z}{\zeta}\right|>1}$
 \end_inset
 
 .
 \begin_inset Formula 
 \begin{align*}
-\frac{1}{\zeta-z} & =-\frac{1}{z}\left(\frac{1}{1-\frac{\zeta}{z}}\right)=-\frac{1}{z}\sum_{n=0}^{\infty}\left(\frac{\zeta}{z}\right)^{n}
+\frac{1}{\zeta-z} & =\minus\frac{1}{z}\left(\frac{1}{1-\frac{\zeta}{z}}\right)=\minus\frac{1}{z}\sum_{n=0}^{\infty}\left(\frac{\zeta}{z}\right)^{n}
 \end{align*}
 
 \end_inset
@@ -27248,7 +28686,139 @@ Für
 Also folgt:
 \begin_inset Formula 
 \begin{align*}
-f_{2}\left(z\right) & =\frac{1}{2\pi\ii}\oint_{\partial B_{r}\left(0\right)}f\left(\zeta\right)\frac{1}{z}\left(\sum_{n=0}^{\infty}\left(\frac{\zeta}{z}\right)^{n}\right)\dd\zeta=\sum_{n=0}^{\infty}\frac{1}{z^{n+1}}\cdot\underbrace{\left(\frac{1}{2\pi\ii}\oint_{\partial B_{r}\left(0\right)}f\left(\zeta\right)\cdot\zeta^{n}\dd\zeta\right)}_{=c_{-\left(n+1\right)}}
+f_{2}\left(z\right) & =\frac{1}{2\pi\ii}\oint_{\partial B_{r}\left(0\right)}f\left(\zeta\right)\frac{1}{z}\left(\sum_{k=0}^{\infty}\left(\frac{\zeta}{z}\right)^{k}\right)\dd\zeta=\sum_{k=0}^{\infty}\frac{1}{z^{k+1}}\cdot\underbrace{\left(\frac{1}{2\pi\ii}\oint_{\partial B_{r}\left(0\right)}f\left(\zeta\right)\cdot\zeta^{k}\dd\zeta\right)}_{=c_{\minus\left(k+1\right)}}
+\end{align*}
+
+\end_inset
+
+Dabei darf man das Integral und die unendliche Summer vertauschen, weil
+ die geometrische Reihe gleichmäßig in 
+\begin_inset Formula $\zeta$
+\end_inset
+
+ absolut konvergiert.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Fr 27.1.2012
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Satz
+\end_layout
+
+\begin_layout Standard
+Die Laurent-Reihe
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & :=\sum_{n=-\infty}^{\infty}c_{n}z^{n}
+\end{align*}
+
+\end_inset
+
+sei auf 
+\begin_inset Formula $\mathcal{R}=\left\{ z\in\mathbb{C}\big|r\le\abs z\le R\right\} $
+\end_inset
+
+ konvergent und stelle 
+\begin_inset Formula $f$
+\end_inset
+
+ dar.
+\end_layout
+
+\begin_layout Standard
+Dann gilt für jedes 
+\begin_inset Formula $\varrho\in\mathbb{R}$
+\end_inset
+
+ mit 
+\begin_inset Formula $r<\varrho<R$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+c_{n} & :=\frac{1}{2\pi\ii}\oint_{\partial B_{\varrho}\left(0\right)}\frac{f\left(z\right)}{z^{n+1}}\dd z
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Da die Laurent-Reihe nach Voraussetzung absolut und gleichmäßig in 
+\begin_inset Formula $z$
+\end_inset
+
+ mit 
+\begin_inset Formula $\abs z=\varrho$
+\end_inset
+
+ konvergiert, kann man die Summe und das Integral vertauschen, womit folgt:
+\begin_inset Formula 
+\begin{align*}
+\oint_{\partial B_{\varrho}\left(0\right)}\frac{f\left(z\right)}{z^{n+1}}\dd z & =\sum_{k=-\infty}^{\infty}c_{k}\cdot\oint_{\partial B_{\varrho}\left(0\right)}z^{k-n-1}\dd z
+\end{align*}
+
+\end_inset
+
+Falls 
+\begin_inset Formula $k\ge n+1$
+\end_inset
+
+ oder 
+\begin_inset Formula $k<n$
+\end_inset
+
+ ist, ist 
+\begin_inset Formula ${\displaystyle F\left(z\right)=\frac{1}{k-n}z^{k-n}}$
+\end_inset
+
+ eine holomorphe Stammfunktion und es gilt:
+\begin_inset Formula 
+\begin{align*}
+\oint_{\partial B_{\varrho}\left(0\right)}z^{k-n-1}\dd z & =0
+\end{align*}
+
+\end_inset
+
+Falls 
+\begin_inset Formula $k=n$
+\end_inset
+
+ ist, gilt:
+\begin_inset Formula 
+\begin{align*}
+\oint_{\partial B_{\varrho}\left(0\right)}\frac{\dd z}{z} & =2\pi\ii
 \end{align*}
 
 \end_inset
@@ -27269,8 +28839,513 @@ qqed
 
 \end_layout
 
+\begin_layout Section
+Der Residuenkalkül
+\end_layout
+
 \begin_layout Standard
-TODO: Rest einfügen
+Seien 
+\begin_inset Formula $S:=\left\{ a_{n}\big|n\in A\subseteq\mathbb{N}\right\} $
+\end_inset
+
+ die Menge der Singularitäten, 
+\begin_inset Formula $f:\mathbb{C}\setminus S\to\mathbb{C}$
+\end_inset
+
+ holomorph und 
+\begin_inset Formula $S$
+\end_inset
+
+ habe keinen Häufungspunkt.
+\end_layout
+
+\begin_layout Subsubsection*
+Bemerkung
+\end_layout
+
+\begin_layout Standard
+Die Punkte in 
+\begin_inset Formula $S$
+\end_inset
+
+ sind isoliert, aber wesentliche Singularitäten sind möglich.
+ Wäre alle 
+\begin_inset Formula $a_{n}$
+\end_inset
+
+ Pole, so wäre 
+\begin_inset Formula $f$
+\end_inset
+
+ meromorph, was wir aber für das Folgende nicht voraussetzen wollen.
+\end_layout
+
+\begin_layout Subsection
+Definition
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $z_{o}\in S$
+\end_inset
+
+.
+ Wähle 
+\begin_inset Formula $\varepsilon\in\mathbb{R}_{>0}$
+\end_inset
+
+ so, dass 
+\begin_inset Formula $B_{\varepsilon}\left(z_{0}\right)\cap S=\left\{ z_{0}\right\} $
+\end_inset
+
+ ist.
+ Dann heißt
+\begin_inset Formula 
+\begin{align*}
+\text{Res}_{z_{0}}\left(f\right) & :=\frac{1}{2\pi\ii}\oint_{\partial B_{\varepsilon}\left(z_{0}\right)}f\left(z\right)\dd z
+\end{align*}
+
+\end_inset
+
+
+\emph on
+das Residuum
+\emph default
+ von 
+\begin_inset Formula $f$
+\end_inset
+
+ an der Stelle 
+\begin_inset Formula $z_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Diese Definition ist unabhängig von 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Um dies zu sehen, entwickelt man 
+\begin_inset Formula $f$
+\end_inset
+
+ in einer Laurent-Reihe auf 
+\begin_inset Formula $B_{\varepsilon}\left(z_{0}\right)\setminus\left\{ z_{0}\right\} $
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\sum_{n=\minus\infty}^{\infty}c_{n}\left(z-z_{0}\right)^{n}\\
+c_{n} & =\frac{1}{2\pi\ii}\oint_{\partial B_{\varepsilon}\left(z_{0}\right)}\frac{f\left(z\right)}{z^{n+1}}\dd z
+\end{align*}
+
+\end_inset
+
+Also ist das Residuum
+\begin_inset Formula 
+\begin{align*}
+\text{Res}_{z_{0}}\left(f\right) & =c_{-1}
+\end{align*}
+
+\end_inset
+
+und damit wohldefiniert sowie leicht berechenbar.
+\end_layout
+
+\begin_layout Subsection
+Beispiel
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{abclist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+abc
+\end_layout
+
+\end_inset
+
+ Betrachte die reziproke Sinusfunktion:
+\begin_inset Formula 
+\begin{align*}
+f:\mathbb{C}\setminus\pi\mathbb{Z} & \to\mathbb{C}\\
+z & \mapsto f\left(z\right):=\frac{1}{\sin z}
+\end{align*}
+
+\end_inset
+
+Berechne das Residuum in 
+\begin_inset Formula $z_{0}=0$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\sin z & =\sum_{n=0}^{\infty}\left(\minus1\right)^{n}\frac{z^{2n+1}}{\left(2n+1\right)!}=z-\frac{z^{3}}{3!}+\ldots
+\end{align*}
+
+\end_inset
+
+Nun gilt:
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\frac{1}{z}\cdot\underbrace{\frac{z}{\sin z}}_{=:g\left(z\right)}
+\end{align*}
+
+\end_inset
+
+Die Funktion 
+\begin_inset Formula $g\left(z\right)$
+\end_inset
+
+ hat in 
+\begin_inset Formula $z=0$
+\end_inset
+
+ eine hebbare Singularität und es gilt:
+\begin_inset Formula 
+\begin{align*}
+g\left(z\right) & =1+\sum_{n=1}^{\infty}a_{n}z^{n}
+\end{align*}
+
+\end_inset
+
+Damit folgt:
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\underbrace{\frac{1}{z}}_{\text{Hauptteil}}+\underbrace{\sum_{n=0}^{\infty}a_{n-1}z^{n}}_{\text{Nebenteil}}
+\end{align*}
+
+\end_inset
+
+Also ist 
+\begin_inset Formula $\text{Res}_{0}\left(f\right)=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+abc
+\end_layout
+
+\end_inset
+
+ Betrachte die rationale Funktion:
+\begin_inset Formula 
+\begin{align*}
+f:\mathbb{C}\setminus\left\{ \pm\ii\right\}  & \to\mathbb{C}\\
+z & \mapsto f\left(z\right):=\frac{1}{1+z^{2}}
+\end{align*}
+
+\end_inset
+
+Berechne das Residuum in 
+\begin_inset Formula $z_{0}=\ii$
+\end_inset
+
+ mit Hilfe einer Partialbruchzerlegung:
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{1+z^{2}} & =\frac{1}{2\ii}\left(\frac{1}{z+\ii}-\frac{1}{z-\ii}\right)
+\end{align*}
+
+\end_inset
+
+Da 
+\begin_inset Formula ${\displaystyle \frac{1}{z+\ii}}$
+\end_inset
+
+ in 
+\begin_inset Formula $B_{\varepsilon}\left(\ii\right)$
+\end_inset
+
+ für 
+\begin_inset Formula $\varepsilon<2$
+\end_inset
+
+ holomorph ist, gilt:
+\begin_inset Formula 
+\begin{align*}
+\text{Res}_{\ii}\left(f\right) & =\minus\frac{1}{2\ii}=\frac{\ii}{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{abclist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem 
+\series medium
+(Residuensatz)
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ eine geschlossene, stückweise stetig differenzierbare Kurve:
+\begin_inset Formula 
+\begin{align*}
+\gamma:\left[a,b\right] & \to\mathbb{C}\setminus\left\{ S\right\} 
+\end{align*}
+
+\end_inset
+
+Dann gilt:
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{2\pi\ii}\oint_{\gamma}f\left(z\right)\dd z & =\sum_{a\in S}n\left(\gamma,a\right)\cdot\text{Res}_{a}\left(f\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Abbildung der Kurve einfügen
+\end_layout
+
+\begin_layout Standard
+Wähle 
+\begin_inset Formula $R$
+\end_inset
+
+ so groß, dass die Kurve 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ ganz in 
+\begin_inset Formula $\Delta=B_{R}\left(0\right)$
+\end_inset
+
+ liegt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\Delta\cap S$
+\end_inset
+
+ ist endlich, denn ansonsten hätte 
+\begin_inset Formula $S$
+\end_inset
+
+ einen Häufungspunkt in 
+\begin_inset Formula $\overline{\Delta}$
+\end_inset
+
+, was im Widerspruch zu unserer Annahme steht.
+\end_layout
+
+\begin_layout Standard
+Also gilt:
+\begin_inset Formula 
+\begin{align*}
+\Delta\cap S & =\left\{ a_{1},\ldots,a_{n}\right\} 
+\end{align*}
+
+\end_inset
+
+Wähle 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ so, dass für alle 
+\begin_inset Formula $k\in\left\{ 1,\ldots,n\right\} $
+\end_inset
+
+ schon 
+\begin_inset Formula $B_{\varepsilon}\left(a_{k}\right)\cap S=\left\{ a_{k}\right\} $
+\end_inset
+
+ und 
+\begin_inset Formula $B_{\varepsilon}\left(a_{k}\right)\cap\text{im}\left(\gamma\right)=\emptyset$
+\end_inset
+
+ gilt.
+\end_layout
+
+\begin_layout Standard
+Betrachte nun die Laurent-Reihe um 
+\begin_inset Formula $a_{k}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+f & =h_{a_{k}}+g_{a_{k}}\\
+h_{a_{k}}\left(z\right) & =\sum_{n=\minus\infty}^{\minus1}c_{n,a_{k}}\left(z-a_{k}\right)^{n} & \leftarrow\quad & \text{Hauptteil}\\
+g_{a_{k}}\left(z\right) & =\sum_{n=0}^{\infty}c_{n,a_{k}}\left(z-a_{k}\right)^{n} & \leftarrow\quad & \text{Nebenteil}
+\end{align*}
+
+\end_inset
+
+Der Hauptteil ist konvergent auf 
+\begin_inset Formula $\Delta\setminus\left\{ a_{k}\right\} $
+\end_inset
+
+ und gleichmäßig konvergent auf 
+\begin_inset Formula $\Delta\setminus B_{\varepsilon}\left(a_{k}\right)$
+\end_inset
+
+ und der Nebenteil ist holomorph.
+\end_layout
+
+\begin_layout Standard
+Man kann nun gliedweise integrieren:
+\begin_inset Formula 
+\begin{align*}
+\oint_{\gamma}h_{a_{k}}\left(z\right)\dd z & =\sum_{n=\minus\infty}^{\minus1}c_{n,a_{k}}\oint_{\gamma}\left(z-a_{k}\right)^{n}=2\pi\ii\cdot c_{\minus1,a_{k}}\cdot n\left(\gamma,a_{k}\right)
+\end{align*}
+
+\end_inset
+
+Letzteres gilt, da für 
+\begin_inset Formula $n\not=\minus1$
+\end_inset
+
+ eine holomorphe Stammfunktion existiert und für 
+\begin_inset Formula $n=\minus1$
+\end_inset
+
+ dies gerade die Definition der Umlaufzahl ist.
+ Somit folgt:
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{2\pi\ii}\oint_{\gamma}h_{a_{k}}\left(z\right)\dd z & =n\left(\gamma,a_{k}\right)\cdot\text{Res}_{a_{k}}\left(f\right)
+\end{align*}
+
+\end_inset
+
+Betrachte nun die Funktion:
+\begin_inset Formula 
+\begin{align*}
+g\left(z\right) & =f\left(z\right)-\sum_{k=1}^{n}h_{a_{k}}\left(z\right)
+\end{align*}
+
+\end_inset
+
+Diese ist auf 
+\begin_inset Formula $\Delta\setminus\left\{ a_{1},\ldots,a_{n}\right\} $
+\end_inset
+
+ holomorph und die Singularitäten bei den 
+\begin_inset Formula $a_{k}$
+\end_inset
+
+ sind hebbar, sodass es eine analytische Fortsetzung gibt.
+\end_layout
+
+\begin_layout Standard
+Das Cauchysche Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Thm-CauchyscherIntegralsatz"
+
+\end_inset
+
+ liefert nun:
+\begin_inset Formula 
+\begin{align*}
+0 & =\oint_{\gamma}g\left(z\right)\dd z=\oint_{\gamma}f\left(z\right)-\sum_{k=1}^{n}h_{a_{k}}\left(z\right)\dd z=\oint_{\gamma}f\left(z\right)\dd z-\sum_{k=1}^{n}\oint_{\gamma}h_{a_{k}}\left(z\right)\dd z\\
+\Rightarrow\quad\oint_{\gamma}f\left(z\right)\dd z & =\sum_{k=1}^{n}\oint_{\gamma}h_{a_{k}}\left(z\right)\dd z=\sum_{k=1}^{n}n\left(\gamma,a_{k}\right)\cdot\text{Res}_{a_{k}}\left(f\right)
+\end{align*}
+
+\end_inset
+
+Für alle Singularitäten 
+\begin_inset Formula $a\in S\setminus\Delta$
+\end_inset
+
+ ist 
+\begin_inset Formula $n\left(\gamma,a\right)=0$
+\end_inset
+
+, da 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ ganz in 
+\begin_inset Formula $S$
+\end_inset
+
+ liegt.
+\end_layout
+
+\begin_layout Standard
+Also folgt die Behauptung.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -27287,110 +29362,26 @@ status open
 
 \end_layout
 
-\begin_layout Standard
-Wiederholung:
+\begin_layout Subsection
+Beispiel
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $S\subseteq\mathbb{C}$
-\end_inset
 
- habe keinen Häufungspunkt, aber 
-\begin_inset Formula $S$
-\end_inset
-
- kann unendlich sein.
- Sei
-\begin_inset Formula 
-\begin{align*}
-f:\mathbb{C}\setminus\left\{ S\right\}  & \to\mathbb{C}
-\end{align*}
-
-\end_inset
-
-holomorph.
- Die Punkte in 
-\begin_inset Formula $S$
-\end_inset
-
- sind die Singularitäten und diese sind isoliert, aber wesentliche Singularitäte
-n sind möglich.
+\color green
+TODO: Abb1, Abb2 einfügen
 \end_layout
 
 \begin_layout Standard
-Betrachte die geschlossene, stückweise stetig differenzierbare Kurve:
+Betrachte die Funktion:
 \begin_inset Formula 
 \begin{align*}
-\gamma:\left[a,b\right] & \to\mathbb{C}\setminus\left\{ S\right\} 
+f\left(z\right) & =\frac{1}{\sqrt{z}}
 \end{align*}
 
 \end_inset
 
-Dann gilt nach dem Residuensatz:
-\begin_inset Formula 
-\begin{align*}
-\frac{1}{2\pi\ii}\oint_{\gamma}f\left(z\right)\dd z & =\sum_{a\in S}n\left(\gamma,a\right)\cdot\text{Res}_{a}\left(f\right)
-\end{align*}
-
-\end_inset
-
-Dabei ist
-\begin_inset Formula 
-\begin{align*}
-n\left(\gamma,a\right) & :=\frac{1}{2\pi\ii}\oint_{\gamma}\frac{\dd z}{z-a}\in\mathbb{N}
-\end{align*}
-
-\end_inset
-
-die Windungszahl und
-\begin_inset Formula 
-\begin{align*}
-\text{Res}_{a}\left(f\right) & =\frac{1}{2\pi\ii}\oint_{\partial B_{\varepsilon}\left(a\right)}f\left(z\right)\dd z
-\end{align*}
-
-\end_inset
-
-das Residuum, wobei 
-\begin_inset Formula $B_{\varepsilon}\left(a\right)\cap S=\left\{ a\right\} $
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Laurent-Entwicklung um 
-\begin_inset Formula $a\in S$
-\end_inset
-
-:
-\begin_inset Formula 
-\begin{align*}
-f\left(z\right) & =\sum_{n=-\infty}^{\infty}c_{n}\left(z-a\right)^{n}
-\end{align*}
-
-\end_inset
-
-Dann ist:
-\begin_inset Formula 
-\begin{align*}
-\text{Res}_{a}\left(f\right) & =c_{-1}
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-TODO: Abb1, Abb2
-\end_layout
-
-\begin_layout Standard
-Beispiel: 
-\begin_inset Formula ${\displaystyle \frac{1}{\sqrt{z}}}$
-\end_inset
-
-
+Es gilt:
 \begin_inset Formula 
 \begin{align*}
 \lim_{0\not=z\to0}z\cdot\frac{1}{\sqrt{z}} & =0
@@ -27398,8 +29389,7 @@ Beispiel:
 
 \end_inset
 
-Dies ist eine hebbare Singularität.
- Aber:
+Also ist 0 eine hebbare Singularität, aber es gilt auch:
 \begin_inset Formula 
 \begin{align*}
 \lim_{0\not=z\to0} & \frac{1}{\sqrt{z}}=\infty
@@ -27423,7 +29413,7 @@ Das Problem dabei ist, dass
 \begin_inset Formula $B_{\varepsilon}\left(0\right)\setminus\left\{ 0\right\} $
 \end_inset
 
- holomorph, also ist 0 keine isolierte Singularität.
+ holomorph, also 0 keine isolierte Singularität ist.
 \begin_inset Formula 
 \begin{align*}
 \frac{1}{\sqrt{z}} & =z^{-\frac{1}{2}}=e^{-\frac{1}{2}\log\left(z\right)}
@@ -27439,11 +29429,14 @@ Dies ist nur holomorph auf
 \end_layout
 
 \begin_layout Standard
-Ende der Wiederholung
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Betrachte Integrale über die ganze reelle Achse.
+Betrachte nun Integrale über die ganze reelle Achse:
 \end_layout
 
 \begin_layout Subsection
@@ -27464,10 +29457,7 @@ Sei
 
  eine rationale Funktion, die keine Pole auf der reellen Achse hat und im
  Unendlichen wenigstens quadratisch abfällt.
-\end_layout
-
-\begin_layout Standard
-Dann ist
+ Dann gilt:
 \begin_inset Formula 
 \begin{align*}
 \int_{-\infty}^{\infty}K\left(x\right)\dd x & =2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)>0}\text{Res}_{a}\left(K\right)
@@ -27483,7 +29473,19 @@ Beweis
 \end_layout
 
 \begin_layout Standard
-TODO: Abb3
+
+\color green
+TODO: Abb3 einfügen
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: 
+\begin_inset Formula $C_{1},C_{2}$
+\end_inset
+
+ definieren
 \end_layout
 
 \begin_layout Standard
@@ -27495,8 +29497,8 @@ Die Funktion
 \begin_inset Formula $\mathbb{C}$
 \end_inset
 
-, die alle Nullstellen von 
-\begin_inset Formula $Q$
+, die alle Nullstellen des Nenners 
+\begin_inset Formula $Q\left(z\right)$
 \end_inset
 
  sind.
@@ -27515,8 +29517,7 @@ Wähle den Radius
 \begin_inset Formula 
 \begin{align*}
 \oint_{C_{1}\cup C_{2}}K\left(z\right)\dd z & =2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)>0}\underbrace{n\left(C_{1}\cup C_{2},a\right)}_{=1}\cdot\text{Res}_{a}\left(f\right)=2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)>0}\text{Res}_{a}\left(K\right)\\
-\Rotate{=}\qquad\\
-\int_{-R}^{R}K\left(x\right)\dd x+\int_{C_{2}}K\left(z\right)\dd z & \stackrel{R\to\infty}{\longrightarrow}\int_{-\infty}^{\infty}K\left(x\right)\dd x
+ & =\int_{-R}^{R}K\left(x\right)\dd x+\int_{C_{2}}K\left(z\right)\dd z\stackrel{R\to\infty}{\longrightarrow}\int_{-\infty}^{\infty}K\left(x\right)\dd x
 \end{align*}
 
 \end_inset
@@ -27530,9 +29531,6 @@ Denn es gilt:
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -27553,7 +29551,7 @@ Beispiel
 \end_layout
 
 \begin_layout Standard
-Berechne:
+Berechnung des Integrals:
 \begin_inset Formula 
 \begin{align*}
 \int_{-\infty}^{\infty}\frac{1}{1+x^{2}}\dd x
@@ -27564,7 +29562,8 @@ Berechne:
 Die Funktion
 \begin_inset Formula 
 \begin{align*}
-f\left(z\right) & =\frac{1}{1+z^{2}}
+f:\mathbb{C}\setminus\left\{ \pm\ii\right\}  & \to\mathbb{C}\\
+z & \mapsto f\left(z\right)=\frac{1}{1+z^{2}}
 \end{align*}
 
 \end_inset
@@ -27578,6 +29577,11 @@ hat einen Pol, falls
 \end_inset
 
  ist.
+ Außerdem fällt 
+\begin_inset Formula $f$
+\end_inset
+
+ im Unendlichen quadratisch ab.
 \end_layout
 
 \begin_layout Standard
@@ -27599,7 +29603,7 @@ reference "sub:Prop-IntegralReelleAchse"
 Berechne das Residuum:
 \begin_inset Formula 
 \begin{align*}
-f\left(z\right) & =\left(\frac{1}{z+\ii}-\frac{1}{z-\ii}\right)\cdot\frac{\ii}{2}=-\frac{\ii}{2}\frac{1}{z-\ii}+\underbrace{\frac{\ii}{2}\frac{1}{z+\ii}}_{\text{holomorph in }B_{\varepsilon}\left(\ii\right)}
+f\left(z\right) & =\left(\frac{1}{z+\ii}-\frac{1}{z-\ii}\right)\cdot\frac{\ii}{2}=-\frac{\ii}{2}\frac{1}{z-\ii}+\underbrace{\frac{\ii}{2}\cdot\frac{1}{z+\ii}}_{\text{holomorph in }B_{\varepsilon}\left(\ii\right)}
 \end{align*}
 
 \end_inset
@@ -27654,7 +29658,8 @@ ist die Singularität bei
 \begin_inset Formula $h$
 \end_inset
 
- holomorph fortsetzbar und daher als Taylorreihe darstellbar, womit folgt:
+ holomorph fortsetzbar und als Taylorreihe darstellbar.
+ Damit folgt:
 \begin_inset Formula 
 \begin{align*}
 f\left(z\right) & =\sum_{k=-1}^{\infty}c_{k}\left(z-\ii\right)^{k}\\
@@ -27688,15 +29693,26 @@ Sei
 \begin_inset Formula $K\left(x\right)$
 \end_inset
 
- rational, habe keine Pole auf der reellen Achse und falle wenigstens wie
+ eine rationale Funktion, die keine Pole auf der reellen Achse habe und
+ im Unendlichen wenigstens quadratisch abfällt.
  
-\begin_inset Formula ${\displaystyle \frac{1}{x}}$
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Reicht hier schon, dass die Funktion wie 
+\begin_inset Formula $\frac{1}{z}$
 \end_inset
 
- ab.
+ abfällt?
+\end_layout
+
+\begin_layout Standard
+Dann gilt:
 \begin_inset Formula 
 \begin{align*}
-\int_{-\infty}^{\infty}e^{\ii x}K\left(x\right)\dd x & =2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)>0}\text{Res}_{a}\left(e^{\ii z}K\left(z\right)\right)
+\int_{-\infty}^{\infty}e^{\ii x}\cdot K\left(x\right)\dd x & =2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)>0}\text{Res}_{a}\left(e^{\ii z}K\left(z\right)\right)
 \end{align*}
 
 \end_inset
@@ -27709,15 +29725,38 @@ Beweis
 \end_layout
 
 \begin_layout Standard
-TODO: Abb4
+
+\color green
+TODO: Abb4 einfügen
 \end_layout
 
 \begin_layout Standard
+Es gilt:
 \begin_inset Formula 
 \begin{align*}
-\int_{C_{2}}e^{\ii z}K\left(z\right)\dd z & \le\sup_{z\in C_{2}}\left|e^{\ii z}K\left(z\right)\right|\cdot\pi R\\
 \left|e^{\ii z}\right| & =e^{\text{Re}\left(\ii z\right)}=e^{-\overbrace{\text{Im}\left(z\right)}^{\ge0}}\le1
 \end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\int_{C_{2}}e^{\ii z}K\left(z\right)\dd z & \le\sup_{z\in C_{2}}\left|e^{\ii z}K\left(z\right)\right|\cdot\pi R=\underbrace{\left|e^{\ii z}\right|}_{\le1}\cdot\underbrace{\sup_{z\in C_{2}}\left|K\left(z\right)\right|}_{\le\frac{C}{R^{2}}\text{ da \ensuremath{K}quadratisch abfällt}}\cdot\pi R\le\frac{C\pi}{R}\stackrel{R\to\infty}{\longrightarrow}0
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
 
 \end_inset
 
@@ -27731,9 +29770,19 @@ Erinnerung
 \end_layout
 
 \begin_layout Standard
+Das Hauptwertintegral (engl.
+ „
+\lang english
+principal value
+\lang ngerman
+“) einer in 
+\begin_inset Formula $c\in\mathbb{R}$
+\end_inset
+
+ divergierenden Funktion ist definiert als:
 \begin_inset Formula 
 \begin{align*}
-\int_{-\infty}^{\infty}\frac{\overbrace{\text{pp}}^{\text{“principal part”}}}{x}\cdot f\left(x\right)\dd x & :=\lim_{\varepsilon\to0}\left(\int_{-\infty}^{-\varepsilon}\frac{f\left(x\right)}{x}\dd x+\int_{\varepsilon}^{\infty}\frac{f\left(x\right)}{x}\dd x\right)
+\text{PV\,-}\int_{-\infty}^{\infty}f\left(x\right)\dd x & :=\lim_{\varepsilon\searrow0}\left(\int_{-\infty}^{c-\varepsilon}f\left(x\right)\dd x+\int_{c+\varepsilon}^{\infty}f\left(x\right)\dd x\right)
 \end{align*}
 
 \end_inset
@@ -27763,10 +29812,10 @@ Außerdem falle
 \end_inset
 
  im Unendlichen wenigstens quadratisch ab.
- Dann ist
+ Dann gilt:
 \begin_inset Formula 
 \begin{align*}
-\text{P-}\int_{-\infty}^{\infty}f\left(x\right)\dd x & :=\lim_{\varepsilon\to0}\int_{\mathbb{R}\setminus\left(\left[p_{1}-\varepsilon_{1},p_{1}+\varepsilon\right]\cup\ldots\cup\left[p_{n}-\varepsilon_{1},p_{n}+\varepsilon\right]\right)}f\left(x\right)\dd x=\\
+\text{PV\,-}\int_{-\infty}^{\infty}f\left(x\right)\dd x & :=\lim_{\varepsilon\to0}\int_{\mathbb{R}\setminus\left(\left[p_{1}-\varepsilon_{1},p_{1}+\varepsilon\right]\cup\ldots\cup\left[p_{n}-\varepsilon_{1},p_{n}+\varepsilon\right]\right)}f\left(x\right)\dd x=\\
  & =2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)>0}\text{Res}_{a}\left(f\right)+\pi\ii\sum_{k=1}^{n}\text{Res}_{p_{k}}\left(f\right)
 \end{align*}
 
@@ -27780,7 +29829,9 @@ Beweis
 \end_layout
 
 \begin_layout Standard
-TODO: Abb5
+
+\color green
+TODO: Abb5 einfügen
 \end_layout
 
 \begin_layout Standard
@@ -27796,7 +29847,7 @@ TODO: Abb5
 \begin_inset Formula 
 \begin{align*}
 \frac{1}{2}\left(\oint_{C_{1}}+\oint_{C_{2}}\right)f\left(z\right)\dd z & =2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)\ge0}\text{Res}_{a}\left(f\right)+\ii\pi\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)\ge0}\text{Res}_{a}\left(f\right)=\\
- & =\underbrace{\int_{C_{R}}f\left(z\right)\dd z}_{\to0\text{ für }R\to\infty}+\underbrace{\int_{\left[-R,R\right]\setminus\left(\left[p_{1}-\varepsilon_{1},p_{1}+\varepsilon\right]\cup\ldots\cup\left[p_{n}-\varepsilon_{1},p_{n}+\varepsilon\right]\right)}f\left(z\right)\dd z}_{\to\text{P-}\int_{-\infty}^{\infty}f\left(x\right)\dd x}+\sum_{k=1}^{n}\int_{D_{k}\cap D_{k}'}f\left(z\right)\dd z
+ & =\underbrace{\int_{C_{R}}f\left(z\right)\dd z}_{\to0\text{ für }R\to\infty}+\underbrace{\int_{\left[-R,R\right]\setminus\left(\left[p_{1}-\varepsilon_{1},p_{1}+\varepsilon\right]\cup\ldots\cup\left[p_{n}-\varepsilon_{1},p_{n}+\varepsilon\right]\right)}f\left(z\right)\dd z}_{\to\text{PV\,-}\int_{-\infty}^{\infty}f\left(x\right)\dd x}+\sum_{k=1}^{n}\int_{D_{k}\cap D_{k}'}f\left(z\right)\dd z
 \end{align*}
 
 \end_inset
@@ -27812,7 +29863,7 @@ Im Limes
  erhalten wir:
 \begin_inset Formula 
 \begin{align*}
-2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)>0}\text{Res}_{a}\left(f\right)+\ii\pi\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)\ge0}\text{Res}_{a}\left(f\right) & =\text{P-}\int_{-\infty}^{\infty}f\left(z\right)\dd z+\lim_{\varepsilon\to0}\sum_{k=1}^{n}\int_{D_{k}\cup D_{k}'}f\left(z\right)\dd z
+2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)>0}\text{Res}_{a}\left(f\right)+\ii\pi\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)\ge0}\text{Res}_{a}\left(f\right) & =\text{PV\,-}\int_{-\infty}^{\infty}f\left(z\right)\dd z+\lim_{\varepsilon\to0}\sum_{k=1}^{n}\int_{D_{k}\cup D_{k}'}f\left(z\right)\dd z
 \end{align*}
 
 \end_inset
@@ -27837,7 +29888,7 @@ Da
 \begin_inset Formula $p_{k}$
 \end_inset
 
- entwickeln
+ durch
 \begin_inset Formula 
 \begin{align*}
 f\left(z\right) & =\frac{C_{-1}}{z-p_{k}}+g\left(z\right)
@@ -27849,10 +29900,10 @@ mit einer holomorphen Funktion
 \begin_inset Formula $g\left(z\right)$
 \end_inset
 
-.
+ darstellen.
 \begin_inset Formula 
 \begin{align*}
-\left|\int_{D_{k}\cup D_{k}'}g\left(z\right)\dd z\right| & \le\underbrace{\sup_{\partial B_{\varepsilon}\left(p_{k}\right)}}_{\le C}\left|g\right|\cdot2\pi\varepsilon\stackrel{\varepsilon\to0}{\longrightarrow}0
+\left|\int_{D_{k}\cup D_{k}'}g\left(z\right)\dd z\right| & \le\underbrace{\sup_{\partial B_{\varepsilon}\left(p_{k}\right)}\left|g\right|}_{\le C}\cdot2\pi\varepsilon\stackrel{\varepsilon\to0}{\longrightarrow}0
 \end{align*}
 
 \end_inset
@@ -27861,7 +29912,12 @@ mit einer holomorphen Funktion
 \end_layout
 
 \begin_layout Standard
-TODO: Abb6
+
+\color green
+TODO: Abb6 einfügen
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
 \int_{D_{k}\cup D_{k}'}\frac{\dd z}{z-p_{k}} & =\log\left(z-p_{k}\right)\Big|_{z=p_{k}-\varepsilon+\ii\cdot0}^{z=p_{k}+\varepsilon}+\log\left(z-p_{k}\right)\Big|_{z=p_{k}-\varepsilon-\ii\cdot0}^{z=p_{k}+\varepsilon}=\\
@@ -27887,7 +29943,9 @@ qqed
 \end_layout
 
 \begin_layout Subsection
-Integrale über Intervalle
+Beispiel 
+\series medium
+(Integral über ein Intervall)
 \end_layout
 
 \begin_layout Standard
@@ -27895,43 +29953,47 @@ Dies geht typischerweise immer dann, wenn der Integrand periodisch ist und
  man über eine oder mehrere Perioden integriert.
 \end_layout
 
-\begin_layout Subsubsection*
-Idee
-\end_layout
-
 \begin_layout Standard
-Schreibe das Integral als Konturintegral mit Hilfe von 
-\begin_inset Formula $e^{\ii t}$
+In diesem Fall kann man das Integral als Konturintegral mit Hilfe von 
+\begin_inset Formula $e^{\ii\varphi}$
 \end_inset
 
- um.
-\end_layout
-
-\begin_layout Subsection
-Beispiel
+ umschreiben.
 \end_layout
 
 \begin_layout Standard
-Mit
+Mit der Transformation 
+\begin_inset Formula $z:=e^{\ii\varphi}$
+\end_inset
+
+ und der Beziehung
 \begin_inset Formula 
 \begin{align*}
-\cos\varphi & =\frac{1}{2}\left(e^{\ii\varphi}+e^{-\ii\varphi}\right)=\frac{1}{2}\left(z+\frac{1}{z}\right)
+\cos\left(\varphi\right) & =\frac{1}{2}\left(e^{\ii\varphi}+e^{-\ii\varphi}\right)=\frac{1}{2}\left(z+\frac{1}{z}\right)
 \end{align*}
 
 \end_inset
 
-folgt:
+folgt
+\begin_inset Formula 
+\begin{align*}
+\dd z & =e^{\ii\varphi}\cdot\ii\dd\varphi=\ii z\dd\varphi
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+und somit:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\int_{0}^{2\pi}\frac{1}{\cos\left(\varphi+\ii\right)}\dd\varphi & =\begin{cases}
-z=e^{\ii\varphi}\\
-\dd z=e^{\ii\varphi}\cdot\ii\dd\varphi=\ii z\dd\varphi
-\end{cases}\Bigg\}=\\
- & =\ointctrclockwise_{\left|z\right|=1}\frac{1}{\cos\varphi+\ii}\frac{\dd z}{\ii z}=\\
- & =\ointctrclockwise_{\left|z\right|=1}\frac{1}{\frac{1}{2}\left(z+\frac{1}{z}\right)+\ii}\frac{\dd z}{\ii z}=-2\ii\ointctrclockwise_{\left|z\right|=1}\frac{\dd z}{z^{2}+2\ii z+1}
+\int_{0}^{2\pi}\frac{1}{\cos\left(\varphi\right)+\ii}\dd\varphi & =\ointctrclockwise_{\partial B_{1}\left(0\right)}\frac{1}{\cos\left(\varphi\right)+\ii}\cdot\frac{\dd z}{\ii z}=\\
+ & =\ointctrclockwise_{\partial B_{1}\left(0\right)}\frac{1}{\frac{1}{2}\left(z+\frac{1}{z}\right)+\ii}\cdot\frac{\dd z}{\ii z}=\frac{2}{\ii}\ointctrclockwise_{\partial B_{1}\left(0\right)}\frac{\dd z}{z^{2}+2\ii z+1}
 \end{align*}
 
 \end_inset
@@ -27940,15 +30002,144 @@ Berechne die Pole:
 \begin_inset Formula 
 \begin{align*}
 z^{2}+2\ii z+1 & =0\\
-z & =-\ii\pm\sqrt{\left(\ii\right)^{2}-1}=-\ii\pm\sqrt{-2}=-\ii\pm\sqrt{2}\ii
+z & =\minus\ii\pm\sqrt{\left(\ii\right)^{2}-1}=\minus\ii\pm\sqrt{\minus2}=\minus\ii\pm\sqrt{2}\ii
 \end{align*}
 
 \end_inset
 
-TODO: Abb7
+Wegen
 \begin_inset Formula 
 \begin{align*}
-\int_{0}^{2\pi}\frac{1}{\cos\varphi+\ii}\dd\varphi & =\left(-2\ii\right)\cdot2\pi\ii\text{Res}_{-\ii-\sqrt{2}\ii}\frac{1}{z^{2}+2\ii z+1}=\ldots
+\abs{\minus\ii+\sqrt{2}\ii} & =\sqrt{2}-1\approx0{,}4<1\\
+\abs{\minus\ii-\sqrt{2}\ii} & =\sqrt{2}+1\approx2{,}4>1
+\end{align*}
+
+\end_inset
+
+geht nur das Residuum des ersten Pols in das Integral ein.
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Abb7 einfügen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\int_{0}^{2\pi}\frac{1}{\cos\left(\varphi\right)+\ii}\dd\varphi & =\frac{2}{\ii}\cdot2\pi\ii\cdot\text{Res}_{\minus\ii+\sqrt{2}\ii}\left(\frac{1}{z^{2}+2\ii z+1}\right)=\\
+ & =4\pi\cdot\text{Res}_{\minus\ii+\sqrt{2}\ii}\left(\frac{1}{\left(z+\ii+\sqrt{2}\ii\right)\left(z+\ii-\sqrt{2}\ii\right)}\right)=\\
+ & =4\pi\cdot\frac{1}{\minus\ii+\sqrt{2}\ii+\ii+\sqrt{2}\ii}=4\pi\cdot\frac{1}{2\sqrt{2}\ii}=\minus\sqrt{2}\pi\ii
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Fr 03.02.2012
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Beispiel 
+\series medium
+(Integral über die positive reelle Halbachse)
+\end_layout
+
+\begin_layout Standard
+Einfach lässt sich bei Funktionen argumentieren, die zur 
+\begin_inset Formula $y$
+\end_inset
+
+-Achse symmetrisch sind:
+\begin_inset Formula 
+\begin{align*}
+\int_{0}^{\infty}\frac{1}{1+x^{2}}\dd x & =\frac{1}{2}\int_{-\infty}^{\infty}\frac{\dd x}{1+x^{2}}=\frac{\pi}{2}
+\end{align*}
+
+\end_inset
+
+Schwieriger ist es, wenn keine Symmetrie ausgenutzt werden kann, beispielsweise
+ für das Integral:
+\begin_inset Formula 
+\begin{align*}
+\int_{0}^{\infty}\frac{1}{1+x+x^{2}}\dd x
+\end{align*}
+
+\end_inset
+
+Benutze den entlang der positiven reellen Achse geschlitzen Logarithmus:
+\begin_inset Formula 
+\begin{align*}
+\text{ln}\left(z\right) & :=\begin{cases}
+\log\left(z\right) & \text{Im}\left(z\right)\ge0\\
+\log\left(z\right)-2\pi\ii & \text{Im}\left(z\right)<0
+\end{cases}
+\end{align*}
+
+\end_inset
+
+
+\color green
+TODO: Abbildung der Kurve
+\end_layout
+
+\begin_layout Standard
+Es gilt für 
+\begin_inset Formula $x\in\mathbb{R}_{\ge0}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\lim_{y\searrow0}\left(\ln\left(x+\ii y\right)\right)-\lim_{y\nearrow0}\left(\ln\left(x+\ii y\right)\right) & =2\pi\ii
+\end{align*}
+
+\end_inset
+
+Es folgt:
+\begin_inset Formula 
+\begin{align*}
+\int_{0}^{\infty}\frac{\dd x}{1+x+x^{2}} & =\frac{1}{2\pi\ii}\int_{C}\frac{\ln\left(z\right)\dd z}{1+z+z^{2}}
+\end{align*}
+
+\end_inset
+
+Man kann nun die Kurve „im Unendlichen schließen“
+\begin_inset Formula $\ldots$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Proposition
+\end_layout
+
+\begin_layout Standard
+Seien 
+\begin_inset Formula $\lambda\in\left[0,1\right]$
+\end_inset
+
+ und 
+\begin_inset Formula $R\left(z\right)$
+\end_inset
+
+ eine rationale Funktion ohne Pole auf der positiven reellen Halbachse,
+ die bei 0 holomorph ist und im Unendlichen wenigstens quadratisch abfällt.
+ Dann gilt:
+\begin_inset Formula 
+\begin{align*}
+\int_{0}^{\infty}x^{\lambda}R\left(x\right)\dd x & =\frac{2\pi\ii}{1-e^{2\pi\ii\cdot\lambda}}\sum_{a\not=0}\text{Res}_{a}\left(z^{\lambda}\cdot R\left(z\right)\right)
 \end{align*}
 
 \end_inset
@@ -27956,11 +30147,1482 @@ TODO: Abb7
 
 \end_layout
 
-\begin_layout Standard
-TODO: Rest einfügen
+\begin_layout Subsubsection*
+Beweis
 \end_layout
 
 \begin_layout Standard
+
+\color green
+TODO: Beweis einfügen
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Das Null- und Polstellen zählende Integral
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texorpdfstring{
+\backslash
+quotedblbase{}0
+\backslash
+textquotedblleft{} und 
+\backslash
+quotedblbase{}$
+\backslash
+infty$
+\backslash
+textquotedblleft{} zählendes Integral}{Das Null- und Polstellen zählende
+ Integral}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Thm-NullUndPolstellenIntegral"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $f:\Omega\to\mathbb{C}$
+\end_inset
+
+ meromorph, 
+\begin_inset Formula $f\not=0$
+\end_inset
+
+ und 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ eine geschlossene Kurve, die die Nullstellen und Pole von 
+\begin_inset Formula $f$
+\end_inset
+
+ nicht schneidet und ganz in einem Gebiet 
+\begin_inset Formula $\Delta\subseteq\Omega$
+\end_inset
+
+ liegt.
+ 
+\begin_inset Formula $z_{1},\ldots,z_{k}$
+\end_inset
+
+ seien Null- oder Polstellen in 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ mit jeweiliger Ordnung 
+\begin_inset Formula $\pm n_{j}$
+\end_inset
+
+, von denen es nur endlich viele gibt.
+ Dann gilt:
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{2\pi\ii}\oint_{\gamma}\frac{f'\left(z\right)}{f\left(z\right)}\dd z & =\sum_{j=1}^{k}n_{j}\cdot n\left(\gamma,z_{j}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Da 
+\begin_inset Formula $f:\Omega\to\mathbb{C}$
+\end_inset
+
+ meromorph und 
+\begin_inset Formula $f\not=0$
+\end_inset
+
+ ist, liegen die Null- und Polstellen also isoliert.
+\end_layout
+
+\begin_layout Standard
+Dann gibt es ein 
+\begin_inset Formula $n_{1}\in\mathbb{Z}$
+\end_inset
+
+ und eine meromorphe Funktion 
+\begin_inset Formula $f_{1}\left(z\right)$
+\end_inset
+
+, die in einer Umgebung von 
+\begin_inset Formula $z_{1}$
+\end_inset
+
+ holomorph ist mit 
+\begin_inset Formula $f_{1}\left(z_{1}\right)\not=0$
+\end_inset
+
+ und:
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\left(z-z_{1}\right)^{n_{1}}\cdot f_{1}\left(z\right)
+\end{align*}
+
+\end_inset
+
+Ist 
+\begin_inset Formula $n_{1}>0$
+\end_inset
+
+, so ist dies die Ordnung der Nullstelle und für 
+\begin_inset Formula $n_{1}<0$
+\end_inset
+
+ ist 
+\begin_inset Formula $\minus n_{1}$
+\end_inset
+
+ die Ordnung des Pols.
+\end_layout
+
+\begin_layout Standard
+Konstruiere induktiv weiter:
+\begin_inset Formula 
+\begin{align*}
+f_{1}\left(z\right) & =\left(z-z_{2}\right)^{n_{2}}\cdot f_{2}\left(z\right)\\
+\vdots\\
+\Rightarrow\quad f\left(z\right) & =\left(z-z_{1}\right)^{n_{1}}\cdots\left(z-z_{k}\right)^{n_{k}}g\left(z\right)
+\end{align*}
+
+\end_inset
+
+Dabei ist 
+\begin_inset Formula $g\left(z\right)$
+\end_inset
+
+ in 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ holomorph und hat darin keine Nullstelle.
+ Daher ist
+\begin_inset Formula 
+\begin{align*}
+\frac{f'\left(z\right)}{f\left(z\right)} & =\frac{n_{1}}{z-z_{1}}+\ldots+\frac{n_{k}}{z-z_{k}}+\underbrace{\frac{g'\left(z\right)}{g\left(z\right)}}_{\text{holomorph}}
+\end{align*}
+
+\end_inset
+
+meromorph.
+ Integriere nun längs 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ und wende den Residuensatz an.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die wichtigste Anwendung ist 
+\begin_inset Formula $\gamma=\partial\Delta$
+\end_inset
+
+ für eine Kreisscheibe 
+\begin_inset Formula $\Delta\subseteq\Omega$
+\end_inset
+
+.
+ Dann sind alle Windungszahlen 1 und man erhält:
+\end_layout
+
+\begin_layout Subsection
+Korollar und Definition 
+\series medium
+(Null- und Polstellen zählende Integral)
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $N_{\Delta}$
+\end_inset
+
+ die Anzahl der Nullstellen und 
+\begin_inset Formula $P_{\Delta}$
+\end_inset
+
+ die Anzahl der Pole von 
+\begin_inset Formula $f$
+\end_inset
+
+ in 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ jeweils mit Ordnung gezählt, dann gilt:
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{2\pi\ii}\oint_{\partial\Delta}\frac{f'\left(z\right)}{f\left(z\right)}\dd z & =N_{\Delta}-P_{\Delta}
+\end{align*}
+
+\end_inset
+
+Man nennt dieses Integral auch 
+\emph on
+das Null- und Polstellen zählende Integral
+\emph default
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Dies folgt direkt aus dem Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Thm-NullUndPolstellenIntegral"
+
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Bemerkung
+\end_layout
+
+\begin_layout Standard
+Falls 
+\begin_inset Formula $f$
+\end_inset
+
+ nur Nullstellen hat, kann man eine geometrische Betrachtung durchführen.
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Abbildung einfügen
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $\gamma:\left[a,b\right]\to\mathbb{C}$
+\end_inset
+
+ und 
+\begin_inset Formula $\Gamma:=f\circ\gamma$
+\end_inset
+
+.
+ Dann gilt nach der Definition des Kurvenintegrals:
+\begin_inset Formula 
+\begin{align*}
+\oint_{\Gamma}\frac{\dd w}{w} & =\int_{a}^{b}\frac{\Gamma'\left(\tau\right)}{\Gamma\left(\tau\right)}\dd\tau=\int_{a}^{b}\frac{f'\left(\gamma\left(\tau\right)\right)\cdot\gamma'\left(\tau\right)}{f\left(\gamma\left(\tau\right)\right)}\dd\tau=\int_{\gamma}\frac{f'\left(z\right)}{f\left(z\right)}\dd z
+\end{align*}
+
+\end_inset
+
+Also gilt:
+\begin_inset Formula 
+\begin{align*}
+n\left(\Gamma,0\right) & =\sum_{j}n_{j}\cdot n\left(\gamma,z_{j}\right)
+\end{align*}
+
+\end_inset
+
+Die Bedeutung von
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{2\pi\ii}\oint_{\gamma}\frac{f'\left(z\right)}{f\left(z\right)}\dd z
+\end{align*}
+
+\end_inset
+
+liegt darin, dass dieses Integral ganzzahlig, also ein Index ist und sich
+ daher bei stetigen Deformationen nicht ändert.
+\end_layout
+
+\begin_layout Subsection
+Beispiel
+\end_layout
+
+\begin_layout Standard
+Betrachte für eine Funktion 
+\begin_inset Formula $f\left(z\right)$
+\end_inset
+
+ und eine Konstante 
+\begin_inset Formula $a\in\mathbb{C}$
+\end_inset
+
+ die Funktion 
+\begin_inset Formula $g\left(z\right):=f\left(z\right)-a$
+\end_inset
+
+.
+ Dann ist
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{2\pi\ii}\oint_{\gamma}\frac{g'\left(z\right)}{g\left(z\right)}\dd z
+\end{align*}
+
+\end_inset
+
+unabhängig von 
+\begin_inset Formula $a$
+\end_inset
+
+, solange 
+\begin_inset Formula $f\left(z\right)-a$
+\end_inset
+
+ auf 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ keine Nullstelle hat.
+\end_layout
+
+\begin_layout Standard
+Die „Gesamtzahl“ der Nullstellen und Pole kann also anders als bei reellen
+ Funktionen nicht verändert werden.
+\end_layout
+
+\begin_layout Standard
+Etwas allgemeiner gilt:
+\end_layout
+
+\begin_layout Subsection
+Theorem 
+\series medium
+(Satz von Rouché)
+\end_layout
+
+\begin_layout Standard
+Seien 
+\begin_inset Formula $f,g:\Omega\to\mathbb{C}$
+\end_inset
+
+ holomorph, 
+\begin_inset Formula $\gamma=\partial\Delta$
+\end_inset
+
+ mit 
+\begin_inset Formula $\Delta\subseteq\Omega$
+\end_inset
+
+ und 
+\begin_inset Formula $\abs{g\left(z\right)}<\abs{f\left(z\right)}$
+\end_inset
+
+ für alle 
+\begin_inset Formula $z\in\gamma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Dann haben 
+\begin_inset Formula $f$
+\end_inset
+
+ und 
+\begin_inset Formula $f+g$
+\end_inset
+
+ gleich viele Nullstellen in 
+\begin_inset Formula $\Delta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Betrachte die Familie 
+\begin_inset Formula $h_{\tau}=f+\tau g$
+\end_inset
+
+ mit 
+\begin_inset Formula $\tau\in\left[0,1\right]$
+\end_inset
+
+.
+ Das Integral
+\begin_inset Formula 
+\begin{align*}
+\oint_{\gamma}\frac{h_{\tau}'\left(z\right)}{h_{\tau}\left(z\right)}\dd z & =\oint_{\gamma}\frac{f'\left(z\right)+\tau g'\left(z\right)}{f\left(z\right)+\tau g\left(z\right)}\dd z
+\end{align*}
+
+\end_inset
+
+ist ein Vielfaches von 
+\begin_inset Formula $2\pi\ii$
+\end_inset
+
+ und hängt stetig von 
+\begin_inset Formula $\tau$
+\end_inset
+
+ ab, ist also konstant.
+\end_layout
+
+\begin_layout Standard
+Wegen 
+\begin_inset Formula $\abs{g\left(z\right)}<\abs{f\left(z\right)}$
+\end_inset
+
+ auf 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ kann keine Nullstelle auf 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ entstehen und es folgt die Behauptung.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Beispiel
+\end_layout
+
+\begin_layout Standard
+Betrachte die Funktionen 
+\begin_inset Formula $f\left(z\right)=z^{n}$
+\end_inset
+
+ und 
+\begin_inset Formula $g\left(z\right)=\sum_{k=0}^{n-1}a_{k}z^{k}$
+\end_inset
+
+ mit 
+\begin_inset Formula $a_{k}\in\mathbb{C}$
+\end_inset
+
+ und die Kurve 
+\begin_inset Formula $\gamma=\partial B_{R}\left(0\right)$
+\end_inset
+
+, wobei 
+\begin_inset Formula $R\in\mathbb{R}$
+\end_inset
+
+ so groß gewählt ist, dass 
+\begin_inset Formula $\abs{g\left(z\right)}<\abs{f\left(z\right)}$
+\end_inset
+
+ auf 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ gilt, was stets möglich ist, da 
+\begin_inset Formula $z^{n}$
+\end_inset
+
+ unbeschränkt und schneller als 
+\begin_inset Formula $z^{n-1}$
+\end_inset
+
+ wächst.
+\end_layout
+
+\begin_layout Standard
+Offenbar ist die Nullstellenzahl von 
+\begin_inset Formula $f\left(z\right)$
+\end_inset
+
+ gleich 
+\begin_inset Formula $n$
+\end_inset
+
+ und somit auch die von 
+\begin_inset Formula $g\left(z\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Dies ist der Fundamentalsatz der Algebra.
+\end_layout
+
+\begin_layout Section
+Familien holomorpher Funktionen
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+Familien holomorpher Fkt.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Betrachte eine Familie, das heißt eine Folge, holomorpher Funktionen 
+\begin_inset Formula $f_{n}:\Omega\to\mathbb{C}$
+\end_inset
+
+ mit 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Definition
+\end_layout
+
+\begin_layout Standard
+Die Funktionenfolge 
+\begin_inset Formula $\left(f_{n}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+ konvergiert 
+\emph on
+lokal gleichmäßig
+\emph default
+ gegen 
+\begin_inset Formula $f$
+\end_inset
+
+, falls für jede kompakte Teilmenge 
+\begin_inset Formula $K\subseteq\Omega$
+\end_inset
+
+ schon 
+\begin_inset Formula $f_{n}\big|_{K}$
+\end_inset
+
+ gleichmäßig gegen 
+\begin_inset Formula $f\big|_{K}$
+\end_inset
+
+ konvergiert.
+\end_layout
+
+\begin_layout Standard
+Wir erhalten sofort, dass 
+\begin_inset Formula $f$
+\end_inset
+
+ stetig ist.
+\end_layout
+
+\begin_layout Standard
+Für reelle Funktionen bräuchte 
+\begin_inset Formula $f$
+\end_inset
+
+ nicht differenzierbar zu sein.
+\end_layout
+
+\begin_layout Standard
+Für holomorphe Funktionen ist die Situation besser, weil wird die Ableitungen
+ von 
+\begin_inset Formula $f$
+\end_inset
+
+ mit dem Cauchyschen Integralsatz ausdrücken können.
+\end_layout
+
+\begin_layout Subsection
+Theorem 
+\series medium
+(Weierstraß)
+\end_layout
+
+\begin_layout Standard
+Konvergiert eine Familie holomorpher Funktionen 
+\begin_inset Formula $f_{n}:\Omega\to\mathbb{C}$
+\end_inset
+
+ lokal gleichmäßig gegen 
+\begin_inset Formula $f$
+\end_inset
+
+, so ist 
+\begin_inset Formula $f$
+\end_inset
+
+ holomorph und 
+\begin_inset Formula $f_{n}'\left(z\right)$
+\end_inset
+
+ konvergiert lokal gleichmäßig gegen 
+\begin_inset Formula $f'\left(z\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $z\in\Omega$
+\end_inset
+
+, so wähle ein 
+\begin_inset Formula $r\in\mathbb{R}$
+\end_inset
+
+ mit 
+\begin_inset Formula $\overline{B_{r}\left(z\right)}\subseteq\Omega$
+\end_inset
+
+ und 
+\begin_inset Formula $\gamma=\partial\overline{B_{r}\left(z\right)}$
+\end_inset
+
+.
+ Dann gilt:
+\begin_inset Formula 
+\begin{align*}
+f_{n}\left(z\right) & =\frac{1}{2\pi\ii}\oint_{\gamma}\frac{f_{n}\left(\zeta\right)}{\zeta-z}\dd\zeta
+\end{align*}
+
+\end_inset
+
+Wende nun im Limes 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+ die gleichmäßige Konvergenz auf 
+\begin_inset Formula $\overline{B_{r}\left(z\right)}$
+\end_inset
+
+ an:
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & =\frac{1}{2\pi\ii}\oint_{\gamma}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta
+\end{align*}
+
+\end_inset
+
+Also ist 
+\begin_inset Formula $f$
+\end_inset
+
+ holomorph.
+\end_layout
+
+\begin_layout Standard
+Entsprechend gilt:
+\begin_inset Formula 
+\begin{align*}
+f_{n}'\left(z\right) & =\frac{1}{2\pi\ii}\oint_{\gamma}\frac{f_{n}\left(\zeta\right)}{\left(\zeta-z\right)^{2}}\dd\zeta\xrightarrow{n\to\infty}f'\left(z\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Bemerkung
+\end_layout
+
+\begin_layout Standard
+Die ursprüngliche Formulierung von Weierstraß lautet:
+\end_layout
+
+\begin_layout Standard
+Falls eine Reihe analytischer Funktionen 
+\begin_inset Formula $f\left(z\right)=f_{1}\left(z\right)+f_{2}\left(z\right)+\ldots$
+\end_inset
+
+ in 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ lokal gleichmäßig konvergiert, so ist 
+\begin_inset Formula $f\left(z\right)$
+\end_inset
+
+ analytisch und man darf gliedweise differenzieren.
+\end_layout
+
+\begin_layout Standard
+Nach dem Maximumprinzip genügt es, die gleichmäßige Konvergenz auf 
+\begin_inset Formula $\partial\Omega$
+\end_inset
+
+ zu zeigen.
+\end_layout
+
+\begin_layout Standard
+Wir kombinieren nun den Satz von Weierstraß mit dem Nullstellen zählenden
+ Integral.
+ Wir brauchen dies beim Beweis des Riemannschen Abbildungssatzes.
+\end_layout
+
+\begin_layout Subsection
+Theorem 
+\series medium
+(Hurwitz)
+\end_layout
+
+\begin_layout Standard
+Seien 
+\begin_inset Formula $f_{n}:\Omega\to\mathbb{C}$
+\end_inset
+
+ für 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ holomorphe Funktionen ohne Nullstellen und 
+\begin_inset Formula $f_{n}$
+\end_inset
+
+ konvergiere lokal gleichmäßig gegen 
+\begin_inset Formula $f$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Dann ist 
+\begin_inset Formula $f$
+\end_inset
+
+ entweder identisch 0 oder hat keine Nullstelle in 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Nehme an, dass 
+\begin_inset Formula $f\not=0$
+\end_inset
+
+ ist, aber eine Nullstelle 
+\begin_inset Formula $z_{0}\in\Omega$
+\end_inset
+
+ habe.
+\end_layout
+
+\begin_layout Standard
+Da die Nullstellen von 
+\begin_inset Formula $f$
+\end_inset
+
+ isoliert sind, gibt es ein 
+\begin_inset Formula $r>0$
+\end_inset
+
+, so dass 
+\begin_inset Formula $f$
+\end_inset
+
+ auf 
+\begin_inset Formula $B_{r}\left(z_{0}\right)$
+\end_inset
+
+ holomorph ist und keine weitere Nullstelle besitzt.
+ Wegen 
+\begin_inset Formula ${\displaystyle \frac{1}{\abs{f\left(z\right)}}>C}$
+\end_inset
+
+ auf 
+\begin_inset Formula $\partial B_{r}\left(z_{0}\right)$
+\end_inset
+
+ konvergiert 
+\begin_inset Formula ${\displaystyle \frac{1}{f_{n}}}$
+\end_inset
+
+ gleichmäßig gegen 
+\begin_inset Formula ${\displaystyle \frac{1}{f}}$
+\end_inset
+
+ auf 
+\begin_inset Formula $\partial B_{r}\left(z_{0}\right)$
+\end_inset
+
+.
+ Die Ordnung 
+\begin_inset Formula $n$
+\end_inset
+
+ der Nullstelle ist gegeben durch:
+\begin_inset Formula 
+\begin{align*}
+0\not=n & =\frac{1}{2\pi\ii}\oint_{\partial B_{r}\left(z_{0}\right)}\frac{f'\left(z\right)}{f\left(z\right)}\dd z=\frac{1}{2\pi\ii}\lim_{n\to\infty}\oint_{\partial B_{r}\left(z_{0}\right)}\frac{f_{n}'\left(z\right)}{f_{n}\left(z\right)}\dd z=0
+\end{align*}
+
+\end_inset
+
+Dies ist ein Widerspruch, der die Behauptung zeigt.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Di 07.02.2012
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Der Satz von Mittag-Leffler
+\end_layout
+
+\begin_layout Standard
+Bei rationalen Funktionen hat man die Partialbruchzerlegung:
+\begin_inset Formula 
+\begin{align*}
+R\left(z\right) & =\underbrace{h_{1}\left(z\right)+\ldots+h_{r}\left(z\right)}_{\text{Hauptteile}}+\underbrace{P\left(z\right)}_{\text{holomorph}}
+\end{align*}
+
+\end_inset
+
+Bei meromorphen Funktionen hat man im Allgemeinen unendlich viele Polstellen.
+ Die unendliche Summe der Hauptwerte wird im Allgemeinen nicht konvergieren.
+\end_layout
+
+\begin_layout Standard
+Haben aber 
+\begin_inset Formula $f$
+\end_inset
+
+ und 
+\begin_inset Formula $g$
+\end_inset
+
+ die gleichen Pole und an jedem Pol den gleichen Hauptteil der Laurententwicklun
+g, so ist 
+\begin_inset Formula $f-g$
+\end_inset
+
+ holomorph, also alle Singularitäten hebbar.
+\end_layout
+
+\begin_layout Standard
+Man kann eine Äquivalenzrelation einführen:
+\begin_inset Formula 
+\begin{align*}
+f\sim g & \quad\text{falls }f-g\text{ holomorph ist.}
+\end{align*}
+
+\end_inset
+
+Die Äquivalenzklassen sind durch die Hauptteile charakterisiert.
+\end_layout
+
+\begin_layout Standard
+Die Frage ist nun, ob es zu vorgegebenen Hauptteilen immer eine meromorphe
+ Funktion, also stets einen Repräsentanten gibt.
+\end_layout
+
+\begin_layout Standard
+Die Antwort in der komplexen Ebene lautet ja.
+\end_layout
+
+\begin_layout Subsection
+Theorem 
+\series medium
+(Satz von Mittag-Leffler für die Ebene)
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $\left(a_{n}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+ eine Folge paarweise verschiedener Punkte in 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+, die keine Häufungspunkte besitzt.
+\end_layout
+
+\begin_layout Standard
+Für jedes 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ sei 
+\begin_inset Formula $P_{n}\left(z\right)$
+\end_inset
+
+ ein Polynom positiven Grades ohne konstanten Term.
+\end_layout
+
+\begin_layout Standard
+Dann gibt es eine meromorphe Funktion 
+\begin_inset Formula $f:\mathbb{C}\setminus\left\{ a_{n}\middle|n\in\mathbb{N}\right\} \to\mathbb{C}$
+\end_inset
+
+, die genau an den Stellen 
+\begin_inset Formula $a_{n}$
+\end_inset
+
+ Pole mit den Hauptteilen 
+\begin_inset Formula $h_{n}\left(z\right)$
+\end_inset
+
+ hat, für die gilt:
+\begin_inset Formula 
+\begin{align*}
+h_{n}\left(z\right) & =P_{n}\left(\frac{1}{z-a_{n}}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
+Die Summe 
+\begin_inset Formula ${\displaystyle \sum_{n\in\mathbb{N}}h_{n}\left(z\right)}$
+\end_inset
+
+ wird im Allgemeinen nicht konvergieren.
+\end_layout
+
+\begin_layout Standard
+Wähle zu jedem 
+\begin_inset Formula $h_{n}\left(z\right)$
+\end_inset
+
+ ein (Taylor-)Polynom 
+\begin_inset Formula $T_{n}\left(z\right)$
+\end_inset
+
+ mit 
+\begin_inset Formula $\abs{h_{n}\left(z\right)-T_{n}\left(z\right)}\le2^{\minus n}$
+\end_inset
+
+ für alle 
+\begin_inset Formula $z\in\mathbb{C}$
+\end_inset
+
+ mit 
+\begin_inset Formula ${\displaystyle \abs z<\frac{1}{2}\cdot\abs{a_{n}}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Was ist mit 
+\begin_inset Formula $a_{n}=0$
+\end_inset
+
+ ? Dann kann man die Taylorreihe um 0 nicht bilden.
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Abbildung 
+\begin_inset Formula $h_{n},a_{n},B_{\frac{\abs{a_{n}}}{2}}\left(0\right)$
+\end_inset
+
+ einfügen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $h_{n}\left(z\right)$
+\end_inset
+
+ hat in 
+\begin_inset Formula $a_{n}$
+\end_inset
+
+ einen Pol, aber die Taylorreihe konvergiert für 
+\begin_inset Formula ${\displaystyle \abs z<\frac{1}{2}\cdot\abs{a_{n}}}$
+\end_inset
+
+ gleichmäßig.
+\end_layout
+
+\begin_layout Standard
+Nun betrachte für ein 
+\begin_inset Formula $r\in\mathbb{R}_{>0}$
+\end_inset
+
+ die abgeschlossene Kreisscheibe 
+\begin_inset Formula $\overline{B_{r}\left(0\right)}$
+\end_inset
+
+.
+ Da die Folge 
+\begin_inset Formula $\left(a_{n}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+ keinen Häufungspunkt hat und somit 
+\begin_inset Formula ${\displaystyle \lim_{n\to\infty}\abs{a_{n}}=\infty}$
+\end_inset
+
+ ist, gibt es ein 
+\begin_inset Formula $n_{0}$
+\end_inset
+
+ mit 
+\begin_inset Formula ${\displaystyle r\le\frac{\abs{a_{n}}}{2}}$
+\end_inset
+
+ für alle 
+\begin_inset Formula $n\ge n_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Nun gilt für 
+\begin_inset Formula $z\in\overline{B_{r}\left(0\right)}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\sum_{n=n_{0}}^{\infty}\abs{h_{n}\left(z\right)-T_{n}\left(z\right)}\le\sum_{n=n_{0}}^{\infty}\frac{1}{2^{n}}\le2
+\end{align*}
+
+\end_inset
+
+Daher konvergiert 
+\begin_inset Formula ${\displaystyle \sum_{n=n_{0}}^{\infty}\left(h_{n}-T_{n}\right)}$
+\end_inset
+
+ auf 
+\begin_inset Formula $\overline{B_{r}\left(0\right)}$
+\end_inset
+
+ absolut und lokal gleichmäßig gegen eine holomorphe Funktion.
+ Dann ist aber
+\begin_inset Formula 
+\begin{align*}
+f\left(z\right) & :=\sum_{n=0}^{\infty}\left(h_{n}\left(z\right)-T_{n}\left(z\right)\right)=\sum_{n=0}^{n_{0}-1}\left(h_{n}\left(z\right)-T_{n}\left(z\right)\right)+\sum_{n=n_{0}}^{\infty}\left(h_{n}\left(z\right)-T_{n}\left(z\right)\right)
+\end{align*}
+
+\end_inset
+
+auf 
+\begin_inset Formula $\overline{B_{r}\left(0\right)}$
+\end_inset
+
+ eine meromorphe Funktion mit den Polen 
+\begin_inset Formula $\left(a_{n}\right)_{0\le n<n_{0}}$
+\end_inset
+
+ mit den Hauptteilen 
+\begin_inset Formula $h_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Da dies für alle 
+\begin_inset Formula $r\in\mathbb{R}_{>0}$
+\end_inset
+
+ gilt, konvergiert diese Reihe für alle 
+\begin_inset Formula $z\in\mathbb{C}$
+\end_inset
+
+ absolut und lokal gleichmäßig in 
+\begin_inset Formula $z$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Die Grenzfunktion ist nach dem Konvergenzsatz von Weierstraß holomorph.
+ Also ist 
+\begin_inset Formula ${\displaystyle \sum_{n=0}^{\infty}\left(h_{n}-T_{n}\right)}$
+\end_inset
+
+ meromorph.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Beispiel 
+\series medium
+(Partialbruchzerlegung)
+\end_layout
+
+\begin_layout Standard
+Wir wollen die Partialbruchzerlegung von 
+\begin_inset Formula ${\displaystyle \frac{\pi^{2}}{\left(\sin\left(\pi z\right)\right)^{2}}}$
+\end_inset
+
+ berechnen.
+\end_layout
+
+\begin_layout Standard
+Diese Funktion hat ihre Pole genau an den Punkten 
+\begin_inset Formula $\mathbb{Z}\subseteq\mathbb{C}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Der Hauptteil bei 0 ist 
+\begin_inset Formula $h_{0}:=z^{\minus2}$
+\end_inset
+
+, denn es gilt
+\begin_inset Formula 
+\begin{align*}
+\frac{\pi^{2}}{\sin^{2}\left(\pi z\right)} & =\frac{\pi^{2}}{\left(\sum_{k=0}^{\infty}\frac{\left(\pi z\right)^{2k+1}}{\left(2k+1\right)!}\right)^{2}}=\frac{\pi^{2}}{\left(\pi z\right)^{2}\left(\sum_{k=0}^{\infty}\frac{\left(\pi z\right)^{2k}}{\left(2k+1\right)!}\right)^{2}}
+\end{align*}
+
+\end_inset
+
+und:
+\begin_inset Formula 
+\begin{align*}
+\lim_{z\to0}\sum_{k=0}^{\infty}\frac{\left(\pi z\right)^{2k}}{\left(2k+1\right)!} & =1
+\end{align*}
+
+\end_inset
+
+Aus der Periodizität folgt für den Hauptteil bei 
+\begin_inset Formula $n\in\mathbb{Z}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+h_{n} & :=\frac{1}{\left(z-n\right)^{2}}
+\end{align*}
+
+\end_inset
+
+Nun ist
+\begin_inset Formula 
+\begin{align*}
+\sum_{\abs n>r}\frac{1}{\left(z-n\right)^{2}}
+\end{align*}
+
+\end_inset
+
+für jedes feste 
+\begin_inset Formula $r\in\mathbb{R}_{>0}$
+\end_inset
+
+ auf der Kreisscheibe 
+\begin_inset Formula $B_{r}\left(0\right)$
+\end_inset
+
+ lokal gleichmäßig konvergent.
+ Daher definiert
+\begin_inset Formula 
+\begin{align*}
+\sum_{n\in\mathbb{Z}}\frac{1}{\left(z-n\right)^{2}}
+\end{align*}
+
+\end_inset
+
+auf 
+\begin_inset Formula $\mathbb{C}\setminus\mathbb{Z}$
+\end_inset
+
+ eine meromorphe Funktion mit denselben Polen und Hauptteilen wie 
+\begin_inset Formula ${\displaystyle \frac{\pi^{2}}{\left(\sin\left(\pi z\right)\right)^{2}}}$
+\end_inset
+
+.
+ Die Differenz
+\begin_inset Formula 
+\begin{align*}
+g\left(z\right) & :=\frac{\pi^{2}}{\left(\sin\left(\pi z\right)\right)^{2}}-\sum_{n=-\infty}^{\infty}\frac{1}{\left(z-n\right)^{2}}
+\end{align*}
+
+\end_inset
+
+ist somit eine auf ganz 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+ holomorphe Funktion.
+\end_layout
+
+\begin_layout Standard
+Da 
+\begin_inset Formula $g\left(z\right)$
+\end_inset
+
+ eine Differenz von Funktionen mit Periode 1 ist, hat sie ebenfalls die
+ Periode 1.
+\end_layout
+
+\begin_layout Standard
+Es gilt:
+\begin_inset Formula 
+\begin{align*}
+\sin\left(x+\ii y\right) & =\frac{1}{2\ii}\left(e^{\ii x}e^{\minus y}-e^{\minus\ii x}e^{y}\right)\\
+\lim_{\abs y\to\infty}\abs{\sin\left(x+\ii y\right)} & =\infty
+\end{align*}
+
+\end_inset
+
+Daher konvergiert
+\begin_inset Formula 
+\begin{align*}
+\frac{\pi^{2}}{\left(\sin\left(\pi\left(x+\ii y\right)\right)\right)^{2}} & \xrightarrow{\abs y\to\infty}0
+\end{align*}
+
+\end_inset
+
+gleichmäßig in 
+\begin_inset Formula $y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Zeigen wir die gleichmäßige Konvergenz von 
+\begin_inset Formula ${\displaystyle \sum_{n=-\infty}^{\infty}\frac{1}{\left(z-n\right)^{2}}}$
+\end_inset
+
+ gegen Null, so ergibt sich mit dem Satz von Liouville, dass die Differenz
+ 
+\begin_inset Formula $g\left(z\right)$
+\end_inset
+
+ konstant und damit Null ist.
+\end_layout
+
+\begin_layout Standard
+Wegen der Periodizität genügt es, den Streifen 
+\begin_inset Formula $A:=\left\{ z\in\mathbb{C}\big|0\le\text{Re}\left(z\right)\le1\right\} $
+\end_inset
+
+ zu betrachten.
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Abbildung Dreieck einfügen
+\end_layout
+
+\begin_layout Standard
+Es gilt für 
+\begin_inset Formula $z\in A$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\abs{z-n} & \ge\frac{1}{2}\left(\abs y+n-1\right) &  & \text{für }n\ge1\\
+\abs{z-m} & \ge\frac{1}{2}\left(\abs y+\abs m\right) &  & \text{für }m\le0
+\end{align*}
+
+\end_inset
+
+Für 
+\begin_inset Formula $\abs y\ge0$
+\end_inset
+
+ folgt:
+\begin_inset Formula 
+\begin{align*}
+\sum_{n=\minus\infty}^{\infty}\frac{1}{\abs{z-n}^{2}} & =\sum_{n=1}^{\infty}\frac{1}{\abs{z-n}^{2}}+\sum_{m=0}^{\infty}\frac{1}{\abs{z-\left(-m\right)}^{2}}\le\\
+ & \le4\sum_{n=1}^{\infty}\frac{1}{\left(\abs{y+n-1}\right)^{2}}+4\sum_{m=0}^{\infty}\frac{1}{\left(\abs y+m\right)^{2}}=8\sum_{n=0}^{\infty}\frac{1}{\left(\abs y+n\right)^{2}}\le\\
+ & \le8\sum_{n\ge\abs y}\frac{1}{n^{2}}\xrightarrow{\abs y\to\infty}0
+\end{align*}
+
+\end_inset
+
+Also gilt 
+\begin_inset Formula $g\left(z\right)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph*
+Resultat
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{\pi^{2}}{\sin^{2}\left(\pi z\right)} & =\sum_{n=\minus\infty}^{\infty}\frac{1}{\left(z-n\right)^{2}}
+\end{align*}
+
+\end_inset
+
+Die Reihe konvergiert lokal gleichmäßig auf 
+\begin_inset Formula $\mathbb{C}\setminus\mathbb{Z}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph*
+Folgerung
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{\pi^{2}}{8} & =\frac{1}{8}\cdot\pi^{2}=\frac{1}{8}\cdot\frac{\pi^{2}}{\left(\sin\left(\frac{\pi}{2}\right)\right)^{2}}=\frac{1}{8}\cdot\sum_{n=\minus\infty}^{\infty}\frac{1}{\left(\frac{1}{2}-n\right)^{2}}=\frac{1}{2}\cdot\sum_{n=\minus\infty}^{\infty}\frac{1}{\left(1-2n\right)^{2}}=\\
+ & =\frac{1}{2}\cdot\left(\sum_{m=0}^{\infty}\frac{1}{\left(1+2m\right)^{2}}+\sum_{n=1}^{\infty}\frac{1}{\left(1-2n\right)^{2}}\right)=\frac{1}{2}\cdot\left(\sum_{m=0}^{\infty}\frac{1}{\left(2m+1\right)^{2}}+\sum_{n=1}^{\infty}\frac{1}{\left(2n-1\right)^{2}}\right)=\\
+ & =\frac{1}{2}\cdot\left(\sum_{m=0}^{\infty}\frac{1}{\left(2m+1\right)^{2}}+\sum_{n=0}^{\infty}\frac{1}{\left(2n+1\right)^{2}}\right)=\sum_{m=0}^{\infty}\frac{1}{\left(2m+1\right)^{2}}
+\end{align*}
+
+\end_inset
+
+
 \begin_inset ERT
 status open
 
@@ -27978,27 +31640,46 @@ status open
 Die Gamma- und Zetafunktion
 \end_layout
 
+\begin_layout Subsection
+Definition 
+\series medium
+(Gammafunktion)
+\end_layout
+
 \begin_layout Standard
 Sei 
 \begin_inset Formula $s\in\mathbb{R}_{>0}$
 \end_inset
 
 .
+ Die Funktion
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\Gamma\left(s\right) & :=\int_{0}^{\infty}x^{s-1}e^{-x}\dd x
+\Gamma\left(s\right) & :=\int_{0}^{\infty}x^{s-1}e^{\minus x}\dd x
 \end{align*}
 
 \end_inset
 
+heißt 
+\emph on
+Gammafunktion
+\emph default
+.
+\end_layout
+
+\begin_layout Subsection
+Bemerkung
+\end_layout
+
+\begin_layout Standard
 Es gilt:
 \begin_inset Formula 
 \begin{align*}
-\Gamma\left(s+1\right) & =\int_{0}^{\infty}x^{s}e^{-x}\dd x=\int_{0}^{\infty}x^{s}\left(-\frac{\dd}{\dd x}e^{-x}\right)\dd x\stackrel{\text{part. Int.}}{=}\int_{0}^{\infty}\left(\frac{\dd}{\dd x}x^{s}\right)\cdot e^{-x}\dd x=\\
- & =s\cdot\int_{0}^{\infty}x^{s-1}e^{-x}\dd x=s\cdot\Gamma\left(s\right)
+\Gamma\left(s+1\right) & =\int_{0}^{\infty}x^{s}e^{\minus x}\dd x=\int_{0}^{\infty}x^{s}\left(\minus\frac{\dd}{\dd x}e^{\minus x}\right)\dd x\stackrel{\text{part. Int.}}{=}\int_{0}^{\infty}\left(\frac{\dd}{\dd x}x^{s}\right)\cdot e^{\minus x}\dd x=\\
+ & =s\cdot\int_{0}^{\infty}x^{s-1}e^{\minus x}\dd x=s\cdot\Gamma\left(s\right)
 \end{align*}
 
 \end_inset
@@ -28030,6 +31711,39 @@ Also ist die
 -Funktion eine Fortsetzung der Fakultät.
 \end_layout
 
+\begin_layout Subsection
+Lemma
+\end_layout
+
+\begin_layout Standard
+Bezeichne den auf der positiven reellen Achse aufgeschlitzten Logarithmus
+ mit 
+\begin_inset Formula $\ln\left(z\right)$
+\end_inset
+
+.
+ Für 
+\begin_inset Formula $s\in\mathbb{C}$
+\end_inset
+
+ gilt:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\Gamma\left(s\right) & =\frac{e^{\minus\ii\left(s-1\right)\pi}}{2\ii\cdot\sin\left(\left(s-1\right)\pi\right)}\underbrace{\int_{C}e^{\left(s-1\right)\ln\left(z\right)}e^{\minus z}\dd z}_{\text{ist holomorph in }s}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
 \begin_layout Standard
 Schreibe das Integral als Konturintegral um:
 \begin_inset Formula 
@@ -28039,12 +31753,7 @@ x^{s-1} & =e^{\left(s-1\right)\cdot\log\left(x\right)}
 
 \end_inset
 
-Bezeichne den auf der positiven reellen Achse geschlitzten Logarithmus mit
- 
-\begin_inset Formula $\ln\left(z\right)$
-\end_inset
-
-.
+Es gilt:
 \begin_inset Formula 
 \begin{align*}
 \lim_{\varepsilon\to0}\ln\left(x+\ii\varepsilon\right) & =\log\left(x\right)\\
@@ -28054,19 +31763,30 @@ Bezeichne den auf der positiven reellen Achse geschlitzten Logarithmus mit
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-TODO: Abb1
+\color green
+TODO: Abb1 einfügen
 \end_layout
 
 \begin_layout Standard
 Betrachte das Konturintegral:
 \begin_inset Formula 
 \begin{align*}
-\int_{C}e^{\left(s-1\right)\cdot\ln\left(z\right)}e^{-z}\dd z & =\lim_{\varepsilon\to0}\int_{0}^{\infty}\left[e^{\left(s-1\right)\ln\left(x-\ii\varepsilon\right)}\cdot e^{-x}-e^{\left(s-1\right)\ln\left(x+\ii\varepsilon\right)}\cdot e^{-x}\right]\dd x=\\
+\int_{C}e^{\left(s-1\right)\cdot\ln\left(z\right)}e^{\minus z}\dd z & =\lim_{\varepsilon\to0}\int_{0}^{\infty}\left[e^{\left(s-1\right)\ln\left(x-\ii\varepsilon\right)}\cdot e^{\minus x}-e^{\left(s-1\right)\ln\left(x+\ii\varepsilon\right)}\cdot e^{\minus x}\right]\dd x=\\
  & =\left(e^{\left(s-1\right)\cdot2\pi\ii}-1\right)\cdot\Gamma\left(s\right)=e^{\ii\pi\left(s-1\right)}\cdot2\ii\sin\left(\pi\left(s-1\right)\right)\cdot\Gamma\left(s\right)
 \end{align*}
+
+\end_inset
+
+Damit folgt die Behauptung.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
 
 \end_inset
 
@@ -28074,37 +31794,25 @@ Betrachte das Konturintegral:
 \end_layout
 
 \begin_layout Subsection
-Lemma
+Bemerkung
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-\Gamma\left(s\right) & =\frac{e^{-\ii\left(s-1\right)\pi}}{2\ii\sin\left(\left(s-1\right)\pi\right)}\underbrace{\int_{C}e^{\left(s-1\right)\ln\left(z\right)}e^{-z}\dd z}_{\text{ist holomorph in }s}
-\end{align*}
 
-\end_inset
-
-
+\color green
+TODO: Abb2 einfügen
 \end_layout
 
 \begin_layout Standard
-TODO: Abb2
-\end_layout
-
-\begin_layout Standard
-Man sieht daran:
-\end_layout
-
-\begin_layout Standard
+Man sieht daran, dass 
 \begin_inset Formula $\Gamma\left(s\right)$
 \end_inset
 
- ist eine meromorphe Funktion und holomorph auf 
+ eine meromorphe Funktion und auf 
 \begin_inset Formula $\mathbb{C}\setminus\left\{ 0,\text{-}1,\text{-}2,\ldots\right\} $
 \end_inset
 
-.
+ holomorph ist.
 \end_layout
 
 \begin_layout Standard
@@ -28112,7 +31820,9 @@ Untersuchung der Pole:
 \end_layout
 
 \begin_layout Standard
-TODO: Abb3
+
+\color green
+TODO: Abb3 einfügen
 \end_layout
 
 \begin_layout Standard
@@ -28132,18 +31842,23 @@ Man erhält:
 \end_inset
 
  hat einfache Pole bei 
-\begin_inset Formula $s=0,\minus1,\minus2,\ldots$
+\begin_inset Formula $s\in\left\{ 0,\minus1,\minus2,\ldots\right\} $
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Standard
-Nun zur 
-\emph on
-Riemannschen Zetafunktion
-\emph default
-:
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(Riemannschen Zetafunktion)
 \end_layout
 
 \begin_layout Standard
@@ -28152,15 +31867,19 @@ Sei
 \end_inset
 
 .
- Die Reihe
+ Die absolut konvergente Reihe 
 \begin_inset Formula 
 \begin{align*}
-\zeta\left(s\right) & =\sum_{n=1}^{\infty}n^{-s}
+\zeta\left(s\right) & =\sum_{n=1}^{\infty}n^{\minus s}
 \end{align*}
 
 \end_inset
 
-konvergiert absolut.
+heißt 
+\emph on
+Riemannsche Zetafunktion
+\emph default
+.
 \end_layout
 
 \begin_layout Subsection
@@ -28182,7 +31901,7 @@ Sei
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\frac{1}{\zeta\left(s\right)} & =\prod_{n=1}^{\infty}\left(1-p_{n}^{-s}\right)
+\frac{1}{\zeta\left(s\right)} & =\prod_{n=1}^{\infty}\left(1-p_{n}^{\minus s}\right)
 \end{align*}
 
 \end_inset
@@ -28197,7 +31916,7 @@ Beweisskizze
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\left(1-2^{-s}\right)\cdot\zeta\left(s\right) & =\left(1-2^{-s}\right)\cdot\sum_{n=1}^{\infty}n^{-s}=\sum_{n=1}^{\infty}\left(n^{-s}-\left(2n\right)^{-s}\right)=\sum_{n\text{ ungerade}}^{\infty}n^{-s}
+\left(1-2^{\minus s}\right)\cdot\zeta\left(s\right) & =\left(1-2^{\minus s}\right)\cdot\sum_{n=1}^{\infty}n^{\minus s}=\sum_{n=1}^{\infty}\left(n^{\minus s}-\left(2n\right)^{\minus s}\right)=\sum_{n\text{ ungerade}}^{\infty}n^{\minus s}
 \end{align*}
 
 \end_inset
@@ -28220,15 +31939,11 @@ Komplexe Fortsetzung
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\zeta\left(s\right) & =\sum_{n=1}^{\infty}e^{-s\cdot\log\left(n\right)}
+\zeta\left(s\right) & =\sum_{n=1}^{\infty}e^{\minus s\cdot\log\left(n\right)}
 \end{align*}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 Variablentransformation: 
 \begin_inset Formula $x=nx'$
 \end_inset
@@ -28240,9 +31955,9 @@ Variablentransformation:
 
 \begin_inset Formula 
 \begin{align*}
-\Gamma\left(s\right) & =\int_{0}^{\infty}x^{s-1}e^{-x}\dd x=n^{s}\cdot\int_{0}^{\infty}x'^{s-1}e^{-nx'}\dd x'\qquad/\cdot n^{-s}\\
-n^{-s}\cdot\Gamma\left(s\right) & =\int_{0}^{\infty}x^{s-1}e^{-nx}\dd x\qquad/\sum_{n=1}^{\infty}\\
-\zeta\left(s\right)\cdot\Gamma\left(s\right) & =\int_{0}^{\infty}x^{s-1}\sum_{n=1}^{\infty}\left(e^{-x}\right)^{n}\dd x=\int_{0}^{\infty}x^{s-1}\frac{1}{e^{x}-1}\dd x
+\Gamma\left(s\right) & =\int_{0}^{\infty}x^{s-1}e^{\minus x}\dd x=n^{s}\cdot\int_{0}^{\infty}x'^{s-1}e^{\minus nx'}\dd x'\qquad/\cdot n^{\minus s}\\
+n^{\minus s}\cdot\Gamma\left(s\right) & =\int_{0}^{\infty}x^{s-1}e^{\minus nx}\dd x\qquad/\sum_{n=1}^{\infty}\\
+\zeta\left(s\right)\cdot\Gamma\left(s\right) & =\int_{0}^{\infty}x^{s-1}\sum_{n=1}^{\infty}\left(e^{\minus x}\right)^{n}\dd x=\int_{0}^{\infty}x^{s-1}\frac{1}{e^{x}-1}\dd x
 \end{align*}
 
 \end_inset
@@ -28255,6 +31970,29 @@ Also gilt:
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Subsection
+Theorem
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\zeta\left(s\right) & =\frac{e^{-\ii\left(s-1\right)\pi}}{\Gamma\left(s\right)\cdot2\ii\sin\left(\left(s-1\right)\pi\right)}\underbrace{\int_{C}e^{\left(s-1\right)\log\left(z\right)}\frac{1}{e^{z}-1}\dd z}_{\text{ist holomorph auf }\mathbb{C}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
+\end_layout
+
+\begin_layout Standard
 Schreibe dies wieder als Konturintegral (
 \begin_inset Formula $C$
 \end_inset
@@ -28272,20 +32010,26 @@ Dies ist analog wie bei der
 \end_inset
 
 -Funktion.
-\end_layout
+\begin_inset ERT
+status open
 
-\begin_layout Subsection
-Theorem
-\end_layout
+\begin_layout Plain Layout
 
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-\zeta\left(s\right) & =\frac{e^{-\ii\left(s-1\right)\pi}}{\Gamma\left(s\right)\cdot2\ii\sin\left(\left(s-1\right)\pi\right)}\underbrace{\int_{C}e^{\left(s-1\right)\log\left(z\right)}\frac{1}{e^{z}-1}\dd z}_{\text{ist holomorph auf }\mathbb{C}}
-\end{align*}
+
+\backslash
+qqed
+\end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Subsection
+Bemerkung
+\end_layout
+
+\begin_layout Standard
 Dies liefert eine meromorphe Fortsetzung.
 \end_layout
 
@@ -28334,11 +32078,22 @@ Mögliche Pole sind bei
 \begin_inset Formula $s=1$
 \end_inset
 
-: Einfacher Pol.
+: Einfacher Pol mit Residuum 1.
 \end_layout
 
 \begin_layout Standard
-TODO: Abb4
+
+\color green
+TODO: Abb4 einfügen
+\end_layout
+
+\begin_layout Standard
+
+\color green
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -28384,7 +32139,9 @@ Riemannscher Abbildungssatz
 \end_layout
 
 \begin_layout Subsection
-Definition (biholomorph)
+Definition 
+\series medium
+(biholomorph)
 \end_layout
 
 \begin_layout Standard
@@ -28404,15 +32161,19 @@ Eine Abbildung
 \begin_inset Formula $f$
 \end_inset
 
- bijektiv ist und 
-\begin_inset Formula $f,f^{-1}$
+ bijektiv ist und sowohl 
+\begin_inset Formula $f$
+\end_inset
+
+ als auch 
+\begin_inset Formula $f^{-1}$
 \end_inset
 
  holomorph sind.
 \end_layout
 
-\begin_layout Subsubsection*
-Frage
+\begin_layout Subsection
+Fragestellung
 \end_layout
 
 \begin_layout Standard
@@ -28428,11 +32189,13 @@ Gibt es eine biholomorphe Abbildung
 \begin_inset Formula $f:\Omega\to B:=B_{1}\left(0\right)$
 \end_inset
 
-.
+?
 \end_layout
 
 \begin_layout Standard
-TODO: Abb5
+
+\color green
+TODO: Abb5 einfügen
 \end_layout
 
 \begin_layout Standard
@@ -28489,23 +32252,24 @@ abc
 \end_inset
 
 .
- Gesucht: 
-\begin_inset Formula $f:\mathbb{C}\to B_{1}\left(0\right)=:B$
+ Gesucht ist eine biholomorphe Funktion 
+\begin_inset Formula $f:\mathbb{C}\to B$
 \end_inset
 
- biholomorph.
+.
 \end_layout
 
 \begin_layout Standard
+Es gilt 
 \begin_inset Formula $\left|f\left(z\right)\right|\le1$
 \end_inset
 
 .
- Nach Liouville folgt 
-\begin_inset Formula $f=\text{konst.}$
+ Nach dem Satz von Liouville folgt, dass 
+\begin_inset Formula $f$
 \end_inset
 
-, also nicht bijektiv und damit nicht biholomorph.
+ konstant, also nicht bijektiv und damit nicht biholomorph ist.
 \end_layout
 
 \begin_layout Standard
@@ -28529,32 +32293,32 @@ abc
 
 \end_inset
 
- TODO: Abb6
+ 
+\color green
+TODO: Abb6 einfügen
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula $\Omega$
 \end_inset
 
- muss bogenzusammenhängend (TODO: weg-?) sein, denn:
-\end_layout
-
-\begin_layout Standard
-Seien 
+ muss wegzusammenhängend sein, denn für 
 \begin_inset Formula $z_{1},z_{2}\in\Omega$
 \end_inset
 
-.
- Dann ist 
+ ist 
 \begin_inset Formula $\overline{f\left(z_{1}\right)f\left(z_{2}\right)}\subseteq B$
 \end_inset
 
 .
- Also ist 
+\end_layout
+
+\begin_layout Standard
+Also ist 
 \begin_inset Formula $f^{-1}\left(\overline{f\left(z_{1}\right)f\left(z_{2}\right)}\right)$
 \end_inset
 
- ist eine Kurve in 
+ eine Kurve in 
 \begin_inset Formula $\Omega$
 \end_inset
 
@@ -28586,16 +32350,19 @@ abc
 \begin_inset Formula $\Omega$
 \end_inset
 
- muss einfach zusammenhängend sein, das heißt:
+ muss 
+\emph on
+einfach zusammenhängend 
+\emph default
+sein, das heißt:
 \end_layout
 
 \begin_layout Standard
-Sei 
+Seien 
 \begin_inset Formula $\gamma$
 \end_inset
 
- eine geschlossene Kurve.
- Sei 
+ eine geschlossene Kurve und 
 \begin_inset Formula $s\in\left[0,1\right]$
 \end_inset
 
@@ -28619,11 +32386,17 @@ Sei
 \end_layout
 
 \begin_layout Standard
-Man sagt auch, die Kurve ist 0-homotop.
+Man sagt auch, die Kurve ist 
+\emph on
+0-homotop
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
-TODO: Abb8
+
+\color green
+TODO: Abb8 einfügen
 \end_layout
 
 \begin_layout Standard
@@ -28633,8 +32406,8 @@ TODO: Abb8
  ist nicht in einen Punkt „zusammenziehbar“.
 \end_layout
 
-\begin_layout Standard
-Beweis:
+\begin_layout Subsubsection*
+Beweis
 \end_layout
 
 \begin_layout Standard
@@ -28663,15 +32436,12 @@ Sei
 
 \end_inset
 
-eine Nullhomotopie.
-\end_layout
-
-\begin_layout Standard
-Also ist 
+ist eine Nullhomotopie.
+ Also ist 
 \begin_inset Formula $f^{-1}\circ\Phi$
 \end_inset
 
- ist eine Nullhomotopie von 
+ eine Nullhomotopie von 
 \begin_inset Formula $\gamma$
 \end_inset
 
@@ -28680,6 +32450,19 @@ Also ist
 \end_inset
 
  einfach zusammenhängend ist.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -28699,7 +32482,9 @@ end{abclist}
 \end_layout
 
 \begin_layout Subsection
-Definition
+Definition 
+\series medium
+(einfach zusammenhängend)
 \end_layout
 
 \begin_layout Standard
@@ -28720,11 +32505,11 @@ einfach zusammenhängend
 \end_inset
 
 , sodass 
-\begin_inset Formula $\Phi\left(.,1\right)=\gamma\left(.\right)$
+\begin_inset Formula $\Phi\left(t,1\right)=\gamma\left(t\right)$
 \end_inset
 
  und 
-\begin_inset Formula $\Phi\left(.,0\right)=\text{konst.}$
+\begin_inset Formula $\Phi\left(t,0\right)=C\in X$
 \end_inset
 
 .
@@ -28750,7 +32535,7 @@ Falls
 \begin_inset Formula $\overline{\mathbb{C}}\setminus\Omega$
 \end_inset
 
-.
+ ist zusammenhängend.
 \end_layout
 
 \begin_layout Itemize
@@ -28781,20 +32566,14 @@ Falls
 \end_layout
 
 \begin_layout Subsection
-Theorem (Riemannscher Abbildungssatz für 
-\begin_inset Formula $\Omega\subseteq\mathbb{C}$
-\end_inset
-
-)
+Theorem 
+\series medium
+(Riemannscher Abbildungssatz)
 \end_layout
 
 \begin_layout Standard
 Sei 
-\begin_inset Formula $\Omega\subseteq\mathbb{C}$
-\end_inset
-
-, 
-\begin_inset Formula $\Omega\not=\mathbb{C}$
+\begin_inset Formula $\Omega\subsetneq\mathbb{C}$
 \end_inset
 
  eine einfach zusammenhängende offene Teilmenge von 
@@ -28818,24 +32597,54 @@ Dann gibt es eine eindeutige biholomorphe Abbildung
 \end_inset
 
  und 
-\begin_inset Formula $f'\left(z_{0}\right)>0$
+\begin_inset Formula $f'\left(z_{0}\right)\in\mathbb{R}_{>0}$
 \end_inset
 
 .
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Reimann hat dies vermutet.
- Koebe hat es bewiesen.
- siehe zum Beispiel Jänich, Ahlfors
+Riemann hat dies vermutet und Koebe hat es bewiesen.
 \end_layout
 
 \begin_layout Standard
-Bisher oft: 
+\begin_inset Formula $f\left(z_{0}\right)=0$
+\end_inset
+
+ und 
+\begin_inset Formula $f'\left(z_{0}\right)>0$
+\end_inset
+
+ sind Normierungsbedingungen.
+\end_layout
+
+\begin_layout Standard
+Beachte, dass für 
+\begin_inset Formula $f$
+\end_inset
+
+ keine Regularität auf dem Rand vorausgesetzt wurde.
+ 
+\begin_inset Formula $f$
+\end_inset
+
+ ist im Allgemeinen auf 
+\begin_inset Formula $\partial\Omega$
+\end_inset
+
+ nicht holomorph.
+\end_layout
+
+\begin_layout Standard
+Bisher war 
 \begin_inset Formula $\gamma$
 \end_inset
 
- geschlossene Kurve, 
+ oft eine geschlossene Kurve mit 
 \begin_inset Formula $\text{im}\left(\gamma\right)\subseteq\Delta\subseteq\Omega$
 \end_inset
 
@@ -28851,20 +32660,38 @@ Ab jetzt kann man stets
 \begin_inset Formula $\mathbb{C}$
 \end_inset
 
- ersetzen.
+ ersetzen, die 
+\begin_inset Formula $a$
+\end_inset
+
+ enthält.
+\end_layout
+
+\begin_layout Subsubsection*
+Beweis
 \end_layout
 
 \begin_layout Standard
-zur Eindeutigkeit:
+(siehe zum Beispiel Jänich, Ahlfors)
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: restlichen Beweis (Existenz) einfügen
+\end_layout
+
+\begin_layout Standard
+Eindeutigkeit:
 \end_layout
 
 \begin_layout Standard
 Seien 
-\begin_inset Formula $f_{1},f_{2}$
+\begin_inset Formula $f_{1},f_{2}:\Omega\to B$
 \end_inset
 
- zwei biholomorphe Abbildungen 
-\begin_inset Formula $\Omega\to B$
+ zwei biholomorphe Abbildungen mit 
+\begin_inset Formula $f_{1}\left(z_{0}\right)=f_{2}\left(z_{0}\right)=0$
 \end_inset
 
 .
@@ -28872,49 +32699,31 @@ Seien
 
 \begin_layout Standard
 Dann ist 
-\begin_inset Formula $g=f_{1}^{-1}\circ f_{2}$
+\begin_inset Formula $g=f_{1}^{-1}\circ f_{2}:B\to B$
 \end_inset
 
- eine biholomorphe Abbildung von 
-\begin_inset Formula $B\to B$
-\end_inset
-
- und 
+ eine biholomorphe Abbildung mit 
 \begin_inset Formula $g\left(0\right)=0$
 \end_inset
 
 .
 \end_layout
 
-\begin_layout Subsection
-Satz
-\end_layout
-
 \begin_layout Standard
-\begin_inset Formula $g=c\cdot z$
+Wir zeigen nun:
+\begin_inset Formula 
+\begin{align*}
+g\left(z\right) & =c\cdot z & \left|c\right| & =1
+\end{align*}
+
 \end_inset
 
- mit 
-\begin_inset Formula $\left|c\right|=1$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Erstaunlich ist: 
+Erstaunlich ist, dass 
 \begin_inset Formula $g$
 \end_inset
 
- ist bis auf einen Phasenfaktor (eine Drehung) eindeutig durch die Biholomorphie
- festgelegt.
-\end_layout
-
-\begin_layout Subsubsection*
-Beweisskizze
-\end_layout
-
-\begin_layout Standard
+ bis auf einen Phasenfaktor (eine Drehung) eindeutig durch die Biholomorphie
+ festgelegt ist.
 \begin_inset Formula 
 \begin{align*}
 h\left(z\right) & :=\begin{cases}
@@ -28958,10 +32767,11 @@ Ist
 \end_layout
 
 \begin_layout Standard
-Damit folgt:
-\end_layout
+Damit folgt auf 
+\begin_inset Formula $\partial B_{1}$
+\end_inset
 
-\begin_layout Standard
+:
 \begin_inset Formula 
 \begin{align*}
 \left|h\left(z\right)\right| & =\frac{\left|g\left(z\right)\right|}{\left|z\right|}=\left|g\left(z\right)\right|\le1
@@ -28969,15 +32779,7 @@ Damit folgt:
 
 \end_inset
 
-auf 
-\begin_inset Formula $\partial B_{1}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Aus dem Maximumprinzip folgt:
+Aus dem Maximumprinzip folgt
 \begin_inset Formula 
 \begin{align*}
 1 & \ge\left|h\left(z\right)\right|=\frac{\left|g\left(z\right)\right|}{\left|z\right|}
@@ -28997,7 +32799,7 @@ in ganz
 \end_layout
 
 \begin_layout Standard
-Analog folgt: 
+Analog folgt 
 \begin_inset Formula $\left|z\right|=\left|g^{-1}\left(g\left(z\right)\right)\right|\le\left|g\left(z\right)\right|$
 \end_inset
 
@@ -29011,7 +32813,7 @@ Analog folgt:
 
 \begin_layout Standard
 Somit ist 
-\begin_inset Formula $\left|h\left(z\right)\right|=\frac{\left|g\left(z\right)\right|}{\left|z\right|}=\text{konst.}$
+\begin_inset Formula ${\displaystyle \left|h\left(z\right)\right|=\frac{\left|g\left(z\right)\right|}{\left|z\right|}=1}$
 \end_inset
 
 .
@@ -29019,14 +32821,31 @@ Somit ist
 
 \begin_layout Standard
 Aus dem Maximumprinzip folgt 
-\begin_inset Formula $h=\text{konst.}$
+\begin_inset Formula $h=c\in\mathbb{C}$
+\end_inset
+
+ mit 
+\begin_inset Formula $\abs c=1$
 \end_inset
 
  und somit 
-\begin_inset Formula $g=\text{konst.}\cdot z$
+\begin_inset Formula $g=c\cdot z$
 \end_inset
 
 .
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection*
@@ -29034,25 +32853,27 @@ Beweis des Maximumprinzips
 \end_layout
 
 \begin_layout Standard
-TODO: Abb9
+
+\color green
+TODO: Abb9 einfügen
 \end_layout
 
 \begin_layout Standard
-Nehme an 
+Nehme an, dass 
 \begin_inset Formula $\left|h\right|$
 \end_inset
 
- habe in 
+ in 
 \begin_inset Formula $z_{0}\in\Omega$
 \end_inset
 
- ein Maximum.
+ ein Maximum hat.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-h\left(z_{0}\right) & =\frac{1}{2\pi\ii}\oint_{\partial B_{\varepsilon}\left(z_{0}\right)}\frac{h\left(\zeta\right)}{\zeta-z}\dd\zeta
+h\left(z_{0}\right) & =\frac{1}{2\pi\ii}\oint_{\partial B_{\varepsilon}\left(z_{0}\right)}\frac{h\left(\zeta\right)}{\zeta-z_{0}}\dd\zeta
 \end{align*}
 
 \end_inset
@@ -29077,19 +32898,32 @@ Da
 \begin_inset Formula $z_{0}$
 \end_inset
 
- ein Maximum ist, folgt:
+ ein Maximum ist, folgt für 
+\begin_inset Formula $z\in\partial B_{\varepsilon}\left(z_{0}\right)$
+\end_inset
+
+:
 \begin_inset Formula 
 \begin{align*}
-\left|h\right| & =\left|h\left(z_{0}\right)\right|
+\left|h\left(z\right)\right| & =\left|h\left(z_{0}\right)\right|
 \end{align*}
 
 \end_inset
 
-auf 
-\begin_inset Formula $\partial B_{\varepsilon}$
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Part*

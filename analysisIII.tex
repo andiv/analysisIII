@@ -179,7 +179,7 @@
 \global\long\def\abs#1{\left\lvert #1\right\rvert }
 
 
-\global\long\def\minus{\text{-}\,}
+\global\long\def\minus{\,\text{-}\,}
 
 
 \global\long\def\exs{\exsop}
@@ -6357,7 +6357,7 @@ Das totale Differential ist \emph{exakt}, das heißt es kann in obiger
 Form geschrieben werden.
 
 
-\subsection{Bemerkung}
+\subsection{Bemerkung\label{sub:Bem-Konturintegral}}
 
 Zurück zum Konturintegral:
 \begin{align*}
@@ -6598,8 +6598,8 @@ Verallgemeinere dies nun auf beliebige Kurven in einer Kreisscheibe.
 
 \subsection{Theorem\label{sub:Thm-HolomorphInt0}}
 
-Sei $f$ in $\Delta:=B_{R}\left(0\right)\in\mathbb{C}$ mit $R\in\mathbb{R}_{>0}$
-holomorph.
+Sei $f$ in $\Delta:=B_{R}\left(0\right)\in\mathbb{C}$ holomorph
+mit $R\in\mathbb{R}_{>0}$.
 
 Dann gilt für jede geschlossene Kurve $\gamma$ in $\Delta$:
 \begin{align*}
@@ -6689,8 +6689,6 @@ Ab jetzt geht der Beweis genau wie der von Theorem \ref{sub:Thm-HolomorphInt0}.\
 
 \section{Der Cauchysche Integralsatz}
 
-\textcolor{green}{TODO: Rest überarbeiten}
-
 Sei $\gamma$ wieder eine geschlossene Kurve.
 
 Wir wollen nun Funktionen integrieren, die Pole haben.
@@ -6699,9 +6697,10 @@ Beginne speziell mit der Funktion
 \begin{align*}
 \frac{1}{z-a}
 \end{align*}
-wobei $a\not\in\text{im}\left(\gamma\right)$ ist.
+wobei $a$ nicht im Bild $\text{im}\left(\gamma\right)$ der Kurve
+liegt.
 
-TODO: Abb6
+\textcolor{green}{TODO: Abb6 einfügen}
 
 
 \subsection{Lemma}
@@ -6710,12 +6709,10 @@ Es gilt
 \begin{align*}
 \int_{\gamma}\frac{1}{z-a}\dd z & =2\pi\ii\cdot n
 \end{align*}
-für ein $n\in\mathbb{Z}\setminus\left\{ 0\right\} $.
+für ein $n\in\mathbb{Z}\setminus\left\{ 0\right\} $ und $\log\left(z-a\right)$
+ist eine holomorphe Stammfunktion, aber nicht auf ganz $\mathbb{C}$.
 
-$\log\left(z-a\right)$ ist eine holomorphe Stammfunktion, aber nicht
-auf ganz $\mathbb{C}$.
-
-TODO: Abb7
+\textcolor{green}{TODO: Abb7 einfügen}
 
 
 \subsubsection*{Beweis}
@@ -6724,39 +6721,40 @@ Wähle eine Parametrisierung
 \begin{align*}
 \gamma:\left[\alpha,\beta\right] & \to\mathbb{C}
 \end{align*}
-und setze $z\left(t\right)=\gamma\left(t\right)$ und
+und setze $z\left(t\right)=\gamma\left(t\right)$ und:
 \begin{align*}
 h\left(t\right) & :=\int_{\alpha}^{t}\frac{z'\left(t\right)}{z\left(t\right)-a}\dd t
 \end{align*}
-TODO: Abb8
+\textcolor{green}{TODO: Abb8 einfügen}
+
 \begin{align*}
 h'\left(t\right) & =\frac{z'\left(t\right)}{z\left(t\right)-a}
 \end{align*}
-Dann gilt:
+Dann ist
 \begin{align*}
 e^{-h\left(t\right)}\left(z\left(t\right)-a\right)
 \end{align*}
-ist stetig und stückweise differenzierbar und hat die Ableitung:
+stetig und stückweise differenzierbar und hat die Ableitung:
 \begin{align*}
 \left(e^{-h\left(t\right)}\left(z\left(t\right)-a\right)\right)' & =e^{-h\left(t\right)}\left(-h'\left(t\right)\left(z\left(t\right)-a\right)+z'\left(t\right)\right)=0
 \end{align*}
-Also ist es eine Konstante $K\in\mathbb{C}$.
+Also es eine Konstante $K\in\mathbb{C}$, das heißt:
 \begin{align*}
 e^{-h\left(t\right)} & =\frac{K}{z\left(t\right)-a}
 \end{align*}
-Da $h\left(\alpha\right)=0$ ist, folgt:
+Da $h\left(\alpha\right)=0$ ist, weil $\alpha$ die untere Integralgrenze
+ist, folgt:
 \begin{align*}
 e^{-h\left(t\right)} & =\frac{z\left(\alpha\right)-a}{z\left(t\right)-a}
 \end{align*}
-Also gilt:
+Da die Kurve geschlossen ist, also $z\left(\alpha\right)=z\left(\beta\right)$
+gilt, folgt:
 \begin{align*}
 e^{-h\left(\beta\right)} & =\frac{z\left(\alpha\right)-a}{z\left(\beta\right)-a}=1
 \end{align*}
-Denn die Kurve ist geschlossen, also $z\left(a\right)=z\left(b\right)$.
-
 Damit ergibt sich:
 \begin{align*}
-h\left(\beta\right) & =\int_{\gamma}\frac{1}{z-a}\dd z=2\pi\ii n
+\int_{\gamma}\frac{1}{z-a}\dd z & =h\left(\beta\right)=2\pi\ii n
 \end{align*}
 \qqed
 
@@ -6770,15 +6768,16 @@ schneidet. Dann heißt
 \begin{align*}
 n\left(\gamma,a\right) & =\frac{1}{2\pi\ii}\oint_{\gamma}\frac{\dd z}{z-a}
 \end{align*}
-der \emph{Index} von $\gamma$ bezüglich $a$ (oder auch \emph{Windungszahl}).
+\emph{der Index} oder auch \emph{die Windungszahl} von $\gamma$ bezüglich
+$a$.
 
 
-\subsection{Theorem \textmd{(Cauchyscher Integralsatz)}}
+\subsection{Theorem \textmd{(Cauchyscher Integralsatz)\label{sub:Thm-CauchyscherIntegralsatz}}}
 
 Sei $f:\Delta=B_{R}\left(0\right)\to\mathbb{C}$ holomorph und $\gamma$
 eine geschlossene Kurve in $\Delta$.
 
-Dann ist für jedes $a\in\Delta$, das nicht auf $\gamma$ liegt
+Dann gilt für jedes $a\in\Delta$, das nicht auf $\gamma$ liegt
 \begin{align*}
 n\left(\gamma,a\right)\cdot f\left(a\right) & =\frac{1}{2\pi\ii}\oint_{\gamma}\frac{f\left(z\right)}{z-a}\dd z
 \end{align*}
@@ -6787,11 +6786,11 @@ n\left(\gamma,a\right)\cdot f\left(a\right) & =\frac{1}{2\pi\ii}\oint_{\gamma}\f
 
 \subsubsection*{Beweis}
 
-Setze
+Die Funktion
 \begin{align*}
-F\left(z\right) & =\frac{f\left(z\right)-f\left(a\right)}{z-a}
+F\left(z\right) & :=\frac{f\left(z\right)-f\left(a\right)}{z-a}
 \end{align*}
-ist auf $\Delta\setminus\left\{ a\right\} $ holomorph.
+ist auf $\Delta\setminus\left\{ a\right\} $ holomorph und es gilt:
 \begin{align*}
 \lim_{z\to a}\left(z-a\right)F\left(z\right) & =\lim_{z\to a}\left(f\left(z\right)-f\left(a\right)\right)\stackrel{f\text{ stetig}}{=}0
 \end{align*}
@@ -6827,14 +6826,14 @@ Der Index ist eins, weil gilt:
 \qqed
 
 
-\subsubsection*{Bemerkung und Definition \textmd{(Zusammenhangskomponenten)}}
+\subsection{Bemerkung und Definition \textmd{(Zusammenhangskomponenten)}}
 
-Also ist $f\left(a\right)$ eindeutig bestimmt durch $f|_{\partial B_{\varepsilon}\left(a\right)}$,
+Also ist $f\left(a\right)$ eindeutig bestimmt durch $f\Big|_{\partial B_{\varepsilon}\left(a\right)}$,
 das heißt $f$ kann nicht in einer kleinen Umgebung um $a$ abgeändert
 werden.
 \begin{align*}
 \nabla^{2}\text{Re}\left(f\right) & =0=\nabla^{2}\text{Im}\left(f\right)\\
-\frac{\partial f}{\partial x} & =-\ii\frac{\partial f}{\partial y}
+\partial_{1}f & =-\ii\partial_{2}f
 \end{align*}
 Diese harmonische Differentialgleichung ist im Innern eindeutig durch
 die Randwerte bestimmt.
@@ -6845,16 +6844,17 @@ n\left(\gamma,a\right) & =\frac{1}{2\pi\ii}\ointctrclockwise_{\gamma}\frac{\dd z
 \end{align*}
 Gehe Kurven rückwärts oder setze geschlossene Kurven aneinander:
 \begin{align*}
-n\left(-\gamma,a\right) & =-n\left(\gamma,a\right)\\
+n\left(\minus\gamma,a\right) & =\minus n\left(\gamma,a\right)\\
 n\left(\gamma_{1}+\gamma_{2},a\right) & =n\left(\gamma_{1},a\right)+n\left(\gamma_{2},a\right)
 \end{align*}
 
 
-TODO: Abb1
+\textcolor{green}{TODO: Abb1 einfügen}
 
-Das Bild (engl. \quotedblbase{}\foreignlanguage{english}{image}\textquotedblleft{})
-$\text{im}\left(\gamma\right)$ (beziehungsweise engl. \quotedblbase{}\foreignlanguage{english}{the
-range}\textquotedblleft{} $\text{Rg}\left(\gamma\right)$$ $)
+Das Bild (englisch \quotedblbase{}\foreignlanguage{english}{image}\textquotedblleft{})
+bezeichnet man mit $\text{im}\left(\gamma\right)$ (beziehungsweise
+englisch \quotedblbase{}\foreignlanguage{english}{range}\textquotedblleft{}
+$\text{Rg}\left(\gamma\right)$).
 \begin{align*}
 \text{im}\left(\gamma\right) & :=\gamma\left(\left[a,b\right]\right)
 \end{align*}
@@ -6865,12 +6865,13 @@ $\mathbb{C}$ und
 \end{align*}
 ist eine offene Teilmenge von $\mathbb{C}$.
 \begin{align*}
-n\left(\gamma\right):\mathbb{C}\setminus\text{im}\left(\gamma\right) & \to\mathbb{Z}:a\mapsto n\left(\gamma,a\right)
+n\left(\gamma\right):\mathbb{C}\setminus\text{im}\left(\gamma\right) & \to\mathbb{Z}\\
+a & \mapsto n\left(\gamma,a\right)
 \end{align*}
-Für offene Teilmengen von $\mathbb{C}$ ist zusammenhängend $\Leftrightarrow$
-wegzusammenhängend (auch genannt bogenzusammenhängend).
+Für offene Teilmengen von $\mathbb{C}$ ist zusammenhängend äquivalent
+zu wegzusammenhängend (auch bogenzusammenhängend genannt).
 \begin{align*}
-\mathbb{C}\setminus\text{Rg}\left(\gamma\right) & =\bcupd_{\lambda\in\Lambda}\Omega_{\lambda}
+\mathbb{C}\setminus\text{im}\left(\gamma\right) & =\bcupd_{\lambda\in\Lambda}\Omega_{\lambda}
 \end{align*}
 $\Omega_{\lambda}$ heißen \emph{die Zusammenhangskomponenten} und
 für alle $\lambda$ aus der Indexmenge $\Lambda$ ist $\Omega_{\lambda}$
@@ -6878,23 +6879,31 @@ zusammenhängend.
 
 Es könnte auch unendlich viele Zusammenhangskomponenten geben.
 
-TODO: Abb2
+\textcolor{green}{TODO: Abb2 einfügen}
 
 Da $\text{im}\left(\gamma\right)$ beschränkt ist, gibt es einen Radius
 $R$, so dass gilt:
 \begin{align*}
 \text{im}\left(\gamma\right) & \subseteq\Delta=B_{R}\left(0\right)
 \end{align*}
-TODO: Abb3
 
 
-\subsection{Satz}
+\textcolor{green}{TODO: Abb3 einfügen}
+
+
+\subsection{Satz\label{sub:Satz-nKonstantaufZusammenhangskomponente}}
+
+Sei $R\in\mathbb{R}_{>0}$ mit $\text{im}\left(\gamma\right)\subseteq\Delta=B_{R}\left(0\right)$.
 
 \begin{iiilist}
 
 \iii Falls $\left|a\right|>R$ ist, so gilt $n\left(\gamma,a\right)=0$.
 
-\iii Auf jeder Zusammenhangskomponente ist $n\left(\gamma,.\right):\Omega_{\lambda}\to\mathbb{N},x\mapsto n\left(\gamma,x\right)$
+\iii Auf jeder Zusammenhangskomponente ist
+\begin{align*}
+n\left(\gamma,.\right):\Omega_{\lambda} & \to\mathbb{N}\\
+x & \mapsto n\left(\gamma,x\right)
+\end{align*}
 konstant.
 
 \end{iiilist}
@@ -6904,43 +6913,58 @@ konstant.
 
 \begin{iiilist}
 
-\iii ${\displaystyle \frac{1}{z-a}}$ ist auf ganz $\Delta$ holomorph.
-Nach Theorem \ref{asdf}2.10.3 folgt:
+\iii ${\displaystyle \frac{1}{z-a}}$ ist in diesem Falls auf ganz
+$\Delta$ holomorph. Nach Theorem \ref{sub:Thm-HolomorphInt0} folgt:
 \begin{align*}
 \oint\frac{\dd z}{z-a} & =0
 \end{align*}
 \qqed[\roman{ale2})]
 
-\iii Seien $a_{1},a_{2}\in\Omega_{\lambda}$. Mann kann dann $a_{1}$
-und $a_{2}$ durch einen Polygonzug miteinander verbinden.
+\iii Seien $a,b\in\Omega_{\lambda}$. Mann kann dann $a$ und $b$
+durch einen Polygonzug miteinander verbinden.
 
-Es genügt zu zeigen, dass gilt:
+Ohne Einschränkung kann man annehmen, dass der Polygonzug nur aus
+einer Linie besteht, denn sonst kann man ihn in endlich viele Linien
+zerlegen.
+
+Daher ist die Verbindungslinie $v\left(a,b\right):=\left\{ \tau a+\left(1-\tau\right)b\Big|0\le\tau\le1\right\} $
+von $a$ nach $b$ eine Teilmenge von $\Omega_{\lambda}$.
+
+Es genügt also zu zeigen, dass gilt:
 \begin{align*}
 n\left(\gamma,a\right) & =n\left(\gamma,b\right)
 \end{align*}
-Dabei ist die Verbindungslinie $v\left(a,b\right):=\left\{ \tau a+\left(1-\tau\right)b|0\le\tau\le1\right\} $
-von $a$ nach $b$ eine Teilmenge von $\Omega_{\lambda}$.
 
-Es folgt
+
+Da $a$ und $b$ in der gleichen Zusammenhangskomponente liegen, gilt
 \begin{align*}
 v\left(a,b\right)\cap\text{im}\left(\gamma\right) & =\emptyset
 \end{align*}
 und damit ist ${\displaystyle \frac{z-a}{z-b}}$ auf $\gamma$ nicht
 Element von $\mathbb{R}_{\le0}$, denn wäre ${\displaystyle \frac{z-a}{z-b}}=-c$
-für ein $c\in\mathbb{R}_{\ge0}$, so wäre $z-a=-c\left(z-b\right)$,
-also würde $z\in v\left(a,b\right)$ folgen.
+für ein $c\in\mathbb{R}_{\ge0}$, so würde
+\begin{align*}
+z-a & =-c\left(z-b\right)\\
+z & =\frac{1}{1+c}\cdot a+\frac{c}{1+c}\cdot b
+\end{align*}
+mit
+\begin{align*}
+\frac{1}{1+c}+\frac{c}{1+c} & =1
+\end{align*}
+gelten, also würde $z\in v\left(a,b\right)$ folgen.
 
-TODO: Abb4?
+\textcolor{green}{TODO: Abb4? einfügen}
 
 Folglich ist ${\displaystyle \log\left(\frac{z-a}{z-b}\right)}$ längs
-$\gamma$ wohldefiniert, wobei bei $\log\left(z\right)$ wieder die
+$\gamma$ wohldefiniert, wobei für $\log\left(z\right)$ wieder die
 komplexe Ebene auf der negativen reellen Achse \quotedblbase{}geschlitzt\textquotedblleft{}
 ist.
 \begin{align*}
 \left(\log\left(\frac{z-a}{z-b}\right)\right)' & =\frac{1}{\frac{z-a}{z-b}}\left(\frac{1}{z-b}-\frac{z-a}{\left(z-b\right)^{2}}\right)=\frac{1}{z-a}-\frac{1}{z-b}
 \end{align*}
+Es folgt:
 \begin{align*}
-\oint_{\gamma}\left(\frac{1}{z-a}-\frac{1}{z-b}\right)\dd z & =\log\left(\frac{z-a}{z-b}\right)\bigg|_{z_{0}}^{z_{0}}=n\left(\gamma,a\right)=n\left(\gamma,b\right)
+\oint_{\gamma}\left(\frac{1}{z-a}-\frac{1}{z-b}\right)\dd z & =\log\left(\frac{z-a}{z-b}\right)\bigg|_{z_{0}}^{z_{0}}=0=n\left(\gamma,a\right)-n\left(\gamma,b\right)
 \end{align*}
 
 
@@ -6951,46 +6975,48 @@ ist.
 
 \subsection{Lemma}
 
-Seien $z_{1},z_{2}$ zwei Punkte auf einer geschlossenen Kurve $\gamma$,
-die nicht durch den Ursprung geht.
-
-Es sei $\text{Im}\left(z_{1}\right)<0$ und $\text{Im}\left(z_{2}\right)>0$.
-
-Bezeichne die Teilkurven von $z_{1}$ nach $z_{2}$ mit $\gamma_{1}$
-und die von $z_{2}$ nach $z_{1}$ mit $\gamma_{2}$.
+Seien $\gamma$ eine geschlossenen Kurve, die nicht durch den Ursprung
+geht, und $z_{1},z_{2}\in\text{im}\left(\gamma\right)$ mit $\text{im}\left(z_{1}\right)<0$
+und $\text{im}\left(z_{2}\right)>0$. Bezeichne die Teilkurven von
+$z_{1}$ nach $z_{2}$ mit $\gamma_{1}$ und die von $z_{2}$ nach
+$z_{1}$ mit $\gamma_{2}$.
 
 Falls $\gamma_{1}$ die negative reelle Achse nicht schneidet und
 $\gamma_{2}$ die positive reelle Achse nicht schneidet, dann ist
 $n\left(\gamma,0\right)=1$.
 
-TODO: Abb5
+\textcolor{green}{TODO: Abb5 einfügen}
 
 
 \subsubsection*{Beweis}
 
-Sei $L_{1}$ der Strahl durch 0 und $z_{1}$ und $L_{2}$ der Strahl
-durch 0 und $z_{2}$.
+Sei $L_{1}=\left\{ \lambda\cdot z_{1}\Big|\lambda\in\mathbb{R}_{\ge0}\right\} $
+der Strahl durch 0 und $z_{1}$ und $L_{2}$ der Strahl durch 0 und
+$z_{2}$.
 
-Sei $C$ ein Kreis um Ursprung, der $\gamma$ nicht schneidet.
+Sei $C$ ein Kreis um den Ursprung, der $\gamma$ nicht schneidet.
 
 Wähle $\sigma_{1}$ und $\sigma_{2}$ wie in der Zeichnung.
 
-TODO: Wie genau werden die $\sigma$ gewählt?
+\textcolor{green}{TODO: Wie genau werden die $\sigma$ gewählt?}
 \begin{align*}
 \oint_{\sigma_{1}}\frac{\dd z}{z-a} & =0=\oint_{\sigma_{2}}\frac{\dd z}{z-a}
 \end{align*}
-Denn 0 ist in derselben Zusammenhangskomponente wie ein beliebiges
-$a\in\mathbb{C}$ mit $\left|a\right|>R$.
+Dies gilt, da 0 in derselben Zusammenhangskomponente wie ein beliebiges
+$a\in\mathbb{C}$ mit $\left|a\right|>R$ ist.
+
+Nach Satz \ref{sub:Satz-nKonstantaufZusammenhangskomponente} i) gilt:
 \begin{align*}
 n\left(\sigma_{1},a\right) & =0
 \end{align*}
-Nach Satz \ref{asdf}2.11.5 i).
+
 
 Die Kurve $\mathcal{C}$ (siehe Zeichnung) schneidet nach Konstruktion
 $\sigma_{1}$ nicht.
 
-Also liegen $a,0$ in der gleichen Zusammenhangskomponente von $\mathbb{C}\setminus\text{im}\left(\sigma_{1}\right)$,
-weswegen $n\left(\sigma_{1},0\right)=0$.
+Also liegen $a$ und 0 in der gleichen Zusammenhangskomponente von
+$\mathbb{C}\setminus\text{im}\left(\sigma_{1}\right)$, weswegen $n\left(\sigma_{1},0\right)=0$
+ist.
 
 Damit folgt:
 \begin{align*}
@@ -7005,7 +7031,7 @@ n\left(\gamma,0\right) & =1
 
 \section[Folgerungen des Integralsatzes]{Einfache Folgerungen aus dem Cauchyschen Integralsatz}
 
-TODO: Abb7
+\textcolor{green}{TODO: Abb7 einfügen}
 
 Seien $\Omega\subseteq\mathbb{C}$ offen, $f:\Omega\to\mathbb{C}$
 holomorph und $a\in\Omega$.
@@ -7026,12 +7052,10 @@ f^{\left(n\right)}\left(z\right) & =\frac{n!}{2\pi\ii}\oint\frac{f\left(\zeta\ri
 \end{align*}
 Also sollte $f$ beliebig oft komplex differenzierbar sein.
 \begin{align*}
-\left|f^{\left(n\right)}\left(z\right)\right| & \le\frac{n!}{2\pi}\sup_{C}\frac{\left|f\left(\zeta\right)\right|}{\left|\zeta-z\right|^{n+1}}\cdot\underbrace{2\pi\cdot2\varepsilon}_{\text{Länge von }C}\le\\
- & \le2\varepsilon\cdot n!\cdot\frac{1}{\varepsilon^{n+1}}\cdot\sup_{C}\left|f\right|\le\\
- & \le\underbrace{2\sup_{C}\left|f\right|}_{=:\mathcal{C}}\cdot\frac{n!}{\varepsilon^{n}}
+\abs{f^{\left(n\right)}\left(z\right)} & \le\frac{n!}{2\pi}\sup_{C}\frac{\abs{f\left(\zeta\right)}}{\abs{\zeta-z}^{n+1}}\cdot\underbrace{2\pi\cdot2\varepsilon}_{\text{Länge von }C}\le\\
+ & \le2\varepsilon\cdot n!\cdot\frac{1}{\varepsilon^{n+1}}\cdot\sup_{C}\abs f\le\\
+ & \le\underbrace{2\sup_{C}\abs f}_{=:K}\cdot\frac{n!}{\varepsilon^{n}}
 \end{align*}
-TODO: Stimmt diese Definition von $\mathcal{C}$???
-
 \quotedblbase{}Man hat unter Kontrolle wie rasch die Ableitungen in
 $n$ ansteigen.\textquotedblleft{}
 
@@ -7040,33 +7064,30 @@ Betrachte die Taylorreihe:
 f\left(z\right) & =\sum_{n=0}^{\infty}\frac{f^{\left(n\right)}\left(z_{0}\right)}{n!}\left(z-z_{0}\right)^{n}
 \end{align*}
 \begin{align*}
-\left|\frac{f^{\left(n\right)}\left(z_{0}\right)}{n!}\left(z-z_{0}\right)\right|^{n} & \le\mathcal{C}\cdot\left(\frac{\left|z-z_{0}\right|}{\varepsilon}\right)^{n}
+\abs{\frac{f^{\left(n\right)}\left(z_{0}\right)}{n!}\left(z-z_{0}\right)}^{n} & \le K\cdot\left(\frac{\abs{z-z_{0}}}{\varepsilon}\right)^{n}
 \end{align*}
-Falls $\left|z-z_{0}\right|<\varepsilon$ ist die geometrische Reihe
-eine konvergente Majorante.
+Falls $\abs{z-z_{0}}<\varepsilon$ ist die geometrische Reihe eine
+konvergente Majorante.
 
 %DATE: Di 17.1.12
 
 
 \subsection{Lemma}
 
-TODO: Abb1
+\textcolor{green}{TODO: Abb1 einfügen}
 
-Sei $\Omega\subseteq\mathbb{C}$ offen. 
-
-Sei $\varphi\left(\zeta\right)$ stetig auf der geschlossene Kontur
-$\gamma:=\partial\Delta$, mit $\Delta:=B_{2\varepsilon}\left(a\right)\subseteq\Omega$
-das heißt $\gamma:\left[\alpha,\beta\right]\to\mathbb{C},\left(f\circ\gamma\right):\left[\alpha,\beta\right]\to\mathbb{C}$
-soll stetig sein.
-
-TODO: \quotedblbase{}das Kontur\textquotedblleft{} ??
+Seien $\Omega\subseteq\mathbb{C}$ offen und $\varphi\left(\zeta\right):\mathbb{C}\to\mathbb{C}$
+stetig auf der geschlossenen Kurve $\gamma:=\partial\Delta$, mit
+$\Delta:=B_{2\varepsilon}\left(a\right)\subseteq\Omega$ das heißt
+$\gamma:\left[\alpha,\beta\right]\to\mathbb{C}$ und $\left(\varphi\circ\gamma\right):\left[\alpha,\beta\right]\to\mathbb{C}$
+sollen stetig sein.
 
 Dann sind die Funktionen
 \begin{align*}
-F_{n}\left(z\right) & =\oint\frac{\varphi\left(\zeta\right)}{\left(\zeta-z\right)^{n}}\dd\zeta
+F_{n}\left(z\right) & =\oint_{\gamma}\frac{\varphi\left(\zeta\right)}{\left(\zeta-z\right)^{n}}\dd\zeta
 \end{align*}
 mit $n\in\mathbb{N}$ auf $B_{\varepsilon}\left(a\right)$ holomorph
-und $F_{n}'\left(z\right)=n\cdot F_{n+1}\left(z\right)$.
+und es gilt $F_{n}'\left(z\right)=n\cdot F_{n+1}\left(z\right)$.
 
 
 \subsubsection*{Beweis}
@@ -7081,25 +7102,26 @@ Sei $z\in B_{\delta}\left(z_{0}\right)$.
 \begin{align*}
 F_{1}\left(z\right)-F_{1}\left(z_{0}\right) & =\oint_{\gamma}\varphi\left(\zeta\right)\underbrace{\left(\frac{1}{\zeta-z}-\frac{1}{\zeta-z_{0}}\right)}_{=\frac{z-z_{0}}{\left(\zeta-z\right)\left(\zeta-z_{0}\right)}}\dd\zeta=\left(z-z_{0}\right)\oint_{\gamma}\frac{\varphi\left(\zeta\right)}{\left(\zeta-z\right)\left(\zeta-z_{0}\right)}\dd\zeta
 \end{align*}
-Wir wissen, dass $\left|\zeta-z\right|\ge\varepsilon$ und $\left|\zeta-z_{0}\right|\ge\varepsilon$
+Wir wissen, dass $\abs{\zeta-z}\ge\varepsilon$ und $\abs{\zeta-z_{0}}\ge\varepsilon$
 ist.
 
 Damit folgt:
 \begin{align*}
-\left|F\left(z\right)-F\left(z_{0}\right)\right| & \le\left|z-z_{0}\right|\cdot\frac{1}{\varepsilon^{2}}\cdot\oint_{\gamma}\left|\varphi\left(\zeta\right)\right|\underbrace{\left|\dd\zeta\right|}_{=\left|\gamma'\left(\tau\right)\right|\dd\tau}\le\\
- & \le\left|z-z_{0}\right|\cdot\frac{1}{\varepsilon^{2}}\cdot\sup_{\gamma}\left|\varphi\right|\cdot2\pi\cdot2\varepsilon
+\abs{F\left(z\right)-F\left(z_{0}\right)} & \le\abs{z-z_{0}}\cdot\frac{1}{\varepsilon^{2}}\cdot\oint_{\gamma}\abs{\varphi\left(\zeta\right)}\underbrace{\abs{\dd\zeta}}_{=\left|\gamma'\left(\tau\right)\right|\dd\tau}\le\\
+ & \le\abs{z-z_{0}}\cdot\frac{1}{\varepsilon^{2}}\cdot\sup_{\gamma}\abs{\varphi}\cdot2\pi\cdot2\varepsilon
 \end{align*}
-Also ist $F$ lipschitz-stetig in $z_{0}$.
+Also ist $F$ Lipschitz stetig in $z_{0}$.
 
-\abc $F_{1}$ ist komplex differenzierbar in $z=z_{0}$ und $F_{1}'\left(z_{0}\right)=F_{2}\left(z_{0}\right)$.
+\abc Zeige, dass $F_{1}$ komplex differenzierbar in $z=z_{0}$ ist
+und dass $F_{1}'\left(z_{0}\right)=F_{2}\left(z_{0}\right)$ gilt.
 
-Betrachte die Abschätzung aus a) für $\varphi\left(\zeta\right)$
-ersetzt durch ${\displaystyle \frac{\varphi\left(\zeta\right)}{\zeta-z_{0}}}$,
+Betrachte die Abschätzung aus a) und ersetze $\varphi\left(\zeta\right)$
+durch ${\displaystyle \frac{\varphi\left(\zeta\right)}{\zeta-z_{0}}}$,
 also ist
 \begin{align*}
-G_{1}\left(z\right) & =\oint\frac{\varphi\left(\zeta\right)}{\left(\zeta-z_{0}\right)\left(\zeta-z\right)}\dd\zeta=\frac{F_{1}\left(z\right)-F_{1}\left(z_{0}\right)}{z-z_{0}}
+G_{1}\left(z\right) & =\oint_{\gamma}\frac{\varphi\left(\zeta\right)}{\left(\zeta-z_{0}\right)\left(\zeta-z\right)}\dd\zeta=\frac{F_{1}\left(z\right)-F_{1}\left(z_{0}\right)}{z-z_{0}}
 \end{align*}
-stetig in $z_{0}$. Also existiert der Limes:
+stetig in $z_{0}$ und daher existiert der Limes:
 \begin{align*}
 \lim_{z\to z_{0}}\frac{F_{1}\left(z\right)-F_{1}\left(z_{0}\right)}{z-z_{0}}
 \end{align*}
@@ -7123,51 +7145,54 @@ der Differenzenquotient.
 
 \abc Der allgemeine Fall folgt durch Induktion:
 \begin{align*}
-F_{n}\left(z\right)-F_{n}\left(z_{0}\right) & =\oint_{\gamma}\varphi\left(\zeta\right)\left(\frac{1}{\left(\zeta-z\right)^{n}}\cdot1-\frac{1}{\left(\zeta-z_{0}\right)^{n}}\right)\dd\zeta
+F_{n}\left(z\right)-F_{n}\left(z_{0}\right) & =\oint_{\gamma}\varphi\left(\zeta\right)\left(\frac{1}{\left(\zeta-z\right)^{n}}-\frac{1}{\left(\zeta-z_{0}\right)^{n}}\right)\dd\zeta
 \end{align*}
 Für die Stetigkeit verwende folgendes Ergebnis:
-
-TODO: Differenzierbarkeit?
 \begin{description}
 \item [{Behauptung}] \hspace*{1mm}\\
 Für $p,q\in\mathbb{N}$ gilt:
 \begin{align*}
-\lim_{z\to z_{0}}\oint_{\gamma}\varphi\left(\zeta\right)\frac{1}{\left(\zeta-z_{0}\right)^{p}\left(\zeta-z\right)^{q}}\dd\zeta & =\oint\varphi\left(\zeta\right)\frac{1}{\left(\zeta-z\right)^{p+q}}\dd\zeta
+\lim_{z\to z_{0}}\oint_{\gamma}\frac{\varphi\left(\zeta\right)}{\left(\zeta-z_{0}\right)^{p}\left(\zeta-z\right)^{q}}\dd\zeta & =\oint_{\gamma}\frac{\varphi\left(\zeta\right)}{\left(\zeta-z\right)^{p+q}}\dd\zeta
 \end{align*}
 
 \item [{Beweis}] \hspace*{1mm}\\
 \begin{align*}
-\oint\varphi\left(\zeta\right)\frac{1}{\left(\zeta-z_{0}\right)^{p}\left(\zeta-z\right)^{q}}\dd\zeta & =\int_{\alpha}^{\beta}\frac{\varphi\left(\gamma\left(\tau\right)\right)}{\underbrace{\left(\gamma\left(\tau\right)-z_{0}\right)^{p}\left(\gamma\left(\tau\right)-z\right)^{q}}_{\to}}\gamma'\left(\tau\right)\dd\tau\stackrel{z\to z_{0}}{\longrightarrow}\int_{\alpha}^{\beta}\frac{\varphi\left(\gamma\left(\tau\right)\right)}{\left(\gamma\left(\tau\right)-z_{0}\right)^{p+q}}\gamma'\left(\tau\right)\dd\tau
+\lim_{z\to z_{0}}\oint\frac{\varphi\left(\zeta\right)}{\left(\zeta-z_{0}\right)^{p}\left(\zeta-z\right)^{q}}\dd\zeta & =\lim_{z\to z_{0}}\int_{\alpha}^{\beta}\frac{\varphi\left(\gamma\left(\tau\right)\right)}{\left(\gamma\left(\tau\right)-z_{0}\right)^{p}\left(\gamma\left(\tau\right)-z\right)^{q}}\gamma'\left(\tau\right)\dd\tau=\\
+ & =\int_{\alpha}^{\beta}\frac{\varphi\left(\gamma\left(\tau\right)\right)}{\left(\gamma\left(\tau\right)-z_{0}\right)^{p+q}}\gamma'\left(\tau\right)\dd\tau=\oint_{\gamma}\frac{\varphi\left(\zeta\right)}{\left(\zeta-z\right)^{p+q}}\dd\zeta
 \end{align*}
+\qqed[Behauptung]
+\end{description}
 Benutze folgende Identität:
 \begin{align*}
 1 & =\frac{\zeta-z_{0}}{\zeta-z_{0}}=\frac{\zeta-z}{\zeta-z_{0}}+\frac{z-z_{0}}{\zeta-z_{0}}
 \end{align*}
 Damit ergibt sich:
 \begin{align*}
-\frac{1}{\left(\zeta-z\right)^{n}} & =\frac{1}{\left(\zeta-z\right)^{n}}\cdot\frac{\zeta-z_{0}}{\zeta-z_{0}}=\frac{1}{\left(\zeta-z\right)^{n}}\cdot\left(\frac{\zeta-z}{\zeta-z_{0}}+\frac{z-z_{0}}{\zeta-z_{0}}\right)=\frac{1}{\left(\zeta-z\right)^{n-1}\left(\zeta-z_{0}\right)}+\frac{z-z_{0}}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}=\\
- & =\frac{1}{\left(\zeta-z\right)^{n-1}\left(\zeta-z_{0}\right)}\frac{\zeta-z_{0}}{\zeta-z_{0}}+\frac{z-z_{0}}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}=\frac{1}{\left(\zeta-z\right)^{n-1}\left(\zeta-z_{0}\right)}\cdot\left(\frac{\zeta-z}{\zeta-z_{0}}+\frac{z-z_{0}}{\zeta-z_{0}}\right)+\frac{z-z_{0}}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}=\\
+\frac{1}{\left(\zeta-z\right)^{n}} & =\frac{1}{\left(\zeta-z\right)^{n}}\cdot\frac{\zeta-z_{0}}{\zeta-z_{0}}=\frac{1}{\left(\zeta-z\right)^{n}}\cdot\left(\frac{\zeta-z}{\zeta-z_{0}}+\frac{z-z_{0}}{\zeta-z_{0}}\right)=\\
+ & =\frac{1}{\left(\zeta-z\right)^{n-1}\left(\zeta-z_{0}\right)}+\frac{z-z_{0}}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}=\\
+ & =\frac{1}{\left(\zeta-z\right)^{n-1}\left(\zeta-z_{0}\right)}\frac{\zeta-z_{0}}{\zeta-z_{0}}+\frac{z-z_{0}}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}=\\
+ & =\frac{1}{\left(\zeta-z\right)^{n-1}\left(\zeta-z_{0}\right)}\cdot\left(\frac{\zeta-z}{\zeta-z_{0}}+\frac{z-z_{0}}{\zeta-z_{0}}\right)+\frac{z-z_{0}}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}=\\
  & =\frac{1}{\left(\zeta-z\right)^{n-2}\left(\zeta-z_{0}\right)^{2}}+\frac{z-z_{0}}{\left(\zeta-z\right)^{n-1}\left(\zeta-z_{0}\right)^{2}}+\frac{z-z_{0}}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}=\\
- & \quad\vdots\\
- & =\frac{1}{\left(\zeta-z_{0}\right)^{n}}+\underbrace{\frac{z-z_{0}}{\left(\zeta-z\right)\left(\zeta-z_{0}\right)^{n}}+\frac{z-z_{0}}{\left(\zeta-z\right)^{2}\left(\zeta-z_{0}\right)^{n-1}}+\ldots+\frac{z-z_{0}}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}}_{n\text{ Terme}}
+ & \quad\qquad\vdots\\
+ & =\frac{1}{\left(\zeta-z_{0}\right)^{n}}+\underbrace{\frac{z-z_{0}}{\left(\zeta-z\right)\left(\zeta-z_{0}\right)^{n}}+\ldots+\frac{z-z_{0}}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}}_{n\text{ Terme}}
 \end{align*}
 Also gilt:
 \begin{align*}
 \frac{F_{n}\left(z\right)-F_{n}\left(z_{0}\right)}{z-z_{0}} & =\frac{1}{z-z_{0}}\oint_{\gamma}\varphi\left(\zeta\right)\left(\frac{1}{\left(\zeta-z\right)^{n}}-\frac{1}{\left(\zeta-z_{0}\right)^{n}}\right)\dd\zeta=\\
- & =\oint_{\gamma}\varphi\left(\zeta\right)\left(\frac{1}{\left(\zeta-z\right)\left(\zeta-z_{0}\right)^{n}}+\frac{1}{\left(\zeta-z\right)^{2}\left(\zeta-z_{0}\right)^{n-1}}+\ldots+\frac{1}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}\right)\dd\zeta
+ & =\oint_{\gamma}\varphi\left(\zeta\right)\left(\frac{1}{\left(\zeta-z\right)\left(\zeta-z_{0}\right)^{n}}+\ldots+\frac{1}{\left(\zeta-z\right)^{n}\left(\zeta-z_{0}\right)}\right)\dd\zeta
 \end{align*}
 Damit folgt:
 \begin{align*}
 F_{n}'\left(z_{0}\right)=\lim_{z\to z_{0}}\frac{F_{n}\left(z\right)-F_{n}\left(z_{0}\right)}{z-z_{0}} & =\int_{\gamma}\varphi\left(\zeta\right)\frac{n}{\left(\zeta-z_{0}\right)^{n+1}}=n\cdot F_{n+1}\left(z_{0}\right)
 \end{align*}
-
-\end{description}
-\qqed[Behauptung]
+Damit folgt auch die Differenzierbarkeit.
 
 \end{abclist}
 
+\qqed
 
-\subsection{Theorem}
+
+\subsection{Theorem\label{sub:Thm-holomorphUnendlichOftDiffbar}}
 
 Jede holomorphe Funktion $f:\Omega\to\mathbb{C}$ ist in $\Omega$
 unendlich oft komplex differenzierbar und es gilt:
@@ -7178,34 +7203,47 @@ Dabei ist $\gamma$ eine Kurve in $\Omega$, die $z$ mit Index $1$
 umläuft.
 
 
-\subsection{Theorem \textmd{(Moera)}}
-
-TODO: Name???
-
-Falls $f:\Omega\to\mathbb{C}$ stetig und für jede geschlossene Kurve
-in $\Omega$ schon $\oint_{\gamma}f\left(z\right)\dd z=0$ gilt, ist
-$f$ holomorph.
-
-
 \subsubsection*{Beweis}
 
-Nach Theorem \ref{asdf}2.9.1 gibt es eine holomorphe Stammfunktion
-$F:\Omega\to\mathbb{C}$ und $F'\left(z\right)=f\left(z\right)$.
-
-Da $F$ nach Theorem \ref{asdf}2.12.2 zweimal differenzierbar ist,
-folgt, dass $f$ differenzierbar und damit holomorph ist.
+\textcolor{green}{TODO: Beweis einfügen}
 
 \qqed
 
 
-\subsection{Theorem \textmd{(Liouville)}}
+\subsection{Satz \textmd{(Morera)}}
 
-Eine beschränkte, auf ganz $\mathbb{C}$ holomorphe Funktion ist konstant.
+Sei $f:\Omega\to\mathbb{C}$ stetig und für jede geschlossene Kurve
+in $\Omega$ gelte $\oint_{\gamma}f\left(z\right)\dd z=0$.
+
+Dann ist $f$ holomorph.
 
 
 \subsubsection*{Beweis}
 
-TODO: Abb2
+Nach Theorem \ref{sub:Bem-Konturintegral} gibt es eine holomorphe
+Stammfunktion $F:\Omega\to\mathbb{C}$ und $F'\left(z\right)=f\left(z\right)$.
+
+Da $F$ nach Theorem \ref{sub:Thm-holomorphUnendlichOftDiffbar} zweimal
+differenzierbar ist, folgt, dass $f$ differenzierbar und damit holomorph
+ist.\qqed
+
+
+\subsection{Satz \textmd{(Liouville)\label{sub:Satz-Liouville}}}
+
+Eine auf ganz $\mathbb{C}$ holomorphe Funktion, die beschränkt ist,
+ist konstant.
+
+
+\subsubsection*{Beweis}
+
+Da $f$ beschränkt ist, gilt für ein $C\in\mathbb{R}_{\ge0}$ und
+für alle $z\in\mathbb{C}$:
+\begin{align*}
+\abs{f\left(z\right)} & \le C
+\end{align*}
+
+
+\textcolor{green}{TODO: Abb2 einfügen}
 
 Für $R>2\left|z\right|$ gilt:
 
@@ -7213,26 +7251,28 @@ Für $R>2\left|z\right|$ gilt:
 f\left(z\right) & =\frac{1}{2\pi\ii}\oint_{\partial B_{R}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta
 \end{align*}
 \begin{align*}
-\left|\zeta-z\right| & >\frac{R}{2}
+\abs{\zeta-z} & >\frac{R}{2}
 \end{align*}
-Nach Theorem \ref{asdf}2.12.2 gilt:
+Nach Theorem \ref{sub:Thm-holomorphUnendlichOftDiffbar} gilt:
 \begin{align*}
 f'\left(z\right) & =\frac{1}{2\pi\ii}\oint_{\partial B_{R}\left(0\right)}\frac{f\left(\zeta\right)}{\left(\zeta-z\right)^{2}}\dd\zeta
 \end{align*}
 \begin{align*}
-\left|f'\left(z\right)\right| & \le\frac{1}{2\pi\ii}
-\end{align*}
-\begin{align*}
-\left|f'\left(z\right)\right| & \le\frac{1}{2\pi}\left(\frac{2}{R}\right)^{2}\cdot\sup_{\partial B_{R}\left(0\right)}\left|f\right|\cdot2\pi R\le\frac{4}{R}\cdot\underbrace{\sup_{\mathbb{C}}\left|f\right|}_{\le C}\stackrel{R\to\infty}{\longrightarrow}0
+\abs{f'\left(z\right)} & \le\frac{1}{2\pi}\left(\frac{R}{2}\right)^{\minus2}\cdot\sup_{\partial B_{R}\left(0\right)}\abs f\cdot2\pi R\le\frac{4}{R}\cdot C\xrightarrow{R\to\infty}0
 \end{align*}
 Da $R$ beliebig groß gewählt werden kann, folgt $f'\left(z\right)=0$.
 
-Wir sehen also, dass gilt:
-
-TODO: Abb3
+Wir sehen also, dass für alle $z\in\mathbb{C}$ gilt:
 \begin{align*}
 f'\left(z\right) & =0
 \end{align*}
+
+
+\textcolor{green}{TODO: Abb3 einfügen}
+
+Seien nun $z_{1},z_{2}\in\mathbb{C}$ und $\gamma$ ein Weg, der $z_{1}$
+und $z_{2}$ verbindet, dann gilt:
+
 \begin{align*}
 f\left(z_{1}\right)-f\left(z_{0}\right) & =\int_{\gamma}f'\left(z\right)\dd z=0
 \end{align*}
@@ -7240,60 +7280,66 @@ Damit folgt:
 \begin{align*}
 f\left(z_{1}\right) & =f\left(z_{0}\right)
 \end{align*}
-Also ist $f$ konstant.
+Also ist $f$ konstant.\qqed
 
-\qqed
+Dies liefert einen eleganten Beweis für den Fundamentalsatz der Algebra:
 
 
-\subsection{Eleganter Beweis des Fundamentalsatzes der Algebra}
+\subsection{Fundamentalsatz der Algebra}
 
-Nehme an, $P\left(z\right)$ sei ein Polynom vom Grade $\ge1$ ohne
+Jedes nicht konstante Polynom $P\left(z\right)\in\mathbb{C}\left[z\right]$
+besitzt in $\mathbb{C}$ mindestens eine Nullstelle.
+
+
+\subsubsection*{Beweis}
+
+Nehme an, $P\left(z\right)$ sei ein nicht konstantes Polynom ohne
 Nullstellen.
 
-Damit folgt:
+Damit würde folgen, das
 \begin{align*}
 f\left(z\right) & :=\frac{1}{P\left(z\right)}
 \end{align*}
-ist holomorph auf ganz $\mathbb{C}$, da $f'\left(z\right)=-\frac{P'\left(z\right)}{P\left(z\right)^{2}}$
-ist.
+holomorph auf ganz $\mathbb{C}$ ist, da gilt:
+\begin{align*}
+f'\left(z\right) & =-\frac{P'\left(z\right)}{P\left(z\right)^{2}}
+\end{align*}
+Das Polynom vom Grad $n\in\mathbb{N}_{\ge1}$ lässt sich mit $a_{k}\in\mathbb{C}$
+für $k\in\mathbb{N}_{\le n}$ schreiben als: 
 \begin{align*}
 P\left(z\right) & =a_{n}z^{n}\left(1+\frac{a_{n-1}}{a_{n}}\frac{1}{z}+\ldots\right)
 \end{align*}
-Also ist $\lim_{z\to\infty}\left|P\left(z\right)\right|=\infty$ und
-somit:
+Also ist $\lim_{z\to\infty}\abs{P\left(z\right)}=\infty$ und somit
+gilt:
 \begin{align*}
 \lim_{z\to\infty}f\left(z\right) & =0
 \end{align*}
+Daher nimmt $\abs{f\left(z\right)}$ sein Maximum innerhalb einer
+Kugel $B_{R}\left(0\right)$ für eine $R\in\mathbb{R}_{\ge0}$ an.
+
 Daher ist $f$ auf ganz $\mathbb{C}$ holomorph und beschränkt und
-damit nach dem Satz von Liouville \ref{asdf}?? konstant.
+damit nach dem Satz von Liouville \ref{sub:Satz-Liouville} konstant.
 
-Also ist $P\left(z\right)$ konstant, was ein Widerspruch ist.
+Also ist $P\left(z\right)$ konstant, was ein Widerspruch ist.\qqed
 
-\qqed
 
-Bedingung für \quotedblbase{}Ausnahmepunkte\textquotedblleft{}:
+\section[Taylorreihen]{Hebbare Singularitäten, Taylorreihen}
+
+Die Bedingung für \quotedblbase{}Ausnahmepunkte\textquotedblleft{}
+in Theorem \ref{sub:Thm-OintHolomHebPol}  war:
 \begin{align*}
 \lim_{z\to\zeta}\left(z-\zeta\right)f\left(z\right) & =0
 \end{align*}
 
 
 
-\section[Taylorreihen]{Hebbare Singularitäten, Taylorreihen}
+\subsection{Satz und Definition \textmd{(hebbare Singularität, holomorphe Fortsetzung)}}
 
-
-\subsection{Satz}
-
-Sei $\Omega\subseteq\mathbb{C}$ offen.
-
-Sei $\Omega'=\Omega\setminus\left\{ a\right\} $, $f:\Omega'\to\mathbb{C}$
-holomorph.
-
-Es gelte:
+Seien $\Omega\subseteq\mathbb{C}$ offen, $a\in\Omega$, $\Omega'=\Omega\setminus\left\{ a\right\} $,
+$f:\Omega'\to\mathbb{C}$ holomorph und es gelte:
 \begin{align*}
-\sr{\lim_{z\to a}}{}{z\not=a}\left(z-a\right)f\left(z\right) & =0
+\lim_{a\not=z\to a}\left(z-a\right)f\left(z\right) & =0
 \end{align*}
-
-
 Dann gibt es eine holomorphe Funktion
 \begin{align*}
 \tilde{f}:\Omega & \to\mathbb{C}
@@ -7304,9 +7350,8 @@ Die Umkehrung gilt auch.
 
 Die Funktion $\tilde{f}$ ist eindeutig bestimmt.
 
-$\tilde{f}$ heißt \emph{holomorphe Fortsetzung} von $f$.
-
-$a$ heißt \emph{hebbare Singularität}.
+$\tilde{f}$ heißt \emph{holomorphe Fortsetzung} von $f$ und $a$
+heißt \emph{hebbare Singularität}.
 
 
 \subsubsection*{Beweis}
@@ -7314,13 +7359,13 @@ $a$ heißt \emph{hebbare Singularität}.
 \quotedblbase{}$\Leftarrow$\textquotedblleft{}: Sei $\tilde{f}$
 holomorphe Fortsetzung. Dann gilt
 \begin{align*}
-\sr{\lim_{z\to a}}{}{z\not=a}\left(z-a\right)f\left(z\right) & =\lim_{z\to a}\left(z-a\right)\tilde{f}\left(z\right)=0
+\lim_{a\not=z\to a}\left(z-a\right)f\left(z\right) & =\lim_{z\to a}\left(z-a\right)\tilde{f}\left(z\right)=0
 \end{align*}
 weil $\tilde{f}$ stetig ist.
 
 Die Eindeutigkeit ist wegen der Stetigkeit klar:
 \begin{align*}
-\tilde{f}\left(a\right) & =\lim_{z\to a}\tilde{f}\left(z\right)=\sr{\lim_{z\to a}}{}{z\not=a}f\left(z\right)
+\tilde{f}\left(a\right) & =\lim_{z\to a}\tilde{f}\left(z\right)=\lim_{a\not=z\to a}f\left(z\right)
 \end{align*}
 \quotedblbase{}$\Rightarrow$\textquotedblleft{}: Sei $C=\partial B_{\varepsilon}\left(a\right)\subseteq\Omega$.
 
@@ -7330,12 +7375,12 @@ die Funktion:
 G\left(\xi\right) & =\frac{f\left(\xi\right)-f\left(z\right)}{\xi-z}
 \end{align*}
 Diese Funktion ist holomorph in $\Omega\setminus\left\{ a,z\right\} $
-und erfüllt die Bedingungen von Theorem \ref{asdf}2.10.4, also für
-$\xi\in\left\{ a,z\right\} $:
+und erfüllt die Bedingungen von Theorem \ref{sub:Thm-OintHolomHebPol},
+denn es gilt für $\xi\in\Omega\setminus\left\{ a,z\right\} $:
 \begin{align*}
-\sr{\lim_{z\to\xi}}{}{z\not=\xi}\left(z-\xi\right)G\left(\xi\right) & =0
+\lim_{\xi\not=z\to\xi}\left(z-\xi\right)G\left(\xi\right) & =0
 \end{align*}
-Also gilt
+Also gilt nach Theorem \ref{sub:Thm-OintHolomHebPol} schon
 \begin{align*}
 \oint_{\gamma}G\left(z\right)\dd z & =0
 \end{align*}
@@ -7343,24 +7388,382 @@ und folglich:
 \begin{align*}
 f\left(z\right) & =\frac{1}{2\pi\ii}\oint_{C}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta
 \end{align*}
-Dies ist genau wie im Beweis des Cauchyschen-Integralsatzes \ref{asdf}??.
+Dies ist genau wie im Beweis des Cauchyschen Integralsatzes \ref{sub:Thm-CauchyscherIntegralsatz}.
 
-Da das Integral auch für $z=a$ wohldefiniert ist, können wir setzen
+Da das Integral auch für $z=a$ wohldefiniert ist, können wir auf
+$B_{\varepsilon}\left(a\right)$, einschließlich $z=a$ setzen:
 \begin{align*}
 \tilde{f}\left(z\right) & :=\frac{1}{2\pi\ii}\oint_{C}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta
 \end{align*}
-auf $B_{\varepsilon}\left(a\right)$, einschließlich $z=a$.
 
-$\tilde{f}:\Omega\to\mathbb{C}$ und definiert durch
+
+Also ist $\tilde{f}:\Omega\to\mathbb{C}$ definiert durch:
 \begin{align*}
 \tilde{f}\left(z\right) & =\begin{cases}
-\frac{1}{2\pi\ii} & \text{falls }z\in B_{\varepsilon}\left(a\right)\\
+\frac{1}{2\pi\ii}\oint_{C}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta & \text{falls }z\in B_{\varepsilon}\left(a\right)\\
 f\left(z\right) & \text{sonst}
 \end{cases}
 \end{align*}
 \qqed
 
-TODO: Rest einfügen
+%DATE: Fr 20.1.12
+
+
+\subsection{Theorem \textmd{(Taylorformel)}}
+
+Seien $\Omega\subseteq\mathbb{C}$ offen, $f:\Omega\to\mathbb{C}$
+holomorph und $a\in\Omega$. Dann gilt:
+\begin{align*}
+f\left(z\right) & =\sum_{k=0}^{n-1}\frac{f^{\left(k\right)}}{k!}\cdot\left(z-a\right)^{k}+f_{n}\left(z\right)\cdot\left(z-a\right)^{n}
+\end{align*}
+Dabei ist $f_{n}:\Omega\to\mathbb{C}$ holomorph und es gilt mit $\varepsilon\in\mathbb{R}_{>0}$,
+$C:=\partial B_{\varepsilon}\left(a\right)$ und $z\in B_{\varepsilon}\left(a\right)$:
+\begin{align*}
+f_{n}\left(z\right) & =\frac{1}{2\pi\ii}\cdot\oint_{C}\frac{f\left(\zeta\right)}{\left(\zeta-a\right)^{n}\cdot\left(\zeta-z\right)}\dd\zeta
+\end{align*}
+
+
+
+\subsubsection*{Beweis}
+
+Die Funktion
+\begin{align*}
+F & :\Omega\setminus\left\{ a\right\} \to\mathbb{C}\\
+z & \mapsto F\left(z\right):=\frac{f\left(z\right)-f\left(a\right)}{z-a}
+\end{align*}
+ist holomorph und es gilt:
+\begin{align*}
+\lim_{a\not=z\to a}\left(z-a\right)\cdot F\left(z\right) & =\lim_{z\to a}\left(f\left(z\right)-f\left(a\right)\right)
+\end{align*}
+Also ist die Singularität von $F$ an der Stelle $a$ hebbar.
+
+$f_{1}$ sei die holomorphe Fortsetzung von $F$, das heißt $f_{1}:\Omega\to\mathbb{C}$
+ist holomorph und für alle $z\in\Omega\setminus\left\{ a\right\} $
+gilt $f_{1}\left(z\right)=F\left(z\right)$.
+
+Dann gilt für alle $z\in\Omega\setminus\left\{ a\right\} $:
+\begin{align*}
+f\left(z\right) & =f\left(a\right)+f_{1}\left(z\right)\cdot\left(z-a\right)\\
+\Leftrightarrow\quad f_{1}\left(z\right) & =\frac{f\left(z\right)-f\left(a\right)}{z-a}
+\end{align*}
+Nun kann man induktiv weiter schließen:
+
+Es gibt eine holomorphe Funktion $f_{2}:\Omega\to\mathbb{C}$ mit:
+\begin{align*}
+f_{1}\left(z\right) & =f_{1}\left(a\right)+\left(z-a\right)\cdot f_{2}\left(z\right)
+\end{align*}
+Es gibt eine holomorphe Funktion $f_{3}:\Omega\to\mathbb{C}$ mit:
+\begin{align*}
+f_{2}\left(z\right) & =f_{2}\left(a\right)+\left(z-a\right)\cdot f_{3}\left(z\right)
+\end{align*}
+$\ldots$
+
+Es gibt eine holomorphe Funktion $f_{n}:\Omega\to\mathbb{C}$ mit:
+\begin{align*}
+f_{n-1}\left(z\right) & =f_{n-1}\left(a\right)+\left(z-a\right)\cdot f_{n}\left(z\right)
+\end{align*}
+Zusammengesetzt ergibt das:
+\begin{align*}
+f\left(z\right) & =f\left(a\right)+\left(z-a\right)f_{1}\left(a\right)+\ldots+\left(z-a\right)^{n-1}f_{n-1}\left(a\right)+\left(z-a\right)^{n}f_{n}\left(z\right)
+\end{align*}
+Um die Koeffizienten zu bestimmen, leiten wir $k$-mal (mit $k\in\mathbb{N}$)
+nach $z$ ab:
+\begin{align*}
+f^{\left(k\right)}\left(z\right) & =k!\cdot f_{k}\left(a\right)+\frac{\left(k+1\right)!}{1!}\left(z-a\right)f_{k+1}\left(a\right)+\ldots+\frac{n!}{\left(n-k\right)!}\left(z-a\right)^{n-k}f_{n}\left(a\right)
+\end{align*}
+Werte nun an der Stelle $a$ aus:
+\begin{align*}
+f^{\left(k\right)}\left(a\right) & =k!\cdot f_{k}\left(a\right)\\
+f_{k}\left(a\right) & =\frac{f^{\left(k\right)}\left(a\right)}{k!}
+\end{align*}
+Setze dies ein und erhalte:
+\begin{align*}
+f\left(z\right) & =f\left(a\right)+f'\left(a\right)\left(z-a\right)+\ldots+\frac{f^{\left(n-1\right)}}{\left(n-1\right)!}\left(z-a\right)^{n-1}+\left(z-a\right)^{n}f_{n}\left(a\right)
+\end{align*}
+Bestimme nun das Restglied:
+
+Da $f_{n}$ holomorph ist, gilt:
+\begin{align*}
+f_{n}\left(z\right) & =\frac{1}{2\pi\ii}\oint_{C}\frac{f_{n}\left(\zeta\right)}{\zeta-z}\dd\zeta
+\end{align*}
+Setze nun $z=\zeta$ in die Taylorreihe ein und löse nach $f_{n}\left(\zeta\right)$
+auf:
+\begin{align*}
+f_{n}\left(\zeta\right) & =\frac{f\left(\zeta\right)}{\left(\zeta-a\right)^{n}}-\frac{f\left(a\right)}{\left(\zeta-a\right)^{n}}-\frac{f'\left(a\right)}{\left(\zeta-a\right)^{n-1}}-\ldots-\frac{f^{\left(n-1\right)}\left(a\right)}{\left(n-1\right)!\left(\zeta-a\right)}
+\end{align*}
+Setzt man dies in das Integral ein, so erhält man:
+\begin{align*}
+f_{n}\left(z\right) & =\frac{1}{2\pi\ii}\oint_{C}\left(\frac{f\left(\zeta\right)}{\left(\zeta-a\right)^{n}}-\frac{f\left(a\right)}{\left(\zeta-a\right)^{n}}-\frac{f'\left(a\right)}{\left(\zeta-a\right)^{n-1}}-\ldots-\frac{f^{\left(n-1\right)}\left(a\right)}{\left(n-1\right)!\left(\zeta-a\right)}\right)\dd\zeta
+\end{align*}
+Es bleibt zu zeigen, dass für $k\in\left\{ 0,\ldots,n-1\right\} $
+gilt:
+\begin{align*}
+\frac{f^{\left(k\right)}\left(a\right)}{k!}\oint_{C}\frac{\dd\zeta}{\left(\zeta-z\right)\left(\zeta-a\right)^{n-l}} & =0
+\end{align*}
+Zeige dies induktiv:
+
+Setze $\nu:=n-k\in\left\{ 1,\ldots,n\right\} $ und:
+\begin{align*}
+F_{\nu}\left(a\right) & :=\oint_{C}\frac{\dd\zeta}{\left(\zeta-z\right)\left(\zeta-a\right)^{\nu}}
+\end{align*}
+Zu zeigen ist also $F_{\nu}\left(a\right)=0$.
+
+Es folgt mit einer Partialbruchzerlegung:
+\begin{align*}
+F_{1}\left(a\right) & =\oint_{C}\frac{\dd\zeta}{\left(\zeta-z\right)\left(\zeta-a\right)}=\oint_{C}\dd\zeta\left(\frac{1}{\zeta-z}-\frac{1}{\zeta-a}\right)\cdot\frac{1}{z-a}\dd z=\\
+ & =\frac{1}{z-a}\left(2\pi\ii-2\pi\ii\right)=0
+\end{align*}
+Denn sowohl $z$, als auch $a$ liegen im Inneren $B_{\varepsilon}\left(a\right)$
+der Kurve $C$.
+\begin{align*}
+\frac{\dd}{\dd a}F_{\nu}\left(a\right) & =\oint_{C}\dd\zeta\frac{\dd}{\dd a}\left(\frac{1}{\left(\zeta-z\right)\left(\zeta-a\right)^{\nu}}\right)=\nu\cdot\oint_{C}\frac{\dd\zeta}{\left(\zeta-z\right)\left(\zeta-a\right)^{\nu+1}}=\nu\cdot F_{\nu+1}\left(a\right)
+\end{align*}
+Da $F_{1}\left(a\right)=0$ gilt, folgt:
+\begin{align*}
+F_{1}'\left(a\right) & =0 & F_{1}'\left(a\right) & =F_{2}\left(a\right)\\
+F_{2}'\left(a\right) & =0 & F_{2}'\left(a\right) & =2\cdot F_{3}\left(a\right)\\
+ & \quad\vdots
+\end{align*}
+Also gilt $F_{\nu}\left(a\right)=0$ für alle $\nu\in\left\{ 1,\ldots,n\right\} $.\qqed
+
+
+\subsection{Bemerkung und Definition \textmd{(Taylorformel, Taylorreihe)}}
+
+Die Schreibweise
+\begin{align*}
+f\left(z\right) & =\sum_{k=0}^{n-1}\frac{f^{\left(k\right)}}{k!}\cdot\left(z-a\right)^{k}+f_{n}\left(z\right)\cdot\left(z-a\right)^{n}
+\end{align*}
+wird als \emph{Taylorformel} bezeichnet.
+
+Die Frage ist nun, wann die \emph{Taylorreihe}
+\begin{align*}
+\sum_{k=0}^{\infty}\frac{f^{\left(k\right)}}{k!}\cdot\left(z-a\right)^{k}
+\end{align*}
+konvergiert, das heißt, wann das Restglied konvergiert, also wann
+gilt:
+\begin{align*}
+f_{n}\left(z\right)\cdot\left(z-a\right)^{n} & \xrightarrow{n\to\infty}0
+\end{align*}
+
+
+
+\subsection{Theorem}
+
+Seien $f:\Omega\to\mathbb{C}$ holomorph, $a\in\Omega$ und $\overline{B_{r}\left(a\right)}\subseteq\Omega$
+für ein $r\in\mathbb{R}_{>0}$.
+
+Dann konvergiert die Taylorreihe um $a$ in $B_{r}\left(a\right)$
+absolut und stimmt mit $f$ überein, es gilt also:
+\begin{align*}
+f\left(z\right) & =\sum_{n=0}^{\infty}\frac{f^{\left(n\right)}\left(a\right)}{n!}\cdot\left(z-a\right)^{n}
+\end{align*}
+
+
+\textcolor{green}{TODO: Abbildung $\overline{B_{r}\left(a\right)}\subseteq\Omega$
+einfügen}
+
+Dabei ist $C:=\partial B_{r}\left(a\right)$ und $\delta=\inf_{\zeta\in C}\abs{z-\zeta}>0$,
+denn es gilt $z\not\in\partial B_{r}\left(a\right)$.
+
+
+\subsubsection*{Beweis}
+
+\begin{align*}
+f_{n}\left(z\right)\cdot\left(z-a\right)^{n} & =\frac{1}{2\pi\ii}\cdot\oint_{C}\frac{f\left(\zeta\right)}{\left(\zeta-a\right)^{n}\left(\zeta-z\right)}\left(z-a\right)^{n}\dd\zeta
+\end{align*}
+Schätze dies ab:
+\begin{align*}
+\abs{f_{n}\left(z\right)\left(z-a\right)^{n}} & \le\frac{1}{2\pi}\sup_{C}\left(\abs f\right)\cdot\frac{1}{r^{n}}\cdot\abs{z-a}^{n}\cdot\underbrace{\oint_{C}\frac{\abs{\dd z}}{\abs{\zeta-z}}}_{\le\frac{2\pi r}{\delta}}\le\\
+ & \le\frac{\sup_{C}\left(\abs f\right)}{\delta}\cdot r\cdot\Bigg(\underbrace{\frac{\abs{z-a}}{r}}_{<1}\Bigg)^{n}\xrightarrow{n\to\infty}0
+\end{align*}
+Dies zeigt die Konvergenz der Taylorreihe und die Gleichheit mit $f$.
+
+Zeige nun die absolute Konvergenz:
+
+Die Reihe
+\begin{align*}
+\sum_{n=0}^{\infty}\frac{f^{\left(n\right)}\left(a\right)}{n!}\cdot\left(z-a\right)^{n}
+\end{align*}
+habe den Konvergenzradius:
+\begin{align*}
+R & :=\left(\limsup_{n\to\infty}\left(\sqrt[n]{\abs{a_{n}}}\right)\right)^{-1}
+\end{align*}
+Wir wissen wegen der Konvergenz in $B_{r}\left(a\right)$, dass $R\ge r$
+ist.
+
+Also gilt für $z\in\mathbb{C}$ mit $\abs{z-a}<r$ schon absolute
+Konvergenz, da die Potenzreihe im Inneren absolut konvergiert.\qqed
+
+
+\subsection{Beispiel}
+
+Die Funktion
+\begin{align*}
+f:\mathbb{C}\setminus\pi\mathbb{Z} & \to\mathbb{C}\\
+z & \mapsto\frac{1}{\sin\left(z\right)}
+\end{align*}
+ist holomorph, denn die Nullstellen von
+\begin{align*}
+\sin\left(z\right) & =\frac{1}{2\ii}\left(e^{\ii z}-e^{\minus\ii z}\right)
+\end{align*}
+sind gerade $\pi\mathbb{Z}$.
+
+\textcolor{green}{TODO: Abbildung einfügen}
+
+Die Taylorreihe um $z$ konvergiert auf $B_{r}\left(a\right)$, falls
+$\overline{B_{r}\left(a\right)}\cap\pi\mathbb{Z}=\emptyset$ ist.
+
+Falls $B_{r}\left(a\right)\cap\pi\mathbb{Z}\not=\emptyset$ ist, konvergiert
+die Taylorreihe im Allgemeinen nicht.
+
+
+\section{Nullstellen und Pole}
+
+Seien $f:\Omega\to\mathbb{C}$ holomorph und $a\in\Omega$.
+
+Es gilt also für ein $\varepsilon\in\mathbb{R}_{>0}$ mit $B_{\varepsilon}\left(a\right)\subseteq\Omega$:
+\begin{align*}
+f\left(z\right) & =\sum_{n=0}^{\infty}\frac{f^{\left(n\right)}\left(a\right)}{n!}\left(z-a\right)^{n}
+\end{align*}
+
+
+
+\subsection{Satz\label{sub:Satz-fna0dannf0}}
+
+Ist $\Omega$ zusammenhängend und gilt $f^{\left(n\right)}\left(a\right)=0$
+für alle $n\in\mathbb{N}$, so ist $f=0$.
+
+
+\subsubsection*{Beweis}
+
+Definiere:
+\begin{align*}
+E_{1} & :=\left\{ \zeta\in\Omega\Big|\fall_{n\in\mathbb{N}}:f^{\left(n\right)}\left(\zeta\right)=0\right\} \\
+E_{2} & :=\left\{ \zeta\in\Omega\Big|\exs_{n\in\mathbb{N}}:f^{\left(n\right)}\left(\zeta\right)\not=0\right\} 
+\end{align*}
+Dann ist $\Omega=E_{1}\dot{\cup}E_{2}$.
+
+$E_{1}$ ist offen, denn für $\zeta\in E_{1}$ und $z\in B_{\delta}\left(\zeta\right)$
+gilt:
+\begin{align*}
+0 & =\sum_{n=0}^{\infty}\frac{f^{\left(n\right)}\left(\zeta\right)}{n!}\left(z-\zeta\right)^{n}=f\left(z\right)
+\end{align*}
+Also ist $f^{\left(n\right)}\left(z\right)=0$ für alle $n\in\mathbb{N}$
+und daher $z\in E_{1}$.
+
+$E_{2}$ ist offen, denn für $\zeta\in E_{2}$ und $z\in B_{\delta}\left(\zeta\right)$
+gibt es ein $n\in\mathbb{N}$, sodass $f^{\left(n\right)}\left(\zeta\right)\not=0$
+ist. Also ist $f^{\left(n\right)}\left(z\right)\not=0$ und daher
+$z\in E_{2}$.
+
+Da $a\in E_{1}$ ist und $\Omega$ zusammenhängend ist, folgt $E_{2}=\emptyset$,
+also $f=0$.\qqed
+
+
+\subsection{Satz}
+
+Seien $\Omega\subseteq\mathbb{C}$ offen und zusammenhängend, $f:\Omega\to\mathbb{C}$
+eine holomorphe Funktion mit $f\not=0$, $a\in\Omega$ und $f\left(a\right)=0$.
+
+Dann gibt es ein $n>0$ und eine holomorphe Funktion $f:B_{\varepsilon}\left(a\right)\to\mathbb{C}$
+mit $f_{n}\left(a\right)\not=0$, sodass gilt:
+\begin{align*}
+f\left(z\right) & =\left(z-a\right)^{n}f_{n}\left(z\right)
+\end{align*}
+
+
+
+\subsubsection*{Beweis}
+
+Nach Satz \ref{sub:Satz-fna0dannf0} gibt es ein $n\in\mathbb{N}_{>0}$
+mit $f^{\left(n\right)}\left(a\right)\not=0$ und wir können dieses
+minimal wählen.
+
+Betrachte nun die Taylorformel mit $f^{\left(1\right)}\left(a\right)=\ldots=f^{\left(n-1\right)}\left(a\right)=0$:
+\begin{align*}
+f\left(z\right) & =\sum_{k=0}^{n-1}\frac{f^{\left(k\right)}\left(a\right)}{k!}\cdot\left(z-a\right)^{n}+\left(z-a\right)^{n}\cdot f_{n}\left(z\right)=\left(z-a\right)^{n}\cdot f_{n}\left(z\right)
+\end{align*}
+Zudem gilt:
+\begin{align*}
+f_{n}\left(a\right) & =\frac{f^{\left(n\right)}\left(a\right)}{n!}\not=0
+\end{align*}
+\qqed
+
+
+\subsection{Satz und Definition \textmd{(isoliert)}}
+
+Die Nullstellen einer holomorphen Funktion $f\not=0$, die nicht identisch
+verschwindet, sind \emph{isoliert}, das heißt falls $f\left(a\right)=0$
+ist, so gibt es ein $\varepsilon\in\mathbb{R}_{>0}$ mit $f\left(z\right)\not=0$
+für alle $z\in B_{\varepsilon}\left(a\right)\setminus\left\{ a\right\} $
+und $B_{\varepsilon}\left(a\right)\subseteq\Omega$.
+
+
+\subsubsection*{Beweis}
+
+Verwende die Darstellung
+\begin{align*}
+f\left(z\right) & =\left(z-a\right)^{n}\cdot f_{n}\left(z\right)
+\end{align*}
+mit:
+\begin{align*}
+f_{n}\left(a\right) & \not=0
+\end{align*}
+Da $f_{n}$ stetig ist, folgt $f_{n}\left(z\right)\not=0$ auf $B_{\varepsilon}\left(a\right)$
+für ein $\varepsilon\in\mathbb{R}_{>0}$.\qqed
+
+
+\subsection{Satz\label{sub:Satz-fgHolomfIstgAufMengeHaeufungspunkt}}
+
+Seien $f,g:\Omega\to\mathbb{C}$ holomorph, $\Omega$ zusammenhängend
+und $f\left(z\right)=g\left(z\right)$ auf einer Menge, die \emph{in
+$\Omega$} einen Häufungspunkt besitzt.
+
+Dann gilt $f=g$.
+
+
+\subsubsection*{Beweis}
+
+Betrachte $h\left(z\right):=f\left(z\right)-g\left(z\right)$. Sei
+$a\in\Omega$ der Häufungspunkt.
+
+Dann ist $h\left(a\right)=0$, aber $a$ ist keine isolierte Nullstelle
+von $h$, weswegen $h=0$ ist.\qqed
+
+
+\subsection{Beispiel}
+
+Betrachte die Funktion:
+\begin{align*}
+f:\mathbb{R}\setminus\left\{ 0\right\}  & \to\mathbb{R}\\
+x & \mapsto\sin\left(\frac{1}{x}\right)
+\end{align*}
+Die Nullstellen sind mit $n\in\mathbb{Z}\setminus\left\{ 0\right\} $:
+\begin{align*}
+\frac{1}{x} & =n\pi\\
+x & =\frac{1}{n\pi}
+\end{align*}
+Analog im Komplexen: Die Funktion
+\begin{align*}
+f:\mathbb{C}\setminus\left\{ 0\right\}  & \to\mathbb{C}\\
+z & \mapsto\sin\left(\frac{1}{z}\right)
+\end{align*}
+ist holomorph und hat die Nullstellen ${\displaystyle z_{n}=\frac{1}{n\pi}}$
+für $n\in\mathbb{Z}\setminus\left\{ 0\right\} $.
+
+Die Folge $\left(z_{n}\right)_{n\in\mathbb{N}}$ hat den Häufungspunkt
+$z=0$.
+
+Aber da $0$ nicht im Definitionsbereich von $f$ liegt, gibt es keinen
+Widerspruch zu Satz \ref{sub:Satz-fgHolomfIstgAufMengeHaeufungspunkt}.
+
+Wir sehen (vergleiche Definition \ref{sub:Definition-KlassifizierungSingularitaet}):
+\begin{itemize}
+\item 0 ist keine hebbare Singularität.
+\item 0 ist eine \emph{wesentliche} Singularität (kein Pol!).
+\end{itemize}
+\textcolor{green}{TODO: Abbildung $\sin\left(\frac{1}{x}\right)$
+einfügen}
 
 %DATE: Di 24.1.12
 
@@ -7372,7 +7775,7 @@ Die Singularitäten sind im Allgemeinen nicht isoliert.
 
 \subsubsection*{Beweis}
 
-Betrachte
+Betrachte die Funktion
 \begin{align*}
 f\left(z\right) & =\frac{1}{\sin\left(\frac{1}{z}\right)}
 \end{align*}
@@ -7380,16 +7783,17 @@ auf $\Omega:=\mathbb{C}\setminus\left(\left\{ 0\right\} \cup\left\{ \frac{1}{n\p
 
 $f$ ist als Verkettung holomorpher Abbildungen auf $\Omega$ holomorph.
 
-TODO: Abb2
+\textcolor{green}{TODO: Abb2 einfügen}
 
 0 ist ein Häufungspunkt der Singularitäten, also eine nicht isolierte
 Singularität.
 
 
 \subsection{Definition \textmd{(isolierte, hebbare, wesentliche Singularität,
-Pol)}}
+Pol)\label{sub:Definition-KlassifizierungSingularitaet}}}
 
-Sei $\Omega\subseteq\mathbb{C}$ offen, $a\in\Omega$, $f:\Omega\setminus\left\{ a\right\} \to\mathbb{C}$.
+Sei $\Omega\subseteq\mathbb{C}$ offen, $a\in\Omega$ und $f:\Omega\setminus\left\{ a\right\} \to\mathbb{C}$
+eine Funktion.
 
 Dann heißt $a$ \emph{isolierte Singularität von $f$}, falls es ein
 $\varepsilon\in\mathbb{R}_{>0}$ mit $B_{\varepsilon}\left(a\right)\subseteq\Omega$
@@ -7399,24 +7803,27 @@ offen ist -- gibt, sodass
 f:B_{\varepsilon}\left(a\right)\setminus\left\{ a\right\} \to & \mathbb{C}
 \end{align*}
 holomorph ist, es also in $B_{\varepsilon}\left(a\right)$ keine weitere
-Singularität gibt.
+Singularität gibt. Sei $a$ eine isolierte Singularität von $f$.
 \begin{itemize}
-\item Sei $a$ eine isolierte Singularität von $f$.\\
-Falls ${\displaystyle \lim_{a\not=z\to a}}\left(z-a\right)f\left(z\right)=0$
+\item Falls ${\displaystyle \lim_{a\not=z\to a}}\left(z-a\right)f\left(z\right)=0$
 gilt, so heißt die Singularität \emph{hebbar}.
-\item Sei $a$ eine isolierte Singularität von $f$.\\
-Falls ${\displaystyle \lim_{a\not=z\to a}}f\left(z\right)=\infty$
+\item Falls ${\displaystyle \lim_{a\not=z\to a}}f\left(z\right)=\infty$
 gilt, so heißt $a$ ein \emph{Pol} von $f$.\\
 ($\infty$ ist auf der Riemannschen Zahlenkugel.)
 \item Ist $a$ weder hebbar noch ein Pol, so heißt $a$ eine \emph{wesentliche
 Singularität}.\\
-TODO: Abb2
+\textcolor{green}{TODO: Abb2 einfügen ??}
 \end{itemize}
+
+\subsubsection*{Beachte}
+
+Nach unserer Konvention hat man diese Begriffe nur für isolierte Singularitäten.
+
 
 \subsection{Satz und Definition \textmd{(Ordnung eines Pols)}}
 
-In einer Umgebung jeder Polstelle kann $f$ in einer Umgebung $B_{\varepsilon}\left(a\right)$
-dargestellt werden als
+In einer Umgebung $B_{\varepsilon}\left(a\right)$ jeder Polstelle
+kann $f$ dargestellt werden als
 \begin{align*}
 f\left(z\right) & =\left(z-a\right)^{-n}f_{n}\left(z\right)
 \end{align*}
@@ -7455,13 +7862,7 @@ Dabei ist
 \begin{align*}
 f_{n}\left(z\right) & =\frac{1}{g_{n}\left(z\right)}
 \end{align*}
-holomorph.
-
-TODO: Bracht man folgende Anmerkung?
-
-(Eventuell $\varepsilon$ verkleinern, um Nullstellen zu vermeiden.)
-
-\qqed
+holomorph.\qqed
 
 
 \subsection{Definition \textmd{(meromorphe Funktion)}}
@@ -7481,10 +7882,14 @@ von Polynomen von diesen, also zum Beispiel ${\displaystyle \frac{\sin\left(x\ri
 
 \subsection{Beispiel}
 
+${\displaystyle \frac{1}{\sin\left(\frac{1}{x}\right)}}$ hat bei
+$z=0$ eine Singularität, die nicht isoliert ist, also auch keine
+wesentliche Singularität ist.
+
 Nun zu den wesentlichen Singularitäten:
 
-${\displaystyle \frac{1}{\sin\left(\frac{1}{x}\right)}}$ oder $\sin\left(\frac{1}{x}\right)$
-an der Stelle 0.
+$\sin\left(\frac{1}{x}\right)$ hat an der Stelle 0 eine wesentliche
+Singularität.
 \begin{align*}
 f\left(z\right) & =e^{\frac{1}{z}}=\sum_{n=0}^{\infty}\frac{1}{n!}\frac{1}{z^{n}}:\mathbb{C}\setminus\left\{ 0\right\} \to\mathbb{C}\text{ holomorph}
 \end{align*}
@@ -7500,20 +7905,20 @@ g:B_{\varepsilon}\left(0\right) & \to\mathbb{C}
 \end{align*}
 holomorph, da in $f$ beliebig hohe Polordnungen auftreten.
 \begin{align*}
-f\left(z\right) & =e^{\frac{1}{z}}=e^{\frac{\overline{z}}{\left|z\right|^{2}}}=\exp\left(\frac{\text{Re}\left(z\right)-\ii\cdot\text{Im}\left(z\right)}{\left|z\right|^{2}}\right)=\underbrace{\exp\left(\frac{\text{Re}\left(z\right)}{\left|z\right|^{2}}\right)}_{>0}\cdot\underbrace{\exp\left(-\frac{\ii\cdot\text{Im}\left(z\right)}{\left|z\right|^{2}}\right)}_{\text{Phasenfaktor}}
+f\left(z\right) & =e^{\frac{1}{z}}=e^{\frac{\overline{z}}{\abs z^{2}}}=\exp\left(\frac{\text{Re}\left(z\right)-\ii\cdot\text{Im}\left(z\right)}{\abs z^{2}}\right)=\underbrace{\exp\left(\frac{\text{Re}\left(z\right)}{\abs z^{2}}\right)}_{>0}\cdot\underbrace{\exp\left(-\frac{\ii\cdot\text{Im}\left(z\right)}{\abs z^{2}}\right)}_{\text{Phasenfaktor}}
 \end{align*}
-${\displaystyle }$TODO: Abb3
+\textcolor{green}{TODO: Abb3 einfügen}
 
 Auf der imaginären Achse ist $\text{Re}\left(z\right)=0$, also ist
 \begin{align*}
-f\left(z\right) & =\exp\left(-\frac{\ii\cdot\text{Im}\left(z\right)}{\left|z\right|^{2}}\right)
+f\left(z\right) & =\exp\left(\minus\frac{\ii\cdot\text{Im}\left(z\right)}{\abs z^{2}}\right)
 \end{align*}
-und daher $\left|f\left(z\right)\right|=1$, aber $f$ \quotedblbase{}oszilliert
+und daher ist $\abs{f\left(z\right)}=1$, aber $f$ \quotedblbase{}oszilliert
 immer schneller\textquotedblleft{}.
 
 Auf der reellen Achse ist $\text{Im}\left(z\right)=0$, also gilt:
 \begin{align*}
-f\left(z\right) & =\exp\left(\frac{\text{Re}\left(z\right)}{\left|z\right|^{2}}\right)\stackrel{z\to0}{\longrightarrow}\infty
+f\left(z\right) & =\exp\left(\frac{\text{Re}\left(z\right)}{\abs z^{2}}\right)\xrightarrow{z\to0}\infty
 \end{align*}
 
 
@@ -7542,9 +7947,9 @@ sodass gilt für $z\not=a$ gilt:
 \begin{align*}
 \left|z-a\right| & <\delta & \Rightarrow\qquad & \left|f\left(z\right)-A\right|>\kappa
 \end{align*}
-TODO: Abb4
+\textcolor{green}{TODO: Abb4 einfügen}
 
-Dann wäre
+Dann würde gelten:
 \begin{align*}
 \lim_{a\not=z\to a}\left|\frac{1}{z-a}\left(f\left(z\right)-A\right)\right| & =\lim_{a\not=z\to a}\underbrace{\frac{1}{\left|z-a\right|}}_{=\infty}\underbrace{\left|f\left(z\right)-A\right|}_{>\kappa}=\infty
 \end{align*}
@@ -7554,9 +7959,9 @@ Daher folgt:
 \end{align*}
 ($\infty$ in der Riemannschen Zahlenkugel.)
 \begin{align*}
-g\left(z\right) & =\frac{1}{\left(z-a\right)^{n}}g_{n}\left(z\right)=\frac{1}{z-a}\left(f\left(z\right)-A\right)
+g\left(z\right) & =\frac{1}{\left(z-a\right)^{n}}\cdot g_{n}\left(z\right)=\frac{1}{z-a}\left(f\left(z\right)-A\right)
 \end{align*}
- $g_{n}\left(z\right)$ holomorph auf $B_{\varepsilon}\left(a\right)$.
+Dabei ist $g_{n}\left(z\right)$ holomorph auf $B_{\varepsilon}\left(a\right)$.
 
 Löse nach $f\left(z\right)$ auf:
 \begin{align*}
@@ -7565,9 +7970,7 @@ f\left(z\right) & =\frac{g_{n}\left(z\right)}{\left(z-a\right)^{n-1}}+A
 Also ist $a$ ein Pol von $f$ der Ordnung $n-1$.
 
 Wir haben also eine hebbare Singularität $\left(n=1\right)$ oder
-einen Pol $\left(n>1\right)$, aber keine wesentliche Singularität.
-
-\qqed
+einen Pol $\left(n>1\right)$, aber keine wesentliche Singularität.\qqed
 
 
 \section{Die Laurententwicklung}
@@ -7575,9 +7978,9 @@ einen Pol $\left(n>1\right)$, aber keine wesentliche Singularität.
 Sei $\Omega\subseteq\mathbb{C}$ offen und $f:\Omega\to\mathbb{C}$
 holomorph und $r,R\in\mathbb{R}_{>0}$.
 \begin{align*}
-\Omega\supseteq\mathcal{R} & =\left\{ z\in\mathbb{C}|r<\left|z\right|<R\right\} 
+\Omega\supseteq\mathcal{R} & :=\left\{ z\in\mathbb{C}\Big|r<\left|z\right|<R\right\} 
 \end{align*}
-TODO: Abb5
+\textcolor{green}{TODO: Abb5 einfügen}
 
 
 \subsection{Definition \textmd{(Laurent-Reihe)}}
@@ -7603,8 +8006,8 @@ heißt \emph{der Nebenteil} der Laurent-Reihe.
 
 \subsection{Theorem}
 
-Jede auf $\Omega\supseteq\mathcal{R}$ holomorphe Funktion $f$ ist
-in $\mathcal{R}$ in einer Laurent-Reihe darstellbar, also:
+Jede auf $\Omega$ holomorphe Funktion $f$ ist in $\mathcal{R}$
+in einer Laurent-Reihe darstellbar, also:
 \begin{align*}
 f\left(z\right) & =\sum_{n=-\infty}^{\infty}c_{n}z^{n}
 \end{align*}
@@ -7613,18 +8016,17 @@ f\left(z\right) & =\sum_{n=-\infty}^{\infty}c_{n}z^{n}
 Das heißt es gibt $c_{n}\in\mathbb{C}$, sodass die Laurent-Reihe
 konvergiert und mit $f$ übereinstimmt.
 \begin{align*}
-c_{n} & =\frac{1}{2\pi\ii}\ointctrclockwise_{\partial B_{R}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta^{n+1}}\dd\zeta
+c_{n} & :=\begin{cases}
+{\displaystyle \frac{1}{2\pi\ii}\ointctrclockwise_{\partial B_{R}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta^{n+1}}\dd\zeta} & \text{falls }n\ge0\\
+{\displaystyle \frac{1}{2\pi\ii}\ointctrclockwise_{\partial B_{r}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta^{n+1}}\dd\zeta} & \text{falls }n<0
+\end{cases}
 \end{align*}
-Falls $n\ge0$.
-\begin{align*}
-c_{n} & =\frac{1}{2\pi\ii}\ointctrclockwise_{\partial B_{r}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta^{n+1}}\dd\zeta
-\end{align*}
-Falls $n<0$.
+
 
 
 \subsubsection*{Beweis}
 
-TODO: Abb6
+\textcolor{green}{TODO: Abb6 einfügen}
 
 Nach dem Cauchyschen Integralsatz gilt:
 \begin{align*}
@@ -7638,17 +8040,14 @@ f\left(z\right) & =\frac{1}{2\pi\ii}\ointctrclockwise_{\partial B_{R}\left(0\rig
 \end{align*}
 
 
+Bemerkung: Wir müssen die Kontur $C_{l}$ so wählen, dass $C_{l}\subseteq\Delta:=B_{\varepsilon}\left(a\right)\subseteq\Omega$.
 
-\subsubsection*{Bemerkung}
+\textcolor{green}{TODO: Abb7 einfügen}
 
-Wir müssen die Kontur $C_{l}$ so wählen, dass $C_{l}\subseteq\Delta:=B_{\zeta}\left(a\right)\subseteq\Omega$.
-
-TODO: Abb7
-
-$f\left(\zeta\right)$ ist holomorph im Innern von $C_{2}$.
+$f\left(\zeta\right)$ ist im Innern von $C_{2}$ holomorph.
 \begin{align*}
-f_{1}\left(z\right) & =\frac{1}{2\pi\ii}\oint_{\partial B_{R}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta\\
-f_{2}\left(z\right) & =-\frac{1}{2\pi\ii}\oint_{\partial B_{r}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta
+f_{1}\left(z\right) & =\phantom{\minus}\frac{1}{2\pi\ii}\oint_{\partial B_{R}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta\\
+f_{2}\left(z\right) & =\minus\frac{1}{2\pi\ii}\oint_{\partial B_{r}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta
 \end{align*}
 $f_{1}\left(z\right)$ ist für alle $z\in B_{R}\left(0\right)$ wohldefiniert
 und holomorph.
@@ -7657,80 +8056,244 @@ Beachte: Im Allgemeinen ist $f_{1}\not=f$, denn $f_{1}$ ist holomorph
 auf $B_{R}\left(0\right)$, aber $f$ ist nur holomorph auf $\mathcal{R}$
 und im Allgemeinen nicht holomorph fortsetzbar auf $B_{R}\left(0\right)$.
 
-$f_{1}$ kann im Folgenden entwickelt werden, also:/
+$f_{1}$ kann im Folgenden entwickelt werden, definiert
 \begin{align*}
 f_{1}\left(z\right) & =\sum_{n=0}^{\infty}c_{n}z^{n}
 \end{align*}
-definiert den Nebenteil der Laurent-Reihe.
+den Nebenteil der Laurent-Reihe.
 
-Betrachte $\left|\zeta\right|=R$, $\left|z\right|<R$, also $\left|\frac{z}{\zeta}\right|<1$.
+Betrachte $\left|\zeta\right|=R$ und $\left|z\right|<R$, also ${\displaystyle \left|\frac{z}{\zeta}\right|<1}$.
 Etwas expliziter und eleganter:
 \begin{align*}
 \frac{1}{\zeta-z} & =\frac{1}{\zeta}\left(\frac{1}{1-\frac{z}{\zeta}}\right)=\frac{1}{\zeta}\sum_{n=0}^{\infty}\left(\frac{z}{\zeta}\right)^{n}
 \end{align*}
 \begin{align*}
-f_{1}\left(z\right) & =\frac{1}{2\pi\ii}\oint f\left(\zeta\right)\left(\sum_{n=0}^{\infty}\left(\frac{z}{\zeta}\right)^{n}\cdot\frac{1}{\zeta}\right)\dd\zeta=\sum_{n=0}^{\infty}z^{n}\underbrace{\left(\frac{1}{2\pi\ii}\oint\frac{f\left(\zeta\right)}{\zeta^{n+1}}\dd\zeta\right)}_{=:c_{n}}
+f_{1}\left(z\right) & =\frac{1}{2\pi\ii}\oint_{\partial B_{R}\left(0\right)}f\left(\zeta\right)\left(\sum_{n=0}^{\infty}\left(\frac{z}{\zeta}\right)^{n}\cdot\frac{1}{\zeta}\right)\dd\zeta=\sum_{n=0}^{\infty}z^{n}\underbrace{\left(\frac{1}{2\pi\ii}\oint_{\partial B_{R}\left(0\right)}\frac{f\left(\zeta\right)}{\zeta^{n+1}}\dd\zeta\right)}_{=:c_{n}}
 \end{align*}
-Für $f_{2}$ analog. $\left|\zeta\right|=r$ $\left|z\right|>r$,
-also $\left|\frac{z}{\zeta}\right|>1$.
+Für $f_{2}$ folgt analog mit $\left|\zeta\right|=r$ und $\left|z\right|>r$,
+also ${\displaystyle \left|\frac{z}{\zeta}\right|>1}$.
 \begin{align*}
-\frac{1}{\zeta-z} & =-\frac{1}{z}\left(\frac{1}{1-\frac{\zeta}{z}}\right)=-\frac{1}{z}\sum_{n=0}^{\infty}\left(\frac{\zeta}{z}\right)^{n}
+\frac{1}{\zeta-z} & =\minus\frac{1}{z}\left(\frac{1}{1-\frac{\zeta}{z}}\right)=\minus\frac{1}{z}\sum_{n=0}^{\infty}\left(\frac{\zeta}{z}\right)^{n}
 \end{align*}
 Also folgt:
 \begin{align*}
-f_{2}\left(z\right) & =\frac{1}{2\pi\ii}\oint_{\partial B_{r}\left(0\right)}f\left(\zeta\right)\frac{1}{z}\left(\sum_{n=0}^{\infty}\left(\frac{\zeta}{z}\right)^{n}\right)\dd\zeta=\sum_{n=0}^{\infty}\frac{1}{z^{n+1}}\cdot\underbrace{\left(\frac{1}{2\pi\ii}\oint_{\partial B_{r}\left(0\right)}f\left(\zeta\right)\cdot\zeta^{n}\dd\zeta\right)}_{=c_{-\left(n+1\right)}}
+f_{2}\left(z\right) & =\frac{1}{2\pi\ii}\oint_{\partial B_{r}\left(0\right)}f\left(\zeta\right)\frac{1}{z}\left(\sum_{k=0}^{\infty}\left(\frac{\zeta}{z}\right)^{k}\right)\dd\zeta=\sum_{k=0}^{\infty}\frac{1}{z^{k+1}}\cdot\underbrace{\left(\frac{1}{2\pi\ii}\oint_{\partial B_{r}\left(0\right)}f\left(\zeta\right)\cdot\zeta^{k}\dd\zeta\right)}_{=c_{\minus\left(k+1\right)}}
+\end{align*}
+Dabei darf man das Integral und die unendliche Summer vertauschen,
+weil die geometrische Reihe gleichmäßig in $\zeta$ absolut konvergiert.\qqed
+
+%DATE: Fr 27.1.2012
+
+
+\subsection{Satz}
+
+Die Laurent-Reihe
+\begin{align*}
+f\left(z\right) & :=\sum_{n=-\infty}^{\infty}c_{n}z^{n}
+\end{align*}
+sei auf $\mathcal{R}=\left\{ z\in\mathbb{C}\big|r\le\abs z\le R\right\} $
+konvergent und stelle $f$ dar.
+
+Dann gilt für jedes $\varrho\in\mathbb{R}$ mit $r<\varrho<R$:
+\begin{align*}
+c_{n} & :=\frac{1}{2\pi\ii}\oint_{\partial B_{\varrho}\left(0\right)}\frac{f\left(z\right)}{z^{n+1}}\dd z
+\end{align*}
+
+
+
+\subsubsection*{Beweis}
+
+Da die Laurent-Reihe nach Voraussetzung absolut und gleichmäßig in
+$z$ mit $\abs z=\varrho$ konvergiert, kann man die Summe und das
+Integral vertauschen, womit folgt:
+\begin{align*}
+\oint_{\partial B_{\varrho}\left(0\right)}\frac{f\left(z\right)}{z^{n+1}}\dd z & =\sum_{k=-\infty}^{\infty}c_{k}\cdot\oint_{\partial B_{\varrho}\left(0\right)}z^{k-n-1}\dd z
+\end{align*}
+Falls $k\ge n+1$ oder $k<n$ ist, ist ${\displaystyle F\left(z\right)=\frac{1}{k-n}z^{k-n}}$
+eine holomorphe Stammfunktion und es gilt:
+\begin{align*}
+\oint_{\partial B_{\varrho}\left(0\right)}z^{k-n-1}\dd z & =0
+\end{align*}
+Falls $k=n$ ist, gilt:
+\begin{align*}
+\oint_{\partial B_{\varrho}\left(0\right)}\frac{\dd z}{z} & =2\pi\ii
 \end{align*}
 \qqed
 
-TODO: Rest einfügen
 
-%DATE: Di 31.1.2012
+\section{Der Residuenkalkül}
 
-Wiederholung:
+Seien $S:=\left\{ a_{n}\big|n\in A\subseteq\mathbb{N}\right\} $ die
+Menge der Singularitäten, $f:\mathbb{C}\setminus S\to\mathbb{C}$
+holomorph und $S$ habe keinen Häufungspunkt.
 
-$S\subseteq\mathbb{C}$ habe keinen Häufungspunkt, aber $S$ kann
-unendlich sein. Sei
+
+\subsubsection*{Bemerkung}
+
+Die Punkte in $S$ sind isoliert, aber wesentliche Singularitäten
+sind möglich. Wäre alle $a_{n}$ Pole, so wäre $f$ meromorph, was
+wir aber für das Folgende nicht voraussetzen wollen.
+
+
+\subsection{Definition}
+
+Sei $z_{o}\in S$. Wähle $\varepsilon\in\mathbb{R}_{>0}$ so, dass
+$B_{\varepsilon}\left(z_{0}\right)\cap S=\left\{ z_{0}\right\} $
+ist. Dann heißt
 \begin{align*}
-f:\mathbb{C}\setminus\left\{ S\right\}  & \to\mathbb{C}
+\text{Res}_{z_{0}}\left(f\right) & :=\frac{1}{2\pi\ii}\oint_{\partial B_{\varepsilon}\left(z_{0}\right)}f\left(z\right)\dd z
 \end{align*}
-holomorph. Die Punkte in $S$ sind die Singularitäten und diese sind
-isoliert, aber wesentliche Singularitäten sind möglich.
+\emph{das Residuum} von $f$ an der Stelle $z_{0}$.
 
-Betrachte die geschlossene, stückweise stetig differenzierbare Kurve:
+Diese Definition ist unabhängig von $\varepsilon$.
+
+Um dies zu sehen, entwickelt man $f$ in einer Laurent-Reihe auf $B_{\varepsilon}\left(z_{0}\right)\setminus\left\{ z_{0}\right\} $:
+\begin{align*}
+f\left(z\right) & =\sum_{n=\minus\infty}^{\infty}c_{n}\left(z-z_{0}\right)^{n}\\
+c_{n} & =\frac{1}{2\pi\ii}\oint_{\partial B_{\varepsilon}\left(z_{0}\right)}\frac{f\left(z\right)}{z^{n+1}}\dd z
+\end{align*}
+Also ist das Residuum
+\begin{align*}
+\text{Res}_{z_{0}}\left(f\right) & =c_{-1}
+\end{align*}
+und damit wohldefiniert sowie leicht berechenbar.
+
+
+\subsection{Beispiel}
+
+\begin{abclist}
+
+\abc Betrachte die reziproke Sinusfunktion:
+\begin{align*}
+f:\mathbb{C}\setminus\pi\mathbb{Z} & \to\mathbb{C}\\
+z & \mapsto f\left(z\right):=\frac{1}{\sin z}
+\end{align*}
+Berechne das Residuum in $z_{0}=0$:
+\begin{align*}
+\sin z & =\sum_{n=0}^{\infty}\left(\minus1\right)^{n}\frac{z^{2n+1}}{\left(2n+1\right)!}=z-\frac{z^{3}}{3!}+\ldots
+\end{align*}
+Nun gilt:
+\begin{align*}
+f\left(z\right) & =\frac{1}{z}\cdot\underbrace{\frac{z}{\sin z}}_{=:g\left(z\right)}
+\end{align*}
+Die Funktion $g\left(z\right)$ hat in $z=0$ eine hebbare Singularität
+und es gilt:
+\begin{align*}
+g\left(z\right) & =1+\sum_{n=1}^{\infty}a_{n}z^{n}
+\end{align*}
+Damit folgt:
+\begin{align*}
+f\left(z\right) & =\underbrace{\frac{1}{z}}_{\text{Hauptteil}}+\underbrace{\sum_{n=0}^{\infty}a_{n-1}z^{n}}_{\text{Nebenteil}}
+\end{align*}
+Also ist $\text{Res}_{0}\left(f\right)=1$.
+
+\abc Betrachte die rationale Funktion:
+\begin{align*}
+f:\mathbb{C}\setminus\left\{ \pm\ii\right\}  & \to\mathbb{C}\\
+z & \mapsto f\left(z\right):=\frac{1}{1+z^{2}}
+\end{align*}
+Berechne das Residuum in $z_{0}=\ii$ mit Hilfe einer Partialbruchzerlegung:
+\begin{align*}
+\frac{1}{1+z^{2}} & =\frac{1}{2\ii}\left(\frac{1}{z+\ii}-\frac{1}{z-\ii}\right)
+\end{align*}
+Da ${\displaystyle \frac{1}{z+\ii}}$ in $B_{\varepsilon}\left(\ii\right)$
+für $\varepsilon<2$ holomorph ist, gilt:
+\begin{align*}
+\text{Res}_{\ii}\left(f\right) & =\minus\frac{1}{2\ii}=\frac{\ii}{2}
+\end{align*}
+
+
+\end{abclist}
+
+
+\subsection{Theorem \textmd{(Residuensatz)}}
+
+Sei $\gamma$ eine geschlossene, stückweise stetig differenzierbare
+Kurve:
 \begin{align*}
 \gamma:\left[a,b\right] & \to\mathbb{C}\setminus\left\{ S\right\} 
 \end{align*}
-Dann gilt nach dem Residuensatz:
+Dann gilt:
 \begin{align*}
 \frac{1}{2\pi\ii}\oint_{\gamma}f\left(z\right)\dd z & =\sum_{a\in S}n\left(\gamma,a\right)\cdot\text{Res}_{a}\left(f\right)
 \end{align*}
-Dabei ist
-\begin{align*}
-n\left(\gamma,a\right) & :=\frac{1}{2\pi\ii}\oint_{\gamma}\frac{\dd z}{z-a}\in\mathbb{N}
-\end{align*}
-die Windungszahl und
-\begin{align*}
-\text{Res}_{a}\left(f\right) & =\frac{1}{2\pi\ii}\oint_{\partial B_{\varepsilon}\left(a\right)}f\left(z\right)\dd z
-\end{align*}
-das Residuum, wobei $B_{\varepsilon}\left(a\right)\cap S=\left\{ a\right\} $.
-
-Laurent-Entwicklung um $a\in S$:
-\begin{align*}
-f\left(z\right) & =\sum_{n=-\infty}^{\infty}c_{n}\left(z-a\right)^{n}
-\end{align*}
-Dann ist:
-\begin{align*}
-\text{Res}_{a}\left(f\right) & =c_{-1}
-\end{align*}
 
 
-TODO: Abb1, Abb2
 
-Beispiel: ${\displaystyle \frac{1}{\sqrt{z}}}$
+\subsubsection*{Beweis}
+
+\textcolor{green}{TODO: Abbildung der Kurve einfügen}
+
+Wähle $R$ so groß, dass die Kurve $\gamma$ ganz in $\Delta=B_{R}\left(0\right)$
+liegt.
+
+$\Delta\cap S$ ist endlich, denn ansonsten hätte $S$ einen Häufungspunkt
+in $\overline{\Delta}$, was im Widerspruch zu unserer Annahme steht.
+
+Also gilt:
+\begin{align*}
+\Delta\cap S & =\left\{ a_{1},\ldots,a_{n}\right\} 
+\end{align*}
+Wähle $\varepsilon$ so, dass für alle $k\in\left\{ 1,\ldots,n\right\} $
+schon $B_{\varepsilon}\left(a_{k}\right)\cap S=\left\{ a_{k}\right\} $
+und $B_{\varepsilon}\left(a_{k}\right)\cap\text{im}\left(\gamma\right)=\emptyset$
+gilt.
+
+Betrachte nun die Laurent-Reihe um $a_{k}$:
+\begin{align*}
+f & =h_{a_{k}}+g_{a_{k}}\\
+h_{a_{k}}\left(z\right) & =\sum_{n=\minus\infty}^{\minus1}c_{n,a_{k}}\left(z-a_{k}\right)^{n} & \leftarrow\quad & \text{Hauptteil}\\
+g_{a_{k}}\left(z\right) & =\sum_{n=0}^{\infty}c_{n,a_{k}}\left(z-a_{k}\right)^{n} & \leftarrow\quad & \text{Nebenteil}
+\end{align*}
+Der Hauptteil ist konvergent auf $\Delta\setminus\left\{ a_{k}\right\} $
+und gleichmäßig konvergent auf $\Delta\setminus B_{\varepsilon}\left(a_{k}\right)$
+und der Nebenteil ist holomorph.
+
+Man kann nun gliedweise integrieren:
+\begin{align*}
+\oint_{\gamma}h_{a_{k}}\left(z\right)\dd z & =\sum_{n=\minus\infty}^{\minus1}c_{n,a_{k}}\oint_{\gamma}\left(z-a_{k}\right)^{n}=2\pi\ii\cdot c_{\minus1,a_{k}}\cdot n\left(\gamma,a_{k}\right)
+\end{align*}
+Letzteres gilt, da für $n\not=\minus1$ eine holomorphe Stammfunktion
+existiert und für $n=\minus1$ dies gerade die Definition der Umlaufzahl
+ist. Somit folgt:
+\begin{align*}
+\frac{1}{2\pi\ii}\oint_{\gamma}h_{a_{k}}\left(z\right)\dd z & =n\left(\gamma,a_{k}\right)\cdot\text{Res}_{a_{k}}\left(f\right)
+\end{align*}
+Betrachte nun die Funktion:
+\begin{align*}
+g\left(z\right) & =f\left(z\right)-\sum_{k=1}^{n}h_{a_{k}}\left(z\right)
+\end{align*}
+Diese ist auf $\Delta\setminus\left\{ a_{1},\ldots,a_{n}\right\} $
+holomorph und die Singularitäten bei den $a_{k}$ sind hebbar, sodass
+es eine analytische Fortsetzung gibt.
+
+Das Cauchysche Theorem \ref{sub:Thm-CauchyscherIntegralsatz} liefert
+nun:
+\begin{align*}
+0 & =\oint_{\gamma}g\left(z\right)\dd z=\oint_{\gamma}f\left(z\right)-\sum_{k=1}^{n}h_{a_{k}}\left(z\right)\dd z=\oint_{\gamma}f\left(z\right)\dd z-\sum_{k=1}^{n}\oint_{\gamma}h_{a_{k}}\left(z\right)\dd z\\
+\Rightarrow\quad\oint_{\gamma}f\left(z\right)\dd z & =\sum_{k=1}^{n}\oint_{\gamma}h_{a_{k}}\left(z\right)\dd z=\sum_{k=1}^{n}n\left(\gamma,a_{k}\right)\cdot\text{Res}_{a_{k}}\left(f\right)
+\end{align*}
+Für alle Singularitäten $a\in S\setminus\Delta$ ist $n\left(\gamma,a\right)=0$,
+da $\gamma$ ganz in $S$ liegt.
+
+Also folgt die Behauptung.\qqed
+
+%DATE: Di 31.1.2012
+
+
+\subsection{Beispiel}
+
+\textcolor{green}{TODO: Abb1, Abb2 einfügen}
+
+Betrachte die Funktion:
+\begin{align*}
+f\left(z\right) & =\frac{1}{\sqrt{z}}
+\end{align*}
+Es gilt:
 \begin{align*}
 \lim_{0\not=z\to0}z\cdot\frac{1}{\sqrt{z}} & =0
 \end{align*}
-Dies ist eine hebbare Singularität. Aber:
+Also ist 0 eine hebbare Singularität, aber es gilt auch:
 \begin{align*}
 \lim_{0\not=z\to0} & \frac{1}{\sqrt{z}}=\infty
 \end{align*}
@@ -7738,24 +8301,23 @@ Also ist ${\displaystyle \frac{1}{\sqrt{z}}}$ auch ein Pol!
 
 Das Problem dabei ist, dass ${\displaystyle \frac{1}{\sqrt{z}}}$
 nicht in $B_{\varepsilon}\left(0\right)\setminus\left\{ 0\right\} $
-holomorph, also ist 0 keine isolierte Singularität.
+holomorph, also 0 keine isolierte Singularität ist.
 \begin{align*}
 \frac{1}{\sqrt{z}} & =z^{-\frac{1}{2}}=e^{-\frac{1}{2}\log\left(z\right)}
 \end{align*}
 Dies ist nur holomorph auf $\mathbb{C}\setminus\mathbb{R}_{0}^{-}$.
 
-Ende der Wiederholung
+\bigskip{}
 
-Betrachte Integrale über die ganze reelle Achse.
+
+Betrachte nun Integrale über die ganze reelle Achse:
 
 
 \subsection{Proposition\label{sub:Prop-IntegralReelleAchse}}
 
 Sei ${\displaystyle K\left(z\right)=\frac{P\left(z\right)}{Q\left(z\right)}}$
 eine rationale Funktion, die keine Pole auf der reellen Achse hat
-und im Unendlichen wenigstens quadratisch abfällt.
-
-Dann ist
+und im Unendlichen wenigstens quadratisch abfällt. Dann gilt:
 \begin{align*}
 \int_{-\infty}^{\infty}K\left(x\right)\dd x & =2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)>0}\text{Res}_{a}\left(K\right)
 \end{align*}
@@ -7764,38 +8326,39 @@ Dann ist
 
 \subsubsection*{Beweis}
 
-TODO: Abb3
+\textcolor{green}{TODO: Abb3 einfügen}
+
+\textcolor{green}{TODO: $C_{1},C_{2}$ definieren}
 
 Die Funktion $K$ hat endlich viele Pole in $\mathbb{C}$, die alle
-Nullstellen von $Q$ sind.
+Nullstellen des Nenners $Q\left(z\right)$ sind.
 
 Wähle den Radius $R$ so groß, dass alle Pole in $B_{R}\left(0\right)$
 liegen, womit folgt:
 \begin{align*}
 \oint_{C_{1}\cup C_{2}}K\left(z\right)\dd z & =2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)>0}\underbrace{n\left(C_{1}\cup C_{2},a\right)}_{=1}\cdot\text{Res}_{a}\left(f\right)=2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)>0}\text{Res}_{a}\left(K\right)\\
-\Rotate{=}\qquad\\
-\int_{-R}^{R}K\left(x\right)\dd x+\int_{C_{2}}K\left(z\right)\dd z & \stackrel{R\to\infty}{\longrightarrow}\int_{-\infty}^{\infty}K\left(x\right)\dd x
+ & =\int_{-R}^{R}K\left(x\right)\dd x+\int_{C_{2}}K\left(z\right)\dd z\stackrel{R\to\infty}{\longrightarrow}\int_{-\infty}^{\infty}K\left(x\right)\dd x
 \end{align*}
 Denn es gilt:
 \begin{align*}
 \left|\int_{C_{2}}K\left(z\right)\dd z\right| & \le\underbrace{\sup_{z\in C_{2}}\left|K\left(z\right)\right|}_{\le\frac{C}{R^{2}}\text{ da \ensuremath{K}quadratisch abfällt}}\cdot\pi R\le\frac{C\pi}{R}\stackrel{R\to\infty}{\longrightarrow}0
 \end{align*}
-
-
 \qqed
 
 
 \subsection{Beispiel}
 
-Berechne:
+Berechnung des Integrals:
 \begin{align*}
 \int_{-\infty}^{\infty}\frac{1}{1+x^{2}}\dd x
 \end{align*}
 Die Funktion
 \begin{align*}
-f\left(z\right) & =\frac{1}{1+z^{2}}
+f:\mathbb{C}\setminus\left\{ \pm\ii\right\}  & \to\mathbb{C}\\
+z & \mapsto f\left(z\right)=\frac{1}{1+z^{2}}
 \end{align*}
-hat einen Pol, falls $1+z^{2}=0$, also $z=\pm\ii$ ist.
+hat einen Pol, falls $1+z^{2}=0$, also $z=\pm\ii$ ist. Außerdem
+fällt $f$ im Unendlichen quadratisch ab.
 
 Nach der Proposition \ref{sub:Prop-IntegralReelleAchse} gilt:
 \begin{align*}
@@ -7803,7 +8366,7 @@ Nach der Proposition \ref{sub:Prop-IntegralReelleAchse} gilt:
 \end{align*}
 Berechne das Residuum:
 \begin{align*}
-f\left(z\right) & =\left(\frac{1}{z+\ii}-\frac{1}{z-\ii}\right)\cdot\frac{\ii}{2}=-\frac{\ii}{2}\frac{1}{z-\ii}+\underbrace{\frac{\ii}{2}\frac{1}{z+\ii}}_{\text{holomorph in }B_{\varepsilon}\left(\ii\right)}
+f\left(z\right) & =\left(\frac{1}{z+\ii}-\frac{1}{z-\ii}\right)\cdot\frac{\ii}{2}=-\frac{\ii}{2}\frac{1}{z-\ii}+\underbrace{\frac{\ii}{2}\cdot\frac{1}{z+\ii}}_{\text{holomorph in }B_{\varepsilon}\left(\ii\right)}
 \end{align*}
 Damit folgt:
 \begin{align*}
@@ -7827,7 +8390,7 @@ Wegen
 \lim_{z\to\ii}h\left(z\right) & =1
 \end{align*}
 ist die Singularität bei $z=\ii$ hebbar und daher $h$ holomorph
-fortsetzbar und daher als Taylorreihe darstellbar, womit folgt:
+fortsetzbar und als Taylorreihe darstellbar. Damit folgt:
 \begin{align*}
 f\left(z\right) & =\sum_{k=-1}^{\infty}c_{k}\left(z-\ii\right)^{k}\\
 c_{k} & =\frac{1}{2\ii}\frac{h^{\left(k+1\right)}\left(\ii\right)}{\left(k+1\right)!}\\
@@ -7844,29 +8407,40 @@ Damit ergibt sich:
 
 \subsection{Proposition}
 
-Sei $K\left(x\right)$ rational, habe keine Pole auf der reellen Achse
-und falle wenigstens wie ${\displaystyle \frac{1}{x}}$ ab.
+Sei $K\left(x\right)$ eine rationale Funktion, die keine Pole auf
+der reellen Achse habe und im Unendlichen wenigstens quadratisch abfällt. 
+
+\textcolor{green}{TODO: Reicht hier schon, dass die Funktion wie $\frac{1}{z}$
+abfällt?}
+
+Dann gilt:
 \begin{align*}
-\int_{-\infty}^{\infty}e^{\ii x}K\left(x\right)\dd x & =2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)>0}\text{Res}_{a}\left(e^{\ii z}K\left(z\right)\right)
+\int_{-\infty}^{\infty}e^{\ii x}\cdot K\left(x\right)\dd x & =2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)>0}\text{Res}_{a}\left(e^{\ii z}K\left(z\right)\right)
 \end{align*}
 
 
 
 \subsubsection*{Beweis}
 
-TODO: Abb4
+\textcolor{green}{TODO: Abb4 einfügen}
 
+Es gilt:
 \begin{align*}
-\int_{C_{2}}e^{\ii z}K\left(z\right)\dd z & \le\sup_{z\in C_{2}}\left|e^{\ii z}K\left(z\right)\right|\cdot\pi R\\
 \left|e^{\ii z}\right| & =e^{\text{Re}\left(\ii z\right)}=e^{-\overbrace{\text{Im}\left(z\right)}^{\ge0}}\le1
 \end{align*}
-
+\begin{align*}
+\int_{C_{2}}e^{\ii z}K\left(z\right)\dd z & \le\sup_{z\in C_{2}}\left|e^{\ii z}K\left(z\right)\right|\cdot\pi R=\underbrace{\left|e^{\ii z}\right|}_{\le1}\cdot\underbrace{\sup_{z\in C_{2}}\left|K\left(z\right)\right|}_{\le\frac{C}{R^{2}}\text{ da \ensuremath{K}quadratisch abfällt}}\cdot\pi R\le\frac{C\pi}{R}\stackrel{R\to\infty}{\longrightarrow}0
+\end{align*}
+\qqed
 
 
 \subsection{Erinnerung \textmd{(Hauptwertintegrale)}}
 
+Das Hauptwertintegral (engl. \quotedblbase{}\foreignlanguage{english}{principal
+value}\textquotedblleft{}) einer in $c\in\mathbb{R}$ divergierenden
+Funktion ist definiert als:
 \begin{align*}
-\int_{-\infty}^{\infty}\frac{\overbrace{\text{pp}}^{\text{\textquotedblleft principal part\textquotedblright}}}{x}\cdot f\left(x\right)\dd x & :=\lim_{\varepsilon\to0}\left(\int_{-\infty}^{-\varepsilon}\frac{f\left(x\right)}{x}\dd x+\int_{\varepsilon}^{\infty}\frac{f\left(x\right)}{x}\dd x\right)
+\text{PV\,-}\int_{-\infty}^{\infty}f\left(x\right)\dd x & :=\lim_{\varepsilon\searrow0}\left(\int_{-\infty}^{c-\varepsilon}f\left(x\right)\dd x+\int_{c+\varepsilon}^{\infty}f\left(x\right)\dd x\right)
 \end{align*}
 
 
@@ -7877,9 +8451,9 @@ Die rationale Funktion $f\left(x\right)$ habe einfache Pole bei $p_{1}<\ldots<p_
 und besitze sonst keine weiteren Pole auf der reellen Achse.
 
 Außerdem falle $f\left(x\right)$ im Unendlichen wenigstens quadratisch
-ab. Dann ist
+ab. Dann gilt:
 \begin{align*}
-\text{P-}\int_{-\infty}^{\infty}f\left(x\right)\dd x & :=\lim_{\varepsilon\to0}\int_{\mathbb{R}\setminus\left(\left[p_{1}-\varepsilon_{1},p_{1}+\varepsilon\right]\cup\ldots\cup\left[p_{n}-\varepsilon_{1},p_{n}+\varepsilon\right]\right)}f\left(x\right)\dd x=\\
+\text{PV\,-}\int_{-\infty}^{\infty}f\left(x\right)\dd x & :=\lim_{\varepsilon\to0}\int_{\mathbb{R}\setminus\left(\left[p_{1}-\varepsilon_{1},p_{1}+\varepsilon\right]\cup\ldots\cup\left[p_{n}-\varepsilon_{1},p_{n}+\varepsilon\right]\right)}f\left(x\right)\dd x=\\
  & =2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)>0}\text{Res}_{a}\left(f\right)+\pi\ii\sum_{k=1}^{n}\text{Res}_{p_{k}}\left(f\right)
 \end{align*}
 
@@ -7887,7 +8461,7 @@ ab. Dann ist
 
 \subsubsection*{Beweis}
 
-TODO: Abb5
+\textcolor{green}{TODO: Abb5 einfügen}
 
 \begin{align*}
 \int_{C_{1}}f\left(z\right)\dd z & =2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)>0}\text{Res}_{a}\left(f\right)\\
@@ -7895,28 +8469,29 @@ TODO: Abb5
 \end{align*}
 \begin{align*}
 \frac{1}{2}\left(\oint_{C_{1}}+\oint_{C_{2}}\right)f\left(z\right)\dd z & =2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)\ge0}\text{Res}_{a}\left(f\right)+\ii\pi\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)\ge0}\text{Res}_{a}\left(f\right)=\\
- & =\underbrace{\int_{C_{R}}f\left(z\right)\dd z}_{\to0\text{ für }R\to\infty}+\underbrace{\int_{\left[-R,R\right]\setminus\left(\left[p_{1}-\varepsilon_{1},p_{1}+\varepsilon\right]\cup\ldots\cup\left[p_{n}-\varepsilon_{1},p_{n}+\varepsilon\right]\right)}f\left(z\right)\dd z}_{\to\text{P-}\int_{-\infty}^{\infty}f\left(x\right)\dd x}+\sum_{k=1}^{n}\int_{D_{k}\cap D_{k}'}f\left(z\right)\dd z
+ & =\underbrace{\int_{C_{R}}f\left(z\right)\dd z}_{\to0\text{ für }R\to\infty}+\underbrace{\int_{\left[-R,R\right]\setminus\left(\left[p_{1}-\varepsilon_{1},p_{1}+\varepsilon\right]\cup\ldots\cup\left[p_{n}-\varepsilon_{1},p_{n}+\varepsilon\right]\right)}f\left(z\right)\dd z}_{\to\text{PV\,-}\int_{-\infty}^{\infty}f\left(x\right)\dd x}+\sum_{k=1}^{n}\int_{D_{k}\cap D_{k}'}f\left(z\right)\dd z
 \end{align*}
 Im Limes $R\to\infty$ und dem anschließenden Limes $\varepsilon\to0$
 erhalten wir:
 \begin{align*}
-2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)>0}\text{Res}_{a}\left(f\right)+\ii\pi\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)\ge0}\text{Res}_{a}\left(f\right) & =\text{P-}\int_{-\infty}^{\infty}f\left(z\right)\dd z+\lim_{\varepsilon\to0}\sum_{k=1}^{n}\int_{D_{k}\cup D_{k}'}f\left(z\right)\dd z
+2\pi\ii\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)>0}\text{Res}_{a}\left(f\right)+\ii\pi\sr{\sum_{a\text{ Pol}}}{}{\text{Im}\left(a\right)\ge0}\text{Res}_{a}\left(f\right) & =\text{PV\,-}\int_{-\infty}^{\infty}f\left(z\right)\dd z+\lim_{\varepsilon\to0}\sum_{k=1}^{n}\int_{D_{k}\cup D_{k}'}f\left(z\right)\dd z
 \end{align*}
 Es ist noch zu zeigen:
 \begin{align*}
 \lim_{\varepsilon\to0}\sum_{k=1}^{n}\int_{D_{k}\cup D_{k}'}f\left(z\right)\dd z & =0
 \end{align*}
-Da $f$ nur einen einfachen Pol hat, können wir $f$ um $p_{k}$ entwickeln
+Da $f$ nur einen einfachen Pol hat, können wir $f$ um $p_{k}$ durch
 \begin{align*}
 f\left(z\right) & =\frac{C_{-1}}{z-p_{k}}+g\left(z\right)
 \end{align*}
-mit einer holomorphen Funktion $g\left(z\right)$.
+mit einer holomorphen Funktion $g\left(z\right)$ darstellen.
 \begin{align*}
-\left|\int_{D_{k}\cup D_{k}'}g\left(z\right)\dd z\right| & \le\underbrace{\sup_{\partial B_{\varepsilon}\left(p_{k}\right)}}_{\le C}\left|g\right|\cdot2\pi\varepsilon\stackrel{\varepsilon\to0}{\longrightarrow}0
+\left|\int_{D_{k}\cup D_{k}'}g\left(z\right)\dd z\right| & \le\underbrace{\sup_{\partial B_{\varepsilon}\left(p_{k}\right)}\left|g\right|}_{\le C}\cdot2\pi\varepsilon\stackrel{\varepsilon\to0}{\longrightarrow}0
 \end{align*}
 
 
-TODO: Abb6
+\textcolor{green}{TODO: Abb6 einfügen}
+
 \begin{align*}
 \int_{D_{k}\cup D_{k}'}\frac{\dd z}{z-p_{k}} & =\log\left(z-p_{k}\right)\Big|_{z=p_{k}-\varepsilon+\ii\cdot0}^{z=p_{k}+\varepsilon}+\log\left(z-p_{k}\right)\Big|_{z=p_{k}-\varepsilon-\ii\cdot0}^{z=p_{k}+\varepsilon}=\\
  & =\log\left(\varepsilon\right)-\left(\log\left(\varepsilon\right)+\ii\pi\right)+\log\left(\varepsilon\right)-\left(\log\left(\varepsilon\right)-\ii\pi\right)=\ii\pi-\ii\pi=0
@@ -7924,61 +8499,539 @@ TODO: Abb6
 \qqed
 
 
-\subsection{Integrale über Intervalle}
+\subsection{Beispiel \textmd{(Integral über ein Intervall)}}
 
 Dies geht typischerweise immer dann, wenn der Integrand periodisch
 ist und man über eine oder mehrere Perioden integriert.
 
+In diesem Fall kann man das Integral als Konturintegral mit Hilfe
+von $e^{\ii\varphi}$ umschreiben.
 
-\subsubsection*{Idee}
-
-Schreibe das Integral als Konturintegral mit Hilfe von $e^{\ii t}$
-um.
-
-
-\subsection{Beispiel}
-
-Mit
+Mit der Transformation $z:=e^{\ii\varphi}$ und der Beziehung
 \begin{align*}
-\cos\varphi & =\frac{1}{2}\left(e^{\ii\varphi}+e^{-\ii\varphi}\right)=\frac{1}{2}\left(z+\frac{1}{z}\right)
+\cos\left(\varphi\right) & =\frac{1}{2}\left(e^{\ii\varphi}+e^{-\ii\varphi}\right)=\frac{1}{2}\left(z+\frac{1}{z}\right)
 \end{align*}
-folgt:
+folgt
+\begin{align*}
+\dd z & =e^{\ii\varphi}\cdot\ii\dd\varphi=\ii z\dd\varphi
+\end{align*}
+
+
+und somit:
 
 \begin{align*}
-\int_{0}^{2\pi}\frac{1}{\cos\left(\varphi+\ii\right)}\dd\varphi & =\begin{cases}
-z=e^{\ii\varphi}\\
-\dd z=e^{\ii\varphi}\cdot\ii\dd\varphi=\ii z\dd\varphi
-\end{cases}\Bigg\}=\\
- & =\ointctrclockwise_{\left|z\right|=1}\frac{1}{\cos\varphi+\ii}\frac{\dd z}{\ii z}=\\
- & =\ointctrclockwise_{\left|z\right|=1}\frac{1}{\frac{1}{2}\left(z+\frac{1}{z}\right)+\ii}\frac{\dd z}{\ii z}=-2\ii\ointctrclockwise_{\left|z\right|=1}\frac{\dd z}{z^{2}+2\ii z+1}
+\int_{0}^{2\pi}\frac{1}{\cos\left(\varphi\right)+\ii}\dd\varphi & =\ointctrclockwise_{\partial B_{1}\left(0\right)}\frac{1}{\cos\left(\varphi\right)+\ii}\cdot\frac{\dd z}{\ii z}=\\
+ & =\ointctrclockwise_{\partial B_{1}\left(0\right)}\frac{1}{\frac{1}{2}\left(z+\frac{1}{z}\right)+\ii}\cdot\frac{\dd z}{\ii z}=\frac{2}{\ii}\ointctrclockwise_{\partial B_{1}\left(0\right)}\frac{\dd z}{z^{2}+2\ii z+1}
 \end{align*}
 Berechne die Pole:
 \begin{align*}
 z^{2}+2\ii z+1 & =0\\
-z & =-\ii\pm\sqrt{\left(\ii\right)^{2}-1}=-\ii\pm\sqrt{-2}=-\ii\pm\sqrt{2}\ii
+z & =\minus\ii\pm\sqrt{\left(\ii\right)^{2}-1}=\minus\ii\pm\sqrt{\minus2}=\minus\ii\pm\sqrt{2}\ii
 \end{align*}
-TODO: Abb7
+Wegen
 \begin{align*}
-\int_{0}^{2\pi}\frac{1}{\cos\varphi+\ii}\dd\varphi & =\left(-2\ii\right)\cdot2\pi\ii\text{Res}_{-\ii-\sqrt{2}\ii}\frac{1}{z^{2}+2\ii z+1}=\ldots
+\abs{\minus\ii+\sqrt{2}\ii} & =\sqrt{2}-1\approx0{,}4<1\\
+\abs{\minus\ii-\sqrt{2}\ii} & =\sqrt{2}+1\approx2{,}4>1
+\end{align*}
+geht nur das Residuum des ersten Pols in das Integral ein.
+
+\textcolor{green}{TODO: Abb7 einfügen}
+
+\begin{align*}
+\int_{0}^{2\pi}\frac{1}{\cos\left(\varphi\right)+\ii}\dd\varphi & =\frac{2}{\ii}\cdot2\pi\ii\cdot\text{Res}_{\minus\ii+\sqrt{2}\ii}\left(\frac{1}{z^{2}+2\ii z+1}\right)=\\
+ & =4\pi\cdot\text{Res}_{\minus\ii+\sqrt{2}\ii}\left(\frac{1}{\left(z+\ii+\sqrt{2}\ii\right)\left(z+\ii-\sqrt{2}\ii\right)}\right)=\\
+ & =4\pi\cdot\frac{1}{\minus\ii+\sqrt{2}\ii+\ii+\sqrt{2}\ii}=4\pi\cdot\frac{1}{2\sqrt{2}\ii}=\minus\sqrt{2}\pi\ii
+\end{align*}
+%DATE: Fr 03.02.2012
+
+
+\subsection{Beispiel \textmd{(Integral über die positive reelle Halbachse)}}
+
+Einfach lässt sich bei Funktionen argumentieren, die zur $y$-Achse
+symmetrisch sind:
+\begin{align*}
+\int_{0}^{\infty}\frac{1}{1+x^{2}}\dd x & =\frac{1}{2}\int_{-\infty}^{\infty}\frac{\dd x}{1+x^{2}}=\frac{\pi}{2}
+\end{align*}
+Schwieriger ist es, wenn keine Symmetrie ausgenutzt werden kann, beispielsweise
+für das Integral:
+\begin{align*}
+\int_{0}^{\infty}\frac{1}{1+x+x^{2}}\dd x
+\end{align*}
+Benutze den entlang der positiven reellen Achse geschlitzen Logarithmus:
+\begin{align*}
+\text{ln}\left(z\right) & :=\begin{cases}
+\log\left(z\right) & \text{Im}\left(z\right)\ge0\\
+\log\left(z\right)-2\pi\ii & \text{Im}\left(z\right)<0
+\end{cases}
+\end{align*}
+\textcolor{green}{TODO: Abbildung der Kurve}
+
+Es gilt für $x\in\mathbb{R}_{\ge0}$:
+\begin{align*}
+\lim_{y\searrow0}\left(\ln\left(x+\ii y\right)\right)-\lim_{y\nearrow0}\left(\ln\left(x+\ii y\right)\right) & =2\pi\ii
+\end{align*}
+Es folgt:
+\begin{align*}
+\int_{0}^{\infty}\frac{\dd x}{1+x+x^{2}} & =\frac{1}{2\pi\ii}\int_{C}\frac{\ln\left(z\right)\dd z}{1+z+z^{2}}
+\end{align*}
+Man kann nun die Kurve \quotedblbase{}im Unendlichen schließen\textquotedblleft{}$\ldots$
+
+
+\subsection{Proposition}
+
+Seien $\lambda\in\left[0,1\right]$ und $R\left(z\right)$ eine rationale
+Funktion ohne Pole auf der positiven reellen Halbachse, die bei 0
+holomorph ist und im Unendlichen wenigstens quadratisch abfällt. Dann
+gilt:
+\begin{align*}
+\int_{0}^{\infty}x^{\lambda}R\left(x\right)\dd x & =\frac{2\pi\ii}{1-e^{2\pi\ii\cdot\lambda}}\sum_{a\not=0}\text{Res}_{a}\left(z^{\lambda}\cdot R\left(z\right)\right)
 \end{align*}
 
 
-TODO: Rest einfügen
 
+\subsubsection*{Beweis}
+
+\textcolor{green}{TODO: Beweis einfügen}
+
+\qqed
+
+
+\section[\texorpdfstring{\quotedblbase{}0\textquotedblleft{} und \quotedblbase{}$\infty$\textquotedblleft{} zählendes Integral}{Das Null- und Polstellen zählende Integral}]{Das Null- und Polstellen zählende Integral}
+
+
+\subsection{Theorem\label{sub:Thm-NullUndPolstellenIntegral}}
+
+Sei $f:\Omega\to\mathbb{C}$ meromorph, $f\not=0$ und $\gamma$ eine
+geschlossene Kurve, die die Nullstellen und Pole von $f$ nicht schneidet
+und ganz in einem Gebiet $\Delta\subseteq\Omega$ liegt. $z_{1},\ldots,z_{k}$
+seien Null- oder Polstellen in $\Delta$ mit jeweiliger Ordnung $\pm n_{j}$,
+von denen es nur endlich viele gibt. Dann gilt:
+\begin{align*}
+\frac{1}{2\pi\ii}\oint_{\gamma}\frac{f'\left(z\right)}{f\left(z\right)}\dd z & =\sum_{j=1}^{k}n_{j}\cdot n\left(\gamma,z_{j}\right)
+\end{align*}
+
+
+
+\subsubsection*{Beweis}
+
+Da $f:\Omega\to\mathbb{C}$ meromorph und $f\not=0$ ist, liegen die
+Null- und Polstellen also isoliert.
+
+Dann gibt es ein $n_{1}\in\mathbb{Z}$ und eine meromorphe Funktion
+$f_{1}\left(z\right)$, die in einer Umgebung von $z_{1}$ holomorph
+ist mit $f_{1}\left(z_{1}\right)\not=0$ und:
+\begin{align*}
+f\left(z\right) & =\left(z-z_{1}\right)^{n_{1}}\cdot f_{1}\left(z\right)
+\end{align*}
+Ist $n_{1}>0$, so ist dies die Ordnung der Nullstelle und für $n_{1}<0$
+ist $\minus n_{1}$ die Ordnung des Pols.
+
+Konstruiere induktiv weiter:
+\begin{align*}
+f_{1}\left(z\right) & =\left(z-z_{2}\right)^{n_{2}}\cdot f_{2}\left(z\right)\\
+\vdots\\
+\Rightarrow\quad f\left(z\right) & =\left(z-z_{1}\right)^{n_{1}}\cdots\left(z-z_{k}\right)^{n_{k}}g\left(z\right)
+\end{align*}
+Dabei ist $g\left(z\right)$ in $\Delta$ holomorph und hat darin
+keine Nullstelle. Daher ist
+\begin{align*}
+\frac{f'\left(z\right)}{f\left(z\right)} & =\frac{n_{1}}{z-z_{1}}+\ldots+\frac{n_{k}}{z-z_{k}}+\underbrace{\frac{g'\left(z\right)}{g\left(z\right)}}_{\text{holomorph}}
+\end{align*}
+meromorph. Integriere nun längs $\gamma$ und wende den Residuensatz
+an.\qqed
+
+Die wichtigste Anwendung ist $\gamma=\partial\Delta$ für eine Kreisscheibe
+$\Delta\subseteq\Omega$. Dann sind alle Windungszahlen 1 und man
+erhält:
+
+
+\subsection{Korollar und Definition \textmd{(Null- und Polstellen zählende Integral)}}
+
+Sei $N_{\Delta}$ die Anzahl der Nullstellen und $P_{\Delta}$ die
+Anzahl der Pole von $f$ in $\Delta$ jeweils mit Ordnung gezählt,
+dann gilt:
+\begin{align*}
+\frac{1}{2\pi\ii}\oint_{\partial\Delta}\frac{f'\left(z\right)}{f\left(z\right)}\dd z & =N_{\Delta}-P_{\Delta}
+\end{align*}
+Man nennt dieses Integral auch \emph{das Null- und Polstellen zählende
+Integral}.
+
+
+\subsubsection*{Beweis}
+
+Dies folgt direkt aus dem Theorem \ref{sub:Thm-NullUndPolstellenIntegral}.\qqed
+
+
+\subsection{Bemerkung}
+
+Falls $f$ nur Nullstellen hat, kann man eine geometrische Betrachtung
+durchführen.
+
+\textcolor{green}{TODO: Abbildung einfügen}
+
+Sei $\gamma:\left[a,b\right]\to\mathbb{C}$ und $\Gamma:=f\circ\gamma$.
+Dann gilt nach der Definition des Kurvenintegrals:
+\begin{align*}
+\oint_{\Gamma}\frac{\dd w}{w} & =\int_{a}^{b}\frac{\Gamma'\left(\tau\right)}{\Gamma\left(\tau\right)}\dd\tau=\int_{a}^{b}\frac{f'\left(\gamma\left(\tau\right)\right)\cdot\gamma'\left(\tau\right)}{f\left(\gamma\left(\tau\right)\right)}\dd\tau=\int_{\gamma}\frac{f'\left(z\right)}{f\left(z\right)}\dd z
+\end{align*}
+Also gilt:
+\begin{align*}
+n\left(\Gamma,0\right) & =\sum_{j}n_{j}\cdot n\left(\gamma,z_{j}\right)
+\end{align*}
+Die Bedeutung von
+\begin{align*}
+\frac{1}{2\pi\ii}\oint_{\gamma}\frac{f'\left(z\right)}{f\left(z\right)}\dd z
+\end{align*}
+liegt darin, dass dieses Integral ganzzahlig, also ein Index ist und
+sich daher bei stetigen Deformationen nicht ändert.
+
+
+\subsection{Beispiel}
+
+Betrachte für eine Funktion $f\left(z\right)$ und eine Konstante
+$a\in\mathbb{C}$ die Funktion $g\left(z\right):=f\left(z\right)-a$.
+Dann ist
+\begin{align*}
+\frac{1}{2\pi\ii}\oint_{\gamma}\frac{g'\left(z\right)}{g\left(z\right)}\dd z
+\end{align*}
+unabhängig von $a$, solange $f\left(z\right)-a$ auf $\gamma$ keine
+Nullstelle hat.
+
+Die \quotedblbase{}Gesamtzahl\textquotedblleft{} der Nullstellen und
+Pole kann also anders als bei reellen Funktionen nicht verändert werden.
+
+Etwas allgemeiner gilt:
+
+
+\subsection{Theorem \textmd{(Satz von Rouché)}}
+
+Seien $f,g:\Omega\to\mathbb{C}$ holomorph, $\gamma=\partial\Delta$
+mit $\Delta\subseteq\Omega$ und $\abs{g\left(z\right)}<\abs{f\left(z\right)}$
+für alle $z\in\gamma$.
+
+Dann haben $f$ und $f+g$ gleich viele Nullstellen in $\Delta$.
+
+
+\subsubsection*{Beweis}
+
+Betrachte die Familie $h_{\tau}=f+\tau g$ mit $\tau\in\left[0,1\right]$.
+Das Integral
+\begin{align*}
+\oint_{\gamma}\frac{h_{\tau}'\left(z\right)}{h_{\tau}\left(z\right)}\dd z & =\oint_{\gamma}\frac{f'\left(z\right)+\tau g'\left(z\right)}{f\left(z\right)+\tau g\left(z\right)}\dd z
+\end{align*}
+ist ein Vielfaches von $2\pi\ii$ und hängt stetig von $\tau$ ab,
+ist also konstant.
+
+Wegen $\abs{g\left(z\right)}<\abs{f\left(z\right)}$ auf $\gamma$
+kann keine Nullstelle auf $\gamma$ entstehen und es folgt die Behauptung.\qqed
+
+
+\subsection{Beispiel}
+
+Betrachte die Funktionen $f\left(z\right)=z^{n}$ und $g\left(z\right)=\sum_{k=0}^{n-1}a_{k}z^{k}$
+mit $a_{k}\in\mathbb{C}$ und die Kurve $\gamma=\partial B_{R}\left(0\right)$,
+wobei $R\in\mathbb{R}$ so groß gewählt ist, dass $\abs{g\left(z\right)}<\abs{f\left(z\right)}$
+auf $\gamma$ gilt, was stets möglich ist, da $z^{n}$ unbeschränkt
+und schneller als $z^{n-1}$ wächst.
+
+Offenbar ist die Nullstellenzahl von $f\left(z\right)$ gleich $n$
+und somit auch die von $g\left(z\right)$.
+
+Dies ist der Fundamentalsatz der Algebra.
+
+
+\section[Familien holomorpher Fkt.]{Familien holomorpher Funktionen}
+
+Betrachte eine Familie, das heißt eine Folge, holomorpher Funktionen
+$f_{n}:\Omega\to\mathbb{C}$ mit $n\in\mathbb{N}$.
+
+
+\subsection{Definition}
+
+Die Funktionenfolge $\left(f_{n}\right)_{n\in\mathbb{N}}$ konvergiert
+\emph{lokal gleichmäßig} gegen $f$, falls für jede kompakte Teilmenge
+$K\subseteq\Omega$ schon $f_{n}\big|_{K}$ gleichmäßig gegen $f\big|_{K}$
+konvergiert.
+
+Wir erhalten sofort, dass $f$ stetig ist.
+
+Für reelle Funktionen bräuchte $f$ nicht differenzierbar zu sein.
+
+Für holomorphe Funktionen ist die Situation besser, weil wird die
+Ableitungen von $f$ mit dem Cauchyschen Integralsatz ausdrücken können.
+
+
+\subsection{Theorem \textmd{(Weierstraß)}}
+
+Konvergiert eine Familie holomorpher Funktionen $f_{n}:\Omega\to\mathbb{C}$
+lokal gleichmäßig gegen $f$, so ist $f$ holomorph und $f_{n}'\left(z\right)$
+konvergiert lokal gleichmäßig gegen $f'\left(z\right)$.
+
+
+\subsubsection*{Beweis}
+
+Sei $z\in\Omega$, so wähle ein $r\in\mathbb{R}$ mit $\overline{B_{r}\left(z\right)}\subseteq\Omega$
+und $\gamma=\partial\overline{B_{r}\left(z\right)}$. Dann gilt:
+\begin{align*}
+f_{n}\left(z\right) & =\frac{1}{2\pi\ii}\oint_{\gamma}\frac{f_{n}\left(\zeta\right)}{\zeta-z}\dd\zeta
+\end{align*}
+Wende nun im Limes $n\to\infty$ die gleichmäßige Konvergenz auf $\overline{B_{r}\left(z\right)}$
+an:
+\begin{align*}
+f\left(z\right) & =\frac{1}{2\pi\ii}\oint_{\gamma}\frac{f\left(\zeta\right)}{\zeta-z}\dd\zeta
+\end{align*}
+Also ist $f$ holomorph.
+
+Entsprechend gilt:
+\begin{align*}
+f_{n}'\left(z\right) & =\frac{1}{2\pi\ii}\oint_{\gamma}\frac{f_{n}\left(\zeta\right)}{\left(\zeta-z\right)^{2}}\dd\zeta\xrightarrow{n\to\infty}f'\left(z\right)
+\end{align*}
+\qqed
+
+
+\subsection{Bemerkung}
+
+Die ursprüngliche Formulierung von Weierstraß lautet:
+
+Falls eine Reihe analytischer Funktionen $f\left(z\right)=f_{1}\left(z\right)+f_{2}\left(z\right)+\ldots$
+in $\Omega$ lokal gleichmäßig konvergiert, so ist $f\left(z\right)$
+analytisch und man darf gliedweise differenzieren.
+
+Nach dem Maximumprinzip genügt es, die gleichmäßige Konvergenz auf
+$\partial\Omega$ zu zeigen.
+
+Wir kombinieren nun den Satz von Weierstraß mit dem Nullstellen zählenden
+Integral. Wir brauchen dies beim Beweis des Riemannschen Abbildungssatzes.
+
+
+\subsection{Theorem \textmd{(Hurwitz)}}
+
+Seien $f_{n}:\Omega\to\mathbb{C}$ für $n\in\mathbb{N}$ holomorphe
+Funktionen ohne Nullstellen und $f_{n}$ konvergiere lokal gleichmäßig
+gegen $f$.
+
+Dann ist $f$ entweder identisch 0 oder hat keine Nullstelle in $\Omega$.
+
+
+\subsubsection*{Beweis}
+
+Nehme an, dass $f\not=0$ ist, aber eine Nullstelle $z_{0}\in\Omega$
+habe.
+
+Da die Nullstellen von $f$ isoliert sind, gibt es ein $r>0$, so
+dass $f$ auf $B_{r}\left(z_{0}\right)$ holomorph ist und keine weitere
+Nullstelle besitzt. Wegen ${\displaystyle \frac{1}{\abs{f\left(z\right)}}>C}$
+auf $\partial B_{r}\left(z_{0}\right)$ konvergiert ${\displaystyle \frac{1}{f_{n}}}$
+gleichmäßig gegen ${\displaystyle \frac{1}{f}}$ auf $\partial B_{r}\left(z_{0}\right)$.
+Die Ordnung $n$ der Nullstelle ist gegeben durch:
+\begin{align*}
+0\not=n & =\frac{1}{2\pi\ii}\oint_{\partial B_{r}\left(z_{0}\right)}\frac{f'\left(z\right)}{f\left(z\right)}\dd z=\frac{1}{2\pi\ii}\lim_{n\to\infty}\oint_{\partial B_{r}\left(z_{0}\right)}\frac{f_{n}'\left(z\right)}{f_{n}\left(z\right)}\dd z=0
+\end{align*}
+Dies ist ein Widerspruch, der die Behauptung zeigt.\qqed
+
+%DATE: Di 07.02.2012
+
+
+\section{Der Satz von Mittag-Leffler}
+
+Bei rationalen Funktionen hat man die Partialbruchzerlegung:
+\begin{align*}
+R\left(z\right) & =\underbrace{h_{1}\left(z\right)+\ldots+h_{r}\left(z\right)}_{\text{Hauptteile}}+\underbrace{P\left(z\right)}_{\text{holomorph}}
+\end{align*}
+Bei meromorphen Funktionen hat man im Allgemeinen unendlich viele
+Polstellen. Die unendliche Summe der Hauptwerte wird im Allgemeinen
+nicht konvergieren.
+
+Haben aber $f$ und $g$ die gleichen Pole und an jedem Pol den gleichen
+Hauptteil der Laurententwicklung, so ist $f-g$ holomorph, also alle
+Singularitäten hebbar.
+
+Man kann eine Äquivalenzrelation einführen:
+\begin{align*}
+f\sim g & \quad\text{falls }f-g\text{ holomorph ist.}
+\end{align*}
+Die Äquivalenzklassen sind durch die Hauptteile charakterisiert.
+
+Die Frage ist nun, ob es zu vorgegebenen Hauptteilen immer eine meromorphe
+Funktion, also stets einen Repräsentanten gibt.
+
+Die Antwort in der komplexen Ebene lautet ja.
+
+
+\subsection{Theorem \textmd{(Satz von Mittag-Leffler für die Ebene)}}
+
+Sei $\left(a_{n}\right)_{n\in\mathbb{N}}$ eine Folge paarweise verschiedener
+Punkte in $\mathbb{C}$, die keine Häufungspunkte besitzt.
+
+Für jedes $n\in\mathbb{N}$ sei $P_{n}\left(z\right)$ ein Polynom
+positiven Grades ohne konstanten Term.
+
+Dann gibt es eine meromorphe Funktion $f:\mathbb{C}\setminus\left\{ a_{n}\middle|n\in\mathbb{N}\right\} \to\mathbb{C}$,
+die genau an den Stellen $a_{n}$ Pole mit den Hauptteilen $h_{n}\left(z\right)$
+hat, für die gilt:
+\begin{align*}
+h_{n}\left(z\right) & =P_{n}\left(\frac{1}{z-a_{n}}\right)
+\end{align*}
+
+
+
+\subsubsection*{Beweis}
+
+Die Summe ${\displaystyle \sum_{n\in\mathbb{N}}h_{n}\left(z\right)}$
+wird im Allgemeinen nicht konvergieren.
+
+Wähle zu jedem $h_{n}\left(z\right)$ ein (Taylor-)Polynom $T_{n}\left(z\right)$
+mit $\abs{h_{n}\left(z\right)-T_{n}\left(z\right)}\le2^{\minus n}$
+für alle $z\in\mathbb{C}$ mit ${\displaystyle \abs z<\frac{1}{2}\cdot\abs{a_{n}}}$.
+
+\textcolor{green}{TODO: Was ist mit $a_{n}=0$ ? Dann kann man die
+Taylorreihe um 0 nicht bilden.}
+
+\textcolor{green}{TODO: Abbildung $h_{n},a_{n},B_{\frac{\abs{a_{n}}}{2}}\left(0\right)$
+einfügen}
+
+$h_{n}\left(z\right)$ hat in $a_{n}$ einen Pol, aber die Taylorreihe
+konvergiert für ${\displaystyle \abs z<\frac{1}{2}\cdot\abs{a_{n}}}$
+gleichmäßig.
+
+Nun betrachte für ein $r\in\mathbb{R}_{>0}$ die abgeschlossene Kreisscheibe
+$\overline{B_{r}\left(0\right)}$. Da die Folge $\left(a_{n}\right)_{n\in\mathbb{N}}$
+keinen Häufungspunkt hat und somit ${\displaystyle \lim_{n\to\infty}\abs{a_{n}}=\infty}$
+ist, gibt es ein $n_{0}$ mit ${\displaystyle r\le\frac{\abs{a_{n}}}{2}}$
+für alle $n\ge n_{0}$.
+
+Nun gilt für $z\in\overline{B_{r}\left(0\right)}$:
+\begin{align*}
+\sum_{n=n_{0}}^{\infty}\abs{h_{n}\left(z\right)-T_{n}\left(z\right)}\le\sum_{n=n_{0}}^{\infty}\frac{1}{2^{n}}\le2
+\end{align*}
+Daher konvergiert ${\displaystyle \sum_{n=n_{0}}^{\infty}\left(h_{n}-T_{n}\right)}$
+auf $\overline{B_{r}\left(0\right)}$ absolut und lokal gleichmäßig
+gegen eine holomorphe Funktion. Dann ist aber
+\begin{align*}
+f\left(z\right) & :=\sum_{n=0}^{\infty}\left(h_{n}\left(z\right)-T_{n}\left(z\right)\right)=\sum_{n=0}^{n_{0}-1}\left(h_{n}\left(z\right)-T_{n}\left(z\right)\right)+\sum_{n=n_{0}}^{\infty}\left(h_{n}\left(z\right)-T_{n}\left(z\right)\right)
+\end{align*}
+auf $\overline{B_{r}\left(0\right)}$ eine meromorphe Funktion mit
+den Polen $\left(a_{n}\right)_{0\le n<n_{0}}$ mit den Hauptteilen
+$h_{n}$.
+
+Da dies für alle $r\in\mathbb{R}_{>0}$ gilt, konvergiert diese Reihe
+für alle $z\in\mathbb{C}$ absolut und lokal gleichmäßig in $z$.
+
+Die Grenzfunktion ist nach dem Konvergenzsatz von Weierstraß holomorph.
+Also ist ${\displaystyle \sum_{n=0}^{\infty}\left(h_{n}-T_{n}\right)}$
+meromorph.\qqed
+
+
+\subsection{Beispiel \textmd{(Partialbruchzerlegung)}}
+
+Wir wollen die Partialbruchzerlegung von ${\displaystyle \frac{\pi^{2}}{\left(\sin\left(\pi z\right)\right)^{2}}}$
+berechnen.
+
+Diese Funktion hat ihre Pole genau an den Punkten $\mathbb{Z}\subseteq\mathbb{C}$.
+
+Der Hauptteil bei 0 ist $h_{0}:=z^{\minus2}$, denn es gilt
+\begin{align*}
+\frac{\pi^{2}}{\sin^{2}\left(\pi z\right)} & =\frac{\pi^{2}}{\left(\sum_{k=0}^{\infty}\frac{\left(\pi z\right)^{2k+1}}{\left(2k+1\right)!}\right)^{2}}=\frac{\pi^{2}}{\left(\pi z\right)^{2}\left(\sum_{k=0}^{\infty}\frac{\left(\pi z\right)^{2k}}{\left(2k+1\right)!}\right)^{2}}
+\end{align*}
+und:
+\begin{align*}
+\lim_{z\to0}\sum_{k=0}^{\infty}\frac{\left(\pi z\right)^{2k}}{\left(2k+1\right)!} & =1
+\end{align*}
+Aus der Periodizität folgt für den Hauptteil bei $n\in\mathbb{Z}$:
+\begin{align*}
+h_{n} & :=\frac{1}{\left(z-n\right)^{2}}
+\end{align*}
+Nun ist
+\begin{align*}
+\sum_{\abs n>r}\frac{1}{\left(z-n\right)^{2}}
+\end{align*}
+für jedes feste $r\in\mathbb{R}_{>0}$ auf der Kreisscheibe $B_{r}\left(0\right)$
+lokal gleichmäßig konvergent. Daher definiert
+\begin{align*}
+\sum_{n\in\mathbb{Z}}\frac{1}{\left(z-n\right)^{2}}
+\end{align*}
+auf $\mathbb{C}\setminus\mathbb{Z}$ eine meromorphe Funktion mit
+denselben Polen und Hauptteilen wie ${\displaystyle \frac{\pi^{2}}{\left(\sin\left(\pi z\right)\right)^{2}}}$.
+Die Differenz
+\begin{align*}
+g\left(z\right) & :=\frac{\pi^{2}}{\left(\sin\left(\pi z\right)\right)^{2}}-\sum_{n=-\infty}^{\infty}\frac{1}{\left(z-n\right)^{2}}
+\end{align*}
+ist somit eine auf ganz $\mathbb{C}$ holomorphe Funktion.
+
+Da $g\left(z\right)$ eine Differenz von Funktionen mit Periode 1
+ist, hat sie ebenfalls die Periode 1.
+
+Es gilt:
+\begin{align*}
+\sin\left(x+\ii y\right) & =\frac{1}{2\ii}\left(e^{\ii x}e^{\minus y}-e^{\minus\ii x}e^{y}\right)\\
+\lim_{\abs y\to\infty}\abs{\sin\left(x+\ii y\right)} & =\infty
+\end{align*}
+Daher konvergiert
+\begin{align*}
+\frac{\pi^{2}}{\left(\sin\left(\pi\left(x+\ii y\right)\right)\right)^{2}} & \xrightarrow{\abs y\to\infty}0
+\end{align*}
+gleichmäßig in $y$.
+
+Zeigen wir die gleichmäßige Konvergenz von ${\displaystyle \sum_{n=-\infty}^{\infty}\frac{1}{\left(z-n\right)^{2}}}$
+gegen Null, so ergibt sich mit dem Satz von Liouville, dass die Differenz
+$g\left(z\right)$ konstant und damit Null ist.
+
+Wegen der Periodizität genügt es, den Streifen $A:=\left\{ z\in\mathbb{C}\big|0\le\text{Re}\left(z\right)\le1\right\} $
+zu betrachten.
+
+\textcolor{green}{TODO: Abbildung Dreieck einfügen}
+
+Es gilt für $z\in A$:
+\begin{align*}
+\abs{z-n} & \ge\frac{1}{2}\left(\abs y+n-1\right) &  & \text{für }n\ge1\\
+\abs{z-m} & \ge\frac{1}{2}\left(\abs y+\abs m\right) &  & \text{für }m\le0
+\end{align*}
+Für $\abs y\ge0$ folgt:
+\begin{align*}
+\sum_{n=\minus\infty}^{\infty}\frac{1}{\abs{z-n}^{2}} & =\sum_{n=1}^{\infty}\frac{1}{\abs{z-n}^{2}}+\sum_{m=0}^{\infty}\frac{1}{\abs{z-\left(-m\right)}^{2}}\le\\
+ & \le4\sum_{n=1}^{\infty}\frac{1}{\left(\abs{y+n-1}\right)^{2}}+4\sum_{m=0}^{\infty}\frac{1}{\left(\abs y+m\right)^{2}}=8\sum_{n=0}^{\infty}\frac{1}{\left(\abs y+n\right)^{2}}\le\\
+ & \le8\sum_{n\ge\abs y}\frac{1}{n^{2}}\xrightarrow{\abs y\to\infty}0
+\end{align*}
+Also gilt $g\left(z\right)=0$.
+
+
+\paragraph*{Resultat}
+
+\begin{align*}
+\frac{\pi^{2}}{\sin^{2}\left(\pi z\right)} & =\sum_{n=\minus\infty}^{\infty}\frac{1}{\left(z-n\right)^{2}}
+\end{align*}
+Die Reihe konvergiert lokal gleichmäßig auf $\mathbb{C}\setminus\mathbb{Z}$.
+
+
+\paragraph*{Folgerung}
+
+\begin{align*}
+\frac{\pi^{2}}{8} & =\frac{1}{8}\cdot\pi^{2}=\frac{1}{8}\cdot\frac{\pi^{2}}{\left(\sin\left(\frac{\pi}{2}\right)\right)^{2}}=\frac{1}{8}\cdot\sum_{n=\minus\infty}^{\infty}\frac{1}{\left(\frac{1}{2}-n\right)^{2}}=\frac{1}{2}\cdot\sum_{n=\minus\infty}^{\infty}\frac{1}{\left(1-2n\right)^{2}}=\\
+ & =\frac{1}{2}\cdot\left(\sum_{m=0}^{\infty}\frac{1}{\left(1+2m\right)^{2}}+\sum_{n=1}^{\infty}\frac{1}{\left(1-2n\right)^{2}}\right)=\frac{1}{2}\cdot\left(\sum_{m=0}^{\infty}\frac{1}{\left(2m+1\right)^{2}}+\sum_{n=1}^{\infty}\frac{1}{\left(2n-1\right)^{2}}\right)=\\
+ & =\frac{1}{2}\cdot\left(\sum_{m=0}^{\infty}\frac{1}{\left(2m+1\right)^{2}}+\sum_{n=0}^{\infty}\frac{1}{\left(2n+1\right)^{2}}\right)=\sum_{m=0}^{\infty}\frac{1}{\left(2m+1\right)^{2}}
+\end{align*}
 %DATE: Fr 10.02.2012
 
 
 \section{Die Gamma- und Zetafunktion}
 
-Sei $s\in\mathbb{R}_{>0}$.
+
+\subsection{Definition \textmd{(Gammafunktion)}}
+
+Sei $s\in\mathbb{R}_{>0}$. Die Funktion
 
 \begin{align*}
-\Gamma\left(s\right) & :=\int_{0}^{\infty}x^{s-1}e^{-x}\dd x
+\Gamma\left(s\right) & :=\int_{0}^{\infty}x^{s-1}e^{\minus x}\dd x
 \end{align*}
+heißt \emph{Gammafunktion}.
+
+
+\subsection{Bemerkung}
+
 Es gilt:
 \begin{align*}
-\Gamma\left(s+1\right) & =\int_{0}^{\infty}x^{s}e^{-x}\dd x=\int_{0}^{\infty}x^{s}\left(-\frac{\dd}{\dd x}e^{-x}\right)\dd x\stackrel{\text{part. Int.}}{=}\int_{0}^{\infty}\left(\frac{\dd}{\dd x}x^{s}\right)\cdot e^{-x}\dd x=\\
- & =s\cdot\int_{0}^{\infty}x^{s-1}e^{-x}\dd x=s\cdot\Gamma\left(s\right)
+\Gamma\left(s+1\right) & =\int_{0}^{\infty}x^{s}e^{\minus x}\dd x=\int_{0}^{\infty}x^{s}\left(\minus\frac{\dd}{\dd x}e^{\minus x}\right)\dd x\stackrel{\text{part. Int.}}{=}\int_{0}^{\infty}\left(\frac{\dd}{\dd x}x^{s}\right)\cdot e^{\minus x}\dd x=\\
+ & =s\cdot\int_{0}^{\infty}x^{s-1}e^{\minus x}\dd x=s\cdot\Gamma\left(s\right)
 \end{align*}
 Vergleiche mit der Fakultät $n!=n\cdot\left(n-1\right)!$ für $n\in\mathbb{N}$.
 
@@ -7988,45 +9041,50 @@ Es gilt:
 \end{align*}
 Also ist die $\Gamma$-Funktion eine Fortsetzung der Fakultät.
 
+
+\subsection{Lemma}
+
+Bezeichne den auf der positiven reellen Achse aufgeschlitzten Logarithmus
+mit $\ln\left(z\right)$. Für $s\in\mathbb{C}$ gilt:
+
+\begin{align*}
+\Gamma\left(s\right) & =\frac{e^{\minus\ii\left(s-1\right)\pi}}{2\ii\cdot\sin\left(\left(s-1\right)\pi\right)}\underbrace{\int_{C}e^{\left(s-1\right)\ln\left(z\right)}e^{\minus z}\dd z}_{\text{ist holomorph in }s}
+\end{align*}
+
+
+
+\subsubsection*{Beweis}
+
 Schreibe das Integral als Konturintegral um:
 \begin{align*}
 x^{s-1} & =e^{\left(s-1\right)\cdot\log\left(x\right)}
 \end{align*}
-Bezeichne den auf der positiven reellen Achse geschlitzten Logarithmus
-mit $\ln\left(z\right)$.
+Es gilt:
 \begin{align*}
 \lim_{\varepsilon\to0}\ln\left(x+\ii\varepsilon\right) & =\log\left(x\right)\\
 \lim_{\varepsilon\to0}\ln\left(x-\ii\varepsilon\right) & =\log\left(x\right)+2\pi\ii
 \end{align*}
-
-
-TODO: Abb1
+\textcolor{green}{TODO: Abb1 einfügen}
 
 Betrachte das Konturintegral:
 \begin{align*}
-\int_{C}e^{\left(s-1\right)\cdot\ln\left(z\right)}e^{-z}\dd z & =\lim_{\varepsilon\to0}\int_{0}^{\infty}\left[e^{\left(s-1\right)\ln\left(x-\ii\varepsilon\right)}\cdot e^{-x}-e^{\left(s-1\right)\ln\left(x+\ii\varepsilon\right)}\cdot e^{-x}\right]\dd x=\\
+\int_{C}e^{\left(s-1\right)\cdot\ln\left(z\right)}e^{\minus z}\dd z & =\lim_{\varepsilon\to0}\int_{0}^{\infty}\left[e^{\left(s-1\right)\ln\left(x-\ii\varepsilon\right)}\cdot e^{\minus x}-e^{\left(s-1\right)\ln\left(x+\ii\varepsilon\right)}\cdot e^{\minus x}\right]\dd x=\\
  & =\left(e^{\left(s-1\right)\cdot2\pi\ii}-1\right)\cdot\Gamma\left(s\right)=e^{\ii\pi\left(s-1\right)}\cdot2\ii\sin\left(\pi\left(s-1\right)\right)\cdot\Gamma\left(s\right)
 \end{align*}
+Damit folgt die Behauptung.\qqed
 
 
+\subsection{Bemerkung}
 
-\subsection{Lemma}
+\textcolor{green}{TODO: Abb2 einfügen}
 
-\begin{align*}
-\Gamma\left(s\right) & =\frac{e^{-\ii\left(s-1\right)\pi}}{2\ii\sin\left(\left(s-1\right)\pi\right)}\underbrace{\int_{C}e^{\left(s-1\right)\ln\left(z\right)}e^{-z}\dd z}_{\text{ist holomorph in }s}
-\end{align*}
-
-
-TODO: Abb2
-
-Man sieht daran:
-
-$\Gamma\left(s\right)$ ist eine meromorphe Funktion und holomorph
-auf $\mathbb{C}\setminus\left\{ 0,\text{-}1,\text{-}2,\ldots\right\} $.
+Man sieht daran, dass $\Gamma\left(s\right)$ eine meromorphe Funktion
+und auf $\mathbb{C}\setminus\left\{ 0,\text{-}1,\text{-}2,\ldots\right\} $
+holomorph ist.
 
 Untersuchung der Pole:
 
-TODO: Abb3
+\textcolor{green}{TODO: Abb3 einfügen}
 
 \begin{align*}
 \Gamma\left(z+1\right) & =z\cdot\Gamma\left(z\right)\\
@@ -8034,15 +9092,19 @@ TODO: Abb3
 \end{align*}
 Man erhält:
 
-$\Gamma\left(s\right)$ hat einfache Pole bei $s=0,\minus1,\minus2,\ldots$.
+$\Gamma\left(s\right)$ hat einfache Pole bei $s\in\left\{ 0,\minus1,\minus2,\ldots\right\} $.
 
-Nun zur \emph{Riemannschen Zetafunktion}:
+\bigskip{}
 
-Sei $s\in\mathbb{R}_{>1}$. Die Reihe
+
+
+\subsection{Definition \textmd{(Riemannschen Zetafunktion)}}
+
+Sei $s\in\mathbb{R}_{>1}$. Die absolut konvergente Reihe 
 \begin{align*}
-\zeta\left(s\right) & =\sum_{n=1}^{\infty}n^{-s}
+\zeta\left(s\right) & =\sum_{n=1}^{\infty}n^{\minus s}
 \end{align*}
-konvergiert absolut.
+heißt \emph{Riemannsche Zetafunktion}.
 
 
 \subsection{Lemma}
@@ -8051,7 +9113,7 @@ Sei $\left(p_{n}\right)_{n\in\mathbb{N}}=\left(2,3,5,\ldots\right)$
 die aufsteigende Folge der Primzahlen in $\mathbb{N}$.
 
 \begin{align*}
-\frac{1}{\zeta\left(s\right)} & =\prod_{n=1}^{\infty}\left(1-p_{n}^{-s}\right)
+\frac{1}{\zeta\left(s\right)} & =\prod_{n=1}^{\infty}\left(1-p_{n}^{\minus s}\right)
 \end{align*}
 
 
@@ -8059,7 +9121,7 @@ die aufsteigende Folge der Primzahlen in $\mathbb{N}$.
 \subsubsection*{Beweisskizze}
 
 \begin{align*}
-\left(1-2^{-s}\right)\cdot\zeta\left(s\right) & =\left(1-2^{-s}\right)\cdot\sum_{n=1}^{\infty}n^{-s}=\sum_{n=1}^{\infty}\left(n^{-s}-\left(2n\right)^{-s}\right)=\sum_{n\text{ ungerade}}^{\infty}n^{-s}
+\left(1-2^{\minus s}\right)\cdot\zeta\left(s\right) & =\left(1-2^{\minus s}\right)\cdot\sum_{n=1}^{\infty}n^{\minus s}=\sum_{n=1}^{\infty}\left(n^{\minus s}-\left(2n\right)^{\minus s}\right)=\sum_{n\text{ ungerade}}^{\infty}n^{\minus s}
 \end{align*}
 \begin{align*}
 \left(1-3^{-s}\right)\left(1-2^{-s}\right)\zeta\left(s\right) & =\sum_{n\text{ ist nicht durch 2 oder 3 teilbar}}n^{-s}
@@ -8070,25 +9132,19 @@ die aufsteigende Folge der Primzahlen in $\mathbb{N}$.
 \subsection{Komplexe Fortsetzung}
 
 \begin{align*}
-\zeta\left(s\right) & =\sum_{n=1}^{\infty}e^{-s\cdot\log\left(n\right)}
+\zeta\left(s\right) & =\sum_{n=1}^{\infty}e^{\minus s\cdot\log\left(n\right)}
 \end{align*}
-
-
 Variablentransformation: $x=nx'$, $\dd x=n\dd x'$
 \begin{align*}
-\Gamma\left(s\right) & =\int_{0}^{\infty}x^{s-1}e^{-x}\dd x=n^{s}\cdot\int_{0}^{\infty}x'^{s-1}e^{-nx'}\dd x'\qquad/\cdot n^{-s}\\
-n^{-s}\cdot\Gamma\left(s\right) & =\int_{0}^{\infty}x^{s-1}e^{-nx}\dd x\qquad/\sum_{n=1}^{\infty}\\
-\zeta\left(s\right)\cdot\Gamma\left(s\right) & =\int_{0}^{\infty}x^{s-1}\sum_{n=1}^{\infty}\left(e^{-x}\right)^{n}\dd x=\int_{0}^{\infty}x^{s-1}\frac{1}{e^{x}-1}\dd x
+\Gamma\left(s\right) & =\int_{0}^{\infty}x^{s-1}e^{\minus x}\dd x=n^{s}\cdot\int_{0}^{\infty}x'^{s-1}e^{\minus nx'}\dd x'\qquad/\cdot n^{\minus s}\\
+n^{\minus s}\cdot\Gamma\left(s\right) & =\int_{0}^{\infty}x^{s-1}e^{\minus nx}\dd x\qquad/\sum_{n=1}^{\infty}\\
+\zeta\left(s\right)\cdot\Gamma\left(s\right) & =\int_{0}^{\infty}x^{s-1}\sum_{n=1}^{\infty}\left(e^{\minus x}\right)^{n}\dd x=\int_{0}^{\infty}x^{s-1}\frac{1}{e^{x}-1}\dd x
 \end{align*}
 Also gilt:
 \begin{align*}
 \zeta\left(s\right) & =\frac{1}{\Gamma\left(s\right)}\cdot\int_{0}^{\infty}\frac{x^{s-1}}{e^{x}-1}\dd x
 \end{align*}
-Schreibe dies wieder als Konturintegral ($C$ wie oben):
-\begin{align*}
-x^{s-1} & \leadsto e^{\left(s-1\right)\ln\left(z\right)}
-\end{align*}
-Dies ist analog wie bei der $\Gamma$-Funktion.
+
 
 
 \subsection{Theorem}
@@ -8096,6 +9152,20 @@ Dies ist analog wie bei der $\Gamma$-Funktion.
 \begin{align*}
 \zeta\left(s\right) & =\frac{e^{-\ii\left(s-1\right)\pi}}{\Gamma\left(s\right)\cdot2\ii\sin\left(\left(s-1\right)\pi\right)}\underbrace{\int_{C}e^{\left(s-1\right)\log\left(z\right)}\frac{1}{e^{z}-1}\dd z}_{\text{ist holomorph auf }\mathbb{C}}
 \end{align*}
+
+
+
+\subsubsection*{Beweis}
+
+Schreibe dies wieder als Konturintegral ($C$ wie oben):
+\begin{align*}
+x^{s-1} & \leadsto e^{\left(s-1\right)\ln\left(z\right)}
+\end{align*}
+Dies ist analog wie bei der $\Gamma$-Funktion.\qqed
+
+
+\subsection{Bemerkung}
+
 Dies liefert eine meromorphe Fortsetzung.
 
 Mögliche Pole sind bei $s\in\mathbb{Z}$:
@@ -8104,9 +9174,12 @@ Mögliche Pole sind bei $s\in\mathbb{Z}$:
 Pol.
 \item $s>1$: Die $\zeta$-Funktion ist endlich, da die Reihe konvergiert.
 \item $s=0$: Es gibt auch keine Probleme.
-\item $s=1$: Einfacher Pol.
+\item $s=1$: Einfacher Pol mit Residuum 1.
 \end{itemize}
-TODO: Abb4
+\textcolor{green}{TODO: Abb4 einfügen}
+
+\textcolor{green}{\bigskip{}
+}
 
 Wo liegen die Nullstellen von $\zeta\left(s\right)$?
 
@@ -8121,120 +9194,129 @@ Alle Nullstellen der $\zeta$-Funktion liegen auf der Geraden ${\displaystyle \te
 \section[Riemannscher Abbildungssatz]{Der Riemannsche Abbildungssatz}
 
 
-\subsection{Definition (biholomorph)}
+\subsection{Definition \textmd{(biholomorph)}}
 
 Seien $U,V\subseteq\mathbb{C}$ offen.
 
 Eine Abbildung $f:U\to V$ heißt biholomorph, falls $f$ bijektiv
-ist und $f,f^{-1}$ holomorph sind.
+ist und sowohl $f$ als auch $f^{-1}$ holomorph sind.
 
 
-\subsubsection*{Frage}
+\subsection{Fragestellung}
 
 Sei $\Omega\subseteq\mathbb{C}$ offen.
 
-Gibt es eine biholomorphe Abbildung $f:\Omega\to B:=B_{1}\left(0\right)$.
+Gibt es eine biholomorphe Abbildung $f:\Omega\to B:=B_{1}\left(0\right)$?
 
-TODO: Abb5
+\textcolor{green}{TODO: Abb5 einfügen}
 
 \begin{abclist}
 
 \abc Der Radius $1$ ist keine Einschränkung und auch der Mittelpunkt
 0 nicht.
 
-\abc Wähle $\Omega=\mathbb{C}$. Gesucht: $f:\mathbb{C}\to B_{1}\left(0\right)=:B$
-biholomorph.
+\abc Wähle $\Omega=\mathbb{C}$. Gesucht ist eine biholomorphe Funktion
+$f:\mathbb{C}\to B$.
 
-$\left|f\left(z\right)\right|\le1$. Nach Liouville folgt $f=\text{konst.}$,
-also nicht bijektiv und damit nicht biholomorph.
+Es gilt $\left|f\left(z\right)\right|\le1$. Nach dem Satz von Liouville
+folgt, dass $f$ konstant, also nicht bijektiv und damit nicht biholomorph
+ist.
 
 Also müssen wir $\Omega=\mathbb{C}$ ausschließen.
 
-\abc TODO: Abb6
+\abc \textcolor{green}{TODO: Abb6 einfügen}
 
-$\Omega$ muss bogenzusammenhängend (TODO: weg-?) sein, denn:
+$\Omega$ muss wegzusammenhängend sein, denn für $z_{1},z_{2}\in\Omega$
+ist $\overline{f\left(z_{1}\right)f\left(z_{2}\right)}\subseteq B$.
 
-Seien $z_{1},z_{2}\in\Omega$. Dann ist $\overline{f\left(z_{1}\right)f\left(z_{2}\right)}\subseteq B$.
 Also ist $f^{-1}\left(\overline{f\left(z_{1}\right)f\left(z_{2}\right)}\right)$
-ist eine Kurve in $\Omega$, die $z_{1}$ und $z_{2}$ verbindet.
+eine Kurve in $\Omega$, die $z_{1}$ und $z_{2}$ verbindet.
 
-\abc $\Omega$ muss einfach zusammenhängend sein, das heißt:
+\abc $\Omega$ muss \emph{einfach zusammenhängend }sein, das heißt:
 
-Sei $\gamma$ eine geschlossene Kurve. Sei $s\in\left[0,1\right]$.
+Seien $\gamma$ eine geschlossene Kurve und $s\in\left[0,1\right]$.
 \begin{align*}
 \gamma_{s} & :=s\cdot\gamma
 \end{align*}
 $s=1$ gibt die ursprüngliche Kurve und $s=0$ liefert den Ursprung.
 
-Man sagt auch, die Kurve ist 0-homotop.
+Man sagt auch, die Kurve ist \emph{0-homotop}.
 
-TODO: Abb8
+\textcolor{green}{TODO: Abb8 einfügen}
 
 $\gamma$ ist nicht in einen Punkt \quotedblbase{}zusammenziehbar\textquotedblleft{}.
 
-Beweis:
+
+\subsubsection*{Beweis}
 
 Sei $\gamma$ eine geschlossene Kurve in $\Omega$. Also ist $\Gamma=f\circ\gamma$
 eine geschlossene Kurve in $B$.
 \begin{align*}
 \Phi\left(\tau,s\right) & :=s\cdot\Gamma\left(\tau\right)
 \end{align*}
-eine Nullhomotopie.
-
-Also ist $f^{-1}\circ\Phi$ ist eine Nullhomotopie von $\gamma$,
-weswegen $\Omega$ einfach zusammenhängend ist.
+ist eine Nullhomotopie. Also ist $f^{-1}\circ\Phi$ eine Nullhomotopie
+von $\gamma$, weswegen $\Omega$ einfach zusammenhängend ist.\qqed
 
 \end{abclist}
 
 
-\subsection{Definition}
+\subsection{Definition \textmd{(einfach zusammenhängend)}}
 
 Ein topologischer, zusammenhängender Raum $X$ heißt \emph{einfach
 zusammenhängend}, falls es für jede geschlossene Kurve $\gamma:\left[a,b\right]\to X$
 eine stetige Funktion $\Phi:\left[a,b\right]\times\left[0,1\right]\to X$,
-sodass $\Phi\left(.,1\right)=\gamma\left(.\right)$ und $\Phi\left(.,0\right)=\text{konst.}$.
+sodass $\Phi\left(t,1\right)=\gamma\left(t\right)$ und $\Phi\left(t,0\right)=C\in X$.
 
 Falls $\Omega\subseteq\mathbb{C}$, so gilt:
 \begin{itemize}
-\item $\Omega$ ist einfach zusammenhängend $\Leftrightarrow$ $\overline{\mathbb{C}}\setminus\Omega$.
+\item $\Omega$ ist einfach zusammenhängend $\Leftrightarrow$ $\overline{\mathbb{C}}\setminus\Omega$
+ist zusammenhängend.
 \item $\Omega$ ist einfach zusammenhängend $\Leftrightarrow$ $n\left(\gamma,a\right)=0$
 für alle geschlossene Kurven $\gamma$ in $\Omega$ und $a\not\in\Omega$.
 \end{itemize}
 
-\subsection{Theorem (Riemannscher Abbildungssatz für $\Omega\subseteq\mathbb{C}$)}
+\subsection{Theorem \textmd{(Riemannscher Abbildungssatz)}}
 
-Sei $\Omega\subseteq\mathbb{C}$, $\Omega\not=\mathbb{C}$ eine einfach
-zusammenhängende offene Teilmenge von $\mathbb{C}$ und $z_{0}\in\mathbb{C}$.
+Sei $\Omega\subsetneq\mathbb{C}$ eine einfach zusammenhängende offene
+Teilmenge von $\mathbb{C}$ und $z_{0}\in\mathbb{C}$.
 
 Dann gibt es eine eindeutige biholomorphe Abbildung $f:\Omega\to B_{1}\left(0\right)$
-mit $f\left(z_{0}\right)=0$ und $f'\left(z_{0}\right)>0$.
+mit $f\left(z_{0}\right)=0$ und $f'\left(z_{0}\right)\in\mathbb{R}_{>0}$.\bigskip{}
 
-Reimann hat dies vermutet. Koebe hat es bewiesen. siehe zum Beispiel
-Jänich, Ahlfors
 
-Bisher oft: $\gamma$ geschlossene Kurve, $\text{im}\left(\gamma\right)\subseteq\Delta\subseteq\Omega$.
+Riemann hat dies vermutet und Koebe hat es bewiesen.
+
+$f\left(z_{0}\right)=0$ und $f'\left(z_{0}\right)>0$ sind Normierungsbedingungen.
+
+Beachte, dass für $f$ keine Regularität auf dem Rand vorausgesetzt
+wurde. $f$ ist im Allgemeinen auf $\partial\Omega$ nicht holomorph.
+
+Bisher war $\gamma$ oft eine geschlossene Kurve mit $\text{im}\left(\gamma\right)\subseteq\Delta\subseteq\Omega$.
 
 Ab jetzt kann man stets $\Delta=B_{R}\left(a\right)$ durch eine einfache
-zusammenhängende Teilmengen von $\mathbb{C}$ ersetzen.
-
-zur Eindeutigkeit:
-
-Seien $f_{1},f_{2}$ zwei biholomorphe Abbildungen $\Omega\to B$.
-
-Dann ist $g=f_{1}^{-1}\circ f_{2}$ eine biholomorphe Abbildung von
-$B\to B$ und $g\left(0\right)=0$.
+zusammenhängende Teilmengen von $\mathbb{C}$ ersetzen, die $a$ enthält.
 
 
-\subsection{Satz}
+\subsubsection*{Beweis}
 
-$g=c\cdot z$ mit $\left|c\right|=1$.
+(siehe zum Beispiel Jänich, Ahlfors)
 
-Erstaunlich ist: $g$ ist bis auf einen Phasenfaktor (eine Drehung)
-eindeutig durch die Biholomorphie festgelegt.
+\textcolor{green}{TODO: restlichen Beweis (Existenz) einfügen}
 
+Eindeutigkeit:
 
-\subsubsection*{Beweisskizze}
+Seien $f_{1},f_{2}:\Omega\to B$ zwei biholomorphe Abbildungen mit
+$f_{1}\left(z_{0}\right)=f_{2}\left(z_{0}\right)=0$.
 
+Dann ist $g=f_{1}^{-1}\circ f_{2}:B\to B$ eine biholomorphe Abbildung
+mit $g\left(0\right)=0$.
+
+Wir zeigen nun:
+\begin{align*}
+g\left(z\right) & =c\cdot z & \left|c\right| & =1
+\end{align*}
+Erstaunlich ist, dass $g$ bis auf einen Phasenfaktor (eine Drehung)
+eindeutig durch die Biholomorphie festgelegt ist.
 \begin{align*}
 h\left(z\right) & :=\begin{cases}
 \frac{g\left(z\right)}{z} & \text{für }z\not=0\\
@@ -8250,35 +9332,34 @@ auf $B$.
 Ist $h:B_{1}\left(0\right)\to\mathbb{C}$ holomorph und nicht konstant,
 dann nimmt $\left|h\right|$ im Inneren kein Maximum an.
 \end{quote}
-Damit folgt:
-
+Damit folgt auf $\partial B_{1}$:
 \begin{align*}
 \left|h\left(z\right)\right| & =\frac{\left|g\left(z\right)\right|}{\left|z\right|}=\left|g\left(z\right)\right|\le1
 \end{align*}
-auf $\partial B_{1}$.
-
-Aus dem Maximumprinzip folgt:
+Aus dem Maximumprinzip folgt
 \begin{align*}
 1 & \ge\left|h\left(z\right)\right|=\frac{\left|g\left(z\right)\right|}{\left|z\right|}
 \end{align*}
 in ganz $B$, also $\left|g\left(z\right)\right|\le\left|z\right|$.
 
-Analog folgt: $\left|z\right|=\left|g^{-1}\left(g\left(z\right)\right)\right|\le\left|g\left(z\right)\right|$.
+Analog folgt $\left|z\right|=\left|g^{-1}\left(g\left(z\right)\right)\right|\le\left|g\left(z\right)\right|$.
 Also folgt $\left|g\left(z\right)\right|=\left|z\right|$.
 
-Somit ist $\left|h\left(z\right)\right|=\frac{\left|g\left(z\right)\right|}{\left|z\right|}=\text{konst.}$.
+Somit ist ${\displaystyle \left|h\left(z\right)\right|=\frac{\left|g\left(z\right)\right|}{\left|z\right|}=1}$.
 
-Aus dem Maximumprinzip folgt $h=\text{konst.}$ und somit $g=\text{konst.}\cdot z$.
+Aus dem Maximumprinzip folgt $h=c\in\mathbb{C}$ mit $\abs c=1$ und
+somit $g=c\cdot z$.\qqed
 
 
 \subsubsection*{Beweis des Maximumprinzips}
 
-TODO: Abb9
+\textcolor{green}{TODO: Abb9 einfügen}
 
-Nehme an $\left|h\right|$ habe in $z_{0}\in\Omega$ ein Maximum.
+Nehme an, dass $\left|h\right|$ in $z_{0}\in\Omega$ ein Maximum
+hat.
 
 \begin{align*}
-h\left(z_{0}\right) & =\frac{1}{2\pi\ii}\oint_{\partial B_{\varepsilon}\left(z_{0}\right)}\frac{h\left(\zeta\right)}{\zeta-z}\dd\zeta
+h\left(z_{0}\right) & =\frac{1}{2\pi\ii}\oint_{\partial B_{\varepsilon}\left(z_{0}\right)}\frac{h\left(\zeta\right)}{\zeta-z_{0}}\dd\zeta
 \end{align*}
 Also folgt:
 \begin{align*}
@@ -8287,11 +9368,11 @@ Also folgt:
 \begin{align*}
 \zeta & =z+\varepsilon e^{2\pi\ii\tau}\\
 \end{align*}
-Da $z_{0}$ ein Maximum ist, folgt:
+Da $z_{0}$ ein Maximum ist, folgt für $z\in\partial B_{\varepsilon}\left(z_{0}\right)$:
 \begin{align*}
-\left|h\right| & =\left|h\left(z_{0}\right)\right|
+\left|h\left(z\right)\right| & =\left|h\left(z_{0}\right)\right|
 \end{align*}
-auf $\partial B_{\varepsilon}$.
+\qqed
 
 
 \part*{Anhang\thispagestyle{empty}}
